@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Pages</title>  
+  <link rel="shortcut icon" type="image/png" href="/booksjl-franklin-template/assets/images/favicon.png"/>
+  <link rel="stylesheet" href="/booksjl-franklin-template/css/base.css"/>
+  
+    <link rel="stylesheet" href="/booksjl-franklin-template/css/base_showaside.css"/>
+  
+  <script src="/booksjl-franklin-template/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/booksjl-franklin-template/">Book Template for Franklin</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Create books with Franklin.jl
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li><a href="/booksjl-franklin-template/pages/intro">Introduction</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PART I</li>
+    </div>
+    <div class="menu-level-1">
+    <li>1. Configurations</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/book">1.1. Book Configuration</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/style">1.2. Style Sheet and Fonts</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/menu_bar">1.3. Menu Bar</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/toc">1.4. Table of Contents</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/navigation">1.5. Navigation</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/pages">1.6. Pages</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/binder">1.7. Binder Configuration</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>PART II</li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/booksjl-franklin-template/pages/math_and_code">2. Math and Code</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/franklinmd">2.1. Franklin's Markdown</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/literated/literatejl">2.2. Literated Julia Script</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejl">2.3. Weaved Julia Script</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/weaved/weavejmd">2.4. Weaved Julia Markdown</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/booksjl-franklin-template/pages/jupytered/notebook">2.5. Jupyter notebook</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/booksjl-franklin-template/pages/appendix">Appendix</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/booksjl-franklin-template"><img src="/booksjl-franklin-template/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation">1.5. Navigation <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/binder"><kbd>→</kbd> 1.7. Binder Configuration</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.6. Pages</a></h1>
+<ol>
+<li><p>The pages for the book must be in either of the folders <code>pages/</code>, <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter/</code> in order to be properly processed. They don&#39;t need to be in the root of each of these subfolders; they can be further nested as desired.</p>
+</li>
+<li><p>Depending on the folder, the file is executed and rendered by either <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a>, or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</p>
+</li>
+<li><p>The files can be in either Franklin&#39;s Markdown, Weave&#39;s/Juno&#39;s Markdown, Literate&#39;s Markdown, Jupyter notebook, or plain julia script format with markdown-like comments.</p>
+</li>
+<li><p>The title on each Franklin&#39;s markdown page, under <code>pages/</code>, is set by the line <code>@def title &#61; &quot;Title of the Section&quot;</code>, followed by the line <code># &#123;&#123; get_title &#125;&#125;</code>, which builds the title with the proper numbering. Check the <a href="https://github.com/rmsrosa/booksjl-franklin-template/blob/main/pages/pages.md">raw file for this page</a>.</p>
+</li>
+<li><p>The title on the pages within <code>_weave/</code>, <code>_literate/</code> or <code>_jupyter</code> should be defined as usual for markdown files, with <code># Title of the Section</code>. These will be processed to the format above, to be properly rendered by Franklin.</p>
+</li>
+<li><p>Each page generated from source files in either <code>_weave/</code>, <code>_literate/</code>, or <code>_jupyter</code> may contain badge links to associated Jupyter notebooks, for either downloading it or opening it in either NBViewer or Binder. This can be achieve by the following configuration variables in <code>config.md</code>:</p>
+<ul>
+<li><p><code>show_link_bagdes::Bool</code>: whether to add any of the link badges to the top of each weaved or literated page;</p>
+</li>
+<li><p><code>link_view_source::Bool</code>: whether to include a badge to view the source used for the current page, if processed by <a href="https://github.com/JunoLab/Weave.jl">Weave.jl</a> or <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>;</p>
+</li>
+<li><p><code>link_download_notebook::Bool</code>: whether to include a badge to download the associated Jupyter notebook;</p>
+</li>
+<li><p><code>link_nbview_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in NBViewer;</p>
+</li>
+<li><p><code>link_binder_notebook::Bool</code>: whether to include a badge to open the associated Jupyter notebook in Binder;</p>
+</li>
+<li><p><code>website::String</code>: url of the website, used to properly launch the associated notebook in NBViewer.</p>
+</li>
+</ul>
+</li>
+</ol>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/booksjl-franklin-template/pages/navigation">1.5. Navigation <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/booksjl-franklin-template/pages/binder"><kbd>→</kbd> 1.7. Binder Configuration</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+
+    <div class="license">
+    <br/>
+    <br/>
+        <a href=https://creativecommons.org/publicdomain/zero/1.0/>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication </a>
+        
+    </div>
+
+<!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+
+    
+
+  </body>
+</html>
