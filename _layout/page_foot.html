@@ -1,0 +1,12 @@
+{{ if nav_on_bottom }}
+    {{ navigation }}
+{{ end }}
+
+{{ if show_license }}
+    <div class="license">
+    <br/>
+    <br/>
+        <a href={{ license_link }}>{{ book_license }} </a>
+        {{ book_licensees }}
+    </div>
+{{ end }}
