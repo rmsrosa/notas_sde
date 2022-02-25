@@ -2,86 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>pages/weaved/weavejl/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/weaved/weavejmd/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/toc/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/literated/literatejl/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/menu_bar/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
+    <loc>pages/intro/index.html</loc>
+    <lastmod>2022-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/appendix/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/book/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
+    <lastmod>2022-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/jupytered/notebook/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/math_and_code/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/franklinmd/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/intro/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/navigation/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/binder/index.html</loc>
-    <lastmod>2022-02-24</lastmod>
+    <lastmod>2022-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
