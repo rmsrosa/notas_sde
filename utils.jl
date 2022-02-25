@@ -178,13 +178,11 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
         new_pre = this_page_numbering === false ? "" : "$pre$(i += 1)."
 
         filename =
-            startswith(sec, "_weave/") ? weave_it(lstrip(sec, '*')) :
-            startswith(sec, "_literate/") ? literate_it(lstrip(sec, '*')) :
-            startswith(sec, "_jupyter/") ? jupyter_it(lstrip(sec, '*')) :
+            startswith(sec, "_weave/") ? weave_it(sec) :
+            startswith(sec, "_literate/") ? literate_it(sec) :
+            startswith(sec, "_jupyter/") ? jupyter_it(sec) :
             startswith(sec, "pages/") ? "$sec.md" : nothing
-        filename_noext =
-            filename !== nothing && occursin('.', filename) ?
-            filename[1:prevind(filename, findlast('.', filename))] : filename
+        filename_noext = filename !== nothing && occursin('.', filename) ? replace(filename, r"\.(?:jl|md|jmd|ipynb)$" => "") : filename
 
         title = filename === nothing ? sec : pagevar("$filename", :title)
         if this_page_numbering !== false
@@ -196,19 +194,6 @@ function build_toc(menu, page_numbering = true, level = 1, pre = "")
             append!(toc, build_toc(subsecs, this_page_numbering, level + 1, new_pre))
         end
     end
-    return toc
-end
-
-"""
-    function build_toc()
-
-Start building the table of contents, reading the `menu` variable from `config.md`
-"""
-function build_toc()
-    menu = pagevar("config.md", :menu)
-    isnothing(menu) && return nothing
-    page_numbering = pagevar("config.md", :page_numbering) === true
-    toc = build_toc(menu, page_numbering)
     return toc
 end
 
@@ -238,7 +223,7 @@ a Markdown file for Franklin and a Jupyter notebook.
 """
 function weave_it(filename)
     isfile(filename) || return ""
-    out_path = "pages/" * replace(dirname(filename), r"_weave" => "") * "weaved"
+    out_path = "pages/" * replace(dirname(filename), r"^_weave" => "weaved")
     fig_path = "images"
     doctype = "github"
     weaved_filename =
@@ -253,7 +238,7 @@ function weave_it(filename)
         postprocess_it(weaved_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_weave" => "weaved"))"
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_weave" => "weaved"))"
     notebook_path = "$notebook_output_dir/$(replace(basename(filename), r"(?:\.jl|\.jmd)$" => ".ipynb"))"
 
     if any(
@@ -279,11 +264,10 @@ a Jupyter notebook.
 """
 function literate_it(filename)
     isfile(filename) || return ""
-    out_path =
-        "pages/" * replace(dirname(filename), "_literate" => "", count = 1) * "literated"
+    out_path = "pages/" * replace(dirname(filename), r"^_literate" => "literated")
     fig_path = "images"
     flavor = Literate.FranklinFlavor()
-    literated_filename = replace("$out_path/$(basename(filename))", r".jl$" => ".md")
+    literated_filename = replace("$out_path/$(basename(filename))", r"\.jl$" => ".md")
 
     link_download_notebook = pagevar("config.md", :link_download_notebook)
     link_nbview_notebook = pagevar("config.md", :link_nbview_notebook)
@@ -301,8 +285,8 @@ function literate_it(filename)
         postprocess_it(literated_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_literate" => "literated"))"
-    notebook_path = "$notebook_output_dir/$(replace(basename(filename), r".jl$" => ".ipynb"))"
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_literate" => "literated"))"
+    notebook_path = "$notebook_output_dir/$(replace(basename(filename), r"\.jl$" => ".ipynb"))"
 
     if any(
         ==(true),
@@ -322,7 +306,7 @@ copying the original notebook to a place suitable for downloading by the reader.
 """
 function jupyter_it(filename)
     isfile(filename) || return ""
-    out_path = "pages/" * replace(dirname(filename), r"_jupyter" => "") * "jupytered"
+    out_path = "pages/" * replace(dirname(filename), r"^_jupyter" => "jupytered")
     fig_path = "images"
     doctype = "github"
     weaved_filename = replace("$out_path/$(basename(filename))", r"\.ipynb$" => ".md")
@@ -336,7 +320,7 @@ function jupyter_it(filename)
         postprocess_it(weaved_filename, out_path, fig_path)
     end
 
-    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), "_jupyter" => "jupytered"))"
+    notebook_output_dir = "__site/generated/notebooks/$(replace(dirname(filename), r"^_jupyter" => "jupytered"))"
     notebook_path = "$notebook_output_dir/$(basename(filename))"
 
     if any(
@@ -375,7 +359,7 @@ code associated with each page that has been processed via Weave or Literate.
 
     github_repo = pagevar("config.md", :github_repo)
 
-    notebook_path = "generated/notebooks/$(replace(dirname(filename), r"pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
+    notebook_path = "generated/notebooks/$(replace(dirname(filename), r"^pages/?" => ""))/$(replace(basename(filename), r".md$" => ".ipynb"))"
 
     io = IOBuffer()
     if (
