@@ -1,4 +1,4 @@
-@def title = "Bem vindos"
+@def title = "Aspectos Teóricos e Numéricos de Equações Diferenciais Estocásticas e Aleatórias"
 
 @def nav = false
 # {{ title }}

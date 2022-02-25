@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-> It may very well be said that the best way to understand SDEs is to work with their numerical solutions. - Salih N. Neftci, in An Introduction to the Mathematics of Financial Derivatives, 2nd edition (Academic Press, 2000).
+> "It may very well be said that the best way to understand SDEs is to work with their numerical solutions." - Salih N. Neftci, in *An Introduction to the Mathematics of Financial Derivatives,* 2nd edition (Academic Press, 2000).
 
 ## Referências
 

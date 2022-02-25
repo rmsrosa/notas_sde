@@ -9,8 +9,8 @@ ignore = ["_weave/", "_jupyter/", "_literate"]
 
 ## book variables
 +++
-book_title = "Equações diferenciais estocásticas e aleatórias"
-book_subtitle = "Aspectos teóricos e numéricos"
+book_title = "Equações Diferenciais Estocásticas e Aleatórias"
+book_subtitle = "Aspectos Teóricos e Numéricos"
 book_author = "<a href=\"https://rmsrosa.github.io\">Ricardo M. S. Rosa</a>"
 show_license = true
 book_license = "(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International"
