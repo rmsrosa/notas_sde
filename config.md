@@ -2,19 +2,19 @@
 
 ## config vars
 +++
-prepath = "booksjl-franklin-template"
+prepath = "notas_sde"
 content_tag = ""
 ignore = ["_weave/", "_jupyter/", "_literate"]
 +++
 
 ## book variables
 +++
-book_title = "Book Template for Franklin"
-book_subtitle = "Create books with Franklin.jl"
+book_title = "Equações diferenciais estocásticas e aleatórias"
+book_subtitle = "Aspectos teóricos e numéricos"
 book_author = "<a href=\"https://rmsrosa.github.io\">Ricardo M. S. Rosa</a>"
 show_license = true
-book_license = "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication"
-license_link = "https://creativecommons.org/publicdomain/zero/1.0/"
+book_license = "(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International"
+license_link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
 book_licensees = ""
 +++
 
@@ -22,7 +22,7 @@ book_licensees = ""
 +++
 show_aside = true
 show_github = true
-github_repo = "https://github.com/rmsrosa/booksjl-franklin-template"
+github_repo = "https://github.com/rmsrosa/notas_sde"
 +++
 
 ## navigation links
@@ -37,24 +37,9 @@ page_numbering = true
 menu = [
     "*pages/intro",
     "*PART I",
-    "Configurations" => [
-        "pages/book",
-        "pages/style",
-        "pages/menu_bar",
-        "pages/toc",
-        "pages/navigation",
-        "pages/pages",
-        "pages/binder",
-    ],
     "*PART II",
-    "pages/math_and_code" => [
-        "pages/franklinmd",
-        "_literate/literatejl.jl",
-        "_weave/weavejl.jl",
-        "_weave/weavejmd.jmd",
-        "_jupyter/notebook.ipynb"
-    ],
     "*pages/appendix",
+    "*pages/references"
 ]
 +++
 
@@ -65,12 +50,12 @@ link_view_source = true
 link_download_notebook = true
 link_nbview_notebook = true
 link_binder_notebook = true
-website = "rmsrosa.github.io/booksjl-franklin-template"
+website = "rmsrosa.github.io/notas_sde"
 +++
 
 ## binder variables
 +++
-nbgitpuller_repo = "rmsrosa/booksjl-franklin-template"
+nbgitpuller_repo = "rmsrosa/notas_sde"
 nbgitpuller_branch = "binderenv"
 binder_application = "lab" 
 +++
