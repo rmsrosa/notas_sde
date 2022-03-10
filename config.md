@@ -4,7 +4,7 @@
 +++
 prepath = "notas_sde"
 content_tag = ""
-ignore = ["_weave/", "_jupyter/", "_literate"]
+ignore = ["_src/"]
 +++
 
 ## book variables
@@ -15,7 +15,7 @@ book_author = "<a href=\"https://rmsrosa.github.io\">Ricardo M. S. Rosa</a>"
 show_license = true
 book_license = "(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International"
 license_link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-book_licensees = ""
+book_licensees = "Ricardo M. S. Rosa"
 +++
 
 ## menu variables
@@ -36,8 +36,8 @@ nav_on_bottom = true
 page_numbering = true
 menu = [
     "*pages/intro",
-    "*PART I",
-    "*PART II",
+    "*PARTE I",
+    "*PARTE II",
     "*pages/appendix",
     "*pages/references"
 ]
