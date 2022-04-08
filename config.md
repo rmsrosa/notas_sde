@@ -37,7 +37,7 @@ page_numbering = true
 menu = [
     "*pages/intro",
     "*PARTE I",
-    "*PARTE II",
+    "pages/convergencias",
     "*pages/appendix",
     "*pages/references"
 ]
