@@ -22,7 +22,7 @@ Equações diferenciais estão presentes em uma infinidade de modelos. Isso é n
 
 Vale ressaltar que, assim como no caso determinísticos, há vários tipos de equações estocásticas e aleatórias, dependendo delas envolverem uma ou mais variáveis independentes (ordinárias x parciais), terem apenas uma variável dependente ou várias (escalares x sistemas), terem memória ou não (equações com retardamento ou não - *delay differential equations*), envolverem integrais ou não (equações integro-diferenciais), etc.
 
-Naturalmente, como esse é um curso introdutório, vamos considerar, essencialmente, equações ordinárias, podendo ser escalares ou sistemas. Mais adiante, veremos se cabe considerar outros tipos de equações.
+Naturalmente, como esse é um curso introdutório, vamos considerar aleatoriedades essencialmente em equações diferenciais ordinárias, podendo ser escalares ou sistemas. Mais adiante, veremos se cabe considerar outros tipos de equações.
 
 ## Implementações numéricas
 
@@ -32,10 +32,8 @@ Sendo assim, o objetivo, aqui, ao estudarmos métodos numéricos para essas equa
 
 ## Bibliografia
 
-Quanto às referências bibliográficas, vamos seguir, essencialmente, o livro de Han & Kloeden (2017), em conjunto com o de Neckel & Rupp (2013), complementando com alguns pontos de outras referências. Ambos os livros contém tanto RODEs quanto SDEs e são de nível acessível a quem cursou Equações Diferenciais e cursou ou está cursando Processos Estocásticos. Neckel & Rupp (2013) ainda tem a vantagem de estar disponível on-line.
+Quanto às referências bibliográficas, vamos seguir, essencialmente, o livro de Han & Kloeden (2017), em conjunto com o de Higham & Kloeden (2021) e o de Neckel & Rupp (2013), complementando com alguns pontos de outras referências. Tanto o de Han & Kloeden (2017) quanto o de Neckel & Rupp (2013) discutem RODEs e SDEs, sendo o primeiro de nível mais acessível a quem cursou Equações Diferenciais e cursou ou está cursando Processos Estocásticos, enquanto que o segundo é um pouco mais técnico. Neckel & Rupp (2013) tem a vantagem de estar disponível on-line. O de Higham & Kloeden (2021) também é de nível bastante acessível, mas discute apenas equações diferenciais estocásticas.
 
-Quanto às outras referências, Higham & Kloeden (2021) e Zhang & Karniadakis (2017) focam em SDEs, mas também têm discussões interessantes, e, portanto, vale tê-los por perto.
-
-Allen (2007) tem vários modelos interessantes que devemos aproveitar.
+Quanto às outras referências, Zhang & Karniadakis (2017) também foca em SDEs e é mais avançado, mas também têm discussões interessantes, e, portanto, vale tê-lo por perto. Allen (2007), por sua vez, tem vários modelos interessantes que devemos aproveitar.
 
 Para uma boa seção de motivação/introdução, veja, por exemplo, a Seção 1.1 "Why random and Brownian motion (white noise)?", de Zhang & Karniadakis (2017). Esse será o ponto de partida.

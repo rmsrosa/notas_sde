@@ -36,7 +36,6 @@ nav_on_bottom = true
 page_numbering = true
 menu = [
     "*pages/intro"
-    "*PARTE I"
     "pages/aspectos_iniciais"
     "pages/passeioaleatorio_movbrowniano"
     "pages/convergencias"
