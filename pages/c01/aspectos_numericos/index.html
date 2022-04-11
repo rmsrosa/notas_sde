@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Aspectos numéricos</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+    <link rel="stylesheet" href="/notas_sde/css/base_showaside.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Aspectos de equações diferenciais estocásticas e aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.3. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.4. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.5. Simulações numéricas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.6. Passeio aleatório e movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/convergencias">2. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde">1.3. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/literated/c01/simulacoes_numericas"><kbd>→</kbd> 1.5. Simulações numéricas</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.4. Aspectos numéricos</a></h1>
+<h2 id="aproximação_numérica"><a href="#aproximação_numérica" class="header-anchor">Aproximação numérica</a></h2>
+<p>Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior.</p>
+<p>Inicialmente, no caso da equação diferencial ordinária</p>
+\[
+\mathrm{d}x = f(t, x, \lambda)\mathrm{d}t,
+\]
+<p>podemos considerar um passo de tempo \(\Delta t\) e os estados discretos \(x(t_n)\), a cada passo de tempo \(t_n = n\Delta t\). Uma aproximação de \(x(t_{n+1})\) a partir de \(x(t_n)\) é dada por</p>
+\[
+x(t_n + \Delta t) \approx x(t_n) + f(t_n, x(t_n), \lambda)\Delta t.
+\]
+<p>Assim, os estados \(x(t_n)\), para \(n\in \mathbb{N}\), são dados aproximadamente pela sequência</p>
+\[
+x_{n+1}^{\Delta t} = x_n^{\Delta t} + f(t_n, x_n^{\Delta t}, \lambda)\Delta t, \qquad n = 0, 1, \ldots,
+\]
+<p>com a condição inicial \(x_0^{\Delta t} = x(0)\). Observe o superescrito \(\Delta t\) para indicar que cada aproximação depende do passo de tempo escolhido.</p>
+<p>É claro que, a cada passo de tempo, essa aproximação acarreta em erros e os erros vão se acumulando. Conforme diminuímos o passo de tempo, reduzimos o erro em cada passo, mas, por outro lado, aumentamos o número de passos. Como os erros se acumulam, não temos, em princípio, uma garantia de que o acúmulo de erros será controlado. Um papel da Análise Numérica é determinar quais métodos numéricos são bons nesse sentido e quão bom cada um é. Isso é visto examinando se a aproximação numérica converge para uma solução exata, correspondente a uma determinada condição inicial. O sentido da convergência, caso ela ocorra, e a taxa de convergência nos permitem comparar os diversos métodos.</p>
+<p>No caso da aproximação de Euler, em particular, é possível mostrar que, para um \(T>0\) fixo, as aproximações \(x_n^{\Delta t}\), no intervalo \(0\leq t_n \leq T\), convergem <em>linearmente</em> para a solução exata, ou seja, com erro da ordem \(\mathcal{O}(\Delta t)\).</p>
+<p>Vejamos, agora, o caso de uma equação diferencial aleatória da forma mais simples, onde as realizações não variam com o tempo:</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda),
+\]
+<p>com variáveis aleatórias</p>
+\[
+X_{t = 0}(\omega) = X_0(\omega), \quad \lambda = \Lambda(\omega).
+\]
+<p>Nesse caso, para cada amostra \(\omega\), temos uma realização \(X_0(\omega)\) da condição inicial e uma realização \(\Lambda(\omega)\) do&#40;s&#41; parâmetro&#40;s&#41;. A partir daí, temos uma equação diferencial ordinária clássica. O método de Euler nos dá a seguinte aproximação:</p>
+\[
+x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \Lambda(\omega))\Delta t, \qquad n = 0, 1, \ldots,
+\]
+<p>com a condição inicial \(x_0^{\omega, \Delta t} = X_0(\omega)\). Observe que, agora, incluímos a amostra \(\omega\) como parâmetro da família de aproximações.</p>
+<p>Consideremos, agora, o caso em que a variável aleatória \(\Lambda = \Lambda_t\) é um processo estocástico, com as realizações variando com o tempo:</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t).
+\]
+<p>Nesse caso, a cada passo de tempo, devemos fazer um novo &quot;sorteio&quot;, para obter a realização \(\lambda_n\) do parâmetro e chegar na aproximação</p>
+\[
+x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda_n^{\omega, \Delta t})\Delta t.
+\]
+<p>Essa é a principal diferença. O parâmetro \(\lambda\) não está pré-determinado com a escolha da amostra \(\omega\). A cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge e é da ordem \(\mathcal{O}(\Delta^{1/2})\).</p>
+<p>Chegamos, então, ao caso de final de equações estocásticas. Consideremos uma equação da forma</p>
+\[
+\mathrm{d}X_t = f(t, X_t, \lambda)\mathrm{d}t + \sigma(t, X_t)\mathrm{d}W_t.
+\]
+<p>Nesse caso, a cada novo instante, fazemos um sorteio de \(W_{t_{n+1}}^{\omega, \Delta t}\) para obter o passo \(\Delta t_n^{\omega, \Delta t} = W_{t_{n+1}}^{\omega, \Delta t} - W_{t_n}^{\omega, \Delta t}\), chegando à sequência</p>
+\[
+x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda)\Delta t + \sigma(t, x_n^{\omega, \Delta t})\Delta W_n^{\omega, \Delta t}.
+\]
+<p>Em muitos casos, o processo estocástico é um <strong>processo de Lévy</strong>, em que os incrementos são estacionários e independentes entre si, ou seja, a distribuição de \(W_{t_{n+1}} - W_{t_n}}\) depende apenas do passo \(\Delta t = t_{n+1} - t_n\) e as realizações a cada passo são independentes. Assim, no método de Euler, podemos sortear \(\Delta W_n^{\omega, \Delta t}\) diretamente, a partir de uma determinada distribuição de probabilidades.</p>
+<h2 id="simulações_numéricas"><a href="#simulações_numéricas" class="header-anchor">Simulações numéricas</a></h2>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde">1.3. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/literated/c01/simulacoes_numericas"><kbd>→</kbd> 1.5. Simulações numéricas</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: April 11, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Aspectos Teóricos e Numéricos de Equações Diferenciais Estocásticas e Aleatórias</title>  
+   <title>Simulações numéricas</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,6 +13,17 @@
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   
 
   
@@ -87,16 +98,48 @@
   <div class="books-content">
 
     
-      
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/aspectos_numericos">1.4. Aspectos numéricos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano"><kbd>→</kbd> 1.6. Passeio aleatório e movimento Browniano</a>
+</span>
+    </p>
+</div>
+</br></br>
+
     
 
     
-      
-    
-<h1 id="title"><a href="#title" class="header-anchor">Aspectos Teóricos e Numéricos de Equações Diferenciais Estocásticas e Aleatórias</a></h1>
-<p>Bem vindos a este sítio dedicado às notas de aula sobre aspectos teóricos e numéricos de equações diferenciais estocásticas e aleatórias, disciplina a ser ministrada no Instituto de Matemática da Universidade Federal do Rio de Janeiro, em 2022/1.</p>
+      <div class="badges">
+<p>
+<a href="https://nbviewer.org/urls/rmsrosa.github.io/notas_sde/generated/literated/c01/simulacoes_numericas.ipynb"><img align="left" src="https://img.shields.io/badge/view%20in-nbviewer-orange" alt="View in NBViewer" title="View Jupyter notebook in NBViewer"></a>
+<a href="https://mybinder.org/v2/gh/rmsrosa/notas_sde/binderenv?urlpath=git-pull%3Frepo%3Dhttps://github.com/rmsrosa/notas_sde%26urlpath%3Dlab/tree%252Fnotas_sde/generated/literated/c01/simulacoes_numericas.ipynb%26branch%3Dgh-pages"><img align="left" src="https://mybinder.org/badge.svg" alt="Open in binder" title="Open in binder"></a>
+<a href="/notas_sde/generated/literated/c01/simulacoes_numericas.ipynb"><img align="left" src="https://img.shields.io/badge/download-notebook-blue" alt="Download notebook" title="Download Jupyter notebook"></a>
+<a href="/notas_sde/src/literate/c01/simulacoes_numericas.jl"><img align="left" src="https://img.shields.io/badge/view-source-lightblue" alt="View source" title="View source"></a>
+</p>
+</div></br>
 
     
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.5. Simulações numéricas</a></h1>
+<p>Vamos ilustrar a resolução numérica via método de Euler descrito na seção anterior.</p>
+<pre><code class="language-julia">using Plots</code></pre>
+<pre><code class="language-julia">&#91; Info: Precompiling Plots &#91;91a5bcdd-55d7-5caf-9e0b-520d859cae80&#93;</code></pre>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/aspectos_numericos">1.4. Aspectos numéricos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano"><kbd>→</kbd> 1.6. Passeio aleatório e movimento Browniano</a>
+</span>
+    </p>
+</div>
+</br></br>
+
 
 
 <div class="page-foot">
@@ -115,6 +158,9 @@
 
     
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>

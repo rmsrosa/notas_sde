@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Aspectos de equações diferenciais estocásticas e aleatórias</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+    <link rel="stylesheet" href="/notas_sde/css/base_showaside.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Aspectos de equações diferenciais estocásticas e aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.3. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.4. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.5. Simulações numéricas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.6. Passeio aleatório e movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/convergencias">2. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde"><kbd>→</kbd> 1.3. Relações entre equações estocásticas e equações aleatórias</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.2. Aspectos de equações diferenciais estocásticas e aleatórias</a></h1>
+<p>Afinal, o que são equações diferenciais estocásticas e equações diferenciais aleatórias? Ok, elas combinam equações diferenciais com fatores aleatórios. Mas como? E em que sentido elas se diferenciam?</p>
+<h2 id="equações_diferenciais_ordinárias"><a href="#equações_diferenciais_ordinárias" class="header-anchor">Equações diferenciais ordinárias</a></h2>
+<p>Para tentarmos esclarecer como a aleatoriedade entra nas equações diferenciais, vamos considerar uma equação simples, da forma</p>
+\[
+    \frac{\mathrm{d}x}{\mathrm{d}t} = \mu x,
+\]
+<p>onde \(x\) correspondente à concentração populacional de algum organismo &#40;e.g. quantidade de indivíduos por unidade de volume, como o número de células de leveduras por mililitro&#41;, \(\mu\) é a taxa de crescimento específico e a lei \({\mathrm{d}x}{\mathrm{d}t} = f(t, x, \mu) = \mu x\) é simplesmente uma taxa proporcional à população.</p>
+<h2 id="aleatoriedades"><a href="#aleatoriedades" class="header-anchor">Aleatoriedades</a></h2>
+<p>Em um primeiro momento, podemos assumir que a taxa de crescimento específico esteja bem determinada, em cada situação, mas assumirmos a nossa ignorância em sabê-la com exatidão. A cada experimento ou observação, mesmo em situações as mais parecidas possíveis, pequenas variações podem levar a taxas ligeiramente diferente. Nesse caso, podemos assumir que \(\mu\) seja conhecida com um certo grau de incerteza, através de uma distribuição de probabilidades. Em cada situação, temos uma taxa diferente \(\eta(\omega)\), onde \(\omega\) representa cada amostra do conjunto possível de amostras. Da mesma forma, podemos considerar, também, uma incerteza na condição inicial, com \(x(0) = x_0(\omega)\). Ou seja, para cada amostragem indicada por \(\omega\), temos uma <em>realização</em> \(\mu(\omega)\) da taxa de crescimento específico e uma <em>realização</em> \(x_0(\omega)\) da condição inicial, obtendo, a partir daí, um problema de valor inicial no sentido clássico: \(\mathrm{d}x/\mathrm{d}t = \mu(\omega)x\), \(x(0) = x_0(\omega)\). Essa situação é típica em problemas de <strong>quantificação de incertezas</strong>.</p>
+<p>Porém, mesmo organismos simples, como um fungo, não têm uma taxa de crescimento específico muito bem definida. Fatores ambientais, não-homogeneidades no meio e variações no desenvolvimento próprio de cada indivíduo influenciam na taxa de crescimento. Podemos obter uma taxa média, em determinados tipos de situação &#40;e.g. em uma placa Petri com um determinado tipo de meio, em um tubo de ensaio, na fermentação de um determinado tipo de bebida, etc.&#41;, mas mesmo em cada situação, há diversos fatores influenciando a multiplicação celular.</p>
+<p>Assim, em um segundo momento, assumimos que fatores aleatórios influenciam <em>ao longo</em> do processo, afetando a taxa de crescimento da população a cada momento. Nesse caso, ao invés de \(\mu(\omega)\), temos \(\mu_t(\omega)\), onde, a cada instante \(t\), a realização \(\mu_t(\omega)\) varia aleatoriamente, estando associada a uma dada distribuição de probabilidades. É importante ressaltar que a cada instante \(t\), temos uma realização diferente \(\mu_t(\omega)\) para a taxa de crescimento específico. Essa tal família parametrizada \(\{\mu_t\}_t\) que a cada valor \(t\) do parâmetro assume valores de acordo com uma certa distribuição de probabilidades é chamada de <strong>processo aleatório</strong>, ou <strong>processo estocástico.</strong> A distribuição de probabilidades no instante \(t\) pode, ou não, variar com o tempo. O importante é que, a cada instante, fazemos um novo &quot;sorteio&quot;. Note a diferença em relação ao caso anterior, onde não apenas a lei de probabilidade não muda com o tempo, como o &quot;sorteio&quot; é feito &quot;apenas uma vez&quot;, antes da evolução. Ao longo da evolução, a taxa é fixa.</p>
+<p>A definição acima, no entanto, nos impõe uma questão: em que sentido a equação diferencial \(\mathrm{d}x/\mathrm{d}t = \mu_t(\omega)x\) é satisfeita? Podemos, mesmo, &quot;integrar&quot; \(\mu_t(\omega)x\) e obter uma função diferenciável \(x=x(t, \omega)\) que seja solução da equação? Para que isso seja possível, assume-se que \(\mu_t\) seja um processo <em>contínuo</em> no tempo, ou seja, que, para cada amostra \(\omega\), as realizações \(\mu_t(\omega)\) ao longo do tempo nos dêem uma função contínua, \(t \rightarrow \mu_t(\omega)\). Com essa condição em \(\{\mu_t\}_t\), obtemos uma <strong>equação diferencial aleatória</strong>.</p>
+<p>Podemos, no entanto, ir além e considerar que a perturbação seja, digamos assim, mais dramática e imprevisível, permitindo que os <em>caminhos amostrais</em> \(t \mapsto \mu_t(\omega)\) sejam descontínuos. Isso não vem à toa. A motivação para tal é que isso aparece naturalmente em diversas situações, como no movimento de partículas suspensas em um fluido &#40;movimento Browniano&#41; e nas variações de corrente elétrica devidas a flutuações térmicas, entre outros fenômenos. Mesmo assim, temos certas restrições. Permite-se que essa perturbação apareça de forma <em>linear</em> em termos da <em>&quot;derivada&quot;</em> de um processo aleatório, &quot;\(\mu_t = \sigma(t, X_t)\mathrm{d}W_t/\mathrm{d}t\)&quot;. Porém, sendo \(W_t\) um processo aleatório, ele não é tão suave assim para ter uma derivada temporal no sentido clássico. Essa é a porta de entrada para as as integrais de Itô e de Stratonovich, que dão sentido à integral em relação a infinitesimais \(\mu_t\mathrm{d}t = \) &quot;\(\sigma(t, X_t)(\mathrm{d}W_t/\mathrm{d}t)\mathrm{d}t\)&quot; \(= \sigma(t,X_t)\mathrm{d}W_t\). Dessa maneira, obtemos as <strong>equações diferenciais estocásticas</strong>.</p>
+<h2 id="equações_diferenciais_estocásticas_e_aleatórias"><a href="#equações_diferenciais_estocásticas_e_aleatórias" class="header-anchor">Equações diferenciais estocásticas e aleatórias</a></h2>
+<p>Pensemos, agora, em uma equação mais geral </p>
+\[
+\mathrm{d}x/\mathrm{d}t = f(t, x, \lambda),
+\]
+<p>onde \(\lambda\) é um parâmetro, ou conjunto de parâmetros &#40;como a taxa de crescimento específico acima, etc.&#41; e \(f(t, x, \lambda)\) é a lei de evolução do sistema.</p>
+<p>No caso de <strong>equações diferenciais aleatórias</strong>, o que fazemos é permitir que \(\lambda\) varie aleatoriamente, sendo, mais precisamente, um <strong>processo estocástico</strong> \(\lambda_t\), <strong>com caminhos amostrais contínuos</strong>. Como resultado disso, a própria solução também será um processo estocástico, que denotaremos por \(X_t= X_t(\omega)\). Assim, chegamos a uma <strong>equação diferencial aleatória:</strong></p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \lambda_t).
+\]
+<p>Também permitimos que a condição \(x(0) = X_0(\omega)\) seja aleatória. Assim, para cada amostra \(\omega\), temos uma realização do problema de valor inicial</p>
+\[
+\begin{cases}
+  \displaystyle \frac{\mathrm{d}X_t(\omega)}{\mathrm{d}t} = f(t, X_t(\omega), \lambda_t(\omega)), \\
+  \left. X_t(\omega)\right|_{t = 0} = X_0(\omega).
+\end{cases}
+\]
+<p>Agora, para abrir caminho para o caso de equações estocásticas, vamos escrever a equação diferencial na forma</p>
+\[
+\mathrm{d}x = f(t, x, \lambda)\mathrm{d}t.
+\]
+<p>A ideia, então, é acrescentarmos um termo \(\epsilon_t\mathrm{dt}\), mas com &quot;\(\epsilon_t=\sigma(t, x)\mathrm{d}W_t/\mathrm{d}t\)&quot;. Exceto, que \(W_t\) é um processo estocástico que não é diferenciável no sentido clássico. Mas, aproveitando a forma como escrevemos a equação acima, podemos escrever apenas</p>
+\[
+\mathrm{d}X_t = f(t, X_t, \lambda)\mathrm{d}t + \sigma(t, X_t)\mathrm{d}W_t.
+\]
+<p>A cada amostra \(\omega\), temos a equação</p>
+\[
+\mathrm{d}X_t(\omega) = f(t, X_t(\omega), \lambda)\mathrm{d}t + \sigma(t, X_t(\omega))\mathrm{d}W_t(\omega).
+\]
+<p>Mas essa não é uma equação diferencial no sentido clássico. Precisamos esclarecer o termo \(\mathrm{d}W_t(\omega)\). Isso será feito oportunamente.</p>
+<p>Lembremos que, muitas vezes, na modelagem de algum fenônemo, obtemos a equação diferencial argumentando a partir de uma descrição heurística da evolução temporal discreta do sistema, para o incremento \(\Delta x = x(t + \Delta t) - x(t)\) do seu estado, na forma \(\Delta x \approx f(t, x, \lambda)\Delta t\) e passando ao limite no passo de tempo \(\Delta t \rightarrow 0\). A equação estocástica acima é resultado de permitirmos uma evolução da forma \(\Delta x \approx f(t, x, \lambda)\Delta t + g(t, x)\Delta W_t\), onde \(\Delta W_t = W(t + \Delta t) - W(t)\) é a variação na componente estocástica, sendo, ela mesma, uma distribuição de probabilidades.</p>
+<p>Para justificar esse tipo de modelagem estocástica, trataremos, em breve, do movimento Browniano, onde isso aparece de forma natural. Antes, vamos considerar certos aspectos numéricos.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde"><kbd>→</kbd> 1.3. Relações entre equações estocásticas e equações aleatórias</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: April 11, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>
