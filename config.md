@@ -4,7 +4,6 @@
 +++
 prepath = "notas_sde"
 content_tag = ""
-ignore = ["_src/"]
 +++
 
 ## book variables
@@ -35,9 +34,13 @@ nav_on_bottom = true
 +++
 page_numbering = true
 menu = [
-    "*pages/intro"
-    "pages/aspectos_iniciais"
-    "pages/passeioaleatorio_movbrowniano"
+    "Introdução" => [
+        "pages/c01/apresentacao"
+        "pages/c01/aspectos_iniciais"
+        "pages/c01/aspectos_numericos"
+        "src/literate/c01/simulacoes_numericas.jl"
+        "pages/c01/passeioaleatorio_movbrowniano"
+    ]
     "pages/convergencias"
     "*pages/appendix"
     "*pages/references"
@@ -51,6 +54,7 @@ link_view_source = true
 link_download_notebook = true
 link_nbview_notebook = true
 link_binder_notebook = true
+exec_notebook = false
 website = "rmsrosa.github.io/notas_sde"
 +++
 

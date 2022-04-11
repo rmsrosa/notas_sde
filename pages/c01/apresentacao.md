@@ -1,10 +1,10 @@
-@def title = "Introdução"
+@def title = "Apresentação"
 
 # {{ get_title }}
 
 > "It may very well be said that the best way to understand SDEs is to work with their numerical solutions." - Salih N. Neftci, in *An Introduction to the Mathematics of Financial Derivatives,* 2nd edition (Academic Press, 2000).
 
-## Ideia geral
+## Motivação
 
 A lei da gravitação de Newton é impiedosa. Se uma maçã cair do pé, é bom você não estar dormindo embaixo dela. Mas se a macieira estiver lá em cima na encosta de um morro e você estiver descansando lá embaixo no vale, há boas chances da maça rolar e não lhe atingir. E quais seriam as chances dela parar, apetitosamente, bem ao seu lado?
 
