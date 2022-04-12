@@ -2,12 +2,12 @@
 
 # Hora de implementarmos os métodos de Euler descritos na seção anterior.
 
-# Usaremos apenas dois pacotes do Julia. Um é o [Plots.jl](https://docs.juliaplots.org/stable/), para visualização das soluções, e o outro é o [Random](https://docs.julialang.org/en/v1/stdlib/Random/), da biblioteca padrão, apenas para fixar a reprodução das notas (gerar sempre os mesmos conjuntos de números aleatórios).
+# Usaremos apenas dois pacotes do Julia. Um é o [Plots.jl](https://docs.juliaplots.org/stable/), para visualização das soluções. O outro é o [Random](https://docs.julialang.org/en/v1/stdlib/Random/), da biblioteca padrão, apenas para fixar a reprodução das notas (gerar sempre os mesmos conjuntos de números aleatórios).
 
 using Plots
+theme(:ggplot2)
 using Random
 rng = Xoshiro(123)
-theme(:ggplot2)
 
 # ## Equações diferenciais ordinárias
 
@@ -128,7 +128,7 @@ plot!(t, x[:, 1], label="uma realização", color=2)
 # $$
 # \mathrm{d}X_t = \bar\mu X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t,
 # $$
-# onde $\{W_t\}_t$ é um processo aleatório. Mais especificamente, vamos assumir que $\{W_t\}_t$ é um **processo de Lévy**, tendo incrementos independentes e estacionários. Vamos assumir, mais precisamente, que $W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$.
+# onde $\{W_t\}_t$ é um processo aleatório. Mais especificamente, vamos assumir que $\{W_t\}_t$ é um **processo de Lévy**, tendo incrementos independentes e estacionários, com $\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$.
 
 for m in 1:M
     x[1, m] = x₀
@@ -140,3 +140,33 @@ end
 
 plot(t, x, alpha = 0.2, title="Soluções SDE (x₀ = $x₀, μ̄ = $μ̄, σ = $σ, dW_t = N(0, Δt), T = $T, Δt = $Δt)", titlefont = 9, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1) 
 plot!(t, x[:, 1], label="uma realização", color=2)
+
+# ## Exercícios
+#
+# 1. Resolva, via método de Euler, a equação diferencial 
+# $$
+# \frac{\mathrm{d}x}{\mathrm{d}t} = (\alpha - \beta x) x, \quad x(0) = x_0,
+# $$
+# com $\alpha, \beta > 0, 0 < x_0 < \alpha / \beta, t_0 = 0, T > 0, 0 < \Delta t \ll T $ de sua escolha. Trace o gráfico da solução.
+#
+# 2. Resolva, via método de Euler, a equação diferencial
+# $$
+# \mathrm{d}X_t/\mathrm{d}t = (\alpha - \beta X_t) X_t, \quad X_0 = \mathcal{N}(\bar{x}_0, \sigma_{x_0}^2),
+# $$
+# onde
+# $$
+# \alpha \sim \mathcal{N}(\bar\alpha, \sigma_\alpha^2), \beta \sim \mathcal{N}(\bar\beta, \sigma_\beta^2),
+# $$
+# com $\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta, \bar{x}_0, \sigma_{x_0} > 0, t_0 = 0, T > 0, 0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros
+#
+# 3. Resolva, via método de Euler, a equação diferencial aleatória
+# $$
+# \mathrm{d}X_t/\mathrm{d}t = (A_t - B_t X_t) X_t, \quad X_0 = x_0,
+# $$
+# onde $A_t \sim \mathcal{N}(\bar\alpha, \sigma_\alpha^2)$, $B_t \sim \mathcal{N}(\bar\beta, \sigma_\beta^2)$, com $\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta > 0$, $0 < x_0 < \bar\alpha / \bar\beta$, $t_0 = 0$, $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.
+#
+# 4. Resolva, via método de Euler, a equação diferencial estocástica
+# $$
+# \mathrm{d}X_t = (\alpha - \beta X_t) X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t, \quad X_0 = x_0,
+# $$
+# onde $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, com $\alpha, \beta > 0$, $0 < x_0 < \alpha / \beta$, $\sigma > 0$, $t_0 = 0$, $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.
