@@ -17,4 +17,4 @@ Podemos ver isso com pólen, partículas de fumaça e outras micro-partículas, 
 [![Brownian Motion - nanoparticles in water](http://img.youtube.com/vi/cDcprgWiQEY/0.jpg)](https://www.youtube.com/watch?v=cDcprgWiQEY "Brownian Motion - nanoparticles in water")
 ## Passeio aleatório
 
-Vamos considerar um passeio aleatório (ou *random walk*) em uma dimensão espacial e em tempos discretos. A cada passo de tempo $\Delta t$, uma partícula pode se movimentar para a direita ou para a esquerda, por um passo $\Delta x$, com probabilidade $1/2$ em cada sentido.
+Vamos considerar um passeio aleatório (ou *random walk*) em uma dimensão espacial e em tempos discretos. A cada passo de tempo $\Delta t$, uma partícula pode se movimentar para a direita ou para a esquerda, por um passo $\ell$, com probabilidade $1/2$ em cada sentido.
