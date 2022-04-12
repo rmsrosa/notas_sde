@@ -42,7 +42,12 @@ menu = [
         "pages/c01/relacoes_rode_sde"
         "pages/c01/passeioaleatorio_movbrowniano"
     ]
-    "Processos Estocásticos"
+    "Variáveis Aleatórias" => [
+        "pages/c02/definicao_va"
+    ]
+    "Processos Estocásticos" => [
+        "pages/c03/definicao_pe"
+    ]
     "pages/convergencias"
     "*pages/appendix"
     "*pages/references"
