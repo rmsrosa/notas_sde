@@ -37,11 +37,12 @@ menu = [
     "Introdução" => [
         "pages/c01/apresentacao"
         "pages/c01/aspectos_iniciais"
-        "pages/c01/relacoes_rode_sde"
         "pages/c01/aspectos_numericos"
         "src/literate/c01/simulacoes_numericas.jl"
+        "pages/c01/relacoes_rode_sde"
         "pages/c01/passeioaleatorio_movbrowniano"
     ]
+    "Processos Estocásticos"
     "pages/convergencias"
     "*pages/appendix"
     "*pages/references"
