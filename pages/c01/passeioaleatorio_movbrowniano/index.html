@@ -206,8 +206,8 @@ p(t, x) \approx \sqrt{\frac{\tau}{2\ell^2 \pi t}} e^{-\frac{\tau x^2}{2t\ell^2}}
 a = \frac{\ell^2}{2\tau}.
 \]
 <p>Obtivemos, assim, que, para cada \(t\), a função \(x \mapsto p(t, x)\) é uma Gaussiana com variância \(\sigma^2 = 2at\).</p>
-<h2 id="equação_do_calor"><a href="#equação_do_calor" class="header-anchor">Equação do calor</a></h2>
-<p>Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades \(p(t, x)\) para a posição da partícula satisfaz a equação do calor</p>
+<h2 id="equação_de_diffusão"><a href="#equação_de_diffusão" class="header-anchor">Equação de diffusão</a></h2>
+<p>Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades \(p(t, x)\) para a posição da partícula satisfaz a equação de difusão &#40;e.g. equação do calor&#41;</p>
 \[
 \frac{\partial p}{\partial t^2} = a\frac{\partial p}{\partial x^2},
 \]
@@ -244,6 +244,49 @@ X_{t + \Delta t} \sim \mathcal{N}(X_t, 2a\Delta t) = X_t + \mathcal{N}(0, 2a\Del
 <p>A segunda condição é a de que existe um \(a>0\) tal que a posição da partícula em instantes \(t>0\) seja dada pela normal com média zero e variância \(2at\). Na prática, o valor de \(a\) irá depender do fluido e da partícula.</p>
 <p>A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento \(W_q - W_r\) é indenpendente de outros incrementos \(W_s - W_t\).</p>
 <p>A última condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, \(2a(t-s)\), nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.</p>
+<h2 id="a_teoria_de_einstein"><a href="#a_teoria_de_einstein" class="header-anchor">A teoria de Einstein</a></h2>
+<p>No modelo de Eistein, também unidimensional, a partícula pertence a um espaço contínuo \(x\in \mathbb{R}\) e pode dar passos espaciais \(\ell\) de tamanhos diferentes, com densidade de probabilidades \(g(\ell)\).</p>
+<p>Sendo \(\rho(t, x)\) a função densidade de distribuição das partículas no instante \(t\), uma expansão em série de Taylor nos dá, por um lado</p>
+\[
+\rho(t + \tau, x) = \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2).
+\]
+<p>Por outro lado, usando a densidade de probabilidades \(g(\ell)\) do passo espacial, obtemos que</p>
+\[
+\rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell
+\]
+<p>Usando novamente expansão em séries de Taylor, dessa vez na direção espacial, vemos que</p>
+\[
+\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
+\]
+<p>Logo,</p>
+\[
+\rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\]
+<p>Usando que</p>
+\[
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0,
+\]
+<p>chegamos a</p>
+\[
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\]
+<p>Ou seja,</p>
+\[
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \textrm{ termos de ordem mais alta },
+\]
+<p>onde</p>
+\[
+D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
+\]
+<p>Obtemos, assim, novamente, a equação de difusão &#40;aproximadamente&#41;, cuja solução é</p>
+\[
+\rho(t, x) = \frac{1}{\sqrt{4\pi D^2 t}} e^{-\frac{x^2}{4D^2 t}}.
+\]
+<p>Novamente, vemos que o descolamento médio de uma partícula em movimento Browniano é proporcional à raiz quadrada do tempo decorrido:</p>
+\[
+\mathbb{E}(x^2) = 2Dt.
+\]
+<p>Posteriormente, argumentos mais detalhados &#40;via pressão osmótica&#41; levaram Einstein a relacionar o coeficiente de difusão \(D\) com outras quantidades físicas &#40;constante universal do gás, número de Avogadro, temperatura, etc.&#41;. Smoluchowski também seguiu argumentos semelhantes, mas com pequenas modificações, levando a uma relação considerada mais precisa.</p>
 
     <div class="navbar">
     <p id="nav">
