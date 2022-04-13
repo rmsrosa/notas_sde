@@ -112,6 +112,8 @@ $$
 a = \frac{\ell^2}{2\tau}.
 $$
 
+Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é uma Gaussiana com variância $\sigma^2 = 2at$.
+
 ## Equação do calor
 
 Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades $p(t, x)$ para a posição da partícula satisfaz a equação do calor
@@ -120,20 +122,40 @@ $$
 $$
 onde $a$ representa o coeficiente de difusão (térmica, no caso do calor).
 
-## Distância percorrida média
+## Caminho percorrido
 
-Observe, ainda, que, para cada $t$, a função $x \mapsto p(t, x)$ é uma Gaussiana com variância $\sigma^2 = 2at$. O valor esperado para a distância percorrida por um conjunto de partículas, após um instante $t$, é exatamente esse desvio padrão:
+Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2at$. O valor esperado para a distância percorrida por um conjunto de partículas, após um instante $t$, é exatamente esse desvio padrão:
 $$
-\sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^2 = \sigma = \sqrt{2 a t}.
+\sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
 $$
 
-Se, na verdade, observarmos $\mathbb{E}(|x|)$, obtemos uma distância da mesma ordem, $\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
+Se, por outro lado, observarmos $\mathbb{E}(|x|)$, obtemos uma distância da mesma ordem: $\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
+
+## Incrementos
+
+Em um instante $t$, a distribuição normal $\mathcal{N}(0, 2at)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t$, a posição dessa partícula em um instante $t + \Delta t$, com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2a(t+\Delta t))$ pura e simplesmente.  Temos, na verdade, uma probabilidade condicionada.
+
+Pensando, novamente, no passeio aleatório, podemos imaginar um novo processo iniciando-se em $x = X_t$ e caminhando para $x \pm \ell$ no instante $t + \tau$ e para algum ponto entre $x - n\ell \leq x + m\ell \leq x + n\ell$, em instantes $t + n\tau$. Assim, o incremento $\Delta X = X_{t + \Delta t} - X_t$ é dado, novamente, por um passeio aleatório, só que começando de $X_t$ e durando um intervalo de tempo $\Delta t$. Ou seja, a lei de probabilidades para a posição $X_{t + \Delta t}$ da partícula dado $X_t$ é
+$$
+X_{t + \Delta t} \sim \mathcal{N}(X_t, 2a\Delta t) = X_t + \mathcal{N}(0, 2a\Delta t).
+$$
+Ou seja, a lei de probabilidades do incremento é
+$$
+\Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2a\Delta t).
+$$
 
 ## Processo estocástico Browniano
 
-Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico $\{B_t\}_{t\geq 0}$ que, a cada instante $t$, tem sua distribuição de probabilidades dada por
-$$
-B_t \sim \mathcal{N}(0, 2at),
-$$
-com $B_0 = 0$, ou seja, no instante inicial, a posição inicial da partícula é, quase certamente, $x= 0$.
+Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico $\{B_t\}_{t\geq 0}$ dado pelas condições abaixo, com algum $a > 0$:
+1. $B_0 = 0$;
+2. $B_t \sim \mathcal{N}(0, 2at)$, $t > 0$;
+3. Para $0 \leq t < s < q < r$, os incrementos $W_s - W_t$ e $W_r - W_q$ são independentes
+4. Para $0 \leq t < s$, o incremento $W_s - W_t$ é uma variável aleatória com distribuição normal, média zero e variância $2a(t - s)$, ou seja, $W_s - W_t \sim \mathcal{N}(0, 2a(t - s)) = \sqrt{2a(t-s)}\mathcal{N}(0, 1)$.
 
+A primeira condição indica que a posição inicial da partícula é, quase certamente, $x = 0$.
+
+A segunda condição é a de que existe um $a>0$ tal que a posição da partícula em instantes $t>0$ seja dada pela normal com média zero e variância $2at$. Na prática, o valor de $a$ irá depender do fluido e da partícula.
+
+A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento $W_q - W_r$ é indenpendente de outros incrementos $W_s - W_t$.
+
+A última condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, $2a(t-s)$, nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.
