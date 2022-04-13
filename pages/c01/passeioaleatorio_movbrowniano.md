@@ -114,9 +114,9 @@ $$
 
 Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é uma Gaussiana com variância $\sigma^2 = 2at$.
 
-## Equação do calor
+## Equação de diffusão
 
-Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades $p(t, x)$ para a posição da partícula satisfaz a equação do calor
+Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades $p(t, x)$ para a posição da partícula satisfaz a equação de difusão (e.g. equação do calor)
 $$
 \frac{\partial p}{\partial t^2} = a\frac{\partial p}{\partial x^2},
 $$
@@ -159,3 +159,54 @@ A segunda condição é a de que existe um $a>0$ tal que a posição da partícu
 A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento $W_q - W_r$ é indenpendente de outros incrementos $W_s - W_t$.
 
 A última condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, $2a(t-s)$, nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.
+
+## A teoria de Einstein
+
+No modelo de Eistein, também unidimensional, a partícula pertence a um espaço contínuo $x\in \mathbb{R}$ e pode dar passos espaciais $\ell$ de tamanhos diferentes, com densidade de probabilidades $g(\ell)$.
+
+Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t$, uma expansão em série de Taylor nos dá, por um lado
+$$
+\rho(t + \tau, x) = \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2).
+$$
+Por outro lado, usando a densidade de probabilidades $g(\ell)$ do passo espacial, obtemos que
+$$
+\rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell
+$$
+
+Usando novamente expansão em séries de Taylor, dessa vez na direção espacial, vemos que
+$$
+\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
+$$
+Logo,
+$$
+\rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+$$
+
+Usando que
+$$
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0,
+$$
+chegamos a
+$$
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+$$
+Ou seja,
+$$
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \textrm{ termos de ordem mais alta },
+$$
+onde
+$$
+D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
+$$
+
+Obtemos, assim, novamente, a equação de difusão (aproximadamente), cuja solução é
+$$
+\rho(t, x) = \frac{1}{\sqrt{4\pi D^2 t}} e^{-\frac{x^2}{4D^2 t}}.
+$$
+
+Novamente, vemos que o descolamento médio de uma partícula em movimento Browniano é proporcional à raiz quadrada do tempo decorrido:
+$$
+\mathbb{E}(x^2) = 2Dt.
+$$
+
+Posteriormente, argumentos mais detalhados (via pressão osmótica) levaram Einstein a relacionar o coeficiente de difusão $D$ com outras quantidades físicas (constante universal do gás, número de Avogadro, temperatura, etc.). Smoluchowski também seguiu argumentos semelhantes, mas com pequenas modificações, levando a uma relação considerada mais precisa.
