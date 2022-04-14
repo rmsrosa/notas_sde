@@ -28,7 +28,7 @@ Podemos, no entanto, ir além e considerar que a perturbação seja, digamos ass
 
 Pensemos, agora, em uma equação mais geral 
 $$
-\mathrm{d}x/\mathrm{d}t = f(t, x, \lambda),
+\frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x, \lambda),
 $$
 onde $\lambda$ é um parâmetro, ou conjunto de parâmetros (como a taxa de crescimento específico acima, etc.) e $f(t, x, \lambda)$ é a lei de evolução do sistema.
 

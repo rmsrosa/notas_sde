@@ -8,7 +8,7 @@ Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos ac
 
 Inicialmente, no caso da equação diferencial ordinária
 $$
-\mathrm{d}x = f(t, x, \lambda)\mathrm{d}t,
+\frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x, \lambda),
 $$
 podemos considerar um passo de tempo $\Delta t$ e os estados discretos $x(t_n)$, a cada passo de tempo $t_n = n\Delta t$. Uma aproximação de $x(t_{n+1})$ a partir de $x(t_n)$ é dada por
 $$
