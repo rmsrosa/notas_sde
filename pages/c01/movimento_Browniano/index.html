@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Movimento Browniano</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+    <link rel="stylesheet" href="/notas_sde/css/base_showaside.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Aspectos de equações diferenciais estocásticas e aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio">1.6. Passeio aleatório</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Variáveis Aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Processos Estocásticos</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio"><kbd>→</kbd> 1.6. Passeio aleatório</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.5. Movimento Browniano</a></h1>
+<p>Um fluido, seja um gás ou um líquido, é composto de átomos e/ou moléculas em constante movimento. Mesmo que o fluido pareça estar em repouso, os seus constituintes atômicos não estão. Este movimento se reflete, por exemplo, na temperatura do fluido. Mas aqui vamos explorar outro fato associado a esse movimento.</p>
+<p>Qualquer objeto imerso, ou em contato, com um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático é denominado <strong>movimento Browniano</strong>.</p>
+<h2 id="exemplos_de_movimento_browniano"><a href="#exemplos_de_movimento_browniano" class="header-anchor">Exemplos de movimento Browniano</a></h2>
+<p>O nome dado a esse movimento é em homenagem ao botânico Robert Brown, que, em 1927, observou e relatou esse movimento ao observar, em um microscópio, grãos de pólen imersos em água. O artigo original está disponível em <a href="https://sciweb.nybg.org/science2/pdfs/dws/Brownian.pdf">On the particles contained in the pollen of plants</a>. Veja, também, um interessante apanhado histórico sobre isso, em <a href="https://www.aps.org/publications/apsnews/201608/physicshistory.cfm">August 1827: Robert Brown and Molecular Motion in a Pollen-filled Puddle</a>.</p>
+<p>O que Brown observou foram micro-partículas, menores que os grãos de pólen, se descolando erraticamente no meio aquoso. Primeiramente, achou que fosse um movimento ativo, de partículas &quot;vivas&quot;, provenientes do pólen. Posteriormente, realizou diversos outros experimentos, com diferentes partículas suspensas em líquido e concluiu que era um movimento passivo, mas sem explicar o mecanismo por trás do movimento.</p>
+<p>Podemos ver esse movimento com partículas de pólen, partículas de fumaça e outras micro-partículas, como capturado nos vídeos a seguir:</p>
+<p><a href="https://www.youtube.com/watch?v&#61;R5t-oA796to &quot;Pollen Grains in Water - Brownian Motion&quot;"><img src="http://img.youtube.com/vi/R5t-oA796to/0.jpg" alt="Pollen Grains in Water - Brownian Motion" /></a></p>
+<p><a href="https://www.youtube.com/watch?v&#61;ygiCHALySmM &quot;A Smoke Cell demonstrating Brownian Motion in Air.&quot;"><img src="http://img.youtube.com/vi/ygiCHALySmM/0.jpg" alt="A Smoke Cell demonstrating Brownian Motion in Air." /></a></p>
+<p><a href="https://www.youtube.com/watch?v&#61;cDcprgWiQEY &quot;Brownian Motion - nanoparticles in water&quot;"><img src="http://img.youtube.com/vi/cDcprgWiQEY/0.jpg" alt="Brownian Motion - nanoparticles in water" /></a></p>
+<h2 id="os_trabalhos_de_einstein_e_de_smoluchowski"><a href="#os_trabalhos_de_einstein_e_de_smoluchowski" class="header-anchor">Os trabalhos de Einstein e de Smoluchowski</a></h2>
+<p>Posteriormente, Albert Einstein, em um dos seus cinco artigos fundamentais publicados em <a href="https://cienciahoje.org.br/artigo/1905-um-ano-miraculoso/">1905: Um ano miraculoso</a>, explicou esse movimento como resultado, de fato, do movimento térmico dos fluidos. Foi uma demonstração indireta da existência de átomos e moléculas. Einstein deu mais detalhes sobre o fenômeno em um outro artigo, de 1908. Uma simulação desse efeito pode ser vista no link a seguir:</p>
+<p><a href="https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Brownian/brownian.html"><img src="/notas_sde/assets/images/BrownianMotionSimulator.png" alt="Brownian motion simulator" /></a>.</p>
+<p>Outros cientistas também analisaram e explicaram o fenônemo de ângulos diferentes, como Marian von Smoluchowski &#40;veja <a href="https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Essai d&#39;une théorie cinétique du mouvement Brownien et des milieux troubles&quot;</a>, <a href="https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Sur le chemin moyen parcouru par les molécules d&#39;un gaz et sur son rapport avec la théorie de la diffusion&quot; Bulletin International de l&#39;Académie des Sciences de Cracovie &#40;in French&#41;: 202.</a> e <a href="https://zenodo.org/record/1424073">von Smoluchowski, M. &#40;1906&#41;. &quot;Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen&quot;. Annalen der Physik &#40;in German&#41;. 326 &#40;14&#41;: 756–780</a>&#41; e Norbert Wiener.</p>
+<h2 id="o_modelo_de_einstein"><a href="#o_modelo_de_einstein" class="header-anchor">O modelo de Einstein</a></h2>
+<p>No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula pertence a um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
+<p>A regra para o movimento é que, a cada instante \(t\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, de acordo com uma certa densidade de probabilidades \(g(\ell)\). Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição&#41;, isotrópica &#40;não depende da direção/sentido, ou seja, \(g(-\ell) = g(\ell)\)&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > t\) independe do passo dado em \(t \geq 0\)&#41;.</p>
+<p>Sendo \(\rho(t, x)\) a função densidade de distribuição das partículas no instante \(t\), uma expansão em série de Taylor nos dá, por um lado</p>
+\[
+\rho(t + \tau, x) = \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2).
+\]
+<p>Por outro lado, usando a densidade de probabilidades \(g(\ell)\) do passo espacial, obtemos que</p>
+\[
+\rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell
+\]
+<p>Usando novamente expansão em séries de Taylor, dessa vez na direção espacial, vemos que</p>
+\[
+\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
+\]
+<p>Logo,</p>
+\[
+\rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\]
+<p>Usando que</p>
+\[
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0,
+\]
+<p>chegamos a</p>
+\[
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\]
+<p>Ou seja,</p>
+\[
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \textrm{ termos de ordem mais alta },
+\]
+<p>onde</p>
+\[
+D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
+\]
+<p>Obtemos, assim, a equação de difusão &#40;aproximadamente&#41;, cuja solução é</p>
+\[
+\rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{-\frac{x^2}{4D t}}.
+\]
+<p>Ou seja, em qualquer instante \(t\), a posição da partícula é dada de acordo com uma distribuição normal \(\mathcal{N}(0, 2Dt)\), com média zero e variância \(2Dt\).</p>
+<h2 id="caminho_percorrido"><a href="#caminho_percorrido" class="header-anchor">Caminho percorrido</a></h2>
+<p>Sendo \(x \mapsto p(t, x)\) uma normal com variância \(\sigma^2 = 2Dt\). O valor esperado para a distância percorrida por um conjunto de partículas, após um instante \(t\), é exatamente o desvio padrão:</p>
+\[
+\sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
+\]
+<p>Se, por outro lado, observarmos \(\mathbb{E}(|x|)\), obtemos uma distância da mesma ordem: \(\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}\).</p>
+<p>Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pelas partículas é proporcional à raiz quadrada do tempo decorrido.</p>
+<p>Isso acontece, nesse caso, pelo movimento frenético das partículas elementares do fluido. Um fenômeno macroscópico análogo acontece em escoamentos turbulentos, que pode ser apreciado no formato de rastros de fumaça em chaminés &#40;pelo menos em condições onde movimentos advectivos não dominam&#41;.</p>
+<h2 id="incrementos"><a href="#incrementos" class="header-anchor">Incrementos</a></h2>
+<p>Em um instante \(t\), a distribuição normal \(\mathcal{N}(0, 2Dt)\) nos dá a probabilidade de encontrarmos a partícula em uma determinada posição &#40;tendo ela partido de \(x = 0\) em \(t = 0\)&#41;. Mas dada a posição da partícula no instante \(t\), a posição dessa partícula em um instante \(t + \Delta t\), com \(\Delta t > 0\) não é dada por \(\mathcal{N}(0, 2a(t+\Delta t))\) pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se \(X_t = x\), temos que a posição futura da partícula será dada por</p>
+\[
+P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
+\]
+<p>ou seja, o incremento é dado por</p>
+\[
+X_{t + \Delta t} - X_t = \mathcal{N}(0, 2D\Delta t).
+\]
+<h2 id="processo_estocástico_browniano"><a href="#processo_estocástico_browniano" class="header-anchor">Processo estocástico Browniano</a></h2>
+<p>Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico \(\{B_t\}_{t\geq 0}\) dado pelas condições abaixo, com algum \(a > 0\):</p>
+<ol>
+<li><p>\(B_0 = 0\);</p>
+</li>
+<li><p>\(B_t \sim \mathcal{N}(0, 2at)\), \(t > 0\);</p>
+</li>
+<li><p>Para \(0 \leq t < s < q < r\), os incrementos \(B_s - B_t\) e \(B_r - B_q\) são independentes</p>
+</li>
+<li><p>Para \(0 \leq t < s\), o incremento \(B_s - B_t\) é uma variável aleatória com distribuição normal, média zero e variância \(2D(t - s)\), ou seja, \(B_s - B_t \sim \mathcal{N}(0, 2D(t - s)) = \sqrt{2D(t-s)}\mathcal{N}(0, 1)\).</p>
+</li>
+</ol>
+<p>A primeira condição indica que a posição inicial da partícula é, quase certamente, \(x = 0\).</p>
+<p>A segunda condição é a de que existe um \(D>0\) tal que a posição da partícula em instantes \(t>0\) seja dada pela normal com média zero e variância \(2Dt\). Na prática, o valor de \(a\) irá depender do fluido e da partícula.</p>
+<p>A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento \(B_q - B_r\) é indenpendente de outros incrementos \(B_s - B_t\).</p>
+<p>A última condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, \(2D(t-s)\), nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio"><kbd>→</kbd> 1.6. Passeio aleatório</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>
