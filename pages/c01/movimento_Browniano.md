@@ -119,3 +119,18 @@ A segunda condição é a de que existe um $D>0$ tal que a posição da partícu
 A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento $B_q - B_r$ é indenpendente de outros incrementos $B_s - B_t$.
 
 A última condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, $2D(t-s)$, nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.
+
+## Exercícios
+
+1. Considere a versão tridimensional do modelo de Einstein, onde $\mathbf{x} = (x, y, z) \in \mathbb{R}^3$ e os passos $\boldsymbol{\ell} = (\ell_x, \ell_y, \ell_z) \in \mathbb{R}^3$ são dados de acordo com uma distribuição de probabilidades $g = g(\boldsymbol\ell)$ que é estacionária, homogênea e isotrópica, com passos independentes. Mostre que a densidade de probabilidades $p(t, \mathbf{x}) = p(t, x, y, z)$ da posição da partícula satisfaz a equação de difusão
+$$
+\frac{\partial p}{\partial t} = D \Delta p,
+$$
+onde $\Delta = \partial_x^2 + \partial_y^2 + \partial_z^2$ é o operador Laplaciano em três dimensões, $|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}$ e $D$ é definido de forma análoga ao caso unidimensional, mas envolvendo uma integral tripla. Sua solução também nos dá distribuições normais para a posição da partícula em cada tempo, com média zero e desvio padrão $2Dt$:
+$$
+p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
+$$
+Mostre, ainda, que a distância média percorrida satisfaz
+$$
+\sqrt{\mathbb{E}[|X_t|^2]} = 6Dt.
+$$

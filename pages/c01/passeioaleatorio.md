@@ -103,7 +103,7 @@ onde $a$ representa o coeficiente de difusão (térmica, no caso do calor).
 
 ## Caminho percorrido
 
-Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2at$. O valor esperado para a distância percorrida por um conjunto de partículas, após um instante $t$, é exatamente esse desvio padrão:
+Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2at$. O valor esperado para a distância percorrida por um conjunto de partículas, após um instante $t$, é exatamente esse desvio padrão. Ou seja, a distância quadrática média é dada por
 $$
 \sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
 $$
@@ -122,3 +122,25 @@ Ou seja, a lei de probabilidades do incremento é
 $$
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2a\Delta t).
 $$
+
+## Exercícios
+
+1. Considere um passeio aleatório em três dimensões, onde o espaço é $\ell \mathbb{Z}^3$. Cada passo pode ser em qualquer direção, com oito possíveis destinos, $(\pm \ell, \pm \ell, \pm \ell)$, cada um com probabilidade $1/2^3 = 1/8$. Mostre que, no limite, a densidade de probabilidades $p(t, \mathbf{x})$ da posição da partícula é dada por
+$$
+p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
+$$
+onde $\mathbf{x} = (x, y, z)$, $|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}$ e $a$ é como no caso unidimensional.
+
+1. Uma versão bidimensional pode ser feita com passos dados por $\ell(\cos\theta, \sin\theta)$, com $\ell > 0$ fixo indicando o tamanho do passo e $\theta$ uma variável aleatória com probabilidade uniforme em $[0, 2\pi]$ indicando a direção do passo. Um passeio aleatório com $n$ passos nos leva a
+$$
+(X_n, Y_n) = \ell \sum_{i = 1, \ldots, n} (\cos\theta_i, \sin\theta_i).
+$$
+onde $\theta_i$ são $n$ realizações da variável ângulo. Como $\theta$ segue uma distribuição uniforme, temos $\mathbb{E}(\cos\theta) = \mathbb{E}(\sin\theta) = 0$. Com isso, mostre que
+$$
+\mathbb{E}((X_n, Y_n)) = (0, 0).
+$$
+Mostre, ainda, usando também as relações $\cos^2\theta = (1 + \cos(2\theta))/2$ e  $\sin^2\theta = (1 - \cos(2\theta))/2$, que
+$$
+\mathbb{E}(X_n^2 + Y_n^2) = n \frac{\ell^2}{2}.
+$$
+Ou seja, a média quadrática da distância cresce linearmente com o número de passos.
