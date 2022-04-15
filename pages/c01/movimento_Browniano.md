@@ -80,9 +80,9 @@ $$
 
 Ou seja, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
 
-## Caminho percorrido
+## Distância quadrática média percorrida
 
-Sendo $x \mapsto p(t, x)$ uma normal com variância $\sigma^2 = 2Dt$. O valor esperado para a distância percorrida por um conjunto de partículas, após um instante $t$, é exatamente o desvio padrão:
+Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2Dt$, a **distância quadrática média** percorrida pelas partículas, após um instante $t$, é exatamente esse desvio padrão:
 $$
 \sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
 $$

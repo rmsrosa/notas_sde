@@ -106,9 +106,9 @@ $$
 $$
 onde $a$ representa o coeficiente de difusão (térmica, no caso do calor).
 
-## Caminho percorrido
+## Distância média percorrida
 
-Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2at$. O valor esperado para a distância percorrida por um conjunto de partículas, após um instante $t$, é exatamente esse desvio padrão. Ou seja, a distância quadrática média é dada por
+Como no modelo de Einstein, sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2at$, a **distância quadrática média** percorrida pelas partículas, após um instante $t$, é exatamente esse desvio padrão:
 $$
 \sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
 $$
