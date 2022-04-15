@@ -122,7 +122,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">1.6. Passeio aleatório</a></h1>
-<p>Um outro modelo simples ilustrando os efeitos dos átomos e moléculas em um partícula é o de um <strong>passeio aleatório</strong> &#40;ou <em>random walk</em>&#41;. Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto \(\ell \mathbb{Z}\), onde \(\ell > 0\).  A cada passo de tempo \(\tau\), uma partícula pode se movimentar para a direita ou para a esquerda, por um passo espacial \(\ell\), com probabilidade \(1/2\) em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos.</p>
+<p>Um outro modelo simples ilustrando os efeitos do movimento Browniano é o de um <strong>passeio aleatório</strong> &#40;ou <em>random walk</em>&#41;. Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto \(\ell \mathbb{Z}\), onde \(\ell > 0\).  A cada passo de tempo \(\tau\), uma partícula pode se movimentar para a direita ou para a esquerda, por um passo espacial \(\ell\), com probabilidade \(1/2\) em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos.</p>
 <p>Denotamos por \(p_n(m)\) a probabilidade da partícula estar na posição \(x = m\ell\), no instante \(t = n\tau\). Naturalmente, \(0 \leq p_n(m) \leq 1\), com \(\sum_{m\in \mathbb{Z}} p_n(m) = 1\), para todo \(n\in \mathbb{Z}^*\).</p>
 <p>Inicialmente, em \(t = 0\), consideramos que a partícula está na <em>origem</em>, de modo que \(p_0(0) = 1\) e \(p_0(m) = 0\), para \(m\ne 0\). Vamos escrever isso, simetricamente, na forma</p>
 \[
@@ -155,7 +155,7 @@ p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}
 \]
 <p>Podemos reconhecer isso como a distribuição de Bernoulli, nos dando a probabilidade de \((n+m)/2\) sucessos em \(n\) sorteios de Bernouilli com probabilidade \(1/2\) de cada realização.</p>
 <h2 id="limite_contínuo"><a href="#limite_contínuo" class="header-anchor">Limite contínuo</a></h2>
-<p>Assintoticamente, temos \(k! \simeq \sqrt{2\pi k} (k / e)^k\), quando \(k \rightarrow \infty\). Aplicando isso a \(n\) grande e \(|m| \ll n\), de modo que \((n\pm m)/2\) também são grandes, obtemos</p>
+<p>Assintoticamente, temos \(k! \simeq \sqrt{2\pi k} (k / e)^k\), quando \(k \rightarrow \infty\). Aplicando isso a \(n\) grande e \(|m| \ll n\), de modo que \((n\pm m)/2\) também sejam grandes, obtemos</p>
 \[
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
 \]
@@ -197,6 +197,7 @@ p(t, x) \approx \sqrt{\frac{\tau}{2\ell^2 \pi t}} e^{-\frac{\tau x^2}{2t\ell^2}}
 a = \frac{\ell^2}{2\tau}.
 \]
 <p>Obtivemos, assim, que, para cada \(t\), a função \(x \mapsto p(t, x)\) é uma Gaussiana com variância \(\sigma^2 = 2at\).</p>
+<p>Observe que podemos pensar esse processo limite como tomando \(\ell, \tau \rightarrow 0\) mas mantendo a relação \(a = \ell^2/2\tau\) fixa. Ou seja, \(\tau\) converge para zero muito mais rápido do que \(\ell\). Em particular, fixados \(x \approx m\ell\) e \(t \approx n\tau\), e fazendo \(\ell, \tau\) irem para zero, com \(a = \ell^2/2\tau\) fixo, vemos que \(m, n\rightarrow \infty\) &#40;exceto quando \(t\) e/ou \(x\) são nulos&#41;, com \(n\) crescendo muito mais rápido que \(m\), garantindo a condição de que \(|m| \ll n\). Assim, a aproximação acima para \(p_n(m)/2\ell\) converge, de fato, para \(p(t, x)\).</p>
 <h2 id="equação_de_diffusão"><a href="#equação_de_diffusão" class="header-anchor">Equação de diffusão</a></h2>
 <p>Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades \(p(t, x)\) para a posição da partícula satisfaz a equação de difusão &#40;e.g. equação do calor&#41;</p>
 \[
@@ -204,7 +205,7 @@ a = \frac{\ell^2}{2\tau}.
 \]
 <p>onde \(a\) representa o coeficiente de difusão &#40;térmica, no caso do calor&#41;.</p>
 <h2 id="caminho_percorrido"><a href="#caminho_percorrido" class="header-anchor">Caminho percorrido</a></h2>
-<p>Sendo \(x \mapsto p(t, x)\) uma Gaussiana com variância \(\sigma^2 = 2at\). O valor esperado para a distância percorrida por um conjunto de partículas, após um instante \(t\), é exatamente esse desvio padrão:</p>
+<p>Sendo \(x \mapsto p(t, x)\) uma Gaussiana com variância \(\sigma^2 = 2at\). O valor esperado para a distância percorrida por um conjunto de partículas, após um instante \(t\), é exatamente esse desvio padrão. Ou seja, a distância quadrática média é dada por</p>
 \[
 \sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
 \]
@@ -219,6 +220,31 @@ X_{t + \Delta t} \sim \mathcal{N}(X_t, 2a\Delta t) = X_t + \mathcal{N}(0, 2a\Del
 \[
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2a\Delta t).
 \]
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Considere um passeio aleatório em três dimensões, onde o espaço é \(\ell \mathbb{Z}^3\). Cada passo pode ser em qualquer direção, com oito possíveis destinos, \((\pm \ell, \pm \ell, \pm \ell)\), cada um com probabilidade \(1/2^3 = 1/8\). Mostre que, no limite, a densidade de probabilidades \(p(t, \mathbf{x})\) da posição da partícula é dada por</p>
+</li>
+</ol>
+\[
+p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
+\]
+<p>onde \(\mathbf{x} = (x, y, z)\), \(|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}\) e \(a\) é como no caso unidimensional.</p>
+<ol>
+<li><p>Uma versão bidimensional pode ser feita com passos dados por \(\ell(\cos\theta, \sin\theta)\), com \(\ell > 0\) fixo indicando o tamanho do passo e \(\theta\) uma variável aleatória com probabilidade uniforme em \([0, 2\pi]\) indicando a direção do passo. Um passeio aleatório com \(n\) passos nos leva a</p>
+</li>
+</ol>
+\[
+(X_n, Y_n) = \ell \sum_{i = 1, \ldots, n} (\cos\theta_i, \sin\theta_i).
+\]
+<p>onde \(\theta_i\) são \(n\) realizações da variável ângulo. Como \(\theta\) segue uma distribuição uniforme, temos \(\mathbb{E}(\cos\theta) = \mathbb{E}(\sin\theta) = 0\). Com isso, mostre que</p>
+\[
+\mathbb{E}((X_n, Y_n)) = (0, 0).
+\]
+<p>Mostre, ainda, usando também as relações \(\cos^2\theta = (1 + \cos(2\theta))/2\) e \(\sin^2\theta = (1 - \cos(2\theta))/2\), que</p>
+\[
+\mathbb{E}(X_n^2 + Y_n^2) = n \frac{\ell^2}{2}.
+\]
+<p>Ou seja, a média quadrática da distância cresce linearmente com o número de passos.</p>
 
     <div class="navbar">
     <p id="nav">
