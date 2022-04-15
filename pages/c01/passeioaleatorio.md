@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Um outro modelo simples ilustrando os efeitos dos átomos e moléculas em um partícula é o de um **passeio aleatório** (ou *random walk*). Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$.  A cada passo de tempo $\tau$, uma partícula pode se movimentar para a direita ou para a esquerda, por um passo espacial $\ell$, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos.
+Um outro modelo simples ilustrando os efeitos do movimento Browniano é o de um **passeio aleatório** (ou *random walk*). Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$.  A cada passo de tempo $\tau$, uma partícula pode se movimentar para a direita ou para a esquerda, por um passo espacial $\ell$, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos.
 
 Denotamos por $p_n(m)$ a probabilidade da partícula estar na posição $x = m\ell$, no instante $t = n\tau$. Naturalmente, $0 \leq p_n(m) \leq 1$, com $\sum_{m\in \mathbb{Z}} p_n(m) = 1$, para todo $n\in \mathbb{Z}^*$.
 
@@ -43,7 +43,7 @@ Podemos reconhecer isso como a distribuição de Bernoulli, nos dando a probabil
 
 ## Limite contínuo
 
-Assintoticamente, temos $k! \simeq \sqrt{2\pi k} (k / e)^k$, quando $k \rightarrow \infty$. Aplicando isso a $n$ grande e $|m| \ll n$, de modo que $(n\pm m)/2$ também são grandes, obtemos
+Assintoticamente, temos $k! \simeq \sqrt{2\pi k} (k / e)^k$, quando $k \rightarrow \infty$. Aplicando isso a $n$ grande e $|m| \ll n$, de modo que $(n\pm m)/2$ também sejam grandes, obtemos
 $$
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
 $$
@@ -90,6 +90,8 @@ a = \frac{\ell^2}{2\tau}.
 $$
 
 Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é uma Gaussiana com variância $\sigma^2 = 2at$.
+
+Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty$ (exceto quando $t$ e/ou $x$ são nulos), com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
 
 ## Equação de diffusão
 
