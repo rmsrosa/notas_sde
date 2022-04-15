@@ -137,7 +137,9 @@
 <p>Outros cientistas também analisaram e explicaram o fenônemo de ângulos diferentes, como Marian von Smoluchowski &#40;veja <a href="https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Essai d&#39;une théorie cinétique du mouvement Brownien et des milieux troubles&quot;</a>, <a href="https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Sur le chemin moyen parcouru par les molécules d&#39;un gaz et sur son rapport avec la théorie de la diffusion&quot; Bulletin International de l&#39;Académie des Sciences de Cracovie &#40;in French&#41;: 202.</a> e <a href="https://zenodo.org/record/1424073">von Smoluchowski, M. &#40;1906&#41;. &quot;Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen&quot;. Annalen der Physik &#40;in German&#41;. 326 &#40;14&#41;: 756–780</a>&#41; e Norbert Wiener.</p>
 <h2 id="o_modelo_de_einstein"><a href="#o_modelo_de_einstein" class="header-anchor">O modelo de Einstein</a></h2>
 <p>No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula pertence a um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
-<p>A regra para o movimento é que, a cada instante \(t\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, de acordo com uma certa densidade de probabilidades \(g(\ell)\). Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição&#41;, isotrópica &#40;não depende da direção/sentido, ou seja, \(g(-\ell) = g(\ell)\)&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > t\) independe do passo dado em \(t \geq 0\)&#41;.</p>
+<p>A regra para o movimento é que, a cada instante \(t\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
+<p>Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição&#41;, isotrópica &#40;não depende da direção/sentido&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > t\) independe do passo dado em \(t \geq 0\)&#41;.</p>
+<p>Assim, \(\ell\) assume valores em \(\mathbb{R}\); \(g\) é não negativa; \(g\) independe de \(x\) e de \(t\); satisfaz \(\int_{\mathbb{R}} g(x) \;\mathrm{d}x = 1\); e é simétrica em relação à origem, i.e. \(g(-\ell) = g(\ell)\).</p>
 <p>Sendo \(\rho(t, x)\) a função densidade de distribuição das partículas no instante \(t\), uma expansão em série de Taylor nos dá, por um lado</p>
 \[
 \rho(t + \tau, x) = \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2).
@@ -154,11 +156,11 @@
 \[
 \rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
 \]
-<p>Usando que</p>
+<p>Usando que \(g\) é uma densidade de probabilidades e que é simétrica em relação a origem, temos</p>
 \[
-\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0,
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0.
 \]
-<p>chegamos a</p>
+<p>Com isso, chegamos a</p>
 \[
 \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
 \]
@@ -231,7 +233,7 @@ X_{t + \Delta t} - X_t = \mathcal{N}(0, 2D\Delta t).
         </div>
     
 
-    Last modified: April 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
