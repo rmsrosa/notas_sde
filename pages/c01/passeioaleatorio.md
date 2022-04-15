@@ -93,6 +93,11 @@ Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é uma Gaus
 
 Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty$ (exceto quando $t$ e/ou $x$ são nulos), com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
 
+Observe, ainda, a semelhança entre a definição de $a$ acima e de $D$ no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:
+$$
+a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
+$$
+
 ## Equação de diffusão
 
 Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades $p(t, x)$ para a posição da partícula satisfaz a equação de difusão (e.g. equação do calor)
