@@ -34,7 +34,7 @@ Observe que o processo $Y_t$ entra, na equação aleatória, como um termo exter
 
 ## De estocásticas com ruído aditivo para aleatórias
 
-Considere uma equação diferencial estocástica com ***uído aditivo**, na forma
+Considere uma equação diferencial estocástica com **ruído aditivo**, na forma
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
 $$

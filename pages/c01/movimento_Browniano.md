@@ -32,7 +32,11 @@ Outros cientistas também analisaram e explicaram o fenônemo de ângulos difere
 
 No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula pertence a um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
 
-A regra para o movimento é que, a cada instante $t$, a partícula pode dar passos espaciais $\ell$ de tamanhos diferentes, de acordo com uma certa densidade de probabilidades $g(\ell)$. Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição), isotrópica (não depende da direção/sentido, ou seja, $g(-\ell) = g(\ell)$) e que os passos são independentes entre si (o passo num instante $s > t$ independe do passo dado em $t \geq 0$).
+A regra para o movimento é que, a cada instante $t$, a partícula pode dar passos espaciais $\ell$ de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
+
+Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição), isotrópica (não depende da direção/sentido) e que os passos são independentes entre si (o passo num instante $s > t$ independe do passo dado em $t \geq 0$).
+
+Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(x) \;\mathrm{d}x = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
 
 Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t$, uma expansão em série de Taylor nos dá, por um lado
 $$
@@ -52,11 +56,11 @@ $$
 \rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
 $$
 
-Usando que
+Usando que $g$ é uma densidade de probabilidades e que é simétrica em relação a origem, temos
 $$
-\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0,
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0.
 $$
-chegamos a
+Com isso, chegamos a
 $$
 \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
 $$
