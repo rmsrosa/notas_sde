@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-> "It may very well be said that the best way to understand SDEs is to work with their numerical solutions." - Salih N. Neftci, in *An Introduction to the Mathematics of Financial Derivatives,* 2nd edition (Academic Press, 2000).
+> "For over two millennia, Aristotle's logic has ruled over the thinking of western intellectuals. All precise theories, all scientific models, even models of the process of thinking itself, have in principle conformed to the straight-jacket of logic. But from its shady beginnings devising gambling strategies and counting corpses in medieval London, probability theory and statistical inference now emerge as better foundations for scientific models, especially those of the process of thinking and as essential ingredients of theoretical mathematics, even the foundations of mathematics itself. We propose that this sea change in our perspective will affect virtually all of mathematics in the next century" - David Mumford, in *The Dawning of the Age of Stochasticity* (Mathematics Frontiers and Perspectives, 2000).
 
 ## Motivação
 
@@ -26,7 +26,7 @@ Naturalmente, como esse é um curso introdutório, vamos considerar aleatoriedad
 
 ## Implementações numéricas
 
-Como a frase acima diz, considero, também, que implementações numéricas são de grande valia no entendimento de equações estocásticas. Isso é verdade em uma série de problemas, mas isso é especialmente significativo no estudo de equações estocásticas/aleatórias, dada a obscuridade e a complexidade do tema.
+Considero que implementações numéricas são de grande valia no entendimento de equações estocásticas. Isso é verdade em uma série de problemas, mas é especialmente válido no estudo de equações estocásticas/aleatórias, dada a grande mudança de paradigma, se comparado com o pensamento determinístico que muitos de nós estamos mais acostumados.
 
 Sendo assim, o objetivo, aqui, ao estudarmos métodos numéricos para essas equações, é duplo. Um, naturalmente, é por conta da importância de dominarmos as técnicas computacionais para a resolução desses modelos, dada a importância desses modelos em si e dada a demanda por profissionais hábeis tanto na parte teórica quanto na parte computacional, para a implementação e o estudo de modelos diversos, seja em Engenharia, em Biologia, em Finanças ou em outras áreas. O outro objetivo é didático, de fortalecer o entendimento da teoria, contribuindo para uma melhor intuição dos fenômenos envolvidos.
 

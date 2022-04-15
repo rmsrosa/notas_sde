@@ -2,6 +2,8 @@
 
 # {{ get_title }}
 
+> "It may very well be said that the best way to understand SDEs is to work with their numerical solutions." - Salih N. Neftci, in *An Introduction to the Mathematics of Financial Derivatives,* 2nd edition (Academic Press, 2000).
+
 ## Aproximação numérica
 
 Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior.
