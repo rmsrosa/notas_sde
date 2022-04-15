@@ -14,6 +14,8 @@
 
 1. [P. E. Kloeden & E. Platen (1992), "Numerical Solution of Stochastic Differential Equations", Springer-Verlag. https://doi.org/10.1007/978-3-662-12616-5](https://link.springer.com/book/10.1007/978-3-662-12616-5)
 
+1. [D. Mumford (2000), The Dawning of the Age of Stochasticity, *Atti della Accademia Nazionale dei Lincei*. Classe di Scienze Fisiche, Matematiche e Naturali. Rendiconti Lincei. Matematica e Applicazioni, Volume: 11, Issue: S1, page 107-125](https://eudml.org/doc/289648)
+
 1. [T. Neckel & F. Rupp (2013), "Random Differential Equations in Scientific Computing", De Gruyter Open Poland. https://doi.org/10.2478/9788376560267](https://www.degruyter.com/document/doi/10.2478/9788376560267/html?lang=de)
 
 1. [Z. Zhang & G. E. Karniadakis (2017), "Numerical Methods for Stochastic Partial Differential Equations with White Noise", Applied Mathematical Sciences, vol. 196, Springer International Publishing. https://doi.org/10.1007/978-3-319-57511-7](https://link.springer.com/book/10.1007/978-3-319-57511-7)
