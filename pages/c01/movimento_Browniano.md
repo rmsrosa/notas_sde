@@ -101,24 +101,78 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 $$
 ou seja, o incremento é dado por
 $$
-X_{t + \Delta t} - X_t = \mathcal{N}(0, 2D\Delta t).
+\Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2D\Delta t).
 $$
+
+## Paradoxo da velocidade infinita de deslocamento
+
+Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existem algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo, aparentemente paradoxal.
+
+## Regularidade dos caminhos amostrais
+
+O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximo de 1/2. Ou seja, probabilidade nula de "encontrarmos" caminhos descontínuos, com velocidade infinita de deslocamento.
+
+Um caminho amostral $t \rightarrow x(t, \omega)$, em um intervalo $t\in I$, é Hölder contínuo com expoente $\theta > 0$ se existe $C>0$ tal que
+$$
+  |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
+$$
+para todo $s, t \in I$. O conjunto de caminhos Hölder-contínuos com expoente $\theta$ é a união, em $C > 0$, dos caminhos satisfazendo a desigualdade acima. Os caminhos que não são Hölder-contínuos com expoente $\theta$ pertencem à interseção dos complementos dos caminhos satisfazendo a desigualdade acima.
+
+Vamos considerar $I=[0, \infty)$ e estimar a probabilidade de termos uma relação como a acima em, pelo menos, um dado passo $\Delta t > 0$, em um instante $t\geq 0$:
+$$
+  |\Delta x| = |x(t + \Delta t, \omega) - x(t, \omega)| \leq C\Delta t^\theta.
+$$
+Mais precisamente, queremos estimar a probabilidade de termos um caminho com um passo não satisfazendo essa desigualdade:
+$$
+  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta\right).
+$$
+
+Temos,
+$$
+  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} \frac{1}{\sqrt{4\pi D \Delta t}} e^{-\frac{\Delta x^2}{4D \Delta t}} \;\mathrm{d}\Delta x \\
+  \leq \int_{|\Delta x| \geq C\Delta t^\theta} \frac{|\Delta x|^2}{C^2\Delta t^{2\theta}} \frac{1}{\sqrt{4\pi D \Delta t}} e^{-\frac{\Delta x^2}{4D \Delta t}} \;\mathrm{d}\Delta x \\
+  \leq \frac{1}{C^2\Delta t^{2\theta}}\int_{|\Delta x| \geq C\Delta t^\theta} |\Delta x|^2 \frac{1}{\sqrt{4\pi D \Delta t}} e^{-\frac{\Delta x^2}{4D \Delta t}} \;\mathrm{d}\Delta x \\
+  \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta x^2] \\
+  \leq \frac{2D\Delta t}{C^2\Delta t^{2\theta}}.
+$$
+Usamos, acima, uma desigualdade chamada de **desigualdade de Chebyshev**, explorando a condição $|\Delta x| \geq C\Delta t^\theta$ para escrever $1 \leq |\Delta x| / C\Delta t^\theta \leq |\Delta x|^2 / C^2\Delta t^{2\theta}$ e, em seguida, a finitude da distância quadrática média.
+
+Assim,
+$$
+  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
+$$
+
+Com base nisso, usando um resultado conhecido como **Teorema de Borel-Cantelli**, podemos tirar
+$$
+  \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
+$$
+
+Ou seja, quase sempre, teremos ${|\Delta x|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta $.
+
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para todo o $t$ e todo $\Delta t$, *para cada caminho*. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Processo estocástico Browniano
 
-Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico $\{B_t\}_{t\geq 0}$ dado pelas condições abaixo, com algum $a > 0$:
+Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico $\{B_t\}_{t\geq 0}$ dado pelas condições abaixo, com algum $D > 0$:
 1. $B_0 = 0$;
-2. $B_t \sim \mathcal{N}(0, 2at)$, $t > 0$;
+2. $B_t \sim \mathcal{N}(0, 2Dt)$, $t > 0$;
 3. Para $0 \leq t < s < q < r$, os incrementos $B_s - B_t$ e $B_r - B_q$ são independentes
 4. Para $0 \leq t < s$, o incremento $B_s - B_t$ é uma variável aleatória com distribuição normal, média zero e variância $2D(t - s)$, ou seja, $B_s - B_t \sim \mathcal{N}(0, 2D(t - s)) = \sqrt{2D(t-s)}\mathcal{N}(0, 1)$.
+5. Quase todo caminho amostral é Hölder contínuo, com expoente de Hölder menor mas arbitrariamente próximo de 1/2.
 
 A primeira condição indica que a posição inicial da partícula é, quase certamente, $x = 0$.
 
 A segunda condição é a de que existe um $D>0$ tal que a posição da partícula em instantes $t>0$ seja dada pela normal com média zero e variância $2Dt$. Na prática, o valor de $a$ irá depender do fluido e da partícula.
 
-A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento $B_q - B_r$ é indenpendente de outros incrementos $B_s - B_t$.
+A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento $B_q - B_r$ é independente de outros incrementos $B_s - B_t$.
 
-A última condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, $2D(t-s)$, nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.
+A quarta condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, $2D(t-s)$, nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.
+
+A última condição diz que, com probabilidade um em $\omega$, cada caminho amostral $x(t, \omega)$ é tal que, para $0<\theta < 1/2$ e $T > 0$, existe $C > 0$ tal que
+$$
+  |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
+$$
+para todo $0 \leq s, t \leq T$.
 
 ## Exercícios
 
