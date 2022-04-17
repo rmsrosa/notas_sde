@@ -1,12 +1,14 @@
-@def title = "Passeio aleatório"
+@def title = "Do passeio aleatório ao movimento Browniano"
 
 # {{ get_title }}
 
-Um outro modelo simples ilustrando os efeitos do movimento Browniano é o de um **passeio aleatório** (ou *random walk*). Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$.  A cada passo de tempo $\tau$, uma partícula pode se movimentar para a direita ou para a esquerda, por um passo espacial $\ell$, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos.
+O próprio passeio aleatório pode ser usado como modelo para o movimento Browniano, especialmente ao considerarmos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.
 
-Denotamos por $p_n(m)$ a probabilidade da partícula estar na posição $x = m\ell$, no instante $t = n\tau$. Naturalmente, $0 \leq p_n(m) \leq 1$, com $\sum_{m\in \mathbb{Z}} p_n(m) = 1$, para todo $n\in \mathbb{Z}^*$.
+Com isso em mente, vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$ é uma escala de comprimento. Usamos, também, uma escala de tempo $\tau > 0$. Assumimos que, a cada passo de tempo $\tau$, uma partícula pode se movimentar de uma distância $\ell$, para a direita ou para a esquerda, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo. Nem do momento adquirido pela partícula.
 
-Inicialmente, em $t = 0$, consideramos que a partícula está na *origem*, de modo que $p_0(0) = 1$ e $p_0(m) = 0$, para $m\ne 0$. Vamos escrever isso, simetricamente, na forma
+Denotamos, então, por $p_n(m)$ a probabilidade da partícula estar na posição $x = m\ell$, no instante $t = n\tau$. Naturalmente, $0 \leq p_n(m) \leq 1$, com $\sum_{m\in \mathbb{Z}} p_n(m) = 1$, para todo $n = 0, 1, \ldots$.
+
+Inicialmente, em $t = 0$, consideramos que a partícula está na *origem*, de modo que $p_0(0) = 1$ e $p_0(m) = 0$, para $m\ne 0.$ Vamos escrever isso, simetricamente, na forma
 $$
 p_0 = (\ldots, 0, 0, 1, 0, 0, \ldots).
 $$
@@ -30,7 +32,7 @@ p_5 = (\ldots, 0, 1/16, 0, 5/16, 0, 3/8, 0, 5/16, 0, 1/16, 0, \ldots),
 $$
 etc. Podemos continuar e buscar um padrão para a sequência, mas podemos deduzir os valores de uma forma mais simples.
 
-Para uma partícula chegar na posição $x = \ell m$ ela deve dar $i$ passos para a direita e $j$ passos para a esquerda, com $i - j = m$. Para isso acontecer no passo $m$, devemos ter $i + j = n$. Logo, devemos ter $i = (n + m)/2$ passos para a direita e $j = (n - m)/2$ passos para a esquerda. Cada passo ocorre com probabilidade $1/2$. Assim, após $n$ passos, cada caminho ocorre com probabilidade $1/2^n$. Resta saber quantos caminhos existem até um determinado ponto $x = \ell m$.
+Para uma partícula chegar na posição $x = \ell m$, ela deve dar $i$ passos para a direita e $j$ passos para a esquerda, com $i - j = m$. Para isso acontecer no passo $m$, devemos ter $i + j = n$. Logo, devemos ter $i = (n + m)/2$ passos para a direita e $j = (n - m)/2$ passos para a esquerda. Cada passo ocorre com probabilidade $1/2$. Assim, após $n$ passos, cada caminho ocorre com probabilidade $1/2^n$. Resta saber quantos caminhos existem até um determinado ponto $x = \ell m$.
 
 Naturalmente, não há caminho caso $m < -n$ ou $m > n$. E há apenas um caminho para $m = -n$ e $m = n$. Mas pode haver vários caminhos ligando a outros pontos. Ou nenhum. De fato, se $n$ e $m$ tiverem paridades diferentes, então $n + m$ é ímpar e não tem como darmos $i = (n + m)/2$ passos para a direita, nem $j = (n - m)/2$ para a esquerda. Resta, agora, saber o número de caminhos possíveis quando $n$ e $m$ têm a mesma paridade e $|m| < n$.
 
@@ -43,7 +45,13 @@ Podemos reconhecer isso como a distribuição de Bernoulli, nos dando a probabil
 
 ## Limite contínuo
 
-Assintoticamente, temos $k! \simeq \sqrt{2\pi k} (k / e)^k$, quando $k \rightarrow \infty$. Aplicando isso a $n$ grande e $|m| \ll n$, de modo que $(n\pm m)/2$ também sejam grandes, obtemos
+Assintoticamente, temos, pela fórmula de Stirling, $k! \simeq \sqrt{2\pi k} (k / e)^k$, quando $k \rightarrow \infty$. Mais precisamente, vale a desigualdade
+$$
+\sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k+1}} < k! < \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k}}, \quad \forall k\in\mathbb{N}.
+$$
+Assim, para $k = 10$, temos $e^{1/12k} \approx 1.00829$, de modo que o erro relativo já é da ordem de 0,823%.
+
+Assumindo, então, $n \gg 1$ e $|m| \ll n$, de modo que $(n\pm m)/2 \gg 1$ também, obtemos
 $$
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
 $$
@@ -127,6 +135,12 @@ Ou seja, a lei de probabilidades do incremento é
 $$
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2a\Delta t).
 $$
+
+## Caminhos
+
+Como no modelo de Einstein, podemos ter, no limite, caminhos se deslocando cada vez mais rápido. De fato, ao longo de $n$ passos de tempo $\tau$ até um instante $t$, podemos ter exatos $n$ passos $\ell$ no mesmo sentido, digamos até $x = n\ell$, de modo que a velocidade é $x/t = \ell/\tau$. Fazemos $\ell, \tau \rightarrow 0$, com $a = \ell^2/2\tau$ constante, enquanto aumentamos $n$ e $m$ para chegarmos ao ponto mais longe possível $x$, no mesmo instante $t$. Assim, temos a velocidade $v = x/t = \ell/\tau = \sqrt{2a\tau}/\tau = \sqrt{2a/\tau} \rightarrow \infty$. Ou seja, não há como limitar a velocidade dos caminhos.
+
+Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximos de um.
 
 ## Exercícios
 
