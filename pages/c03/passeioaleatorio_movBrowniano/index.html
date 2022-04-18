@@ -70,7 +70,7 @@
     <li>2. Variáveis Aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Variáveis Aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -233,6 +233,19 @@ X_{t + \Delta t} \sim \mathcal{N}(X_t, 2a\Delta t) = X_t + \mathcal{N}(0, 2a\Del
 <h2 id="caminhos"><a href="#caminhos" class="header-anchor">Caminhos</a></h2>
 <p>Como no modelo de Einstein, podemos ter, no limite, caminhos se deslocando cada vez mais rápido. De fato, ao longo de \(n\) passos de tempo \(\tau\) até um instante \(t\), podemos ter exatos \(n\) passos \(\ell\) no mesmo sentido, digamos até \(x = n\ell\), de modo que a velocidade é \(x/t = \ell/\tau\). Fazemos \(\ell, \tau \rightarrow 0\), com \(a = \ell^2/2\tau\) constante, enquanto aumentamos \(n\) e \(m\) para chegarmos ao ponto mais longe possível \(x\), no mesmo instante \(t\). Assim, temos a velocidade \(v = x/t = \ell/\tau = \sqrt{2a\tau}/\tau = \sqrt{2a/\tau} \rightarrow \infty\). Ou seja, não há como limitar a velocidade dos caminhos.</p>
 <p>Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximos de um.</p>
+<h2 id="diferenças_finitas"><a href="#diferenças_finitas" class="header-anchor">Diferenças finitas</a></h2>
+<p>Uma outra maneira de se trabalhar o limíte contínuo do passeio aleatório é via diferenças finitas. Pense em \(p(t, x) \sim p_n(m)\) como uma função densidade de partículas, como se cada \(m\in \mathbb{N}\) representasse um sítio, com um certo número \(u_n(m)\) de partículas, cuja densidade é \(p_n(m) = u_n(m) / U\), onde \(U\) é o número total de partículas. A cada passo de tempo, em média metade das partículas em um sítio \(m\) se encaminha para o sítio \(m-1\) e a outra metade, para o sítio \(m+1\). Por um outro ponto de vista, todas as partículas de um determinado sítio vão para os sítios vizinhos e metade das partículas de cada um dos sítios vizinhos se encaminha para aquele sítio. Ou seja, o total \(u_{n+1}(m)\) de partículas no sítio \(m\), no passo \(n+1\), é inteiramente constituído pelas partículas advindas dos sítios vizinhos, de forma que</p>
+\[
+  u_{n+1}(m) = \frac{1}{2}u_n(m-1) + \frac{1}{2}u_n(m+1).
+\]
+<p>Subtraindo \(u_n(m)\) dos dois lados, multiplicando a equação resultante por \(1/\tau = 2a/\ell^2\) e dividindo-a por \(U\), obtemos</p>
+\[
+\frac{p_{n+1}(m) - p_n(m)}{\tau} = a\frac{p_n(m+1) - 2p_n(m) + p_n(m-1)}{\ell^2}
+\]
+<p>No limite quando \(\tau, \ell \rightarrow 0\), com \(a = \ell^2/2\tau\) constante e com \(x \sim m\ell\) e \(t \sim n\tau\), obtemos a equação em derivadas parciais</p>
+\[
+\frac{\partial p}{\partial t} = a\frac{\partial^2 p}{\partial x^2}.
+\]
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Considere um passeio aleatório em três dimensões, onde o espaço é \(\ell \mathbb{Z}^3\). Cada passo pode ser em qualquer direção, com oito possíveis destinos, \((\pm \ell, \pm \ell, \pm \ell)\), cada um com probabilidade \(1/2^3 = 1/8\). Mostre que, no limite, a densidade de probabilidades \(p(t, \mathbf{x})\) da posição da partícula é dada por</p>
@@ -242,7 +255,7 @@ X_{t + \Delta t} \sim \mathcal{N}(X_t, 2a\Delta t) = X_t + \mathcal{N}(0, 2a\Del
 p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
 \]
 <p>onde \(\mathbf{x} = (x, y, z)\), \(|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}\) e \(a\) é como no caso unidimensional.</p>
-<ol>
+<ol start="2">
 <li><p>Uma versão bidimensional pode ser feita com passos dados por \(\ell(\cos\theta, \sin\theta)\), com \(\ell > 0\) fixo indicando o tamanho do passo e \(\theta\) uma variável aleatória com probabilidade uniforme em \([0, 2\pi]\) indicando a direção do passo. Um passeio aleatório com \(n\) passos nos leva a</p>
 </li>
 </ol>
@@ -281,7 +294,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         </div>
     
 
-    Last modified: April 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 18, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
