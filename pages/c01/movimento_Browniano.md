@@ -112,7 +112,7 @@ $$
 
 ## Paradoxo da velocidade infinita de deslocamento
 
-Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo.
+Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente grandes, levando as partículas a distâncias sem limite. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam arbitrariamente rápido. Algo contra-intuitivo.
 
 ## Regularidade dos caminhos amostrais
 
