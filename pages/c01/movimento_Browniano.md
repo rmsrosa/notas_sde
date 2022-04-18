@@ -32,7 +32,7 @@ Outros cientistas também analisaram e explicaram o fenônemo de ângulos difere
 
 No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
 
-A regra para o movimento é que, a cada instante $t$, a partícula pode dar passos espaciais de tamanhos $\ell$ diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
+A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para algum intervalo de tempo característico $\tau$, a partícula pode dar passos espaciais $\ell$ de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
 
 Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição da partícula), isotrópica (não depende da direção/sentido de movimento) e que os passos são independentes entre si (o passo num instante $s > 0$ independe do passo dado em $0 \leq t < s$).
 
@@ -49,40 +49,42 @@ $$
 
 Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que
 $$
-\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
+\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial t^3}(t, x)\ell^3 + \mathcal{O}(\ell^4).
 $$
 Logo,
 $$
-\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \mathcal{O}(\ell^3) \right)g(\ell) \;\mathrm{d}\ell.
+\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial t^3}(t, x)\ell^3 + \mathcal{O}(\ell^4) \right)g(\ell) \;\mathrm{d}\ell.
 $$
 
 Usando que $g$ é uma densidade de probabilidades e que é simétrica em relação a origem, temos
 $$
-\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0.
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell^{2n+1} g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell^{2n + 1}) = 0, \forall n \in \mathbb{N}.
 $$
 Com isso, chegamos a
 $$
-\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^3]).
 $$
 Ou seja,
 $$
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \textrm{ termos de ordem mais alta },
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^3]}{\tau}\right),
 $$
 onde
 $$
-D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
+D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}[\ell^2].
 $$
 
-Obtemos, assim (aproximadamente), a equação de difusão
+Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\ell^3] / \tau$ relativamente pequeno, obtemos, aproximadamente, a equação de difusão
 $$
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
 $$
 Como condição inicial, assumimos que a partícula parde da origem, ou seja, probabilidade um de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
 $$
-\rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{-\frac{x^2}{4D t}}.
+\rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 $$
 
 Ou seja, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
+
+Em um segundo artigo, as grandezas físicas são estimadas, em particular $D$, e aproximação acima é justificada.
 
 ## Distância quadrática média percorrida
 
@@ -91,7 +93,7 @@ $$
 \sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
 $$
 
-Se, por outro lado, observarmos $\mathbb{E}(|x|)$, obtemos uma distância da mesma ordem: $\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
+Se, por outro lado, observarmos $\mathbb{E}[|x|]$, obtemos uma distância da mesma ordem: $\mathbb{E}[|x|] = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
 
 Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pelas partículas é proporcional à raiz quadrada do tempo decorrido.
 
@@ -186,7 +188,7 @@ $$
 $$
 onde $\Delta = \partial_x^2 + \partial_y^2 + \partial_z^2$ é o operador Laplaciano em três dimensões, $|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}$ e $D$ é definido de forma análoga ao caso unidimensional, mas envolvendo uma integral tripla. Sua solução também nos dá distribuições normais para a posição da partícula em cada tempo, com média zero e desvio padrão $2Dt$:
 $$
-p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
+p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x}|^2}{4Dt}}.
 $$
 Mostre, ainda, que a distância média percorrida satisfaz
 $$
