@@ -136,10 +136,10 @@
 <p><a href="https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Brownian/brownian.html"><img src="/notas_sde/assets/images/BrownianMotionSimulator.png" alt="Brownian motion simulator" /></a>.</p>
 <p>Outros cientistas também analisaram e explicaram o fenônemo de ângulos diferentes, como Marian von Smoluchowski &#40;veja <a href="https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Essai d&#39;une théorie cinétique du mouvement Brownien et des milieux troubles&quot;</a>, <a href="https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Sur le chemin moyen parcouru par les molécules d&#39;un gaz et sur son rapport avec la théorie de la diffusion&quot; Bulletin International de l&#39;Académie des Sciences de Cracovie &#40;in French&#41;: 202.</a> e <a href="https://zenodo.org/record/1424073">von Smoluchowski, M. &#40;1906&#41;. &quot;Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen&quot;. Annalen der Physik &#40;in German&#41;. 326 &#40;14&#41;: 756–780</a>&#41; e Norbert Wiener.</p>
 <h2 id="o_modelo_de_einstein"><a href="#o_modelo_de_einstein" class="header-anchor">O modelo de Einstein</a></h2>
-<p>No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula pertence a um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
-<p>A regra para o movimento é que, a cada instante \(t\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
-<p>Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição&#41;, isotrópica &#40;não depende da direção/sentido&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > t\) independe do passo dado em \(t \geq 0\)&#41;.</p>
-<p>Assim, \(\ell\) assume valores em \(\mathbb{R}\); \(g\) é não negativa; \(g\) independe de \(x\) e de \(t\); satisfaz \(\int_{\mathbb{R}} g(x) \;\mathrm{d}x = 1\); e é simétrica em relação à origem, i.e. \(g(-\ell) = g(\ell)\).</p>
+<p>No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
+<p>A regra para o movimento é que, a cada instante \(t\), a partícula pode dar passos espaciais de tamanhos \(\ell\) diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
+<p>Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição da partícula&#41;, isotrópica &#40;não depende da direção/sentido de movimento&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > 0\) independe do passo dado em \(0 \leq t < s\)&#41;.</p>
+<p>Assim, \(\ell\) assume valores em \(\mathbb{R}\); \(g\) é não negativa; \(g\) independe de \(x\) e de \(t\); satisfaz \(\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1\); e é simétrica em relação à origem, i.e. \(g(-\ell) = g(\ell)\).</p>
 <p>Sendo \(\rho(t, x)\) a função densidade de distribuição das partículas no instante \(t\), uma expansão em série de Taylor nos dá, por um lado</p>
 \[
 \rho(t + \tau, x) = \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2).
@@ -148,13 +148,13 @@
 \[
 \rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell
 \]
-<p>Usando novamente expansão em séries de Taylor, dessa vez na direção espacial, vemos que</p>
+<p>Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que</p>
 \[
 \rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
 \]
 <p>Logo,</p>
 \[
-\rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \mathcal{O}(\ell^3) \right)g(\ell) \;\mathrm{d}\ell.
 \]
 <p>Usando que \(g\) é uma densidade de probabilidades e que é simétrica em relação a origem, temos</p>
 \[
@@ -172,7 +172,11 @@
 \[
 D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
 \]
-<p>Obtemos, assim, a equação de difusão &#40;aproximadamente&#41;, cuja solução é</p>
+<p>Obtemos, assim &#40;aproximadamente&#41;, a equação de difusão</p>
+\[
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x),
+\]
+<p>cuja solução é</p>
 \[
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{-\frac{x^2}{4D t}}.
 \]
@@ -195,7 +199,7 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2D\Delta t).
 \]
 <h2 id="paradoxo_da_velocidade_infinita_de_deslocamento"><a href="#paradoxo_da_velocidade_infinita_de_deslocamento" class="header-anchor">Paradoxo da velocidade infinita de deslocamento</a></h2>
-<p>Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática <em>média</em> percorrida por uma partícula, mas nada impede que existem algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo, aparentemente paradoxal.</p>
+<p>Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática <em>média</em> percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo.</p>
 <h2 id="regularidade_dos_caminhos_amostrais"><a href="#regularidade_dos_caminhos_amostrais" class="header-anchor">Regularidade dos caminhos amostrais</a></h2>
 <p>O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximo de 1/2. Ou seja, probabilidade nula de &quot;encontrarmos&quot; caminhos descontínuos, com velocidade infinita de deslocamento.</p>
 <p>Um caminho amostral \(t \rightarrow x(t, \omega)\), em um intervalo \(t\in I\), é Hölder contínuo com expoente \(\theta > 0\) se existe \(C>0\) tal que</p>
@@ -229,7 +233,7 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
   \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
 \]
 <p>Ou seja, quase sempre, teremos \({|\Delta x|}/{\Delta t^\theta}\) limitado, portanto existindo \(C > 0\) tal que \(|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta \).</p>
-<p>O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para todo o \(t\) e todo \(\Delta t\), <em>para cada caminho</em>. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do <strong>Teorema de Continuidade de Kolmogorov</strong>, que mencionaremos novamente ao falarmos de processos estocásticos.</p>
+<p>O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para <em>todo</em> \(t\) e <em>todo</em> \(\Delta t\), <em>para cada caminho</em>. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do <strong>Teorema de Continuidade de Kolmogorov</strong>, que mencionaremos novamente ao falarmos de processos estocásticos.</p>
 <h2 id="processo_estocástico_browniano"><a href="#processo_estocástico_browniano" class="header-anchor">Processo estocástico Browniano</a></h2>
 <p>Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico \(\{B_t\}_{t\geq 0}\) dado pelas condições abaixo, com algum \(D > 0\):</p>
 <ol>
@@ -245,14 +249,14 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 </li>
 </ol>
 <p>A primeira condição indica que a posição inicial da partícula é, quase certamente, \(x = 0\).</p>
-<p>A segunda condição é a de que existe um \(D>0\) tal que a posição da partícula em instantes \(t>0\) seja dada pela normal com média zero e variância \(2Dt\). Na prática, o valor de \(a\) irá depender do fluido e da partícula.</p>
+<p>A segunda condição é a de que existe um \(D>0\) tal que a posição da partícula em instantes \(t>0\) seja dada pela normal com média zero e variância \(2Dt\). Na prática, o valor de \(D\) irá depender do fluido, do estado termodinâmico do fluido e da partícula.</p>
 <p>A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento \(B_q - B_r\) é independente de outros incrementos \(B_s - B_t\).</p>
 <p>A quarta condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, \(2D(t-s)\), nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.</p>
 <p>A última condição diz que, com probabilidade um em \(\omega\), cada caminho amostral \(x(t, \omega)\) é tal que, para \(0<\theta < 1/2\) e \(T > 0\), existe \(C > 0\) tal que</p>
 \[
   |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
 \]
-<p>para todo \(0 \leq s, t \leq T\).</p>
+<p>para todo \(0 \leq s, t \leq T\). Naturalmente, \(C\) pode depender de \(\omega\), \(\theta\) e \(T\).</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Considere a versão tridimensional do modelo de Einstein, onde \(\mathbf{x} = (x, y, z) \in \mathbb{R}^3\) e os passos \(\boldsymbol{\ell} = (\ell_x, \ell_y, \ell_z) \in \mathbb{R}^3\) são dados de acordo com uma distribuição de probabilidades \(g = g(\boldsymbol\ell)\) que é estacionária, homogênea e isotrópica, com passos independentes. Mostre que a densidade de probabilidades \(p(t, \mathbf{x}) = p(t, x, y, z)\) da posição da partícula satisfaz a equação de difusão</p>
