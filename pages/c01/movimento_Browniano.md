@@ -75,9 +75,9 @@ $$
 
 Obtemos, assim (aproximadamente), a equação de difusão
 $$
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x),
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
 $$
-cuja solução é
+Como condição inicial, assumimos que a partícula parde da origem, ou seja, probabilidade um de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
 $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{-\frac{x^2}{4D t}}.
 $$
@@ -99,7 +99,7 @@ Isso acontece, nesse caso, pelo movimento frenético das partículas elementares
 
 ## Incrementos
 
-Em um instante $t$, a distribuição normal $\mathcal{N}(0, 2Dt)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t$, a posição dessa partícula em um instante $t + \Delta t$, com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2a(t+\Delta t))$ pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se $X_t = x$, temos que a posição futura da partícula será dada por
+Em um instante $t$, a distribuição normal $\mathcal{N}(0, 2Dt)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t$, a posição dessa partícula em um instante $t + \Delta t$, com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2D(t+\Delta t))$ pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se $X_t = x$, temos que a posição futura da partícula será dada por
 $$
 P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
 $$
@@ -133,10 +133,10 @@ $$
 
 Temos,
 $$
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} \frac{1}{\sqrt{4\pi D \Delta t}} e^{-\frac{\Delta x^2}{4D \Delta t}} \;\mathrm{d}\Delta x \\
-  \leq \int_{|\Delta x| \geq C\Delta t^\theta} \frac{|\Delta x|^2}{C^2\Delta t^{2\theta}} \frac{1}{\sqrt{4\pi D \Delta t}} e^{-\frac{\Delta x^2}{4D \Delta t}} \;\mathrm{d}\Delta x \\
-  \leq \frac{1}{C^2\Delta t^{2\theta}}\int_{|\Delta x| \geq C\Delta t^\theta} |\Delta x|^2 \frac{1}{\sqrt{4\pi D \Delta t}} e^{-\frac{\Delta x^2}{4D \Delta t}} \;\mathrm{d}\Delta x \\
-  \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta x^2] \\
+  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
+  \leq \int_{|\Delta x| \geq C\Delta t^\theta} \frac{|\Delta x|^2}{C^2\Delta t^{2\theta}} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x \\
+  \leq \frac{1}{C^2\Delta t^{2\theta}}\int_{|\Delta x| \geq C\Delta t^\theta} |\Delta x|^2 p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
+  \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta x^2]
   \leq \frac{2D\Delta t}{C^2\Delta t^{2\theta}}.
 $$
 Usamos, acima, uma desigualdade chamada de **desigualdade de Chebyshev**, explorando a condição $|\Delta x| \geq C\Delta t^\theta$ para escrever $1 \leq |\Delta x| / C\Delta t^\theta \leq |\Delta x|^2 / C^2\Delta t^{2\theta}$ e, em seguida, a finitude da distância quadrática média.
