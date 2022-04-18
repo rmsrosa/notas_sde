@@ -116,7 +116,7 @@ Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente g
 
 ## Regularidade dos caminhos amostrais
 
-O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximo de 1/2. Ou seja, probabilidade nula de "encontrarmos" caminhos descontínuos, com velocidade infinita de deslocamento.
+O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de "encontrarmos" caminhos descontínuos.
 
 Um caminho amostral $t \rightarrow x(t, \omega)$, em um intervalo $t\in I$, é Hölder contínuo com expoente $\theta > 0$ se existe $C>0$ tal que
 $$
