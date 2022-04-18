@@ -142,6 +142,21 @@ Como no modelo de Einstein, podemos ter, no limite, caminhos se deslocando cada 
 
 Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximos de um.
 
+## Diferenças finitas
+
+Uma outra maneira de se trabalhar o limíte contínuo do passeio aleatório é via diferenças finitas. Pense em $p(t, x) \sim p_n(m)$ como uma função densidade de partículas, como se cada $m\in \mathbb{N}$ representasse um sítio, com um certo número $u_n(m)$ de partículas, cuja densidade é $p_n(m) = u_n(m) / U$, onde $U$ é o número total de partículas. A cada passo de tempo, em média metade das partículas em um sítio $m$ se encaminha para o sítio $m-1$ e a outra metade, para o sítio $m+1$. Por um outro ponto de vista, todas as partículas de um determinado sítio vão para os sítios vizinhos e metade das partículas de cada um dos sítios vizinhos se encaminha para aquele sítio. Ou seja, o total $u_{n+1}(m)$ de partículas no sítio $m$, no passo $n+1$, é inteiramente constituído pelas partículas advindas dos sítios vizinhos, de forma que
+$$
+  u_{n+1}(m) = \frac{1}{2}u_n(m-1) + \frac{1}{2}u_n(m+1).
+$$
+Subtraindo $u_n(m)$ dos dois lados, multiplicando a equação resultante por $1/\tau = 2a/\ell^2$ e dividindo-a por $U$, obtemos
+$$
+\frac{p_{n+1}(m) - p_n(m)}{\tau} = a\frac{p_n(m+1) - 2p_n(m) + p_n(m-1)}{\ell^2}
+$$
+No limite quando $\tau, \ell \rightarrow 0$, com $a = \ell^2/2\tau$ constante e com $x \sim m\ell$ e $t \sim n\tau$, obtemos a equação em derivadas parciais
+$$
+\frac{\partial p}{\partial t} = a\frac{\partial^2 p}{\partial x^2}.
+$$
+
 ## Exercícios
 
 1. Considere um passeio aleatório em três dimensões, onde o espaço é $\ell \mathbb{Z}^3$. Cada passo pode ser em qualquer direção, com oito possíveis destinos, $(\pm \ell, \pm \ell, \pm \ell)$, cada um com probabilidade $1/2^3 = 1/8$. Mostre que, no limite, a densidade de probabilidades $p(t, \mathbf{x})$ da posição da partícula é dada por
@@ -150,7 +165,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
 $$
 onde $\mathbf{x} = (x, y, z)$, $|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}$ e $a$ é como no caso unidimensional.
 
-1. Uma versão bidimensional pode ser feita com passos dados por $\ell(\cos\theta, \sin\theta)$, com $\ell > 0$ fixo indicando o tamanho do passo e $\theta$ uma variável aleatória com probabilidade uniforme em $[0, 2\pi]$ indicando a direção do passo. Um passeio aleatório com $n$ passos nos leva a
+2. Uma versão bidimensional pode ser feita com passos dados por $\ell(\cos\theta, \sin\theta)$, com $\ell > 0$ fixo indicando o tamanho do passo e $\theta$ uma variável aleatória com probabilidade uniforme em $[0, 2\pi]$ indicando a direção do passo. Um passeio aleatório com $n$ passos nos leva a
 $$
 (X_n, Y_n) = \ell \sum_{i = 1, \ldots, n} (\cos\theta_i, \sin\theta_i).
 $$
