@@ -30,13 +30,13 @@ Outros cientistas também analisaram e explicaram o fenônemo de ângulos difere
 
 ## O modelo de Einstein
 
-No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula pertence a um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
+No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
 
-A regra para o movimento é que, a cada instante $t$, a partícula pode dar passos espaciais $\ell$ de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
+A regra para o movimento é que, a cada instante $t$, a partícula pode dar passos espaciais de tamanhos $\ell$ diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
 
-Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição), isotrópica (não depende da direção/sentido) e que os passos são independentes entre si (o passo num instante $s > t$ independe do passo dado em $t \geq 0$).
+Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição da partícula), isotrópica (não depende da direção/sentido de movimento) e que os passos são independentes entre si (o passo num instante $s > 0$ independe do passo dado em $0 \leq t < s$).
 
-Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(x) \;\mathrm{d}x = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
+Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
 
 Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t$, uma expansão em série de Taylor nos dá, por um lado
 $$
@@ -47,13 +47,13 @@ $$
 \rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell
 $$
 
-Usando novamente expansão em séries de Taylor, dessa vez na direção espacial, vemos que
+Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que
 $$
 \rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
 $$
 Logo,
 $$
-\rho(t + \tau, x) = \rho(t, x) \int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell - \frac{\partial \rho}{\partial t}(t, x) \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \mathcal{O}(\ell^3) \right)g(\ell) \;\mathrm{d}\ell.
 $$
 
 Usando que $g$ é uma densidade de probabilidades e que é simétrica em relação a origem, temos
@@ -73,7 +73,11 @@ $$
 D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
 $$
 
-Obtemos, assim, a equação de difusão (aproximadamente), cuja solução é
+Obtemos, assim (aproximadamente), a equação de difusão
+$$
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x),
+$$
+cuja solução é
 $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{-\frac{x^2}{4D t}}.
 $$
@@ -106,7 +110,7 @@ $$
 
 ## Paradoxo da velocidade infinita de deslocamento
 
-Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existem algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo, aparentemente paradoxal.
+Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo.
 
 ## Regularidade dos caminhos amostrais
 
@@ -149,7 +153,7 @@ $$
 
 Ou seja, quase sempre, teremos ${|\Delta x|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta $.
 
-O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para todo o $t$ e todo $\Delta t$, *para cada caminho*. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$ e *todo* $\Delta t$, *para cada caminho*. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Processo estocástico Browniano
 
@@ -162,7 +166,7 @@ Com a idealização acima, é natural postularmos que o movimento Browniano, ou 
 
 A primeira condição indica que a posição inicial da partícula é, quase certamente, $x = 0$.
 
-A segunda condição é a de que existe um $D>0$ tal que a posição da partícula em instantes $t>0$ seja dada pela normal com média zero e variância $2Dt$. Na prática, o valor de $a$ irá depender do fluido e da partícula.
+A segunda condição é a de que existe um $D>0$ tal que a posição da partícula em instantes $t>0$ seja dada pela normal com média zero e variância $2Dt$. Na prática, o valor de $D$ irá depender do fluido, do estado termodinâmico do fluido e da partícula.
 
 A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento $B_q - B_r$ é independente de outros incrementos $B_s - B_t$.
 
@@ -172,7 +176,7 @@ A última condição diz que, com probabilidade um em $\omega$, cada caminho amo
 $$
   |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
 $$
-para todo $0 \leq s, t \leq T$.
+para todo $0 \leq s, t \leq T$. Naturalmente, $C$ pode depender de $\omega$, $\theta$ e $T$.
 
 ## Exercícios
 
