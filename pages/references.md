@@ -14,6 +14,8 @@
 
 1. [D. J. Higham & P. E. Kloeden (2021), "An Introduction to the Numerical Simulation of Stochastic Differential Equations", SIAM.](https://www.maa.org/press/maa-reviews/an-introduction-to-the-numerical-simulation-of-stochastic-differential-equations)
 
+1. [E. T. Jaynes (2003), "Probability Theory: The Logic of Science." Cambridge Univerity Press, Cambridge. DOI: 10.1017/CBO9780511790423](https://doi.org/10.1017/CBO9780511790423)
+
 1. [P. E. Kloeden & E. Platen (1992), "Numerical Solution of Stochastic Differential Equations", Springer-Verlag. DOI: 10.1007/978-3-662-12616-5](https://doi.org/10.1007/978-3-662-12616-5)
 
 1. [D. Mumford (2000), The Dawning of the Age of Stochasticity, *Atti della Accademia Nazionale dei Lincei*. Classe di Scienze Fisiche, Matematiche e Naturali. Rendiconti Lincei. Matematica e Applicazioni, Volume: 11, Issue: S1, page 107-125](https://eudml.org/doc/289648)

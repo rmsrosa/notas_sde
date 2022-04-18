@@ -1,0 +1,9 @@
+@def title = "Teorema Central do Limite"
+
+# {{ get_title }}
+
+> "This brings us to the term 'central limit theorem' ... This name was introduced by George Pólya (1920), with the intention that the adjective 'central' was to modify the noun 'theorem'; i.e. it is the limit theorem that is *central* to probability. Almost universally, students today think that 'central' modifies 'limit', so that it is instead a theorem about a *'central limit'*, whatever that means. The confusion does not occur in the original German, where Pólya’s words were: *Uber den zentralen Grenzwertsatz der Wahrscheinlichkeitsrechnung*, an interesting example where the German habit of inventing compound words removes an ambiguity in the literal English rendering." -  E. T. Jaynes (2003)
+
+A história do Teorema Central do Limite é muito rica e se desenvolveu ao longo de mais de um século, desde os primeiros trabalhos de Pierre-Simon Laplace, em 1810 e 1812, até os resultados de Paul Lévy e Willy Feller, em 1935 (veja H. Fischer (2011), "A History of the Central Limit Theorem"). Isso passando por publicações de outros grandes nomes, como Siméon Denis Poisson (1824 e 1829), Peter Gustav Lejeune Dirichlet (1846), Augustin Louis Cauchy (1845), Pafnutii Lvovich Chebyshev (1887), Andrei Andreevich Markov (1898) e Aleksandr Mikhailovich Liapunov (1900), Felix Hausdorff (1901), Richard von Mises (1919), George Pólya (1920), Jarl Waldemar Lindeberg (1922) e Sergei Natanovich Bernshtein (1922).
+
+O Teorema Central do Limite abrange, na verdade, uma coleção de resultados, em contextos diferentes e com condições diversas, tanto condições suficientes quanto necessárias.
