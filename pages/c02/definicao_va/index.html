@@ -72,6 +72,15 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
@@ -110,7 +119,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde">1.6. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/definicao_pe"><kbd>→</kbd> 3.1. Processos Estocásticos</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_discretas"><kbd>→</kbd> 2.2. Variáveis aleatórias discretas</a>
 </span>
     </p>
 </div>
@@ -129,36 +138,17 @@
 <p>Variáveis aleatórias estão associadas a fenômenos de difícil previsão, tanto em problemas aparentemente simples, como o resultado de um lançamento de uma moeda, do lançamento de um dado, ou de um jogo de roletas, quanto em fenômenos extremamente complexos, como previsão do tempo, de terremotos, no mercado de ações e sobre o desejo dos consumidores, por exemplo.</p>
 <p>Variáveis aleatórias podem ser classificadas de acordo com o tipo de valores que podem assumir. Esses possíveis valores podem ser <em>finitos</em> ou <em>infinitos</em>, <em>discretos</em> ou <em>contínuos</em>, <em>enumeráveis</em> ou <em>não-enumeráveis</em>, <em>escalares</em> ou <em>vetoriais</em>, etc.</p>
 <p>Por exemplo, no caso do lançamento de uma moeda, podemos ter os eventos discretos &quot;cara&quot; e &quot;coroa&quot;, com probabilidade 1/2 de cada evento ser observado. No caso de um lançamento de um dado &quot;não-viciado&quot;, temos os possíveis eventos discretos \(1, 2, 3, 4, 5, 6\), cada um com probabilidade 1/6 de ser realizado. Um dado &quot;viciado&quot; pode ter probabilidades diferentes. Estes são exemplos com um conjunto finito de possíveis observações.</p>
+<p>Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Isso pode acontecer para qualquer número natural \(n\in \mathbb{N}\).</p>
 <p>O Índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer valor inteiro não-negativo, e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade contínua.</p>
-<p>O tempo, também, pode ser pensado como uma variável contínua, de modo que o tempo que um objeto leva para cair de uma certa altura até o chão pode ser visto como uma variável aleatória assumindo qualquer valor real positivo. Naturalmente, há muito mais chances do valor observado ser de acordo com a segunda lei de Newton, mas há sempre alguma incerteza, por conta de diversos fatores, tanto de erros de medição &#40;da altura inicial e do cronômetro marcando o início e o fim do movimento&#41; como pelo fato de um modelo ser apenas uma aproximação da realidade.</p>
+<p>O tempo também pode ser pensado como uma variável contínua, de modo que o tempo que um objeto leva para cair de uma certa altura até o chão pode ser visto como uma variável aleatória assumindo qualquer valor real positivo. Naturalmente, há muito mais chances do valor observado ser de acordo com a segunda lei de Newton, mas há sempre alguma incerteza, por conta de diversos fatores, tanto de erros de medição &#40;da altura inicial e do cronômetro marcando o início e o fim do movimento&#41; como pelo fato de um modelo ser apenas uma aproximação da realidade.</p>
 <p>Usualmente, uma variável aleatória é denotada por letras maísculas, como \(X\). Uma determinada <strong>realização</strong> é denotada por \(X(\omega)\), onde \(\omega\) funciona como uma variável auxiliar, um mero índice, indicando possíveis resultados da variável e associando a isso a devida probabilidade. Podemos pensar \(\omega\) como um <strong>experimento</strong>. A probabilidade de um determinado evento \(e\), dado por um único valor, ocorrer é denotada por \(P(X = e)\). A probabilidade de ocorrer um certo evento \(E\) formado por um conjunto de valores é denotada por \(P(X \in E)\).</p>
+<p>É comum denotarmos</p>
+\[
+X \sim P
+\]
+<p>para indicar a distribuição de probabilidades associada a uma variável aleatória \(X\).</p>
 <p>No caso de uma moeda, temos os possíveis valores &quot;cara&quot; e &quot;coroa&quot;. Cada evento pode ocorrer de acordo com as probabilidades \(P(X = \textrm{"cara"}) = 1/2\) e \(P(X = \textrm{"coroa"}) = 1/2\). No caso dos dados, temos \(P(X = j) = 1/6\), \(j = 1, \ldots, 6.\) A probabilidade do resultado ser par é \(P(X \textrm{ é "par"}) = P(X \in \{2, 4, 6\}) = 1/2.\)</p>
 <p>Formalmente, uma variável aleatória é uma função <em>mensurável</em> de um espaço de probabilidades \((\Omega, \mathcal{F}, P)\) em um espaço mensurável \((\Sigma, \mathcal{S})\). As possíveis realizações são \(X(\omega)\in \Sigma\), para \(\omega\in \Omega\). A probabilidade de um determinado evento \(e\in \Sigma\) ocorrer é a probabilididade do conjunto \(\{\omega \in \Omega; \;X(\omega) = e\} = X^{-1}(e)\): \(P(X = e) = P(\{\omega \in \Omega; \; X(\omega) = e\})\). Também podemos eventos \(E\subset \mathcal{S}\subset \Sigma\), cuja probabilidade é \(P(X \in E) = P(\{\omega\in \Omega; X(\omega) \subset E\}) = P(X^{-1}(E))\). No exemplo do moeda, \(\Sigma = \{\textrm{"cara"}, \textrm{"coroa"}\}\). No exemplo dos dados, \(\Sigma = \{1, 2, 3, 4, 5, 6\}\). No exemplo do índice pluviométrico, \(\Sigma = \{0\;\texttt{mm}, 1\;\texttt{mm}, 2\;\texttt{mm}, \ldots\}\), ou mesmo \(\Sigma = \{r \;\texttt{mm}; \;r \geq 0 \}.\)</p>
-<h2 id="variávels_aleatórias_reais_discretas"><a href="#variávels_aleatórias_reais_discretas" class="header-anchor">Variávels aleatórias reais discretas</a></h2>
-<p>Mais especificamente, uma variável aleatória discreta finita possui um conjunto finito \(\{x_1, \ldots, x_J\}\) de valores possíveis, \(K\in \mathbb{N}\), com probabilidades</p>
-\[
-P(X = x_j) = p_j, \quad j = 1, \ldots, J,
-\]
-<p>onde</p>
-\[
-0 \leq p_j \leq 1, \quad \sum_{j=1}^J p_j = 1.
-\]
-<h3 id="exemplo_teste_de_bernoulli"><a href="#exemplo_teste_de_bernoulli" class="header-anchor">Exemplo: Teste de Bernoulli</a></h3>
-<p>Uma <strong>variável aleatória de Bernoulli</strong> com parâmetro \(p\), \(0\leq p \leq 1\), possui dois resultados possíveis, \(0\) e \(1\), com probabilidades \(p\) e \(1-p\), respectivamente. Ou seja, \(J = 2\), \(x_1 = 0\), \(x_2 = 1\), \(p_1 = p\) e \(p_2 = 1 - p\). Pode ser exemplificado como o resultado do lançamento de uma moeda, com \(0\) e \(1\) representando &quot;cara&quot; e &quot;coroa&quot;, respectivamente. O resultado de teste de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser &quot;positivo&quot; ou &quot;negativo&quot;, podendo, também, ser modelado por uma variável de Bernoulli.</p>
-<h2 id="exemplo_variável_binomial"><a href="#exemplo_variável_binomial" class="header-anchor">Exemplo: variável binomial</a></h2>
-<p>Podemos, também, jogar uma moeda \(n\) vezes e contarmos o número de vezes em que o resultado é &quot;cara&quot;, por exemplo. A probabilidade de não termos nenhuma cara é \(1/2^n\), pois devemos ter exatamente \(n\) coroas lançadas, sendo que cada uma tem probabilidade 1/2 de ocorrer. A probabilidade de termos exatamente uma cara é \(n/2^n\), pois a cara pode vir em qualquer um dos \(n\) lançamentos. Mais geralmente, temos um número</p>
-\[
-  \left(\begin{matrix} n \\ i \end{matrix}\right) = \frac{n!}{i!(n-i)!}
-\]
-<p>de combinações possíveis de exatamente \(i\) resultados iguais &#40;e.g. &quot;caras&quot;&#41;, em \(n\) lançamentos. Assim, se \(X\) é a variável aleatória contando o número de &quot;caras&quot; em \(n\) lançamentos, então a probabilidade de termos \(i\) caras é</p>
-\[
-  P(X = i) = \frac{1}{2^n} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
-\]
-<p>No caso de um dado viciado, ou, mais geralmente, de \(n\) testes de Bernoulli com parâmetro \(p\), \(0\leq p \leq 1\), então a probabilidade de \(i\) sucessos é</p>
-\[
-  P(X = i) = p^i(1-p)^{n-i} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
-\]
-<h2 id="exemplo_variável_aleatória_de_poisson"><a href="#exemplo_variável_aleatória_de_poisson" class="header-anchor">Exemplo: Variável aleatória de Poisson</a></h2>
 
     <div class="navbar">
     <p id="nav">
@@ -166,7 +156,7 @@ P(X = x_j) = p_j, \quad j = 1, \ldots, J,
 <a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde">1.6. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/definicao_pe"><kbd>→</kbd> 3.1. Processos Estocásticos</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_discretas"><kbd>→</kbd> 2.2. Variáveis aleatórias discretas</a>
 </span>
     </p>
 </div>
@@ -182,7 +172,7 @@ P(X = x_j) = p_j, \quad j = 1, \ldots, J,
         </div>
     
 
-    Last modified: April 18, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

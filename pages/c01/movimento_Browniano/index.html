@@ -72,6 +72,15 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
@@ -137,7 +146,7 @@
 <p>Outros cientistas também analisaram e explicaram o fenônemo de ângulos diferentes, como Marian von Smoluchowski &#40;veja <a href="https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Essai d&#39;une théorie cinétique du mouvement Brownien et des milieux troubles&quot;</a>, <a href="https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Sur le chemin moyen parcouru par les molécules d&#39;un gaz et sur son rapport avec la théorie de la diffusion&quot; Bulletin International de l&#39;Académie des Sciences de Cracovie &#40;in French&#41;: 202.</a> e <a href="https://zenodo.org/record/1424073">von Smoluchowski, M. &#40;1906&#41;. &quot;Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen&quot;. Annalen der Physik &#40;in German&#41;. 326 &#40;14&#41;: 756–780</a>&#41; e Norbert Wiener.</p>
 <h2 id="o_modelo_de_einstein"><a href="#o_modelo_de_einstein" class="header-anchor">O modelo de Einstein</a></h2>
 <p>No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
-<p>A regra para o movimento é que, a cada instante \(t\), a partícula pode dar passos espaciais de tamanhos \(\ell\) diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
+<p>A regra para o movimento é que, entre instantes \(t\) e \(t + \tau\), para algum intervalo de tempo característico \(\tau\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
 <p>Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição da partícula&#41;, isotrópica &#40;não depende da direção/sentido de movimento&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > 0\) independe do passo dado em \(0 \leq t < s\)&#41;.</p>
 <p>Assim, \(\ell\) assume valores em \(\mathbb{R}\); \(g\) é não negativa; \(g\) independe de \(x\) e de \(t\); satisfaz \(\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1\); e é simétrica em relação à origem, i.e. \(g(-\ell) = g(\ell)\).</p>
 <p>Sendo \(\rho(t, x)\) a função densidade de distribuição das partículas no instante \(t\), uma expansão em série de Taylor nos dá, por um lado</p>
@@ -150,43 +159,44 @@
 \]
 <p>Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que</p>
 \[
-\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \mathcal{O}(\ell^3).
+\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial t^3}(t, x)\ell^3 + \mathcal{O}(\ell^4).
 \]
 <p>Logo,</p>
 \[
-\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \mathcal{O}(\ell^3) \right)g(\ell) \;\mathrm{d}\ell.
+\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial t^3}(t, x)\ell^3 + \mathcal{O}(\ell^4) \right)g(\ell) \;\mathrm{d}\ell.
 \]
 <p>Usando que \(g\) é uma densidade de probabilidades e que é simétrica em relação a origem, temos</p>
 \[
-\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell) = 0.
+\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1, \quad \int_{\mathbb{R}} \ell^{2n+1} g(\ell) \;\mathrm{d}\ell = \mathbb{E}(\ell^{2n + 1}) = 0, \forall n \in \mathbb{N}.
 \]
 <p>Com isso, chegamos a</p>
 \[
-\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\ell^3).
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^3]).
 \]
 <p>Ou seja,</p>
 \[
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \textrm{ termos de ordem mais alta },
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^3]}{\tau}\right),
 \]
 <p>onde</p>
 \[
-D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}(\ell^2).
+D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}[\ell^2].
 \]
-<p>Obtemos, assim &#40;aproximadamente&#41;, a equação de difusão</p>
+<p>Considerando uma escala de tempo relativamente pequena e assumindo \(\mathbb{E}[\ell^3] / \tau\) relativamente pequeno, obtemos, aproximadamente, a equação de difusão</p>
 \[
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
 \]
 <p>Como condição inicial, assumimos que a partícula parde da origem, ou seja, probabilidade um de encontrar a partícula em \(x = 0\). Dito de outra forma, temos que \(p(0, x)\) é a delta de Dirac \(\delta_0(x)\). O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental</p>
 \[
-\rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{-\frac{x^2}{4D t}}.
+\rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 \]
 <p>Ou seja, em qualquer instante \(t\), a posição da partícula é dada de acordo com uma distribuição normal \(\mathcal{N}(0, 2Dt)\), com média zero e variância \(2Dt\).</p>
+<p>Em um segundo artigo, as grandezas físicas são estimadas, em particular \(D\), e aproximação acima é justificada.</p>
 <h2 id="distância_quadrática_média_percorrida"><a href="#distância_quadrática_média_percorrida" class="header-anchor">Distância quadrática média percorrida</a></h2>
 <p>Sendo \(x \mapsto p(t, x)\) uma Gaussiana com variância \(\sigma^2 = 2Dt\), a <strong>distância quadrática média</strong> percorrida pelas partículas, após um instante \(t\), é exatamente esse desvio padrão:</p>
 \[
 \sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
 \]
-<p>Se, por outro lado, observarmos \(\mathbb{E}(|x|)\), obtemos uma distância da mesma ordem: \(\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}\).</p>
+<p>Se, por outro lado, observarmos \(\mathbb{E}[|x|]\), obtemos uma distância da mesma ordem: \(\mathbb{E}[|x|] = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}\).</p>
 <p>Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pelas partículas é proporcional à raiz quadrada do tempo decorrido.</p>
 <p>Isso acontece, nesse caso, pelo movimento frenético das partículas elementares do fluido. Um fenômeno macroscópico análogo acontece em escoamentos turbulentos, que pode ser apreciado no formato de rastros de fumaça em chaminés &#40;pelo menos em condições onde movimentos advectivos não dominam&#41;.</p>
 <h2 id="incrementos"><a href="#incrementos" class="header-anchor">Incrementos</a></h2>
@@ -199,9 +209,9 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2D\Delta t).
 \]
 <h2 id="paradoxo_da_velocidade_infinita_de_deslocamento"><a href="#paradoxo_da_velocidade_infinita_de_deslocamento" class="header-anchor">Paradoxo da velocidade infinita de deslocamento</a></h2>
-<p>Como os passos podem ser dados a qualquer momento e podem se acumular em uma mesma direção/sentido, não há limite para a distância a ser percorrida por uma partícula, em um determinado intervalo de tempo. Vimos acima, um resultado a respeito da distância quadrática <em>média</em> percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam muito mais rápido. Em um determinado intervalo arbitrariamente curto de tempo, podemos ter passos arbitrariamente grandes. Mesmo que o passo fosse limitado, não há limitação de quão frequentes eles podem ser, de forma que eles podem se acumular, numa mesma direção e sentido, levando a partícula a distâncias sem limite. Algo contra-intuitivo.</p>
+<p>Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente grandes, levando as partículas a distâncias sem limite. Vimos acima, um resultado a respeito da distância quadrática <em>média</em> percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam arbitrariamente rápido. Algo contra-intuitivo.</p>
 <h2 id="regularidade_dos_caminhos_amostrais"><a href="#regularidade_dos_caminhos_amostrais" class="header-anchor">Regularidade dos caminhos amostrais</a></h2>
-<p>O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximo de 1/2. Ou seja, probabilidade nula de &quot;encontrarmos&quot; caminhos descontínuos, com velocidade infinita de deslocamento.</p>
+<p>O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de &quot;encontrarmos&quot; caminhos descontínuos.</p>
 <p>Um caminho amostral \(t \rightarrow x(t, \omega)\), em um intervalo \(t\in I\), é Hölder contínuo com expoente \(\theta > 0\) se existe \(C>0\) tal que</p>
 \[
   |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
@@ -267,7 +277,7 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 \]
 <p>onde \(\Delta = \partial_x^2 + \partial_y^2 + \partial_z^2\) é o operador Laplaciano em três dimensões, \(|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}\) e \(D\) é definido de forma análoga ao caso unidimensional, mas envolvendo uma integral tripla. Sua solução também nos dá distribuições normais para a posição da partícula em cada tempo, com média zero e desvio padrão \(2Dt\):</p>
 \[
-p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
+p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x}|^2}{4Dt}}.
 \]
 <p>Mostre, ainda, que a distância média percorrida satisfaz</p>
 \[
@@ -296,7 +306,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         </div>
     
 
-    Last modified: April 18, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
