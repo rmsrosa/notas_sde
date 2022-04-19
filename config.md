@@ -44,6 +44,9 @@ menu = [
     ]
     "Variáveis Aleatórias" => [
         "pages/c02/definicao_va"
+        "pages/c02/exemplos_va_discretas"
+        "pages/c02/exemplos_va_continuas"
+        "pages/c02/teorema_central"
     ]
     "Processos Estocásticos" => [
         "pages/c03/definicao_pe"
