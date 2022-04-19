@@ -46,6 +46,8 @@ menu = [
         "pages/c02/definicao_va"
         "pages/c02/exemplos_va_discretas"
         "pages/c02/exemplos_va_continuas"
+        "pages/c02/medias_momentos"
+        "pages/c02/desigualdades"
         "pages/c02/teorema_central"
     ]
     "Processos Estocásticos" => [

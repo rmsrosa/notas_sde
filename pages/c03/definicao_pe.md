@@ -1,9 +1,13 @@
-@def title = "Processos Estocásticos"
+@def title = "Conceitos essenciais"
 
 # {{ get_title }}
 
-Um **processo estocástico** é uma família de variáveis aleatórias $\{X_t\}_{t\in I}$, definidas em algum espaço de probabilidades $(\Omega, \Sigma, \rho)$ e indexada por um parâmetro $t$ em um conjunto $I$. Usualmente, $t$ representa uma variável temporal.
+Um **processo estocástico** é, essencialmente, uma família de variáveis aleatórias $\{X_t\}_{t\in I}$, indexada em algum conjunto $I$. Usualmente, $t$ representa uma variável temporal e pode ser contínua ou discreta.
 
-Caso o conjunto $I$ seja discreto (e.g. $I = \mathbb{Z}$ ou $I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}$), dizemos que $\{X_t\}_t$ é um **processo estocástico discreto**. Caso $I$ seja contínuo (e.g. $I=\mathbb{R}$ ou $I=[0, \infty)$), dizemos que $\{X_t\}_t$ é um **processo estocástico contínuo**.
+De acordo com a natureza de $I$, dizemos que é um **processo estocástico discreto** (e.g. $I = \mathbb{Z}$ ou $I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}$) ou um **processo estocástico contínuo** (e.g. $I=\mathbb{R}$ ou $I=[0, \infty)$).
 
-O espaço de probabilidades também pode ser contínuo ou discreto, mas as definições acima se referem ao conjunto de índices.
+Os valores assumidos pelas variáveis aleatórias $X_t$ também podem ser contínuos ou discretos, mas a caracterização acima se refere ao conjunto de índices.
+
+Uma definição mais precisa de um **processo estocástico** requer que as variáveis aleatórias $X_t$ estejam definidas em um mesmo espaço amostral $(\Omega, \mathcal{A}, \mathbb{P})$ e assumindo valores em um mesmo espaço de eventos $(\Sigma, \mathcal{E})$.
+
+Para cada $\omega\in \Omega$, a função $t \mapsto X_t(\omega)$ é chamada de um **caminho amostral**, ou **trajetória** ou **realização**. É comum denotarmos um caminho por $x(t, \omega) = X_t(\omega)$.
