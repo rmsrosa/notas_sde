@@ -4,32 +4,32 @@
 
 Uma variável aleatória contínua assume valores em $\mathbb{R}$. A probabilidade de um determinado valor $x$ ocorrer é expressa por
 $$
-P(X = x).
+\mathbb{P}(X = x).
 $$
 Também podemos expressar a probabilidade de um certo conjunto $E$ de valores ocorrer:
 $$
-P(X \in E).
+\mathbb{P}(X \in E).
 $$
-Em Teoria da Medida, escreveríamos isso simplesmente como $P(E)$. De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever
+Em Teoria da Medida, escreveríamos isso simplesmente como $\mathbb{P}(E)$. De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever
 $$
-P(X > 0)
+\mathbb{P}(X > 0)
 $$
-ao invés de $P(X \in (0, \infty))$. Aqui, estamos representando $E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty)$.
+ao invés de $\mathbb{P}(X \in (0, \infty))$. Aqui, estamos representando $E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty)$.
 
 A **função acumulada de probabilidades** é dada, como no caso discreto, por
 $$
-f(x) = P(X \leq x), \quad x \in \mathbb{R}.
+f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
 $$
 
 Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma **função de densidade de probabilidades** $p(x)$, de tal forma que
 $$
-P(X \in E) = = \int \chi_E(x) \int_E p(x) \;\mathrm{d}x,
+\mathbb{P}(X \in E) = = \int \chi_E(x) \int_E p(x) \;\mathrm{d}x,
 $$
 onde $\chi_E(x)$ é a função característica do conjunto $E$, ou seja, vale $1$, se $x\in E$, caso contrário, vale 0.
 
 Se $E = \{a \leq X \leq b}$, temos, em particular,
 $$
-  P(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
+  \mathbb{P}(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
 $$
 
 Necessariamente, a função densidade de probabilidades deve ser não-negativa e ter massa 1:
@@ -39,7 +39,7 @@ $$
 
 Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos
 $$
-  f(x) = P(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
+  f(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
 $$
 de maneira que
 $$
@@ -54,7 +54,7 @@ Vejamos alguns exemplos de variáveis aleatórias contínuas.
 
 Um exemplo fundamental e que não possui função densidade de probabilidades é a distribuição **delta de Dirac**. Em termos de variáveis aleatórias, ela aparece quando o valor é dado com probabilidade 1, e.g. $X = x_0$ com probabilidade 1. Nesse caso, temos
 $$
-P(X = x_0) = 1, \qquad P(X \neq x_0) = 0.
+\mathbb{P}(X = x_0) = 1, \qquad \mathbb{P}(X \neq x_0) = 0.
 $$
 A distribuição de probabilidades associada a essa variável é exatamente a delta de Dirac no ponto $x_0$, denotada por $\delta_{x_0}$. Ou seja,
 $$
@@ -74,7 +74,7 @@ f(x) = \frac{1}{|I|}\chi_I(x) = \begin{cases} \displaystyle \frac{1}{|I|}, & x \
 $$
 onde $|I|$ é o comprimento de $I$, já que devemos ter massa um, $\int f = 1$. Observe que, como o intervalo $I$ é contínuo, as chances de termos um valor específico $x_0$ é nula. Mas as chances de termos um valor em um determinado subintervalo $J\subset I$ são iguais à fração do comprimento desse intervalo no intervalo total, i.e.
 $$
-P(X \in J) = \frac{|J|}{|I|}
+\mathbb{P}(X \in J) = \frac{|J|}{|I|}
 $$
 
 Uma distribuição uniforme em um intervalo $I$ é denotada por $\mathcal{U}_I$ e escrevemos
