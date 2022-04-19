@@ -20,6 +20,12 @@ O tempo também pode ser pensado como uma variável contínua, de modo que o tem
 
 Usualmente, uma variável aleatória é denotada por letras maísculas, como $X$. Uma determinada **realização** é denotada por $X(\omega)$, onde $\omega$ funciona como uma variável auxiliar, um mero índice, indicando possíveis resultados da variável e associando a isso a devida probabilidade. Podemos pensar $\omega$ como um **experimento**. A probabilidade de um determinado evento $e$, dado por um único valor, ocorrer é denotada por $P(X = e)$. A probabilidade de ocorrer um certo evento $E$ formado por um conjunto de valores é denotada por $P(X \in E)$.
 
+É comum denotarmos
+$$
+X \sim P
+$$
+para indicar a distribuição de probabilidades associada a uma variável aleatória $X$.
+
 No caso de uma moeda, temos os possíveis valores "cara" e "coroa". Cada evento pode ocorrer de acordo com as probabilidades $P(X = \textrm{"cara"}) = 1/2$ e $P(X = \textrm{"coroa"}) = 1/2$. No caso dos dados, temos $P(X = j) = 1/6$, $j = 1, \ldots, 6.$ A probabilidade do resultado ser par é $P(X \textrm{ é "par"}) = P(X \in \{2, 4, 6\}) = 1/2.$
 
 Formalmente, uma variável aleatória é uma função *mensurável* de um espaço de probabilidades $(\Omega, \mathcal{F}, P)$ em um espaço mensurável $(\Sigma, \mathcal{S})$. As possíveis realizações são $X(\omega)\in \Sigma$, para $\omega\in \Omega$. A probabilidade de um determinado evento $e\in \Sigma$ ocorrer é a probabilididade do conjunto $\{\omega \in \Omega; \;X(\omega) = e\} = X^{-1}(e)$: $P(X = e) = P(\{\omega \in \Omega; \; X(\omega) = e\})$. Também podemos eventos $E\subset \mathcal{S}\subset \Sigma$, cuja probabilidade é $P(X \in E) = P(\{\omega\in \Omega; X(\omega) \subset E\}) = P(X^{-1}(E))$. No exemplo do moeda, $\Sigma = \{\textrm{"cara"}, \textrm{"coroa"}\}$. No exemplo dos dados, $\Sigma = \{1, 2, 3, 4, 5, 6\}$. No exemplo do índice pluviométrico, $\Sigma = \{0\;\texttt{mm}, 1\;\texttt{mm}, 2\;\texttt{mm}, \ldots\}$, ou mesmo $\Sigma = \{r \;\texttt{mm}; \;r \geq 0 \}.$

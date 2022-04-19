@@ -14,7 +14,7 @@ $$
 
 A **função distribuição acumulada** é definida por
 $$
-  f(x) = P(X \leq x) = \sum_{x_j \leq X} p_j
+  f(x) = P(X \leq x) = \sum_{x_j \leq x} p_j, \qquad x\in \mathbb{R}.
 $$
 e nos dá a probabilidade de termos uma realização menor ou igual a um dado valor $x$.
 
