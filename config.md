@@ -46,16 +46,20 @@ menu = [
         "pages/c02/definicao_va"
         "pages/c02/exemplos_va_discretas"
         "pages/c02/exemplos_va_continuas"
-        "pages/c02/medias_momentos"
+        "pages/c02/media_momentos"
         "pages/c02/desigualdades"
         "pages/c02/teorema_central"
     ]
     "Processos Estocásticos" => [
         "pages/c03/definicao_pe"
+        "pages/c03/processos_discretos"
+        "pages/c03/funcoes_distribuicao"
         "pages/c03/passeioaleatorio_movBrowniano"
     ]
     "pages/convergencias"
-    "*pages/appendix"
+    "*Apêndice" => [
+        "pages/appendix/teo_fund_kolmogorov"
+    ]
     "*pages/references"
 ]
 +++
