@@ -79,22 +79,37 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Processos Estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.2. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.3. Funções de distribuição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.4. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/references">References</a></li>
@@ -202,7 +217,7 @@ D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{
 <h2 id="incrementos"><a href="#incrementos" class="header-anchor">Incrementos</a></h2>
 <p>Em um instante \(t\), a distribuição normal \(\mathcal{N}(0, 2Dt)\) nos dá a probabilidade de encontrarmos a partícula em uma determinada posição &#40;tendo ela partido de \(x = 0\) em \(t = 0\)&#41;. Mas dada a posição da partícula no instante \(t\), a posição dessa partícula em um instante \(t + \Delta t\), com \(\Delta t > 0\) não é dada por \(\mathcal{N}(0, 2D(t+\Delta t))\) pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se \(X_t = x\), temos que a posição futura da partícula será dada por</p>
 \[
-P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
+\mathbb{P}(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
 \]
 <p>ou seja, o incremento é dado por</p>
 \[
@@ -211,23 +226,23 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 <h2 id="paradoxo_da_velocidade_infinita_de_deslocamento"><a href="#paradoxo_da_velocidade_infinita_de_deslocamento" class="header-anchor">Paradoxo da velocidade infinita de deslocamento</a></h2>
 <p>Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente grandes, levando as partículas a distâncias sem limite. Vimos acima, um resultado a respeito da distância quadrática <em>média</em> percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam arbitrariamente rápido. Algo contra-intuitivo.</p>
 <h2 id="regularidade_dos_caminhos_amostrais"><a href="#regularidade_dos_caminhos_amostrais" class="header-anchor">Regularidade dos caminhos amostrais</a></h2>
-<p>O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de &quot;encontrarmos&quot; caminhos descontínuos.</p>
-<p>Um caminho amostral \(t \rightarrow x(t, \omega)\), em um intervalo \(t\in I\), é Hölder contínuo com expoente \(\theta > 0\) se existe \(C>0\) tal que</p>
+<p>O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, ou seja, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de &quot;observarmos&quot; caminhos descontínuos.</p>
+<p>Um caminho amostral \(t \rightarrow x(t, \omega)\), em um intervalo \(t\in I\), é Hölder contínuo com expoente \(\theta > 0\) quando existe \(C>0\) tal que</p>
 \[
   |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
 \]
 <p>para todo \(s, t \in I\). O conjunto de caminhos Hölder-contínuos com expoente \(\theta\) é a união, em \(C > 0\), dos caminhos satisfazendo a desigualdade acima. Os caminhos que não são Hölder-contínuos com expoente \(\theta\) pertencem à interseção dos complementos dos caminhos satisfazendo a desigualdade acima.</p>
-<p>Vamos considerar \(I=[0, \infty)\) e estimar a probabilidade de termos uma relação como a acima em, pelo menos, um dado passo \(\Delta t > 0\), em um instante \(t\geq 0\):</p>
+<p>Vamos considerar \(I=[0, T]\), \(T > 0\), e estimar a probabilidade de termos uma relação como a acima, em um dado instante fixo \(0 \leq t < T\) para qualquer passo \(\Delta t > 0\), com \(0 \leq t < t + \Delta t \leq T\):</p>
 \[
   |\Delta x| = |x(t + \Delta t, \omega) - x(t, \omega)| \leq C\Delta t^\theta.
 \]
-<p>Mais precisamente, queremos estimar a probabilidade de termos um caminho com um passo não satisfazendo essa desigualdade:</p>
+<p>Mais precisamente, queremos estimar a probabilidade de termos um caminho com algum passo não satisfazendo essa desigualdade:</p>
 \[
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta\right).
+  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta\right).
 \]
 <p>Temos,</p>
 \[
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
+  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
   \leq \int_{|\Delta x| \geq C\Delta t^\theta} \frac{|\Delta x|^2}{C^2\Delta t^{2\theta}} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x \\
   \leq \frac{1}{C^2\Delta t^{2\theta}}\int_{|\Delta x| \geq C\Delta t^\theta} |\Delta x|^2 p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
   \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta x^2]
@@ -236,14 +251,14 @@ P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 
 <p>Usamos, acima, uma desigualdade chamada de <strong>desigualdade de Chebyshev</strong>, explorando a condição \(|\Delta x| \geq C\Delta t^\theta\) para escrever \(1 \leq |\Delta x| / C\Delta t^\theta \leq |\Delta x|^2 / C^2\Delta t^{2\theta}\) e, em seguida, a finitude da distância quadrática média.</p>
 <p>Assim,</p>
 \[
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
+  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
 \]
 <p>Com base nisso, usando um resultado conhecido como <strong>Teorema de Borel-Cantelli</strong>, podemos tirar</p>
 \[
-  \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
+  \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
 \]
 <p>Ou seja, quase sempre, teremos \({|\Delta x|}/{\Delta t^\theta}\) limitado, portanto existindo \(C > 0\) tal que \(|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta \).</p>
-<p>O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para <em>todo</em> \(t\) e <em>todo</em> \(\Delta t\), <em>para cada caminho</em>. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do <strong>Teorema de Continuidade de Kolmogorov</strong>, que mencionaremos novamente ao falarmos de processos estocásticos.</p>
+<p>O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para <em>todo</em> \(t\). Além disso, a probabilidade \(\mathbb{P}\) age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante \(t\). De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do <strong>Teorema de Continuidade de Kolmogorov</strong>, que mencionaremos novamente ao falarmos de processos estocásticos.</p>
 <h2 id="processo_estocástico_browniano"><a href="#processo_estocástico_browniano" class="header-anchor">Processo estocástico Browniano</a></h2>
 <p>Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico \(\{B_t\}_{t\geq 0}\) dado pelas condições abaixo, com algum \(D > 0\):</p>
 <ol>
@@ -306,7 +321,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x
         </div>
     
 
-    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

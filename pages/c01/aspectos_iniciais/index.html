@@ -79,22 +79,37 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Processos Estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.2. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.3. Funções de distribuição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.4. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/references">References</a></li>
@@ -137,9 +152,9 @@
 \[
     \frac{\mathrm{d}x}{\mathrm{d}t} = \mu x,
 \]
-<p>onde \(x\) correspondente à concentração populacional de algum organismo &#40;e.g. quantidade de indivíduos por unidade de volume, como o número de células de leveduras por mililitro&#41;, \(\mu\) é a taxa de crescimento específico e a lei \({\mathrm{d}x}{\mathrm{d}t} = f(t, x, \mu) = \mu x\) é simplesmente uma taxa proporcional à população.</p>
+<p>onde \(x\) correspondente à concentração populacional de algum organismo &#40;e.g. quantidade de indivíduos por unidade de volume, como o número de células de leveduras por mililitro&#41;, \(\mu\) é a taxa de crescimento específico e a lei \({\mathrm{d}x}/{\mathrm{d}t} = f(t, x, \mu) = \mu x\) é simplesmente uma taxa proporcional à população.</p>
 <h2 id="aleatoriedades"><a href="#aleatoriedades" class="header-anchor">Aleatoriedades</a></h2>
-<p>Em um primeiro momento, podemos assumir que a taxa de crescimento específico esteja bem determinada, em cada situação, mas assumirmos a nossa ignorância em sabê-la com exatidão. A cada experimento ou observação, mesmo em situações as mais parecidas possíveis, pequenas variações podem levar a taxas ligeiramente diferente. Nesse caso, podemos assumir que \(\mu\) seja conhecida com um certo grau de incerteza, através de uma distribuição de probabilidades. Em cada situação, temos uma taxa diferente \(\eta(\omega)\), onde \(\omega\) representa cada amostra do conjunto possível de amostras. Da mesma forma, podemos considerar, também, uma incerteza na condição inicial, com \(x(0) = x_0(\omega)\). Ou seja, para cada amostragem indicada por \(\omega\), temos uma <em>realização</em> \(\mu(\omega)\) da taxa de crescimento específico e uma <em>realização</em> \(x_0(\omega)\) da condição inicial, obtendo, a partir daí, um problema de valor inicial no sentido clássico: \(\mathrm{d}x/\mathrm{d}t = \mu(\omega)x\), \(x(0) = x_0(\omega)\). Essa situação é típica em problemas de <strong>quantificação de incertezas</strong>.</p>
+<p>Em um primeiro momento, podemos assumir que a taxa de crescimento específico esteja bem determinada, em cada situação, mas assumirmos a nossa ignorância em sabê-la com exatidão. A cada experimento ou observação, mesmo em situações as mais parecidas possíveis, pequenas variações podem levar a taxas ligeiramente diferente. Nesse caso, podemos assumir que \(\mu\) seja conhecida com um certo grau de incerteza, através de uma distribuição de probabilidades. Em cada situação, temos uma taxa diferente \(\mu(\omega)\), onde \(\omega\) representa cada amostra do conjunto possível de amostras. Da mesma forma, podemos considerar, também, uma incerteza na condição inicial, com \(x(0) = x_0(\omega)\). Ou seja, para cada amostragem, associada a um \(\omega\), temos uma <em>realização</em> \(\mu(\omega)\) da taxa de crescimento específico e uma <em>realização</em> \(x_0(\omega)\) da condição inicial, obtendo, a partir daí, um problema de valor inicial no sentido clássico: \(\mathrm{d}x/\mathrm{d}t = \mu(\omega)x\), \(x(0) = x_0(\omega)\). Essa situação é típica em problemas de <strong>quantificação de incertezas</strong>.</p>
 <p>Porém, mesmo organismos simples, como um fungo, não têm uma taxa de crescimento específico muito bem definida. Fatores ambientais, não-homogeneidades no meio e variações no desenvolvimento próprio de cada indivíduo influenciam na taxa de crescimento. Podemos obter uma taxa média, em determinados tipos de situação &#40;e.g. em uma placa Petri com um determinado tipo de meio, em um tubo de ensaio, na fermentação de um determinado tipo de bebida, etc.&#41;, mas mesmo em cada situação, há diversos fatores influenciando a multiplicação celular.</p>
 <p>Assim, em um segundo momento, assumimos que fatores aleatórios influenciam <em>ao longo</em> do processo, afetando a taxa de crescimento da população a cada momento. Nesse caso, ao invés de \(\mu(\omega)\), temos \(\mu_t(\omega)\), onde, a cada instante \(t\), a realização \(\mu_t(\omega)\) varia aleatoriamente, estando associada a uma dada distribuição de probabilidades. É importante ressaltar que a cada instante \(t\), temos uma realização diferente \(\mu_t(\omega)\) para a taxa de crescimento específico. Essa tal família parametrizada \(\{\mu_t\}_t\) que a cada valor \(t\) do parâmetro assume valores de acordo com uma certa distribuição de probabilidades é chamada de <strong>processo aleatório</strong>, ou <strong>processo estocástico.</strong> A distribuição de probabilidades no instante \(t\) pode, ou não, variar com o tempo. O importante é que, a cada instante, fazemos um novo &quot;sorteio&quot;. Note a diferença em relação ao caso anterior, onde não apenas a lei de probabilidade não muda com o tempo, como o &quot;sorteio&quot; é feito &quot;apenas uma vez&quot;, antes da evolução. Ao longo da evolução, a taxa é fixa.</p>
 <p>A definição acima, no entanto, nos impõe uma questão: em que sentido a equação diferencial \(\mathrm{d}x/\mathrm{d}t = \mu_t(\omega)x\) é satisfeita? Podemos, mesmo, &quot;integrar&quot; \(\mu_t(\omega)x\) e obter uma função diferenciável \(x=x(t, \omega)\) que seja solução da equação? Para que isso seja possível, assume-se que \(\mu_t\) seja um processo <em>contínuo</em> no tempo, ou seja, que, para cada amostra \(\omega\), as realizações \(\mu_t(\omega)\) ao longo do tempo nos dêem uma função contínua, \(t \rightarrow \mu_t(\omega)\). Com essa condição em \(\{\mu_t\}_t\), obtemos uma <strong>equação diferencial aleatória</strong>.</p>
@@ -150,14 +165,14 @@
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x, \lambda),
 \]
 <p>onde \(\lambda\) é um parâmetro, ou conjunto de parâmetros &#40;como a taxa de crescimento específico acima, etc.&#41; e \(f(t, x, \lambda)\) é a lei de evolução do sistema.</p>
-<p>No caso de <strong>equações diferenciais aleatórias</strong>, o que fazemos é permitir que \(\lambda\) varie aleatoriamente, sendo, mais precisamente, um <strong>processo estocástico</strong> \(\lambda_t\), <strong>com caminhos amostrais contínuos</strong>. Como resultado disso, a própria solução também será um processo estocástico, que denotaremos por \(X_t= X_t(\omega)\). Assim, chegamos a uma <strong>equação diferencial aleatória:</strong></p>
+<p>No caso de <strong>equações diferenciais aleatórias</strong>, o que fazemos é permitir que \(\lambda\) varie aleatoriamente, sendo, mais precisamente, um <strong>processo estocástico</strong> \(\Lambda_t\), <strong>com caminhos amostrais contínuos</strong>. Como resultado disso, a própria solução também será um processo estocástico, que denotaremos por \(X_t= X_t(\omega)\). Assim, chegamos a uma <strong>equação diferencial aleatória:</strong></p>
 \[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \lambda_t).
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t).
 \]
 <p>Também permitimos que a condição \(x(0) = X_0(\omega)\) seja aleatória. Assim, para cada amostra \(\omega\), temos uma realização do problema de valor inicial</p>
 \[
 \begin{cases}
-  \displaystyle \frac{\mathrm{d}X_t(\omega)}{\mathrm{d}t} = f(t, X_t(\omega), \lambda_t(\omega)), \\
+  \displaystyle \frac{\mathrm{d}X_t(\omega)}{\mathrm{d}t} = f(t, X_t(\omega), \Lambda_t(\omega)), \\
   \left. X_t(\omega)\right|_{t = 0} = X_0(\omega).
 \end{cases}
 \]
@@ -199,7 +214,7 @@
         </div>
     
 
-    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

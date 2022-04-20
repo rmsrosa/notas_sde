@@ -90,22 +90,37 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Processos Estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.2. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.3. Funções de distribuição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.4. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/references">References</a></li>
@@ -130,7 +145,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.4. Teorema Central do Limite</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/media_momentos"><kbd>→</kbd> 2.4. Média, variância e outros momentos</a>
 </span>
     </p>
 </div>
@@ -144,29 +159,29 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.3. Variáveis aleatórias contínuas</a></h1>
 <p>Uma variável aleatória contínua assume valores em \(\mathbb{R}\). A probabilidade de um determinado valor \(x\) ocorrer é expressa por</p>
 \[
-P(X = x).
+\mathbb{P}(X = x).
 \]
 <p>Também podemos expressar a probabilidade de um certo conjunto \(E\) de valores ocorrer:</p>
 \[
-P(X \in E).
+\mathbb{P}(X \in E).
 \]
-<p>Em Teoria da Medida, escreveríamos isso simplesmente como \(P(E)\). De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever</p>
+<p>Em Teoria da Medida, escreveríamos isso simplesmente como \(\mathbb{P}(E)\). De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever</p>
 \[
-P(X > 0)
+\mathbb{P}(X > 0)
 \]
-<p>ao invés de \(P(X \in (0, \infty))\). Aqui, estamos representando \(E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty)\).</p>
+<p>ao invés de \(\mathbb{P}(X \in (0, \infty))\). Aqui, estamos representando \(E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty)\).</p>
 <p>A <strong>função acumulada de probabilidades</strong> é dada, como no caso discreto, por</p>
 \[
-f(x) = P(X \leq x), \quad x \in \mathbb{R}.
+f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
 \]
 <p>Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma <strong>função de densidade de probabilidades</strong> \(p(x)\), de tal forma que</p>
 \[
-P(X \in E) = = \int \chi_E(x) \int_E p(x) \;\mathrm{d}x,
+\mathbb{P}(X \in E) = = \int \chi_E(x) \int_E p(x) \;\mathrm{d}x,
 \]
 <p>onde \(\chi_E(x)\) é a função característica do conjunto \(E\), ou seja, vale \(1\), se \(x\in E\), caso contrário, vale 0.</p>
 <p>Se \(E = \{a \leq X \leq b}\), temos, em particular,</p>
 \[
-  P(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
+  \mathbb{P}(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
 \]
 <p>Necessariamente, a função densidade de probabilidades deve ser não-negativa e ter massa 1:</p>
 \[
@@ -174,7 +189,7 @@ p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 \]
 <p>Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos</p>
 \[
-  f(x) = P(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
+  f(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
 \]
 <p>de maneira que</p>
 \[
@@ -185,7 +200,7 @@ p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 <h2 id="delta_de_dirac"><a href="#delta_de_dirac" class="header-anchor">Delta de Dirac</a></h2>
 <p>Um exemplo fundamental e que não possui função densidade de probabilidades é a distribuição <strong>delta de Dirac</strong>. Em termos de variáveis aleatórias, ela aparece quando o valor é dado com probabilidade 1, e.g. \(X = x_0\) com probabilidade 1. Nesse caso, temos</p>
 \[
-P(X = x_0) = 1, \qquad P(X \neq x_0) = 0.
+\mathbb{P}(X = x_0) = 1, \qquad \mathbb{P}(X \neq x_0) = 0.
 \]
 <p>A distribuição de probabilidades associada a essa variável é exatamente a delta de Dirac no ponto \(x_0\), denotada por \(\delta_{x_0}\). Ou seja,</p>
 \[
@@ -202,7 +217,7 @@ f(x) = \frac{1}{|I|}\chi_I(x) = \begin{cases} \displaystyle \frac{1}{|I|}, & x \
 \]
 <p>onde \(|I|\) é o comprimento de \(I\), já que devemos ter massa um, \(\int f = 1\). Observe que, como o intervalo \(I\) é contínuo, as chances de termos um valor específico \(x_0\) é nula. Mas as chances de termos um valor em um determinado subintervalo \(J\subset I\) são iguais à fração do comprimento desse intervalo no intervalo total, i.e.</p>
 \[
-P(X \in J) = \frac{|J|}{|I|}
+\mathbb{P}(X \in J) = \frac{|J|}{|I|}
 \]
 <p>Uma distribuição uniforme em um intervalo \(I\) é denotada por \(\mathcal{U}_I\) e escrevemos</p>
 \[
@@ -236,7 +251,7 @@ f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \
 <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.4. Teorema Central do Limite</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/media_momentos"><kbd>→</kbd> 2.4. Média, variância e outros momentos</a>
 </span>
     </p>
 </div>
@@ -252,7 +267,7 @@ f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \
         </div>
     
 
-    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

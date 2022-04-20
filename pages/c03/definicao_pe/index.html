@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Processos Estocásticos</title>  
+   <title>Conceitos essenciais</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -79,22 +79,37 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Processos Estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.2. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.3. Funções de distribuição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.4. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/references">References</a></li>
@@ -116,10 +131,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.2. Do passeio aleatório ao movimento Browniano</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c03/processos_discretos"><kbd>→</kbd> 3.2. Processos discretos e o processo de Bernoulli</a>
 </span>
     </p>
 </div>
@@ -130,18 +145,27 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">3.1. Processos Estocásticos</a></h1>
-<p>Um <strong>processo estocástico</strong> é uma família de variáveis aleatórias \(\{X_t\}_{t\in I}\), definidas em algum espaço de probabilidades \((\Omega, \Sigma, \rho)\) e indexada por um parâmetro \(t\) em um conjunto \(I\). Usualmente, \(t\) representa uma variável temporal.</p>
-<p>Caso o conjunto \(I\) seja discreto &#40;e.g. \(I = \mathbb{Z}\) ou \(I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}\)&#41;, dizemos que \(\{X_t\}_t\) é um <strong>processo estocástico discreto</strong>. Caso \(I\) seja contínuo &#40;e.g. \(I=\mathbb{R}\) ou \(I=[0, \infty)\)&#41;, dizemos que \(\{X_t\}_t\) é um <strong>processo estocástico contínuo</strong>.</p>
-<p>O espaço de probabilidades também pode ser contínuo ou discreto, mas as definições acima se referem ao conjunto de índices.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">3.1. Conceitos essenciais</a></h1>
+<p>Um <strong>processo estocástico</strong> é, essencialmente, uma família de variáveis aleatórias \(\{X_t\}_{t\in I}\), indexada por algum conjunto \(I\). Usualmente, \(t\) representa uma variável temporal e \(I\) pode ser contínuo ou discreto.</p>
+<p>De acordo com a natureza de \(I\), dizemos que é um <strong>processo estocástico discreto</strong> &#40;e.g. \(I = \mathbb{Z}\) ou \(I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}\)&#41; ou um <strong>processo estocástico contínuo</strong> &#40;e.g. \(I=\mathbb{R}\) ou \(I=[0, \infty)\)&#41;.</p>
+<p>Os valores assumidos pelas variáveis aleatórias \(X_t\) também podem ser contínuos ou discretos, mas a caracterização acima se refere ao conjunto de índices.</p>
+<p>Uma definição mais precisa de um <strong>processo estocástico</strong> requer que as variáveis aleatórias \(X_t\) estejam definidas em um mesmo espaço amostral \((\Omega, \mathcal{A}, \mathbb{P})\) e assumindo valores em um mesmo espaço de estados \((\Sigma, \mathcal{E})\).</p>
+<p>Para cada \(\omega\in \Omega\), a função \(t \mapsto X_t(\omega)\) é chamada de um <strong>caminho amostral</strong>, ou <strong>trajetória</strong> ou <strong>realização</strong>. É comum denotarmos um caminho por \(x(t, \omega) = X_t(\omega)\).</p>
+<p>Com as variáveis aleatórias no mesmo espaço amostral, com probabilidade \(\mathbb{P}\), podemos representar a probabilidade do processo assumir um determinado valor \(e\), em um certo instante \(t\), por</p>
+\[
+\mathbb{P}(X_t = e)
+\]
+<p>Vale ressaltar que, agora, a probabilidade \(\mathbb{P}\) não está ligada a um único tempo \(t\), nem varia com \(t\). Ela está ligada a <em>qualquer</em> tempo, ou, na verdade, a <em>todos</em> os tempos. Uma maneira de pensar em \(\mathbb{P}\) é que ela nos dá a probabilidade de <em>conjuntos de trajetórias</em>, com \(\Omega\) sendo o conjunto de todas as trajetórias possíveis. Mais especificamente, podemos pensar em \(\Omega\) como sendo \(\Omega = \Sigma^I = \{x:I \rightarrow \Sigma\}\), que é o conjunto de todas as trajetórias \(x:I \rightarrow \Sigma\) possíveis, no intervalo de tempo \(I\) e assumindo qualquer estado possível em \(\Sigma\). Naturalmente, esperamos observar só algumas trajetórias em um dado processo, o que será determinado pela probabilidade de cada trajetória, ou, mais precisamente, da probabilidade de cada conjunto <em>mensurável</em> \(\mathcal{A} \subset \Omega\) de trajetórias.</p>
+<p>Pensando assim, a probabilidade \(\mathbb{P}(X_t = e)\) de, em um determinado instante \(t\in I\), observamos um certo evento \(e\) é a probabilidade \(\mathbb{P}(A)\) do conjunto \(A = \{x:I \rightarrow \Sigma; \;x(t) = e\}\) de todas as trajetórias que passam por \(e\) no instante \(t\).</p>
+<p>Por sua vez, a probabilidade conjunta \(\mathbb{P}(X_{t_1} = e_1, X_{t_2} = e_2)\), em dois instantes \(t_1, t_2 \in I\) e para dois eventos \(e_1, e_2\in \Sigma\), é a probabilidade \(\mathcal{P}(A)\) do conjunto \(A = \{x:I \rightarrow \Sigma; \;x(t_1) = e_1, \;x(t_2) = e_2\}\).</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.2. Do passeio aleatório ao movimento Browniano</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c03/processos_discretos"><kbd>→</kbd> 3.2. Processos discretos e o processo de Bernoulli</a>
 </span>
     </p>
 </div>
@@ -157,7 +181,7 @@
         </div>
     
 
-    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -79,22 +79,37 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.4. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Processos Estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.2. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.3. Funções de distribuição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.4. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/appendix">Appendix</a></li>
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/references">References</a></li>
@@ -141,14 +156,14 @@
 <p>Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Isso pode acontecer para qualquer número natural \(n\in \mathbb{N}\).</p>
 <p>O Índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer valor inteiro não-negativo, e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade contínua.</p>
 <p>O tempo também pode ser pensado como uma variável contínua, de modo que o tempo que um objeto leva para cair de uma certa altura até o chão pode ser visto como uma variável aleatória assumindo qualquer valor real positivo. Naturalmente, há muito mais chances do valor observado ser de acordo com a segunda lei de Newton, mas há sempre alguma incerteza, por conta de diversos fatores, tanto de erros de medição &#40;da altura inicial e do cronômetro marcando o início e o fim do movimento&#41; como pelo fato de um modelo ser apenas uma aproximação da realidade.</p>
-<p>Usualmente, uma variável aleatória é denotada por letras maísculas, como \(X\). Uma determinada <strong>realização</strong> é denotada por \(X(\omega)\), onde \(\omega\) funciona como uma variável auxiliar, um mero índice, indicando possíveis resultados da variável e associando a isso a devida probabilidade. Podemos pensar \(\omega\) como um <strong>experimento</strong>. A probabilidade de um determinado evento \(e\), dado por um único valor, ocorrer é denotada por \(P(X = e)\). A probabilidade de ocorrer um certo evento \(E\) formado por um conjunto de valores é denotada por \(P(X \in E)\).</p>
+<p>Usualmente, uma variável aleatória é denotada por letras maísculas, como \(X\). Uma determinada <strong>realização</strong> é denotada por \(X(\omega)\), onde \(\omega\) funciona como uma variável auxiliar, um mero índice, indicando possíveis resultados da variável e associando a isso a devida probabilidade. Podemos pensar \(\omega\) como um <strong>experimento</strong>. A probabilidade de um determinado evento \(e\), dado por um único valor, ocorrer é denotada por \(\mathbb{P}(X = e)\). A probabilidade de ocorrer um certo evento \(E\) formado por um conjunto de valores é denotada por \(\mathbb{P}(X \in E)\).</p>
 <p>É comum denotarmos</p>
 \[
-X \sim P
+X \sim \mathcal{P}
 \]
 <p>para indicar a distribuição de probabilidades associada a uma variável aleatória \(X\).</p>
-<p>No caso de uma moeda, temos os possíveis valores &quot;cara&quot; e &quot;coroa&quot;. Cada evento pode ocorrer de acordo com as probabilidades \(P(X = \textrm{"cara"}) = 1/2\) e \(P(X = \textrm{"coroa"}) = 1/2\). No caso dos dados, temos \(P(X = j) = 1/6\), \(j = 1, \ldots, 6.\) A probabilidade do resultado ser par é \(P(X \textrm{ é "par"}) = P(X \in \{2, 4, 6\}) = 1/2.\)</p>
-<p>Formalmente, uma variável aleatória é uma função <em>mensurável</em> de um espaço de probabilidades \((\Omega, \mathcal{F}, P)\) em um espaço mensurável \((\Sigma, \mathcal{S})\). As possíveis realizações são \(X(\omega)\in \Sigma\), para \(\omega\in \Omega\). A probabilidade de um determinado evento \(e\in \Sigma\) ocorrer é a probabilididade do conjunto \(\{\omega \in \Omega; \;X(\omega) = e\} = X^{-1}(e)\): \(P(X = e) = P(\{\omega \in \Omega; \; X(\omega) = e\})\). Também podemos eventos \(E\subset \mathcal{S}\subset \Sigma\), cuja probabilidade é \(P(X \in E) = P(\{\omega\in \Omega; X(\omega) \subset E\}) = P(X^{-1}(E))\). No exemplo do moeda, \(\Sigma = \{\textrm{"cara"}, \textrm{"coroa"}\}\). No exemplo dos dados, \(\Sigma = \{1, 2, 3, 4, 5, 6\}\). No exemplo do índice pluviométrico, \(\Sigma = \{0\;\texttt{mm}, 1\;\texttt{mm}, 2\;\texttt{mm}, \ldots\}\), ou mesmo \(\Sigma = \{r \;\texttt{mm}; \;r \geq 0 \}.\)</p>
+<p>No caso de uma moeda, temos os possíveis valores &quot;cara&quot; e &quot;coroa&quot;, que podemos representar por \(0\) e \(1\), respectivamente. Cada evento pode ocorrer de acordo com as probabilidades \(\mathbb{P}(X = \textrm{"cara"}) = 1/2\) e \(\mathbb{P}(X = \textrm{"coroa"}) = 1/2\), ou \(\mathbb{P}(X = j) = 1/2\), para \(j = 0, 1\). No caso dos dados, temos \(\mathbb{P}(X = j) = 1/6\), \(j = 1, \ldots, 6.\) A probabilidade do resultado ser par é \(\mathbb{P}(X \textrm{ é "par"}) = \mathbb{P}(X \in \{2, 4, 6\}) = 1/2.\)</p>
+<p>Formalmente, uma variável aleatória é uma função <em>mensurável</em> de um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\) em um espaço mensurável \((\Sigma, \mathcal{E})\). As possíveis realizações são \(X(\omega)\in \Sigma\), para \(\omega\in \Omega\). A probabilidade de um determinado evento \(e\in \Sigma\) ocorrer é a probabilididade do conjunto \(\{\omega \in \Omega; \;X(\omega) = e\} = X^{-1}(e)\): \(\mathbb{P}(X = e) = \mathbb{P}(\{\omega \in \Omega; \; X(\omega) = e\})\). Também podemos eventos \(E\in \mathcal{E}\subset \Sigma\), cuja probabilidade é \(\mathbb{P}(X \in E) = \mathbb{P}(\{\omega\in \Omega; X(\omega) \subset E\}) = \mathbb{P}(X^{-1}(E))\). No exemplo do moeda, \(\Sigma = \{0, 1\} = \{\textrm{"cara"}, \textrm{"coroa"}\}\). No exemplo dos dados, \(\Sigma = \{1, 2, 3, 4, 5, 6\}\). No exemplo do índice pluviométrico, \(\Sigma = \{0\;\texttt{mm}, 1\;\texttt{mm}, 2\;\texttt{mm}, \ldots\}\), ou mesmo \(\Sigma = \{r \;\texttt{mm}; \;r \geq 0 \}.\)</p>
 
     <div class="navbar">
     <p id="nav">
@@ -172,7 +187,7 @@ X \sim P
         </div>
     
 
-    Last modified: April 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

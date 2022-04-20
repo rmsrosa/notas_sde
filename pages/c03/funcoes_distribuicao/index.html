@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Aspectos Teóricos e Numéricos de Equações Diferenciais Estocásticas e Aleatórias</title>  
+   <title>Funções de distribuição</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -15,6 +15,8 @@
 
   
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -126,16 +128,58 @@
   <div class="books-content">
 
     
-      
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.4. Do passeio aleatório ao movimento Browniano</a>
+</span>
+    </p>
+</div>
+</br></br>
+
     
 
     
       
     
-<h1 id="title"><a href="#title" class="header-anchor">Aspectos Teóricos e Numéricos de Equações Diferenciais Estocásticas e Aleatórias</a></h1>
-<p>Bem vindos a este sítio dedicado às notas de aula sobre aspectos teóricos e numéricos de equações diferenciais estocásticas e aleatórias, disciplina a ser ministrada no Instituto de Matemática da Universidade Federal do Rio de Janeiro, em 2022/1.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">3.3. Funções de distribuição</a></h1>
+<p>Considere uma variável estocástica contínua real \(\{X_t\}_{t\in I}\), onde \(I\) é um intervalo em \(\mathbb{R}\) e o espaço de estados é \(\Sigma = \mathbb{R}\), com o espaço de eventos sendo os Borelianos em \(\mathbb{R}\).</p>
+<p>A função distribuição de probabilidades acumulada no instante \(t\) é definida por</p>
+\[
+F_t(x) = \mathbb{P}(X_t \leq x)
+\]
+<p>As distribuições conjuntas, em dois instantes distintos, é</p>
+\[
+F_{t_1, t_2}(x_1, x_2) = \mathbb{P}(X_{t_1} \leq x_1, X_{t_2} \leq x_2)
+\]
+<p>Analogamente, para \(n\) instantes \(t_1, \ldots, t_n\),</p>
+\[
+F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{t_n} \leq x_n).
+\]
+<p>Por construção, essa família de funções de distribuição \(\{F_{t_1, \ldots, t_n}\}_{n\in \mathbb{N}, t_1, \ldots, t_n \in I}\) satisfaz duas condições fundamentais:</p>
+<ol>
+<li><p><strong>Simetria:</strong> Sejam \(n\in \mathbb{N}\), \(n \geq 2\), e \(t_1, \ldots, t_n\in I\). Se \((i_1, \ldots, i_n)\) é uma permutação dos índices \((1, \ldots, n)\), então \(F_{t_{i_1}, \ldots, t_{i_n}}(x_{i_1}, \ldots, x_{i_n}) = F_{t_1, \ldots, t_n}(x_1, \ldots, x_n)\), para quaisquer \(x_1, \ldots, x_n \in \mathbb{R}\).</p>
+</li>
+<li><p><strong>Compatibilidade:</strong> Para \(m < n\), \(m, n \in \mathbb{N}\), e \(t_1, \ldots, t_n \in I\), vale \(F_{t_1, \ldots, t_m}(x_1, \ldots, x_m) = F_{t_1, \ldots, t_m, t_{m+1}, \ldots, t_n}(x_1, \ldots, x_m, \infty, \ldots, \infty)\).</p>
+</li>
+</ol>
+<p>Por outro lado, um resultado importante de Kolmogorov, conhecido como o <strong>Teorema Fundamental de Kolmogorov</strong> garante que qualquer família de funções de distribuição satisfazendo as condições de simetria e compatibilidade definem um processo estocástico, ou seja, existe </p>
 
-    
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.4. Do passeio aleatório ao movimento Browniano</a>
+</span>
+    </p>
+</div>
+</br></br>
+
 
 
 <div class="page-foot">
@@ -152,6 +196,10 @@
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     
