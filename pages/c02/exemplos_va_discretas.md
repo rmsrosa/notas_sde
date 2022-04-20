@@ -22,7 +22,12 @@ Vejamos alguns exemplos.
 
 ### Teste de Bernoulli
 
-Uma **variável aleatória de Bernoulli** com parâmetro $p$, $0\leq p \leq 1$, possui dois resultados possíveis, $0$ e $1$, com probabilidades $p$ e $1-p$, respectivamente. Ou seja, $J = 2$, $x_1 = 0$, $x_2 = 1$, $p_1 = p$ e $p_2 = 1 - p$. Pode ser exemplificado como o resultado do lançamento de uma moeda, com $0$ e $1$ representando "cara" e "coroa", respectivamente. O resultado de teste de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser "positivo" ou "negativo", podendo, também, ser modelado por uma variável de Bernoulli.
+Uma **variável aleatória de Bernoulli** com parâmetro $p$, $0\leq p \leq 1$, possui dois resultados possíveis, $0$ e $1$, com probabilidades $p$ e $1-p$, respectivamente. Ou seja, $J = 2$, $x_1 = 0$, $x_2 = 1$, $p_1 = p$ e $p_2 = 1 - p$. Pode ser exemplificado como o resultado do lançamento de uma moeda, com $1$ e $0$ representando "cara" e "coroa", respectivamente. O resultado de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser "positivo" ou "negativo", podendo, também, ser modelado por uma variável de Bernoulli.
+
+Denotamos a distribuição de Bernoulli com probabilidade de sucesso $p$ (e.g. $\mathbb{P}(X = 1) = p$) por $\mathrm{Bernoulli}(p)$. Assim, uma variável aleatória de Bernouille é indicada por
+$$
+X \sim \mathrm{Bernoulli}(p).
+$$
 
 ```julia:pmfbernoulli
 #hideall
@@ -56,6 +61,11 @@ $$
 No caso de um dado viciado, ou, mais geralmente, de $n$ testes de Bernoulli com parâmetro $p$, $0\leq p \leq 1$, então a probabilidade de $i$ sucessos é
 $$
   \mathbb{P}(X = i) = p^i(1-p)^{n-i} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
+$$
+
+Denotamos essa distribuição binomial por $B(n, p)$. Assim,
+$$
+X \sim B(n, p).
 $$
 
 ```julia:pmfbinomial
