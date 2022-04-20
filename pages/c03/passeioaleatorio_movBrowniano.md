@@ -2,9 +2,9 @@
 
 # {{ get_title }}
 
-O próprio passeio aleatório pode ser usado como modelo para o movimento Browniano, especialmente ao considerarmos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.
+Um outro exemplo de processo estocástico discreto e que é importante como modelo relacionado ao movimento Browniano é o do passeio aleatório, especialmente ao considerarmos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.
 
-Com isso em mente, vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$ é uma escala de comprimento. Usamos, também, uma escala de tempo $\tau > 0$. Assumimos que, a cada passo de tempo $\tau$, uma partícula pode se movimentar de uma distância $\ell$, para a direita ou para a esquerda, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo. Nem do momento adquirido pela partícula.
+Com isso em mente, vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$ é uma escala de comprimento. Usamos, também, uma escala de tempo $\tau > 0$. Assumimos que, a cada passo de tempo $\tau$, uma partícula pode se movimentar de uma distância $\ell$, para a direita ou para a esquerda, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.
 
 Denotamos, então, por $p_n(m)$ a probabilidade da partícula estar na posição $x = m\ell$, no instante $t = n\tau$. Naturalmente, $0 \leq p_n(m) \leq 1$, com $\sum_{m\in \mathbb{Z}} p_n(m) = 1$, para todo $n = 0, 1, \ldots$.
 
@@ -41,7 +41,16 @@ $$
 p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}.
 $$
 
-Podemos reconhecer isso como a distribuição de Bernoulli, nos dando a probabilidade de $(n+m)/2$ sucessos em $n$ sorteios de Bernouilli com probabilidade $1/2$ de cada realização.
+Podemos reconhecer isso como a distribuição binomial, nos dando a probabilidade de $(n+m)/2$ sucessos em $n$ sorteios de Bernoulli, com probabilidade $1/2$ de cada realização, com as realizações sendo os passos $\ell$ e $-\ell$.
+
+Denotando por $X_n$ a posição da partícula no passo $n \in \mathbb{Z}^* = \{0, 1, 2, \ldots\}$, temos que $\{X_n\}_{n \in \mathbb{N}}$ é um processo estocástico discreto, com cada passo $\Delta X = X_{n + 1} - X_n \sim \mathrm{Bernoulli}(\pm \ell, 1/2)$, representando o teste de Bernoulli com valores possíveis $\pm \ell$. Temos, ainda, que cada $X_n$ é uma distribuição binomial com possíveis valores $-n\ell, \ldots, n\ell$, que podemos denotar por
+$$
+X_n \sim B(\{-n\ell, \ldots, n\ell\}, 1/2),
+$$
+com $X_0 = 0$ quase sempre, ou seja,
+$$
+X_0 \sim \delta_0.
+$$
 
 ## Limite contínuo
 
@@ -105,6 +114,8 @@ Observe, ainda, a semelhança entre a definição de $a$ acima e de $D$ no model
 $$
 a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 $$
+
+Pensando nesse limite contínuo, e abusando da notação, já que já definimos $X_n$, podemos escrever $X_t$ como a variável aleatória indicando a posição da partícula no instante $t \sim n\tau$.
 
 ## Equação de diffusão
 
