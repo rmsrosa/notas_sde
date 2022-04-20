@@ -10,11 +10,11 @@ Para tentarmos esclarecer como a aleatoriedade entra nas equações diferenciais
 $$
     \frac{\mathrm{d}x}{\mathrm{d}t} = \mu x,
 $$
-onde $x$ correspondente à concentração populacional de algum organismo (e.g. quantidade de indivíduos por unidade de volume, como o número de células de leveduras por mililitro), $\mu$ é a taxa de crescimento específico e a lei ${\mathrm{d}x}{\mathrm{d}t} = f(t, x, \mu) = \mu x$ é simplesmente uma taxa proporcional à população.
+onde $x$ correspondente à concentração populacional de algum organismo (e.g. quantidade de indivíduos por unidade de volume, como o número de células de leveduras por mililitro), $\mu$ é a taxa de crescimento específico e a lei ${\mathrm{d}x}/{\mathrm{d}t} = f(t, x, \mu) = \mu x$ é simplesmente uma taxa proporcional à população.
 
 ## Aleatoriedades
 
-Em um primeiro momento, podemos assumir que a taxa de crescimento específico esteja bem determinada, em cada situação, mas assumirmos a nossa ignorância em sabê-la com exatidão. A cada experimento ou observação, mesmo em situações as mais parecidas possíveis, pequenas variações podem levar a taxas ligeiramente diferente. Nesse caso, podemos assumir que $\mu$ seja conhecida com um certo grau de incerteza, através de uma distribuição de probabilidades. Em cada situação, temos uma taxa diferente $\eta(\omega)$, onde $\omega$ representa cada amostra do conjunto possível de amostras. Da mesma forma, podemos considerar, também, uma incerteza na condição inicial, com $x(0) = x_0(\omega)$. Ou seja, para cada amostragem indicada por $\omega$, temos uma *realização* $\mu(\omega)$ da taxa de crescimento específico e uma *realização* $x_0(\omega)$ da condição inicial, obtendo, a partir daí, um problema de valor inicial no sentido clássico: $\mathrm{d}x/\mathrm{d}t = \mu(\omega)x$, $x(0) = x_0(\omega)$. Essa situação é típica em problemas de **quantificação de incertezas**.
+Em um primeiro momento, podemos assumir que a taxa de crescimento específico esteja bem determinada, em cada situação, mas assumirmos a nossa ignorância em sabê-la com exatidão. A cada experimento ou observação, mesmo em situações as mais parecidas possíveis, pequenas variações podem levar a taxas ligeiramente diferente. Nesse caso, podemos assumir que $\mu$ seja conhecida com um certo grau de incerteza, através de uma distribuição de probabilidades. Em cada situação, temos uma taxa diferente $\mu(\omega)$, onde $\omega$ representa cada amostra do conjunto possível de amostras. Da mesma forma, podemos considerar, também, uma incerteza na condição inicial, com $x(0) = x_0(\omega)$. Ou seja, para cada amostragem, associada a um $\omega$, temos uma *realização* $\mu(\omega)$ da taxa de crescimento específico e uma *realização* $x_0(\omega)$ da condição inicial, obtendo, a partir daí, um problema de valor inicial no sentido clássico: $\mathrm{d}x/\mathrm{d}t = \mu(\omega)x$, $x(0) = x_0(\omega)$. Essa situação é típica em problemas de **quantificação de incertezas**.
 
 Porém, mesmo organismos simples, como um fungo, não têm uma taxa de crescimento específico muito bem definida. Fatores ambientais, não-homogeneidades no meio e variações no desenvolvimento próprio de cada indivíduo influenciam na taxa de crescimento. Podemos obter uma taxa média, em determinados tipos de situação (e.g. em uma placa Petri com um determinado tipo de meio, em um tubo de ensaio, na fermentação de um determinado tipo de bebida, etc.), mas mesmo em cada situação, há diversos fatores influenciando a multiplicação celular.
 
@@ -32,14 +32,14 @@ $$
 $$
 onde $\lambda$ é um parâmetro, ou conjunto de parâmetros (como a taxa de crescimento específico acima, etc.) e $f(t, x, \lambda)$ é a lei de evolução do sistema.
 
-No caso de **equações diferenciais aleatórias**, o que fazemos é permitir que $\lambda$ varie aleatoriamente, sendo, mais precisamente, um **processo estocástico** $\lambda_t$, **com caminhos amostrais contínuos**. Como resultado disso, a própria solução também será um processo estocástico, que denotaremos por $X_t= X_t(\omega)$. Assim, chegamos a uma **equação diferencial aleatória:**
+No caso de **equações diferenciais aleatórias**, o que fazemos é permitir que $\lambda$ varie aleatoriamente, sendo, mais precisamente, um **processo estocástico** $\Lambda_t$, **com caminhos amostrais contínuos**. Como resultado disso, a própria solução também será um processo estocástico, que denotaremos por $X_t= X_t(\omega)$. Assim, chegamos a uma **equação diferencial aleatória:**
 $$
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \lambda_t).
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t).
 $$
 Também permitimos que a condição $x(0) = X_0(\omega)$ seja aleatória. Assim, para cada amostra $\omega$, temos uma realização do problema de valor inicial
 $$
 \begin{cases}
-  \displaystyle \frac{\mathrm{d}X_t(\omega)}{\mathrm{d}t} = f(t, X_t(\omega), \lambda_t(\omega)), \\
+  \displaystyle \frac{\mathrm{d}X_t(\omega)}{\mathrm{d}t} = f(t, X_t(\omega), \Lambda_t(\omega)), \\
   \left. X_t(\omega)\right|_{t = 0} = X_0(\omega).
 \end{cases}
 $$

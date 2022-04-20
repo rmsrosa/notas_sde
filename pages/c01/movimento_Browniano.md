@@ -103,7 +103,7 @@ Isso acontece, nesse caso, pelo movimento frenético das partículas elementares
 
 Em um instante $t$, a distribuição normal $\mathcal{N}(0, 2Dt)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t$, a posição dessa partícula em um instante $t + \Delta t$, com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2D(t+\Delta t))$ pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se $X_t = x$, temos que a posição futura da partícula será dada por
 $$
-P(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
+\mathbb{P}(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
 $$
 ou seja, o incremento é dado por
 $$
@@ -116,26 +116,26 @@ Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente g
 
 ## Regularidade dos caminhos amostrais
 
-O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de "encontrarmos" caminhos descontínuos.
+O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, ou seja, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de "observarmos" caminhos descontínuos.
 
-Um caminho amostral $t \rightarrow x(t, \omega)$, em um intervalo $t\in I$, é Hölder contínuo com expoente $\theta > 0$ se existe $C>0$ tal que
+Um caminho amostral $t \rightarrow x(t, \omega)$, em um intervalo $t\in I$, é Hölder contínuo com expoente $\theta > 0$ quando existe $C>0$ tal que
 $$
   |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
 $$
 para todo $s, t \in I$. O conjunto de caminhos Hölder-contínuos com expoente $\theta$ é a união, em $C > 0$, dos caminhos satisfazendo a desigualdade acima. Os caminhos que não são Hölder-contínuos com expoente $\theta$ pertencem à interseção dos complementos dos caminhos satisfazendo a desigualdade acima.
 
-Vamos considerar $I=[0, \infty)$ e estimar a probabilidade de termos uma relação como a acima em, pelo menos, um dado passo $\Delta t > 0$, em um instante $t\geq 0$:
+Vamos considerar $I=[0, T]$, $T > 0$, e estimar a probabilidade de termos uma relação como a acima, em um dado instante fixo $0 \leq t < T$ para qualquer passo $\Delta t > 0$, com $0 \leq t < t + \Delta t \leq T$:
 $$
   |\Delta x| = |x(t + \Delta t, \omega) - x(t, \omega)| \leq C\Delta t^\theta.
 $$
-Mais precisamente, queremos estimar a probabilidade de termos um caminho com um passo não satisfazendo essa desigualdade:
+Mais precisamente, queremos estimar a probabilidade de termos um caminho com algum passo não satisfazendo essa desigualdade:
 $$
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta\right).
+  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta\right).
 $$
 
 Temos,
 $$
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
+  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
   \leq \int_{|\Delta x| \geq C\Delta t^\theta} \frac{|\Delta x|^2}{C^2\Delta t^{2\theta}} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x \\
   \leq \frac{1}{C^2\Delta t^{2\theta}}\int_{|\Delta x| \geq C\Delta t^\theta} |\Delta x|^2 p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
   \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta x^2]
@@ -145,17 +145,17 @@ Usamos, acima, uma desigualdade chamada de **desigualdade de Chebyshev**, explor
 
 Assim,
 $$
-  \mathcal{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
+  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
 $$
 
 Com base nisso, usando um resultado conhecido como **Teorema de Borel-Cantelli**, podemos tirar
 $$
-  \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathcal{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathcal{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
+  \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
 $$
 
 Ou seja, quase sempre, teremos ${|\Delta x|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta $.
 
-O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$ e *todo* $\Delta t$, *para cada caminho*. Mas esse é a estimativa principal que garante isso. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$. Além disso, a probabilidade $\mathbb{P}$ age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante $t$. De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Processo estocástico Browniano
 
