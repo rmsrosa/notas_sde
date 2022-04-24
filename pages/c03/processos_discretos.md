@@ -2,11 +2,11 @@
 
 # {{ get_title }}
 
-A nossa intenção principal é trabalhar com processos contínuos, já que equações diferenciais estocásticas e aleatórias envolvem variáveis independentes contínuas, gerando, portanto, processos contínuos. Mas é ilustrativo iniciar os estudos de processos estocásticos com processos discretos. Além disso, alguns processos estocásticos contínuos aparecem naturalmente como limites de processos discretos. Um dos processos discretos mais simples e interessantes é o processo de Bernoulli, que usaremos como nosso primeiro exemplo. Outro é o passeio aleatório.
+A nossa intenção principal é trabalhar com processos contínuos, já que equações diferenciais estocásticas e aleatórias envolvem variáveis independentes contínuas, gerando, portanto, processos contínuos. Mas é ilustrativo iniciar os estudos de processos estocásticos com processos discretos. Além disso, alguns processos estocásticos contínuos aparecem naturalmente como limites de processos discretos.
 
 ## Processo de Bernoulli em tempo finito
 
-Vamos começar com um processo de Bernoulli em um tempo discreto e finito $I = \{1, 2, \ldots, N}$, onde $N \in \mathbb{N}$. Há dois estados possíveis, digamos $\Sigma = \{0, 1\}$, indicando, por exemplo, o resultado do lançamento de uma moeda ("coroa" ou "cara") ou de um teste ("negativo", "positivo").
+Vamos começar com um processo de Bernoulli em um tempo discreto e finito $I = \{1, 2, \ldots, N}$, onde $N \in \mathbb{N}$. Há dois estados possíveis, digamos $\Sigma = \{0, 1\}$, indicando, por exemplo, o resultado do lançamento de uma moeda ("coroa" ou "cara") ou de um teste de laboratório ("negativo", "positivo").
 
 A cada passo, um *teste de Bernoulli* é feito, dando um resultado $1$, com probabilidade $p$, ou $0$, com probabilidade $1 - p$, onde $0 < p \leq 1$. Assumimos que os testes sejam independentes, ou seja, o resultado do teste em um passo $n_1$ independe do resultado do teste no instante $n_2$.
 
@@ -53,3 +53,24 @@ $$
 \mathbb{P}(X_{n_1} = e_1, \ldots X_{n_N} = e_N) = \mathbb{P}(\{x = (x_1, x_2, \ldots) \in \{0, 1\}^\mathbb{N}; \; x_{n_1} = e_1, \ldots, x_{n_N} = e_N) \\ = p^i(1-p)^{N-1},
 $$
 onde $i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}$.
+
+## Urna sem recomposição
+
+Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de cada bolinha. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
+
+Na primeira retirada, temos números iguais de bolinhas de cada cor, de modo que a probabilidade de cada uma sair é igual:
+$$
+\mathbb{P}(X_1 = 1) = \mathbb{P}(X_1 = 2) = \frac{1}{2}.
+$$
+Já nas retiradas seguintes, no entanto, as chances de cada uma vão mudar de acordo com quais bolinhas já foram retiradas. No segundo passo, se a primeira bolinha retirada foi preta, então sobraram cinco bolinhas vermelhas e quatro pretas, de maneira que as chances de tirarmos outra preta são de 4/9 enquanto que as chances de tirarmos uma vermelha são de 5/9. Analogamente caso a primeira bolinha retirada tenha sido vermelha. Podemos escrever isso em termos de probabilidades condicionadas:
+$$
+\mathbb{P}(X_2 = 1 | X_1 = 1) = \mathbb{P}(X_2 = 2 | X_1 = 2) = \frac{4}{9}, \quad \mathbb{P}(X_2 = 1 | X_1 = 2) = \mathbb{P}(X_2 = 2 | X_1 = 1) = \frac{5}{9}.
+$$
+Após o passo $n$, $1 \leq n \leq 2N$, se foram retiradas $i$ bolinhas vermelhas e $n - i$ bolinhas pretas, então as chances de tirarmos uma bolinha vermelha ou uma bolinha preta no passo $n+1$ são, respectivamente,
+$$
+\frac{N - i}{2N - n} \quad \text{e} \quad \frac{N - n + i}{2N - n}. 
+$$
+Também podemos escrever isso em termos de probabilidade condicionada, em função de todas as retiradas passadas:
+$$
+\mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{\#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
+$$
