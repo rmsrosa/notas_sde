@@ -2,15 +2,19 @@
 
 # {{ get_title }}
 
-A maioria dos números gerados aleatoriamente por programas de computador são, na verdade, *pseudo-aleatórios*. São baseados em algum algoritmo determinístico feito para simular a geração de números realmente aleatórios. Há, no entanto, métodos verdadeiramente aleatórios, baseados em medições de fenômenos físicos, como ruído térmico, turbulência atmosférica, efeitos foto-elétricos, efeitos quânticos, entre outros. Veja, por exemplo, [Wikipedia: Hardware random number generator](https://en.wikipedia.org/wiki/Hardware_random_number_generator) e [RANDOM.ORG](https://www.random.org).
+> "Any one who considers arithmetical means of producing random digits is, of course, in a state of sin." - John von Neumann (quoted by D. E. Knuth, in "The Art of Computer Programming II", Addison-Wesley Longman Publishing Co. 1997)
 
-Os algoritmos para a geração de números pseudo aleatórios dependem de uma dada *semente* e podem ser reproduzidos, se a mesma semente for fornecida. Além disso, os números se repetem, após um certo ponto. O estudo desses algoritmos formam uma linha de pesquisa importante. E há uma série de testes de aleatoriedade para verificar a qualidade dos algoritmos.
+É possível gerar, no computador, números verdadeiramente aleatórios através da medição de fenômenos físicos externos, como ruído térmico, ruído sonoro, turbulência atmosférica, efeitos foto-elétricos, efeitos quânticos, entre outros. Veja, por exemplo, [Wikipedia: Hardware random number generator](https://en.wikipedia.org/wiki/Hardware_random_number_generator) e [RANDOM.ORG](https://www.random.org). Essa forma de geração de números aleatórios é de fundamental importância em algumas aplicações de criptografia, em situações em que a segurança é crítica. Essa classe de geradores de números aleatórios costuma ser denomidada por TRNG *(True Random Number Generators)*.
+
+Mas a geração de tais números é custosa ou relativamente lenta. Por isso, em geral, números gerados aleatoriamente por programas de computador são baseados em algoritmos determinísticos. Esses algoritmos são feitos para simularem a geração de uma sequência aleatória através de alguma regra. A maior fonte de aleatoriedade deles vêm de uma *semente*, usada para inicializar a sequência. Essa semente, sim, é baseada, em geral, em alguma fonte externa de entropia fornecida pelo sistema operacional, por exemplo a partir de movimentos do mouse, das teclas digitadas no teclado ou de ruído térmico, obtido através dos sensores de temperatura na placa do circuito integrado. Esses números gerados são ditos *pseudo-aleatórios*. Essa classe de geradores de números aleatórios costuma ser denomidada por PRNG *(Pseudo Random Number Generators)*.
+
+O estudo desses algoritmos de PRNG formam uma linha de pesquisa importante. E há uma série de testes de aleatoriedade para verificar a qualidade dos algoritmos.
 
 ## Geradores Congruentes Lineares
 
 Uma família de métodos simples, que podemos mencionar para efeito de ilustração, é a dos *geradores congruentes lineares*. É uma família de métodos parametrizada por três parâmetros, $a$, $b$ e $m$. A sequência de números pseudo-aleatórios é iniciada a partir de uma **semente** $X_0$ e é definida, recursivamente, por
 $$
-X_{n+1} = (a * X_n + b) \operatorname{mod} m.
+X_{n+1} = (a X_n + b) \operatorname{mod} m.
 $$
 A sequência é, necessariamente, periódica e gera, no máximo, $m-1$ números diferentes. Mas a periodicidade pode ser bem menor, dependendo da combinação de parâmetros. A qualidade do método, aliás, é fortemente dependente das escolhas dos parâmetros. Compare, por exemplo, os dois casos abaixo:
 ```julia:randomlcg1
@@ -72,3 +76,5 @@ Um outro algoritmo desenvolvido mais recentemente é o **Xoshiro**.
 ## Números aleatórios não uniformes
 
 Os algoritmos acima geram números buscando simular números aleatórios distribuídos uniformemente.
+
+## Gerando números aleatórios em Julia
