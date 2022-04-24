@@ -6,6 +6,8 @@
 
 1. [Y. Asai (2016), "Numerical Methods for Random Ordinary Differential Equations and their Applications in Biology and Medicine", tese de doutorado, Johann Wolfgang Goethe-Universität.](http://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/docId/40146)
 
+1. [M. H. DeGroot, M. J. Schervish (2019), "Probability and statistics", 4th Edition, Pearson Education, Inc.](https://www.pearson.com/us/higher-education/program/De-Groot-Probability-and-Statistics-Classic-Version-4th-Edition/PGM2043173.html)
+
 1. [L. C. Evans (2013), "An Introduction to Stochastic Differential Equations", American Mathematical Societiy.](https://www.maa.org/press/maa-reviews/an-introduction-to-stochastic-differential-equations)
 
 1. [H. Fischer (2011), "A History of the Central Limit Theorem. From Classical to Modern Probability Theory", Sources and Studies in the History of Mathematics and Physical Sciences,Springer, New York, NY. DOI: 10.1007/978-0-387-87857-7](https://doi.org/10.1007/978-0-387-87857-7)
@@ -17,6 +19,8 @@
 1. [E. T. Jaynes (2003), "Probability Theory: The Logic of Science." Cambridge Univerity Press, Cambridge. DOI: 10.1017/CBO9780511790423](https://doi.org/10.1017/CBO9780511790423)
 
 1. [P. E. Kloeden & E. Platen (1992), "Numerical Solution of Stochastic Differential Equations", Springer-Verlag. DOI: 10.1007/978-3-662-12616-5](https://doi.org/10.1007/978-3-662-12616-5)
+
+1. [D. E. Knuth (1997), "The Art of Computer Programming II: Seminumerical Algorithms", Addison-Wesley Longman Publishing Co., Inc.](https://dl.acm.org/doi/10.5555/270146)
 
 1. [D. Mumford (2000), The Dawning of the Age of Stochasticity, *Atti della Accademia Nazionale dei Lincei*. Classe di Scienze Fisiche, Matematiche e Naturali. Rendiconti Lincei. Matematica e Applicazioni, Volume: 11, Issue: S1, page 107-125](https://eudml.org/doc/289648)
 
