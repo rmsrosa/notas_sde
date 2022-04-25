@@ -54,6 +54,21 @@ $$
 $$
 onde $i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}$.
 
+## Caminho aleatório
+
+Nesse caso, $I = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$, o conjunto de estados possíveis é $\Sigma = \mathbb{Z}$ e o espaço amostral pode ser tomado como $\Omega = \Sigma^{\mathbb{Z}^*} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}$. Novamente, $\Omega$ é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição $m$, em um determinado instante $n$:
+$$
+\mathbb{P}(X_n = m) = \begin{cases}
+  \displaystyle \frac{1}{2^n} \left(\begin{matrix} n \\ \frac{n + m}{2} \end{matrix}\right), & |m| \leq n \text{ e $m$ e $n$ com a mesma paridade} \\
+  0, & |m| > n \text{ e/ou $m$ e $n$ com paridades diferentes.}
+\end{cases}
+$$
+
+Sabendo a posição da partícula no instante $n$ nos dá a distribuição de probabilidades para a posiçãm em $n+1$ como
+$$
+\mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
+$$
+
 ## Urna sem recomposição
 
 Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de cada bolinha. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
@@ -66,11 +81,11 @@ Já nas retiradas seguintes, no entanto, as chances de cada uma vão mudar de ac
 $$
 \mathbb{P}(X_2 = 1 | X_1 = 1) = \mathbb{P}(X_2 = 2 | X_1 = 2) = \frac{4}{9}, \quad \mathbb{P}(X_2 = 1 | X_1 = 2) = \mathbb{P}(X_2 = 2 | X_1 = 1) = \frac{5}{9}.
 $$
-Após o passo $n$, $1 \leq n \leq 2N$, se foram retiradas $i$ bolinhas vermelhas e $n - i$ bolinhas pretas, então as chances de tirarmos uma bolinha vermelha ou uma bolinha preta no passo $n+1$ são, respectivamente,
+Após o passo $n$, com $1 \leq n \leq 2N$, se foram retiradas $i$ bolinhas vermelhas e $n - i$ bolinhas pretas, então as chances de tirarmos uma bolinha vermelha ou uma bolinha preta no passo $n+1$ são, respectivamente,
 $$
 \frac{N - i}{2N - n} \quad \text{e} \quad \frac{N - n + i}{2N - n}. 
 $$
-Também podemos escrever isso em termos de probabilidade condicionada, em função de todas as retiradas passadas:
+Podemos escrever isso em termos de probabilidade condicionada, em função de todas as retiradas passadas:
 $$
-\mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{\#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
+\mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{N - \#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
 $$
