@@ -6,7 +6,7 @@ A nossa intenção principal é trabalhar com processos contínuos, já que equa
 
 ## Processo de Bernoulli em tempo finito
 
-Vamos começar com um processo de Bernoulli em um tempo discreto e finito $I = \{1, 2, \ldots, N}$, onde $N \in \mathbb{N}$. Há dois estados possíveis, digamos $\Sigma = \{0, 1\}$, indicando, por exemplo, o resultado do lançamento de uma moeda ("coroa" ou "cara") ou de um teste de laboratório ("negativo", "positivo").
+Vamos começar com um processo de Bernoulli em um tempo discreto e finito $I = \{1, 2, \ldots, N\}$, onde $N \in \mathbb{N}$. Há dois estados possíveis, digamos $\Sigma = \{0, 1\}$, indicando, por exemplo, o resultado do lançamento de uma moeda ("coroa" ou "cara") ou de um teste de laboratório ("negativo", "positivo").
 
 A cada passo, um *teste de Bernoulli* é feito, dando um resultado $1$, com probabilidade $p$, ou $0$, com probabilidade $1 - p$, onde $0 < p \leq 1$. Assumimos que os testes sejam independentes, ou seja, o resultado do teste em um passo $n_1$ independe do resultado do teste no instante $n_2$.
 
@@ -56,13 +56,13 @@ onde $i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}$.
 
 ## Urna sem recomposição
 
-Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de cada bolinha. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
+Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de cada bolinha. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
 
 Na primeira retirada, temos números iguais de bolinhas de cada cor, de modo que a probabilidade de cada uma sair é igual:
 $$
 \mathbb{P}(X_1 = 1) = \mathbb{P}(X_1 = 2) = \frac{1}{2}.
 $$
-Já nas retiradas seguintes, no entanto, as chances de cada uma vão mudar de acordo com quais bolinhas já foram retiradas. No segundo passo, se a primeira bolinha retirada foi preta, então sobraram cinco bolinhas vermelhas e quatro pretas, de maneira que as chances de tirarmos outra preta são de 4/9 enquanto que as chances de tirarmos uma vermelha são de 5/9. Analogamente caso a primeira bolinha retirada tenha sido vermelha. Podemos escrever isso em termos de probabilidades condicionadas:
+Já nas retiradas seguintes, no entanto, as chances de cada uma vão mudar de acordo com quais bolinhas já foram retiradas. No segundo passo, se a primeira bolinha retirada foi preta, então sobraram cinco bolinhas vermelhas e quatro pretas, de maneira que as chances de tirarmos outra preta são de 4/9 enquanto que as chances de tirarmos uma vermelha são de 5/9. Analogamente, caso a primeira bolinha retirada tenha sido vermelha. Podemos escrever isso em termos de probabilidades condicionadas:
 $$
 \mathbb{P}(X_2 = 1 | X_1 = 1) = \mathbb{P}(X_2 = 2 | X_1 = 2) = \frac{4}{9}, \quad \mathbb{P}(X_2 = 1 | X_1 = 2) = \mathbb{P}(X_2 = 2 | X_1 = 1) = \frac{5}{9}.
 $$
