@@ -98,6 +98,9 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.7. Gerando números aleatórios no computador</a></li>
+    </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
     </div>
@@ -105,13 +108,16 @@
     <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos e o processo de Bernoulli</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.3. Funções de distribuição</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.3. Cadeias de Markov</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.4. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.4. Funções de distribuição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
@@ -172,7 +178,11 @@
 <p>e nos dá a probabilidade de termos uma realização menor ou igual a um dado valor \(x\).</p>
 <p>Vejamos alguns exemplos.</p>
 <h3 id="teste_de_bernoulli"><a href="#teste_de_bernoulli" class="header-anchor">Teste de Bernoulli</a></h3>
-<p>Uma <strong>variável aleatória de Bernoulli</strong> com parâmetro \(p\), \(0\leq p \leq 1\), possui dois resultados possíveis, \(0\) e \(1\), com probabilidades \(p\) e \(1-p\), respectivamente. Ou seja, \(J = 2\), \(x_1 = 0\), \(x_2 = 1\), \(p_1 = p\) e \(p_2 = 1 - p\). Pode ser exemplificado como o resultado do lançamento de uma moeda, com \(0\) e \(1\) representando &quot;cara&quot; e &quot;coroa&quot;, respectivamente. O resultado de teste de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser &quot;positivo&quot; ou &quot;negativo&quot;, podendo, também, ser modelado por uma variável de Bernoulli.</p>
+<p>Uma <strong>variável aleatória de Bernoulli</strong> com parâmetro \(p\), \(0\leq p \leq 1\), possui dois resultados possíveis, \(0\) e \(1\), com probabilidades \(p\) e \(1-p\), respectivamente. Ou seja, \(J = 2\), \(x_1 = 0\), \(x_2 = 1\), \(p_1 = p\) e \(p_2 = 1 - p\). Pode ser exemplificado como o resultado do lançamento de uma moeda, com \(1\) e \(0\) representando &quot;cara&quot; e &quot;coroa&quot;, respectivamente. O resultado de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser &quot;positivo&quot; ou &quot;negativo&quot;, podendo, também, ser modelado por uma variável de Bernoulli.</p>
+<p>Denotamos a distribuição de Bernoulli com probabilidade de sucesso \(p\) &#40;e.g. \(\mathbb{P}(X = 1) = p\)&#41; por \(\mathrm{Bernoulli}(p)\). Assim, uma variável aleatória de Bernouille é indicada por</p>
+\[
+X \sim \mathrm{Bernoulli}(p).
+\]
 
 <img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoulli.svg" alt="">
 
@@ -189,6 +199,10 @@
 <p>No caso de um dado viciado, ou, mais geralmente, de \(n\) testes de Bernoulli com parâmetro \(p\), \(0\leq p \leq 1\), então a probabilidade de \(i\) sucessos é</p>
 \[
   \mathbb{P}(X = i) = p^i(1-p)^{n-i} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
+\]
+<p>Denotamos essa distribuição binomial por \(B(n, p)\). Assim,</p>
+\[
+X \sim B(n, p).
 \]
 
 <img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomial.svg" alt="">
@@ -233,7 +247,7 @@
         </div>
     
 
-    Last modified: April 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 25, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

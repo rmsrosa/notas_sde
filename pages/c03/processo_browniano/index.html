@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Relações entre equações estocásticas e equações aleatórias</title>  
+   <title>Processo estocástico Browniano</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -134,88 +134,37 @@
   <div class="books-content">
 
     
-      <div class="navbar">
-    <p id="nav">
-<span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano <kbd>←</kbd></a>
-</span>
-<span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
-</span>
-    </p>
-</div>
-</br></br>
-
+      
     
 
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">1.6. Relações entre equações estocásticas e equações aleatórias</a></h1>
-<p>Em muitas situações, é possível transformar uma equação estocástica em uma aleatória, e vice-versa.</p>
-<h2 id="de_equações_aleatórias_para_estocásticas"><a href="#de_equações_aleatórias_para_estocásticas" class="header-anchor">De equações aleatórias para estocásticas</a></h2>
-<p>Considere uma equação diferencial aleatória da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">Title not found</a></h1>
+<p>Com a idealização acima, é natural postularmos que o movimento Browniano, ou seja, o movimento da partícula, seja modelado por um processo estocástico \(\{B_t\}_{t\geq 0}\) dado pelas condições abaixo, com algum \(D > 0\):</p>
+<ol>
+<li><p>\(B_0 = 0\);</p>
+</li>
+<li><p>\(B_t \sim \mathcal{N}(0, 2Dt)\), \(t > 0\);</p>
+</li>
+<li><p>Para \(0 \leq t < s < q < r\), os incrementos \(B_s - B_t\) e \(B_r - B_q\) são independentes</p>
+</li>
+<li><p>Para \(0 \leq t < s\), o incremento \(B_s - B_t\) é uma variável aleatória com distribuição normal, média zero e variância \(2D(t - s)\), ou seja, \(B_s - B_t \sim \mathcal{N}(0, 2D(t - s)) = \sqrt{2D(t-s)}\mathcal{N}(0, 1)\).</p>
+</li>
+<li><p>Quase todo caminho amostral é Hölder contínuo, com expoente de Hölder menor mas arbitrariamente próximo de 1/2.</p>
+</li>
+</ol>
+<p>A primeira condição indica que a posição inicial da partícula é, quase certamente, \(x = 0\).</p>
+<p>A segunda condição é a de que existe um \(D>0\) tal que a posição da partícula em instantes \(t>0\) seja dada pela normal com média zero e variância \(2Dt\). Na prática, o valor de \(D\) irá depender do fluido, do estado termodinâmico do fluido e da partícula.</p>
+<p>A terceira condição diz que os incrementos são independentes entre si, ou seja, um incremento \(B_q - B_r\) é independente de outros incrementos \(B_s - B_t\).</p>
+<p>A quarta condição diz que cada incremento também é normal, com média zero e variância dada de acordo com o passo temporal, \(2D(t-s)\), nos dando um desvio padrão proporcional à raiz quadrada do passo temporal.</p>
+<p>A última condição diz que, com probabilidade um em \(\omega\), cada caminho amostral \(x(t, \omega)\) é tal que, para \(0<\theta < 1/2\) e \(T > 0\), existe \(C > 0\) tal que</p>
 \[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t),
+  |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
 \]
-<p>e suponha que o processo \(\{\Lambda_t\}_t\) seja solução de uma equação diferencial estocástica</p>
-\[
-\mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
-\]
-<p>para algum outro processo \(\{W_t\}_t\).</p>
-<p>Assim, formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,</p>
-\[
-\mathrm{d}\left(\begin{matrix} X_t \\ \Lambda_t \end{matrix}\right) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t) \end{matrix}\right) + \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t) \end{matrix}\right)\mathrm{d}W_t.
-\]
-<p>Este é um sistema da forma</p>
-\[
-\mathrm{d}U_t = F(t, U_t) + \Sigma(t, U_t)\mathrm{d}W_t,
-\]
-<p>onde </p>
-\[
-U_t = \left(\begin{matrix} X_t \\ \Lambda_t\end{matrix}\right), \quad F(t, U_t) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t)\end{matrix}\right), \quad \Sigma(t, U_t) = \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t)\end{matrix}\right).
-\]
-<p>Observe que o processo \(Y_t\) entra, na equação aleatória, como um termo externo, enquanto que, na equação estocástica, ela é uma variável dependente; uma &quot;incógnita&quot; da equação.</p>
-<h2 id="de_estocásticas_com_ruído_aditivo_para_aleatórias"><a href="#de_estocásticas_com_ruído_aditivo_para_aleatórias" class="header-anchor">De estocásticas com ruído aditivo para aleatórias</a></h2>
-<p>Considere uma equação diferencial estocástica com <strong>ruído aditivo</strong>, na forma</p>
-\[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
-\]
-<p>Observe que, aqui, estamos assumindo que o termo de ruído \(\sigma(t)\) é independente do processo \(X_t\), daí o termo &quot;aditivo&quot;. Caso contrário, sendo \(\sigma = \sigma(t, X_t)\), o termo de rúido é denominado <strong>multiplicativo.</strong></p>
-<p>No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o <strong>processo de Ornstein-Uhlenbeck</strong> \(\{O_t\}_t\), que satisfaz à equação diferencial estocástica</p>
-\[
-\mathrm{d}O_t = - O_t \mathrm{d}t + \sigma(t) \mathrm{d}W_t.
-\]
-<p>Considerando um &quot;mudança de variáveis&quot; para o processo \(Z_t = X_t - O_t\), temos, formalmente,</p>
-\[
-\mathrm{d}Z_t = \mathrm{d}X_t - \mathrm{d}O_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t + O_t \mathrm{d}t - \sigma(t) \mathrm{d}W_t = (f(t, X_t) + O_t)\mathrm{d}t,
-\]
-<p>o que nos leva, finalmente, à equação diferencial aleatória</p>
-\[
-\mathrm{d}Z_t = (f(t, Z_t + O_t) + O_t)\mathrm{d}t,
-\]
-<p>ou seja,</p>
-\[
-\frac{\mathrm{d}Z_t}{\mathrm{d}t} = g(t, Z_t, O_t),
-\]
-<p>com</p>
-\[
-g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
-\]
-<p>O caso multiplicativo em que o ruído é linear, i.e. \(\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t\), também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.</p>
+<p>para todo \(0 \leq s, t \leq T\). Naturalmente, \(C\) pode depender de \(\omega\), \(\theta\) e \(T\).</p>
 
-    <div class="navbar">
-    <p id="nav">
-<span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano <kbd>←</kbd></a>
-</span>
-<span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
-</span>
-    </p>
-</div>
-</br></br>
-
+    
 
 
 <div class="page-foot">
