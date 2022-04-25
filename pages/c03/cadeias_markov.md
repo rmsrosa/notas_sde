@@ -47,6 +47,11 @@ $$
 P_n = P = \left[ \begin{matrix} p & 1 - p \\ p & 1 - p \end{matrix} \right].
 $$
 
+No caso de um objeto poder ser colocado em uma de duas possíveis posições, digamos $1$ e $2$, e que jogamos uma moeda viciada para decidir se objeto troca de posição, com probabilidade $p$, e se mantém na posição, com probabilidade $1 - p$, então a matriz de transição é
+$$
+P_n = P = \left[ \begin{matrix} p & 1 - p \\ 1 - p & p \end{matrix} \right].
+$$
+
 No caso do passeio aleatório, temos um espaço de estados enumerável, $\Omega = \mathbb{Z}$, e as probabilidades de transição são
 $$
 p_{ij} = \mathbb{P}(X_{n+1} = j | X_n = i) = \begin{cases} 1/2, & j = i \pm 1, \\ 0, & \text{caso contrário} \end{cases}.
@@ -108,9 +113,9 @@ V_1 = \{(6s, 4s, 3s); \;s\in \mathbb{R}\}.
 $$
 O autovalor com elementos não negativos e com norma $1$ é
 $$
-v = \frac{1}{13}[6, 4, 3] \approx [0.4615, 0.3077, 0.1338].
+v = \frac{1}{13}[6, 4, 3] \approx [0.4615, 0.3077, 0.2308].
 $$
-Assim, a distribuição com probabilidades de aproximadamente $46,15\%$ de sol, $30,77\%$ de nuvens e $13,38\%$ de chuva é uma distribuição estacionária. (Ela está associada a média de dias ensolarados, nublados e chuvosos coletados para a análise). Ou seja, se em um determinado dia essas são as probabilidades para a previsão para o dia seguinte, então as previsões a longo prazo serão iguais a essa. Podemos interpretar $v$ como sendo essa lei de distribuição de probabilidades.
+Assim, a distribuição com probabilidades de aproximadamente $46,15\%$ de sol, $30,77\%$ de nuvens e $23,08\%$ de chuva é uma distribuição estacionária. (Ela está associada a média de dias ensolarados, nublados e chuvosos coletados para a análise). Ou seja, se em um determinado dia essas são as probabilidades para a previsão para o dia seguinte, então as previsões a longo prazo serão iguais a essa. Podemos interpretar $v$ como sendo essa lei de distribuição de probabilidades.
 
 Como, nesse caso, há um único autovalor igual a $1$ e os outros dois são estritamente menores do que $1$, então a previsão "assintótica" é igual a essa obtida pela análise de autovalores: $\lim_{k\rightarrow \infty} wP^{n + k} \sim v$.
 
@@ -128,6 +133,8 @@ $$
 \textrm{(d) } P = \left[ \begin{matrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0\end{matrix} \right]
 $$
 
-2. Mostre que quando $1$ é o único autovalor com valor absoluto igual a $1$, de uma matriz de Markov $P$, então $uP^k$ converge para um autovetor associado a esse autovalor. Se o autoespaço desse autovalor tiver dimensão um, então esse limite independe do vetor inicial $u$, desde que ela esteja associada a uma distribuição de probabilidades, ou seja, que seja um vetor com norma $1$.
+2. Mostre que quando $1$ é o único autovalor com valor absoluto igual a $1$, de uma matriz de Markov $P$, então $uP^k$ converge para um autovetor associado a esse autovalor. Se o autoespaço desse autovalor tiver dimensão um, então esse limite independe do vetor inicial $u$, desde que ele esteja associada a uma distribuição de probabilidades, ou seja, que seja um vetor com norma $1$.
 
 3. Encontre os autoespaços associados aos autovalores das matrizes (c) e (d) do exercício acima, obtenha as distribuições de probabilidade associadas a esses autovalores e observe que existem distribuições cíclicas, ou seja, que se repetem após dois ou mais passos.
+
+4. Sejá $P$ é a matriz de transição de uma cadeia de Markov discreta em $I = \mathbb{N}$ e temporalmente homogênea, com um número finito $J$ de estados possíveis. Seja $v = (v_j)_{j = 1, \ldots, J}$ uma distribuição inicial de probabilidades para o processo. Mostre que cada $vP^n$ é uma distribuição de probabilidades, i.e. $0 \leq (vP_n)_j \leq 1$ e $\sum_j (vP^n)_j = 1$, para cada $n\in \mathbb{N}$, e que não pode haver autovalor da matriz de transição com módulo maior do que $1$.
