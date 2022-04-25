@@ -6,7 +6,7 @@
 $$
 \mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
 $$
-Processos de Markov são chamados de *sem memória*. Estados futuros são determinados pelo estada atual, independentemente dos estados assumidos no passado. Processos de Markov podem ser contínuos ou discretos e o espaço de estados também pode ser contínuo ou discreto.
+Processos de Markov são chamados de *sem memória*. Processos de Markov podem ser contínuos ou discretos e o espaço de estados também pode ser contínuo ou discreto.
 
 O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O modelo de Einstein para o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os passos anteriores.
 
