@@ -94,7 +94,7 @@ savefig(joinpath(@OUTPUT, "pmfbinomialcum.svg"))
 
 ### Tempo de espera e a distribuição geométrica
 
-Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após $n$ tentativas fracassadas. Ou seja, em $n$ tentativas, temos insucesso nos primeiros $n-1$ testes e sucesso apenas no último teste. Se a chance de sucesso é $p$ e de fracasso é de $1-p$, com $0 < p \leq 1$, então temos probabilidade $(1-p)^{n-1}$ de insucessos nos $n$ primeiros testes e $p$ de sucesso no último teste, ou seja,
+Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após $n$ tentativas frustradas. Ou seja, em $n$ tentativas, temos insucesso nos primeiros $n-1$ testes e sucesso apenas no último teste. Se a chance de sucesso é $p$ e a de fracasso é $1-p$, com $0 < p \leq 1$, então temos probabilidade $(1-p)^{n-1}$ de insucessos nos $n$ primeiros testes e $p$ de sucesso no último teste, ou seja,
 $$
 \mathbb{P}(X = n) = (1-p)^{n-1}p
 $$
@@ -131,5 +131,56 @@ savefig(joinpath(@OUTPUT, "pmfgeometricacum.svg"))
 ```
 \fig{pmfgeometricacum}
 
-## Variávels aleatórias contínuas
+A distribuição geométrica é a única distribuição enumerável "sem memória". Ou seja, se $\mathcal{P}$ é uma probabilidade cujo espaço de eventos é $\Sigma = \mathbb{N}$ e é tal que
+$$
+\mathbb{P}(X \geq m + n | X \geq m) = \mathbb{P}(X \geq n), \qquad \forall m, n \in \mathbb{N},
+$$
+então $\mathbb{P}(X = n)$ é a distribuição geométrica
+$$
+\mathbb{P}(X = n) = (1 - p)^{n-1}p,
+$$
+onde
+$$
+p = \mathbb{P}(X = 1).
+$$
 
+A demonstração desse fato faz uso da fórmula para distribuição condicionada
+$$
+\mathbb{P}(X > m + n | X > m) = \frac{\mathbb{P}(\{X > m + n\} \cap \{X > m\})}{\mathbb{P}(X > m)}.
+$$
+Como $n \geq 1$, temos $\{X > m + n\} \subset \{X > m\}$, de modo que
+$$
+\mathbb{P}(X > n) = \mathbb{P}(X > m + n | X > m) = \frac{\mathbb{P}(X > m + n)}{\mathbb{P}(X > m)}.
+$$
+Ou seja,
+$$
+\mathbb{P}(X > m + n) = \mathbb{P}(X > n)\mathbb{P}(X > m).
+$$
+Em particular, temos a recursão
+$$
+\mathbb{P}(X > n + 1) = \mathbb{P}(X > n)\mathbb{P}(X > 1),
+$$
+cuja solução é
+$$
+\mathbb{P}(X > n) = \mathbb{P}(X > 1)^n.
+$$
+Além disso, como $\Sigma = \mathbb{N}$ e definindo $p = \mathbb{P}(X = 1)$, temos
+$$
+\mathbb{P}(X > 1) = 1 - \mathbb{P}(X = 1) = 1 - p.
+$$
+Portanto,
+$$
+\mathbb{P}(X > n) = (1 - p)^n.
+$$
+Daí, tiramos que
+$$
+\mathbb{P}(X = 1) = \mathbb{P}(X < 1) = 1 - \mathbb{P}(X \geq 2) = 1 - p
+$$
+e, para $n = 2, \ldots,$
+$$
+\mathbb{P}(X = n) = \mathbb{P}(X > n) - \mathbb{P}(X > n - 1) = (1 - p)^n - (1 - p)^{n - 1} = (1 - p)^{n - 1}(1 - p - 1) = (1 - p)^{n - 1}p.
+$$
+Assim, obtemos a distribuição geométrica
+$$
+\mathbb{P}(X = n) = (1 - p)^{n - 1}p, \qquad \forall n\in \mathbb{N}.
+$$
