@@ -64,7 +64,7 @@ $$
 \end{cases}
 $$
 
-Sabendo a posição da partícula no instante $n$ nos dá a distribuição de probabilidades para a posiçãm em $n+1$ como
+Saber a posição da partícula no instante $n$ nos dá a distribuição de probabilidades para a posiçãm em $n+1$, o que podemos escrever na forma
 $$
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
 $$
@@ -88,4 +88,40 @@ $$
 Podemos escrever isso em termos de probabilidade condicionada, em função de todas as retiradas passadas:
 $$
 \mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{N - \#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
+$$
+
+Isso não nos impede de calcularmos a probabilidade de termos um certo resultado sem sabermos estados anteriores. Basta somarmos todas as possibilidades até o momento desejado. Ou seja, podemos contar todas as possibilidades de todas as bolas retiradas terem sido vermelhas, depois de todas menos um, até nenhuma.
+
+Por exemplo, vamos buscar encontrar $\mathbb{P}(X_2 = 1)$. Temos
+$$
+\mathbb{P}(X_2 = 1) = \mathbb{P}(X_2 = 1 | X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_2 = 1 | X_1 = 2)\mathbb{P}(X_1 = 2) = \frac{4}{9}\times \frac{1}{2} + \frac{5}{9}\times\frac{1}{2} = \frac{1}{2}.
+$$
+Da mesma forma, $\mathbb{P}(X_2 = 2) = 1/2$. Agora, quando a $X_3$, temos
+$$
+\mathbb{P}(X_3 = 1) = \mathbb{P}(X_3 = 1 | X_2 = 1)\mathbb{P}(X_2 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 2)\mathbb{P}(X_2 = 2).
+$$
+Temos, ainda,
+$$
+\mathbb{P}(X_3 = 1 | X_2 = 1) = \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 2)\mathbb{P}(X_1 = 2) \\
+= \frac{3}{8}\times\frac{1}{2} + \frac{4}{8}\times \frac{1}{2} = \frac{7}{16}
+$$
+e
+$$
+\mathbb{P}(X_3 = 1 | X_2 = 2) = \mathbb{P}(X_3 = 1 | X_2 = 2, X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 2, X_1 = 2)\mathbb{P}(X_1 = 2) \\
+= \frac{4}{8}\times\frac{1}{2} + \frac{5}{8}\times \frac{1}{2} = \frac{9}{16}.
+$$
+Logo,
+$$
+\mathbb{P}(X_3 = 1) = \frac{7}{16}\frac{1}{2} + \frac{9}{16}\frac{1}{2} = \frac{1}{2}.
+$$
+Analogamente,
+$$
+\mathbb{P}(X_3 = 2) = \frac{1}{2}.
+$$
+
+De fato, $\mathbb{P}(X_n = 1) = \mathbb{P}(X_n = 2) = 1/2$, para qualquer $n = 1, \ldots, 2N$. Basta pensar que, por simetria (as probabilidades devem ser as mesmas para cada cor de bolinha, já que não há viés para nenhuma delas), $\mathbb{P}(X_n = 1) = \mathbb{P}(X_n = 2)$. Além disso, a soma delas deve ser $1$. Portanto, a única opção é cada uma ter probabilidade meio.
+
+Observe, então, que as seguintes probabilidades são diferentes:
+$$
+\mathbb{P}(X_3 = 1) = \frac{1}{2}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1) = \frac{4}{9}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1) = \frac{3}{8}.
 $$
