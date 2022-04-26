@@ -200,7 +200,7 @@ X_n \sim \mathrm{Bernoulli}(p).
   0, & |m| > n \text{ e/ou $m$ e $n$ com paridades diferentes.}
 \end{cases}
 \]
-<p>Sabendo a posição da partícula no instante \(n\) nos dá a distribuição de probabilidades para a posiçãm em \(n+1\) como</p>
+<p>Saber a posição da partícula no instante \(n\) nos dá a distribuição de probabilidades para a posiçãm em \(n+1\), o que podemos escrever na forma</p>
 \[
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
 \]
@@ -221,6 +221,38 @@ X_n \sim \mathrm{Bernoulli}(p).
 <p>Podemos escrever isso em termos de probabilidade condicionada, em função de todas as retiradas passadas:</p>
 \[
 \mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{N - \#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
+\]
+<p>Isso não nos impede de calcularmos a probabilidade de termos um certo resultado sem sabermos estados anteriores. Basta somarmos todas as possibilidades até o momento desejado. Ou seja, podemos contar todas as possibilidades de todas as bolas retiradas terem sido vermelhas, depois de todas menos um, até nenhuma.</p>
+<p>Por exemplo, vamos buscar encontrar \(\mathbb{P}(X_2 = 1)\). Temos</p>
+\[
+\mathbb{P}(X_2 = 1) = \mathbb{P}(X_2 = 1 | X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_2 = 1 | X_1 = 2)\mathbb{P}(X_1 = 2) = \frac{4}{9}\times \frac{1}{2} + \frac{5}{9}\times\frac{1}{2} = \frac{1}{2}.
+\]
+<p>Da mesma forma, \(\mathbb{P}(X_2 = 2) = 1/2\). Agora, quando a \(X_3\), temos</p>
+\[
+\mathbb{P}(X_3 = 1) = \mathbb{P}(X_3 = 1 | X_2 = 1)\mathbb{P}(X_2 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 2)\mathbb{P}(X_2 = 2).
+\]
+<p>Temos, ainda,</p>
+\[
+\mathbb{P}(X_3 = 1 | X_2 = 1) = \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 2)\mathbb{P}(X_1 = 2) \\
+= \frac{3}{8}\times\frac{1}{2} + \frac{4}{8}\times \frac{1}{2} = \frac{7}{16}
+\]
+<p>e</p>
+\[
+\mathbb{P}(X_3 = 1 | X_2 = 2) = \mathbb{P}(X_3 = 1 | X_2 = 2, X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 2, X_1 = 2)\mathbb{P}(X_1 = 2) \\
+= \frac{4}{8}\times\frac{1}{2} + \frac{5}{8}\times \frac{1}{2} = \frac{9}{16}.
+\]
+<p>Logo,</p>
+\[
+\mathbb{P}(X_3 = 1) = \frac{7}{16}\frac{1}{2} + \frac{9}{16}\frac{1}{2} = \frac{1}{2}.
+\]
+<p>Analogamente,</p>
+\[
+\mathbb{P}(X_3 = 2) = \frac{1}{2}.
+\]
+<p>De fato, \(\mathbb{P}(X_n = 1) = \mathbb{P}(X_n = 2) = 1/2\), para qualquer \(n = 1, \ldots, 2N\). Basta pensar que, por simetria &#40;as probabilidades devem ser as mesmas para cada cor de bolinha, já que não há viés para nenhuma delas&#41;, \(\mathbb{P}(X_n = 1) = \mathbb{P}(X_n = 2)\). Além disso, a soma delas deve ser \(1\). Portanto, a única opção é cada uma ter probabilidade meio.</p>
+<p>Observe, então, que as seguintes probabilidades são diferentes:</p>
+\[
+\mathbb{P}(X_3 = 1) = \frac{1}{2}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1) = \frac{4}{9}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1) = \frac{3}{8}.
 \]
 
     <div class="navbar">
@@ -245,7 +277,7 @@ X_n \sim \mathrm{Bernoulli}(p).
         </div>
     
 
-    Last modified: April 25, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
