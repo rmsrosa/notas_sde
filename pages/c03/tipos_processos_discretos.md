@@ -63,7 +63,7 @@ Esse processos, chamados simplesmente de *iid*, ou *i.i.d.*, ou *I.I.D.*, são a
 
 Como vimos, o processo de Bernoulli é independente e identicamente distribuído.
 
-Um processo pode ser independente sem ser identicamente distribuído. De fato, pense em um processo de Bernoulli em que a cada passo temos um teste de Bernoulli com probabilidades diferentes, digamos $X_n \sim Bernoulli(p_n)$, com $p_n$ distintos. Por exemplo, jogamos, alternadamente, um dado viciado e um dado não viciado.
+Um processo pode ser independente sem ser identicamente distribuído. De fato, pense em um processo de Bernoulli em que a cada passo temos um teste de Bernoulli com probabilidades diferentes, digamos $X_n \sim \mathrm{Bernoulli}(p_n)$, com $p_n$ distintos. Por exemplo, jogamos, alternadamente, um dado viciado e um dado não viciado.
 
 Um processo também pode ser identicamente distribuído sem ser independente. Por exemplo, digamos que, a cada mês, eu faça um sorteio, sempre do mesmo modo, para escolher uma certa quantidade de números para jogar na loteria e eu que eu repita os números a cada semana daquele mês. A probabilidade de um dos números ser igual a três é a mesma independe da semana. E as chances de eu jogar o número três na primeira semana de julho são as mesmas tendo eu jogado três na terceira semana de março ou não. Mas se um dos números jogados na primeira semana de julho for três, então certamente o três será jogado novamente na terceira semana de julho. Os números jogados em um mesmo mês não são independentes entre si.
 
@@ -73,4 +73,35 @@ Novamente, o nome já diz, por si só, o que é um processo com **passos indepen
 
 ## Processos estacionários
 
-Um processo é dito estacionário
+Um processo $\{X_t\}_{t\in I}$ é dito **estacionário** quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer $t_1, \ldots, t_n \in I$ e $\tau>0$ tais que $t_1 + \tau, \ldots, t_n + \tau \in I$, as distribuições conjuntas de $X_{t_1}, \ldots, X_{t_n}$ e $X_{t_1 + \tau}, \ldots, X_{t_n + \tau}$ são iguais, o que pode ser expresso por
+$$
+\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n),
+$$
+para eventos quaisquer $E_1, \ldots, E_n \in \mathcal{E}$.
+
+Em particular, as suas distribuições simples $X_{t + \tau} \sim X_t$ são idênticas, ou seja, processos estacionários são necessariamente identicamente distribuídos. Mas não precisam ser independentes. De fato, considere o processo de Bernoulli $\{X_n\}_{n\in \mathbb{N}}$ e defina $Y_n = X_n + X_{n + 1}$, ou seja, $Y_n$ soma os resultados de dois lançamentos consecutivos, em uma série de lançamentos. A distribuição de $Y_n$ é sempre a mesma, igual à binomial $B(2, p)$. Mas $Y_{n+1}$ não é independente de $Y_n$.
+
+Por outro lado, qualquer processo *i.i.d.* é estacionário. De fato, temos, trivialmente, que, como cada realização é independente,
+$$
+\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1 + \tau} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n + \tau} \in E_n).
+$$
+Além disso, como são identicamente distribuídos, cada $\mathbb{P}(X_{t_j + \tau} \in E_j) = \mathbb{P}(X_{t_j} \in E_j)$. Usando isso e, novamente, a independência das realizações,
+$$
+\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n).
+$$
+Nesse caso, podemos ir além e deduzir que essa distribuição conjunta  é $\mathbb{P}(X_t \in E_1) \times \cdots \times \mathbb{P}(X_t \in E_n)$, independente de $t$.
+
+## Processos estacionários no sentido fraco
+
+Pedir que um processo seja estacionário é, invariavelmente, pedir muito. Em várias situações, temos uma condição mais fraca, onde apenas parte das informações estatísticas de um processo são estacionárias, a saber, o valor médio e a autocorrelação. Mais precisamente, dizemos que um processo $\{X_t\}_{t\in I}$ é **fracamente estacionário**, ou **estacionário no sentido fraco**, quando
+$$
+\mathbb{E}(X_t) \text{ é independente de } t\in I,
+$$
+e
+$$
+\forall t_1, t_2\in I, \;\mathbb{E}(X_{t_1 + \tau} X_{t_2 + \tau}) \text{ é independente de } \tau > 0, \;t_1 + \tau, t_2 + \tau \in I.
+$$
+
+## Exercícios
+
+1. Mostre que, se $\{X_n\}_n$ é um processo *i.i.d.* e $k \in \mathbb{N}$, o processo $Y_n = X_n + \cdots + X_{n + k}$ é estacionário mas não é *i.i.d.*.
