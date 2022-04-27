@@ -69,6 +69,26 @@ $$
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
 $$
 
+```julia:caminho_aleatorio
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+N = 100+1
+M = 40
+nn = 0:N-1
+X = Array{Int}(undef, N, M)
+rng = Xoshiro(123)
+X[1, :] .= 0
+for j in 2:N
+    X[j, :] .= X[j-1, :] .+ rand(rng, (-1:1), M)
+end
+plot(X, nn, xlims = (-div(N+1,2), div(N+1,2)), ylims = (-1, N+1), xaxis = "posição", yaxis = "passo", title = "Caminhos amostrais de um caminho aleatóro", titlefont = 12, label = false, linetype=:steppre, size = (600,600), color=:navyblue)
+plot!(X[:,1], nn, xlims = (-div(N+1,2), div(N+1,2)), ylims = (-1, N+1), title = "Caminhos amostrais de um caminho aleatóro", titlefont = 10, label = false, linetype=:steppre, size = (600,600), color=:red, linewidth=2)
+savefig(joinpath(@OUTPUT, "caminho_aleatorio.svg"))
+```
+\fig{caminho_aleatorio}
+
 ## Urna sem recomposição
 
 Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de cada bolinha. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
@@ -90,7 +110,7 @@ $$
 \mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{N - \#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
 $$
 
-Isso não nos impede de calcularmos a probabilidade de termos um certo resultado sem sabermos estados anteriores. Basta somarmos todas as possibilidades até o momento desejado. Ou seja, podemos contar todas as possibilidades de todas as bolas retiradas terem sido vermelhas, depois de todas menos um, até nenhuma.
+Isso não nos impede de calcularmos a probabilidade de termos um certo resultado sem sabermos estados anteriores. Basta somarmos todas as possibilidades até o momento desejado.
 
 Por exemplo, vamos buscar encontrar $\mathbb{P}(X_2 = 1)$. Temos
 $$
@@ -125,3 +145,50 @@ Observe, então, que as seguintes probabilidades são diferentes:
 $$
 \mathbb{P}(X_3 = 1) = \frac{1}{2}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1) = \frac{4}{9}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1) = \frac{3}{8}.
 $$
+
+## Contagem binomial
+
+O processo aleatório de **contagem binomial** é obtido "contando-se" o número de sucessos de um processo de Bernoulli. Se $\{X_n\}_{n\in \mathbb{N}}$ é um processo de Bernoulli com probabilidade de sucesso $p$, $0 < p \leq 1$, então o processo $\{W_n\}_{n\in \mathbb{N}}$ de contagem binomial pode ser escrito por
+$$
+W_n = \sum_{j=1}^n X_n.
+$$
+O número de sucesso em $n$ tentativas binárias é dado pela distribuição binomial,
+$$
+W_n \sim B(n, p),
+$$
+ou seja,
+$$
+\mathbb{P}(W_n = k) = p^k(1 - p)^{n-k}\left(\begin{matrix} n \\ k \end{matrix}\right).
+$$
+O processo de Bernoulli pode ser obtido da contagem binomial através de
+$$
+X_n = W_n - W_{n-1}, \quad n \in \mathbb{N},
+$$
+com
+$$
+W_0 = 0
+$$
+O espaço de eventos da contagem binomial é, naturalmente, $\Sigma = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$ e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não-negativos, $\Omega = {\mathbb{Z}^*}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}$.
+
+```julia:contagem_binomial
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+p = 0.4
+N = 40
+M = 10
+nn = 1:N
+X = Array{Int}(undef, N, M)
+rng = Xoshiro(123)
+X[1, :] = rand(rng, M) .< p
+for j in 2:N
+    X[j, :] .= X[j-1, :] .+ (rand(rng, M) .< p )
+end
+plot(nn, X, xlims = (0, N+1), ylims = (-1, N+1), title = "Caminhos amostrais de uma contagem binomial com p = $p", titlefont = 10, label = false, linetype=:steppost)
+savefig(joinpath(@OUTPUT, "contagem_binomial_caminhos.svg"))
+```
+\fig{contagem_binomial_caminhos}
+
+O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação.
+
