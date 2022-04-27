@@ -30,7 +30,7 @@ Nesse caso, podemos escrever
 $$
 X \sim \textrm{Uniforme}(1, 2, \ldots, N),
 $$
-onde $\textrm{Uniforme}(1, 2, \ldots, N)$ é a distribuição uniforme em $\Sigma = \{1, 2, \ldots, N\}$.
+onde $\textrm{Uniforme}(\Sigma) = \textrm{Uniforme}(\{1, 2, \ldots, N\})$ é a distribuição uniforme em $\Sigma = \{1, 2, \ldots, N\}$.
 
 ## Teste de Bernoulli
 
