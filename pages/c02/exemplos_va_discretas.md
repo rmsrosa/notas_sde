@@ -20,7 +20,20 @@ e nos dá a probabilidade de termos uma realização menor ou igual a um dado va
 
 Vejamos alguns exemplos.
 
-### Teste de Bernoulli
+
+## Variável aleatória uniforme
+
+Quando o espaço de estados é finito, digamos $\Sigma = \{1, 2, \ldots, N\}$, onde $N\in \mathbb{N}$, uma **variável aleatória uniforme** em $\Sigma$ é a variável aleatória em que cada estado tem chances iguais de ser realizado. Ou seja, nesse caso de $N$ estados, temos
+$$
+\mathbb{P}(X = k) = \frac{1}{N}, \quad \forall k = 1, 2, \ldots, N.
+$$
+Nesse caso, podemos escrever
+$$
+X \sim \textrm{Uniforme}(1, 2, \ldots, N),
+$$
+onde $\textrm{Uniforme}(1, 2, \ldots, N)$ é a distribuição uniforme em $\Sigma = \{1, 2, \ldots, N\}$.
+
+## Teste de Bernoulli
 
 Uma **variável aleatória de Bernoulli** com parâmetro $p$, $0\leq p \leq 1$, possui dois resultados possíveis, $0$ e $1$, com probabilidades $p$ e $1-p$, respectivamente. Ou seja, $J = 2$, $x_1 = 0$, $x_2 = 1$, $p_1 = p$ e $p_2 = 1 - p$. Pode ser exemplificado como o resultado do lançamento de uma moeda, com $1$ e $0$ representando "cara" e "coroa", respectivamente. O resultado de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser "positivo" ou "negativo", podendo, também, ser modelado por uma variável de Bernoulli.
 
@@ -47,7 +60,7 @@ savefig(joinpath(@OUTPUT, "pmfbernoullicum.svg"))
 ```
 \fig{pmfbernoullicum}
 
-### Número de sucessos e a distribuição binomial
+## Número de sucessos e a distribuição binomial
 
 Podemos, também, jogar uma moeda $n$ vezes e contarmos o número de vezes em que o resultado é "cara", por exemplo. A probabilidade de não termos nenhuma cara é $1/2^n$, pois devemos ter exatamente $n$ coroas lançadas, sendo que cada uma tem probabilidade 1/2 de ocorrer. A probabilidade de termos exatamente uma cara é $n/2^n$, pois a cara pode vir em qualquer um dos $n$ lançamentos. Mais geralmente, temos um número
 $$
@@ -92,7 +105,7 @@ savefig(joinpath(@OUTPUT, "pmfbinomialcum.svg"))
 ```
 \fig{pmfbinomialcum}
 
-### Tempo de espera e a distribuição geométrica
+## Tempo de espera e a distribuição geométrica
 
 Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após $n$ tentativas frustradas. Ou seja, em $n$ tentativas, temos insucesso nos primeiros $n-1$ testes e sucesso apenas no último teste. Se a chance de sucesso é $p$ e a de fracasso é $1-p$, com $0 < p \leq 1$, então temos probabilidade $(1-p)^{n-1}$ de insucessos nos $n$ primeiros testes e $p$ de sucesso no último teste, ou seja,
 $$
