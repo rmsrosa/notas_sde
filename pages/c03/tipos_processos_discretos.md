@@ -102,7 +102,9 @@ $$
 \forall t_1, t_2\in I, \;\mathbb{E}(X_{t_1 + \tau} X_{t_2 + \tau}) \text{ é finito e independente de } \tau > 0, \;t_1 + \tau, t_2 + \tau \in I.
 $$
 
-Observe a condição desses momentos serem finitos. Por conta disso, não podemos dizer, estritamente, que processos estacionários são fracamente estacionário. Mas qualquer processo estacionário com autocorrelação finita é fracamente estacionário. Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Um processo $X_n \sim Y$ é estacionário mas não é fracamente estacionário.
+Observe a condição desses momentos serem finitos. Por conta disso, não podemos dizer, estritamente, que processos estacionários são fracamente estacionário. Mas qualquer processo estacionário com autocorrelação finita é fracamente estacionário.
+
+Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Um processo estacionário tal que $X_n = Y$, $\forall n$, não é fracamente estacionário.
 
 ## Exercícios
 

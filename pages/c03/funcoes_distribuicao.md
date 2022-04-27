@@ -2,6 +2,8 @@
 
 # {{ get_title }}
 
+Como falamos anteriormente, não basta conhecermos a lei do processo em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. Por exemplo, o processo de Bernoulli $X_n$ é tal que, para algum $p$, temos $X_t \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos um processo $Y_n$ com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os processos são diferentes.
+
 Considere uma variável estocástica contínua real $\{X_t\}_{t\in I}$, onde $I$ é um intervalo em $\mathbb{R}$ e o espaço de estados é $\Sigma = \mathbb{R}$, com o espaço de eventos sendo os Borelianos em $\mathbb{R}$.
 
 A função distribuição de probabilidades acumulada no instante $t$ é definida por
