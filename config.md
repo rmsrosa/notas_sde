@@ -54,6 +54,7 @@ menu = [
     "Processos Estocásticos" => [
         "pages/c03/definicao_pe"
         "pages/c03/processos_discretos"
+        "pages/c03/tipos_processos_discretos"
         "pages/c03/cadeias_markov"
         "pages/c03/funcoes_distribuicao"
         "pages/c03/passeioaleatorio_movBrowniano"
