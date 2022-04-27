@@ -52,6 +52,8 @@ A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para algum in
 
 Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição da partícula), isotrópica (não depende da direção/sentido de movimento) e que os passos são independentes entre si (o passo num instante $s > 0$ independe do passo dado em $0 \leq t < s$).
 
+Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^14$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^11$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores é "esquecido", ou seja, os passos, em instantes diferentes, são independentes entre si.
+
 Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
 
 Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t$, uma expansão em série de Taylor nos dá, por um lado
