@@ -21,11 +21,13 @@ $$
 f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
 $$
 
+A função acumulada de probabilidade define unicamente a variável aleatória (a menos de um conjunto de medida nula).
+
 Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma **função de densidade de probabilidades** $p(x)$, de tal forma que
 $$
-\mathbb{P}(X \in E) = = \int \chi_E(x) \int_E p(x) \;\mathrm{d}x,
+\mathbb{P}(X \in E) = \int_\mathbb{R} \chi_E(x) p(x) \;\mathrm{d}x = \int_E p(x) \;\mathrm{d}x,
 $$
-onde $\chi_E(x)$ é a função característica do conjunto $E$, ou seja, vale $1$, se $x\in E$, caso contrário, vale 0.
+onde $\chi_E(x)$ é a função característica de um conjunto $E$, ou seja, vale $1$, se $x\in E$, caso contrário, vale $0$.
 
 Se $E = \{a \leq X \leq b}$, temos, em particular,
 $$
@@ -37,7 +39,7 @@ $$
 p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 $$
 
-Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos
+Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos, formalmente,
 $$
   f(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
 $$
@@ -46,7 +48,7 @@ $$
   p(x) = \frac{\mathrm{d}f(x)}{\mathrm{d}x}.
 $$
 
-Portanto, a função densidade de probabilidades só existe quando a função acumulada de probabilidades é derivável. Esse resultado pode ser generalizado para contexto bem mais gerais de acordo com o **Teorema de Radon-Nikodym**.
+Portanto, a função densidade de probabilidades só existe quando a função acumulada de probabilidades é derivável quase sempre. Esse resultado pode ser generalizado para contexto bem mais gerais de acordo com o **Teorema de Radon-Nikodym**.
 
 Vejamos alguns exemplos de variáveis aleatórias contínuas.
 
