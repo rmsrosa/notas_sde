@@ -91,7 +91,7 @@ savefig(joinpath(@OUTPUT, "caminho_aleatorio.svg"))
 
 ## Urna sem recomposição
 
-Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de cada bolinha. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
+Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de bolinhas da mesma cor. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
 
 Na primeira retirada, temos números iguais de bolinhas de cada cor, de modo que a probabilidade de cada uma sair é igual:
 $$
@@ -190,5 +190,22 @@ savefig(joinpath(@OUTPUT, "contagem_binomial_caminhos.svg"))
 ```
 \fig{contagem_binomial_caminhos}
 
-O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação.
+O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação. Digamos que, em uma determinada rede, em um determinado período, as chances de um pacote de dados chegar em um intervalo arbitrário de um milisegundo é de $\%10$. Os pacotes chegam de fontes distintas e com frequência suficiente, de modo que é razoável assumir que as chegadas são independentes entre si. Assim, podemos assumir que a chegada de dados a cada milisegundo é um processo de Bernoulli com probabilidade de sucesso $p = 0.1$. O número de pacotes recebidos em um intervalo de $n$ milisegundos é dado pela contagem binomial $W_n = X_1 + \ldots + X_n$.
 
+O servidor tem uma capacidade limitada de resolver os pacotes. Digamos, então, que o servidor perca pacotes caso recebe mais de 120 pacotes por segundo. Quais as chances do servidor perder algum pacote nesse período?
+
+Um intervalo de um segundo abrange iterações entre $n + 1$ e $n + 1000$, já que cada passo de tempo considerado é de um milisegundo. Ou seja, $W_{n + 1000} - W_n = X_{n + 1} + \cdots + X_{n + 1000}$. Como os incrementos são independentes, temos
+$$
+\mathbb{P}(W_{n + 1000} - W_n > 120) = \mathbb{P}(W_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(W_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
+$$
+
+Logo,
+```julia:pacotes_perdidos
+#hideall
+p = 0.1
+N = 1000
+l = 120
+s = Float64(sum(p^k * (1-p)^(N - k) * binomial(big(N), big(k)) for k in l+1:N))
+println("Há $(100 * round(s, digits = 4))% de chances de algum pacote ser perdido.")
+```
+\output{pacotes_perdidos}
