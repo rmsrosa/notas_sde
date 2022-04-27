@@ -20,7 +20,6 @@ e nos dá a probabilidade de termos uma realização menor ou igual a um dado va
 
 Vejamos alguns exemplos.
 
-
 ## Variável aleatória uniforme
 
 Quando o espaço de estados é finito, digamos $\Sigma = \{1, 2, \ldots, N\}$, onde $N\in \mathbb{N}$, uma **variável aleatória uniforme** em $\Sigma$ é a variável aleatória em que cada estado tem chances iguais de ser realizado. Ou seja, nesse caso de $N$ estados, temos

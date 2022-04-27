@@ -59,7 +59,7 @@ Da mesma forma, um processo contínuo $\{X_t\}_{t\in I}$ tem **passos independen
 
 ## Processos independentes e identicamente distribuídos
 
-Esse processos, chamados simplesmente de *iid*, ou *i.i.d.*, ou *I.I.D.*, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.
+Esse processos, chamados simplesmente de *i.i.d.*, ou *I.I.D.*, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.
 
 Como vimos, o processo de Bernoulli é independente e identicamente distribuído.
 
@@ -93,14 +93,16 @@ Nesse caso, podemos ir além e deduzir que essa distribuição conjunta  é $\ma
 
 ## Processos estacionários no sentido fraco
 
-Pedir que um processo seja estacionário é, invariavelmente, pedir muito. Em várias situações, temos uma condição mais fraca, onde apenas parte das informações estatísticas de um processo são estacionárias, a saber, o valor médio e a autocorrelação. Mais precisamente, dizemos que um processo $\{X_t\}_{t\in I}$ é **fracamente estacionário**, ou **estacionário no sentido fraco**, quando
+Pedir que um processo seja estacionário é, invariavelmente, pedir muito. Em várias situações, apenas parte das informações estatísticas de um processo são estacionárias, a saber, o valor médio e a autocorrelação. Mais precisamente, dizemos que um processo $\{X_t\}_{t\in I}$ é **fracamente estacionário**, ou **estacionário no sentido fraco**, quando
 $$
-\mathbb{E}(X_t) \text{ é independente de } t\in I,
+\mathbb{E}(X_t) \text{ é finito e independente de } t\in I,
 $$
 e
 $$
-\forall t_1, t_2\in I, \;\mathbb{E}(X_{t_1 + \tau} X_{t_2 + \tau}) \text{ é independente de } \tau > 0, \;t_1 + \tau, t_2 + \tau \in I.
+\forall t_1, t_2\in I, \;\mathbb{E}(X_{t_1 + \tau} X_{t_2 + \tau}) \text{ é finito e independente de } \tau > 0, \;t_1 + \tau, t_2 + \tau \in I.
 $$
+
+Observe a condição desses momentos serem finitos. Por conta disso, não podemos dizer, estritamente, que processos estacionários são fracamente estacionário. Mas qualquer processo estacionário com autocorrelação finita é fracamente estacionário. Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Um processo $X_n \sim Y$ é estacionário mas não é fracamente estacionário.
 
 ## Exercícios
 
