@@ -89,9 +89,11 @@ savefig(joinpath(@OUTPUT, "caminho_aleatorio.svg"))
 ```
 \fig{caminho_aleatorio}
 
-## Processo constante
+## Processos decididos na partida
 
-Dada uma variável aleatória $Y$, em um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$, com estados em $(\Sigma, \mathcal{E})$, podemos definir o **processo constante** $X_n == Y$ também em $(\Omega, \mathcal{A}, \mathbb{P})$, ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes $n \mapsto X_n(\omega) = Y(\omega)$, para $\omega\in \Omega$. Sorteamos $Y(\omega)$ inicialmente, de acordo com $\mathbb{P}$, e fazemos $X_n(\omega) = Y(\omega)$ constante ao longo de $n$. Não custa ressaltar que isso não quer dizer apenas que cada $X_n$ tem lei igual a $Y$; isso define $X_n$ para todo $n$ de maneira determinada.
+Esses processos aparecem naturalmente em sistemas determinísticos onde há uma incerteza na condição inicial. Escolhendo-se aleatoriamente o dado inicial, determina-se os estados futuros. Os estados futuros estão unicamente condicionados pelo dado inicial.
+
+Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória $Y$, em um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$, com estados em $(\Sigma, \mathcal{E})$, podemos definir o **processo constante** $X_n == Y$ também em $(\Omega, \mathcal{A}, \mathbb{P})$, ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes $n \mapsto X_n(\omega) = Y(\omega)$, para $\omega\in \Omega$. Sorteamos $Y(\omega)$ inicialmente, de acordo com $\mathbb{P}$, e fazemos $X_n(\omega) = Y(\omega)$ constante ao longo de $n$. Não custa ressaltar que isso não quer dizer apenas que cada $X_n$ tem lei igual a $Y$; isso define $X_n$ para todo $n$ de maneira determinada.
 
 A lei de $\{X_n\}_n$ é denotada, também, por $\mathbb{P}$, com o entendimento de que
 $$
@@ -101,6 +103,41 @@ Em particular, a lei conjunta de probabilidade acumulada $F$ do processo é dada
 $$
 F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{t_n} \leq x_n) = \mathbb{P}(Y \leq \min\{t_1, \ldots, t_n\}) = G(\min\{x_1, \ldots, x_n\}).
 $$
+
+Podemos, também, definir processos não constantes. Por exemplo, $\{X_n\}_{n\in \mathbb{N}}$ dado por
+$$
+X_n = \frac{1}{n} Y.
+$$
+Nesse caso, dada uma amostra $\omega$, obtemos a trajetória, ou caminho amostral, correspondente
+$$
+X_n(\omega) = \frac{1}{n} Y(\omega), \quad n\in \mathbb{N}.
+$$
+A probabilidade de uma observação no instante $t$ é definida pela observação inicial:
+$$
+\mathbb{P}(X_n \in E) = \mathbb{P}(Y \in nE),
+$$
+onde $nE = \{n x; \;\forall x\in E\}$, para um evento qualquer $E\in \mathcal{E}$.
+
+```julia:partida_decaimento
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+mu = 10.0
+sigma = 2.0
+N = 20
+M = 5
+nn = 1:N
+X = Array{Float64}(undef, N, M)
+rng = Xoshiro(321)
+X[1, :] .= 10.0 .+ 2.0 .* randn(rng, M)
+for j in 2:N
+    X[j, :] .= X[1, :] ./ j
+end
+plot(nn, X, xlims = (0, N+1), ylims = (-1, mu + sigma), title = "Caminhos amostrais de um processo X_n = Y/n decidido na partida com Y = N($mu, $(sigma^2))", titlefont = 8, label = false, marker = :circle)
+savefig(joinpath(@OUTPUT, "partida_decaimento.svg"))
+```
+\fig{partida_decaimento}
 
 ## Urna sem recomposição
 
