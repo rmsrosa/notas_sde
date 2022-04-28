@@ -217,6 +217,32 @@ X_n \sim \mathrm{Bernoulli}(p).
 \]
 
 <img src="/notas_sde/assets/pages/c03/processos_discretos/code/output/caminho_aleatorio.svg" alt="">
+<h2 id="processos_decididos_na_partida"><a href="#processos_decididos_na_partida" class="header-anchor">Processos decididos na partida</a></h2>
+<p>Esses processos aparecem naturalmente em sistemas determinísticos onde há uma incerteza na condição inicial. Escolhendo-se aleatoriamente o dado inicial, determina-se os estados futuros. Os estados futuros estão unicamente condicionados pelo dado inicial.</p>
+<p>Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória \(Y\), em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\), com estados em \((\Sigma, \mathcal{E})\), podemos definir o <strong>processo constante</strong> \(X_n == Y\) também em \((\Omega, \mathcal{A}, \mathbb{P})\), ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes \(n \mapsto X_n(\omega) = Y(\omega)\), para \(\omega\in \Omega\). Sorteamos \(Y(\omega)\) inicialmente, de acordo com \(\mathbb{P}\), e fazemos \(X_n(\omega) = Y(\omega)\) constante ao longo de \(n\). Não custa ressaltar que isso não quer dizer apenas que cada \(X_n\) tem lei igual a \(Y\); isso define \(X_n\) para todo \(n\) de maneira determinada.</p>
+<p>A lei de \(\{X_n\}_n\) é denotada, também, por \(\mathbb{P}\), com o entendimento de que</p>
+\[
+\mathbb{P}(X_1 \in E_1, \ldots X_n \in E_n) = \mathbb{P}(Y \in E_1, \ldots, Y \in E_n) = \mathbb{P}(Y \in E_1 \cap \cdots \cap E_n).
+\]
+<p>Em particular, a lei conjunta de probabilidade acumulada \(F\) do processo é dada em função da lei \(G\) de \(Y\) por</p>
+\[
+F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{t_n} \leq x_n) = \mathbb{P}(Y \leq \min\{t_1, \ldots, t_n\}) = G(\min\{x_1, \ldots, x_n\}).
+\]
+<p>Podemos, também, definir processos não constantes. Por exemplo, \(\{X_n\}_{n\in \mathbb{N}}\) dado por</p>
+\[
+X_n = \frac{1}{n} Y.
+\]
+<p>Nesse caso, dada uma amostra \(\omega\), obtemos a trajetória, ou caminho amostral, correspondente</p>
+\[
+X_n(\omega) = \frac{1}{n} Y(\omega), \quad n\in \mathbb{N}.
+\]
+<p>A probabilidade de uma observação no instante \(t\) é definida pela observação inicial:</p>
+\[
+\mathbb{P}(X_n \in E) = \mathbb{P}(Y \in nE),
+\]
+<p>onde \(nE = \{n x; \;\forall x\in E\}\), para um evento qualquer \(E\in \mathcal{E}\).</p>
+
+<img src="/notas_sde/assets/pages/c03/processos_discretos/code/output/partida_decaimento.svg" alt="">
 <h2 id="urna_sem_recomposição"><a href="#urna_sem_recomposição" class="header-anchor">Urna sem recomposição</a></h2>
 <p>Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja \(X_n\) a variável aleatória indicando a cor da bolinha retirada na \(n\)-ésima vez. Digamos que \(X_n = 1\) para uma bolinha vermelha e \(X_n = 2\) para uma bolinha preta. Isso nos leva a um processo estocástico \(\{X_n\}_{n=1, \ldots, 2N}\), em \(I=\{1, \ldots, 2N\}\), onde \(N = 5\) é o número inicial de bolinhas da mesma cor. Podemos considerar o espaço amostral como sendo \(\Omega = \{1, 2\}^N\), com \(\#\Omega = 2^{10} = 1024\) trajetórias possíveis.</p>
 <p>Na primeira retirada, temos números iguais de bolinhas de cada cor, de modo que a probabilidade de cada uma sair é igual:</p>
