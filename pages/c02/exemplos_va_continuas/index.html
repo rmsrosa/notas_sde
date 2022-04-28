@@ -93,7 +93,7 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
@@ -111,10 +111,10 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.3. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.4. Funções de distribuição</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
@@ -180,11 +180,12 @@
 \[
 f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
 \]
+<p>A função acumulada de probabilidade define unicamente a variável aleatória &#40;a menos de um conjunto de medida nula&#41;.</p>
 <p>Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma <strong>função de densidade de probabilidades</strong> \(p(x)\), de tal forma que</p>
 \[
-\mathbb{P}(X \in E) = = \int \chi_E(x) \int_E p(x) \;\mathrm{d}x,
+\mathbb{P}(X \in E) = \int_\mathbb{R} \chi_E(x) p(x) \;\mathrm{d}x = \int_E p(x) \;\mathrm{d}x,
 \]
-<p>onde \(\chi_E(x)\) é a função característica do conjunto \(E\), ou seja, vale \(1\), se \(x\in E\), caso contrário, vale 0.</p>
+<p>onde \(\chi_E(x)\) é a função característica de um conjunto \(E\), ou seja, vale \(1\), se \(x\in E\), caso contrário, vale \(0\).</p>
 <p>Se \(E = \{a \leq X \leq b}\), temos, em particular,</p>
 \[
   \mathbb{P}(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
@@ -193,7 +194,7 @@ f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
 \[
 p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 \]
-<p>Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos</p>
+<p>Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos, formalmente,</p>
 \[
   f(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
 \]
@@ -201,7 +202,7 @@ p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 \[
   p(x) = \frac{\mathrm{d}f(x)}{\mathrm{d}x}.
 \]
-<p>Portanto, a função densidade de probabilidades só existe quando a função acumulada de probabilidades é derivável. Esse resultado pode ser generalizado para contexto bem mais gerais de acordo com o <strong>Teorema de Radon-Nikodym</strong>.</p>
+<p>Portanto, a função densidade de probabilidades só existe quando a função acumulada de probabilidades é derivável quase sempre. Esse resultado pode ser generalizado para contexto bem mais gerais de acordo com o <strong>Teorema de Radon-Nikodym</strong>.</p>
 <p>Vejamos alguns exemplos de variáveis aleatórias contínuas.</p>
 <h2 id="delta_de_dirac"><a href="#delta_de_dirac" class="header-anchor">Delta de Dirac</a></h2>
 <p>Um exemplo fundamental e que não possui função densidade de probabilidades é a distribuição <strong>delta de Dirac</strong>. Em termos de variáveis aleatórias, ela aparece quando o valor é dado com probabilidade 1, e.g. \(X = x_0\) com probabilidade 1. Nesse caso, temos</p>
@@ -273,7 +274,7 @@ f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \
         </div>
     
 
-    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

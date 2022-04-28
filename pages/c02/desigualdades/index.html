@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Desigualdades importantes</title>  
+   <title>Igualdades e desigualdades</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -15,6 +15,8 @@
 
   
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -80,7 +82,7 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
@@ -98,10 +100,10 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.3. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.4. Funções de distribuição</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
@@ -149,7 +151,68 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.5. Desigualdades importantes</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">2.5. Igualdades e desigualdades</a></h1>
+<p>Vejamos alguns resultados importantes em probabilidade que nos serão úteis ao longo da matéria.</p>
+<h2 id="lei_da_probabilidade_condicionada"><a href="#lei_da_probabilidade_condicionada" class="header-anchor">Lei da probabilidade condicionada</a></h2>
+<p>Se \(A\) e \(B\) são conjuntos mensuráveis segundo uma medida de probabilidade \(\mathbb{P}\) e \(\mathbb{P}(B) > 0\), então vale a fórmula</p>
+\[
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}}.
+\]
+<p>Caso \(\mathbb{P}(B) = 0\), então \(\mathbb{P}(A | B)\) é considerado <em>indefinido</em>.</p>
+<p>Por exemplo, seja \(X\) uma variável aleatória com distribuição uniforme em \(\Sigma = \{1, 2, \ldots, 9\}\). Desses, \(\{2, 4, 6, 8\}\) são pares e \(\{3, 6, 9\}\) são múltiplos de \(3\). Assim,</p>
+\[
+\mathbb{P}(X \textrm{ é par}) = \frac{4}{9} \quad \mathbb{P}(X \textrm{ é múltiplo de 3}) = \frac{3}{9} = \frac{1}{3}, \quad \mathbb{P}(X \textrm{ é par e múltiplo de 3}) = \frac{1}{9}.
+\]
+<p>Agora, sabendo-se que \(X\) é múltiplo de \(3\), quais as chances de \(X\) ser par? Naturalmente, temos uma única possibilidade em três: \(\{6\}\) em \(\{3, 6, 9\}\), ou seja,</p>
+\[
+\mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{1}{3}.
+\]
+<p>Agora, usando a lei de probabilidade condicionada,</p>
+\[
+\mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{\mathbb{P}(X \textrm{ é par e múltiplo de 3})}{\mathbb{P}(X \textrm{ é múltiplo de 3})} = \frac{\displaystyle\frac{1}{9}}{\displaystyle\frac{1}{3}} = \frac{3}{9} = \frac{1}{3}.
+\]
+<p>E quais as chances de \(X\) ser múltiplo de três dado que é par?</p>
+<h2 id="eventos_independentes"><a href="#eventos_independentes" class="header-anchor">Eventos independentes</a></h2>
+<p>Quando as chances de um evento \(A\) acontecer independe de um outro evento \(B\), podemos expressar isso por</p>
+\[
+\mathbb{P}(A | B) = \mathbb{P}(A).
+\]
+<p>Pela lei de probabilidade condicionada, se \(\mathbb{P}(B) > 0\), temos, então, que</p>
+\[
+\mathbb{P}(A) = \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)},
+\]
+<p>ou seja,</p>
+\[
+\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B).
+\]
+<p>Se \(\mathbb{P}(B) = 0\), a igualdade acima é trivialmente válida.</p>
+<p>Se tivermos dois dados de seis faces, \(A\) e \(B\), com faces numeradas de \(1\) a \(6\), e \(X\) é a variável aleatória obtida pelo resultado do lançamento de um dos dados escolhidos aleatoriamente com igual probabilidade, então as chances de tirarmos \(3\) independe da escolha do dado. Já se um dos dados tem apenas quatro faces, numeradas de \(1\) a \(3\), então as chances de tirarmos \(3\) depende da escolha do dado.</p>
+<h2 id="lei_da_probabilidade_total"><a href="#lei_da_probabilidade_total" class="header-anchor">Lei da probabilidade total</a></h2>
+<p>Um resultado importante em probabilidade pode ser interpretado como uma estratégia de <em>dividir para conquistar</em>. Digamos que \(\mathbb{P}\) seja uma medida de probabilidade em um espaço amostral \(\Omega\). Suponha que queiramos saber a medida de um determinado conjunto \(A\). Suponha, ainda, que seja razoável dividir o espaço em subconjuntos disjuntos \(B_1, \ldots, B_k\), ou seja, \(\Omega = \cup_{j = 1}^k B_j\) e \(B_i \cap B_j = \emptyset\), \(i\neq j\), \(i, j = 1, \ldots, k\). Então, vale a <strong>lei de probabilidade total</strong></p>
+\[
+\mathbb{P}(A) = \mathbb{P}(A \cap B_1) + \ldots + \mathbb{P}(A \cap B_2).
+\]
+<p>Juntando com a lei de probabilidade condicionada, podemos escrever</p>
+\[
+\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_2)\mathbb{B_2}.
+\]
+<p>Considerando, novamente, a variável aleatória uniformemente distribuída nos dígitos \(\{1, 2, \ldots, 9\}\), temos</p>
+\[
+\mathbb{P}(X \textrm{ é múltiplo de 3}) = \mathbb{P}(X \textrm{ é par múltiplo de 3}) + \mathbb{P}(X \textrm{ é ímpar múltiplo de 3}) = \frac{1}{9} + \frac{2}{9} = \frac{3}{9} = \frac{1}{3}.
+\]
+<p>Ou, usando probabilidade condicionada,</p>
+\[
+\mathbb{P}(X \textrm{ é múltiplo de 3}) \\
+= \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é par })\mathbb{P}(X \textrm{ é par}) + \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é ímpar })\mathbb{P}(X \textrm{ é ímpar}) \\
+= \frac{1}{4}\times\frac{4}{9} + \frac{2}{5}\times\frac{5}{9} = \frac{1}{9} + \frac{2}{9} = \frac{1}{3}.
+\]
+<h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
+<ol>
+<li><p>Mostre, na lei de probabilidade total, que basta que \(\mathbb{P}(B_1 \cup \cdots \cup B_k) = 1\) e \(\mathbb{P}(B_i \cap B_j) = 0\), para \(i, j = 1, \ldots, k\), com \(i \neq j\).</p>
+</li>
+<li><p>Em um torneio de xadrez, podemos classificar os jogadores em níveis A, B e C. Além de você, há 3 jogadores de nível A, 4 de nível B e 8 de nível C. O seu primeiro oponente é sorteado aleatoriamente dentre esses. As suas chances de vitória são \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível A}) = 0.5\), \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível B}) = 0.65\) e \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível C}) = 0.8\). Quais as suas chances de vitória no primeiro jogo?</p>
+</li>
+</ol>
 
     <div class="navbar">
     <p id="nav">
@@ -173,12 +236,16 @@
         </div>
     
 
-    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     

@@ -93,7 +93,7 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
@@ -111,10 +111,10 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.3. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.4. Funções de distribuição</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
@@ -177,7 +177,17 @@
 \]
 <p>e nos dá a probabilidade de termos uma realização menor ou igual a um dado valor \(x\).</p>
 <p>Vejamos alguns exemplos.</p>
-<h3 id="teste_de_bernoulli"><a href="#teste_de_bernoulli" class="header-anchor">Teste de Bernoulli</a></h3>
+<h2 id="variável_aleatória_uniforme"><a href="#variável_aleatória_uniforme" class="header-anchor">Variável aleatória uniforme</a></h2>
+<p>Quando o espaço de estados é finito, digamos \(\Sigma = \{1, 2, \ldots, N\}\), onde \(N\in \mathbb{N}\), uma <strong>variável aleatória uniforme</strong> em \(\Sigma\) é a variável aleatória em que cada estado tem chances iguais de ser realizado. Ou seja, nesse caso de \(N\) estados, temos</p>
+\[
+\mathbb{P}(X = k) = \frac{1}{N}, \quad \forall k = 1, 2, \ldots, N.
+\]
+<p>Nesse caso, podemos escrever</p>
+\[
+X \sim \textrm{Uniforme}(1, 2, \ldots, N),
+\]
+<p>onde \(\textrm{Uniforme}(\Sigma) = \textrm{Uniforme}(\{1, 2, \ldots, N\})\) é a distribuição uniforme em \(\Sigma = \{1, 2, \ldots, N\}\).</p>
+<h2 id="teste_de_bernoulli"><a href="#teste_de_bernoulli" class="header-anchor">Teste de Bernoulli</a></h2>
 <p>Uma <strong>variável aleatória de Bernoulli</strong> com parâmetro \(p\), \(0\leq p \leq 1\), possui dois resultados possíveis, \(0\) e \(1\), com probabilidades \(p\) e \(1-p\), respectivamente. Ou seja, \(J = 2\), \(x_1 = 0\), \(x_2 = 1\), \(p_1 = p\) e \(p_2 = 1 - p\). Pode ser exemplificado como o resultado do lançamento de uma moeda, com \(1\) e \(0\) representando &quot;cara&quot; e &quot;coroa&quot;, respectivamente. O resultado de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser &quot;positivo&quot; ou &quot;negativo&quot;, podendo, também, ser modelado por uma variável de Bernoulli.</p>
 <p>Denotamos a distribuição de Bernoulli com probabilidade de sucesso \(p\) &#40;e.g. \(\mathbb{P}(X = 1) = p\)&#41; por \(\mathrm{Bernoulli}(p)\). Assim, uma variável aleatória de Bernouille é indicada por</p>
 \[
@@ -187,7 +197,7 @@ X \sim \mathrm{Bernoulli}(p).
 <img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoulli.svg" alt="">
 
 <img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoullicum.svg" alt="">
-<h3 id="número_de_sucessos_e_a_distribuição_binomial"><a href="#número_de_sucessos_e_a_distribuição_binomial" class="header-anchor">Número de sucessos e a distribuição binomial</a></h3>
+<h2 id="número_de_sucessos_e_a_distribuição_binomial"><a href="#número_de_sucessos_e_a_distribuição_binomial" class="header-anchor">Número de sucessos e a distribuição binomial</a></h2>
 <p>Podemos, também, jogar uma moeda \(n\) vezes e contarmos o número de vezes em que o resultado é &quot;cara&quot;, por exemplo. A probabilidade de não termos nenhuma cara é \(1/2^n\), pois devemos ter exatamente \(n\) coroas lançadas, sendo que cada uma tem probabilidade 1/2 de ocorrer. A probabilidade de termos exatamente uma cara é \(n/2^n\), pois a cara pode vir em qualquer um dos \(n\) lançamentos. Mais geralmente, temos um número</p>
 \[
   \left(\begin{matrix} n \\ i \end{matrix}\right) = \frac{n!}{i!(n-i)!}
@@ -208,7 +218,7 @@ X \sim B(n, p).
 <img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomial.svg" alt="">
 
 <img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomialcum.svg" alt="">
-<h3 id="tempo_de_espera_e_a_distribuição_geométrica"><a href="#tempo_de_espera_e_a_distribuição_geométrica" class="header-anchor">Tempo de espera e a distribuição geométrica</a></h3>
+<h2 id="tempo_de_espera_e_a_distribuição_geométrica"><a href="#tempo_de_espera_e_a_distribuição_geométrica" class="header-anchor">Tempo de espera e a distribuição geométrica</a></h2>
 <p>Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após \(n\) tentativas frustradas. Ou seja, em \(n\) tentativas, temos insucesso nos primeiros \(n-1\) testes e sucesso apenas no último teste. Se a chance de sucesso é \(p\) e a de fracasso é \(1-p\), com \(0 < p \leq 1\), então temos probabilidade \((1-p)^{n-1}\) de insucessos nos \(n\) primeiros testes e \(p\) de sucesso no último teste, ou seja,</p>
 \[
 \mathbb{P}(X = n) = (1-p)^{n-1}p
@@ -298,7 +308,7 @@ p = \mathbb{P}(X = 1).
         </div>
     
 
-    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

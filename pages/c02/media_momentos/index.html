@@ -82,7 +82,7 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Desigualdades importantes</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
@@ -100,10 +100,10 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.3. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/funcoes_distribuicao">3.4. Funções de distribuição</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
@@ -140,7 +140,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.5. Desigualdades importantes</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.5. Igualdades e desigualdades</a>
 </span>
     </p>
 </div>
@@ -152,9 +152,24 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.4. Média, variância e outros momentos</a></h1>
+<h2 id="valor_esperado"><a href="#valor_esperado" class="header-anchor">Valor esperado</a></h2>
+<p>O <strong>valor esperado</strong>, ou média, de uma variável aleatória, é como uma média ponderada dos possíveis valores da variável, ponderados pela probabilidade de cada realização. No caso de uma variável discreta \(X\) &#40;finita ou infinita enumerável&#41; com possíveis valores \(\Sigma = \{x_j\}_j\), respectivas probabilidades \(0 \leq p_j \leq 1\), com \(\sum_j p_j = 1\), o valor esperado de \(X\) é</p>
 \[
-\mathbb{E}[g(X)]
+\mathbb{E}[X] = \sum_j x_j p_j.
 \]
+<p>Nem sempre o valor esperado está definido. Por exemplo, considere a variável aleatória que assume valores inteiros com probabilidades dadas pelos termos da série de Euler &#40;normalizada&#41;</p>
+\[
+p_n = \frac{6}{\pi^2 n^2}.
+\]
+<p>Naturalmente,</p>
+\[
+\sum_n p_n = \frac{6}{\pi^2}\sum_{n\in \mathbb{N}}\frac{1}{n^2} = 1,
+\]
+<p>de modo que \(X\) é uma variável aleatória. O seu valor esperado, no entanto, é indefinido, já que</p>
+\[
+\mathbb{E}(X) \stackrel{?}{=} \sum_n p_n n = \frac{6}{\pi^2} \sum_{n\in \mathbb{N}} \frac{1}{n} = \infty
+\]
+<p>é uma série divergente.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -162,7 +177,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.5. Desigualdades importantes</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.5. Igualdades e desigualdades</a>
 </span>
     </p>
 </div>
@@ -178,7 +193,7 @@
         </div>
     
 
-    Last modified: April 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
