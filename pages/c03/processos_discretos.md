@@ -89,6 +89,19 @@ savefig(joinpath(@OUTPUT, "caminho_aleatorio.svg"))
 ```
 \fig{caminho_aleatorio}
 
+## Processo constante
+
+Dada uma variável aleatória $Y$, em um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$, com estados em $(\Sigma, \mathcal{E})$, podemos definir o **processo constante** $X_n == Y$ também em $(\Omega, \mathcal{A}, \mathbb{P})$, ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes $n \mapsto X_n(\omega) = Y(\omega)$, para $\omega\in \Omega$. Sorteamos $Y(\omega)$ inicialmente, de acordo com $\mathbb{P}$, e fazemos $X_n(\omega) = Y(\omega)$ constante ao longo de $n$. Não custa ressaltar que isso não quer dizer apenas que cada $X_n$ tem lei igual a $Y$; isso define $X_n$ para todo $n$ de maneira determinada.
+
+A lei de $\{X_n\}_n$ é denotada, também, por $\mathbb{P}$, com o entendimento de que
+$$
+\mathbb{P}(X_1 \in E_1, \ldots X_n \in E_n) = \mathbb{P}(Y \in E_1, \ldots, Y \in E_n) = \mathbb{P}(Y \in E_1 \cap \cdots \cap E_n).
+$$
+Em particular, a lei conjunta de probabilidade acumulada $F$ do processo é dada em função da lei $G$ de $Y$ por
+$$
+F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{t_n} \leq x_n) = \mathbb{P}(Y \leq \min\{t_1, \ldots, t_n\}) = G(\min\{x_1, \ldots, x_n\}).
+$$
+
 ## Urna sem recomposição
 
 Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja $X_n$ a variável aleatória indicando a cor da bolinha retirada na $n$-ésima vez. Digamos que $X_n = 1$ para uma bolinha vermelha e $X_n = 2$ para uma bolinha preta. Isso nos leva a um processo estocástico $\{X_n\}_{n=1, \ldots, 2N}$, em $I=\{1, \ldots, 2N\}$, onde $N = 5$ é o número inicial de bolinhas da mesma cor. Podemos considerar o espaço amostral como sendo $\Omega = \{1, 2\}^N$, com $\#\Omega = 2^{10} = 1024$ trajetórias possíveis.
