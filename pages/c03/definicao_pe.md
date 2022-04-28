@@ -2,23 +2,43 @@
 
 # {{ get_title }}
 
-Um **processo estocástico** é, essencialmente, uma família de variáveis aleatórias $\{X_t\}_{t\in I}$, indexada por algum conjunto $I$. Usualmente, $t$ representa uma variável temporal e $I$ pode ser contínuo ou discreto.
+Um processo estocástico é, essencialmente, uma família de variáveis aleatórias $\{X_t\}_{t\in I}$, indexada por algum conjunto $I$. Usualmente, $t$ representa uma variável temporal. Vamos considerar, mais especificamente, apenas $I\subset \mathbb{R}$, e em duas situações específicas descritas abaixo.
 
-De acordo com a natureza de $I$, dizemos que é um **processo estocástico discreto** (e.g. $I = \mathbb{Z}$ ou $I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}$) ou um **processo estocástico contínuo** (e.g. $I=\mathbb{R}$ ou $I=[0, \infty)$).
+De acordo com a natureza de $I\subset \mathbb{R}$, dizemos que $\{X_t\}_{t\in I}$ é um **processo estocástico discreto** (e.g. $I = \mathbb{Z}$, ou $I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}$, ou $I = \mathbb{N}$, ou $I = \{(t_1, t_2, \ldots)\; t_j \in \mathbb{R}, \; t_j < t_{j+1}\}$) ou um **processo estocástico contínuo** (e.g. $I=\mathbb{R}$, ou $I=[0, \infty)$, ou qualquer intervalo $I\subset \mathbb{R}$).
 
-Os valores assumidos pelas variáveis aleatórias $X_t$ também podem ser contínuos ou discretos, mas a caracterização acima se refere ao conjunto de índices.
+Os valores assumidos pelas variáveis aleatórias $X_t$ também podem ser contínuos ou discretos, finitos ou infinitos, mas a caracterização acima se refere ao conjunto de índices.
 
-Uma definição mais precisa de um **processo estocástico** requer que as variáveis aleatórias $X_t$ estejam definidas em um mesmo espaço amostral $(\Omega, \mathcal{A}, \mathbb{P})$ e assumindo valores em um mesmo espaço de estados $(\Sigma, \mathcal{E})$.
+A definição acima, porém, é um tanto vaga. Uma definição mais precisa de um **processo estocástico** $\{X_t\}_{t\in I}$ é a de que as variáveis aleatórias $X_t$ são funções definidas em um mesmo **espaço amostral** $(\Omega, \mathcal{A}, \mathbb{P})$ e assumindo valores em um mesmo **espaço de estados** $(\Sigma, \mathcal{E})$.
 
-Para cada $\omega\in \Omega$, a função $t \mapsto X_t(\omega)$ é chamada de um **caminho amostral**, ou **trajetória** ou **realização**. É comum denotarmos um caminho por $x(t, \omega) = X_t(\omega)$.
+Vale ressaltar que a função $X_t$ é uma função determinística, levando cada $\omega \in \Omega$ em um estado $X_t(\omega) \in \Sigma$. A incerteza vem da interpretação de que cada **realização** $X_t(\omega)$, ou cada conjunto de realizações, vem com uma certa probabilidade de ser observado. A análise, em si, é que é probabilística por natureza.
 
-Com as variáveis aleatórias no mesmo espaço amostral, com probabilidade $\mathbb{P}$, podemos representar a probabilidade do processo assumir um determinado valor $e$, em um certo instante $t$, por
+Para cada $\omega\in \Omega$, a função $t \mapsto X_t(\omega)$ é chamada de **trajetória**, ou **caminho amostral**. É comum denotarmos um caminho por $x(t, \omega) = X_t(\omega)$. A distribuição de probabilidade nos dá não apenas a probabilidade de observarmos um determinado valor, em um determinado instante, mas também a probabilidade de observamos toda uma trajetória, ou trajetórias, ou partes dela. 
+
+Com as variáveis aleatórias definidas no mesmo espaço amostral, com medida de probabilidade $\mathbb{P}$, podemos representar a probabilidade do processo assumir um determinado valor $x_1$, em um certo instante $t$, por
 $$
-\mathbb{P}(X_t = e)
+\mathbb{P}(X_t = x_1)
 $$
 
-Vale ressaltar que, agora, a probabilidade $\mathbb{P}$ não está ligada a um único tempo $t$, nem varia com $t$. Ela está ligada a *qualquer* tempo, ou, na verdade, a *todos* os tempos. Uma maneira de pensar em $\mathbb{P}$ é que ela nos dá a probabilidade de *conjuntos de trajetórias*, com $\Omega$ sendo o conjunto de todas as trajetórias possíveis. Mais especificamente, podemos pensar em $\Omega$ como sendo $\Omega = \Sigma^I = \{x:I \rightarrow \Sigma\}$, que é o conjunto de todas as trajetórias $x:I \rightarrow \Sigma$ possíveis, no intervalo de tempo $I$ e assumindo qualquer estado possível em $\Sigma$. Naturalmente, esperamos observar só algumas trajetórias em um dado processo, o que será determinado pela probabilidade de cada trajetória, ou, mais precisamente, da probabilidade de cada conjunto *mensurável* $\mathcal{A} \subset \Omega$ de trajetórias.
+Por sua vez, a probabilidade conjunta de observarmos uma trajetória assumindo estados $x_1, x_2\in \Sigma$, em dois instantes $t_1, t_2 \in I$, por $\mathbb{P}(X_{t_1} = x_1, X_{t_2} = x_2)$. E assim por diante.
 
-Pensando assim, a probabilidade $\mathbb{P}(X_t = e)$ de, em um determinado instante $t\in I$, observamos um certo evento $e$ é a probabilidade $\mathbb{P}(A)$ do conjunto $A = \{x:I \rightarrow \Sigma; \;x(t) = e\}$ de todas as trajetórias que passam por $e$ no instante $t$.
+O conjunto $\Omega$ é um tanto abstrato, podendo ser representado de várias formas possíveis, ou normalmente nem sendo especificado. Mas é instrutivo pensarmos $\Omega$, mais concretamente, como sendo o próprio conjunto $\Omega = \Sigma^I = \{x:I \rightarrow \Sigma\}$ de todas as trajetórias $x:I \rightarrow \Sigma$ possíveis, definidas no intervalo de tempo $I$, e assumindo qualquer estado em $\Sigma$. Naturalmente, esperamos observar só algumas trajetórias em um dado processo, o que será determinado pela probabilidade de cada trajetória, ou, mais precisamente, da probabilidade de cada conjunto *mensurável* $\mathcal{A} \subset \Omega$ de trajetórias.
 
-Por sua vez, a probabilidade conjunta $\mathbb{P}(X_{t_1} = e_1, X_{t_2} = e_2)$, em dois instantes $t_1, t_2 \in I$ e para dois eventos $e_1, e_2\in \Sigma$, é a probabilidade $\mathcal{P}(A)$ do conjunto $A = \{x:I \rightarrow \Sigma; \;x(t_1) = e_1, \;x(t_2) = e_2\}$.
+Pensando assim, a probabilidade $\mathbb{P}(X_t = x_1)$ de, em um determinado instante $t\in I$, observamos um certo evento $x_1$, é a probabilidade $\mathbb{P}(A)$ do conjunto $A = \{x:I \rightarrow \Sigma; \;x(t) = x_1\}$ de todas as trajetórias que passam por $x_1$ no instante $t$.
+
+Por sua vez, a probabilidade conjunta $\mathbb{P}(X_{t_1} = x_1, X_{t_2} = x_2)$, em dois instantes $t_1, t_2 \in I$ e para dois eventos $x_1, x_2\in \Sigma$, é a probabilidade $\mathbb{P}(A)$ do conjunto $A = \{x:I \rightarrow \Sigma; \;x(t_1) = x_1, \;x(t_2) = x_2\}$.
+
+Mais geralmente, a probabilidade $\mathbb{P}$ pode ser caracterizada pelas funções de probabilidade acumuladas (conjuntas). A **função de probabilidade acumulada** no instante $t$ é definida por
+$$
+F_t(x) = \mathbb{P}(X_t \leq x)
+$$
+e as **funções de probabilidade acumulada conjuntas**, por
+$$
+F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{t_n} \leq x_n).
+$$
+
+Por construção, essa família de funções de distribuição $\{F_{t_1, \ldots, t_n}\}_{n\in \mathbb{N}, t_1, \ldots, t_n \in I}$ satisfaz duas condições fundamentais:
+
+1. **Simetria:** Sejam $n\in \mathbb{N}$, $n \geq 2$, e $t_1, \ldots, t_n\in I$. Se $(i_1, \ldots, i_n)$ é uma permutação dos índices $(1, \ldots, n)$, então $F_{t_{i_1}, \ldots, t_{i_n}}(x_{i_1}, \ldots, x_{i_n}) = F_{t_1, \ldots, t_n}(x_1, \ldots, x_n)$, para quaisquer $x_1, \ldots, x_n \in \mathbb{R}$.
+2. **Compatibilidade:** Para $m < n$, $m, n \in \mathbb{N}$, e $t_1, \ldots, t_n \in I$, vale $F_{t_1, \ldots, t_m}(x_1, \ldots, x_m) = F_{t_1, \ldots, t_m, t_{m+1}, \ldots, t_n}(x_1, \ldots, x_m, \infty, \ldots, \infty)$.
+
+Por outro lado, um resultado importante de Kolmogorov, conhecido como o **Teorema Fundamental de Kolmogorov** garante que qualquer família de funções de distribuição satisfazendo as condições de simetria e compatibilidade definem um processo estocástico.
