@@ -14,6 +14,8 @@ Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identic
 
 O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada passo $W_n$ tem distribuição binomial diferente $W_n \sim \textrm{Binomial}(n, p)$.
 
+Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. Por exemplo, o processo de Bernoulli $X_n$ é tal que, para algum $p$, temos $X_t \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos um processo $Y_n$ com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os processos são diferentes.
+
 ## Processos com passos identicamente distribuídos
 
 O processo de contagem binomial não é identicamente distribuído, mas os seus passos $W_{n+1} - W_n = X_{n+1} \sim \textrm{Bernoulli}(p)$ são testes de Bernoulli com a mesma probabilidade de sucesso.
