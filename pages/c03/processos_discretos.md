@@ -249,9 +249,8 @@ $$
 \mathbb{P}(W_{n + 1000} - W_n > 120) = \mathbb{P}(W_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(W_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
 $$
 
-Logo,
+Podemos estimar esse número usando o Teorema Central do Limite, mas também podemos, nesse caso, calculá-lo diretamente no computador:
 ```julia:pacotes_perdidos
-#hideall
 p = 0.1
 N = 1000
 l = 120
