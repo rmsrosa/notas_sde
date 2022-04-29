@@ -143,7 +143,7 @@ savefig(joinpath(@OUTPUT, "pmfgeometricacum.svg"))
 ```
 \fig{pmfgeometricacum}
 
-A distribuição geométrica é a única distribuição enumerável "sem memória". Ou seja, se $\mathcal{P}$ é uma probabilidade cujo espaço de eventos é $\Sigma = \mathbb{N}$ e é tal que
+A distribuição geométrica é a única distribuição enumerável "sem memória". Ou seja, se $\mathbb{P}$ é uma probabilidade cujo espaço de eventos é $\Sigma = \mathbb{N}$ e é tal que
 $$
 \mathbb{P}(X \geq m + n | X \geq m) = \mathbb{P}(X \geq n), \qquad \forall m, n \in \mathbb{N},
 $$
