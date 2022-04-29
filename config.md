@@ -19,7 +19,7 @@ book_licensees = "Ricardo M. S. Rosa"
 
 ## menu variables
 +++
-show_aside = true
+show_aside = false
 show_github = true
 github_repo = "https://github.com/rmsrosa/notas_sde"
 +++
