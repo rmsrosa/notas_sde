@@ -1,4 +1,4 @@
-@def title = "Tipos de processos discretos"
+@def title = "Tipos de processos"
 
 # {{ get_title }}
 
@@ -6,15 +6,15 @@ Podemos classificar os processos aleatórios de várias formas diferentes.
 
 ## Processos identicamente distribuídos
 
-Um processo $\{X_t\}_{t\in I}$ é dito **identicamente distribuído** quando as variáveis aleatórias $X_t$ são identicamente distribuídas, ou seja, quando as leis de probabilidade de cada $X_t$ são iguais entre si.
+Um processo $\{X_t\}_{t\in I}$ é dito **identicamente distribuído** quando as variáveis aleatórias $X_t$ são identicamente distribuídas, ou seja, quando as leis de probabilidade das variáveis $X_t$ são iguais entre si.
 
-Por exemplo, o processo de Bernoulli tem $X_n \sim \textrm{Bernoulli}(p)$, para qualquer $n\in \mathbb{N}$, sendo, portanto, um processo identicamente distribuído.
+Por exemplo, o processo de Bernoulli $\{X_n\}_{n\in\mathbb{N}}$ tem $X_n \sim \textrm{Bernoulli}(p)$, para todo $n\in \mathbb{N}$, sendo, portanto, um processo identicamente distribuído.
 
-Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identicamente distribuído, com $X_n \sim \textrm{Uniform}(1, 2, \ldots, 6),$ para todo $n\in \mathbb{N}$. Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.
+Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identicamente distribuído, com $X_n \sim \textrm{Uniforme}(\Sigma),$ com $\Sigma = \{1, 2, \ldots, 6\}$, para todo $n\in \mathbb{N}$. Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.
 
 O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada passo $W_n$ tem distribuição binomial diferente $W_n \sim \textrm{Binomial}(n, p)$.
 
-Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. Por exemplo, o processo de Bernoulli $X_n$ é tal que, para algum $p$, temos $X_t \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos um processo $Y_n$ com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os processos são diferentes.
+Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli $X_n$ discutido acima é tal que, para algum $p$, vale $X_n \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos o processo constante $Y_n = Y$, onde $Y = \mathrm{Bernoulli}(p)$, ou seja, com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os processos são bem diferentes.
 
 ## Processos com passos identicamente distribuídos
 
@@ -33,14 +33,14 @@ Assim, vemos que o modelo de Einstein para o processo Browniano é um processo e
 
 ## Processos independentes
 
-Um processo $\{X_t\}$ é dito independente quando as variáveis aleatórias $X_t$ são independentes entre si. Ou seja, as chances de $X_{t_1} = x_1$ são independentes de $X_{t_2} = x_2$, em momentos distintos $t_1$ e $t_2$. Podemos escrever isso na forma
+Um processo $\{X_t\}$ é dito independente quando as variáveis aleatórias $X_t$ são independentes entre si. Ou seja, as chances de $X_{t_1} \in E_1$ são independentes de $X_{t_2} \in E_2$, em momentos distintos $t_1$ e $t_2$. Podemos escrever isso na forma
 $$
-\mathbb{P}(X_{t_2} = x_2 | X_{t_1} = x_1) = \mathbb{P}(X_{t_2} = x_2), \quad \forall t_1 \neq t_2.
+\mathbb{P}(X_{t_2} \in E_2 | X_{t_1} \in E_1) = \mathbb{P}(X_{t_2} \in E_2), \quad \forall t_1 \neq t_2.
 $$
 
-O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado momento eu lancei a moeda e obtive cara, isso não vai mudar as probabilidades de eu obter coroa em um futuro lançamento. Mesma coisa com o lançamento sucessivo de um dado.
+O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado lance foi obtido cara, isso não vai mudar as chances de se obter coroa no próximo lançamento. Mesma coisa com lançamentos sucessivos de um dado.
 
-Já o caminho aleatório não é independente, já que as chances de $X_3 = 3$ dependem da posição $X_2$. Mais precisamente,
+Já o caminho aleatório não é independente, pois as chances de termos $X_3 = 3$ dependem da posição $X_2$. Mais precisamente,
 $$
 \mathbb{P}(X_3 = 3 | X_2 = 2) = \frac{1}{2},
 $$
@@ -55,19 +55,25 @@ $$
 
 ## Processos com passos independentes
 
-O caminho aleatório não é idependente, como vimos, mas os seus *passos* são independentes. De fato, as chances de darmos um passo $+1$ ou $-1$ em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os passos $X_{n+1} - X_n$ são independentes entre si. Nesse caso, dizemos que o processo $\{X_n\}_n$ tem **passos independentes.**
+O caminho aleatório não é independente, como vimos, mas os seus *passos* são independentes. De fato, as chances de darmos um passo $+1$ ou $-1$ em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os passos $X_{n+1} - X_n$ são independentes entre si. Nesse caso, dizemos que o processo $\{X_n\}_n$ tem **passos independentes.**
 
-Da mesma forma, um processo contínuo $\{X_t\}_{t\in I}$ tem **passos independentes** quando, para cada $\tau > 0$, as variáveis aleatórias $\{W_t^\tau\}_{t, t+\tau \in I}$, definidas por $W_t^\tau = X_{t + \tau} - X_t$, são idependentes entre si.
+Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **passos independentes** quando, para cada $\tau > 0$, com $t + \tau \in I$, as variáveis aleatórias $\{W_t^\tau\}_{t, t+\tau \in I}$, definidas por $W_t^\tau = X_{t + \tau} - X_t$, são idependentes entre si.
 
 ## Processos independentes e identicamente distribuídos
 
-Esse processos, chamados simplesmente de *i.i.d.*, ou *I.I.D.*, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.
+Esses processos, chamados simplesmente de *i.i.d.*, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.
 
 Como vimos, o processo de Bernoulli é independente e identicamente distribuído.
 
 Um processo pode ser independente sem ser identicamente distribuído. De fato, pense em um processo de Bernoulli em que a cada passo temos um teste de Bernoulli com probabilidades diferentes, digamos $X_n \sim \mathrm{Bernoulli}(p_n)$, com $p_n$ distintos. Por exemplo, jogamos, alternadamente, um dado viciado e um dado não viciado.
 
-Um processo também pode ser identicamente distribuído sem ser independente. Por exemplo, digamos que, a cada mês, eu faça um sorteio, sempre do mesmo modo, para escolher uma certa quantidade de números para jogar na loteria e eu que eu repita os números a cada semana daquele mês. A probabilidade de um dos números ser igual a três é a mesma independe da semana. E as chances de eu jogar o número três na primeira semana de julho são as mesmas tendo eu jogado três na terceira semana de março ou não. Mas se um dos números jogados na primeira semana de julho for três, então certamente o três será jogado novamente na terceira semana de julho. Os números jogados em um mesmo mês não são independentes entre si.
+Um processo também pode ser identicamente distribuído sem ser independente. Por exemplo, digamos que, a cada mês, eu faça um sorteio, sempre do mesmo modo, para escolher uma certa quantidade de números para jogar na loteria e eu que eu repita os números em todas as semanas daquele mês. A probabilidade de um dos números ser igual a três é a mesma independente da semana. E as chances de eu jogar o número três na primeira semana de julho são as mesmas tendo eu jogado três na terceira semana de março ou não. Mas se um dos números jogados na primeira semana de julho for três, então certamente o três será jogado novamente na terceira semana de julho. Os números jogados em um mesmo mês não são independentes entre si.
+
+Um exemplo contínuo é o processo
+$$
+X_t = \cos(t + U), \quad t\in \mathbb{R},
+$$
+onde $U$ é a variável aleatória $U \sim \mathrm{Uniforme}([0, 2\pi])$, i.e. com lei uniforme no intervalo $[0, 2\pi)$. Como o cosseno é periódico com período $2\pi$, essa lei é a mesma em todos os instantes $t\in \mathbb{R}$, ou seja, são identicamente distribuídos. Mas não são independentes.
 
 ## Processos com passos independentes e identicamente distribuídos
 
