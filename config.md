@@ -84,3 +84,7 @@ nbgitpuller_repo = "rmsrosa/notas_sde"
 nbgitpuller_branch = "binderenv"
 binder_application = "lab" 
 +++
+
+## Extras
+
+\newcommand{\env}[2]{@@env @@title #1@@ @@content #2 @@ @@}
