@@ -40,7 +40,7 @@ Uma vez sorteado $Y(\omega)$, temos o caminho amostral determinado por $X_t(\ome
 
 ### Transporte sin(t + U)
 
-Um caso interessante é dado por uma variável aleatória uniforme $U \sim \mathrm{Uniforme}([0, 2\pi))$, com distribuição uniforme em $[0, 2\pi)$, e com $f(t, x) = \sin(t + x)$, ou seja,
+Um caso interessante é dado por uma variável aleatória com distribuição uniforme em $[0, 2\pi)$, $U \sim \mathrm{Unif}([0, 2\pi))$, e com $f(t, x) = \sin(t + x)$, ou seja,
 $$
 X_t = \sin(t + U).
 $$
@@ -64,22 +64,8 @@ savefig(joinpath(@OUTPUT, "processo_sintplusU.svg"))
 
 Como o seno é periódico com período $2\pi$, os processos $X_t$ tem sempre a mesma distribuição:
 $$
-X_t \sim \sin(\mathrm{Uniforme}([0, 2\pi))).
+X_t \sim \sin(\mathrm{Unif}([0, 2\pi))).
 $$
-O processo $\{X_t\}_{t\in \mathbb{R}}$ assume valores em $\mathbb{R}$, mas apenas valores entre $-1 \leq x \leq 1$ são realizáveis. A lei de cada $X_t$ não é uniforme; há mais chances dos valores estarem próximos de $\pm 1$ do que de zero. De fato, $X_t$ segue a distribuição arcoseno:
-$$
-X_t \sim \mathrm{Arcsin}(-1, 1), \quad \forall t\in \mathbb{R},
-$$
-cuja função acumulada de probabilidade é dada por:
-$$
-F_{X_t}(x) = \frac{2}{\pi}\arcsin\sqrt{2x - 1} = \frac{1}{2} + \frac{\arcsin(2x - 1)}{\pi}, \quad \forall t\in \mathbb{R}.
-$$
-
-Para ver isso, observe que
-$$
-F_{X_0}(x) = \mathbb{P}(X_0 \leq x) = \mathbb{P}(\sin(U) \leq x) = 
-$$
-
 
 ```julia:cosuniform
 #hideall
@@ -92,11 +78,31 @@ rng = Xoshiro(123)
 U = 2π * rand(rng, M)
 X_t = cos.(t .+ U)
 
-histogram(X_t, label = false, xaxis = "X_T", yaxis = "contagem", title = "Histograma de X_t = cos(t + U), U ∼ Unif([0, 2π)), com $M realizações", titlefont = 8, bins = 100)
+nbins = 100
+
+histogram(X_t, label = "histograma", xaxis = "X_T", yaxis = "contagem", title = "Histograma e PDF normalizada de X_t = cos(t + U), U ∼ Unif([0, 2π))\ncom $M realizações", titlefont = 8, bins = nbins, legend = :top)
+
+avg_per_bin = 2 * M / nbins # take interval [-1, 1] length into account
+
+plot!(-0.99:0.01:0.99, x -> avg_per_bin_per_length / sqrt(1 - x^2) / π, label = "PDF = (2/π)1/√(1-x^2)")
 
 savefig(joinpath(@OUTPUT, "cosuniform.svg"))
 ```
 \fig{cosuniform}
+
+O processo $\{X_t\}_{t\in \mathbb{R}}$ assume valores em $\mathbb{R}$, mas apenas valores entre $-1 \leq x \leq 1$ são realizáveis. A lei de cada $X_t$ não é uniforme; há mais chances dos valores estarem próximos de $\pm 1$ do que de zero. De fato, $X_t$ segue a distribuição arcoseno. Para ver isso, observe que $\sin(t + u) = \sin( (t + u) \mod 2\pi)$ e que a distribuição de $t + \mathrm{Unif}([0, 2\pi)) \mod 2\pi$ é a própria distribuição $\mathrm{Unif}([0, 2\pi))$. Assim,
+$$
+F_{X_t}(x) = \mathbb{P}(X_t \leq x) = \mathbb{P}(\sin(t + U) \leq x) = \mathbb{P}(\sin(U) \leq x).
+$$
+Como $\sin(U)$ só assume valores entre $-1$ e $1$, temos $F_{X_t}(x) = 0$, para $x < -1$ e $F_{X_t}(x) = 1$, para $x > 1$. Agora, para $-1 \leq x \leq 1,$ podemos usar a simetria do seno e escrever
+$$
+F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
+$$
+Essa distribuição possui a função de densidade de probabilidade
+$$
+\frac{\mathrm{d}}{\mathrm{d} x}F_{X_t}(x) = \frac{1}{\pi}\frac{1}{\sqrt{1 - x^2}}, \quad -1 < x < 1.
+$$
+
 
 ### Transporte cos(Ut)
 
@@ -104,7 +110,7 @@ Um outro exemplo importante é dado por
 $$
 X_t \sim \cos(Ut),
 $$
-onde, novamente, $U \sim \mathrm{Uniforme}([0, 2\pi))$. Cada caminho amostral é um simples cosseno, $t \mapsto X_t(\omega) = \cos(U(\omega)t)$.
+onde, novamente, $U \sim \mathrm{Unif}([0, 2\pi))$. Cada caminho amostral é um simples cosseno, $t \mapsto X_t(\omega) = \cos(U(\omega)t)$.
 
 A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo que esse processo não é independente mas ainda é um processo identicamente distribuído. O mais significativo, no entanto, é que, como a frequência de cada seno é dada aleatoriamente, o conjunto de trajetórias dispersa, a ponto das estatísticas conjuntas serem não triviais. Veremos que esse é, surpreendentemente, um exemplo de um *ruído branco*.
 
