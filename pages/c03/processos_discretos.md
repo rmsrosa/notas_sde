@@ -54,7 +54,7 @@ $$
 $$
 onde $i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}$.
 
-## Caminho aleatório
+## Passeio aleatório
 
 Nesse caso, $I = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$, o conjunto de estados possíveis é $\Sigma = \mathbb{Z}$ e o espaço amostral pode ser tomado como $\Omega = \Sigma^{\mathbb{Z}^*} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}$. Novamente, $\Omega$ é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição $m$, em um determinado instante $n$:
 $$
@@ -69,7 +69,7 @@ $$
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
 $$
 
-```julia:caminho_aleatorio
+```julia:passeio_aleatorio
 #hideall
 using Plots
 using Random
@@ -83,11 +83,11 @@ X[1, :] .= 0
 for j in 2:N
     X[j, :] .= X[j-1, :] .+ rand(rng, (-1:1), M)
 end
-plot(X, nn, xlims = (-div(N+1,2), div(N+1,2)), ylims = (-1, N+1), xaxis = "posição", yaxis = "passo", title = "Caminhos amostrais de um caminho aleatóro", titlefont = 12, label = false, linetype=:steppre, size = (600,600), color=:navyblue)
-plot!(X[:,1], nn, xlims = (-div(N+1,2), div(N+1,2)), ylims = (-1, N+1), title = "Caminhos amostrais de um caminho aleatóro", titlefont = 10, label = false, linetype=:steppre, size = (600,600), color=:red, linewidth=2)
-savefig(joinpath(@OUTPUT, "caminho_aleatorio.svg"))
+plot(X, nn, xlims = (-div(N+1,2), div(N+1,2)), ylims = (-1, N+1), xaxis = "posição", yaxis = "passo", title = "Caminhos amostrais de um passeio aleatóro", titlefont = 12, label = false, linetype=:steppre, size = (600,600), color=:navyblue)
+plot!(X[:,1], nn, xlims = (-div(N+1,2), div(N+1,2)), ylims = (-1, N+1), title = "Caminhos amostrais de um passeio aleatóro", titlefont = 10, label = false, linetype=:steppre, size = (600,600), color=:red, linewidth=2)
+savefig(joinpath(@OUTPUT, "passeio_aleatorio.svg"))
 ```
-\fig{caminho_aleatorio}
+\fig{passeio_aleatorio}
 
 ## Processos decididos na partida
 
