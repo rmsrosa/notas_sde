@@ -82,9 +82,9 @@ nbins = 100
 
 histogram(X_t, label = "histograma", xaxis = "X_T", yaxis = "contagem", title = "Histograma e PDF normalizada de X_t = cos(t + U), U ∼ Unif([0, 2π))\ncom $M realizações", titlefont = 8, bins = nbins, legend = :top)
 
-avg_per_bin = 2 * M / nbins # take interval [-1, 1] length into account
+avg_per_bin = 2 * M / nbins
 
-plot!(-0.99:0.01:0.99, x -> avg_per_bin_per_length / sqrt(1 - x^2) / π, label = "PDF = (2/π)1/√(1-x^2)")
+plot!(-0.99:0.01:0.99, x -> avg_per_bin / sqrt(1 - x^2) / π, label = "PDF = (2/π)1/√(1-x^2)")
 
 savefig(joinpath(@OUTPUT, "cosuniform.svg"))
 ```
@@ -154,14 +154,14 @@ mu2 = -2.0
 sigma2 = 2.0
 
 a = 2.0
-T = 12π / a
+T = 4π / a
 N = 100
 tt = range(0.0, T, length = N)
 
 x = mu1 * cos.(a * tt) .+ mu2 * sin.(a * t)
 sigma = sqrt.(sigma1^2 .* cos.(a * tt) .^2 .+ sigma2^2 .* sin.(a * tt) .^2)
 
-plot(tt, x, ribbon = var, xaxis = "t", yaxis = "x", label = false, title = "Evolução da média e do desvio-padrão de X_t = cos(at)Y_1 + sin(at)Y_2\na = $a e Y1 ∼ N($mu1, $(sigma1^2)), Y2 ∼ N($mu2, $(sigma2^2))", titlefont = 10)
+plot(tt, x, ribbon = sigma, xaxis = "t", yaxis = "x", label = false, title = "Evolução da média e do desvio-padrão de X_t = cos(at)Y_1 + sin(at)Y_2\na = $a e Y1 ∼ N($mu1, $(sigma1^2)), Y2 ∼ N($mu2, $(sigma2^2))", titlefont = 10)
 
 savefig(joinpath(@OUTPUT, "gaussian_dance.svg"))
 ```
