@@ -9,8 +9,6 @@
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
-    <link rel="stylesheet" href="/notas_sde/css/base_showaside.css"/>
-  
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
@@ -100,13 +98,16 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Cadeias de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
@@ -172,8 +173,21 @@
 \mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{\mathbb{P}(X \textrm{ é par e múltiplo de 3})}{\mathbb{P}(X \textrm{ é múltiplo de 3})} = \frac{\displaystyle\frac{1}{9}}{\displaystyle\frac{1}{3}} = \frac{3}{9} = \frac{1}{3}.
 \]
 <p>E quais as chances de \(X\) ser múltiplo de três dado que é par?</p>
+<p>Um outro exemplo importante em que podemos usar probabilidade condicionada é em testes clínicos. Uma caso importante, que ficou em evidência, é na discussão da eficácia de vacinas. Considere um certo número de voluntários, digamos 1000, envolvidos em um certo ensaio clínico. Desses, 500 seguem o tratamento e 500 tomam placebo. Dos que tomam placebo, 20 desenvolvem sintomas da doença. Dos que seguem o tratamento, apenas 5 desenvolvem sintomas. Isso pode ser representado pela tabela a seguir.</p>
+<table><tr><th align="left"></th><th align="center">adoecem &#40;A&#41;</th><th align="center">não adoecem</th></tr><tr><td align="left">tratamento &#40;B&#41;</td><td align="center">5</td><td align="center">495</td></tr><tr><td align="left">placebo</td><td align="center">40</td><td align="center">460</td></tr></table>
+<p>No total, temos \(1000\) voluntários, sendo que \(25\) desse total adoecem e apenas \(5\) seguem o tratamento e adoecem. Denotando por \(A\) o evento de adoecer e por \(B\) o de seguir o tratamento, podemos escrever</p>
+\[
+\mathbb{P}(A \cap B) = \frac{5}{1000}, \quad \mathbb{P}(B) = \frac{500}{1000}.
+\]
+<p>Com isso, podemos obter a probabilidade de alguém adoecer fazendo o tratamento:</p>
+\[
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}} = \frac{\displaystyle \frac{5}{1000}}{\displaystyle \frac{500}{1000}} = \frac{5}{500} = 1\%.
+\]
+<p>Também podemos visualizar isso completando a tabela com os totais:</p>
+<table><tr><th align="left"></th><th align="center">adoecem &#40;A&#41;</th><th align="center">não adoecem</th><th align="center">total</th></tr><tr><td align="left">tratamento &#40;B&#41;</td><td align="center">5</td><td align="center">495</td><td align="center">500</td></tr><tr><td align="left">placebo</td><td align="center">40</td><td align="center">460</td><td align="center">500</td></tr><tr><td align="left">total</td><td align="center">45</td><td align="center">975</td><td align="center">1000</td></tr></table>
+<p>Vemos, diretamente, na primeira coluna, que \(5\) adoceram dentre os \(500\) que fizeram o tratamento, ou seja, há \(5/500 = 1\%\) de chance de adoecer se seguirmos o tratamento. Da mesma forma, sem tratamento, temos \(40/500 = 8\%\) de chances de adoecer. Nesse caso, podemos dizer que o tratamento reduziu de \(8\%\) a \(1\%\) as chances de adoecer. Ou seja, houve uma redução relativa de \((8\% - 1\%)/8\% = 7/8 = 87,5\%\).</p>
 <h2 id="eventos_independentes"><a href="#eventos_independentes" class="header-anchor">Eventos independentes</a></h2>
-<p>Quando as chances de um evento \(A\) acontecer independe de um outro evento \(B\), podemos expressar isso por</p>
+<p>Quando as chances de um evento \(A\) acontecer independem de um outro evento \(B\), podemos expressar isso por</p>
 \[
 \mathbb{P}(A | B) = \mathbb{P}(A).
 \]
@@ -190,11 +204,11 @@
 <h2 id="lei_da_probabilidade_total"><a href="#lei_da_probabilidade_total" class="header-anchor">Lei da probabilidade total</a></h2>
 <p>Um resultado importante em probabilidade pode ser interpretado como uma estratégia de <em>dividir para conquistar</em>. Digamos que \(\mathbb{P}\) seja uma medida de probabilidade em um espaço amostral \(\Omega\). Suponha que queiramos saber a medida de um determinado conjunto \(A\). Suponha, ainda, que seja razoável dividir o espaço em subconjuntos disjuntos \(B_1, \ldots, B_k\), ou seja, \(\Omega = \cup_{j = 1}^k B_j\) e \(B_i \cap B_j = \emptyset\), \(i\neq j\), \(i, j = 1, \ldots, k\). Então, vale a <strong>lei de probabilidade total</strong></p>
 \[
-\mathbb{P}(A) = \mathbb{P}(A \cap B_1) + \ldots + \mathbb{P}(A \cap B_2).
+\mathbb{P}(A) = \mathbb{P}(A \cap B_1) + \ldots + \mathbb{P}(A \cap B_k).
 \]
 <p>Juntando com a lei de probabilidade condicionada, podemos escrever</p>
 \[
-\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_2)\mathbb{B_2}.
+\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_k)\mathbb{B_k}.
 \]
 <p>Considerando, novamente, a variável aleatória uniformemente distribuída nos dígitos \(\{1, 2, \ldots, 9\}\), temos</p>
 \[
@@ -206,11 +220,54 @@
 = \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é par })\mathbb{P}(X \textrm{ é par}) + \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é ímpar })\mathbb{P}(X \textrm{ é ímpar}) \\
 = \frac{1}{4}\times\frac{4}{9} + \frac{2}{5}\times\frac{5}{9} = \frac{1}{9} + \frac{2}{9} = \frac{1}{3}.
 \]
+<p>Seguindo na linha de ensaios clínicos, digamos que haja um novo teste para a detecção de alguma doença endêmica que, estima-se, atinge 1&#37; da população. Ensaios clínicos indicam que o teste possui 96&#37; de acerto, ou seja, que, em cada 100 pessoas com a doença, o teste dá resultado positivo em 96 delas. E que ele tem 0,1&#37; de falsos positivos. Ou seja, de cada 1000 pessoas sem a doença, o teste dá positivo em 1 delas. Se uma pessoa qualquer faz o teste, quais as chances dela testar positivo, independentemente de ter ou não a doença?</p>
+<p>Vejamos. Se \(D\) indica o evento de se ter a doença e \(P\), do evento do teste dar positivo, a lei da probabilidade total nos diz que</p>
+\[
+\mathbb{P}(P) = \mathbb{P}(P | D)\mathbb{P}(D) + \mathbb{P}(P | \neg D)\mathbb{\neg D},
+\]
+<p>onde \(\neg D\) é o complemento de \(D\), ou seja, nesse caso, representa não ter a doença. As informações nos dizem que</p>
+\[
+\mathbb{P}(P | D) = 0.96, \qquad \mathbb{P}(P | \neg D) = 0.001, \qquad \mathbb{P}(D) = 0.01.
+\]
+<p>Além disso,</p>
+\[
+\mathbb{P}(\neg D) = 1 - \mathbb{P}(A) = 0.99.
+\]
+<p>Portanto, as chances de uma pessoa qualquer testar positivo é de</p>
+\[
+\mathbb{P}(P) = 0.96 \times 0.01 + 0.001 \times 0.99 = 0.01059.
+\]
+<p>Ou seja, as chances de uma pessoa qualquer testar positivo são de 1,059&#37;.</p>
+<h2 id="teorema_de_bayes"><a href="#teorema_de_bayes" class="header-anchor">Teorema de Bayes</a></h2>
+<p>Dados dois eventos \(A\) e \(B\) com probabilidade positiva, temos que</p>
+\[
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+\]
+<p>e</p>
+\[
+\mathbb{P}(B | A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}.
+\]
+<p>Substituindo, na primeira identidade, a expressão para \(\mathbb{P}(A \cap B)\) obtida da segunda identidade, obtemos o resultado do <strong>Teorema de Bayes:</strong></p>
+\[
+\mathbb{P}(A | B) = \frac{\mathbb{P}(B | A)\mathbb{P}(A)}{\mathbb{P}(B)}.
+\]
+<p>O Teorema de Bayes tem inúmeras aplicações. Pensemos, novamente, no exemplo do ensaio clínico acima, de um teste com 96&#37; de acerto para alguma doença endêmica que atinge 1&#37; da população, com 0,1&#37; de falsos positivos. Se uma pessoa qualquer testar positivo, quais as chances dela realmente estar com a doença?</p>
+<p>Vejamos. Se \(D\) indica o evento de se ter a doença e \(T\), o evento do teste dar positivo, então a probabilidade de se ter a doença dado que o teste deu positivo é representada por \(\mathbb{P}(D | T)\). De acordo com o Teorema de Bayes, </p>
+\[
+\mathbb{P}(D | T) = \frac{\mathbb{P}(T | D)\mathbb{P}(D)}{\mathbb{P}(T)}.
+\]
+<p>Sabemos que \(\mathbb{P}(T | D) = 0.96\) e que \(\mathbb{P}(D) = 0.01\). Vimos, também, usando a lei da probabilidade total, que \(\mathbb{P}(T) = 0.01059\). Logo,</p>
+\[
+\mathbb{P}(A | B) = \frac{0.96 \times 0.01}{0.01059} \approx 0.9065
+\]
+<p>Ou seja, as chances de alguém que testou positivo realmente ter a doença são de 90,65&#37;.</p>
 <h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
 <ol>
 <li><p>Mostre, na lei de probabilidade total, que basta que \(\mathbb{P}(B_1 \cup \cdots \cup B_k) = 1\) e \(\mathbb{P}(B_i \cap B_j) = 0\), para \(i, j = 1, \ldots, k\), com \(i \neq j\).</p>
 </li>
 <li><p>Em um torneio de xadrez, podemos classificar os jogadores em níveis A, B e C. Além de você, há 3 jogadores de nível A, 4 de nível B e 8 de nível C. O seu primeiro oponente é sorteado aleatoriamente dentre esses. As suas chances de vitória são \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível A}) = 0.5\), \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível B}) = 0.65\) e \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível C}) = 0.8\). Quais as suas chances de vitória no primeiro jogo?</p>
+</li>
+<li><p>No exemplo do teste clínico, suponha, no entanto, que a doença atinge apenas 0,1&#37; da população, mantendo a eficácia do teste em 96&#37; e a taxa de falsos positivos em 0,1&#37;. Encontre as chances de uma pessoa qualquer ser testada positivo e as chances de uma pessoa testada positivo realmente ter a doença. Repita as contas no caso em que a doença atinge 1&#37; e a taxa de falsos positivos sobe para 1&#37;.</p>
 </li>
 </ol>
 
@@ -236,7 +293,7 @@
         </div>
     
 
-    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 02, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

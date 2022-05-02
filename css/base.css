@@ -511,3 +511,27 @@
       padding-top: 2em;
       margin-bottom: 4em;
   }
+
+  .env {
+    margin-top: 1.5em;
+    width: 95%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:  aliceblue;
+    border-radius: 5px;
+    margin-bottom: 1em;
+  }
+  .env .content {
+    padding: 10px;
+    padding-left: 12px;
+  }
+  .env .title{
+    font-size: 105%;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 7px;
+    padding-top: 2px;
+    color: white;
+    background: cornflowerblue;
+  }

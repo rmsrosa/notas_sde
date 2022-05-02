@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Tipos de processos discretos</title>  
+   <title>Tipos de processos</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
-  
-    <link rel="stylesheet" href="/notas_sde/css/base_showaside.css"/>
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
@@ -100,13 +98,16 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Cadeias de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
@@ -137,10 +138,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov"><kbd>→</kbd> 3.4. Cadeias de Markov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov"><kbd>→</kbd> 3.5. Cadeias de Markov</a>
 </span>
     </p>
 </div>
@@ -151,14 +152,14 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">3.3. Tipos de processos discretos</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">3.4. Tipos de processos</a></h1>
 <p>Podemos classificar os processos aleatórios de várias formas diferentes.</p>
 <h2 id="processos_identicamente_distribuídos"><a href="#processos_identicamente_distribuídos" class="header-anchor">Processos identicamente distribuídos</a></h2>
-<p>Um processo \(\{X_t\}_{t\in I}\) é dito <strong>identicamente distribuído</strong> quando as variáveis aleatórias \(X_t\) são identicamente distribuídas, ou seja, quando as leis de probabilidade de cada \(X_t\) são iguais entre si.</p>
-<p>Por exemplo, o processo de Bernoulli tem \(X_n \sim \textrm{Bernoulli}(p)\), para qualquer \(n\in \mathbb{N}\), sendo, portanto, um processo identicamente distribuído.</p>
-<p>Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identicamente distribuído, com \(X_n \sim \textrm{Uniform}(1, 2, \ldots, 6),\) para todo \(n\in \mathbb{N}\). Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.</p>
+<p>Um processo \(\{X_t\}_{t\in I}\) é dito <strong>identicamente distribuído</strong> quando as variáveis aleatórias \(X_t\) são identicamente distribuídas, ou seja, quando as leis de probabilidade das variáveis \(X_t\) são iguais entre si.</p>
+<p>Por exemplo, o processo de Bernoulli \(\{X_n\}_{n\in\mathbb{N}}\) tem \(X_n \sim \textrm{Bernoulli}(p)\), para todo \(n\in \mathbb{N}\), sendo, portanto, um processo identicamente distribuído.</p>
+<p>Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identicamente distribuído, com \(X_n \sim \textrm{Uniforme}(\Sigma),\) com \(\Sigma = \{1, 2, \ldots, 6\}\), para todo \(n\in \mathbb{N}\). Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.</p>
 <p>O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada passo \(W_n\) tem distribuição binomial diferente \(W_n \sim \textrm{Binomial}(n, p)\).</p>
-<p>Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. Por exemplo, o processo de Bernoulli \(X_n\) é tal que, para algum \(p\), temos \(X_t \sim \mathrm{Bernoulli}(p)\), para todo \(n\). Por outro lado, se definirmos um processo \(Y_n\) com medida de probabilidade \(\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p\) e \(\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p\), então também temos cada \(Y_t \sim\mathrm{Bernouilli}(p)\). Mas os processos são diferentes.</p>
+<p>Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli \(X_n\) discutido acima é tal que, para algum \(p\), vale \(X_n \sim \mathrm{Bernoulli}(p)\), para todo \(n\). Por outro lado, se definirmos o processo constante \(Y_n = Y\), onde \(Y = \mathrm{Bernoulli}(p)\), ou seja, com medida de probabilidade \(\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p\) e \(\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p\), então também temos cada \(Y_t \sim\mathrm{Bernouilli}(p)\). Mas os processos são bem diferentes.</p>
 <h2 id="processos_com_passos_identicamente_distribuídos"><a href="#processos_com_passos_identicamente_distribuídos" class="header-anchor">Processos com passos identicamente distribuídos</a></h2>
 <p>O processo de contagem binomial não é identicamente distribuído, mas os seus passos \(W_{n+1} - W_n = X_{n+1} \sim \textrm{Bernoulli}(p)\) são testes de Bernoulli com a mesma probabilidade de sucesso.</p>
 <p>Quando os passos de um processo são variáveis aleatórias identicamente distribuídas, dizemos que é um <strong>processo com passos identicamente distribuídos</strong>.</p>
@@ -169,12 +170,12 @@ W_{n + k} - W_n = \sum_{j = 0}^{k-1} W_{n + j + 1} - W_{n + j} \sim \sum_{j = 0}
 <p>Pensando nisso, o conceito de processo com passos identicamente distribuídos se estende facilmente a processos contínuos. Assim, mais geralmente, dizemos que um processo \(\{X_t\}_{t\in I}\) é um <strong>processo com passos identicamente distribuídos</strong> quando, para cada \(\tau > 0\), as variáveis aleatórias \(\{W_t^\tau\}_{t, t+\tau \in I}\), definidas por \(W_t^\tau = X_{t + \tau} - X_t\), são identicamente distribuídas. A distribuição pode variar com o tamanho do passo, mas não com o momento em que cada passo é dado.</p>
 <p>Assim, vemos que o modelo de Einstein para o processo Browniano é um processo estocástico contínuo com passos identicamente distribuídos.</p>
 <h2 id="processos_independentes"><a href="#processos_independentes" class="header-anchor">Processos independentes</a></h2>
-<p>Um processo \(\{X_t\}\) é dito independente quando as variáveis aleatórias \(X_t\) são independentes entre si. Ou seja, as chances de \(X_{t_1} = x_1\) são independentes de \(X_{t_2} = x_2\), em momentos distintos \(t_1\) e \(t_2\). Podemos escrever isso na forma</p>
+<p>Um processo \(\{X_t\}\) é dito independente quando as variáveis aleatórias \(X_t\) são independentes entre si. Ou seja, as chances de \(X_{t_1} \in E_1\) são independentes de \(X_{t_2} \in E_2\), em momentos distintos \(t_1\) e \(t_2\). Podemos escrever isso na forma</p>
 \[
-\mathbb{P}(X_{t_2} = x_2 | X_{t_1} = x_1) = \mathbb{P}(X_{t_2} = x_2), \quad \forall t_1 \neq t_2.
+\mathbb{P}(X_{t_2} \in E_2 | X_{t_1} \in E_1) = \mathbb{P}(X_{t_2} \in E_2), \quad \forall t_1 \neq t_2.
 \]
-<p>O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado momento eu lancei a moeda e obtive cara, isso não vai mudar as probabilidades de eu obter coroa em um futuro lançamento. Mesma coisa com o lançamento sucessivo de um dado.</p>
-<p>Já o caminho aleatório não é independente, já que as chances de \(X_3 = 3\) dependem da posição \(X_2\). Mais precisamente,</p>
+<p>O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado lance foi obtido cara, isso não vai mudar as chances de se obter coroa no próximo lançamento. Mesma coisa com lançamentos sucessivos de um dado.</p>
+<p>Já o caminho aleatório não é independente, pois as chances de termos \(X_3 = 3\) dependem da posição \(X_2\). Mais precisamente,</p>
 \[
 \mathbb{P}(X_3 = 3 | X_2 = 2) = \frac{1}{2},
 \]
@@ -187,13 +188,18 @@ W_{n + k} - W_n = \sum_{j = 0}^{k-1} W_{n + j + 1} - W_{n + j} \sim \sum_{j = 0}
 \mathbb{P}(X_3 = 3) = \frac{1}{2}\times\frac{1}{2}\times\frac{1}{2} = \frac{1}{8}.
 \]
 <h2 id="processos_com_passos_independentes"><a href="#processos_com_passos_independentes" class="header-anchor">Processos com passos independentes</a></h2>
-<p>O caminho aleatório não é idependente, como vimos, mas os seus <em>passos</em> são independentes. De fato, as chances de darmos um passo \(+1\) ou \(-1\) em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os passos \(X_{n+1} - X_n\) são independentes entre si. Nesse caso, dizemos que o processo \(\{X_n\}_n\) tem <strong>passos independentes.</strong></p>
-<p>Da mesma forma, um processo contínuo \(\{X_t\}_{t\in I}\) tem <strong>passos independentes</strong> quando, para cada \(\tau > 0\), as variáveis aleatórias \(\{W_t^\tau\}_{t, t+\tau \in I}\), definidas por \(W_t^\tau = X_{t + \tau} - X_t\), são idependentes entre si.</p>
+<p>O caminho aleatório não é independente, como vimos, mas os seus <em>passos</em> são independentes. De fato, as chances de darmos um passo \(+1\) ou \(-1\) em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os passos \(X_{n+1} - X_n\) são independentes entre si. Nesse caso, dizemos que o processo \(\{X_n\}_n\) tem <strong>passos independentes.</strong></p>
+<p>Mais geralmente, um processo \(\{X_t\}_{t\in I}\) tem <strong>passos independentes</strong> quando, para cada \(\tau > 0\), com \(t + \tau \in I\), as variáveis aleatórias \(\{W_t^\tau\}_{t, t+\tau \in I}\), definidas por \(W_t^\tau = X_{t + \tau} - X_t\), são idependentes entre si.</p>
 <h2 id="processos_independentes_e_identicamente_distribuídos"><a href="#processos_independentes_e_identicamente_distribuídos" class="header-anchor">Processos independentes e identicamente distribuídos</a></h2>
-<p>Esse processos, chamados simplesmente de <em>i.i.d.</em>, ou <em>I.I.D.</em>, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.</p>
+<p>Esses processos, chamados simplesmente de <em>i.i.d.</em>, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.</p>
 <p>Como vimos, o processo de Bernoulli é independente e identicamente distribuído.</p>
 <p>Um processo pode ser independente sem ser identicamente distribuído. De fato, pense em um processo de Bernoulli em que a cada passo temos um teste de Bernoulli com probabilidades diferentes, digamos \(X_n \sim \mathrm{Bernoulli}(p_n)\), com \(p_n\) distintos. Por exemplo, jogamos, alternadamente, um dado viciado e um dado não viciado.</p>
-<p>Um processo também pode ser identicamente distribuído sem ser independente. Por exemplo, digamos que, a cada mês, eu faça um sorteio, sempre do mesmo modo, para escolher uma certa quantidade de números para jogar na loteria e eu que eu repita os números a cada semana daquele mês. A probabilidade de um dos números ser igual a três é a mesma independe da semana. E as chances de eu jogar o número três na primeira semana de julho são as mesmas tendo eu jogado três na terceira semana de março ou não. Mas se um dos números jogados na primeira semana de julho for três, então certamente o três será jogado novamente na terceira semana de julho. Os números jogados em um mesmo mês não são independentes entre si.</p>
+<p>Um processo também pode ser identicamente distribuído sem ser independente. Por exemplo, digamos que, a cada mês, eu faça um sorteio, sempre do mesmo modo, para escolher uma certa quantidade de números para jogar na loteria e eu que eu repita os números em todas as semanas daquele mês. A probabilidade de um dos números ser igual a três é a mesma independente da semana. E as chances de eu jogar o número três na primeira semana de julho são as mesmas tendo eu jogado três na terceira semana de março ou não. Mas se um dos números jogados na primeira semana de julho for três, então certamente o três será jogado novamente na terceira semana de julho. Os números jogados em um mesmo mês não são independentes entre si.</p>
+<p>Um exemplo contínuo é o processo</p>
+\[
+X_t = \cos(t + U), \quad t\in \mathbb{R},
+\]
+<p>onde \(U\) é a variável aleatória \(U \sim \mathrm{Uniforme}([0, 2\pi])\), i.e. com lei uniforme no intervalo \([0, 2\pi)\). Como o cosseno é periódico com período \(2\pi\), essa lei é a mesma em todos os instantes \(t\in \mathbb{R}\), ou seja, são identicamente distribuídos. Mas não são independentes.</p>
 <h2 id="processos_com_passos_independentes_e_identicamente_distribuídos"><a href="#processos_com_passos_independentes_e_identicamente_distribuídos" class="header-anchor">Processos com passos independentes e identicamente distribuídos</a></h2>
 <p>Novamente, o nome já diz, por si só, o que é um processo com <strong>passos independentes e identicamente distribuídos</strong>. Um exemplo é o caminho aleatório.</p>
 <h2 id="processos_estacionários"><a href="#processos_estacionários" class="header-anchor">Processos estacionários</a></h2>
@@ -232,10 +238,10 @@ W_{n + k} - W_n = \sum_{j = 0}^{k-1} W_{n + j + 1} - W_{n + j} \sim \sum_{j = 0}
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov"><kbd>→</kbd> 3.4. Cadeias de Markov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov"><kbd>→</kbd> 3.5. Cadeias de Markov</a>
 </span>
     </p>
 </div>
@@ -251,7 +257,7 @@ W_{n + k} - W_n = \sum_{j = 0}^{k-1} W_{n + j + 1} - W_{n + j} \sim \sum_{j = 0}
         </div>
     
 
-    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 02, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -9,8 +9,6 @@
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
-    <link rel="stylesheet" href="/notas_sde/css/base_showaside.css"/>
-  
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
@@ -100,13 +98,16 @@
     <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos</a></li>
+    <li><a href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.4. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.5. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Cadeias de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
@@ -137,10 +138,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.5. Do passeio aleatório ao movimento Browniano</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.6. Do passeio aleatório ao movimento Browniano</a>
 </span>
     </p>
 </div>
@@ -151,7 +152,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">3.4. Cadeias de Markov</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">3.5. Cadeias de Markov</a></h1>
 <p><strong>Cadeias de Markov</strong>, também chamadas de <strong>processos de Markov</strong>, são processos estocásticos em que a mudança de estado para um estado futuro, conhecendo-se o estado atual, não depende dos estados passados. Mais precisamente, se \(\{X_t\}_{t\in I}\) é um processo aleatório e \(t_1 < t_2 < \ldots < t_n < t_{n+1}\) pertencem a \(I\), então, dados \(X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n\), temos que \(X_{t_{n+1}}\) só depende de \(X_{t_n}\), ou seja</p>
 \[
 \mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
@@ -272,10 +273,10 @@ v = \frac{1}{13}[6, 4, 3] \approx [0.4615, 0.3077, 0.2308].
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c03/tipos_processos_discretos">3.3. Tipos de processos discretos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.5. Do passeio aleatório ao movimento Browniano</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano"><kbd>→</kbd> 3.6. Do passeio aleatório ao movimento Browniano</a>
 </span>
     </p>
 </div>
@@ -291,7 +292,7 @@ v = \frac{1}{13}[6, 4, 3] \approx [0.4615, 0.3077, 0.2308].
         </div>
     
 
-    Last modified: April 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 02, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
