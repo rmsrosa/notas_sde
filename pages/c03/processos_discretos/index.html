@@ -204,7 +204,7 @@ X_n \sim \mathrm{Bernoulli}(p).
 \mathbb{P}(X_{n_1} = e_1, \ldots X_{n_N} = e_N) = \mathbb{P}(\{x = (x_1, x_2, \ldots) \in \{0, 1\}^\mathbb{N}; \; x_{n_1} = e_1, \ldots, x_{n_N} = e_N) \\ = p^i(1-p)^{N-1},
 \]
 <p>onde \(i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}\).</p>
-<h2 id="caminho_aleatório"><a href="#caminho_aleatório" class="header-anchor">Caminho aleatório</a></h2>
+<h2 id="passeio_aleatório"><a href="#passeio_aleatório" class="header-anchor">Passeio aleatório</a></h2>
 <p>Nesse caso, \(I = \mathbb{Z}^* = \{0, 1, 2, \ldots\}\), o conjunto de estados possíveis é \(\Sigma = \mathbb{Z}\) e o espaço amostral pode ser tomado como \(\Omega = \Sigma^{\mathbb{Z}^*} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}\). Novamente, \(\Omega\) é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição \(m\), em um determinado instante \(n\):</p>
 \[
 \mathbb{P}(X_n = m) = \begin{cases}
@@ -217,7 +217,7 @@ X_n \sim \mathrm{Bernoulli}(p).
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
 \]
 
-<img src="/notas_sde/assets/pages/c03/processos_discretos/code/output/caminho_aleatorio.svg" alt="">
+<img src="/notas_sde/assets/pages/c03/processos_discretos/code/output/passeio_aleatorio.svg" alt="">
 <h2 id="processos_decididos_na_partida"><a href="#processos_decididos_na_partida" class="header-anchor">Processos decididos na partida</a></h2>
 <p>Esses processos aparecem naturalmente em sistemas determinísticos onde há uma incerteza na condição inicial. Escolhendo-se aleatoriamente o dado inicial, determina-se os estados futuros. Os estados futuros estão unicamente condicionados pelo dado inicial.</p>
 <p>Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória \(Y\), em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\), com estados em \((\Sigma, \mathcal{E})\), podemos definir o <strong>processo constante</strong> \(X_n == Y\) também em \((\Omega, \mathcal{A}, \mathbb{P})\), ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes \(n \mapsto X_n(\omega) = Y(\omega)\), para \(\omega\in \Omega\). Sorteamos \(Y(\omega)\) inicialmente, de acordo com \(\mathbb{P}\), e fazemos \(X_n(\omega) = Y(\omega)\) constante ao longo de \(n\). Não custa ressaltar que isso não quer dizer apenas que cada \(X_n\) tem lei igual a \(Y\); isso define \(X_n\) para todo \(n\) de maneira determinada.</p>

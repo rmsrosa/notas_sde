@@ -192,7 +192,7 @@ X_t = \sin(t + U).
 X_t \sim \sin(\mathrm{Unif}([0, 2\pi))).
 \]
 
-<p><span style="color:red;">// Image matching '/assets/pages/c03/processos_continuos/code/cosuniform' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/cosuniform.svg" alt="">
 <p>O processo \(\{X_t\}_{t\in \mathbb{R}}\) assume valores em \(\mathbb{R}\), mas apenas valores entre \(-1 \leq x \leq 1\) são realizáveis. A lei de cada \(X_t\) não é uniforme; há mais chances dos valores estarem próximos de \(\pm 1\) do que de zero. De fato, \(X_t\) segue a distribuição arcoseno. Para ver isso, observe que \(\sin(t + u) = \sin( (t + u) \mod 2\pi)\) e que a distribuição de \(t + \mathrm{Unif}([0, 2\pi)) \mod 2\pi\) é a própria distribuição \(\mathrm{Unif}([0, 2\pi))\). Assim,</p>
 \[
 F_{X_t}(x) = \mathbb{P}(X_t \leq x) = \mathbb{P}(\sin(t + U) \leq x) = \mathbb{P}(\sin(U) \leq x).
@@ -225,7 +225,7 @@ X_t = \cos(at)Y_1 + \sin(at)Y_2, \quad t\in \mathbb{R}.
 \]
 <p>Veremos, em outro momento, que \(\{X_t\}_{t\in \mathbb{R}}\) é um exemplo de <em>processo Gaussiano.</em></p>
 
-<p><span style="color:red;">// Image matching '/assets/pages/c03/processos_continuos/code/gaussian_dance' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/gaussian_dance.svg" alt="">
 <h2 id="processo_de_renovação"><a href="#processo_de_renovação" class="header-anchor">Processo de renovação</a></h2>
 <p>Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos tempo para &quot;saltos&quot; de estado. Mais precisamente, sejam \(\{Y_j\}_{j\in \mathbb{N}}\) variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, \(\mathbb{E}(Y_j) < \infty\). Para cada \(n\), definimos os instantes de salto</p>
 \[
