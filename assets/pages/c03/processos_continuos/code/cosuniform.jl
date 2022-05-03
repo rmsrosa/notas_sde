@@ -2,10 +2,11 @@
 #hideall
 using Random
 using Plots
+rng = Xoshiro(123)
 theme(:ggplot2)
+
 t = 10.0
 M = 100_000
-rng = Xoshiro(123)
 U = 2π * rand(rng, M)
 X_t = cos.(t .+ U)
 

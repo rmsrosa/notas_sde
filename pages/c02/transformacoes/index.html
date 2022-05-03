@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Variáveis aleatórias contínuas</title>  
+   <title>Transformações de variáveis aleatórias</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -152,10 +152,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes"><kbd>→</kbd> 2.4. Transformações de variáveis aleatórias</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/media_momentos"><kbd>→</kbd> 2.5. Média, variância e outros momentos</a>
 </span>
     </p>
 </div>
@@ -166,103 +166,103 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.3. Variáveis aleatórias contínuas</a></h1>
-<p>Uma variável aleatória contínua assume valores em \(\mathbb{R}\). A probabilidade de um determinado valor \(x\) ocorrer é expressa por</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">2.4. Transformações de variáveis aleatórias</a></h1>
+<p>A partir de uma ou mais variáveis aleatórias, podemos obter novas variáveis aleatórias aplicando transformações no espaço de eventos.</p>
+<h2 id="transformação_de_uma_variável_aleatória"><a href="#transformação_de_uma_variável_aleatória" class="header-anchor">Transformação de uma variável aleatória</a></h2>
+<p>Por exemplo, se \(X\) é uma variável aleatória com espaço de eventos \((\Sigma_1, \mathcal{E_1})\) e \(f:(\Sigma_1, \mathcal{E_1}) \rightarrow (\Sigma_2, \mathcal{E_2})\) é uma função mensurável desse espaço em outro, então</p>
 \[
-\mathbb{P}(X = x).
+Y = f(X)
 \]
-<p>Também podemos expressar a probabilidade de um certo conjunto \(E\) de valores ocorrer:</p>
+<p>denota uma variável aleatória com eventos em \(\Sigma_2\). Dado um evento \(E \in \mathcal{E}_2\), a probabilidade de \(Y\) assumir valores em \(E\) é dada por</p>
 \[
-\mathbb{P}(X \in E).
+\mathbb{P}_Y(Y \in E) = \mathbb{P}_X(f(X) \in E) = \mathbb{P}_X(X \in f^{-1}(E)),
 \]
-<p>Em Teoria da Medida, escreveríamos isso simplesmente como \(\mathbb{P}(E)\). De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever</p>
+<p>onde</p>
 \[
-\mathbb{P}(X > 0)
+f^{-1}(E) = \{x \in \Sigma_1; \;f(x)\in E\}.
 \]
-<p>ao invés de \(\mathbb{P}(X \in (0, \infty))\). Aqui, estamos representando \(E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty)\).</p>
-<p>A <strong>função acumulada de probabilidades</strong> é dada, como no caso discreto, por</p>
+<p>Um dos exemplos mais triviais possíveis é</p>
 \[
-f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
+Y = aX + b
 \]
-<p>A função acumulada de probabilidade define unicamente a variável aleatória &#40;a menos de um conjunto de medida nula&#41;.</p>
-<p>Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma <strong>função de densidade de probabilidades</strong> \(p(x)\), de tal forma que</p>
+<p>No caso de \(X\) ser uma distribuição uniforme, então \(Y\) também será uniforme:</p>
 \[
-\mathbb{P}(X \in E) = \int_\mathbb{R} \chi_E(x) p(x) \;\mathrm{d}x = \int_E p(x) \;\mathrm{d}x,
+X \sim \mathrm{Unif}(x_1, x_2) \quad \Longrightarrow \quad Y \sim \mathrm{Unif}(b + ax_1, b + ax_2).
 \]
-<p>onde \(\chi_E(x)\) é a função característica de um conjunto \(E\), ou seja, vale \(1\), se \(x\in E\), caso contrário, vale \(0\).</p>
-<p>Se \(E = \{a \leq X \leq b}\), temos, em particular,</p>
+<p>No caso de \(X\) ser normal, então \(Y\) também será normal:</p>
 \[
-  \mathbb{P}(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
+X \sim \mathcal{N}(\mu, \sigma^2) \quad \Longrightarrow \quad Y \sim \mathcal{N}(b + a\mu_1, a^2\sigma^2).
 \]
-<p>Necessariamente, a função densidade de probabilidades deve ser não-negativa e ter massa 1:</p>
+<h2 id="transformação_de_várias_variáveis_aleatórias"><a href="#transformação_de_várias_variáveis_aleatórias" class="header-anchor">Transformação de várias variáveis aleatórias</a></h2>
+<p>Também podemos fazer isso para várias variáveis aleatórias, digamos \(X_1, \ldots, X_n\), em espaços de probabilidades \((\Omega_j, \mathcal{A}_j, \mathbb{P}_{X_1})\), com valores em \((\Sigma_j, \mathcal{E}_j)\), através de uma função mensurável</p>
 \[
-p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
+f: \Sigma_1 \times \cdots \times \Sigma_2 \rightarrow \Sigma,
 \]
-<p>Observe que a função distribuição de probabilidades é a derivada da função acumulada de probabilidades. De fato, temos, formalmente,</p>
+<p>em um espaço de eventos \((\Sigma, \mathcal{E})\). O caso mais comum é quando todos os espaços de amostras são idênticos e quando todos os espaços de eventos também são idênticos, mas isso não é necessário.</p>
+<p>Com isso, podemos definir uma variável aleatória</p>
 \[
-  f(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^x p(x) \;\mathrm{d}x,
+Y = f(X_1, \ldots, X_n).
 \]
-<p>de maneira que</p>
+<p>Nesse caso, dado um evento \(E\in \mathcal{E}\), temos</p>
 \[
-  p(x) = \frac{\mathrm{d}f(x)}{\mathrm{d}x}.
+\mathbb{P}_Y(Y \in E) = \mathbb{P}((X_1, \dots, X_n) \in f^{-1}(E)),
 \]
-<p>Portanto, a função densidade de probabilidades só existe quando a função acumulada de probabilidades é derivável quase sempre. Esse resultado pode ser generalizado para contexto bem mais gerais de acordo com o <strong>Teorema de Radon-Nikodym</strong>.</p>
-<p>Vejamos alguns exemplos de variáveis aleatórias contínuas.</p>
-<h2 id="delta_de_dirac"><a href="#delta_de_dirac" class="header-anchor">Delta de Dirac</a></h2>
-<p>Um exemplo fundamental e que não possui função densidade de probabilidades é a distribuição <strong>delta de Dirac</strong>. Em termos de variáveis aleatórias, ela aparece quando o valor é dado com probabilidade 1, e.g. \(X = x_0\) com probabilidade 1. Nesse caso, temos</p>
+<p>onde \(\mathbb{P}\) se refere à probabilidade conjunta \(\mathbb{P} = \mathbb{P}_1 \times \cdots \times \mathbb{P}_n\), na \(\sigma\)-algebra \(\mathcal{A} = \mathcal{A}_1 \times \cdots \mathcal{A}_n\) gerada no espaço produto \(\Omega = \Omega_1 \times \cdots \times \Omega_n\).</p>
+<p>De fato, este pode ser visto como um caso particular do primeiro, considerando-se a variável aleatória vetorial \(X = (X_1, \ldots, X_n)\) em \((\Omega, \mathcal{A}, \mathbb{P})\), com \(f:\Sigma_1 \times \cdots \times \Sigma_n \rightarrow \Sigma\).</p>
+<h2 id="combinação_linear_de_distribuições_normais"><a href="#combinação_linear_de_distribuições_normais" class="header-anchor">Combinação linear de distribuições normais</a></h2>
+<p>Como exemplo, sejam \(X_1\) e \(X_2\) duas distribuições normais independentes, digamos \(X_1, X_2 \sim \mathcal{N}(0, 1)\). Definimos</p>
 \[
-\mathbb{P}(X = x_0) = 1, \qquad \mathbb{P}(X \neq x_0) = 0.
+X = a_1 X_1 + a_2 X_2,
 \]
-<p>A distribuição de probabilidades associada a essa variável é exatamente a delta de Dirac no ponto \(x_0\), denotada por \(\delta_{x_0}\). Ou seja,</p>
+<p>onde \(a_1, a_2 \in \mathbb{R}\). Dados \(\omega = (\omega_1, \omega_2)\) no espaço amostral \(\Omega_1 \times \Omega_2\), temos uma realização</p>
 \[
-X \sim \delta_{x_0}.
+X(\omega) = a_1 X_1(\omega_1) + a_2 X(\omega_2).
 \]
-<p>Vimos esse exemplo no caso do movimento Browniano, onde a posição inicial da partícula é a origem. Em termos de variáveis aleatórias, escrevemos \(X_0 = 0\),  <em>quase certamente</em>, i.e.</p>
+<p>Podemos mostrar que \(X\) também é uma normal, com</p>
 \[
-X_0 \sim \delta_0.
+X \sim \mathcal{N}(0, a_1^2 + a_2^2).
 \]
-<h2 id="distribuição_uniforme"><a href="#distribuição_uniforme" class="header-anchor">Distribuição uniforme</a></h2>
-<p>Dado um intervalo finito \(I\subset \mathbb{R}\), a distribuição uniforme está associada a uma variável que pode assumir qualquer valor nesse intervalo, com a mesma probabilidade. A função de densidade de probabilidades é um múltiplo da função característica do intervalo \(I\):</p>
+<p>Mais geralmente, </p>
 \[
-f(x) = \frac{1}{|I|}\chi_I(x) = \begin{cases} \displaystyle \frac{1}{|I|}, & x \in I, \\ 0, & x \notin I, \end{cases}
+X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2), \; X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2) \quad \Longrightarrow \quad a_1 X_1 + a_2 X_2 \sim \mathcal{N}(a_1\mu_1 + a_2\mu_2, a_1^2\sigma_1^2 + a_2^2\sigma_2^2).
 \]
-<p>onde \(|I|\) é o comprimento de \(I\), já que devemos ter massa um, \(\int f = 1\). Observe que, como o intervalo \(I\) é contínuo, as chances de termos um valor específico \(x_0\) é nula. Mas as chances de termos um valor em um determinado subintervalo \(J\subset I\) são iguais à fração do comprimento desse intervalo no intervalo total, i.e.</p>
+<p>Naturalmente, isso pode ser generalizado para uma combinação linear de um número arbitrário de normais.</p>
+<p>Há várias demonstrações desse fato, através de cálculo explícito da função acumulada de probabilidade ou da função característica, por exemplo. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las.</p>
+<p>Por exemplo, se \(X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)\) e \(X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)\), então podemos escrever \(X_1 = \mu_1 + \sigma_1 Y_1\) e \(X_2 = \mu_2 + \sigma_2 Y_2\), com \(Y_1, Y_2 \sim \mathcal{N}(0, 1)\). Assim,</p>
 \[
-\mathbb{P}(X \in J) = \frac{|J|}{|I|}
+X = a_1\mu_1 + a_2\mu_2 + a_1\sigma_1 Y_1 + a_2\sigma_2 Y_2.
 \]
-<p>Uma distribuição uniforme em um intervalo \(I\) é denotada por \(\mathcal{U}_I\) e escrevemos</p>
+<p>Nesse caso, \(X\) é apenas uma translação de uma combinação de normais com média zero e variância um:</p>
 \[
-X \sim \mathcal{U}_I.
+X - a_1\mu_1 + a_2\mu_2 = a_1\sigma_1 Y_1 + a_2\sigma_2 Y_2
 \]
-<p>Por exemplo, caso \(I = [\alpha, \beta)\), então a variável aleatória \(X \sim \mathcal{U}_{[\alpha, \beta)}\) tem sua função densidade de probabilidades dada por</p>
+<p>Então basta mostrar que</p>
 \[
-f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \beta, \\ 0, & x < \alpha \text{ ou } x \geq \beta. \end{cases}
+b_1 Y_1 + b_2 Y_2 \sim \mathcal{N}(0, b_1^2 + b_2^2),
 \]
+<p>com \(b_1 = a_1\sigma_1\) e \(b_2 = a_2\sigma_2\). Para provar isso, trabalhamos com a função acumulada de probabilidade &#40;conjunta&#41;</p>
+\[
+F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x).
+\]
+<p>Como a função densidade de probabilidades da distribuição conjunta é simétrica em relação a rotações em torno da origem e como a reta \(b_1 Y_1 + b_2 Y_2 = x\) está a uma distância</p>
+\[
+d = \frac{x}{\sqrt{b_1^2 + b_2^2}}
+\]
+<p>da origem, então podemos fazer uma rotação do semiplano \(b_1 Y_1 + b_2 Y_2 \leq x\) para o semiplano \(Y_1 \leq d\) que teremos a mesma probabilidade:</p>
+\[
+F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\left(\frac{x}{\sqrt{b_1^2 + b_2^2}}\right) = F_{(b_1^2 + b_2^2)Y_1}(x).
+\]
+<p>Ou seja, \(F\) é igual à função de densidade de probabilidades da normal \(\mathcal{N}(0, b_1^2 + b_2^2)\), concidindo, portanto, com essa normal.</p>
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_continuas/code/output/cdfuniform.svg" alt="">
-<h2 id="distribuição_normal"><a href="#distribuição_normal" class="header-anchor">Distribuição normal</a></h2>
-<p>A distribuição normal com média \(\mu\) e desvio padrão \(\sigma\), ou seja, variância \(\sigma^2\), é denotada por \(\mathcal{N}(\mu, \sigma^2)\). Sua função densidade de probabilidades é</p>
-\[
-  f(x) = \frac{1}{2\pi \sigma^2} e^{\displaystyle - \frac{x^2}{2\sigma^2}}.
-\]
-<p>Uma variável aleatória cuja distribuição é dada por uma normal é designada por</p>
-\[
-  X \sim \mathcal{N}(\mu, \sigma^2)
-\]
-<p>Vimos, por exemplo, nos modelos para o movimento Browniano, que a variável aleatória \(X_t\) para a posição da partícula no instante \(t\) é uma normal com média \(0\) e variância \(2Dt\), para algum \(D > 0\), ou seja</p>
-\[
-  X_t \sim \mathcal{N}(0, 2Dt), \quad t > 0.
-\]
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_continuas/code/output/cdfnormal.svg" alt="">
+<p><img src="/notas_sde/assets/pages/c02/transformacoes/code/output/combinacao_linear_normais1.svg" alt=""> <img src="/notas_sde/assets/pages/c02/transformacoes/code/output/combinacao_linear_normais2.svg" alt=""></p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes"><kbd>→</kbd> 2.4. Transformações de variáveis aleatórias</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/media_momentos"><kbd>→</kbd> 2.5. Média, variância e outros momentos</a>
 </span>
     </p>
 </div>

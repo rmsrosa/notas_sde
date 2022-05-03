@@ -88,16 +88,19 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.5. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.7. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.7. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.8. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -165,7 +168,7 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">3.3. Processos contínuos</a></h1>
 <p>Vimos vários processos discretos que foram definidos por indução nos passos. Naturalmente, o mesmo não pode ser feito com tanta facilidade para processos contínuos. Vários processos contínuos aparecem naturalmente como soluções de equações aleatórios e de equações estocásticas. Mas podemos exemplificar com alguns processos definidos mais diretamente, como veremos a seguir.</p>
-<p>Vamos ver alguns exemplos em que o processo pode ser construído explicitamente a partir de uma única variável aleatória ou de algumas poucas variáveis aleatórias.</p>
+<p>Vamos começar vendo alguns exemplos em que o processo pode ser construído explicitamente a partir de uma ou duas variáveis aleatórias. Em seguida veremos o exemplo de processo de renovação, construído a partir de uma quantidade enumerável de variáveis aleatórias.</p>
 <h2 id="processos_constantes"><a href="#processos_constantes" class="header-anchor">Processos constantes</a></h2>
 <p>Por exemplo, seja \(Y\) uma variável aleatória em \((\Omega, \mathcal{A}, \mathbb{P})\), com valores no espaço de estados \((\Sigma, \mathcal{E})\). Como feito no caso discreto, podemos definir o <strong>processo constante</strong></p>
 \[
@@ -193,13 +196,24 @@ X_t \sim \sin(\mathrm{Unif}([0, 2\pi))).
 \]
 
 <img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/cosuniform.svg" alt="">
-<p>O processo \(\{X_t\}_{t\in \mathbb{R}}\) assume valores em \(\mathbb{R}\), mas apenas valores entre \(-1 \leq x \leq 1\) são realizáveis. A lei de cada \(X_t\) não é uniforme; há mais chances dos valores estarem próximos de \(\pm 1\) do que de zero. De fato, \(X_t\) segue a distribuição arcoseno. Para ver isso, observe que \(\sin(t + u) = \sin( (t + u) \mod 2\pi)\) e que a distribuição de \(t + \mathrm{Unif}([0, 2\pi)) \mod 2\pi\) é a própria distribuição \(\mathrm{Unif}([0, 2\pi))\). Assim,</p>
+<p>O processo \(\{X_t\}_{t\in \mathbb{R}}\) assume valores em \(\mathbb{R}\), mas apenas valores entre \(-1 \leq x \leq 1\) são realizáveis. A lei de cada \(X_t\) não é uniforme; há mais chances dos valores estarem próximos de \(\pm 1\) do que de zero. De fato, \(X_t\) segue uma distribuição arcoseno:</p>
+\[
+X_t \sim \mathrm{Arcsin}(-1, 1).
+\]
+<p>Para ver isso, observe que \(\sin(t + u) = \sin( (t + u) \mod 2\pi)\) e que a distribuição de \(t + \mathrm{Unif}([0, 2\pi)) \mod 2\pi\) é a própria distribuição \(\mathrm{Unif}([0, 2\pi))\). Assim,</p>
 \[
 F_{X_t}(x) = \mathbb{P}(X_t \leq x) = \mathbb{P}(\sin(t + U) \leq x) = \mathbb{P}(\sin(U) \leq x).
 \]
-<p>Como \(\sin(U)\) só assume valores entre \(-1\) e \(1\), temos \(F_{X_t}(x) = 0\), para \(x < -1\) e \(F_{X_t}(x) = 1\), para \(x > 1\). Agora, para \(-1 \leq x \leq 1,\) podemos usar a simetria do seno e escrever</p>
+<p>Como \(\sin(U)\) só assume valores entre \(-1\) e \(1\), temos \(F_{X_t}(x) = 0\), para \(x < -1\) e \(F_{X_t}(x) = 1\), para \(x > 1\). Agora, para \(-1 \leq x \leq 1,\) podemos usar a periodicidade e a simetria do seno para escrever essas probabilidades em função da distribuição uniforme em \([-\pi, \pi)\) e, em seguida, em \([-\pi/2, \pi/2)\):</p>
 \[
-F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
+F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = 2\mathbb{P}_{\mathrm{Unif}([-\pi, \pi))}(U \leq \arcsin(x), -\pi/2 \leq U \leq \pi/2) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)). 
+\]
+<p>A figura abaixo ilustra essas identidades, com a caixa em laranja exibindo a distribuição uniforme considerada e as partes preenchidas ilustrando a região abaixo de um determinado valor \(x\), indicando a probabilidade correspondente.</p>
+
+<img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/processo_sintUcdf.svg" alt="">
+<p>Agora, podemos calcular explicitamente</p>
+\[
+F_{X_t}(x) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
 \]
 <p>Essa distribuição possui a função de densidade de probabilidade</p>
 \[
@@ -208,13 +222,13 @@ F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = \frac{1}{\pi} \
 <h3 id="transporte_cosut"><a href="#transporte_cosut" class="header-anchor">Transporte cos&#40;Ut&#41;</a></h3>
 <p>Um outro exemplo importante é dado por</p>
 \[
-X_t \sim \cos(Ut),
+X_t \sim \sin(Ut),
 \]
-<p>onde, novamente, \(U \sim \mathrm{Unif}([0, 2\pi))\). Cada caminho amostral é um simples cosseno, \(t \mapsto X_t(\omega) = \cos(U(\omega)t)\).</p>
+<p>onde, novamente, \(U \sim \mathrm{Unif}([0, 2\pi))\). Cada caminho amostral é um simples cosseno, \(t \mapsto X_t(\omega) = \sin(U(\omega)t)\).</p>
 <p>A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo que esse processo não é independente mas ainda é um processo identicamente distribuído. O mais significativo, no entanto, é que, como a frequência de cada seno é dada aleatoriamente, o conjunto de trajetórias dispersa, a ponto das estatísticas conjuntas serem não triviais. Veremos que esse é, surpreendentemente, um exemplo de um <em>ruído branco</em>.</p>
 
 <img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/processo_sinttimesU.svg" alt="">
-<h2 id="gaussiana_dançante"><a href="#gaussiana_dançante" class="header-anchor">Gaussiana dançante</a></h2>
+<h2 id="gaussiana_em_movimento"><a href="#gaussiana_em_movimento" class="header-anchor">Gaussiana em movimento</a></h2>
 <p>Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, \(Y_1\) e \(Y_2\), em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere \(a\in \mathbb{R}\) e defina</p>
 \[
 X_t = \cos(at)Y_1 + \sin(at)Y_2, \quad t\in \mathbb{R}.
@@ -227,18 +241,24 @@ X_t = \cos(at)Y_1 + \sin(at)Y_2, \quad t\in \mathbb{R}.
 
 <img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/gaussian_dance.svg" alt="">
 <h2 id="processo_de_renovação"><a href="#processo_de_renovação" class="header-anchor">Processo de renovação</a></h2>
-<p>Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos tempo para &quot;saltos&quot; de estado. Mais precisamente, sejam \(\{Y_j\}_{j\in \mathbb{N}}\) variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, \(\mathbb{E}(Y_j) < \infty\). Para cada \(n\), definimos os instantes de salto</p>
+<p>Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos de tempo para &quot;saltos&quot; de estado. Mais precisamente, sejam \(\{S_j\}_{j\in \mathbb{N}}\) variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, \(\mathbb{E}(S_j) < \infty\). Para cada \(n\), definimos os instantes de salto</p>
 \[
-Z_n = \sum_{j = 1}^n Y_j.
+T_n = \sum_{j = 1}^n S_j.
 \]
-<p>Cada \(Y_j\) representa um intervalo de tempo entre saltos consecutivos e cada \(Z_n\) indica o instante do \(n\)-ésimo salto, que é o acumulado dos intervalos de salto.</p>
+<p>Cada \(S_j\) representa um intervalo de tempo entre saltos consecutivos e cada \(T_n\) indica o instante do \(n\)-ésimo salto, que é o acumulado dos intervalos de salto.</p>
 <p>O processo de renovação baseado nessas saltos é dado por</p>
 \[
-X_t = \sum_{n\in \mathbb{N}} \chi_{\{Z_n \leq t\}} = \sup\{n; \; Z_n \leq t\},
+X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 \]
-<p>onde \(\chi_{\{Z_n \leq t\}}\) é a função característica do conjunto \(\{Z_n \leq t\}\).</p>
+<p>onde \(\chi_{\{T_n \leq t\}}\) é a função característica do conjunto \(\{T_n \leq t\}\).</p>
 
 <img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/renewal_uniform.svg" alt="">
+<p>Processos de renovação são usados para modelar sequências sucessivas de falhas de equipamentos &#40;e.g. máquinas, velas, cabos, lâmpadas, etc.&#41;. Por exemplo, imagine um motor que precise de um cabo para movimentar uma polia. Sempre que um cabo arrebenta, a produção é interrompida, até que a troca seja feita. A vida útil de cada cabo é uma variável aleatória e as sucessivas quebras são assumidas independentes. Cada intervalo de tempo \(Y_j\) representa a vida útil de um cabo. Cada \(Z_n\) representa o momento da \(n\)-ésima quebra. A variável \(X_t\) modela o número de quebras, ou trocas de cabo, até o instante \(t\).</p>
+<h2 id="processo_de_renovação_e_recompensa"><a href="#processo_de_renovação_e_recompensa" class="header-anchor">Processo de renovação e recompensa</a></h2>
+<p>Junto com um processo de renovação \(\{X_t\}_{t \geq 0}\) como acima, obtido a partir de variáveis aleatórias positivas independentes \(\{Y_j\}_{j\in \mathbb{N}}\), podemos ter, a cada evento \(Z_n = \sum_{j=1}^n Y_j\), uma &quot;recompensa&quot; \(\{W_n\}_{n\in \mathbb{N}}\), que é uma variável aleatória real &#40;ganhos e perdas&#41;. O total de recompensa após um tempo \(t\) é dado por &#40;lembrando que \(X_t\) assume valores inteiros não-negativos&#41;</p>
+\[
+Y_t = \sum_{i = 1}^{X_t} W_i.
+\]
 
     <div class="navbar">
     <p id="nav">
@@ -262,7 +282,7 @@ X_t = \sum_{n\in \mathbb{N}} \chi_{\{Z_n \leq t\}} = \sup\{n; \; Z_n \leq t\},
         </div>
     
 
-    Last modified: May 02, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

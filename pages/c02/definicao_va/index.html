@@ -77,16 +77,19 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.5. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.6. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.7. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.7. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.8. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -160,13 +163,13 @@
 <p>Variáveis aleatórias estão associadas a fenômenos de difícil previsão, tanto em problemas aparentemente simples, como o resultado de um lançamento de uma moeda, do lançamento de um dado, ou de um jogo de roletas, quanto em fenômenos extremamente complexos, como previsão do tempo, de terremotos, no mercado de ações e sobre o desejo dos consumidores, por exemplo.</p>
 <p>Variáveis aleatórias podem ser classificadas de acordo com o tipo de valores que podem assumir. Esses possíveis valores podem ser <em>finitos</em> ou <em>infinitos</em>, <em>discretos</em> ou <em>contínuos</em>, <em>enumeráveis</em> ou <em>não-enumeráveis</em>, <em>escalares</em> ou <em>vetoriais</em>, etc.</p>
 <p>Por exemplo, no caso do lançamento de uma moeda, podemos ter os eventos discretos &quot;cara&quot; e &quot;coroa&quot;, com probabilidade 1/2 de cada evento ser observado. No caso de um lançamento de um dado &quot;não-viciado&quot;, temos os possíveis eventos discretos \(1, 2, 3, 4, 5, 6\), cada um com probabilidade 1/6 de ser realizado. Um dado &quot;viciado&quot; pode ter probabilidades diferentes. Estes são exemplos com um conjunto finito de possíveis observações.</p>
-<p>Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Isso pode acontecer para qualquer número natural \(n\in \mathbb{N}\).</p>
-<p>O Índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer valor inteiro não-negativo, e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade contínua.</p>
+<p>Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Qualquer número inteiro não-negativo pode ser observado.</p>
+<p>O índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer múltiplo inteiro não-negativo de \(1\;\texttt{mm}\), e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores também é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade assumindo valores reais não-negativos, com alguma unidade de comprimento.</p>
 <p>O tempo também pode ser pensado como uma variável contínua, de modo que o tempo que um objeto leva para cair de uma certa altura até o chão pode ser visto como uma variável aleatória assumindo qualquer valor real positivo. Naturalmente, há muito mais chances do valor observado ser de acordo com a segunda lei de Newton, mas há sempre alguma incerteza, por conta de diversos fatores, tanto de erros de medição &#40;da altura inicial e do cronômetro marcando o início e o fim do movimento&#41; como pelo fato de um modelo ser apenas uma aproximação da realidade.</p>
 <p>Usualmente, uma variável aleatória é denotada por letras maísculas, como \(X\). Uma determinada <strong>realização</strong> é denotada por \(X(\omega)\), onde \(\omega\) funciona como uma variável auxiliar, um mero índice, indicando possíveis resultados da variável e associando a isso a devida probabilidade. Podemos pensar \(\omega\) como um <strong>experimento</strong>. A probabilidade de um determinado evento \(e\), dado por um único valor, ocorrer é denotada por \(\mathbb{P}(X = e)\). A probabilidade de ocorrer um certo evento \(E\) formado por um conjunto de valores é denotada por \(\mathbb{P}(X \in E)\).</p>
 <p>É comum denotarmos</p>
 \[
-X \sim \mathcal{P}
+X \sim \mathbb{P}
 \]
 <p>para indicar a distribuição de probabilidades associada a uma variável aleatória \(X\).</p>
 <p>No caso de uma moeda, temos os possíveis valores &quot;cara&quot; e &quot;coroa&quot;, que podemos representar por \(0\) e \(1\), respectivamente. Cada evento pode ocorrer de acordo com as probabilidades \(\mathbb{P}(X = \textrm{"cara"}) = 1/2\) e \(\mathbb{P}(X = \textrm{"coroa"}) = 1/2\), ou \(\mathbb{P}(X = j) = 1/2\), para \(j = 0, 1\). No caso dos dados, temos \(\mathbb{P}(X = j) = 1/6\), \(j = 1, \ldots, 6.\) A probabilidade do resultado ser par é \(\mathbb{P}(X \textrm{ é "par"}) = \mathbb{P}(X \in \{2, 4, 6\}) = 1/2.\)</p>
@@ -194,7 +197,7 @@ X \sim \mathcal{P}
         </div>
     
 
-    Last modified: May 02, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
