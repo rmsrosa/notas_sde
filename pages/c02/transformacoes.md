@@ -95,7 +95,26 @@ Como a função densidade de probabilidades da distribuição conjunta é simét
 $$
 d = \frac{x}{\sqrt{b_1^2 + b_2^2}}
 $$
-da origem, então podemos fazer uma rotação do semiplano $b_1 Y_1 + b_2 Y_2 \leq x$ para o semiplano $Y_1 \leq d$ que teremos a mesma probabilidade:
+da origem, então podemos fazer uma rotação do semiplano $b_1 Y_1 + b_2 Y_2 \leq x$ para o semiplano $Y_1 \leq d$.
+
+```julia:combinacao_linear_normais_rotacao
+#hideall
+using Plots
+theme(:ggplot2)
+
+b1 = 2.4
+b2 = 1.0
+c = 2.0
+
+p1 = plot(xx, x -> (c - b1 * x) / b2, xlims = (-3, 3), ylims = (-3, 3), label = false, title = "b₁ Y₁ + b₂ Y₂ ≤ c; b₁ = $b1, b₂ = $b2, c = $c", titlefont = 10)
+p2 = vline([c / sqrt(b1^2 + b2^2)], xlims = (-3, 3), ylims = (-3, 3), label = false, title = "x ≤ c / √(b₁² + b₂²); b₁ = $b1, b₂ = $b2, c = $c", titlefont = 10)
+plot(p1, p2, layout = 2, size = (800, 400))
+
+savefig(joinpath(@OUTPUT, "combinacao_linear_normais_rotacao.svg"))
+```
+\fig{combinacao_linear_normais_rotacao}
+
+Fazendo isso,  teremos a mesma probabilidade:
 $$
 F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\left(\frac{x}{\sqrt{b_1^2 + b_2^2}}\right) = F_{(b_1^2 + b_2^2)Y_1}(x).
 $$
@@ -109,9 +128,9 @@ theme(:ggplot2)
 xx = range(-3, 3, length = 100)
 yy = range(-3, 3, length = 100)
 
-b1 = 1.2
-b2 = 0.5
-c = 0.2
+b1 = 2.4
+b2 = 1.0
+c = 2.0
 
 f(x, y) = exp(-(x^2 + y^2)/2) / sqrt(2π)
 
