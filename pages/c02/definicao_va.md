@@ -22,7 +22,7 @@ Usualmente, uma variável aleatória é denotada por letras maísculas, como $X$
 
 É comum denotarmos
 $$
-X \sim \mathcal{P}
+X \sim \mathbb{P}
 $$
 para indicar a distribuição de probabilidades associada a uma variável aleatória $X$.
 
