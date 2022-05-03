@@ -102,6 +102,46 @@ Como $\sin(U)$ só assume valores entre $-1$ e $1$, temos $F_{X_t}(x) = 0$, para
 $$
 F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = 2\mathbb{P}_{\mathrm{Unif}([-\pi, \pi))}(U \leq \arcsin(x), -\pi/2 \leq U \leq \pi/2) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)). 
 $$
+
+```julia:processo_sintUcdf
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+
+x = 0.4
+tt = range(-2π, 6π, length = 200)
+
+p1 = plot(tt, sin, ylims = (-1.2, 1.2), label=false)
+tt1 = 2.5π:0.01:4.5π
+plot!(p1, tt1, u -> sin(u) * (sin(u) ≤ x), color = 1, alpha = 0.2, fill=true, label=false)
+plot!(p1, tt1, u -> 1/2π, fill=true, alpha = 0.4, color = 2, label=false)
+plot!(p1, tt1, u -> 1/2π * (sin(u) ≤ x), color = 2, fill=true, label=false)
+
+p2 = plot(tt, sin, ylims = (-1.2, 1.2), label=false)
+tt2 = 0.0:0.01:2π
+plot!(p2, tt2, u -> sin(u) * (sin(u) ≤ x), color = 1, alpha = 0.2,fill=true, label=false)
+plot!(p2, tt2, u -> 1/2π, fill=true, alpha = 0.4, color = 2, label=false)
+plot!(p2, tt2, u -> 1/2π * (sin(u) ≤ x), color = 2, fill=true, label=false)
+
+p3 = plot(tt, sin, ylims = (-1.2, 1.2), label=false)
+tt3 = -π:0.01:π
+plot!(p3, tt3, u -> sin(u) * (sin(u) ≤ x), color = 1, alpha = 0.2,fill=true, label=false)
+plot!(p3, tt3, u -> 1/2π, fill=true, alpha = 0.4, color = 2, label=false)
+plot!(p3, tt3, u -> 1/2π * (sin(u) ≤ x), color = 2, fill=true, label=false)
+
+p4 = plot(tt, sin, ylims = (-1.2, 1.2), label=false)
+tt4 = -π/2:0.01:π/2
+plot!(p4, tt4, u -> sin(u) * (sin(u) ≤ x), color = 1, alpha = 0.2,fill=true, label=false)
+plot!(p4, tt4, u -> 1/π, fill=true, alpha = 0.4, color = 2, label=false)
+plot!(p4, tt4, u -> 1/π * (sin(u) ≤ x), color = 2, fill=true, label=false)
+
+
+plot(p1, p2, p3, p4, layout = (2, 2), size = (800, 400))
+savefig(joinpath(@OUTPUT, "processo_sintUcdf.svg"))
+```
+\fig{processo_sintUcdf}
+
 Agora, podemos calcular explicitamente
 $$
 F_{X_t}(x) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
@@ -111,14 +151,13 @@ $$
 \frac{\mathrm{d}}{\mathrm{d} x}F_{X_t}(x) = \frac{1}{\pi}\frac{1}{\sqrt{1 - x^2}}, \quad -1 < x < 1.
 $$
 
-
 ### Transporte cos(Ut)
 
 Um outro exemplo importante é dado por
 $$
-X_t \sim \cos(Ut),
+X_t \sim \sin(Ut),
 $$
-onde, novamente, $U \sim \mathrm{Unif}([0, 2\pi))$. Cada caminho amostral é um simples cosseno, $t \mapsto X_t(\omega) = \cos(U(\omega)t)$.
+onde, novamente, $U \sim \mathrm{Unif}([0, 2\pi))$. Cada caminho amostral é um simples cosseno, $t \mapsto X_t(\omega) = \sin(U(\omega)t)$.
 
 A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo que esse processo não é independente mas ainda é um processo identicamente distribuído. O mais significativo, no entanto, é que, como a frequência de cada seno é dada aleatoriamente, o conjunto de trajetórias dispersa, a ponto das estatísticas conjuntas serem não triviais. Veremos que esse é, surpreendentemente, um exemplo de um *ruído branco*.
 
@@ -137,7 +176,7 @@ savefig(joinpath(@OUTPUT, "processo_sinttimesU.svg"))
 ```
 \fig{processo_sinttimesU}
 
-## Gaussiana dançante
+## Gaussiana em movimento
 
 Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, $Y_1$ e $Y_2$, em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere $a\in \mathbb{R}$ e defina
 $$
@@ -169,7 +208,7 @@ tt = range(0.0, T, length = N)
 x = mu1 * cos.(a * tt) .+ mu2 * sin.(a * t)
 sigma = sqrt.(sigma1^2 .* cos.(a * tt) .^2 .+ sigma2^2 .* sin.(a * tt) .^2)
 
-plot(tt, x, ribbon = sigma, xaxis = "t", yaxis = "x", label = false, title = "Evolução da média e do desvio-padrão de X_t = cos(at)Y_1 + sin(at)Y_2\na = $a e Y1 ∼ N($mu1, $(sigma1^2)), Y2 ∼ N($mu2, $(sigma2^2))", titlefont = 10)
+plot(tt, x, ribbon = sigma, line = 2, linecolor = :red, xaxis = "t", yaxis = "x", label = false, title = "Evolução da média e do desvio-padrão de X_t = cos(at)Y_1 + sin(at)Y_2\na = $a e Y1 ∼ N($mu1, $(sigma1^2)), Y2 ∼ N($mu2, $(sigma2^2))", titlefont = 10)
 
 savefig(joinpath(@OUTPUT, "gaussian_dance.svg"))
 ```
@@ -177,17 +216,17 @@ savefig(joinpath(@OUTPUT, "gaussian_dance.svg"))
 
 ## Processo de renovação
 
-Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos tempo para "saltos" de estado. Mais precisamente, sejam $\{Y_j\}_{j\in \mathbb{N}}$ variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, $\mathbb{E}(Y_j) < \infty$. Para cada $n$, definimos os instantes de salto
+Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos de tempo para "saltos" de estado. Mais precisamente, sejam $\{S_j\}_{j\in \mathbb{N}}$ variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, $\mathbb{E}(S_j) < \infty$. Para cada $n$, definimos os instantes de salto
 $$
-Z_n = \sum_{j = 1}^n Y_j.
+T_n = \sum_{j = 1}^n S_j.
 $$
-Cada $Y_j$ representa um intervalo de tempo entre saltos consecutivos e cada $Z_n$ indica o instante do $n$-ésimo salto, que é o acumulado dos intervalos de salto.
+Cada $S_j$ representa um intervalo de tempo entre saltos consecutivos e cada $T_n$ indica o instante do $n$-ésimo salto, que é o acumulado dos intervalos de salto.
 
 O processo de renovação baseado nessas saltos é dado por
 $$
-X_t = \sum_{n\in \mathbb{N}} \chi_{\{Z_n \leq t\}} = \sup\{n; \; Z_n \leq t\},
+X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 $$
-onde $\chi_{\{Z_n \leq t\}}$ é a função característica do conjunto $\{Z_n \leq t\}$.
+onde $\chi_{\{T_n \leq t\}}$ é a função característica do conjunto $\{T_n \leq t\}$.
 
 ```julia:renewal_uniform
 #hideall
@@ -195,13 +234,22 @@ using Plots
 using Random
 theme(:ggplot2)
 rng = Xoshiro(123)
-N = 10
+N = 20
 M = 5
 tt = range(0.0, div(N, 2), length = 200)
-Y = rand(rng, N, M)
-Z = accumulate(+, Y, dims = 1)
-X = reduce(vcat, count(Z .< t, dims = 1) for t in tt)
-plot(tt, X, ylims = (0, div(3N, 2)), xaxis = "tempo", yaxis = "nível", title = "Caminhos amostrais do processo de renovação com saltos Yj ∼ Unif(0,1)", titlefont = 10, label = false, linetype=:steppost)
+S = 0.5 .+ rand(rng, N, M)
+T = accumulate(+, S, dims = 1)
+X = reduce(vcat, count(T .< t, dims = 1) for t in tt)
+plot(tt, X, ylims = (0, div(3N, 4)), xaxis = "tempo", yaxis = "nível", title = "Caminhos amostrais do processo de renovação com saltos Sj ∼ Unif(0.5,1)", titlefont = 10, label = false, linetype=:steppost)
 savefig(joinpath(@OUTPUT, "renewal_uniform.svg"))
 ```
 \fig{renewal_uniform}
+
+Processos de renovação são usados para modelar sequências sucessivas de falhas de equipamentos (e.g. máquinas, velas, cabos, lâmpadas, etc.). Por exemplo, imagine um motor que precise de um cabo para movimentar uma polia. Sempre que um cabo arrebenta, a produção é interrompida, até que a troca seja feita. A vida útil de cada cabo é uma variável aleatória e as sucessivas quebras são assumidas independentes. Cada intervalo de tempo $Y_j$ representa a vida útil de um cabo. Cada $Z_n$ representa o momento da $n$-ésima quebra. A variável $X_t$ modela o número de quebras, ou trocas de cabo, até o instante $t$.
+
+## Processo de renovação e recompensa
+
+Junto com um processo de renovação $\{X_t\}_{t \geq 0}$ como acima, obtido a partir de variáveis aleatórias positivas independentes $\{Y_j\}_{j\in \mathbb{N}}$, podemos ter, a cada evento $Z_n = \sum_{j=1}^n Y_j$, uma "recompensa" $\{W_n\}_{n\in \mathbb{N}}$, que é uma variável aleatória real (ganhos e perdas). O total de recompensa após um tempo $t$ é dado por (lembrando que $X_t$ assume valores inteiros não-negativos)
+$$
+Y_t = \sum_{i = 1}^{X_t} W_i.
+$$
