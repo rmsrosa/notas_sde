@@ -4,7 +4,7 @@
 
 Vimos vários processos discretos que foram definidos por indução nos passos. Naturalmente, o mesmo não pode ser feito com tanta facilidade para processos contínuos. Vários processos contínuos aparecem naturalmente como soluções de equações aleatórios e de equações estocásticas. Mas podemos exemplificar com alguns processos definidos mais diretamente, como veremos a seguir.
 
-Vamos ver alguns exemplos em que o processo pode ser construído explicitamente a partir de uma única variável aleatória ou de algumas poucas variáveis aleatórias.
+Vamos começar vendo alguns exemplos em que o processo pode ser construído explicitamente a partir de uma ou duas variáveis aleatórias. Em seguida veremos o exemplo de processo de renovação, construído a partir de uma quantidade enumerável de variáveis aleatórias.
 
 ## Processos constantes
 
@@ -90,13 +90,21 @@ savefig(joinpath(@OUTPUT, "cosuniform.svg"))
 ```
 \fig{cosuniform}
 
-O processo $\{X_t\}_{t\in \mathbb{R}}$ assume valores em $\mathbb{R}$, mas apenas valores entre $-1 \leq x \leq 1$ são realizáveis. A lei de cada $X_t$ não é uniforme; há mais chances dos valores estarem próximos de $\pm 1$ do que de zero. De fato, $X_t$ segue a distribuição arcoseno. Para ver isso, observe que $\sin(t + u) = \sin( (t + u) \mod 2\pi)$ e que a distribuição de $t + \mathrm{Unif}([0, 2\pi)) \mod 2\pi$ é a própria distribuição $\mathrm{Unif}([0, 2\pi))$. Assim,
+O processo $\{X_t\}_{t\in \mathbb{R}}$ assume valores em $\mathbb{R}$, mas apenas valores entre $-1 \leq x \leq 1$ são realizáveis. A lei de cada $X_t$ não é uniforme; há mais chances dos valores estarem próximos de $\pm 1$ do que de zero. De fato, $X_t$ segue uma distribuição arcoseno:
+$$
+X_t \sim \mathrm{Arcsin}(-1, 1).
+$$
+Para ver isso, observe que $\sin(t + u) = \sin( (t + u) \mod 2\pi)$ e que a distribuição de $t + \mathrm{Unif}([0, 2\pi)) \mod 2\pi$ é a própria distribuição $\mathrm{Unif}([0, 2\pi))$. Assim,
 $$
 F_{X_t}(x) = \mathbb{P}(X_t \leq x) = \mathbb{P}(\sin(t + U) \leq x) = \mathbb{P}(\sin(U) \leq x).
 $$
-Como $\sin(U)$ só assume valores entre $-1$ e $1$, temos $F_{X_t}(x) = 0$, para $x < -1$ e $F_{X_t}(x) = 1$, para $x > 1$. Agora, para $-1 \leq x \leq 1,$ podemos usar a simetria do seno e escrever
+Como $\sin(U)$ só assume valores entre $-1$ e $1$, temos $F_{X_t}(x) = 0$, para $x < -1$ e $F_{X_t}(x) = 1$, para $x > 1$. Agora, para $-1 \leq x \leq 1,$ podemos usar a periodicidade e a simetria do seno para escrever essas probabilidades em função da distribuição uniforme em $[-\pi, \pi)$ e, em seguida, em $[-\pi/2, \pi/2)$:
 $$
-F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
+F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = 2\mathbb{P}_{\mathrm{Unif}([-\pi, \pi))}(U \leq \arcsin(x), -\pi/2 \leq U \leq \pi/2) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)). 
+$$
+Agora, podemos calcular explicitamente
+$$
+F_{X_t}(x) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
 $$
 Essa distribuição possui a função de densidade de probabilidade
 $$
