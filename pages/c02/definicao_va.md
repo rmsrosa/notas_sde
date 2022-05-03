@@ -12,9 +12,9 @@ Variáveis aleatórias podem ser classificadas de acordo com o tipo de valores q
 
 Por exemplo, no caso do lançamento de uma moeda, podemos ter os eventos discretos "cara" e "coroa", com probabilidade 1/2 de cada evento ser observado. No caso de um lançamento de um dado "não-viciado", temos os possíveis eventos discretos $1, 2, 3, 4, 5, 6$, cada um com probabilidade 1/6 de ser realizado. Um dado "viciado" pode ter probabilidades diferentes. Estes são exemplos com um conjunto finito de possíveis observações.
 
-Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Isso pode acontecer para qualquer número natural $n\in \mathbb{N}$.
+Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Qualquer número inteiro não-negativo pode ser observado.
 
-O Índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer valor inteiro não-negativo, e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade contínua.
+O índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer múltiplo inteiro não-negativo de $1\;\texttt{mm}$, e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores também é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade assumindo valores reais não-negativos, com alguma unidade de comprimento.
 
 O tempo também pode ser pensado como uma variável contínua, de modo que o tempo que um objeto leva para cair de uma certa altura até o chão pode ser visto como uma variável aleatória assumindo qualquer valor real positivo. Naturalmente, há muito mais chances do valor observado ser de acordo com a segunda lei de Newton, mas há sempre alguma incerteza, por conta de diversos fatores, tanto de erros de medição (da altura inicial e do cronômetro marcando o início e o fim do movimento) como pelo fato de um modelo ser apenas uma aproximação da realidade.
 
