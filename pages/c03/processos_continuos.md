@@ -18,12 +18,12 @@ onde $I\subset \mathbb{R}$ é um intervalo real qualquer. Uma vez sorteado $Y(\o
 #hideall
 using Plots
 using Random
+rng = Xoshiro(123)
 theme(:ggplot2)
 N = 40
 M = 20
 nn = 1:N
 X = Array{Float64}(undef, N, M)
-rng = Xoshiro(123)
 X = permutedims(repeat(randn(rng, M), 1, N))
 plot(nn, X, xlims = (0, N+1), ylims = (-3, 3), title = "Caminhos amostrais de um processo constante X_t = Y ∼ N(0,1)", titlefont = 10, label = false)
 savefig(joinpath(@OUTPUT, "processo_constante.svg"))
@@ -49,12 +49,12 @@ $$
 #hideall
 using Plots
 using Random
+rng = Xoshiro(123)
 theme(:ggplot2)
 
 N = 50
 M = 10
 tt = range(0.0, 10.0, length = N+1)
-rng = Xoshiro(123)
 X = permutedims(sin.(tt' .+ 2π * rand(rng, M)))
 
 plot(tt, X, title = "Caminhos amostrais do processo X_t = sin(t + U), U ∼ Unif(0,2π)", titlefont = 10, label = false)
@@ -71,10 +71,11 @@ $$
 #hideall
 using Random
 using Plots
+rng = Xoshiro(123)
 theme(:ggplot2)
+
 t = 10.0
 M = 100_000
-rng = Xoshiro(123)
 U = 2π * rand(rng, M)
 X_t = cos.(t .+ U)
 
@@ -108,7 +109,6 @@ A figura abaixo ilustra essas identidades, com a caixa em laranja exibindo a dis
 ```julia:processo_sintUcdf
 #hideall
 using Plots
-using Random
 theme(:ggplot2)
 
 x = 0.7
@@ -167,10 +167,10 @@ A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo q
 using Plots
 using Random
 theme(:ggplot2)
+rng = Xoshiro(123)
 N = 200
 M = 5
 tt = range(0.0, π, length = N+1)
-rng = Xoshiro(123)
 X = permutedims(sin.(tt' .* 2π .* rand(rng, M)))
 plot(tt, X, title = "Caminhos amostrais do processo X_t = sin(Ut), U ∼ Unif(0,2π)", titlefont = 10, label = false)
 savefig(joinpath(@OUTPUT, "processo_sinttimesU.svg"))
@@ -191,10 +191,8 @@ Veremos, em outro momento, que $\{X_t\}_{t\in \mathbb{R}}$ é um exemplo de *pro
 
 ```julia:gaussian_dance
 #hideall
-using Random
 using Plots
 theme(:ggplot2)
-rng = Xoshiro(123)
 
 mu1 = 3.0
 sigma1 = 1.0
