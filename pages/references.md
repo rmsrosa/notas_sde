@@ -26,4 +26,6 @@
 
 1. [T. Neckel & F. Rupp (2013), "Random Differential Equations in Scientific Computing", De Gruyter Open Poland. https://doi.org/10.2478/9788376560267](https://doi.org/10.2478/9788376560267)
 
+1. [M. A. Pinsky & S. Karlin (2011), "An Introduction to Stochastic Modeling", Fourth Edition, Elsevier Inc.](https://doi.org/10.1016/C2009-1-61171-0)
+
 1. [Z. Zhang & G. E. Karniadakis (2017), "Numerical Methods for Stochastic Partial Differential Equations with White Noise", Applied Mathematical Sciences, vol. 196, Springer International Publishing. DOI: 10.1007/978-3-319-57511-7](https://doi.org/10.1007/978-3-319-57511-7)

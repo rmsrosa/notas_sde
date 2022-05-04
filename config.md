@@ -60,6 +60,10 @@ menu = [
         "pages/c03/cadeias_markov"
         "pages/c03/passeioaleatorio_movBrowniano"
     ]
+    "Processos de Wiener" => [
+        "pages/c04/definicao_processo_wiener"
+        "pages/c04/existencia_processo_wiener"
+    ]
     "pages/convergencias"
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
