@@ -14,6 +14,8 @@
 
 1. [X. Han & P. E. Kloeden (2017), "Random Ordinary Differential Equations and Their Numerical Solution", Probability Theory and Stochastic Modelling, vol. 85, Springer Singapore. DOI: 10.1007/978-981-10-6265-0](https://doi.org/10.1007/978-981-10-6265-0)
 
+1. [B. Eisenberg & R. Sullivan (2008), "Why Is the Sum of Independent Normal Random Variables Normal?", *Mathematics Magazine,* vol. 81, no. 5, 362-366. DOI: 10.1080/0025570X.2008.11953577](https://doi.org/10.1080/0025570X.2008.11953577)
+
 1. [D. J. Higham & P. E. Kloeden (2021), "An Introduction to the Numerical Simulation of Stochastic Differential Equations", SIAM.](https://www.maa.org/press/maa-reviews/an-introduction-to-the-numerical-simulation-of-stochastic-differential-equations)
 
 1. [E. T. Jaynes (2003), "Probability Theory: The Logic of Science." Cambridge Univerity Press, Cambridge. DOI: 10.1017/CBO9780511790423](https://doi.org/10.1017/CBO9780511790423)

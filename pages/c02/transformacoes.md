@@ -73,9 +73,9 @@ X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2), \; X_2 \sim \mathcal{N}(\mu_2, \sigma_2
 $$
 Naturalmente, isso pode ser generalizado para uma combinação linear de um número arbitrário de normais.
 
-Há várias demonstrações desse fato, através de cálculo explícito da função acumulada de probabilidade ou da função característica, por exemplo. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las.
+Há várias demonstrações desse fato, através de cálculo explícito da função acumulada de probabilidade ou da função característica, por exemplo. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las. Vamos seguir, aqui, a demonstração como feita em Eisenberg & Sullivan (2008). Veja esse mesmo artigo para comentários sobre outras demonstrações.
 
-Por exemplo, se $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ e $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)$, então podemos escrever $X_1 = \mu_1 + \sigma_1 Y_1$ e $X_2 = \mu_2 + \sigma_2 Y_2$, com $Y_1, Y_2 \sim \mathcal{N}(0, 1)$. Assim,
+Se $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ e $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)$, então podemos escrever $X_1 = \mu_1 + \sigma_1 Y_1$ e $X_2 = \mu_2 + \sigma_2 Y_2$, com $Y_1, Y_2 \sim \mathcal{N}(0, 1)$. Assim,
 $$
 X = a_1\mu_1 + a_2\mu_2 + a_1\sigma_1 Y_1 + a_2\sigma_2 Y_2.
 $$
