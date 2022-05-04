@@ -1,11 +1,16 @@
-@def title = "Cadeias de Markov"
+@def title = "Processos de Markov"
 
 # {{ get_title }}
 
-**Cadeias de Markov**, também chamadas de **processos de Markov**, são processos estocásticos em que a mudança de estado para um estado futuro, conhecendo-se o estado atual, não depende dos estados passados. Mais precisamente, se $\{X_t\}_{t\in I}$ é um processo aleatório e $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencem a $I$, então, dados $X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n$, temos que $X_{t_{n+1}}$ só depende de $X_{t_n}$, ou seja
+Como vimos anteriormente, **Processos de Markov**, também chamados de **cadeias de Markov**, são processos estocásticos em que a mudança de estado para um estado futuro, conhecendo-se o estado atual, não depende dos estados passados. Mais precisamente, se $\{X_t\}_{t\in I}$ é um processo aleatório, $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencem a $I$, e $E, E_1, \ldots, E_n$ são possíveis eventos, então, dados $X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} in E_n$, temos que a probabilidade de $X_{t_{n+1}} \in E$ só depende da informação dada no instante mais recente $t_n$, ou seja
+$$
+\mathbb{P}(X_{t_{n+1}} \in E | X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n) = \mathbb{P}(X_{t_{n+1}} \in E | X_{t_n} \in E_n).
+$$
+No caso em que o conjunto de eventos é discreto, podemos escrever
 $$
 \mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
 $$
+
 Processos de Markov são chamados de *sem memória*. Processos de Markov podem ser contínuos ou discretos e o espaço de estados também pode ser contínuo ou discreto.
 
 O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O modelo de Einstein para o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os passos anteriores.

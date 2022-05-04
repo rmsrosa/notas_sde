@@ -152,7 +152,7 @@ $$
 \frac{\mathrm{d}}{\mathrm{d} x}F_{X_t}(x) = \frac{1}{\pi}\frac{1}{\sqrt{1 - x^2}}, \quad -1 < x < 1.
 $$
 
-### Transporte cos(Ut)
+### Transporte sin(Ut)
 
 Um outro exemplo importante é dado por
 $$
@@ -177,7 +177,7 @@ savefig(joinpath(@OUTPUT, "processo_sinttimesU.svg"))
 ```
 \fig{processo_sinttimesU}
 
-## Gaussiana em movimento
+## Gaussiana senoidal
 
 Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, $Y_1$ e $Y_2$, em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere $a\in \mathbb{R}$ e defina
 $$
