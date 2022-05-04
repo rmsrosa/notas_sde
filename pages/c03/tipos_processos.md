@@ -14,20 +14,22 @@ Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identic
 
 O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada incremento $W_n$ tem distribuição binomial diferente $W_n \sim \textrm{Binomial}(n, p)$.
 
-Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli $X_n$ discutido acima é tal que, para algum $p$, vale $X_n \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos o processo constante $Y_n = Y$, onde $Y = \mathrm{Bernoulli}(p)$, ou seja, com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os processos são bem diferentes.
+Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli $X_n$ discutido acima é tal que, para algum $p$, vale $X_n \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos o processo constante $Y_n = Y$, onde $Y = \mathrm{Bernoulli}(p)$, ou seja, com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os dois processos são bem diferentes entre si.
 
 ## Processos com incrementos identicamente distribuídos
 
 O processo $\{X_n\}_{n\in \mathbb{Z}^*}$ de contagem binomial não é identicamente distribuído, mas os passos $X_{n+1} - X_n\sim \textrm{Bernoulli}(p)$ são testes de Bernoulli com a mesma probabilidade de sucesso, portanto identicamente distribuídos.
 
-Se $\Delta X_n = X_{n + 1} - X_n$ são identicamente distribuídos, digamos $\Delta X_n \sim \Delta X$, então, para cada $k\in \mathbb{N}$, a família $\Delta X_n^k = X_{n + k} - X_n$, $n\in \mathbb{N}$, de "passos largos" também é identicamente distribuída, já que
+Se $\Delta X_n = X_{n + 1} - X_n$ são identicamente distribuídos, então $\Delta X_n \sim \Delta X_1$, para todo $n\in \mathbb{N}$. Assim, para cada $k\in \mathbb{N}$, a família $\Delta X_n^k = X_{n + k} - X_n$, $n\in \mathbb{N}$, de "passos largos" também é identicamente distribuída, já que
 $$
-X_{n + k} - X_n = \sum_{j = 0}^{k-1} \left( X_{n + j + 1} - X_{n + j} \right) = \sum_{j = 0}^{k-1} \Delta X_{n + j} \sim \sum_{j = 0}^{k-1} \Delta X = \text{ independente de $n$}.
+X_{n + k} - X_n = \sum_{j = 0}^{k-1} \left( X_{n + j + 1} - X_{n + j} \right) = \sum_{j = 0}^{k-1} \Delta X_{n + j} \sim \sum_{j = 0}^{k-1} \Delta X_1 = \text{ independente de $n$}.
 $$
 
-Pensando nisso, o conceito de processo com incrementos identicamente distribuídos se estende facilmente a processos contínuos. Assim, mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o momento em que cada incremento é dado.
+Mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o instante $t$ em que cada incremento é dado.
 
-O processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
+Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o processo de Wiener, que veremos em breve.
+
+Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes, com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 $$
@@ -109,7 +111,7 @@ $$
 $$
 para eventos quaisquer $E_1, \ldots, E_n \in \mathcal{E}$.
 
-Em particular, as suas distribuições simples $X_{t + \tau} \sim X_t$ são idênticas, ou seja, processos estacionários são necessariamente identicamente distribuídos. Mas não precisam ser independentes. De fato, considere o processo de Bernoulli $\{X_n\}_{n\in \mathbb{N}}$ e defina $Y_n = X_n + X_{n + 1}$, ou seja, $Y_n$ soma os resultados de dois lançamentos consecutivos, em uma série de lançamentos. A distribuição de $Y_n$ é sempre a mesma, igual à binomial $B(2, p)$. Mas $Y_{n+1}$ não é independente de $Y_n$.
+Em particular, considerando $n = 1$, vemos que as distribuições simples $X_t$ também são idênticas, ou seja, processos estacionários são necessariamente identicamente distribuídos. Mas não precisam ser independentes. De fato, considere o processo de Bernoulli $\{X_n\}_{n\in \mathbb{N}}$ e defina $Y_n = X_n + X_{n + 1}$, ou seja, $Y_n$ soma os resultados de dois lançamentos consecutivos, em uma série de lançamentos. A distribuição de $Y_n$ é sempre a mesma, igual à binomial $B(2, p)$. Mas $Y_{n+1}$ não é independente de $Y_n$.
 
 Por outro lado, qualquer processo *i.i.d.* é estacionário. De fato, temos, trivialmente, que, como cada realização é independente,
 $$
@@ -119,7 +121,7 @@ Além disso, como são identicamente distribuídos, cada $\mathbb{P}(X_{t_j + \t
 $$
 \mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n).
 $$
-Nesse caso, podemos ir além e deduzir que essa distribuição conjunta  é $\mathbb{P}(X_t \in E_1) \times \cdots \times \mathbb{P}(X_t \in E_n)$, independente de $t$.
+Nesse caso, podemos ir além e deduzir que essa distribuição conjunta é $\mathbb{P}(X_t \in E_1) \times \cdots \times \mathbb{P}(X_t \in E_n) = \mathbb{P}(X_t \in E_1 \cap \cdots \cap E_n)$ e independente de $t$.
 
 ## Processos estacionários no sentido fraco
 
@@ -134,7 +136,7 @@ $$
 
 Observe a condição desses momentos serem finitos. Por conta disso, não podemos dizer, estritamente, que processos estacionários são fracamente estacionário. Mas qualquer processo estacionário com autocorrelação finita é fracamente estacionário.
 
-Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Um processo estacionário tal que $X_n = Y$, para todo $n$, não é fracamente estacionário.
+Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler, i.e. $\mathbb{P}(Y = k) = p_k = {6}/{\pi^2 k^2}$, é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Assim, o processo dado por $X_n = Y$, para todo $n$, é estacionário mas não é fracamente estacionário.
 
 ## Processos de Poisson
 
@@ -143,10 +145,10 @@ Um **processo de Poisson** com taxa, ou intensidade, $\lambda > 0$ é um process
 2. Os incrementos são independentes, i.e. para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias independentes;
 3. Para $t\geq 0$ e $\tau > 0$, o incremento $X_{t + \tau} - X_t$ é uma variável aleatória com distribuição de Poisson, i.e.
 $$
-\mathbb{P}(X_{t + \tau} - X_t = k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}.
+\mathbb{P}(X_{t + \tau} - X_t = k) = \frac{(\lambda \tau)^k e^{-\lambda \tau}}{k!}.
 $$
 
-Os processos de Poisson são uma versão contínua do processo de contagem.
+Os processos de Poisson são uma versão contínua do processo de contagem. Por definição, os processos de Poisson são processos com incrementos *i.i.d.*.
 
 ## Processos Gaussianos
 
@@ -195,25 +197,39 @@ $$
 $$
 e
 $$
-\mathrm{Var}[X_t] = \mathbb{Var}[X_t - X_0] = t.
+\mathrm{Var}[X_t] = \mathrm{Var}[X_t - X_0] = t.
 $$
 Além disso, para quaisquer $t \geq s \geq 0$, como os incrementos são independentes e, portanto, tem correlação nula,
 $$
-\mathrm{Cov}[X_t, X_s] = \mathrm{Cov}[X_s + X_t - X_s, X_s] = \mathrm{Cov}[X_s, X_s] + \mathrm{Cov}[X_t - X_s, X_s] = \mathrm{Cov}[X_s - X_0, X_s - X_0] + \mathrm{Cov}[X_t - X_s, X_s - X_0] = s.
+\begin{align*}
+\mathrm{Cov}[X_t, X_s] & = \mathrm{Cov}[X_s + X_t - X_s, X_s] = \mathrm{Cov}[X_s, X_s] + \mathrm{Cov}[X_t - X_s, X_s] \\ & = \mathrm{Cov}[X_s - X_0, X_s - X_0] + \mathrm{Cov}[X_t - X_s, X_s - X_0] = \mathrm{Var}[X_s - X_0] = s.
+\end{align*}
 $$
-Observe que, se $t = s > 0$, então o segundo termo se anula pois $X_t - X_s = 0$. Já se $t > s = 0$, então é o primeiro termo que se anula. Se $t = s = 0$, então, naturalmente, tudo se anula.
+Observe que, se $t = s > 0$, então o segundo termo se anula pois $X_t - X_s = 0$. Já se $t \geq s = 0$, então todos os termos se anulam, já que $X_s - X_0 = 0$. De qualquer forma, podemos escrever, para $t, s \geq 0$ quaisquer,
+$$
+\mathrm{Cov}[X_t, X_s] = \min\{t, s\}.
+$$
 
-Vamos concluir apenas afirmando que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener. A demonstração, no entanto, não é tão imediata.
+Um processo de Wiener não é estacionário, pois, em particular, os processos $X_t$ não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de $\mathbb{E}[X_t] = 0$ ser constante, temos, para $t, s\geq 0$ e $\tau > 0$, que
+$$
+\begin{align*}
+\mathbb{E}[X_{t + \tau}X_{s + \tau}] & = \mathbb{E}[(X_{t + \tau} - \mathbb{E}[X_{t + \tau}])(X_{s + \tau} - \mathbb{E}[X_{s + \tau}])] \\
+& = \mathrm{Cov}[X_{t + \tau}, X_{s + \tau}] = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
+\end{align*}
+$$
+Ou seja, $\mathbb{E}[X_{t + \tau}X_{s + \tau}]$ depende de $\tau$.
+
+Vamos concluir afirmando que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener. A demonstração, no entanto, não é tão imediata.
 
 ## Processos de Lévy
 
 Um **processo de Lévy** é um processo estocástico contínuo $\{X_t\}_{t\geq 0}$ tal que
 1. $X_0 = 0$;
 2. Os incrementos são independentes, i.e. para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias independentes;
-3. Os incrementos são estacionários, i.e. para quaisquer $t, s \geq 0$ e $\tau > 0$, os incrementos $W_{t + \tau} - W_t$ e $W_{s + \tau} - W_s$ tem a mesma distribuição de probabilidades;
+3. Os incrementos são estacionários, i.e. para quaisquer $0 \leq t_1, \ldots, t_n$ e $\tau > 0$, os incrementos $X_{t_1 + \tau} - X_{t_1}$, ..., $X_{t_n + \tau} - X_{t_n}$ tem distribuição conjunta de probabilidades independente de $\tau$;
 4. $\{X_t\}_{t\geq 0}$ é contínuo em probabilidade, i.e. $\mathbb{P}(|X_{t + \tau} - X_t| > \varepsilon) \rightarrow 0$, quando $\tau \rightarrow 0$.
 
-Processos de Wiener são processos de Lévy, com incrementos normais com média zero e proporcional ao intervalo de tempo.
+Processos de Wiener são processos de Lévy, com incrementos normais com média zero e variância proporcional ao intervalo de tempo.
 
 Processos de Poisson são processos de Lévy, com incrementos dados por uma distribuição de Poisson, com valor esperado proporcional ao intervalo de tempo.
 
