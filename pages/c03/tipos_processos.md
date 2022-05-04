@@ -18,18 +18,16 @@ Observe, como falamos antes, que não basta conhecermos apenas a função de pro
 
 ## Processos com incrementos identicamente distribuídos
 
-O processo de contagem binomial não é identicamente distribuído, mas os seus incrementos $W_{n+1} - W_n = X_{n+1} \sim \textrm{Bernoulli}(p)$ são testes de Bernoulli com a mesma probabilidade de sucesso.
+O processo $\{X_n\}_{n\in \mathbb{Z}^*}$ de contagem binomial não é identicamente distribuído, mas os passos $X_{n+1} - X_n\sim \textrm{Bernoulli}(p)$ são testes de Bernoulli com a mesma probabilidade de sucesso, portanto identicamente distribuídos.
 
-Quando os incrementos de um processo são variáveis aleatórias identicamente distribuídas, dizemos que é um **processo com incrementos identicamente distribuídos**.
-
-Se $\Delta W_n = W_{n + 1} - W_n$ são identicamente distribuídos, digamos $\Delta W_n \sim \Delta W$, então, para cada $k\in \mathbb{N}$, a família $\Delta W_n^k = W_{n + k} - W_n$, $n\in \mathbb{N}$, de "passos largos" também é identicamente distribuída, já que
+Se $\Delta X_n = X_{n + 1} - X_n$ são identicamente distribuídos, digamos $\Delta X_n \sim \Delta X$, então, para cada $k\in \mathbb{N}$, a família $\Delta X_n^k = X_{n + k} - X_n$, $n\in \mathbb{N}$, de "passos largos" também é identicamente distribuída, já que
 $$
-W_{n + k} - W_n = \sum_{j = 0}^{k-1} \left( W_{n + j + 1} - W_{n + j} \right) = \sum_{j = 0}^{k-1} \Delta W_{n + j} \sim \sum_{j = 0}^{k-1} \Delta W = \text{ independente de $n$}.
+X_{n + k} - X_n = \sum_{j = 0}^{k-1} \left( X_{n + j + 1} - X_{n + j} \right) = \sum_{j = 0}^{k-1} \Delta X_{n + j} \sim \sum_{j = 0}^{k-1} \Delta X = \text{ independente de $n$}.
 $$
 
-Pensando nisso, o conceito de processo com incrementos identicamente distribuídos se estende facilmente a processos contínuos. Assim, mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{W_t^\tau\}_{t, t+\tau \in I}$, definidas por $W_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o momento em que cada incremento é dado.
+Pensando nisso, o conceito de processo com incrementos identicamente distribuídos se estende facilmente a processos contínuos. Assim, mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o momento em que cada incremento é dado.
 
-Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
+O processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 $$
@@ -43,12 +41,12 @@ Então $X_t = 0$, para $t < 1$; $X_t = 0$ ou $1$, para $1 \leq t < 2$; $X_t \geq
 
 ## Processos independentes
 
-Um processo $\{X_t\}$ é dito independente quando as variáveis aleatórias $X_t$ são independentes entre si. Ou seja, as chances de $X_{t_1} \in E_1$ são independentes de $X_{t_2} \in E_2$, em momentos distintos $t_1$ e $t_2$. Podemos escrever isso na forma
+Um processo $\{X_t\}$ é dito **independente** quando as variáveis aleatórias $X_t$ são independentes entre si. Ou seja, as chances de $X_{t_1} \in E_1$ são independentes de $X_{t_2} \in E_2$, em momentos distintos $t_1$ e $t_2$. Podemos escrever isso na forma
 $$
 \mathbb{P}(X_{t_2} \in E_2 | X_{t_1} \in E_1) = \mathbb{P}(X_{t_2} \in E_2), \quad \forall t_1 \neq t_2.
 $$
 
-O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado lance foi obtido cara, isso não vai mudar as chances de se obter coroa no próximo lançamento. Mesma coisa com lançamentos sucessivos de um dado.
+O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado lançamento foi obtido cara, isso não vai mudar as chances de se obter coroa no próximo lançamento. Mesma coisa com lançamentos sucessivos de um dado.
 
 Já o caminho aleatório não é independente, pois as chances de termos $X_3 = 3$ dependem da posição $X_2$. Mais precisamente,
 $$
@@ -65,9 +63,9 @@ $$
 
 ## Processos com incrementos independentes
 
-O caminho aleatório não é independente, como vimos, mas os seus *incrementos* são independentes. De fato, as chances de darmos um passo $+1$ ou $-1$ em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os incrementos $X_{n+1} - X_n$ são independentes entre si. Nesse caso, dizemos que o processo $\{X_n\}_n$ tem **incrementos independentes.**
+O caminho aleatório não é independente, como vimos, mas os seus *incrementos* são independentes. De fato, as chances de darmos um passo $+1$ ou $-1$ em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os incrementos $X_{n+1} - X_n$ são independentes entre si. Nesse caso, dizemos que o processo $\{X_n\}_n$ tem *incrementos independentes.*
 
-Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para cada $\tau > 0$, com $t + \tau \in I$, as variáveis aleatórias $\{W_t^\tau\}_{t, t+\tau \in I}$, definidas por $W_t^\tau = X_{t + \tau} - X_t$, são independentes entre si.
+Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são independentes entre si.
 
 O processo de renovação também não tem incrementos independentes. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2$ e $\mathbb{P}(S_j < 2) = 0$, para $j \geq 2$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
@@ -83,7 +81,7 @@ Então $X_t = 0$, para $t < 1$; $X_t = 0$ ou $1$, para $1 \leq t < 2$ e $X_t = 1
 
 ## Processos independentes e identicamente distribuídos
 
-Esses processos, chamados simplesmente de *i.i.d.*, são aqueles que são, ao mesmo tempo, independentes e identicamente distribuídos, é claro.
+Esses processos, chamados simplesmente de *i.i.d.*, são aqueles, naturalmente, que são, ao mesmo tempo, independentes e identicamente distribuídos.
 
 Como vimos, o processo de Bernoulli é independente e identicamente distribuído.
 
