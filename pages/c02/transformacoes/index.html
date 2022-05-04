@@ -118,13 +118,22 @@
     <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
+    <li>4. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -227,8 +236,8 @@ X \sim \mathcal{N}(0, a_1^2 + a_2^2).
 X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2), \; X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2) \quad \Longrightarrow \quad a_1 X_1 + a_2 X_2 \sim \mathcal{N}(a_1\mu_1 + a_2\mu_2, a_1^2\sigma_1^2 + a_2^2\sigma_2^2).
 \]
 <p>Naturalmente, isso pode ser generalizado para uma combinação linear de um número arbitrário de normais.</p>
-<p>Há várias demonstrações desse fato, através de cálculo explícito da função acumulada de probabilidade ou da função característica, por exemplo. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las.</p>
-<p>Por exemplo, se \(X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)\) e \(X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)\), então podemos escrever \(X_1 = \mu_1 + \sigma_1 Y_1\) e \(X_2 = \mu_2 + \sigma_2 Y_2\), com \(Y_1, Y_2 \sim \mathcal{N}(0, 1)\). Assim,</p>
+<p>Há várias demonstrações desse fato, através de cálculo explícito da função acumulada de probabilidade ou da função característica, por exemplo. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las. Vamos seguir, aqui, a demonstração como feita em Eisenberg &amp; Sullivan &#40;2008&#41;. Veja esse mesmo artigo para comentários sobre outras demonstrações.</p>
+<p>Se \(X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)\) e \(X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)\), então podemos escrever \(X_1 = \mu_1 + \sigma_1 Y_1\) e \(X_2 = \mu_2 + \sigma_2 Y_2\), com \(Y_1, Y_2 \sim \mathcal{N}(0, 1)\). Assim,</p>
 \[
 X = a_1\mu_1 + a_2\mu_2 + a_1\sigma_1 Y_1 + a_2\sigma_2 Y_2.
 \]
@@ -248,7 +257,10 @@ F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x).
 \[
 d = \frac{x}{\sqrt{b_1^2 + b_2^2}}
 \]
-<p>da origem, então podemos fazer uma rotação do semiplano \(b_1 Y_1 + b_2 Y_2 \leq x\) para o semiplano \(Y_1 \leq d\) que teremos a mesma probabilidade:</p>
+<p>da origem, então podemos fazer uma rotação do semiplano \(b_1 Y_1 + b_2 Y_2 \leq x\) para o semiplano \(Y_1 \leq d\).</p>
+
+<p><span style="color:red;">// Image matching '/assets/pages/c02/transformacoes/code/combinacao_linear_normais_rotacao' not found. //</span></p>
+<p>Fazendo isso,  teremos a mesma probabilidade:</p>
 \[
 F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\left(\frac{x}{\sqrt{b_1^2 + b_2^2}}\right) = F_{(b_1^2 + b_2^2)Y_1}(x).
 \]
@@ -278,7 +290,7 @@ F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\l
         </div>
     
 
-    Last modified: May 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 04, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

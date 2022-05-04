@@ -6,9 +6,9 @@ theme(:ggplot2)
 xx = range(-3, 3, length = 100)
 yy = range(-3, 3, length = 100)
 
-b1 = 1.2
-b2 = 0.5
-c = 0.2
+b1 = 2.4
+b2 = 1.0
+c = 2.0
 
 f(x, y) = exp(-(x^2 + y^2)/2) / sqrt(2π)
 

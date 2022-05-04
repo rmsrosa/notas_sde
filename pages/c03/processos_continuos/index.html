@@ -118,13 +118,22 @@
     <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Cadeias de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/convergencias">4. Tipos de convergências</a></li>
+    <li>4. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -219,7 +228,7 @@ F_{X_t}(x) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)) = \f
 \[
 \frac{\mathrm{d}}{\mathrm{d} x}F_{X_t}(x) = \frac{1}{\pi}\frac{1}{\sqrt{1 - x^2}}, \quad -1 < x < 1.
 \]
-<h3 id="transporte_cosut"><a href="#transporte_cosut" class="header-anchor">Transporte cos&#40;Ut&#41;</a></h3>
+<h3 id="transporte_sinut"><a href="#transporte_sinut" class="header-anchor">Transporte sin&#40;Ut&#41;</a></h3>
 <p>Um outro exemplo importante é dado por</p>
 \[
 X_t \sim \sin(Ut),
@@ -228,7 +237,7 @@ X_t \sim \sin(Ut),
 <p>A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo que esse processo não é independente mas ainda é um processo identicamente distribuído. O mais significativo, no entanto, é que, como a frequência de cada seno é dada aleatoriamente, o conjunto de trajetórias dispersa, a ponto das estatísticas conjuntas serem não triviais. Veremos que esse é, surpreendentemente, um exemplo de um <em>ruído branco</em>.</p>
 
 <img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/processo_sinttimesU.svg" alt="">
-<h2 id="gaussiana_em_movimento"><a href="#gaussiana_em_movimento" class="header-anchor">Gaussiana em movimento</a></h2>
+<h2 id="gaussiana_senoidal"><a href="#gaussiana_senoidal" class="header-anchor">Gaussiana senoidal</a></h2>
 <p>Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, \(Y_1\) e \(Y_2\), em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere \(a\in \mathbb{R}\) e defina</p>
 \[
 X_t = \cos(at)Y_1 + \sin(at)Y_2, \quad t\in \mathbb{R}.
@@ -282,7 +291,7 @@ Y_t = \sum_{i = 1}^{X_t} W_i.
         </div>
     
 
-    Last modified: May 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 04, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

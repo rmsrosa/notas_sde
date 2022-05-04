@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Média, variância e outros momentos</title>  
+   <title>Definição</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -150,10 +150,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.6. Igualdades e desigualdades</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener"><kbd>→</kbd> 4.2. Existência</a>
 </span>
     </p>
 </div>
@@ -164,33 +164,38 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.5. Média, variância e outros momentos</a></h1>
-<h2 id="valor_esperado"><a href="#valor_esperado" class="header-anchor">Valor esperado</a></h2>
-<p>O <strong>valor esperado</strong>, ou média, de uma variável aleatória, é como uma média ponderada dos possíveis valores da variável, ponderados pela probabilidade de cada realização. No caso de uma variável discreta \(X\) &#40;finita ou infinita enumerável&#41; com possíveis valores \(\Sigma = \{x_j\}_j\), respectivas probabilidades \(0 \leq p_j \leq 1\), com \(\sum_j p_j = 1\), o valor esperado de \(X\) é</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.1. Definição</a></h1>
+<p>O processo de Wiener é um processo estocástico que formaliza as ideias do movimento Browniano. Por conta disso, ele é também chamado de processo Browniano, ou mesmo de movimento Browniano, mas vale ressaltar que muitos autores diferenciam o fenômeno físico observado por Robert Brown, em 1827, e denominado de movimento Browniano, da formalização matemática denominada de processo de Wiener ou processo Browniano.</p>
+<h2 id="processo_de_wiener"><a href="#processo_de_wiener" class="header-anchor">Processo de Wiener</a></h2>
+<p>Um <strong>processo de Wiener &#40;padrão&#41;</strong>, ou <strong>processo Browniano &#40;padrão&#41;</strong>, é um processo estocástico real \(\{W_t\}_{t \geq 0}\) tal que</p>
+<ol>
+<li><p>\(W_0 = 0\);</p>
+</li>
+<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos independentes, i.e. para \(t_j \geq 0\) e \(\tau_j > 0\), para \(j = 1, \ldots, J\), \(J\in\mathbb{N}\), então as variáveis aleatórias \(\Delta W_j = W_{t_j + \tau_j} - W_{t_j}\), \(j = 1, \ldots, J\), são independentes.</p>
+</li>
+<li><p>Para quaisquer \(t\geq 0\) e \(\tau > 0\), o incremento \(W_{t + \tau} - W_t\) possui distribuição normal com média zero e desvio padrão \(\tau\), i.e.</p>
+</li>
+</ol>
 \[
-\mathbb{E}[X] = \sum_j x_j p_j.
+W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
 \]
-<p>Nem sempre o valor esperado está definido. Por exemplo, considere a variável aleatória que assume valores inteiros com probabilidades dadas pelos termos da série de Euler &#40;normalizada&#41;</p>
+<ol start="4">
+<li><p>Com probabilidade um, os caminhos amostrais são contínuos, i.e.</p>
+</li>
+</ol>
 \[
-p_n = \frac{6}{\pi^2 n^2}.
+\mathbb{P}(\{\omega \in \Omega; \; t \rightarrow X_t(\omega) \text{ é contínuo}\}) = 1.
 \]
-<p>Naturalmente,</p>
-\[
-\sum_n p_n = \frac{6}{\pi^2}\sum_{n\in \mathbb{N}}\frac{1}{n^2} = 1,
-\]
-<p>de modo que \(X\) é uma variável aleatória. O seu valor esperado, no entanto, é indefinido, já que</p>
-\[
-\mathbb{E}(X) \stackrel{?}{=} \sum_n p_n n = \frac{6}{\pi^2} \sum_{n\in \mathbb{N}} \frac{1}{n} = \infty
-\]
-<p>é uma série divergente.</p>
+<p>Mais geralmente, um <strong>processo de Wiener</strong> pode começar em \(W_0 = x\) arbitrário e ter incrementos \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), além dos caminhos contínuos quase sempre e dos incrementos independentes e estacionários.</p>
+<p>Essa tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.6. Igualdades e desigualdades</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener"><kbd>→</kbd> 4.2. Existência</a>
 </span>
     </p>
 </div>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Média, variância e outros momentos</title>  
+   <title>Existência</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,8 +13,6 @@
 
   
 
-  
-    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -150,10 +148,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.6. Igualdades e desigualdades</a>
+    <a class="menu-level-1" href="/notas_sde/pages/convergencias"><kbd>→</kbd> 5. Tipos de convergências</a>
 </span>
     </p>
 </div>
@@ -164,33 +162,15 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.5. Média, variância e outros momentos</a></h1>
-<h2 id="valor_esperado"><a href="#valor_esperado" class="header-anchor">Valor esperado</a></h2>
-<p>O <strong>valor esperado</strong>, ou média, de uma variável aleatória, é como uma média ponderada dos possíveis valores da variável, ponderados pela probabilidade de cada realização. No caso de uma variável discreta \(X\) &#40;finita ou infinita enumerável&#41; com possíveis valores \(\Sigma = \{x_j\}_j\), respectivas probabilidades \(0 \leq p_j \leq 1\), com \(\sum_j p_j = 1\), o valor esperado de \(X\) é</p>
-\[
-\mathbb{E}[X] = \sum_j x_j p_j.
-\]
-<p>Nem sempre o valor esperado está definido. Por exemplo, considere a variável aleatória que assume valores inteiros com probabilidades dadas pelos termos da série de Euler &#40;normalizada&#41;</p>
-\[
-p_n = \frac{6}{\pi^2 n^2}.
-\]
-<p>Naturalmente,</p>
-\[
-\sum_n p_n = \frac{6}{\pi^2}\sum_{n\in \mathbb{N}}\frac{1}{n^2} = 1,
-\]
-<p>de modo que \(X\) é uma variável aleatória. O seu valor esperado, no entanto, é indefinido, já que</p>
-\[
-\mathbb{E}(X) \stackrel{?}{=} \sum_n p_n n = \frac{6}{\pi^2} \sum_{n\in \mathbb{N}} \frac{1}{n} = \infty
-\]
-<p>é uma série divergente.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.2. Existência</a></h1>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades"><kbd>→</kbd> 2.6. Igualdades e desigualdades</a>
+    <a class="menu-level-1" href="/notas_sde/pages/convergencias"><kbd>→</kbd> 5. Tipos de convergências</a>
 </span>
     </p>
 </div>
@@ -212,10 +192,6 @@ p_n = \frac{6}{\pi^2 n^2}.
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
-    
-        <script src="/notas_sde/libs/katex/katex.min.js"></script>
-        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
-        <script>renderMathInElement(document.body)</script>
     
 
     
