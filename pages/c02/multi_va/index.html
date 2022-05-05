@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Conjuntos de variáveis aleatórias</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações estocásticas e aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.5. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Igualdades e desigualdades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.7. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.8. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">Title not found</a></h1>
+<h2 id="independência"><a href="#independência" class="header-anchor">Independência</a></h2>
+<p>Duas variáveis aleatórios \(X\) e \(Y\) definidas em um mesmo espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\) são ditas <strong>independentes</strong> quando a probabilidade conjunta</p>
+\[
+\mathbb{P}(X \in E_1, Y \in E_2) = \mathbb{P}(\{\omega; \; X(\omega) \in E_1, \; Y(\omega) \in E_2\})
+\]
+<p>é igual ao produto das probabilidades individuais &#40;marginais&#41;, i.e.</p>
+\[
+\mathbb{P}(X \in E_1, Y \in E_2) = \mathbb{P}(X \in E_1)\mathbb{P}(X \in E_2).
+\]
+<p>No caso de um conjunto \(X_1, \ldots, X_n\) de variáveis aleatórias, em um mesmo espaço de probabilidades, dizemos que as variáveis são <strong>&#40;mutuamente&#41; independentes</strong> quando</p>
+\[
+\mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n) = \mathbb{P}(X_1 \in E_1)\cdots \mathbb{P}(X_n \in E_n).
+\]
+<p>Analogamente no caso de uma coleção infinita \(\{X_k\}_k\) &#40;enumerável ou não&#41; de variáveis aleatórias em um mesmo espaço.</p>
+<p>Observe que podemos ter um conjunto de variáveis aleatórias que seja independente dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias \(X\), \(Y\) e \(Z\), onde \(X\) e \(Y\) são variáveis de Bernoulli independentes, com probabilidade de sucesso \(p = 1/2\), e defina \(Z\) como sendo \(1\), caso os resultados de \(X\) e \(Y\) sejam diferentes, e \(0\), caso os resultados sejam iguais. Podemos escrever isso como \(Z = X + Y \mod 2\), com \(X\) e \(Y\) assumindo valores \(0\) ou \(1\). Podemos pensar nisso como um <em>checksum</em> simples, ou um dígito verificador.</p>
+<p>Nesse caso, \(X\) e \(Y\) são independentes, \(X\) e \(Z\) são independentes e \(Y\) e \(Z\) são independentes. Mas \(X, Y\) e \(Z\) não são mutuamente independentes, já que \(Z\) está completamente determinado pelos resultados de \(X\) e \(Y\).</p>
+
+    
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: May 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

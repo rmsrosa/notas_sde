@@ -158,6 +158,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/c02/multi_va/index.html</loc>
+    <lastmod>2022-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/c01/movimento_Browniano/index.html</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>monthly</changefreq>
