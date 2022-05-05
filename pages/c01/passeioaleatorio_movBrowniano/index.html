@@ -62,7 +62,10 @@
     <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.6. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -109,9 +112,6 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
     </div>
-    <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/passeioaleatorio_movBrowniano">3.6. Do passeio aleatório ao movimento Browniano</a></li>
-    </div>
     <div class="menu-level-1">
     <li>4. Processos de Wiener</li>
     </div>
@@ -150,10 +150,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/definicao_processo_wiener"><kbd>→</kbd> 4.1. Definição</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde"><kbd>→</kbd> 1.7. Relações entre equações estocásticas e equações aleatórias</a>
 </span>
     </p>
 </div>
@@ -164,9 +164,9 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">3.6. Do passeio aleatório ao movimento Browniano</a></h1>
-<p>Um outro exemplo de processo estocástico discreto e que é importante como modelo relacionado ao movimento Browniano é o do passeio aleatório, especialmente ao considerarmos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.</p>
-<p>Com isso em mente, vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto \(\ell \mathbb{Z}\), onde \(\ell > 0\) é uma escala de comprimento. Usamos, também, uma escala de tempo \(\tau > 0\). Assumimos que, a cada passo de tempo \(\tau\), uma partícula pode se movimentar de uma distância \(\ell\), para a direita ou para a esquerda, com probabilidade \(1/2\) em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.6. Do passeio aleatório ao movimento Browniano</a></h1>
+<p>Uma outra maneira de modelar o movimento Browniano é através de um processo conhecido como <em>passeio aleatório</em>, no caso em que consideramos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.</p>
+<p>Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto \(\ell \mathbb{Z}\), onde \(\ell > 0\) é uma escala de comprimento. Usamos, também, uma escala de tempo \(\tau > 0\). Assumimos que, a cada passo de tempo \(\tau\), uma partícula pode se movimentar de uma distância \(\ell\), para a direita ou para a esquerda, com probabilidade \(1/2\) em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.</p>
 <p>Denotamos, então, por \(p_n(m)\) a probabilidade da partícula estar na posição \(x = m\ell\), no instante \(t = n\tau\). Naturalmente, \(0 \leq p_n(m) \leq 1\), com \(\sum_{m\in \mathbb{Z}} p_n(m) = 1\), para todo \(n = 0, 1, \ldots\).</p>
 <p>Inicialmente, em \(t = 0\), consideramos que a partícula está na <em>origem</em>, de modo que \(p_0(0) = 1\) e \(p_0(m) = 0\), para \(m\ne 0.\) Vamos escrever isso, simetricamente, na forma</p>
 \[
@@ -327,10 +327,10 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/definicao_processo_wiener"><kbd>→</kbd> 4.1. Definição</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c01/relacoes_rode_sde"><kbd>→</kbd> 1.7. Relações entre equações estocásticas e equações aleatórias</a>
 </span>
     </p>
 </div>
@@ -346,7 +346,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         </div>
     
 
-    Last modified: May 04, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
