@@ -40,6 +40,7 @@ menu = [
         "pages/c01/aspectos_numericos"
         "src/literate/c01/simulacoes_numericas.jl"
         "pages/c01/movimento_Browniano"
+        "pages/c01/passeioaleatorio_movBrowniano"
         "pages/c01/relacoes_rode_sde"
     ]
     "Variáveis Aleatórias" => [
@@ -58,7 +59,6 @@ menu = [
         "pages/c03/processos_continuos"
         "pages/c03/tipos_processos"
         "pages/c03/cadeias_markov"
-        "pages/c03/passeioaleatorio_movBrowniano"
     ]
     "Processos de Wiener" => [
         "pages/c04/definicao_processo_wiener"
