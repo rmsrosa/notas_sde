@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Conjuntos de variáveis aleatórias</title>  
+   <title>Variáveis aleatórias multivariadas</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -80,19 +80,22 @@
     <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/transformacoes">2.4. Transformações de variáveis aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/media_momentos">2.5. Média, variância e outros momentos</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Igualdades e desigualdades</a></li>
+    <li><a href="/notas_sde/pages/c02/multi_va">2.6. Variáveis aleatórias multivariadas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.7. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.7. Transformações de variáveis aleatórias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.8. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.8. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.9. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -147,31 +150,102 @@
   <div class="books-content">
 
     
-      
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes"><kbd>→</kbd> 2.7. Transformações de variáveis aleatórias</a>
+</span>
+    </p>
+</div>
+</br></br>
+
     
 
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">Title not found</a></h1>
-<h2 id="independência"><a href="#independência" class="header-anchor">Independência</a></h2>
-<p>Duas variáveis aleatórios \(X\) e \(Y\) definidas em um mesmo espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\) são ditas <strong>independentes</strong> quando a probabilidade conjunta</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">2.6. Variáveis aleatórias multivariadas</a></h1>
+<p>As coisas começam a ficar mais interessantes quando consideramos mais de uma variável aleatória. Para que elas sejam consideradas juntas, é necessário que estejam definidas em um mesmo espaço de probabilidades. Isso aparece de forma natural, como veremos aqui.</p>
+<h2 id="variáveis_aleatórias_multivariadas"><a href="#variáveis_aleatórias_multivariadas" class="header-anchor">Variáveis aleatórias multivariadas</a></h2>
+<p>Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor \(\mathbf{X} = (X_1, \ldots, X_n)\) &#40;muitas vezes se considera um vetor coluna, na verdade&#41; cujos elementos estão em um mesmo espaço de probabilidades, digamos \((\Omega, \mathcal{A}, \mathbb{P})\). Os espaços de eventos podem ser diferentes, de forma que \(\Sigma = \Sigma_1 \times \cdots \times \Sigma_n\), com a \(\sigma\)-algebra \(\mathcal{E}\) gerada por \(\mathcal{E}_1 \times \cdots \times \mathcal{E}_n\). Tal objeto é chamado de <strong>variável aleatória multivariada.</strong> E a probabilidade \(\mathbb{P}\) é chamada de <strong>distribuição conjunta de probabilidades.</strong></p>
+<p>A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos \(\mathbb{E} \in \mathcal{E}\) acontecerem:</p>
 \[
-\mathbb{P}(X \in E_1, Y \in E_2) = \mathbb{P}(\{\omega; \; X(\omega) \in E_1, \; Y(\omega) \in E_2\})
+\mathbb{P}(\mathbb{X} \in \mathbb{E}).
 \]
-<p>é igual ao produto das probabilidades individuais &#40;marginais&#41;, i.e.</p>
+<p>Quando o evento conjunto é da forma \(\mathbb{E} = E_1 \times \ldots \times E_n\), podemos escrever</p>
+\[
+\mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n)
+\]
+<p>Também podemos extrair a probabilidade de realização de um evento para apenas uma das variáveis, que é chamada de <strong>marginal</strong>.</p>
+\[
+\mathbb{P}(X_i \in E_i).
+\]
+<p>Isso pode ser obtido da distribuição conjunta, considerando o evento \(\mathbb{E} = E_1 \times \ldots \times E_n\), com \(E_j = \Sigma_j\), para \(i\neq j\).</p>
+<h2 id="exemplo"><a href="#exemplo" class="header-anchor">Exemplo</a></h2>
+<p>Por exemplo, considere um dado de quatro lados e um de seis. Ambos dados não viciados. Há \(4 \times 6 = 24\) combinações possíveis. O espaço amostral \(\Omega\) deverá ter &#40;pelo menos&#41; 24 elementos, cada combinação com uma determinada probabilidade.</p>
+<p>Podemos representar os resultado dos dados através de duas variáveis aleatórias, digamos \(X\) e \(Y\), com \(X\) para o resultado do lançamento do dado de quatro lados e \(Y\), para o de seis. Isoladamente, teríamos um espaço amostral de quatro elementos para \(X\) e um de seis para \(Y\). Mas em conjunto, temos uma variável multivariada \((X, Y)\) em um espaço amostral de 24 elementos. Mais explicitamente, podemos considerar</p>
+\[
+\Omega = \Sigma = \{1, \ldots, 4\} \times \{1, \ldots, 6\}.
+\]
+<p>A probabilidade conjunta \(\mathbb{P}\) é o que define a variável multivariada nos dando as probabilidades das realizações de cada combinação:</p>
+\[
+\mathbb{P}(X = i, Y = j) = \frac{1}{24}, \qquad i = 1, \ldots, 4, \;j = 1, \ldots, 6.
+\]
+<p>A partir daí, podemos tirar as marginais:</p>
+\[
+\mathbb{P}(X = i) = \frac{1}{4}, \quad i = 1, \ldots, 4, \qquad \mathbb{P}(Y = j) = \frac{1}{6}, \quad j = 1, \ldots, 6.
+\]
+<p>As marginais podem ser obtidas com a lei da probabilidade total, por exemplo,</p>
+\[
+\mathbb{P}(X = i) = \sum_{j = 1}^6 \mathbb{P}(X = i, Y = j) = \sum_{j = 1}^6 \frac{1}{24} = \frac{6}{24} = \frac{1}{4}.
+\]
+<h2 id="independência"><a href="#independência" class="header-anchor">Independência</a></h2>
+<p>Duas variáveis aleatórias \(X\) e \(Y\) gerando uma variável aleatória multivariada \((X, Y)\) em um espaço \((\Omega, \mathcal{A}, \mathbb{P})\) são ditas <strong>independentes</strong> quando a probabilidade conjunta é o produto das marginais:</p>
 \[
 \mathbb{P}(X \in E_1, Y \in E_2) = \mathbb{P}(X \in E_1)\mathbb{P}(X \in E_2).
 \]
-<p>No caso de um conjunto \(X_1, \ldots, X_n\) de variáveis aleatórias, em um mesmo espaço de probabilidades, dizemos que as variáveis são <strong>&#40;mutuamente&#41; independentes</strong> quando</p>
+<p>No caso de uma variável multivariada \((X_1, \ldots, X_n)\), dizemos que as variáveis \(X_i\) são <strong>&#40;mutuamente&#41; independentes</strong> quando</p>
 \[
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n) = \mathbb{P}(X_1 \in E_1)\cdots \mathbb{P}(X_n \in E_n).
 \]
 <p>Analogamente no caso de uma coleção infinita \(\{X_k\}_k\) &#40;enumerável ou não&#41; de variáveis aleatórias em um mesmo espaço.</p>
-<p>Observe que podemos ter um conjunto de variáveis aleatórias que seja independente dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias \(X\), \(Y\) e \(Z\), onde \(X\) e \(Y\) são variáveis de Bernoulli independentes, com probabilidade de sucesso \(p = 1/2\), e defina \(Z\) como sendo \(1\), caso os resultados de \(X\) e \(Y\) sejam diferentes, e \(0\), caso os resultados sejam iguais. Podemos escrever isso como \(Z = X + Y \mod 2\), com \(X\) e \(Y\) assumindo valores \(0\) ou \(1\). Podemos pensar nisso como um <em>checksum</em> simples, ou um dígito verificador.</p>
+<p>Essa propriedade pode ser usada diretamente na construção de variáveis multivariadas independentes&#33;</p>
+<h2 id="independência_dois_a_dois"><a href="#independência_dois_a_dois" class="header-anchor">Independência dois a dois</a></h2>
+<p>Dizemos que variáveis aleatórias \(X_1, \ldots, X_n\) definindo uma variável multivariada \((X_1, \ldots, X_n)\) são <strong>independentes duas a duas</strong> quando qualquer par \((X_i, X_j)\) é independente, i.e.</p>
+\[
+\mathbb{P}(X_i \in E_i, X_j \in E_j) = \mathbb{P}(X_i \in E_i)\mathbb{P}(X_j \in E_j), \qquad \forall i \neq j.
+\]
+<p>Observe que podemos ter um conjunto com mais de duas variáveis aleatórias cujas variáveis sejam independentes dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias \(X\), \(Y\) e \(Z\), onde \(X\) e \(Y\) são variáveis de Bernoulli independentes, com probabilidade de sucesso \(p = 1/2\), e defina \(Z\) como sendo \(1\), caso os resultados de \(X\) e \(Y\) sejam diferentes, e \(0\), caso os resultados sejam iguais. Podemos escrever isso como \(Z = X + Y \mod 2\), com \(X\) e \(Y\) assumindo valores \(0\) ou \(1\). Podemos pensar nisso como um <em>checksum</em> simples, ou um dígito verificador.</p>
 <p>Nesse caso, \(X\) e \(Y\) são independentes, \(X\) e \(Z\) são independentes e \(Y\) e \(Z\) são independentes. Mas \(X, Y\) e \(Z\) não são mutuamente independentes, já que \(Z\) está completamente determinado pelos resultados de \(X\) e \(Y\).</p>
+<p>Podemos mostrar isso mais explicitamente, através da distribuição conjunta de probabilidade, até mesmo para solidificar as ideias acima. A tabela abaixo nos dá a distribuição conjunta de probabilidades:</p>
+<table><tr><th align="center">X</th><th align="center">Y</th><th align="center">Z</th><th align="left">Probabilidade</th></tr><tr><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="left">1/4</td></tr><tr><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="left">1/4</td></tr></table>
+<p>O espaço amostral pode ser tomado como sendo \(\Omega = \{0, 1\}^3\). Acima, só mostramos as combinações com probabilidade positiva. Mas podemos completar o quadro:</p>
+<table><tr><th align="center">X</th><th align="center">Y</th><th align="center">Z</th><th align="left">Probabilidade</th></tr><tr><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">0</td><td align="center">0</td><td align="center">1</td><td align="left">0</td></tr><tr><td align="center">1</td><td align="center">0</td><td align="center">0</td><td align="left">0</td></tr><tr><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="left">1/4</td></tr><tr><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="left">0</td></tr><tr><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">1</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="left">0</td></tr></table>
+<p>Observe que</p>
+\[
+\mathbb{P}(X = 0) = \mathbb{P}(Y = 0) = \mathbb{P}(Z = 0) = \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+\]
+<p>No entanto,</p>
+\[
+\mathbb{P}(X = 0, Y = 0, Z = 0) = 0 \neq \mathbb{P}(X = 0)\mathbb{P}(Y = 0)\mathbb{P}(Z = 0).
+\]
+<p>Da mesma forma, pode-se verificar que as variáveis são independentes duas a duas.</p>
 
-    
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes"><kbd>→</kbd> 2.7. Transformações de variáveis aleatórias</a>
+</span>
+    </p>
+</div>
+</br></br>
+
 
 
 <div class="page-foot">
