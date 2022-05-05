@@ -2,9 +2,9 @@
 
 # {{ get_title }}
 
-Um outro exemplo de processo estocástico discreto e que é importante como modelo relacionado ao movimento Browniano é o do passeio aleatório, especialmente ao considerarmos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.
+Uma outra maneira de modelar o movimento Browniano é através de um processo conhecido como *passeio aleatório*, no caso em que consideramos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.
 
-Com isso em mente, vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$ é uma escala de comprimento. Usamos, também, uma escala de tempo $\tau > 0$. Assumimos que, a cada passo de tempo $\tau$, uma partícula pode se movimentar de uma distância $\ell$, para a direita ou para a esquerda, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.
+Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$ é uma escala de comprimento. Usamos, também, uma escala de tempo $\tau > 0$. Assumimos que, a cada passo de tempo $\tau$, uma partícula pode se movimentar de uma distância $\ell$, para a direita ou para a esquerda, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.
 
 Denotamos, então, por $p_n(m)$ a probabilidade da partícula estar na posição $x = m\ell$, no instante $t = n\tau$. Naturalmente, $0 \leq p_n(m) \leq 1$, com $\sum_{m\in \mathbb{Z}} p_n(m) = 1$, para todo $n = 0, 1, \ldots$.
 
