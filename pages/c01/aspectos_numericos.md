@@ -61,7 +61,3 @@ x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda)\Delta
 $$
 
 Em muitos casos, o processo estocástico é um **processo de Lévy**, em que os incrementos são estacionários e independentes entre si, ou seja, a distribuição de $W_{t_{n+1}} - W_{t_n}$ depende apenas do passo $\Delta t = t_{n+1} - t_n$ e as realizações a cada passo são independentes. Assim, no método de Euler, podemos sortear $\Delta W_n^{\omega, \Delta t}$ diretamente, a partir de uma determinada distribuição de probabilidades.
-
-## Exercícios
-
-1. Mostre
