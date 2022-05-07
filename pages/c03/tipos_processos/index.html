@@ -357,19 +357,6 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
 <p>Processos de Wiener são processos de Lévy, com incrementos normais com média zero e variância proporcional ao intervalo de tempo.</p>
 <p>Processos de Poisson são processos de Lévy, com incrementos dados por uma distribuição de Poisson, com valor esperado proporcional ao intervalo de tempo.</p>
 <p>Processos de Lévy podem ser caracterizados através de uma representação chamada de <em>fórmula de Lévy-Khintchine</em>, para a sua função característica.</p>
-<h2 id="ruído_branco"><a href="#ruído_branco" class="header-anchor">Ruído branco</a></h2>
-<p>Um <strong>ruído branco</strong> <em>&#40;white noise&#41;</em> pode ser definido de várias formas, mas é um processo estocástico real contínuo \(\{W_t\}_{t \in I}\), onde \(I\subset \mathbb{R}\) é um intervalo, tal que \(\mathbb{E}[W_t] = 0\); \(\mathrm{Var}[W_t] = \sigma^2\) é constante, para algum \(0 < \sigma < \infty\); e \(\mathrm{Cov}[W_t, W_s] = 0\), para quaisquer \(t, s\in I\), \(t\neq s\), com \(\mathrm{Cov}[W_t, W_{t + \tau}] = \sigma^2\delta_0(\tau)\).</p>
-<p>O processo \(X_t = \sin(Ut)\), onde \(U \sim \mathrm{Unif}([0, 2\pi))\), apesar dos caminhos amostrais serem simples senoidais, é um exemplo de ruído branco. De fato, temos</p>
-\[
-\mathbb{E}[X_t] = \int_\mathbb{R} x \;\mathrm{P}_{X_t}(x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut) \;\mathrm{d}u = 0;
-\]
-\[
-\mathrm{Var}[X_t] = \int_\mathbb{R} x^2 \;\mathrm{P}_{X_t}(x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)^2 \;\mathrm{d}u = \frac{1}{2\pi}\int_0^{2\pi} \frac{1 + \cos(2ut)}{2} \;\mathrm{d}u = \frac{1}{2};
-\]
-<p>e</p>
-\[
-\mathrm{Cov}[X_t, X_s] = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
-\]
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Mostre que, se \(\{X_n\}_n\) é um processo <em>i.i.d.</em> e \(k \in \mathbb{N}\), o processo \(Y_n = X_n + \cdots + X_{n + k}\) é estacionário mas não é <em>i.i.d.</em>.</p>
@@ -398,7 +385,7 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
         </div>
     
 
-    Last modified: May 05, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
