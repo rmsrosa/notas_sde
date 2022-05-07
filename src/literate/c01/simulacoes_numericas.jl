@@ -108,18 +108,20 @@ plot!(t, x[:, 1], label="uma realização", color=2)
 # $$
 # \frac{\mathrm{d}X_t}{\mathrm{d}t} = \mu_t X_t,
 # $$
-# onde $\{\mu_t\}_t$ é um processo aleatório *estacionário*, i.e. com distribuições de probabilidades constantes no tempo.
-# Mais especificamente, vamos assumir que $\mu_t \sim \mathcal{N}(\bar\mu, \sigma^2)$, com $\bar\mu$ e $\sigma > 0$ fixos como antes.
+# onde $\{\mu_t\}_t$ é um processo aleatório dado por $\mu_t = \bar\mu + \sigma \sin(W_t)$, onde $\bar\mu, \sigma > 0$ e $\{W_t\}_{t\geq 0}$ é tal que $W_0 = 0$, e $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$ independentes.
+
+μ̄ = 0.1
+σ = 0.1
 
 for m in 1:M
     x[1, m] = x₀
     for n in 2:N+1
-        μ = μ̄ + σ * randn(rng)
-        x[n, m] = (1.0 + μ * Δt) .* x[n-1, m]
+        μt = μ̄ + σ * randn(rng) * √Δt
+        x[n, m] = (1.0 + μt * Δt) .* x[n-1, m]
     end
 end
 
-plot(t, x, alpha = 0.2, title="Soluções RODE (x₀ = $x₀, μ_t = N($μ̄, $σ), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1) 
+plot(t, x, alpha = 0.2, title="Soluções RODE (x₀ = $x₀, μ_t = $μ̄ + $σ W_t), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1) 
 plot!(t, x[:, 1], label="uma realização", color=2)
 
 # ## Equação estocástica
@@ -129,6 +131,9 @@ plot!(t, x[:, 1], label="uma realização", color=2)
 # \mathrm{d}X_t = \bar\mu X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t,
 # $$
 # onde $\{W_t\}_t$ é um processo aleatório. Mais especificamente, vamos assumir que $\{W_t\}_t$ é um **processo de Lévy**, tendo incrementos independentes e estacionários, com $\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$.
+
+μ̄ = 0.1
+σ = 0.05
 
 for m in 1:M
     x[1, m] = x₀
@@ -161,9 +166,9 @@ plot!(t, x[:, 1], label="uma realização", color=2)
 #
 # 3. Resolva, via método de Euler, a equação diferencial aleatória
 # $$
-# \mathrm{d}X_t/\mathrm{d}t = (A_t - B_t X_t) X_t, \quad X_0 = x_0,
+# \mathrm{d}X_t/\mathrm{d}t = (A_t - b X_t) X_t, \quad X_0 = x_0,
 # $$
-# onde $A_t \sim \mathcal{N}(\bar\alpha, \sigma_\alpha^2)$, $B_t \sim \mathcal{N}(\bar\beta, \sigma_\beta^2)$, com $\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta > 0$, $0 < x_0 < \bar\alpha / \bar\beta$, $t_0 = 0$, $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.
+# onde $A_t = a + \sigma\sin(W_t)$ e $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, com $a, b, \sigma > 0$, $0 < x_0 < a / b$, $t_0 = 0$, $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.
 #
 # 4. Resolva, via método de Euler, a equação diferencial estocástica
 # $$
