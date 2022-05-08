@@ -8,7 +8,7 @@ Vejamos alguns resultados importantes em probabilidade que nos serão úteis ao 
 
 Se $A$ e $B$ são conjuntos mensuráveis segundo uma medida de probabilidade $\mathbb{P}$ e $\mathbb{P}(B) > 0$, então vale a fórmula
 $$
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}}.
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
 $$
 
 Caso $\mathbb{P}(B) = 0$, então $\mathbb{P}(A | B)$ é considerado *indefinido*.
