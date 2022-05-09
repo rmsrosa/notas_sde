@@ -191,7 +191,7 @@ $$
 \mathbb{P}(\{\omega \in \Omega; \; t \rightarrow W_t(\omega) \text{ é contínuo}\}) = 1.
 $$
 
-Mais geralmente, um **processo de Wiener** pode começar em $W_0 = x$ arbitrário e ter incrementos $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, além de manterem as propriedades dos caminhos serem contínuos quase sempre e dos incrementos serem independentes e estacionários.
+Mais geralmente, um **processo de Wiener** pode começar em $W_0 = x$ arbitrário e ter incrementos $W_{t + \tau} - W_t \sim \mathcal{N}(0, \sigma^2\tau)$, para algum $\sigma > 0$, além de manterem as propriedades dos caminhos serem contínuos quase sempre e dos incrementos serem independentes e estacionários.
 
 Essa tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos a existência de tais processos posteriormente.
 
