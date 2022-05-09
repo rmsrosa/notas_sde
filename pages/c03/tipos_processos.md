@@ -111,7 +111,7 @@ Vale ressaltar aqui que, para a independência dos incrementos, os incrementos d
 
 Um processo $\{X_t\}_{t\in I}$ é dito **estacionário** quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer $t_1, \ldots, t_n \in I$ e $\tau>0$ tais que $t_1 + \tau, \ldots, t_n + \tau \in I$, as distribuições conjuntas de $X_{t_1}, \ldots, X_{t_n}$ e $X_{t_1 + \tau}, \ldots, X_{t_n + \tau}$ são iguais, o que pode ser expresso por
 $$
-\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n),
+\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n),
 $$
 para eventos quaisquer $E_1, \ldots, E_n \in \mathcal{E}$.
 
