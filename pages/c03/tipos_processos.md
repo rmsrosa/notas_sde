@@ -67,9 +67,11 @@ $$
 
 O caminho aleatório não é independente, como vimos, mas os seus *incrementos* são independentes. De fato, as chances de darmos um passo $+1$ ou $-1$ em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os incrementos $X_{n+1} - X_n$ são independentes entre si. Nesse caso, dizemos que o processo $\{X_n\}_n$ tem *incrementos independentes.*
 
-Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são independentes entre si.
+Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias mutuamente independentes.
 
-O processo de renovação também não tem incrementos independentes. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2$ e $\mathbb{P}(S_j < 2) = 0$, para $j \geq 2$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
+Veremos que o processo de Wiener é um exemplo de processo contínuo com incrementos independentes.
+
+O processo de renovação, por sua vez, também não tem incrementos independentes. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2$ e $\mathbb{P}(S_j < 2) = 0$, para $j \geq 2$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 $$
@@ -96,12 +98,6 @@ $$
 X_t = \cos(t + U), \quad t\in \mathbb{R},
 $$
 onde $U$ é a variável aleatória $U \sim \mathrm{Unif}([0, 2\pi])$, i.e. com lei uniforme no intervalo $[0, 2\pi)$. Como o cosseno é periódico com período $2\pi$, essa lei é a mesma em todos os instantes $t\in \mathbb{R}$, ou seja, são identicamente distribuídos. Mas não são independentes.
-
-## Processos com incrementos independentes e identicamente distribuídos
-
-O nome já diz, por si só, o que é um processo com **incrementos independentes e identicamente distribuídos**.
-
-Um exemplo é o caminho aleatório. Processos de Wiener, que veremos mais adiante, são exemplos de processos contínuos com incrementos *i.i.d*.
 
 ## Processos estacionários
 
@@ -177,7 +173,7 @@ O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. 
 
 Um **processo de Wiener (padrão)**, ou **processo Browniano (padrão)**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que
 1. $W_0 = 0$;
-2. $\{W_t\}_{t\geq 0}$ possui incrementos (sucessivos) independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, para $j = 1, \ldots, J$, $J\in\mathbb{N}$, então as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
+2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, para $j = 1, \ldots, J$, $J\in\mathbb{N}$, então as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
 3. Para quaisquer $t\geq 0$ e $\tau > 0$, o incremento $W_{t + \tau} - W_t$ possui distribuição normal com média zero e desvio padrão $\tau$, i.e.
 $$
 W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
