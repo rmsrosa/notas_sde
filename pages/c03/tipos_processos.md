@@ -235,6 +235,54 @@ Processos de Poisson são processos de Lévy, com incrementos dados por uma dist
 
 Processos de Lévy podem ser caracterizados através de uma representação chamada de *fórmula de Lévy-Khintchine*, para a sua função característica.
 
+## Ruído branco
+
+O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas autocorrelações são dadas por
+$$
+\mathrm{Cor}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
+$$
+Pede-se, ainda, que seja um processo estacionário, de modo que as correlações só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
+$$
+\mathrm{Cor}(X_t, X_s) = f(t - s),
+$$
+para alguma função $f:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{Cor}(X_t, X_s) = \mathrm{Cor}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
+
+Caso não haja nenhuma correlação entre os sinais em instantes diferentes, teremos
+$$
+f(\tau) = 0, \qquad \forall t \neq 0.
+$$
+Naturalmente,
+$$
+\sigma_0^2 \stackrel{\mathrm{def}}{=} f(0) = \mathrm{Cor}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
+$$
+
+Um exemplo de processo que satisfaz essas condições é o processo $X_t = \sin(Ut)$, onde $U \sim \mathrm{Unif}([0, 2\pi))$. Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos
+$$
+\mathbb{E}[X_t] = \int_\mathbb{R} x \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut) \;\mathrm{d}u = 0;
+$$
+$$
+\mathrm{Var}(X_t) = \int_\mathbb{R} x^2 \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)^2 \;\mathrm{d}u = \frac{1}{2\pi}\int_0^{2\pi} \frac{1 + \cos(2ut)}{2} \;\mathrm{d}u = \frac{1}{2};
+$$
+e
+$$
+\mathrm{Cov}(X_t, X_s) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
+$$
+
+No entanto, não podemos dizer que uma função de autocorrelação $f$ satisfazendo $f(\tau) = 0$, quando $\tau \neq 0$, e $f(0) = 1/2$ tenha um espectro contínuo. As condições acima dão um ruído branco em um sentido mais fraco.
+
+Para que seja um ruído branco genuíno, a função de correlação $f$ não deve estar definida no sentido clássico. É necessário que seja uma *distribuição*, com
+$$
+f(\tau) = \sigma_0^2\delta_0,
+$$
+para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat f(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, não um elemento do espaço amostral):
+$$
+\hat f(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
+$$
+
+Algumas definições pedem, ainda, que os eventos, em instantes diferentes, sejam independentes entre si.
+
+Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de que a derivada de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte.
+
 ## Exercícios
 
 1. Mostre que, se $\{X_n\}_n$ é um processo *i.i.d.* e $k \in \mathbb{N}$, o processo $Y_n = X_n + \cdots + X_{n + k}$ é estacionário mas não é *i.i.d.*.
