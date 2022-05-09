@@ -142,3 +142,7 @@ savefig(joinpath(@OUTPUT, "combinacao_linear_normais2.svg"))
 ```
 \fig{combinacao_linear_normais1}
 \fig{combinacao_linear_normais2}
+
+## Exercícios
+
+1. Seja $Y$ uma variável aleatória real e defina $X = \sin(Y)$. Suponha que $\mathbb{E}[Y] = 0$. Mostre que $\mathbb{E}[X] = 0$ e $\mathrm{Var}(X) \leq \mathrm{Var}(Y)$.
