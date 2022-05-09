@@ -99,6 +99,14 @@ X_t = \cos(t + U), \quad t\in \mathbb{R},
 $$
 onde $U$ é a variável aleatória $U \sim \mathrm{Unif}([0, 2\pi])$, i.e. com lei uniforme no intervalo $[0, 2\pi)$. Como o cosseno é periódico com período $2\pi$, essa lei é a mesma em todos os instantes $t\in \mathbb{R}$, ou seja, são identicamente distribuídos. Mas não são independentes.
 
+## Processos com incrementos independentes e identicamente distribuídos
+
+O nome já diz, por si só, o que é um processo com **incrementos independentes e identicamente distribuídos**.
+
+Um exemplo é o caminho aleatório. Processos de Wiener, que veremos mais adiante, são exemplos de processos contínuos com incrementos *i.i.d.*.
+
+Vale ressaltar aqui que, para a independência dos incrementos, os incrementos devem ser consecutivos, i.e. $W_{t_j} - W_{t_j}$, para $t_0 < t_1 < \cdots < t_n$ ou, no mínimo, sem interseção nos intervalos de tempo. Já para a distribuição idêntica, os passos devem ser tomados com intervalos iguais, i.e. $X_{t + \tau} - X_t$ e $X_{s + \tau} - X_s$, mas pode haver interseção, ou seja $\tau > 0$ e $t, s$ são arbitrários.
+
 ## Processos estacionários
 
 Um processo $\{X_t\}_{t\in I}$ é dito **estacionário** quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer $t_1, \ldots, t_n \in I$ e $\tau>0$ tais que $t_1 + \tau, \ldots, t_n + \tau \in I$, as distribuições conjuntas de $X_{t_1}, \ldots, X_{t_n}$ e $X_{t_1 + \tau}, \ldots, X_{t_n + \tau}$ são iguais, o que pode ser expresso por
