@@ -177,49 +177,55 @@ O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. 
 
 Um **processo de Wiener (padrão)**, ou **processo Browniano (padrão)**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que
 1. $W_0 = 0$;
-2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, para $j = 1, \ldots, J$, $J\in\mathbb{N}$, então as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
+2. $\{W_t\}_{t\geq 0}$ possui incrementos (sucessivos) independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, para $j = 1, \ldots, J$, $J\in\mathbb{N}$, então as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
 3. Para quaisquer $t\geq 0$ e $\tau > 0$, o incremento $W_{t + \tau} - W_t$ possui distribuição normal com média zero e desvio padrão $\tau$, i.e.
 $$
 W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
 $$
 4. Com probabilidade um, os caminhos amostrais são contínuos, i.e.
 $$
-\mathbb{P}(\{\omega \in \Omega; \; t \rightarrow X_t(\omega) \text{ é contínuo}\}) = 1.
+\mathbb{P}(\{\omega \in \Omega; \; t \rightarrow W_t(\omega) \text{ é contínuo}\}) = 1.
 $$
 
 Mais geralmente, um **processo de Wiener** pode começar em $W_0 = x$ arbitrário e ter incrementos $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, além de manterem as propriedades dos caminhos serem contínuos quase sempre e dos incrementos serem independentes e estacionários.
 
 Essa tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos a existência de tais processos posteriormente.
 
-Um processo de Wiener é um exemplo de processo Gaussiano. De fato, dados $t_1, \ldots, t_n \geq 0$, podemos escrever cada $X_{t_1}, \ldots, X_{t_n}$ como combinação linear das normais independentes $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$, onde $t_0 = 0$. Dessa forma, a distribuição conjunta de $X_{t_1}, \ldots, X_{t_n}$ é uma normal multivariada. Portanto, $\{X_t\}_{t\geq 0}$ é um processo Gaussiano. Note, ainda, que, como $X_0 = 0$ e $X_t - X_0 \sim \mathcal{N}(0, t)$, então
+Um processo de Wiener é um exemplo de processo Gaussiano. De fato, dados $t_1, \ldots, t_n \geq 0$, podemos escrever cada $W_{t_1}, \ldots, W_{t_n}$ como combinação linear das normais independentes $W_{t_1} - W_{t_0}$, $W_{t_2} - W_{t_1}$, ..., $W_{t_n} - W_{t_{n-1}}$, onde $t_0 = 0$. Dessa forma, a distribuição conjunta de $W_{t_1}, \ldots, W_{t_n}$ é uma normal multivariada. Portanto, $\{W_t\}_{t\geq 0}$ é um processo Gaussiano. Note, ainda, que, como $W_0 = 0$ e $W_t - W_0 \sim \mathcal{N}(0, t)$, então
 $$
-\mathbb{E}[X_t] = \mathbb{E}[X_t - X_0] = 0
+\mathbb{E}[W_t] = \mathbb{E}[W_t - X_0] = 0
 $$
 e
 $$
-\mathrm{Var}[X_t] = \mathrm{Var}[X_t - X_0] = t.
+\mathrm{Var}(W_t) = \mathrm{Var}(W_t - W_0) = t.
 $$
 Além disso, para quaisquer $t \geq s \geq 0$, como os incrementos são independentes e, portanto, tem correlação nula,
 $$
 \begin{align*}
-\mathrm{Cov}[X_t, X_s] & = \mathrm{Cov}[X_s + X_t - X_s, X_s] = \mathrm{Cov}[X_s, X_s] + \mathrm{Cov}[X_t - X_s, X_s] \\ & = \mathrm{Cov}[X_s - X_0, X_s - X_0] + \mathrm{Cov}[X_t - X_s, X_s - X_0] = \mathrm{Var}[X_s - X_0] = s.
+\mathrm{Cov}(W_t, W_s) & = \mathrm{Cov}(W_s + W_t - W_s, W_s) = \mathrm{Cov}(W_s, W_s) + \mathrm{Cov}(W_t - W_s, W_s) \\ & = \mathrm{Cov}(W_s - W_0, W_s - W_0) + \mathrm{Cov}(W_t - W_s, W_s - W_0) = \mathrm{Var}(W_s - W_0) = s.
 \end{align*}
 $$
-Observe que, se $t = s > 0$, então o segundo termo se anula pois $X_t - X_s = 0$. Já se $t \geq s = 0$, então todos os termos se anulam, já que $X_s - X_0 = 0$. De qualquer forma, podemos escrever, para $t, s \geq 0$ quaisquer,
+Observe que, se $t = s > 0$, então o segundo termo se anula pois $W_t - W_s = 0$. Já se $t \geq s = 0$, então todos os termos se anulam, já que $W_s - W_0 = 0$. De qualquer forma, podemos escrever, para $t, s \geq 0$ quaisquer,
 $$
-\mathrm{Cov}[X_t, X_s] = \min\{t, s\}.
+\mathrm{Cov}(W_t, W_s) = \min\{t, s\}.
 $$
 
-Um processo de Wiener não é estacionário, pois, em particular, os processos $X_t$ não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de $\mathbb{E}[X_t] = 0$ ser constante, temos, para $t, s\geq 0$ e $\tau > 0$, que
+Observe que, por definição, dois incrementos $W_{t_3} - W_{t_2}$ e $W_{t_1} - W_{t_0}$ são independentes quando $t_3 > t_2 = t_1 > t_0$. Isso se estende ao caso em que $t_2 > t_1$, pois basta acrescentar $W_{t_2} - W_{t_1}$ que teremos três incrementos independentes $W_{t_3} - W_{t_2}$, $W_{t_2} - W_{t_1}$ e $W_{t_1} - W_{t_0}$, e quaisquer dois deles também são independentes. Mas os incrementos $W_{t_3} - W_{t_2}$ e $W_{t_1} - W_{t_0}$ não são independentes quando $t_0 < t_2 < t_1 < t_3$. De fato, nesse caso, temos
+$$
+\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
+$$
+Novamente, vemos que, se $t_1 = t_2$, então essa correlação se anula.
+
+Um processo de Wiener não é estacionário, pois, em particular, os processos $W_t$ não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de $\mathbb{E}[W_t] = 0$ ser constante, temos, para $t, s\geq 0$ e $\tau > 0$, que
 $$
 \begin{align*}
-\mathbb{E}[X_{t + \tau}X_{s + \tau}] & = \mathbb{E}[(X_{t + \tau} - \mathbb{E}[X_{t + \tau}])(X_{s + \tau} - \mathbb{E}[X_{s + \tau}])] \\
-& = \mathrm{Cov}[X_{t + \tau}, X_{s + \tau}] = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
+\mathbb{E}[W_{t + \tau}W_{s + \tau}] & = \mathbb{E}[(W_{t + \tau} - \mathbb{E}[W_{t + \tau}])(W_{s + \tau} - \mathbb{E}[W_{s + \tau}])] \\
+& = \mathrm{Cov}(W_{t + \tau}, W_{s + \tau}) = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
 \end{align*}
 $$
-Ou seja, $\mathbb{E}[X_{t + \tau}X_{s + \tau}]$ depende de $\tau$.
+Ou seja, $\mathbb{E}[W_{t + \tau}W_{s + \tau}]$ depende de $\tau$.
 
-Vamos concluir afirmando que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener. A demonstração, no entanto, não é tão imediata.
+Vamos concluir afirmando que um processo Gaussiano $\{W_t\}_{t\geq 0}$ com $\mathbb{E}[W_t] = 0$ e $\mathbb{E}[W_t W_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener. A demonstração, no entanto, não é tão imediata e não a faremos aqui.
 
 ## Processos de Lévy
 
@@ -234,6 +240,122 @@ Processos de Wiener são processos de Lévy, com incrementos normais com média 
 Processos de Poisson são processos de Lévy, com incrementos dados por uma distribuição de Poisson, com valor esperado proporcional ao intervalo de tempo.
 
 Processos de Lévy podem ser caracterizados através de uma representação chamada de *fórmula de Lévy-Khintchine*, para a sua função característica.
+
+## Ruído branco
+
+O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas autocorrelações são dadas por
+$$
+\mathrm{Cor}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
+$$
+Pede-se, ainda, que seja um processo estacionário, de modo que as correlações só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
+$$
+\mathrm{Cor}(X_t, X_s) = c(t - s),
+$$
+para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{Cor}(X_t, X_s) = \mathrm{Cor}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
+
+Caso não haja nenhuma correlação entre os sinais em instantes diferentes, teremos
+$$
+c(\tau) = 0, \qquad \forall t \neq 0.
+$$
+Naturalmente,
+$$
+\sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{Cor}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
+$$
+
+Um exemplo de processo que satisfaz essas condições é o processo $X_t = \sin(Ut)$, onde $U \sim \mathrm{Unif}([0, 2\pi))$. Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos
+$$
+\mathbb{E}[X_t] = \int_\mathbb{R} x \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut) \;\mathrm{d}u = 0;
+$$
+$$
+\mathrm{Var}(X_t) = \int_\mathbb{R} x^2 \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)^2 \;\mathrm{d}u = \frac{1}{2\pi}\int_0^{2\pi} \frac{1 + \cos(2ut)}{2} \;\mathrm{d}u = \frac{1}{2};
+$$
+e
+$$
+\mathrm{Cov}(X_t, X_s) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
+$$
+
+No entanto, não podemos dizer que uma função de autocorrelação $c$ satisfazendo $c(\tau) = 0$, quando $\tau \neq 0$, e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão um ruído branco em um sentido mais fraco.
+
+Para que seja um ruído branco genuíno, a função de correlação $c$ não deve estar definida no sentido clássico. É necessário que seja uma *distribuição*, com
+$$
+c(\tau) = \sigma_0^2\delta_0,
+$$
+para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, não um elemento do espaço amostral):
+$$
+\hat c(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
+$$
+
+Algumas definições pedem, ainda, que os eventos, em instantes diferentes, sejam independentes entre si.
+
+Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de que a "derivada" de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte. Seguimos, aqui, a derivação feita no Capítulo 3.8 de Higham & Kloeden (2021).
+
+Vamos considerar as diferenças finitas de um processo de Wiener $\{W_t\}_{t\geq 0}$:
+$$
+D_h^+(t) = \frac{W(t+h) - W(t)}{h}.
+$$
+Defina
+$$
+c_h(t, s) = \mathbb{E}\left[ D_h^+(t)D_h^+(s)\right] = \mathbb{E}\left[ \left(\frac{W(t+h) - W(t)}{h} \right) \left(\frac{W(s+h) - W(s)}{h}\right)\right].
+$$
+Expandindo, temos
+$$
+c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
+$$
+Usando a expressão para a correlação de um processo de Wiener, obtemos
+$$
+c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
+$$
+Observe que, se $t \leq s - h$, então
+$$
+c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
+$$
+Se $s - h \leq t \leq s$, então
+$$
+c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
+$$
+que é linearmente crescente, de $0$ a $1/h$. Se $s \leq t \leq s + h$, então
+$$
+c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
+$$
+que é linearmente decrescente, de $1/h$ a $0$. Por último, se $t \geq s + h$, então
+$$
+c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
+$$
+
+Assim,
+$$
+c_h(t, s) = \frac{1}{h^2}\begin{cases}
+0, & t \leq s - h, \\
+t + h - s, & s - h \leq t \leq s, \\
+h + s - h, & s \leq t \leq s + h, \\
+0, & t \geq s + h.
+\end{cases}
+$$
+
+```julia:diffwiener_hatfunction
+#hideall
+using Plots
+theme(:ggplot2)
+t0 = 0.0
+t1 = 4.0
+s = 2.0
+h = 0.5
+tt = range(t0, t1, length = 200)
+dh(t, s, h) = (min(t+h, s+h) - min(t, s+h) - min(t+h, s) + min(t,s))/h^2
+
+plot(tt, t -> dh(t, s, h), xaxis = "tempo", yaxis = "valor", title = "Correlação dₕ(t, s) das diferenças finitas de um processo de Wiener, com s = $s", titlefont = 8, label = false)
+savefig(joinpath(@OUTPUT, "diffwiener_hatfunction.svg"))
+```
+\fig{diffwiener_hatfunction}
+
+Observe, ainda, que
+$$
+\int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
+$$
+Ou seja, no limite, temos
+$$
+c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
+$$
 
 ## Exercícios
 

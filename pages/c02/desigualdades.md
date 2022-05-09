@@ -8,7 +8,7 @@ Vejamos alguns resultados importantes em probabilidade que nos serão úteis ao 
 
 Se $A$ e $B$ são conjuntos mensuráveis segundo uma medida de probabilidade $\mathbb{P}$ e $\mathbb{P}(B) > 0$, então vale a fórmula
 $$
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}}.
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
 $$
 
 Caso $\mathbb{P}(B) = 0$, então $\mathbb{P}(A | B)$ é considerado *indefinido*.
@@ -140,6 +140,27 @@ $$
 \mathbb{P}(A | B) = \frac{0.96 \times 0.01}{0.01059} \approx 0.9065
 $$
 Ou seja, as chances de alguém que testou positivo realmente ter a doença são de 90,65%.
+
+## Estimativas para eventos conjuntos
+
+Considere dois eventos $A$ e $B$. Se eles forem independentes, temos $\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)$.
+
+No casos deles serem dependentes e *mutuamente exclusivos*, i.e. $A \cap B = \emptyset$, então $\mathbb{P}(A \cap B) = 0$.
+
+Caso $A \subset B$ (ou $B \subset A$), então $\mathbb{P}(A \cap B) = \mathbb{P}(A)$ (resp. $\mathbb{P}(A \cap B) = \mathbb{P}(B)$).
+
+Caso não tenhamos mais informações sobre $A$ e $B$, podemos, pelo menos, obter certas estimativas. Por exemplo,  como $A \cap B \subset A$ e $A \cap B \subset B$, temos,
+$$
+\mathbb{P}(A \cap B) \leq \mathbb{P}(B)
+$$
+e
+$$
+\mathbb{P}(A \cap B) \leq \mathbb{P}(A).
+$$
+Ou seja,
+$$
+\mathbb{P}(A \cap B) \leq \min\left\{\mathbb{P}(A), \mathbb{P}(B)\right\}.
+$$
 
 ## Exercício
 
