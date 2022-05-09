@@ -224,8 +224,9 @@ T_n = \sum_{j = 1}^n S_j.
 \]
 <h2 id="processos_com_incrementos_independentes"><a href="#processos_com_incrementos_independentes" class="header-anchor">Processos com incrementos independentes</a></h2>
 <p>O caminho aleatório não é independente, como vimos, mas os seus <em>incrementos</em> são independentes. De fato, as chances de darmos um passo \(+1\) ou \(-1\) em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os incrementos \(X_{n+1} - X_n\) são independentes entre si. Nesse caso, dizemos que o processo \(\{X_n\}_n\) tem <em>incrementos independentes.</em></p>
-<p>Mais geralmente, um processo \(\{X_t\}_{t\in I}\) tem <strong>incrementos independentes</strong> quando, para cada \(\tau > 0\), as variáveis aleatórias \(\{\Delta X_t^\tau\}_{t, t+\tau \in I}\), definidas por \(\Delta X_t^\tau = X_{t + \tau} - X_t\), são independentes entre si.</p>
-<p>O processo de renovação também não tem incrementos independentes. De fato, sejam \(S_j\), \(j\in \mathbb{N}\), variáveis aleatórias independentes com distribuições \(\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2\) e \(\mathbb{P}(S_j < 2) = 0\), para \(j \geq 2\). Seja \(X_t\) o processo de renovação associado a esses saltos. Lembremos que</p>
+<p>Mais geralmente, um processo \(\{X_t\}_{t\in I}\) tem <strong>incrementos independentes</strong> quando, para quaisquer \(0 \leq t_0 < t_1, \ldots, t_n\), os incrementos \(X_{t_1} - X_{t_0}\), \(X_{t_2} - X_{t_1}\), ..., \(X_{t_n} - X_{t_{n-1}}\) são variáveis aleatórias mutuamente independentes.</p>
+<p>Veremos que o processo de Wiener é um exemplo de processo contínuo com incrementos independentes.</p>
+<p>O processo de renovação, por sua vez, também não tem incrementos independentes. De fato, sejam \(S_j\), \(j\in \mathbb{N}\), variáveis aleatórias independentes com distribuições \(\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2\) e \(\mathbb{P}(S_j < 2) = 0\), para \(j \geq 2\). Seja \(X_t\) o processo de renovação associado a esses saltos. Lembremos que</p>
 \[
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 \]
@@ -247,7 +248,8 @@ X_t = \cos(t + U), \quad t\in \mathbb{R},
 <p>onde \(U\) é a variável aleatória \(U \sim \mathrm{Unif}([0, 2\pi])\), i.e. com lei uniforme no intervalo \([0, 2\pi)\). Como o cosseno é periódico com período \(2\pi\), essa lei é a mesma em todos os instantes \(t\in \mathbb{R}\), ou seja, são identicamente distribuídos. Mas não são independentes.</p>
 <h2 id="processos_com_incrementos_independentes_e_identicamente_distribuídos"><a href="#processos_com_incrementos_independentes_e_identicamente_distribuídos" class="header-anchor">Processos com incrementos independentes e identicamente distribuídos</a></h2>
 <p>O nome já diz, por si só, o que é um processo com <strong>incrementos independentes e identicamente distribuídos</strong>.</p>
-<p>Um exemplo é o caminho aleatório. Processos de Wiener, que veremos mais adiante, são exemplos de processos contínuos com incrementos <em>i.i.d</em>.</p>
+<p>Um exemplo é o caminho aleatório. Processos de Wiener, que veremos mais adiante, são exemplos de processos contínuos com incrementos <em>i.i.d.</em>.</p>
+<p>Vale ressaltar aqui que, para a independência dos incrementos, os incrementos devem ser consecutivos, i.e. \(W_{t_j} - W_{t_j}\), para \(t_0 < t_1 < \cdots < t_n\) ou, no mínimo, sem interseção nos intervalos de tempo. Já para a distribuição idêntica, os passos devem ser tomados com intervalos iguais, i.e. \(X_{t + \tau} - X_t\) e \(X_{s + \tau} - X_s\), mas pode haver interseção, ou seja \(\tau > 0\) e \(t, s\) são arbitrários.</p>
 <h2 id="processos_estacionários"><a href="#processos_estacionários" class="header-anchor">Processos estacionários</a></h2>
 <p>Um processo \(\{X_t\}_{t\in I}\) é dito <strong>estacionário</strong> quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer \(t_1, \ldots, t_n \in I\) e \(\tau>0\) tais que \(t_1 + \tau, \ldots, t_n + \tau \in I\), as distribuições conjuntas de \(X_{t_1}, \ldots, X_{t_n}\) e \(X_{t_1 + \tau}, \ldots, X_{t_n + \tau}\) são iguais, o que pode ser expresso por</p>
 \[
@@ -309,7 +311,7 @@ X_t = \cos(t + U), \quad t\in \mathbb{R},
 <ol>
 <li><p>\(W_0 = 0\);</p>
 </li>
-<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos &#40;sucessivos&#41; independentes, i.e. para \(t_j \geq 0\) e \(\tau_j > 0\), para \(j = 1, \ldots, J\), \(J\in\mathbb{N}\), então as variáveis aleatórias \(\Delta W_j = W_{t_j + \tau_j} - W_{t_j}\), \(j = 1, \ldots, J\), são independentes.</p>
+<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos independentes, i.e. para \(t_j \geq 0\) e \(\tau_j > 0\), para \(j = 1, \ldots, J\), \(J\in\mathbb{N}\), então as variáveis aleatórias \(\Delta W_j = W_{t_j + \tau_j} - W_{t_j}\), \(j = 1, \ldots, J\), são independentes.</p>
 </li>
 <li><p>Para quaisquer \(t\geq 0\) e \(\tau > 0\), o incremento \(W_{t + \tau} - W_t\) possui distribuição normal com média zero e desvio padrão \(\tau\), i.e.</p>
 </li>
