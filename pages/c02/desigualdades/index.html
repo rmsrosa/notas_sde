@@ -172,7 +172,7 @@
 <h2 id="lei_da_probabilidade_condicionada"><a href="#lei_da_probabilidade_condicionada" class="header-anchor">Lei da probabilidade condicionada</a></h2>
 <p>Se \(A\) e \(B\) são conjuntos mensuráveis segundo uma medida de probabilidade \(\mathbb{P}\) e \(\mathbb{P}(B) > 0\), então vale a fórmula</p>
 \[
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}}.
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
 \]
 <p>Caso \(\mathbb{P}(B) = 0\), então \(\mathbb{P}(A | B)\) é considerado <em>indefinido</em>.</p>
 <p>Por exemplo, seja \(X\) uma variável aleatória com distribuição uniforme em \(\Sigma = \{1, 2, \ldots, 9\}\). Desses, \(\{2, 4, 6, 8\}\) são pares e \(\{3, 6, 9\}\) são múltiplos de \(3\). Assim,</p>
@@ -276,6 +276,22 @@
 \mathbb{P}(A | B) = \frac{0.96 \times 0.01}{0.01059} \approx 0.9065
 \]
 <p>Ou seja, as chances de alguém que testou positivo realmente ter a doença são de 90,65&#37;.</p>
+<h2 id="estimativas_para_eventos_conjuntos"><a href="#estimativas_para_eventos_conjuntos" class="header-anchor">Estimativas para eventos conjuntos</a></h2>
+<p>Considere dois eventos \(A\) e \(B\). Se eles forem independentes, temos \(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\).</p>
+<p>No casos deles serem dependentes e <em>mutuamente exclusivos</em>, i.e. \(A \cap B = \emptyset\), então \(\mathbb{P}(A \cap B) = 0\).</p>
+<p>Caso \(A \subset B\) &#40;ou \(B \subset A\)&#41;, então \(\mathbb{P}(A \cap B) = \mathbb{P}(A)\) &#40;resp. \(\mathbb{P}(A \cap B) = \mathbb{P}(B)\)&#41;.</p>
+<p>Caso não tenhamos mais informações sobre \(A\) e \(B\), podemos, pelo menos, obter certas estimativas. Por exemplo,  como \(A \cap B \subset A\) e \(A \cap B \subset B\), temos,</p>
+\[
+\mathbb{P}(A \cap B) \leq \mathbb{P}(B)
+\]
+<p>e</p>
+\[
+\mathbb{P}(A \cap B) \leq \mathbb{P}(A).
+\]
+<p>Ou seja,</p>
+\[
+\mathbb{P}(A \cap B) \leq \min\left\{\mathbb{P}(A), \mathbb{P}(B)\right\}.
+\]
 <h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
 <ol>
 <li><p>Mostre, na lei de probabilidade total, que basta que \(\mathbb{P}(B_1 \cup \cdots \cup B_k) = 1\) e \(\mathbb{P}(B_i \cap B_j) = 0\), para \(i, j = 1, \ldots, k\), com \(i \neq j\).</p>
@@ -308,7 +324,7 @@
         </div>
     
 
-    Last modified: May 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

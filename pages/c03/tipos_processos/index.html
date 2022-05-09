@@ -12,6 +12,17 @@
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
 
   
     <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
@@ -298,7 +309,7 @@ X_t = \cos(t + U), \quad t\in \mathbb{R},
 <ol>
 <li><p>\(W_0 = 0\);</p>
 </li>
-<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos independentes, i.e. para \(t_j \geq 0\) e \(\tau_j > 0\), para \(j = 1, \ldots, J\), \(J\in\mathbb{N}\), então as variáveis aleatórias \(\Delta W_j = W_{t_j + \tau_j} - W_{t_j}\), \(j = 1, \ldots, J\), são independentes.</p>
+<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos &#40;sucessivos&#41; independentes, i.e. para \(t_j \geq 0\) e \(\tau_j > 0\), para \(j = 1, \ldots, J\), \(J\in\mathbb{N}\), então as variáveis aleatórias \(\Delta W_j = W_{t_j + \tau_j} - W_{t_j}\), \(j = 1, \ldots, J\), são independentes.</p>
 </li>
 <li><p>Para quaisquer \(t\geq 0\) e \(\tau > 0\), o incremento \(W_{t + \tau} - W_t\) possui distribuição normal com média zero e desvio padrão \(\tau\), i.e.</p>
 </li>
@@ -311,37 +322,42 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
 </li>
 </ol>
 \[
-\mathbb{P}(\{\omega \in \Omega; \; t \rightarrow X_t(\omega) \text{ é contínuo}\}) = 1.
+\mathbb{P}(\{\omega \in \Omega; \; t \rightarrow W_t(\omega) \text{ é contínuo}\}) = 1.
 \]
 <p>Mais geralmente, um <strong>processo de Wiener</strong> pode começar em \(W_0 = x\) arbitrário e ter incrementos \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), além de manterem as propriedades dos caminhos serem contínuos quase sempre e dos incrementos serem independentes e estacionários.</p>
 <p>Essa tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos a existência de tais processos posteriormente.</p>
-<p>Um processo de Wiener é um exemplo de processo Gaussiano. De fato, dados \(t_1, \ldots, t_n \geq 0\), podemos escrever cada \(X_{t_1}, \ldots, X_{t_n}\) como combinação linear das normais independentes \(X_{t_1} - X_{t_0}\), \(X_{t_2} - X_{t_1}\), ..., \(X_{t_n} - X_{t_{n-1}}\), onde \(t_0 = 0\). Dessa forma, a distribuição conjunta de \(X_{t_1}, \ldots, X_{t_n}\) é uma normal multivariada. Portanto, \(\{X_t\}_{t\geq 0}\) é um processo Gaussiano. Note, ainda, que, como \(X_0 = 0\) e \(X_t - X_0 \sim \mathcal{N}(0, t)\), então</p>
+<p>Um processo de Wiener é um exemplo de processo Gaussiano. De fato, dados \(t_1, \ldots, t_n \geq 0\), podemos escrever cada \(W_{t_1}, \ldots, W_{t_n}\) como combinação linear das normais independentes \(W_{t_1} - W_{t_0}\), \(W_{t_2} - W_{t_1}\), ..., \(W_{t_n} - W_{t_{n-1}}\), onde \(t_0 = 0\). Dessa forma, a distribuição conjunta de \(W_{t_1}, \ldots, W_{t_n}\) é uma normal multivariada. Portanto, \(\{W_t\}_{t\geq 0}\) é um processo Gaussiano. Note, ainda, que, como \(W_0 = 0\) e \(W_t - W_0 \sim \mathcal{N}(0, t)\), então</p>
 \[
-\mathbb{E}[X_t] = \mathbb{E}[X_t - X_0] = 0
+\mathbb{E}[W_t] = \mathbb{E}[W_t - X_0] = 0
 \]
 <p>e</p>
 \[
-\mathrm{Var}[X_t] = \mathrm{Var}[X_t - X_0] = t.
+\mathrm{Var}(W_t) = \mathrm{Var}(W_t - W_0) = t.
 \]
 <p>Além disso, para quaisquer \(t \geq s \geq 0\), como os incrementos são independentes e, portanto, tem correlação nula,</p>
 \[
 \begin{align*}
-\mathrm{Cov}[X_t, X_s] & = \mathrm{Cov}[X_s + X_t - X_s, X_s] = \mathrm{Cov}[X_s, X_s] + \mathrm{Cov}[X_t - X_s, X_s] \\ & = \mathrm{Cov}[X_s - X_0, X_s - X_0] + \mathrm{Cov}[X_t - X_s, X_s - X_0] = \mathrm{Var}[X_s - X_0] = s.
+\mathrm{Cov}(W_t, W_s) & = \mathrm{Cov}(W_s + W_t - W_s, W_s) = \mathrm{Cov}(W_s, W_s) + \mathrm{Cov}(W_t - W_s, W_s) \\ & = \mathrm{Cov}(W_s - W_0, W_s - W_0) + \mathrm{Cov}(W_t - W_s, W_s - W_0) = \mathrm{Var}(W_s - W_0) = s.
 \end{align*}
 \]
-<p>Observe que, se \(t = s > 0\), então o segundo termo se anula pois \(X_t - X_s = 0\). Já se \(t \geq s = 0\), então todos os termos se anulam, já que \(X_s - X_0 = 0\). De qualquer forma, podemos escrever, para \(t, s \geq 0\) quaisquer,</p>
+<p>Observe que, se \(t = s > 0\), então o segundo termo se anula pois \(W_t - W_s = 0\). Já se \(t \geq s = 0\), então todos os termos se anulam, já que \(W_s - W_0 = 0\). De qualquer forma, podemos escrever, para \(t, s \geq 0\) quaisquer,</p>
 \[
-\mathrm{Cov}[X_t, X_s] = \min\{t, s\}.
+\mathrm{Cov}(W_t, W_s) = \min\{t, s\}.
 \]
-<p>Um processo de Wiener não é estacionário, pois, em particular, os processos \(X_t\) não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de \(\mathbb{E}[X_t] = 0\) ser constante, temos, para \(t, s\geq 0\) e \(\tau > 0\), que</p>
+<p>Observe que, por definição, dois incrementos \(W_{t_3} - W_{t_2}\) e \(W_{t_1} - W_{t_0}\) são independentes quando \(t_3 > t_2 = t_1 > t_0\). Isso se estende ao caso em que \(t_2 > t_1\), pois basta acrescentar \(W_{t_2} - W_{t_1}\) que teremos três incrementos independentes \(W_{t_3} - W_{t_2}\), \(W_{t_2} - W_{t_1}\) e \(W_{t_1} - W_{t_0}\), e quaisquer dois deles também são independentes. Mas os incrementos \(W_{t_3} - W_{t_2}\) e \(W_{t_1} - W_{t_0}\) não são independentes quando \(t_0 < t_2 < t_1 < t_3\). De fato, nesse caso, temos</p>
+\[
+\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
+\]
+<p>Novamente, vemos que, se \(t_1 = t_2\), então essa correlação se anula.</p>
+<p>Um processo de Wiener não é estacionário, pois, em particular, os processos \(W_t\) não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de \(\mathbb{E}[W_t] = 0\) ser constante, temos, para \(t, s\geq 0\) e \(\tau > 0\), que</p>
 \[
 \begin{align*}
-\mathbb{E}[X_{t + \tau}X_{s + \tau}] & = \mathbb{E}[(X_{t + \tau} - \mathbb{E}[X_{t + \tau}])(X_{s + \tau} - \mathbb{E}[X_{s + \tau}])] \\
-& = \mathrm{Cov}[X_{t + \tau}, X_{s + \tau}] = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
+\mathbb{E}[W_{t + \tau}W_{s + \tau}] & = \mathbb{E}[(W_{t + \tau} - \mathbb{E}[W_{t + \tau}])(W_{s + \tau} - \mathbb{E}[W_{s + \tau}])] \\
+& = \mathrm{Cov}(W_{t + \tau}, W_{s + \tau}) = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
 \end{align*}
 \]
-<p>Ou seja, \(\mathbb{E}[X_{t + \tau}X_{s + \tau}]\) depende de \(\tau\).</p>
-<p>Vamos concluir afirmando que um processo Gaussiano \(\{X_t\}_{t\geq 0}\) com \(\mathbb{E}[X_t] = 0\) e \(\mathbb{E}[X_t X_s] = \min\{t, s\}\), para todo \(t, s \geq 0\), é um processo de Wiener. A demonstração, no entanto, não é tão imediata.</p>
+<p>Ou seja, \(\mathbb{E}[W_{t + \tau}W_{s + \tau}]\) depende de \(\tau\).</p>
+<p>Vamos concluir afirmando que um processo Gaussiano \(\{W_t\}_{t\geq 0}\) com \(\mathbb{E}[W_t] = 0\) e \(\mathbb{E}[W_t W_s] = \min\{t, s\}\), para todo \(t, s \geq 0\), é um processo de Wiener. A demonstração, no entanto, não é tão imediata e não a faremos aqui.</p>
 <h2 id="processos_de_lévy"><a href="#processos_de_lévy" class="header-anchor">Processos de Lévy</a></h2>
 <p>Um <strong>processo de Lévy</strong> é um processo estocástico contínuo \(\{X_t\}_{t\geq 0}\) tal que</p>
 <ol>
@@ -357,6 +373,97 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
 <p>Processos de Wiener são processos de Lévy, com incrementos normais com média zero e variância proporcional ao intervalo de tempo.</p>
 <p>Processos de Poisson são processos de Lévy, com incrementos dados por uma distribuição de Poisson, com valor esperado proporcional ao intervalo de tempo.</p>
 <p>Processos de Lévy podem ser caracterizados através de uma representação chamada de <em>fórmula de Lévy-Khintchine</em>, para a sua função característica.</p>
+<h2 id="ruído_branco"><a href="#ruído_branco" class="header-anchor">Ruído branco</a></h2>
+<p>O conceito de processo do tipo <strong>ruído branco</strong> é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um &quot;ruído&quot;, pensamos em um processo \(\{X_t\}_t\), com variável <em>temporal</em> \(t\) contínua, digamos \(t \geq 0\). O espectro é obtido através das suas correlações. Pede-se, de início, que o processo tenha valor esperado nulo, \(\mathbb{E}[X_t] = 0\), para todo \(t \geq 0\). Assim, as suas autocorrelações são dadas por</p>
+\[
+\mathrm{Cor}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
+\]
+<p>Pede-se, ainda, que seja um processo estacionário, de modo que as correlações só dependam do intervalo de tempo \(t - s\), podendo ser escritas na forma</p>
+\[
+\mathrm{Cor}(X_t, X_s) = c(t - s),
+\]
+<p>para alguma função \(c:\mathbb{R} \rightarrow \mathbb{R}\). Observe que \(\mathrm{Cor}(X_t, X_s) = \mathrm{Cor}(X_s, X_t)\), de modo que \(t, s \geq 0\) podem ser arbitrários e \(t-s\) pode, de fato, assumir qualquer valor real.</p>
+<p>Caso não haja nenhuma correlação entre os sinais em instantes diferentes, teremos</p>
+\[
+c(\tau) = 0, \qquad \forall t \neq 0.
+\]
+<p>Naturalmente,</p>
+\[
+\sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{Cor}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
+\]
+<p>Um exemplo de processo que satisfaz essas condições é o processo \(X_t = \sin(Ut)\), onde \(U \sim \mathrm{Unif}([0, 2\pi))\). Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos</p>
+\[
+\mathbb{E}[X_t] = \int_\mathbb{R} x \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut) \;\mathrm{d}u = 0;
+\]
+\[
+\mathrm{Var}(X_t) = \int_\mathbb{R} x^2 \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)^2 \;\mathrm{d}u = \frac{1}{2\pi}\int_0^{2\pi} \frac{1 + \cos(2ut)}{2} \;\mathrm{d}u = \frac{1}{2};
+\]
+<p>e</p>
+\[
+\mathrm{Cov}(X_t, X_s) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
+\]
+<p>No entanto, não podemos dizer que uma função de autocorrelação \(c\) satisfazendo \(c(\tau) = 0\), quando \(\tau \neq 0\), e \(c(0) = 1/2\) tenha um espectro contínuo. As condições acima dão um ruído branco em um sentido mais fraco.</p>
+<p>Para que seja um ruído branco genuíno, a função de correlação \(c\) não deve estar definida no sentido clássico. É necessário que seja uma <em>distribuição</em>, com</p>
+\[
+c(\tau) = \sigma_0^2\delta_0,
+\]
+<p>para alguma \(\sigma_0 > 0\) e onde \(\delta_0\) é a delta de Dirac. Assim, o seu espectro \(\hat c(\omega)\) é, de fato, constante &#40;usamos \(\omega\), aqui, para denotar a frequência, não um elemento do espaço amostral&#41;:</p>
+\[
+\hat c(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
+\]
+<p>Algumas definições pedem, ainda, que os eventos, em instantes diferentes, sejam independentes entre si.</p>
+<p>Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de que a &quot;derivada&quot; de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte. Seguimos, aqui, a derivação feita no Capítulo 3.8 de Higham &amp; Kloeden &#40;2021&#41;.</p>
+<p>Vamos considerar as diferenças finitas de um processo de Wiener \(\{W_t\}_{t\geq 0}\):</p>
+\[
+D_h^+(t) = \frac{W(t+h) - W(t)}{h}.
+\]
+<p>Defina</p>
+\[
+c_h(t, s) = \mathbb{E}\left[ D_h^+(t)D_h^+(s)\right] = \mathbb{E}\left[ \left(\frac{W(t+h) - W(t)}{h} \right) \left(\frac{W(s+h) - W(s)}{h}\right)\right].
+\]
+<p>Expandindo, temos</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
+\]
+<p>Usando a expressão para a correlação de um processo de Wiener, obtemos</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
+\]
+<p>Observe que, se \(t \leq s - h\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
+\]
+<p>Se \(s - h \leq t \leq s\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
+\]
+<p>que é linearmente crescente, de \(0\) a \(1/h\). Se \(s \leq t \leq s + h\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
+\]
+<p>que é linearmente decrescente, de \(1/h\) a \(0\). Por último, se \(t \geq s + h\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
+\]
+<p>Assim,</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\begin{cases}
+0, & t \leq s - h, \\
+t + h - s, & s - h \leq t \leq s, \\
+h + s - h, & s \leq t \leq s + h, \\
+0, & t \geq s + h.
+\end{cases}
+\]
+
+<img src="/notas_sde/assets/pages/c03/tipos_processos/code/output/diffwiener_hatfunction.svg" alt="">
+<p>Observe, ainda, que</p>
+\[
+\int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
+\]
+<p>Ou seja, no limite, temos</p>
+\[
+c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
+\]
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Mostre que, se \(\{X_n\}_n\) é um processo <em>i.i.d.</em> e \(k \in \mathbb{N}\), o processo \(Y_n = X_n + \cdots + X_{n + k}\) é estacionário mas não é <em>i.i.d.</em>.</p>
@@ -385,7 +492,7 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
         </div>
     
 
-    Last modified: May 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -397,6 +504,9 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
         <script>renderMathInElement(document.body)</script>
     
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>
