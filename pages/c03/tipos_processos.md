@@ -179,23 +179,23 @@ O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. 
 
 ## Processos de Wiener
 
-Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x\_0\in \mathbb{R}$ e algum $\sigma > 0$,
+Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x\_0\in \mathbb{R}$,
 1. $W_0 = x\_0$;
 2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, onde $j = 1, \ldots, J$, $J\in\mathbb{N}$, temos que as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
-3. Para qualquer $\tau > 0$, os incrementos $W_{t + \tau} - W_t$ são identicamente distribuídos, com distribuição normal com média zero e desvio padrão proporcional a $\tau$, i.e.
+3. Para qualquer $\tau > 0$, os incrementos $W_{t + \tau} - W_t$ são identicamente distribuídos, com distribuição normal com média zero e desvio padrão $\tau$, i.e.
 $$
-W_{t + \tau} - W_t \sim \mathcal{N}(0, \sigma^2\tau), \quad \forall t \geq 0, \; \forall \tau > 0.
+W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
 $$
 4. Com probabilidade um, os caminhos amostrais são contínuos, i.e.
 $$
 \mathbb{P}(\{\omega \in \Omega; \; t \rightarrow W_t(\omega) \text{ é contínuo}\}) = 1.
 $$
 
-Quando $x_0 = 0$ e $\sigma = 1$, ou seja,
+Quando $x_0 = 0$, ou seja,
 $$
-W_0 = 0, \qquad W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau),
+W_0 = 0,
 $$
-o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**.
+o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**. Dado um processo de Wiener padrão $\{W_t\}_{t\geq 0}$, o processo $\tilde W_t = x_0 + W_t$ é um processo de Wiener com $W_0 = x_0$.
 
 Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos esse resultado de existência posteriormente.
 
