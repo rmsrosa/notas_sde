@@ -24,6 +24,8 @@
 
 1. [D. E. Knuth (1997), "The Art of Computer Programming II: Seminumerical Algorithms", Addison-Wesley Longman Publishing Co., Inc.](https://dl.acm.org/doi/10.5555/270146)
 
+1. [P. Mörters & Y. Peres (2010), "Brownian motion", Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge University Press, Cambridge. With an appendix by Oded Schramm and Wendelin Werner](https://www.cambridge.org/il/academic/subjects/statistics-probability/probability-theory-and-stochastic-processes/brownian-motion?format=HB&isbn=9780521760188)
+
 1. [D. Mumford (2000), The Dawning of the Age of Stochasticity, *Atti della Accademia Nazionale dei Lincei*. Classe di Scienze Fisiche, Matematiche e Naturali. Rendiconti Lincei. Matematica e Applicazioni, Volume: 11, Issue: S1, page 107-125](https://eudml.org/doc/289648)
 
 1. [T. Neckel & F. Rupp (2013), "Random Differential Equations in Scientific Computing", De Gruyter Open Poland. https://doi.org/10.2478/9788376560267](https://doi.org/10.2478/9788376560267)
