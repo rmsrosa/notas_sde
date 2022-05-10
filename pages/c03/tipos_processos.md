@@ -193,9 +193,9 @@ $$
 
 Quando $x_0 = 0$ e $\sigma = 1$, ou seja,
 $$
-X_0 = 0, \qquad X_{t + \tau} - X_t \sim \mathcal{N}(0, \tau),
+W_0 = 0, \qquad W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau),
 $$
-o processo $\{X_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**.
+o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**.
 
 Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos esse resultado de existência posteriormente.
 
