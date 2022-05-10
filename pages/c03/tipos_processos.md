@@ -265,15 +265,15 @@ Processos de Lévy podem ser caracterizados através de uma representação cham
 
 ## Ruído branco
 
-O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas autocorrelações (não-normalizadas) são dadas por
+O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações, ou por suas covariâncias, como faremos a seguir. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas covariâncias são dadas por
 $$
-\mathrm{cor}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
+\mathrm{Cov}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
 $$
-Pede-se, ainda, que seja um processo estacionário, de modo que as correlações só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
+Pede-se, ainda, que seja um processo estacionário, de modo que as covariâncias só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
 $$
-\mathrm{cor}(X_t, X_s) = c(t - s),
+\mathrm{Cov}(X_t, X_s) = c(t - s),
 $$
-para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{cor}(X_t, X_s) = \mathrm{cor}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
+para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{Cov}(X_t, X_s) = \mathrm{Cov}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
 
 Caso não haja nenhuma correlação entre os sinais em instantes diferentes, teremos
 $$
@@ -281,7 +281,7 @@ c(\tau) = 0, \qquad \forall t \neq 0.
 $$
 Naturalmente,
 $$
-\sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{cor}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
+\sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{Cov}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
 $$
 
 Um exemplo de processo que satisfaz essas condições é o processo $X_t = \sin(Ut)$, onde $U \sim \mathrm{Unif}([0, 2\pi))$. Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos
@@ -296,13 +296,13 @@ $$
 \mathrm{Cov}(X_t, X_s) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
 $$
 
-No entanto, não podemos dizer que uma função de autocorrelação $c$ satisfazendo $c(\tau) = 0$, quando $\tau \neq 0$, e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão um ruído branco em um sentido mais fraco.
+No entanto, não podemos dizer que uma função $c(\cdot)$ satisfazendo $c(\tau) = 0$, quando $\tau \neq 0$, e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão, na verdade, um ruído branco em um sentido mais fraco.
 
-Para que seja um ruído branco genuíno, a função de correlação $c$ não deve estar definida no sentido clássico. É necessário que seja uma *distribuição*, com
+Para que seja um ruído branco "genuíno", a função de covariância $c(\cdot)$ não está definida no sentido clássico. É necessário que seja uma *distribuição*, com
 $$
 c(\tau) = \sigma_0^2\delta_0,
 $$
-para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, não um elemento do espaço amostral):
+para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, como de costume nesse contexto, ao invés de denotar um elemento do espaço amostral):
 $$
 \hat c(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
 $$
@@ -323,7 +323,7 @@ Expandindo, temos
 $$
 c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
 $$
-Usando a expressão para a correlação de um processo de Wiener, obtemos
+Usando a expressão para a covariância de um processo de Wiener, obtemos
 $$
 c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
 $$
@@ -365,7 +365,7 @@ h = 0.5
 tt = range(t0, t1, length = 200)
 dh(t, s, h) = (min(t+h, s+h) - min(t, s+h) - min(t+h, s) + min(t,s))/h^2
 
-plot(tt, t -> dh(t, s, h), xaxis = "tempo", yaxis = "valor", title = "Correlação dₕ(t, s) das diferenças finitas de um processo de Wiener, com s = $s", titlefont = 8, label = false)
+plot(tt, t -> dh(t, s, h), xaxis = "tempo", yaxis = "valor", title = "Covariância Dₕ⁺(t, s) das diferenças finitas de um processo de Wiener\ncom s = $s e h = $h", titlefont = 8, label = false)
 savefig(joinpath(@OUTPUT, "diffwiener_hatfunction.svg"))
 ```
 \fig{diffwiener_hatfunction}
@@ -374,7 +374,7 @@ Observe, ainda, que
 $$
 \int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
 $$
-Ou seja, no limite, temos
+Ou seja, no limite, temos, de fato, uma delta de Dirac:
 $$
 c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
 $$
