@@ -258,3 +258,11 @@ s = Float64(sum(p^k * (1-p)^(N - k) * binomial(big(N), big(k)) for k in l+1:N))
 println("Há $(100 * round(s, digits = 4))% de chances de algum pacote ser perdido.")
 ```
 \output{pacotes_perdidos}
+
+## Exercícios
+
+1. Seja $U \sim Unif(0, 1)$ uma variável aleatória distribuída uniformemente no intervalo $[0, 1]$. Considere a decomposição binária de um número $x\in [0, 1]$:
+$$
+x = \sum_{n = 1}^\infty b_n 2^{-n}.
+$$
+Essa decomposição não é, necessariamente, única, já que cada número com expansão finita $x = \sum_{n = 1}^N b_n 2^{-n}$ também pode ser representado pela expansão infinita $x = \sum_{n = 1}^\infty \tilde b_n 2^{-n}$, desde que $\tilde b_n = b_n$ para $n < N$, $b_N = 0$ e $b_n = 1$, para $n > N$. Mas ela é única se impusermos que apenas $x = 0$ pode ser representado por uma sequência terminando em zeros. Assumindo essa representação única, podemos escrever a variável aleatória na forma $U = \sum_{n=1}^\infty B_n 2^{-n}$, para variáveis aleatórias $B_n$, $n\in \mathbb{N}$. Mostre que $\{B_n\}_{n\in \mathbb{N}}$ é um processo de Bernoulli, com $B_n \sim Bernoulli(1/2)$.
