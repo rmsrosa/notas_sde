@@ -221,10 +221,32 @@ $$
 \mathbb{P}(|Z_d| \geq r) \leq \frac{2}{\sqrt{2\pi}}e^{-\frac{r^2}{2}} \frac{\sqrt{2}}{2} = \frac{1}{\sqrt{\pi}}e^{-\frac{r^2}{2}}.
 $$
 
+A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$:
+$$
+\mathbb{P}(\{|Z_d| \geq c\sqrt{n}, d \in D_n\}) \leq \sum_{d\in D_n} \mathbb{P}(|Z_d| \geq n) \leq \frac{2^{n-1}}{\pi} e^{-\frac{c^2 n}{2}}.
+$$
+
+Finalmente, obtemos, para $c^2 > 2\ln(2)$, que
+$$
+\mathbb{P}(\{|Z_d| \geq c\sqrt{n}, d \in D_n, n\in \mathbb{N}\}) \leq \frac{1}{\pi}\sum_{n\in \mathbb{N}}2^{n-1} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{n\ln 2} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{-\frac{(c^2 - 2\ln(2))n}{2}} < \infty
+$$
+
 ## Convergência
 
 
+## Incrementos
 
 
+## Extensão para a semireta
 
+Construímos um processo $\{W_t\}_{t\in [0, 1]}$ com todas as propriedades de um processo de Wiener, exceto que só está definido no intervalo $[0, 1]$. Podemos construir um processo de Wiener, em $[0, \infty)$, concatenando processos em $[0, 1]$.
 
+Sejam, então, $\{W_t^n\}_{t \in [0, 1]}$, $n\in \mathbb{N}$, processos independentes em $[0, 1]$ com as propriedades de um processo de Wiener. (Podem ser construídos, de forma que sejam independentes, a partir de processos $\{Z_d\}_{d \in D^\mathbb{N}}$).
+
+Definimos
+$$
+W_t = W_{t - [t]}^{[t]} + \sum_{j = 0}^{[t]-1} W_1^j, \qquad \forall t \geq 0,
+$$
+onde $[t] = \max\{n \leq t, n \in \mathbb{Z}\}$ é o maior inteiro menor do que $t \geq 0$.
+
+Isso define um processo estocástico contínuo com todos as condições necessárias para ser um processo de Wiener.
