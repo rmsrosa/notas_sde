@@ -8,13 +8,13 @@
 
 1. [M. H. DeGroot, M. J. Schervish (2019), "Probability and statistics", 4th Edition, Pearson Education, Inc.](https://www.pearson.com/us/higher-education/program/De-Groot-Probability-and-Statistics-Classic-Version-4th-Edition/PGM2043173.html)
 
+1. [B. Eisenberg & R. Sullivan (2008), "Why Is the Sum of Independent Normal Random Variables Normal?", *Mathematics Magazine,* vol. 81, no. 5, 362-366. DOI: 10.1080/0025570X.2008.11953577](https://doi.org/10.1080/0025570X.2008.11953577)
+
 1. [L. C. Evans (2013), "An Introduction to Stochastic Differential Equations", American Mathematical Societiy.](https://www.maa.org/press/maa-reviews/an-introduction-to-stochastic-differential-equations)
 
 1. [H. Fischer (2011), "A History of the Central Limit Theorem. From Classical to Modern Probability Theory", Sources and Studies in the History of Mathematics and Physical Sciences,Springer, New York, NY. DOI: 10.1007/978-0-387-87857-7](https://doi.org/10.1007/978-0-387-87857-7)
 
 1. [X. Han & P. E. Kloeden (2017), "Random Ordinary Differential Equations and Their Numerical Solution", Probability Theory and Stochastic Modelling, vol. 85, Springer Singapore. DOI: 10.1007/978-981-10-6265-0](https://doi.org/10.1007/978-981-10-6265-0)
-
-1. [B. Eisenberg & R. Sullivan (2008), "Why Is the Sum of Independent Normal Random Variables Normal?", *Mathematics Magazine,* vol. 81, no. 5, 362-366. DOI: 10.1080/0025570X.2008.11953577](https://doi.org/10.1080/0025570X.2008.11953577)
 
 1. [D. J. Higham & P. E. Kloeden (2021), "An Introduction to the Numerical Simulation of Stochastic Differential Equations", SIAM.](https://www.maa.org/press/maa-reviews/an-introduction-to-the-numerical-simulation-of-stochastic-differential-equations)
 
