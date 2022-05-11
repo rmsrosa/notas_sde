@@ -223,16 +223,34 @@ $$
 
 A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$:
 $$
-\mathbb{P}(\{|Z_d| \geq c\sqrt{n}, d \in D_n\}) \leq \sum_{d\in D_n} \mathbb{P}(|Z_d| \geq n) \leq \frac{2^{n-1}}{\pi} e^{-\frac{c^2 n}{2}}.
+\mathbb{P}(\{\omega; \;\exists d \in D_n, \;|Z_d(\omega)| \geq c\sqrt{n}\}) \leq \sum_{d\in D_n} \mathbb{P}(|Z_d| \geq n) \leq \frac{2^{n-1}}{\pi} e^{-\frac{c^2 n}{2}}.
 $$
 
 Finalmente, obtemos, para $c^2 > 2\ln(2)$, que
 $$
-\mathbb{P}(\{|Z_d| \geq c\sqrt{n}, d \in D_n, n\in \mathbb{N}\}) \leq \frac{1}{\pi}\sum_{n\in \mathbb{N}}2^{n-1} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{n\ln 2} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{-\frac{(c^2 - 2\ln(2))n}{2}} < \infty
+\sum_{n\in \mathbb{N}} \mathbb{P}(\exists d \in D_n, \;|Z_d| \geq c\sqrt{n}) \leq \frac{1}{\pi}\sum_{n\in \mathbb{N}}2^{n-1} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{n\ln 2} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{-\frac{\left(c^2 - 2\ln(2)\right)n}{2}} < \infty
+$$
+Com essa estimativa, segue, do Lema de Borel-Cantelli, que
+$$
+\mathbb{P}(\limsup_{n\rightarrow \infty} \{\exists d \in D_n, \;|Z_d| \geq c\sqrt{n}\}) = 0.
+$$
+Isso implica em que, para $N\in \mathbb{N}$ aleatório suficientemente grande,
+$$
+\mathbb{P}(|Z_d| \leq c\sqrt{n}, \forall d\in D_n) = 1, \qquad \forall n \geq N.
+$$
+
+Portanto,
+$$
+sup_{t\in [0,1]} \|F_n(t)\| \leq c\frac{\sqrt{n}}{2^{n/2}}, \qquad \forall n \geq N.
 $$
 
 ## Convergência
 
+Com a estimativa acima, vemos que a série
+$$
+W(t) = \sum_n F_n(t)
+$$
+é absolutamente, uniformemente convergente (em probabilidade) no intervalo $[0, 1]$.
 
 ## Incrementos
 
