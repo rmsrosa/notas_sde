@@ -29,8 +29,30 @@ X \sim \mathrm{Unif}(x_1, x_2) \quad \Longrightarrow \quad Y \sim \mathrm{Unif}(
 $$
 No caso de $X$ ser normal, então $Y$ também será normal:
 $$
-X \sim \mathcal{N}(\mu, \sigma^2) \quad \Longrightarrow \quad Y \sim \mathcal{N}(b + a\mu_1, a^2\sigma^2).
+X \sim \mathcal{N}(\mu, \sigma^2) \quad \Longrightarrow \quad Y \sim \mathcal{N}(b + a\mu, a^2\sigma^2).
 $$
+Observe, por exemplo, que
+$$
+\mathbb{E}[Y] = \mathbb{E}[aX + b] = a\mathbb{E}[X] + b = a\mu + b
+$$
+e
+$$
+\mathbb{E}[(Y - \mathbb{E}[Y])^2] = \mathbb{E}[(aX + b - a\mu - b)^2] = a^2\mathbb{E}[(X-\mu)^2] = a^2\sigma^2.
+$$
+
+Mas isso não mostra que $Y$ é uma normal. Para ver isso, seja $F$ a função de probabilidade acumulada de $X$, i.e.
+$$
+F_X(x) = \mathbb{P}(X \leq x) = \frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^x e^{- \frac{(\xi - \mu)^2}{2\sigma^2}}\;\mathrm{d}\xi.
+$$
+Então a função de probabilidade acumulada de $Y$ é
+$$
+F_Y(y) = \mathbb{P}(Y \leq y) = \mathbb{P}(aX + b \leq y) = \mathbb{P}\left(X \leq \frac{y - b}{a}\right) = F_X\left(\frac{y - b}{a}\right) = \frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^{\frac{y - b}{a}} e^{- \frac{(\xi - \mu)^2}{2\sigma^2}}\;\mathrm{d}\xi.
+$$
+Fazendo $\eta = b + a\xi$, de modo que $(\eta - b)/a = \xi$ e $\mathrm{d}\xi = \mathrm{d}\eta / a$, temos
+$$
+F_Y(y) = \frac{1}{\sqrt{2\pi a^2\sigma^2}}\int_{-\infty}^y e^{- \frac{(\eta - b - a\mu)^2}{2a^2\sigma^2}}\;\mathrm{d}\eta.
+$$
+Isso prova que $Y \sim \mathbb{N}(b + a\mu, a^2\sigma^2)$.
 
 ## Transformação de várias variáveis aleatórias
 
@@ -52,7 +74,7 @@ onde $\mathbb{P}$ se refere à probabilidade conjunta $\mathbb{P} = \mathbb{P}_1
 
 De fato, este pode ser visto como um caso particular do primeiro, considerando-se a variável aleatória vetorial $X = (X_1, \ldots, X_n)$ em $(\Omega, \mathcal{A}, \mathbb{P})$, com $f:\Sigma_1 \times \cdots \times \Sigma_n \rightarrow \Sigma$.
 
-## Combinação linear de distribuições normais
+## Combinação linear de distribuições normais independentes
 
 Como exemplo, sejam $X_1$ e $X_2$ duas distribuições normais independentes, digamos $X_1, X_2 \sim \mathcal{N}(0, 1)$. Definimos
 $$
@@ -106,15 +128,30 @@ b1 = 2.4
 b2 = 1.0
 c = 2.0
 
-p1 = plot(-3:3, x -> (c - b1 * x) / b2, xlims = (-3, 3), ylims = (-3, 3), label = false, title = "b₁ Y₁ + b₂ Y₂ ≤ c; b₁ = $b1, b₂ = $b2, c = $c", titlefont = 10)
-p2 = vline([c / sqrt(b1^2 + b2^2)], xlims = (-3, 3), ylims = (-3, 3), label = false, title = "x ≤ c / √(b₁² + b₂²); b₁ = $b1, b₂ = $b2, c = $c", titlefont = 10)
+t = range(0.0, 2π, length = 100)
+x = c / sqrt(b1^2 + b2^2) .* cos.(t)
+y = c / sqrt(b1^2 + b2^2) .* sin.(t)
+
+p1 = plot(xlims = (-3, 3), ylims = (-3, 3), title = "b₁ Y₁ + b₂ Y₂ ≤ c; b₁ = $b1, b₂ = $b2, c = $c", titlefont = 10)
+hline!(p1, [0], color = :gray70, linewidth = 1, label = false)
+vline!(p1, [0], color = :gray70, linewidth = 1, label = false)
+plot!(p1, -3:3, x -> (c - b1 * x) / b2, label = false, color = 1)
+scatter!(p1, (0, 0), label = false, color = 2)
+plot!(p1, x, y, label = false, color = 3)
+
+p2 = plot(xlims = (-3, 3), ylims = (-3, 3), title = "x ≤ c / √(b₁² + b₂²); b₁ = $b1, b₂ = $b2, c = $c", titlefont = 10)
+hline!(p2, [0], color = :gray70, linewidth = 1, label = false)
+vline!(p2, [0], color = :gray70, linewidth = 1, label = false)
+vline!(p2, [c / sqrt(b1^2 + b2^2)], color = 1, label = false)
+scatter!(p2, (0, 0), label = false, color = 2)
+plot!(p2, x, y, label = false, color = 3)
 plot(p1, p2, layout = 2, size = (800, 400))
 
 savefig(joinpath(@OUTPUT, "combinacao_linear_normais_rotacao.svg"))
 ```
 \fig{combinacao_linear_normais_rotacao}
 
-Fazendo isso,  teremos a mesma probabilidade:
+Fazendo isso, teremos a mesma probabilidade:
 $$
 F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\left(\frac{x}{\sqrt{b_1^2 + b_2^2}}\right) = F_{(b_1^2 + b_2^2)Y_1}(x).
 $$
@@ -142,6 +179,20 @@ savefig(joinpath(@OUTPUT, "combinacao_linear_normais2.svg"))
 ```
 \fig{combinacao_linear_normais1}
 \fig{combinacao_linear_normais2}
+
+Um caso particular que será explorado na demonstração de existência de um processo de Wiener é a independência da soma e da diferença de normais independentes e identicamente distribuídas com média zero.
+
+Sejam $X, Y \sim \mathcal{N}(0, \sigma^2)$ independentes. Defina
+$$
+Z = X + Y, \qquad W = X - Y.
+$$
+
+Primeiramente, como combinações lineares de normais, temos, pelo que acabamos de ver, que $Z$ e $W$ também são normais. Como $X$ e $Y$ têm média zero e variância $\sigma^2$, então $Z$ e $W$ também têm média zero e variância $a^2\sigma_1^2 + b^2\sigma_2^2 = 2\sigma^2$, onde $\sigma_1 = \sigma_2 = \sigma$, $a = 1$ e $b = \pm 1$. Assim,
+$$
+Z, W \sim \mathcal{N}(0, 2\sigma^2).
+$$
+
+Agora, para ver a independência entre $Z$ e $W$, ...
 
 ## Exercícios
 

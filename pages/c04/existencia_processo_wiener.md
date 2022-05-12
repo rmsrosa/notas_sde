@@ -4,15 +4,17 @@
 
 O processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por N. Wiener, em 1923, junto com a demonstração de existência de tal processo. Vamos, a seguir, discutir uma demonstração dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013).
 
-A demonstração é obtida por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção essencial é feita no intervalo $I = [0, 1]$.
+A demonstração é obtida por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
+
+Há, essencialmente, duas formas de definir essa sequência aproximante de processos no intervalo $[0, 1]$. Veremos as duas, já que uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídas, enquanto que a outra facilita a demonstração de convergência da sequência.
 
 ## Partição diádica do intervalo unitário
 
-Consideramos uma partição, ou malha, desse intervalo $[0, 1]$ definida pelos pontos *diádicos* (números racionais cujo denominador é uma potência de 2)
+A interpolação é feita a partir de malhas formadas por números *diádicos* (números racionais cujo denominador é uma potência de 2). Mais precisamente, considere os conjuntos
 $$
 D_n = \left\{\frac{k}{2^{n-1}}; \; k = 0, 1, \ldots, 2^{n-1}\right\}, \qquad n\in \mathbb{N}.
 $$
-E a união de todos esses pontos é denotada por
+A união de todos esses pontos é denotada por
 $$
 D = \cup_{n\in \mathbb{N}} D_n.
 $$
@@ -35,9 +37,11 @@ savefig(joinpath(@OUTPUT, "dyadic_points.svg"))
 
 Como dito, o processo de Wiener será obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em $D$.
 
-Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto $\Omega = \mathbb{R}^D$ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$.
+Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto $\Omega = \mathbb{R}^D$ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
 
 ## Sequência de processos
+
+Para cada $d\in D$, devemos ter $W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $W_d$ como $Z_d / \sqrt{d}$ (já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$) e interpolar, de alguma forma, para $t\in I \setminus D$. Apesar disso convergir para um processo, este não terá as propridades desejadas. Mas uma variação disso funciona.
 
 Para cada $n\in \mathbb{N}$, definimos o processo discreto $\{W_d^n\}_{d\in D_n}$, na malha finita $D_n$, da seguinte forma.
 
@@ -45,19 +49,23 @@ Primeiramente, sendo $D_1 = \{0, 1\}$, definimos
 $$
 W_0^1 = 0, \quad W_1^1 = Z_1.
 $$
-Para $n = 2$, temos $D_2 = \{0, 1/2, 1\}$. A ideia é estender $\{W_d^1\}_{d\in D_1}$ para um $\{W_d^2\}_{d\in D_2}$, em $D_2\supset D_1$. Fazemos
+Para $n = 2$, temos $D_2 = \{0, 1/2, 1\}$. A ideia é estender $\{W_d^1\}_{d\in D_1}$ para um $\{W_d^2\}_{d\in D_2}$, em $D_2\supset D_1$, mantendo os processos $W_0^1, W_1^1$ em $d = 0, 1$ e adicionando uma fração de $Z_{1/2}$ à interpolação linear de $W_0^1 = 0$ e $W_1^1 = Z_1$, em $d = 1/2$. Mais precisamente, fazemos
 $$
 W_0^2 = W_0^1, \quad W_1^2 = W_1^1, \quad W_{1/2}^2 = \frac{W_0^1 + W_1^1}{2} + \frac{Z_{1/2}}{2}.
 $$
 
-Agora, continuamos por indução, para estender o processo $\{W_d^n\}_{d\in D_n}$, em $D_n$, para um processo $\{W_d^{n+1}\}_{d\in D_{n+1}}$, em $D_{n+1}$. Para isso, começamos fazendo, naturalmente,
+Agora, continuamos por indução, estendendo o processo $\{W_d^n\}_{d\in D_n}$, em $D_n$, para um processo $\{W_d^{n+1}\}_{d\in D_{n+1}}$, em $D_{n+1}$. Para isso, começamos fazendo
 $$
 W_d^{n+1} = W_d^n, \qquad \forall d\in D_n.
 $$
-Agora, para $d \in D_{n+1} \setminus D_n$, tomamos a média em relação aos valores adjacentes $d \pm 1/2^{n+1}$ e somamos uma fração apropriada de $Z_d$:
+Agora, para $d \in D_{n+1} \setminus D_n$, tomamos a média em relação aos valores adjacentes $d \pm 1/2^n$ e somamos uma fração apropriada de $Z_d$:
 $$
-W_d^{n+1} = \frac{W_{d - 1/2^{n+1}}^n + W_{d + 1/2^{n+1}}^n}{2} + \frac{Z_d}{2^{n/2+1}}.
+W_d^{n+1} = \frac{W_{d - 1/2^n}^n + W_{d + 1/2^n}^n}{2} + \frac{Z_d}{2^{(n + 1)/2}}.
 $$
+
+Observe que, com $n = 1$, esta fórmula coincide com a fórmula acima dada explicitamente para $\{W_d^2\}_{d\in D_2}$.
+
+A escolha da fração $1/2^{(n+1)/2}$ no termo $Z_d$ é para que esta fração tenha a variância adequada, como veremos a seguir.
 
 ```julia:sequenciaWn
 #hideall
@@ -85,11 +93,11 @@ savefig(joinpath(@OUTPUT, "sequenciaWn.svg"))
 ```
 \fig{sequenciaWn}
 
-## Independência
+## Independência e distribuição dos incrementos
 
 Observe que cada $W_d^n$ só depende das variáveis $\{Z_d\}_{d\in D_n}$, que são independentes de $\{Z_d\}_{d \in D \setminus D_n}$. Portanto, os processos $(W_d^n)_{d\in D_n}$ e $\{Z_d\}_{d \in D \setminus D_n}$ são independentes.
 
-Agora, vamos ver que os incrementos de cada processo $\{W_d^n\}_{d\in D_n}$ são independentes. Para $n = 1$, isso é trivial, já que só há um incremento, $W_1^1 - W_0^0 = Z_1$. Para $n = 2$, temos apenas dois incrementos,
+Agora, vamos ver que os incrementos de cada processo $\{W_d^n\}_{d\in D_n}$ são independentes. Para $n = 1$, isso é vácuo, já que só há um incremento, $W_1^1 - W_0^0 = Z_1$. Para $n = 2$, temos apenas dois incrementos,
 $$
 \Delta_{1/2}^2 = W_1^2 - W_{1/2}^2 = W_1^1 - \frac{W_0^1 + W_1^1}{2} - \frac{Z_{1/2}}{2} = \frac{W_1^1 - W_0^1}{2} - \frac{Z_{1/2}}{2} = \frac{Z_1}{2} - \frac{Z_{1/2}}{2}
 $$
@@ -97,32 +105,51 @@ e
 $$
 \Delta_0^2 = W_{1/2}^2 - W_0^2 = \frac{W_0^1 + W_1^1}{2} + \frac{Z_{1/2}}{2} - W_0^2 = \frac{W_1^1 - W_0^1}{2} + \frac{Z_{1/2}}{2} = \frac{Z_1}{2} + \frac{Z_{1/2}}{2}.
 $$
-Aparentemente, não são independentes. Mas como $Z_1$ e $Z_{1/2}$ são independentes e são normais identicamente distribuídas (ambas são $\mathcal{N}(0,1)$), a soma e a diferença de $Z_1/2$ e $Z_{1/2}/2$, que são exatamente os incrementos, são, também, normais independentes e identicamente distribuídas, com distribuição $\mathcal{N}(0, 1/2^2)$, e independentes de $\{Z_d\}_{d \in D \setminus D_2}$.
+Aparentemente, esses incrementos poderiam não ser independentes, mas são. Como $Z_1$ e $Z_{1/2}$ são independentes e são normais identicamente distribuídas com distribuição $\mathcal{N}(0,1)$, então $Z_1/2$ e $Z_{1/2}/2$ são independentes e são normais identicamente distribuídas com distribuição $\mathcal{N}(0,1/4)$. Assim, a soma e a diferença de $Z_1/2$ e $Z_{1/2}/2$, que são exatamente os incrementos, são, também, normais independentes e identicamente distribuídas, com distribuição $\mathcal{N}(0, 1/2)$. Além disso, também são independentes de $\{Z_d\}_{d \in D \setminus D_2}$.
 
-Agora, considerando $d \in D_{n+1}\setminus D_n$, lembremos que
+Agora, vamos assumir, em um argumento de indução, que os incrementos de $\{W_d^n\}_{d \in D_n}$ são independentes e identicamente distribuídos, com, em particular, 
 $$
-W_d^{n+1} = \frac{W_{d - 1/2^{n+1}}^n + W_{d + 1/2^{n+1}}^n}{2} + \frac{Z_d}{2^{n/2+1}}.
+W_{d + 1/2^{n-1}}^n - W_d^n \sim \mathcal{N}\left(0, \frac{1}{2^{n-1}}\right).
 $$
-Podemos escrever dois incrementos consecutivos como
+Além disso, assumimos que são independentes de $\{Z_d\}_{d\in D \setminus D_n}$.
+
+Vamos mostrar que o mesmo vale para $\{W_d^{n+1}\}_{d\in D_{n+1}}$, com incrementos consecutivos sendo normais independentes com média zero, variância $1/2^n$ e independentes de $\{Z_d\}_{d\in D \setminus D_{n+1}}$.
+
+Considere $d \in D_{n+1}\setminus D_n$, lembremos que
 $$
-W_d^{n+1} - W_{d - 1/2^{n+1}}^n = \frac{W_{d + 1/2^{n+1}}^n - W_{d - 1/2^{n+1}}^n}{2} + \frac{Z_d}{2^{n/2+1}}
+W_d^{n+1} = \frac{W_{d - 1/2^n}^n + W_{d + 1/2^n}^n}{2} + \frac{Z_d}{2^{(n+1)/2}}.
+$$
+Os dois incrementos consecutivos com ponto comum $d$ são
+$$
+W_d^{n+1} - W_{d - 1/2^n}^{n+1} = \frac{W_{d + 1/2^n}^n - W_{d - 1/2^n}^n}{2} + \frac{Z_d}{2^{(n+1)/2}}
 $$
 e
 $$
-W_{d + 1/2^{n+1}}^{n+1} - W_d^{n+1} = \frac{W_{d + 1/2^{n+1}}^n - W_{d - 1/2^{n+1}}^n}{2} - \frac{Z_d}{2^{n/2+1}}.
+W_{d + 1/2^n}^{n+1} - W_d^{n+1} = \frac{W_{d + 1/2^n}^n - W_{d - 1/2^n}^n}{2} - \frac{Z_d}{2^{(n+1)/2}}.
 $$
 
-Assumindo, por indução, que $W_{d + 1/2^{n+1}}^n - W_{d - 1/2^{n+1}}^n$ e $Z_d$ são independentes e que $W_{d + 1/2^{n+1}}^n - W_{d - 1/2^{n+1}}^n \sim \mathcal{N}(0, 1/2^n)$, então
+Observe que $W_{d + 1/2^n}^n - W_{d - 1/2^n}^n$ é um passo consecutivo do processo $\{W_d^n\}_{d\in D_n}$. Assim, usando a hipótese de indução, temos que $W_{d + 1/2^n}^n - W_{d - 1/2^n}^n$ e $Z_d$ são independentes e que $W_{d + 1/2^n}^n - W_{d - 1/2^n}^n \sim \mathcal{N}(0, 1/2^n)$. Assim, temos
 $$
-\frac{W_{d + 1/2^{n+1}}^n - W_{d - 1/2^{n+1}}^n}{2} \quad \text{e} \quad \frac{Z_d}{2^{n/2+1}}
+\frac{W_{d + 1/2^n}^n - W_{d - 1/2^n}^n}{2} \quad \text{e} \quad \frac{Z_d}{2^{(n+1)/2}} \sim \mathcal{N}\left(0, \frac{1}{2^{n+1}}\right).
 $$
-são independentes e identicamente distribuídas, com distribuição $\mathcal{N}(0, 1/2^{n+1})$. Assim, as suas somas e diferenças, que são exatamente dois passos consecutivos, também são independentes e identicamente distribuídos, com distribuição $\mathcal{N}(0, 1/2^{n+1})$.
 
-Isso mostra que dois passos consecutivos de $\{W_d^{n+1}\}_{d\in D_{n+1}}$, com ponto em comum $d$ em $d \in D_{n+1}\setminus D_n$, são independentes. Agora, se $d \in D_n$, então $d \pm 1/2^{n+1} \in D_{n+1} \setminus D_n$. FALTA ARGUMENTAR QUE ESSES SÃO INDEPENDENTES.
+Portanto, as suas somas e diferenças, que são exatamente os dois passos consecutivos, também são independentes e identicamente distribuídos, com distribuição $\mathcal{N}(0, 1/2^{n+1})$.
 
-Agora que sabemos que quaisquer dois passos consecutivos são independentes e com a mesma distribuição normal, segue que todos os passos são mutuamente independentes, já que são Gaussianas.
+Isso mostra que dois passos consecutivos de $\{W_d^{n+1}\}_{d\in D_{n+1}}$, com ponto em comum $d$ em $d \in D_{n+1}\setminus D_n$, são independentes e a distribuição dada como na indução. Agora, se $d \in D_n\setminus$, então $d \pm 1/2^n \in D_{n+1} \setminus D_n$. Nesse caso, os passos consecutivos envolvem um estêncil de cinco pontos diádicos:
+$$
+W_d^{n+1} - W_{d - 1/2^n}^{n+1} = W_d^n - \frac{W_{d}^n + W_{d - 1/2^{n-1}}^n}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}} = \frac{W_{d}^n - W_{d - 1/2^{n-1}}^n}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}}
+$$
+e
+$$
+W_{d + 1/2^n}^{n+1} - W_d^{n+1} = \frac{W_{d + 1/2^{n-1}}^n - W_d^n}{2} + \frac{Z_{d+1/2^n}}{2^{(n+1)/2}}.
+$$
+Observe que os dois incrementos no lado direito das duas expressões acima são incrementos consecutivos do processo $\{W_d^n\}_{d\in D_n}$ e que os termos restantes são variáveis distintas de $\{Z_d\}_{d\in D\setminus D_n}$. Pela hipótese de indução, todas essas variáveis são mutuamente independentes. Portanto, os dois incrementos acima de $\{W_d^{n+1}\}_{d\in D_{n+1}}$ também são independentes entre si. Além disso, como esses termos do lado direito tem distribuição normal $\mathcal{N}(0, 1/2^{n+1})$, então os incrementos tem distribuição normal $\mathcal{N}(0, 1/2^n)$.
+
+Provamos que quaisquer dois incrementos consecutivos de $\{W_d^{n+1}\}_{d\in D_{n+1}}$ são independentes dois a dois e com a mesma distribuição normal. Como a distribuição conjunta é normal, segue, da independência dois a dois, que todos os incrementos consecutivos são mutuamente independentes.
 
 Disso segue, também, que passos "largos" disjuntos $W_{d_2}^{n+1} - W_{d_1}^{n+1}$, $W_{d_3}^{n+1} - W_{d_2}^{n+1}$, ..., com $d_1 < d_2 < d_3 < \ldots < d_n$ em $D_{n+1}$, também são independentes.
+
+Finalmente, como eles não envolvem $\{Z_d\}_{d\in D \setminus D_n}$, os incrementos e esses processos são mutuamente independentes.
 
 ## Representação em termos de wavelets
 
