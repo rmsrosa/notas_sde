@@ -153,11 +153,11 @@ W_{d + 1/2^n}^{n+1} - W_d^{n+1} = \frac{W_{d + 1/2^{n-1}}^n - W_d^n}{2} + \frac{
 $$
 Observe que os dois incrementos no lado direito das duas expressões acima são incrementos consecutivos do processo $\{W_d^n\}_{d\in D_n}$ e que os termos restantes são variáveis distintas de $\{Z_d\}_{d\in D\setminus D_n}$. Pela hipótese de indução, todas essas variáveis são mutuamente independentes. Portanto, os dois incrementos acima de $\{W_d^{n+1}\}_{d\in D_{n+1}}$ também são independentes entre si. Além disso, como esses termos do lado direito tem distribuição normal $\mathcal{N}(0, 1/2^{n+1})$, então os incrementos tem distribuição normal $\mathcal{N}(0, 1/2^n)$.
 
-Provamos que quaisquer dois incrementos consecutivos de $\{W_d^{n+1}\}_{d\in D_{n+1}}$ são independentes dois a dois e com a mesma distribuição normal. Como a distribuição conjunta é normal, segue, da independência dois a dois, que todos os incrementos consecutivos são mutuamente independentes.
+Provamos que quaisquer dois incrementos consecutivos de $\{W_d^{n+1}\}_{d\in D_{n+1}}$ são independentes dois a dois. Como a distribuição conjunta é normal, segue, da independência dois a dois, que todos os incrementos consecutivos são mutuamente independentes.
 
-Disso segue, também, que passos "largos" disjuntos $W_{d_2}^{n+1} - W_{d_1}^{n+1}$, $W_{d_3}^{n+1} - W_{d_2}^{n+1}$, ..., com $d_1 < d_2 < d_3 < \ldots < d_n$ em $D_{n+1}$, também são independentes.
+Disso segue, também, que incrementos disjuntos a "passos largos" $W_{d_2}^{n+1} - W_{d_1}^{n+1}$, $W_{d_3}^{n+1} - W_{d_2}^{n+1}$, ..., com $d_1 < d_2 < d_3 < \ldots < d_n$ em $D_{n+1}$, também são independentes, pois cada incremento desses é combinação linear de passos "curtos" independentes distintos.
 
-Finalmente, como eles não envolvem $\{Z_d\}_{d\in D \setminus D_n}$, os incrementos e esses processos são mutuamente independentes.
+Finalmente, como eles só envolvem $\{Z_d\}_{d\in D \setminus D_{n+1}}$, então os incrementos de $\{W_d^{n+1}\}_{d\in D_{n+1}}$ e os processos restantes $\{Z_d\}_{d\in D \setminus D_{n+1}}$ são mutuamente independentes.
 
 ## Representação em termos de wavelets
 
