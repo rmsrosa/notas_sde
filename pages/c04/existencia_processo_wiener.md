@@ -39,7 +39,7 @@ Como dito, o processo de Wiener será obtido como limite de processos obtidos po
 
 Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto $\Omega = \mathbb{R}^D$ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
 
-## Sequência de processos
+## Sequência de processos discretos
 
 Para cada $d\in D$, devemos ter $W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $W_d$ como $Z_d / \sqrt{d}$ (já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$) e interpolar, de alguma forma, para $t\in I \setminus D$. Apesar disso convergir para um processo, este não terá as propridades desejadas. Mas uma variação disso funciona.
 
@@ -92,6 +92,14 @@ plot(plts..., layout = (2, 2), size = (800, 600))
 savefig(joinpath(@OUTPUT, "sequenciaWn.svg"))
 ```
 \fig{sequenciaWn}
+
+## Processos discretos e incrementos são Gaussianos
+
+Observe que os processos são construídos como combinações lineares de variáveis normais independentes. Sendo assim, os processos $\{W_d^n\}_{d\in D_n}$ são processos Gaussianos, i.e. a sua distribuição conjunta é uma normal multivariada (note que cada $D_n$ é finito, então esses processos são *vetores* aleatórios).
+
+É importante ressaltar, no entanto, que cada $\{W_d^n\}_{d\in D_n}$ não é formado por variáveis aleatórias independentes.
+
+Da mesma forma, os incrementos são combinações lineares de normais independentes, portanto também são normais multivariadas. Em princípio, também não seriam independentes. Mas veremos a seguir que os incrementos têm uma estrutura particular, de tal forma que são, sim, independentes.
 
 ## Independência e distribuição dos incrementos
 
