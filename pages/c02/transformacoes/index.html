@@ -133,7 +133,7 @@
     <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência</a></li>
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
@@ -203,8 +203,29 @@ X \sim \mathrm{Unif}(x_1, x_2) \quad \Longrightarrow \quad Y \sim \mathrm{Unif}(
 \]
 <p>No caso de \(X\) ser normal, então \(Y\) também será normal:</p>
 \[
-X \sim \mathcal{N}(\mu, \sigma^2) \quad \Longrightarrow \quad Y \sim \mathcal{N}(b + a\mu_1, a^2\sigma^2).
+X \sim \mathcal{N}(\mu, \sigma^2) \quad \Longrightarrow \quad Y \sim \mathcal{N}(b + a\mu, a^2\sigma^2).
 \]
+<p>Observe, por exemplo, que</p>
+\[
+\mathbb{E}[Y] = \mathbb{E}[aX + b] = a\mathbb{E}[X] + b = a\mu + b
+\]
+<p>e</p>
+\[
+\mathbb{E}[(Y - \mathbb{E}[Y])^2] = \mathbb{E}[(aX + b - a\mu - b)^2] = a^2\mathbb{E}[(X-\mu)^2] = a^2\sigma^2.
+\]
+<p>Mas isso não mostra que \(Y\) é uma normal. Para ver isso, seja \(F\) a função de probabilidade acumulada de \(X\), i.e.</p>
+\[
+F_X(x) = \mathbb{P}(X \leq x) = \frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^x e^{- \frac{(\xi - \mu)^2}{2\sigma^2}}\;\mathrm{d}\xi.
+\]
+<p>Então a função de probabilidade acumulada de \(Y\) é</p>
+\[
+F_Y(y) = \mathbb{P}(Y \leq y) = \mathbb{P}(aX + b \leq y) = \mathbb{P}\left(X \leq \frac{y - b}{a}\right) = F_X\left(\frac{y - b}{a}\right) = \frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^{\frac{y - b}{a}} e^{- \frac{(\xi - \mu)^2}{2\sigma^2}}\;\mathrm{d}\xi.
+\]
+<p>Fazendo \(\eta = b + a\xi\), de modo que \((\eta - b)/a = \xi\) e \(\mathrm{d}\xi = \mathrm{d}\eta / a\), temos</p>
+\[
+F_Y(y) = \frac{1}{\sqrt{2\pi a^2\sigma^2}}\int_{-\infty}^y e^{- \frac{(\eta - b - a\mu)^2}{2a^2\sigma^2}}\;\mathrm{d}\eta.
+\]
+<p>Isso prova que \(Y \sim \mathbb{N}(b + a\mu, a^2\sigma^2)\).</p>
 <h2 id="transformação_de_várias_variáveis_aleatórias"><a href="#transformação_de_várias_variáveis_aleatórias" class="header-anchor">Transformação de várias variáveis aleatórias</a></h2>
 <p>Também podemos fazer isso para várias variáveis aleatórias, digamos \(X_1, \ldots, X_n\), em espaços de probabilidades \((\Omega_j, \mathcal{A}_j, \mathbb{P}_{X_1})\), com valores em \((\Sigma_j, \mathcal{E}_j)\), através de uma função mensurável</p>
 \[
@@ -221,7 +242,7 @@ Y = f(X_1, \ldots, X_n).
 \]
 <p>onde \(\mathbb{P}\) se refere à probabilidade conjunta \(\mathbb{P} = \mathbb{P}_1 \times \cdots \times \mathbb{P}_n\), na \(\sigma\)-algebra \(\mathcal{A} = \mathcal{A}_1 \times \cdots \mathcal{A}_n\) gerada no espaço produto \(\Omega = \Omega_1 \times \cdots \times \Omega_n\).</p>
 <p>De fato, este pode ser visto como um caso particular do primeiro, considerando-se a variável aleatória vetorial \(X = (X_1, \ldots, X_n)\) em \((\Omega, \mathcal{A}, \mathbb{P})\), com \(f:\Sigma_1 \times \cdots \times \Sigma_n \rightarrow \Sigma\).</p>
-<h2 id="combinação_linear_de_distribuições_normais"><a href="#combinação_linear_de_distribuições_normais" class="header-anchor">Combinação linear de distribuições normais</a></h2>
+<h2 id="combinação_linear_de_distribuições_normais_independentes"><a href="#combinação_linear_de_distribuições_normais_independentes" class="header-anchor">Combinação linear de distribuições normais independentes</a></h2>
 <p>Como exemplo, sejam \(X_1\) e \(X_2\) duas distribuições normais independentes, digamos \(X_1, X_2 \sim \mathcal{N}(0, 1)\). Definimos</p>
 \[
 X = a_1 X_1 + a_2 X_2,
@@ -263,13 +284,23 @@ d = \frac{x}{\sqrt{b_1^2 + b_2^2}}
 <p>da origem, então podemos fazer uma rotação do semiplano \(b_1 Y_1 + b_2 Y_2 \leq x\) para o semiplano \(Y_1 \leq d\).</p>
 
 <img src="/notas_sde/assets/pages/c02/transformacoes/code/output/combinacao_linear_normais_rotacao.svg" alt="">
-<p>Fazendo isso,  teremos a mesma probabilidade:</p>
+<p>Fazendo isso, teremos a mesma probabilidade:</p>
 \[
 F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\left(\frac{x}{\sqrt{b_1^2 + b_2^2}}\right) = F_{(b_1^2 + b_2^2)Y_1}(x).
 \]
 <p>Ou seja, \(F\) é igual à função de densidade de probabilidades da normal \(\mathcal{N}(0, b_1^2 + b_2^2)\), concidindo, portanto, com essa normal.</p>
 
 <p><img src="/notas_sde/assets/pages/c02/transformacoes/code/output/combinacao_linear_normais1.svg" alt=""> <img src="/notas_sde/assets/pages/c02/transformacoes/code/output/combinacao_linear_normais2.svg" alt=""></p>
+<p>Um caso particular que será explorado na demonstração de existência de um processo de Wiener é a independência da soma e da diferença de normais independentes e identicamente distribuídas com média zero.</p>
+<p>Sejam \(X, Y \sim \mathcal{N}(0, \sigma^2)\) independentes. Defina</p>
+\[
+Z = X + Y, \qquad W = X - Y.
+\]
+<p>Primeiramente, como combinações lineares de normais, temos, pelo que acabamos de ver, que \(Z\) e \(W\) também são normais. Como \(X\) e \(Y\) têm média zero e variância \(\sigma^2\), então \(Z\) e \(W\) também têm média zero e variância \(a^2\sigma_1^2 + b^2\sigma_2^2 = 2\sigma^2\), onde \(\sigma_1 = \sigma_2 = \sigma\), \(a = 1\) e \(b = \pm 1\). Assim,</p>
+\[
+Z, W \sim \mathcal{N}(0, 2\sigma^2).
+\]
+<p>Agora, para ver a independência entre \(Z\) e \(W\), ...</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Seja \(Y\) uma variável aleatória real e defina \(X = \sin(Y)\). Suponha que \(\mathbb{E}[Y] = 0\). Mostre que \(\mathbb{E}[X] = 0\) e \(\mathrm{Var}(X) \leq \mathrm{Var}(Y)\).</p>
@@ -298,7 +329,7 @@ F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\l
         </div>
     
 
-    Last modified: May 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

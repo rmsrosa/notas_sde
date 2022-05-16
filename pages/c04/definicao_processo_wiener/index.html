@@ -122,7 +122,7 @@
     <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência</a></li>
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
@@ -156,7 +156,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener"><kbd>→</kbd> 4.2. Existência</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener"><kbd>→</kbd> 4.2. Existência de processos de Wiener</a>
 </span>
     </p>
 </div>
@@ -170,27 +170,22 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">4.1. Definição</a></h1>
 <p>O processo de Wiener é um processo estocástico que formaliza as ideias do movimento Browniano. Por conta disso, ele é também chamado de processo Browniano, ou mesmo de movimento Browniano, mas vale ressaltar que muitos autores diferenciam o fenômeno físico observado por Robert Brown, em 1827, e denominado de movimento Browniano, da formalização matemática denominada de processo de Wiener ou processo Browniano.</p>
 <h2 id="processo_de_wiener"><a href="#processo_de_wiener" class="header-anchor">Processo de Wiener</a></h2>
-<p>Um <strong>processo de Wiener &#40;padrão&#41;</strong>, ou <strong>processo Browniano &#40;padrão&#41;</strong>, é um processo estocástico real \(\{W_t\}_{t \geq 0}\) tal que</p>
+<p>Como visto anteriormente, um <strong>processo de Wiener</strong>, ou <strong>processo Browniano</strong>, é um processo estocástico real \(\{W_t\}_{t \geq 0}\) tal que, para algum \(x\_0\in \mathbb{R}\),</p>
 <ol>
-<li><p>\(W_0 = 0\);</p>
+<li><p>\(W_0 = x_0\);</p>
 </li>
-<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos independentes, i.e. para \(t_j \geq 0\) e \(\tau_j > 0\), para \(j = 1, \ldots, J\), \(J\in\mathbb{N}\), então as variáveis aleatórias \(\Delta W_j = W_{t_j + \tau_j} - W_{t_j}\), \(j = 1, \ldots, J\), são independentes.</p>
+<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos independentes;</p>
 </li>
-<li><p>Para quaisquer \(t\geq 0\) e \(\tau > 0\), o incremento \(W_{t + \tau} - W_t\) possui distribuição normal com média zero e desvio padrão \(\tau\), i.e.</p>
+<li><p>\(\{W_t\}_{t\geq 0}\) possui incrementos \(W_{t+\tau} - W_t\) identicamente distribuídos e dados por uma normal com média zero e variância \(\tau\);</p>
 </li>
-</ol>
-\[
-W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
-\]
-<ol start="4">
-<li><p>Com probabilidade um, os caminhos amostrais são contínuos, i.e.</p>
+<li><p>Com probabilidade um, os caminhos amostrais \(t \mapsto W_t(\omega)\) são contínuos.</p>
 </li>
 </ol>
+<p>Um processo de Wiener \(\{W_t\}_{t \geq 0}\) é chamado de <strong>processo de Wiener padrão</strong>, ou <strong>processo Browniano padrão</strong>, quando \(x_0 = 0\), i.e.</p>
 \[
-\mathbb{P}(\{\omega \in \Omega; \; t \rightarrow X_t(\omega) \text{ é contínuo}\}) = 1.
+W_0 = 0.
 \]
-<p>Mais geralmente, um <strong>processo de Wiener</strong> pode começar em \(W_0 = x\) arbitrário e ter incrementos \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), além dos caminhos contínuos quase sempre e dos incrementos independentes e estacionários.</p>
-<p>Essa tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo.</p>
+<p>Essa definição é inspirada no modelo de Einstein para o movimento Browniano. Mas essa inspiração não é suficiente para garantir a existência de um processo com as propriedades listadas acima. A demonstração de tal existência é fundamental e será feita a seguir.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -198,7 +193,7 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
 <a class="menu-level-1" href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener"><kbd>→</kbd> 4.2. Existência</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener"><kbd>→</kbd> 4.2. Existência de processos de Wiener</a>
 </span>
     </p>
 </div>
@@ -214,7 +209,7 @@ W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall
         </div>
     
 
-    Last modified: May 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

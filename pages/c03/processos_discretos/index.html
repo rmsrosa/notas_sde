@@ -133,7 +133,7 @@
     <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência</a></li>
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
@@ -347,6 +347,15 @@ s &#61; Float64&#40;sum&#40;p^k * &#40;1-p&#41;^&#40;N - k&#41; * binomial&#40;b
 println&#40;&quot;Há &#36;&#40;100 * round&#40;s, digits &#61; 4&#41;&#41;&#37; de chances de algum pacote ser perdido.&quot;&#41;</code></pre>
 <pre><code class="plaintext code-output">Há 1.73% de chances de algum pacote ser perdido.
 </code></pre>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Seja \(U \sim Unif(0, 1)\) uma variável aleatória distribuída uniformemente no intervalo \([0, 1]\). Considere a decomposição binária de um número \(x\in [0, 1]\):</p>
+</li>
+</ol>
+\[
+x = \sum_{n = 1}^\infty b_n 2^{-n}.
+\]
+<p>Essa decomposição não é, necessariamente, única, já que cada número com expansão finita \(x = \sum_{n = 1}^N b_n 2^{-n}\) também pode ser representado pela expansão infinita \(x = \sum_{n = 1}^\infty \tilde b_n 2^{-n}\), desde que \(\tilde b_n = b_n\) para \(n < N\), \(b_N = 0\) e \(b_n = 1\), para \(n > N\). Mas ela é única se impusermos que apenas \(x = 0\) pode ser representado por uma sequência terminando em zeros. Assumindo essa representação única, podemos escrever a variável aleatória na forma \(U = \sum_{n=1}^\infty B_n 2^{-n}\), para variáveis aleatórias \(B_n\), \(n\in \mathbb{N}\). Mostre que \(\{B_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli, com \(B_n \sim Bernoulli(1/2)\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -370,7 +379,7 @@ println&#40;&quot;Há &#36;&#40;100 * round&#40;s, digits &#61; 4&#41;&#41;&#37;
         </div>
     
 
-    Last modified: May 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
