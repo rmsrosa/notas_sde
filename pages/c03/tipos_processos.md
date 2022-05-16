@@ -111,7 +111,7 @@ Vale ressaltar aqui que, para a independência dos incrementos, os incrementos d
 
 Um processo $\{X_t\}_{t\in I}$ é dito **estacionário** quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer $t_1, \ldots, t_n \in I$ e $\tau>0$ tais que $t_1 + \tau, \ldots, t_n + \tau \in I$, as distribuições conjuntas de $X_{t_1}, \ldots, X_{t_n}$ e $X_{t_1 + \tau}, \ldots, X_{t_n + \tau}$ são iguais, o que pode ser expresso por
 $$
-\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n),
+\mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n),
 $$
 para eventos quaisquer $E_1, \ldots, E_n \in \mathcal{E}$.
 
@@ -179,10 +179,10 @@ O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. 
 
 ## Processos de Wiener
 
-Um **processo de Wiener (padrão)**, ou **processo Browniano (padrão)**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que
-1. $W_0 = 0$;
-2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, para $j = 1, \ldots, J$, $J\in\mathbb{N}$, então as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
-3. Para quaisquer $t\geq 0$ e $\tau > 0$, o incremento $W_{t + \tau} - W_t$ possui distribuição normal com média zero e desvio padrão $\tau$, i.e.
+Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x\_0\in \mathbb{R}$,
+1. $W_0 = x\_0$;
+2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, onde $j = 1, \ldots, J$, $J\in\mathbb{N}$, temos que as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
+3. Para qualquer $\tau > 0$, os incrementos $W_{t + \tau} - W_t$ são identicamente distribuídos, com distribuição normal com média zero e desvio padrão $\tau$, i.e.
 $$
 W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
 $$
@@ -191,11 +191,29 @@ $$
 \mathbb{P}(\{\omega \in \Omega; \; t \rightarrow W_t(\omega) \text{ é contínuo}\}) = 1.
 $$
 
-Mais geralmente, um **processo de Wiener** pode começar em $W_0 = x$ arbitrário e ter incrementos $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, além de manterem as propriedades dos caminhos serem contínuos quase sempre e dos incrementos serem independentes e estacionários.
+Quando $x_0 = 0$, ou seja,
+$$
+W_0 = 0,
+$$
+o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**. Dado um processo de Wiener padrão $\{W_t\}_{t\geq 0}$, o processo $\tilde W_t = x_0 + W_t$ é um processo de Wiener com $W_0 = x_0$.
 
-Essa tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos a existência de tais processos posteriormente.
+Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos esse resultado de existência posteriormente.
 
-Um processo de Wiener é um exemplo de processo Gaussiano. De fato, dados $t_1, \ldots, t_n \geq 0$, podemos escrever cada $W_{t_1}, \ldots, W_{t_n}$ como combinação linear das normais independentes $W_{t_1} - W_{t_0}$, $W_{t_2} - W_{t_1}$, ..., $W_{t_n} - W_{t_{n-1}}$, onde $t_0 = 0$. Dessa forma, a distribuição conjunta de $W_{t_1}, \ldots, W_{t_n}$ é uma normal multivariada. Portanto, $\{W_t\}_{t\geq 0}$ é um processo Gaussiano. Note, ainda, que, como $W_0 = 0$ e $W_t - W_0 \sim \mathcal{N}(0, t)$, então
+Um processo de Wiener é um exemplo de processo Gaussiano. Para ver isso, dados $t_1, \ldots, t_n \geq 0$, podemos escrever cada $W_{t_1}, \ldots, W_{t_n}$ como combinação linear das normais independentes $W_{t_1} - W_{t_0}$, $W_{t_2} - W_{t_1}$, ..., $W_{t_n} - W_{t_{n-1}}$, onde $t_0 = 0$, i.e.
+$$
+W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
+$$
+Dessa forma, a distribuição conjunta de $W_{t_1}, \ldots, W_{t_n}$ é dada por
+$$
+\mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} - W_{t_0} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} + \cdots + W_{t_1} - W_{t_0} \leq x_n)
+$$
+Isso pode ser reescrito na forma
+$$
+\mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} \leq x_n - \cdots - x_1) = F(x_1, \ldots, x_n - \cdots - x_1),
+$$
+onde $F$ é a função de distribuição acumulada da normal multivariada associada às normais independentes $W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}$. Portanto, $\{W_t\}_{t\geq 0}$ é um processo Gaussiano.
+
+Note, ainda, que, como $W_0 = 0$ e $W_t - W_0 \sim \mathcal{N}(0, t)$, então
 $$
 \mathbb{E}[W_t] = \mathbb{E}[W_t - X_0] = 0
 $$
@@ -247,15 +265,15 @@ Processos de Lévy podem ser caracterizados através de uma representação cham
 
 ## Ruído branco
 
-O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas autocorrelações são dadas por
+O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações, ou por suas covariâncias, como faremos a seguir. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas covariâncias são dadas por
 $$
-\mathrm{Cor}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
+\mathrm{Cov}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
 $$
-Pede-se, ainda, que seja um processo estacionário, de modo que as correlações só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
+Pede-se, ainda, que seja um processo estacionário, de modo que as covariâncias só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
 $$
-\mathrm{Cor}(X_t, X_s) = c(t - s),
+\mathrm{Cov}(X_t, X_s) = c(t - s),
 $$
-para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{Cor}(X_t, X_s) = \mathrm{Cor}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
+para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{Cov}(X_t, X_s) = \mathrm{Cov}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
 
 Caso não haja nenhuma correlação entre os sinais em instantes diferentes, teremos
 $$
@@ -263,7 +281,7 @@ c(\tau) = 0, \qquad \forall t \neq 0.
 $$
 Naturalmente,
 $$
-\sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{Cor}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
+\sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{Cov}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
 $$
 
 Um exemplo de processo que satisfaz essas condições é o processo $X_t = \sin(Ut)$, onde $U \sim \mathrm{Unif}([0, 2\pi))$. Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos
@@ -278,13 +296,13 @@ $$
 \mathrm{Cov}(X_t, X_s) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
 $$
 
-No entanto, não podemos dizer que uma função de autocorrelação $c$ satisfazendo $c(\tau) = 0$, quando $\tau \neq 0$, e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão um ruído branco em um sentido mais fraco.
+No entanto, não podemos dizer que uma função $c(\cdot)$ satisfazendo $c(\tau) = 0$, quando $\tau \neq 0$, e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão, na verdade, um ruído branco em um sentido mais fraco.
 
-Para que seja um ruído branco genuíno, a função de correlação $c$ não deve estar definida no sentido clássico. É necessário que seja uma *distribuição*, com
+Para que seja um ruído branco "genuíno", a função de covariância $c(\cdot)$ não está definida no sentido clássico. É necessário que seja uma *distribuição*, com
 $$
 c(\tau) = \sigma_0^2\delta_0,
 $$
-para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, não um elemento do espaço amostral):
+para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, como de costume nesse contexto, ao invés de denotar um elemento do espaço amostral):
 $$
 \hat c(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
 $$
@@ -305,7 +323,7 @@ Expandindo, temos
 $$
 c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
 $$
-Usando a expressão para a correlação de um processo de Wiener, obtemos
+Usando a expressão para a covariância de um processo de Wiener, obtemos
 $$
 c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
 $$
@@ -347,7 +365,7 @@ h = 0.5
 tt = range(t0, t1, length = 200)
 dh(t, s, h) = (min(t+h, s+h) - min(t, s+h) - min(t+h, s) + min(t,s))/h^2
 
-plot(tt, t -> dh(t, s, h), xaxis = "tempo", yaxis = "valor", title = "Correlação dₕ(t, s) das diferenças finitas de um processo de Wiener, com s = $s", titlefont = 8, label = false)
+plot(tt, t -> dh(t, s, h), xaxis = "tempo", yaxis = "valor", title = "Covariância Dₕ⁺(t, s) das diferenças finitas de um processo de Wiener\ncom s = $s e h = $h", titlefont = 8, label = false)
 savefig(joinpath(@OUTPUT, "diffwiener_hatfunction.svg"))
 ```
 \fig{diffwiener_hatfunction}
@@ -356,7 +374,7 @@ Observe, ainda, que
 $$
 \int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
 $$
-Ou seja, no limite, temos
+Ou seja, no limite, temos, de fato, uma delta de Dirac:
 $$
 c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
 $$

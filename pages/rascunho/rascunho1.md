@@ -2,18 +2,26 @@
 
 # {{ get_title }}
 
-## Ruído branco
+## Existência de sequências de variáveis aleatórias i.i.d.
 
-Um **ruído branco** *(white noise)* pode ser definido de várias formas, mas é um processo estocástico real contínuo $\{W_t\}_{t \in I}$, onde $I\subset \mathbb{R}$ é um intervalo, tal que $\mathbb{E}[W_t] = 0$; $\mathrm{Var}[W_t] = \sigma^2$ é constante, para algum $0 < \sigma < \infty$; e $\mathrm{Cov}[W_t, W_s] = 0$, para quaisquer $t, s\in I$, $t\neq s$, com $\mathrm{Cov}[W_t, W_{t + \tau}] = \sigma^2\delta_0(\tau)$.
+Considere uma distribuição de probabilidades $\mu$ em $\mathbb{R}$. Podemos construir uma sequência $X_1, X_2, \ldots$ de variáveis aleatórias i.i.d., cada uma com distribuição $\mu$, da seguinte forma.
 
-O processo $X_t = \sin(Ut)$, onde $U \sim \mathrm{Unif}([0, 2\pi))$, apesar dos caminhos amostrais serem simples senoidais, é um exemplo de ruído branco. De fato, temos
+Tomamos $\Omega = \mathbb{R}^\mathbb{N} = \{x:\mathbb{N} \rightarrow \mathbb{R}\} = \{x = (x_1, x_2, \ldots); \; x_n\in \mathbb{R}, \forall n\in \mathbb{N}\}$.
+
+Em $\Omega$, consideramos a topologia produto, i.e. dada a partir de uma base de abertos composta pelos *cilindros* $O_1 \times \cdots \times O_n \times \mathbb{R} \times \cdots$, onde $n\in \mathbb{N}$ e $O_j$ são abertos. Esta é a menor topologia que faz das projeções $\pi_n :\Omega \rightarrow \mathbb{R}$, definidas por $\pi_n x = x_n$, serem funções contínuas.
+
+Fazemos $\mathcal{A}$ como a $\sigma$-algebra gerada por esses cilindros. Dessa forma, as projeções $\pi_n$ são funções mensuráveis. Em particular, podemos tratar das variáveis aleatórias $X_n = \pi_n X$ da variável multivariada $X\in \Omega$ (que ainda não definimos).
+
+Agora, vamos definir uma função $\mathcal{P}$ no subconjunto de cilindros, em $\Omega$, da forma $E_1 \times E_2 \times \cdots$, onde $E_i = (a_i, b_i)$, para $i = i_1, \ldots, i_n$, $-\infty \leq a_i \leq b_i \leq \infty$, e $E_i = \mathbb{R}$, para $i \neq i_1, \ldots, i_n$. Primeiro, definimos,
 $$
-\mathbb{E}[X_t] = \int_\mathbb{R} x \;\mathrm{P}_{X_t}(x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut) \;\mathrm{d}u = 0;
+\mathcal{P}(a < X_n < b) = \mu(a < r < b) = \mu((a, b)).
 $$
+Agora, definimos (para que as variáveis aleatórias sejam independentes):
 $$
-\mathrm{Var}[X_t] = \int_\mathbb{R} x^2 \;\mathrm{P}_{X_t}(x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)^2 \;\mathrm{d}u = \frac{1}{2\pi}\int_0^{2\pi} \frac{1 + \cos(2ut)}{2} \;\mathrm{d}u = \frac{1}{2};
+\mathcal{P}(a_1 < X_{i_1} < b_1, \ldots, a_n < X_{i_n} < b_n) = \mathbb{P}(a_1 < X_{i_1} < b_1) \cdots \mathbb{P}(a_n < X_{i_1} < b_n) = \mu((a_1, b_1)) \cdots \mu((a_n, b_n)).
 $$
-e
-$$
-\mathrm{Cov}[X_t, X_s] = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
-$$
+Esse subconjunto $\mathcal{C}$ de cilindros dessa forma é um semi-anel (i.e. $\emptyset \in \mathcal{C}$; $A \cup B \in \mathcal{C}$ para $A, B\in \mathcal{C}$; e $A \setminus B = C_1 \cup \ldots \cup C_n$, para alguma combinação de cilindros disjuntos $C_i \in \mathcal{C}$, $i = 1, \ldots, n$.). Uniões finitas de conjuntos em $\mathcal{C}$, por sua vez, formam uma álgebra.
+
+Já a função $\mathbb{P}$ é tal que $\mathbb{P}(\emptyset) = 0$ e é aditiva em relação a uniões disjuntas, i.e. $\mathbb{P}(\cup_{i = 1}^n C_i) = \sum_{i=1}^n \mathbb{P}(C_i)$, para quaisquer cilindros disjuntos $C_1, \ldots, C_n\in \mathcal{C}$.
+
+A partir disso, é possível estender $\mathbb{P}$ a uma pré-medida na álgebra gerada pela união finita de cilindros. Em seguida, usando o Teorema de extensão de Carathéodory, podemos estender $\mathbb{P}$ a uma medida exterior na $\sigma$-álgebra gerada por $\mathcal{C}$, que é, exatamente, $\mathcal{A}$. Falta chegarmos a uma medida...
