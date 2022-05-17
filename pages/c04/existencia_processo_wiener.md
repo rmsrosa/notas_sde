@@ -6,7 +6,7 @@ O processo conhecido atualmente como processo de Wiener foi introduzido, como mo
 
 A demonstração é obtida por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
-Há, essencialmente, duas formas de definir essa sequência aproximante de processos no intervalo $[0, 1]$. Veremos as duas, já que uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídas, enquanto que a outra facilita a demonstração de convergência da sequência.
+Veremos duas formas de definir essa sequência aproximante de processos no intervalo $[0, 1]$. Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.
 
 ## Partição diádica do intervalo unitário
 
@@ -37,13 +37,13 @@ savefig(joinpath(@OUTPUT, "dyadic_points.svg"))
 
 Como dito, o processo de Wiener será obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em $D$.
 
-Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto $\Omega = \mathbb{R}^D$ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
+Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto $\Omega = \mathbb{R}^D$ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$. Denotamos a medida de probabilidade por $\mathbb{P}$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
 
 ## Sequência de processos discretos
 
-Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}$. Estes processos serão interpolados para processos em $[0, 1]$. Por questão de clareza, vamos denotar os processos discretos por $\{X_d^n\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^n\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = X_d^n = X_d^n$, nos pontos diádicos $d\in D_n$.
+Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}$. Estes processos serão interpolados para processos em $[0, 1]$. Por motivo de clareza, vamos denotar os processos discretos por $\{X_d^n\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^n\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = X_d^n = X_d^n$, nos pontos diádicos $d\in D_n$.
 
-Para cada $d\in D_n$, devemos ter $X_d^n = W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $X_d^n$ como $Z_d / \sqrt{d}$ (já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$) e interpolar, de alguma forma, para $t\in I \setminus D_n$. Apesar disso convergir para um processo, este não terá as propriedades desejadas. Mas uma variação disso funciona.
+Para cada $d\in D_n$, esperamos ter $X_d^n = W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $X_d^n$ como $Z_d / \sqrt{d}$ (já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$) e interpolar, de alguma forma, para $t\in I \setminus D_n$. Apesar disso convergir para um processo, este não terá as propriedades desejadas. Mas uma variação disso funciona.
 
 Vamos, então, definir, para cada $n\in \mathbb{N}$, o processo discreto $\{X_d^n\}_{d\in D_n}$, na malha finita $D_n$, da seguinte forma. Primeiramente, sendo $D_1 = \{0, 1\}$, definimos
 $$
@@ -230,7 +230,6 @@ savefig(joinpath(@OUTPUT, "faberschauder.svg"))
 ```
 \fig{faberschauder}
 
-
 Mais geralmente, definimos, para $d \in D_{n+1} \setminus D_n$, $n \in \mathbb{N}$,
 $$
 s_d(t) = \max\{0, \min\{t - d - 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2}\begin{cases}
@@ -272,26 +271,20 @@ Para a convergência, precisamos, antes, obter uma estimativa para as variáveis
 
 Como $Z_d \sim \mathcal{N}(0, 1)$ e a função de densidade de probabilidade dessa distribuição é simétrica em relação a origem e é dada pela Gaussiana padrão, temos, para $r \geq 0$,
 $$
-\mathbb{P}(|Z_d| \geq r) = \frac{2}{\sqrt{2\pi}}\int_{r}^\infty e^{-\frac{s^2}{2}} \;\mathrm{d}s \leq \frac{2}{\sqrt{2\pi}}e^{-\frac{r^2}{2}} \int_{r}^\infty e^{-\frac{s^2}{4}} \;\mathrm{d}s.
+\mathbb{P}(|Z_d| \geq r) = \frac{1}{\sqrt{2\pi}}\int_{|s|\geq r} e^{-\frac{s^2}{2}} \;\mathrm{d}s \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_{|s| \geq r} e^{-\frac{s^2}{4}} \;\mathrm{d}s.
 $$
-Podemos limitar a integral por
+Limitando a integral e fazendo a mudança de variáveis $s = \sqrt{2}\tau$, obtemos
 $$
-\int_0^\infty e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{1}{2} \int_\mathbb{R} e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{\sqrt{2}}{2}\int_\mathbb{R} e^{-\frac{\tau^2}{2}} \;\mathrm{d}\tau = \frac{\sqrt{2}}{2}.
-$$
-
-Assim,
-$$
-\mathbb{P}(|Z_d| \geq r) \leq \frac{2}{\sqrt{2\pi}}e^{-\frac{r^2}{2}} \frac{\sqrt{2}}{2} = \frac{1}{\sqrt{\pi}}e^{-\frac{r^2}{2}}.
+\mathbb{P}(|Z_d| \geq r) \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_\mathbb{R} e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{\sqrt{2}}{\sqrt{2\pi}}e^{-\frac{r^2}{4}}\int_\mathbb{R} e^{-\frac{\tau^2}{2}} \;\mathrm{d}\tau = \sqrt{2} e^{-\frac{r^2}{4}}.
 $$
 
-A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$:
+A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$, considerando que $D_n$ tem $2^{n-1} + 1$ elementos:
 $$
-\mathbb{P}\left(\{\omega; \;\exists d \in D_n, \;|Z_d(\omega)| \geq c\sqrt{n}\}\right) \leq \sum_{d\in D_n} \mathbb{P}(|Z_d| \geq n) \leq \frac{2^{n-1}}{\pi} e^{-\frac{c^2 n}{2}}.
+\mathbb{P}\left(\{\omega; \;\exists d \in D_n, \;|Z_d(\omega)| \geq c\sqrt{n}\}\right) = \mathbb{P}\left(\bigcup_{d\in D_n} \left\{|Z_d| \geq c\sqrt{n}\right\}\right) \leq \sum_{d\in D_n} \mathbb{P}(|Z_d| \geq c\sqrt{n}) \leq (2^{n-1}+1)\sqrt{2} e^{-\frac{c^2 n}{4}}.
 $$
-
-Finalmente, obtemos, para $c^2 > 2\ln(2)$, que
+Considerando que $2^{n-1} + 1 \leq 2^n$, temos, para $c^2 > 4\ln(2)$, que
 $$
-\sum_{n\in \mathbb{N}} \mathbb{P}(\exists d \in D_n, \;|Z_d| \geq c\sqrt{n}) \leq \frac{1}{\pi}\sum_{n\in \mathbb{N}}2^{n-1} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{n\ln 2} e^{-\frac{c^2 n}{2}} = \frac{1}{2\pi}\sum_{n\in \mathbb{N}}e^{-\frac{\left(c^2 - 2\ln(2)\right)n}{2}} < \infty
+\sum_{n\in \mathbb{N}} \mathbb{P}(\exists d \in D_n, \;|Z_d| \geq c\sqrt{n}) \leq \sqrt{2}\sum_{n\in \mathbb{N}}2^n e^{-\frac{c^2 n}{2}} = \sqrt{2}\sum_{n\in \mathbb{N}}e^{n\ln 2} e^{-\frac{c^2 n}{4}} = \sqrt{2}\sum_{n\in \mathbb{N}}e^{-\frac{\left(c^2 - 4\ln(2)\right)n}{4}}< \infty
 $$
 Com essa estimativa, segue, do Lema de Borel-Cantelli, que
 $$
@@ -354,12 +347,12 @@ $$
 
 Isso implica, também, na convergência em probabilidade (uniforme em $t$):
 $$
-\mathbb{P}(\max_{0\leq t \leq 1} |W_t - W_t^n| > \varepsilon) \rightarrow 0, \quad n \rightarrow \infty, \; \forall \varepsilon > 0.
+\mathbb{P}\left(\max_{0\leq t \leq 1} |W_t - W_t^n| > \varepsilon\right) \rightarrow 0, \quad n \rightarrow \infty, \; \forall \varepsilon > 0.
 $$
 
 ## Processo de Wiener no intervalo unitário
 
-Resta mostrar que $\{W_t\}_{t\in [0, 1]}$ tem todas as propriedades desejadas para que seja um processo de Wiener no intervalo $[0, 1]$.
+Resta mostrar que $\{W_t\}_{t\in [0, 1]}$ tem todas as propriedades desejadas para que seja um processo de Wiener no intervalo $[0, 1]$. Para mostrarmos isso, vamos explorar a convergência obtida acima, que implica em convergência em distribuição, para passar ao limite as propriedades já estabelecidas para os processos discretos $\{X_d^n\}_{d\in D_n}$, usando, também, que $D$ é denso em $I=[0,1]$.
 
 ### Processo inicial
 
@@ -368,22 +361,86 @@ $$
 W_0 = \sum_{d\in D} s_d(0)Z_d = 0
 $$
 
+### Continuidade dos caminhos amostrais
+
+Construímos $\{W_t^n\}_{t\in [0,1]}$ de tal forma que, para todo $\omega\in \Omega$, o caminho amostral $t \mapsto W_t^n(\omega)$ seja contínuo. Obtivemos, ainda, que cada caminho amostral $t \mapsto W_t(\omega)$ é limite uniforme de $t \mapsto W_t^n(\omega)$. Portanto, para todo $\omega\in\Omega$, o caminho amostral $t \mapsto W_t(\omega)$ também contínuo. Em particular,
+$$
+\mathbb{P}(\{\omega; \;t \mapsto W_t(\omega) \textrm{ é contínuo}\}) = 1.
+$$
+
+A construção que fizemos, em particular escolhendo $\Omega = \mathbb{R}^D$ como espaço amostral, nos levou a que todos os caminhos amostrais sejam contínuos. Mas, em geral, podemos ter um espaço amostral maior (e.g. $\Omega = \mathbb{R}^\mathbb{R}$), mas com a medida concentrada em amostras associadas a caminhos contínuos, ou seja, com probabilidade um, mas sem necessariamente ser todo o conjunto.
+
 ### Independência dos incrementos
+
+Sejam $0 \leq t_0 < t_1 < \ldots < t_n \leq 1$, onde $n\in \mathbb{N}$, $n \geq 2$. Dados eventos $E_1, \ldots, E_n\in \mathbb{A}$, vamos considerar a probabilidade conjunta dos incrementos $W_{t_j} - W_{t_{j-1}}$, $j = 1, \ldots, n$.
+$$
+\mathbb{P}(W_{t_1} - W_{t_0} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n).
+$$
+
+Considere sequências $\{t_j^k\}_{k\in \mathbb{N}}$ tais que $t_j^k\in D$, $0 \leq t_0^k < t_1^k < \ldots < t_n^k \leq 1$ e $t_j^k \rightarrow t_j$, quando $k \rightarrow \infty$, para qualquer $j = 0, \ldots, n$.
+
+Como os caminhos amostrais são contínuos, temos que $W_{t_j^k}$ converge quase-sempre para $W_{t_j}$, quando $k \rightarrow \infty$. Como cada incremento é Gaussiano e a função de distribuição de probabilidades de uma Gaussiana é contínua, seque que
+$$
+\mathbb{P}(W_{t_j^k} - W_{t_{j-1}^k} \in E_1) \rightarrow \mathbb{P}(W_{t_j} - W_{t_{j-1}} \in E_1), \quad k \rigtharrow \infty.
+$$
+Da mesma forma, o conjunto de incrementos é uma Gaussiana multivariada e a função de distribuição de probabilidades de uma Gaussiana multivariada também é contínua, de modo que
+$$
+\mathbb{P}(W_{t_1^k} - W_{t_0^k} \in E_1, \ldots, W_{t_n^k} - W_{t_{n-1}^k} \in E_n) \rightarrow \mathbb{P}(W_{t_1} - W_{t_0} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n), \quad k \rightarrow \infty.
+$$
+
+Já vimos que, em pontos diádicos, $W_{t_j^k} = W_{t_j^k}^{n_k} = X_{t_j^k}^{n_k}$, para algum $n_k$ tal que $t_j^k\in D_{n_k}$, para todo $j = 0, \ldots, n$ e para todo $k\in \mathbb{N}$. Já vimos, também, que os incrementos de $\{X_d^n\}_{d\in D_n}$ são independentes. Portanto,
+$$
+\mathbb{P}(W_{t_1^k} - W_{t_0^k} \in E_1, \ldots, W_{t_n^k} - W_{t_{n-1}^k} \in E_n) = \mathbb{P}(W_{t_1^k} - W_{t_0^k} \in E_1) \times \cdots \times \mathbb{P}(W_{t_n^k} - W_{t_{n-1}^k} \in E_n).
+$$
+Passando ao limite $k \rightarrow \infty$ dos dois lados da igualdade acima, obtemos
+$$
+\mathbb{P}(W_{t_1} - W_{t_0} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n) = \mathbb{P}(W_{t_1} - W_{t_0} \in E_1) \times \cdots \times \mathbb{P}(W_{t_n} - W_{t_{n-1}} \in E_n),
+$$
+mostrando a independência dos incrementos.
 
 ### Distribuição dos incrementos
 
-### Continuidade dos caminhos amostrais
+Sejam $t$ e $\tau$ tais que $0\leq t < t + \tau \leq 1$. Considere sequências $\{t^k\}_{k\in \mathbb{N}}$, $\{\tau_k\}_{k\in \mathbb{N}}$ tais que $t^k \rightarrow t$, $\tau^k \rightarrow \tau$, $0 \leq t^k < t^k + \tau^k \leq 1$ e $t^k, t^k + \tau^k \in D$. Para cada $k$, temos, de fato, $t^k, t^k + \tau^k\in D_{n_k}$, para $n_k\in \mathbb{N}$ suficientemente grande.
+
+Conforme argumentado acima, temos
+$$
+\mathbb{P}(W_{t^k + \tau^k} - W_{t^k} \leq x) \rightarrow \mathbb{P}(W_{t + \tau} - W_t \leq x), \quad k \rightarrow \infty,
+$$
+para todo $x \in \mathbb{R}$. Por outro lado, sabemos que $W_{t^k + \tau^k} - W_{t^k} = X_{t^k + \tau^k}^{n_k} - X_{t^k}^{n_k} \sim \mathcal{N}(0, \tau^k)$, de forma que
+$$
+\mathbb{P}(W_{t^k + \tau^k} - W_{t^k} \leq x) = F_{\tau_k}(x),
+$$
+onde $F_{\sigma^2}(\cdot)$ denota a função de distribuição acumulada da normal $\mathcal{N}(0, \sigma^2)$, $\sigma > 0$. Passando ao limite em $k\rightarrow \infty$, obtemos
+$$
+\mathbb{P}(W_{t + \tau} - W_{t} \leq x) = F_{\tau}(x).
+$$
+Portanto,
+$$
+W_{t + \tau} - W_{t} \sim \mathcal{N}(0, \tau).
+$$
+
+Isso completa a demonstração de que $\{W_t\}_{t\in [0, 1]}$ é um processo de Wiener em $[0, 1]$.
 
 ## Extensão para a semireta
 
 Construímos um processo $\{W_t\}_{t\in [0, 1]}$ com todas as propriedades de um processo de Wiener, exceto que só está definido no intervalo $[0, 1]$. Podemos construir um processo de Wiener, em $[0, \infty)$, transladando e concatenando processos em $[0, 1]$.
 
-Sejam, então, $\{W_t^n\}_{t \in [0, 1]}$, $n\in \mathbb{N}$, processos independentes em $[0, 1]$ com as propriedades de um processo de Wiener. (Podem ser construídos, de forma que sejam independentes, a partir de processos $\{Z_d\}_{d \in D^\mathbb{N}}$).
+Sejam, então, $\{W_t^k\}_{t \in [0, 1]}$, $k\in \mathbb{N}$, processos independentes em $[0, 1]$ com as propriedades de um processo de Wiener. (Podem ser construídos, de forma que sejam independentes, a partir de processos $\{Z_d\}_{d \in D^\mathbb{N}}$).
 
 Definimos
 $$
-W_t = W_{t - [t]}^{[t]} + \sum_{j = 0}^{[t]-1} W_1^j, \qquad \forall t \geq 0,
+W_t = W_{t - [t]}^{[t]} + \sum_{k = 0}^{[t]-1} W_1^k, \qquad \forall t \geq 0,
 $$
 onde $[t] = \max\{n \leq t, n \in \mathbb{Z}\}$ é o maior inteiro menor do que $t \geq 0$.
 
 Isso define um processo estocástico contínuo com todos as condições necessárias para ser um processo de Wiener.
+
+## Exercícios
+
+1. Faça os detalhes da demonstração por indução de que os processos contínuos definidos por
+$$
+W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_{n+1}} s_d(t)Z_d
+$$
+são interpolações dos processos discretos $\{X_d^n\}_{d\in D_n}$, i.e. $W_d^n = X_d^n$, para todo $d\in D_n$ e todo $n\in\mathbb{N}$.
+
+2. Sejam $\{W_t^k\}_{t \in [0, 1]}$, $k\in \mathbb{N}$, processos de Wiener, em $[0, 1]$, independentes. Faça os detalhes da demonstração de que $W_t = W_{t - [t]}^{[t]} + \sum_{k = 0}^{[t]-1} W_1^k$ é um processo de Wiener em $[0, \infty)$.
