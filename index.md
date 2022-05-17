@@ -4,3 +4,5 @@
 # {{ title }}
 
 Bem vindos a este sítio dedicado às notas de aula sobre aspectos teóricos e numéricos de equações diferenciais estocásticas e aleatórias, disciplina a ser ministrada no Instituto de Matemática da Universidade Federal do Rio de Janeiro, em 2022/1.
+
+![Wiener caminhos amostrais](/assets/images/sequenciaWn.svg)
