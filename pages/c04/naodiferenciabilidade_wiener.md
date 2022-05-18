@@ -50,8 +50,10 @@ $$
 
 Fazendo $\tau \rightarrow 0$, vemos que
 $$
-\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right) = 0.
+\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} > n \right) = \mathbb{P}\left(|W_{1}| > 0 \right) = 1,
 $$
-Ou seja, com probabilidade um, os caminhos amostrais não são diferenciáveis em $t = 0$.
-
-É possível estender esse resultado para mostrar que, com probabilidade um, os caminhos amostrais não são diferenciáveis em nenhum instante.
+para todo $n \in \mathbb{N}$. Ou seja,
+$$
+\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} = \infty \right) = 1.
+$$
+Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em $t = 0$.
