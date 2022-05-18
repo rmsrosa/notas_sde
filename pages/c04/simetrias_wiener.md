@@ -2,56 +2,25 @@
 
 # {{ get_title }}
 
-Processos de Wiener possuem algumas simetrias interessantes.
+Processos de Wiener possuem algumas simetrias importantes.
 
 ## Invariância por rescalonamento
 
-Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Dado $a > 0$, defina o processo $\{V_t\}_{t\geq 0}$ por
+Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Dado $a > 0$, defina o processo $\{V_t^a\}_{t\geq 0}$ por
 $$
-V_t = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
+V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 $$
-Então $\{V_t\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalor $[0, T]$, $T > 0$, então obtemos um processo de Wiener $\{V_t\}_{t\in [0, a^2T]}$ em $[0, a^2T]$.
+Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalor $[0, T]$, $T > 0$, então obtemos um processo de Wiener $\{V_t^a\}_{t\in [0, a^2T]}$ em $[0, a^2T]$.
 
-É imediato verificar que i) $V_0 = W_0 = 0$; ii) quase sempre os caminhos amostrais $t \mapsto V_t(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e iii) os incrementos $V_{t_j} - V_{t_{j-1}} = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes. Falta verificar a distribuição dos incrementos:
+É imediato verificar que i) $V_0^a = W_0 = 0$; ii) quase sempre os caminhos amostrais $t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes. Falta verificar a distribuição dos incrementos:
 $$
-V_{t + \tau} - V_t = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
+V_{t + \tau}^a - V_t^a = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 $$
 Isso completa a demonstração dessa simetria.
 
-## Lei dos grandes números contínua
+## Taxa de crescimento
 
-Seja $\{W_t\}_{t\geq 0}$ é um processo de Wiener. Então, quase sempre, vale
-$$
-\lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
-$$
-
-Observe que, para $t = n\in\mathbb{N}$, podemos escrever
-$$
-\frac{W_n}{n} = \sum_{j = 1}^n \frac{W_j - W_{j-1}}{n}.
-$$
-Como os incrementos $W_j - W_{j-1}$ são variáveis aleatórias i.i.d. com lei $\mathcal{N}(0, 1)$, então, pela lei dos grandes números, seque que essa média converge para o valor esperado das variáveis aleatórias, que é zero, ou seja
-$$
-\lim_{n\rightarrow \infty} \frac{W_n}{n} = \lim_{n\rightarrow \infty} \sum_{j = 1}^n \frac{W_j - W_{j-1}}{n} = 0.
-$$
-
-Agora, para um $t > 0$ qualquer, denotando por $[t]$ o maior inteiro menor do que $t$, temos
-$$
-\lim_{t \rightarrow \infty} \frac{W_t}{t} = \lim_{n\rightarrow \infty} \left(\frac{W_t - W_{[t]}}{t} + \frac{[t]}{t}\frac{W_{[t]}}{[t]} \right).
-$$
-Vimos, acima, que
-$$
-\frac{W_{[t]}}{[t]} \rightarrow 0.
-$$
-Claramente,
-$$
-\frac{t}{[t]} \rightarrow 1.
-$$
-Além disso
-$$
-\frac{W_t - W_{[t]}}{t} \rightarrow 0.
-$$
-
-Portanto,
+Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener. Então vale, quase sempre,
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 $$
