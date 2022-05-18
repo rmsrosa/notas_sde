@@ -25,7 +25,7 @@ $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 $$
 
-## Inversão temporal
+## Inversão por inversão temporal
 
 Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$ e defina o processo $\{V_t\}_{t\geq 0}$ por
 $$
@@ -50,17 +50,69 @@ Portanto, para quase todo $\omega$, vale $t W_{1/t}(\omega) \rightarrow 0$, quan
 
 ### Independência dos incrementos
 
-Quanto à independência dos incrementos, se $0 < t_0 < t_1 < \ldots < t_n$, então $1/t_n < \ldots < 1/t_1 < t/t_0$ e vemos que os incrementos $V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}}$, $j = 1, \ldots, n$, são independentes.
+Quanto à independência dos incrementos, se $0 < t_0 < t_1 < \ldots < t_n$, então $1/t_n < \ldots < 1/t_1 < t/t_0$ e vemos que os incrementos $V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}}$, $j = 1, \ldots, n$, também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.
 
-Se $t_0 = 0$, tomamos uma sequência $\{t_0^k\}_{k \in \mathbb{N}}$ tal que $0 < t_0^k < t_1$ e $t_0^k \rightarrow t_0 = 0$. Usando que os incrementos $V_{t_1} - V_{t_0^k}, V_{t_2} - V_{t_1}, \ldots V_{t_n} - V_{t_{n-1}}$ são normais independentes, que a função de densidade de probabilidades de normais são contínuas, e que os caminhos amostrais são contínuos, podemos passar ao limite na identidade
+Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência seque da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.
+
+Vamos, então, considerar quatro instantes distintos $0 < t_1 < t_2 < t_3 < t_4$ e olhar para as covariâncias
 $$
-\mathbb{P}(V_{t_1} - V_{t_0^k} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n) = \mathbb{P}(W_{t_1} - W_{t_0^k} \in E_1) \times \cdots \times \mathbb{P}(W_{t_n} - W_{t_{n-1}} \in E_n)
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 $$
-onde $E_1, \ldots, E_n$ são eventos mensuráveis, e obter
+Escrevemos
 $$
-\mathbb{P}(V_{t_1} - V_{t_0} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n) = \mathbb{P}(W_{t_1} - W_{t_0} \in E_1) \times \cdots \times \mathbb{P}(W_{t_n} - W_{t_{n-1}} \in E_n)
+t_2 W_{1/t_2} - t_1 W_{1/t_1} = (t_2 - t_1) W_{1/t_2} + t_1 (W_{1/t_2} - W_{1/t_1})
 $$
-mostrando a independência dos incrementos.
+e
+$$
+t_4 W_{1/t_4} - t_3 W_{1/t_3} = (t_4 - t_3) W_{1/t_4} + t_3 (W_{1/t_4} - W_{1/t_3}).
+$$
+Distribuindo, temos
+$$
+\begin{align*}
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, (t_4 - t_3) W_{1/t_4}) + \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 (W_{1/t_4} - W_{1/t_3})) \\
+& \quad + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), (t_4 - t_3) W_{1/t_4}) + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 (W_{1/t_4} - W_{1/t_3})).
+\end{align*}
+$$
+Como $W_0 = 0$, escrevemos
+$$
+\begin{align*}
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, (t_4 - t_3) W_{1/t_4}) + \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 (W_{1/t_4} - W_{1/t_3})) \\
+& \quad + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), (t_4 - t_3) (W_{1/t_4} - W_0)) + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 (W_{1/t_4} - W_{1/t_3})).
+\end{align*}
+$$
+No penúltimo termo, temos os incrementos independentes nos intervalos disjuntos $0 < 1/t_4 < 1/t_3 < 1/t_2$, nos dando
+$$
+\mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), (t_4 - t_3) (W_{1/t_4} - W_0)) = t_1 (t_4 - t_3)\mathrm{Cov}(W_{1/t_2} - W_{1/t_1}, W_{1/t_4} - W_0) = 0
+$$
+No último termo, temos os incrementos independentes nos intervalos disjuntos $1/t_4 < 1/t_3 < 1/t_2 < 1/t_1$, o que nos dá
+$$
+\mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 (W_{1/t_4} - W_{1/t_3})) = t_1 t_3 \mathrm{Cov}(W_{1/t_2} - W_{1/t_1}, W_{1/t_4} - W_{1/t_3}) = 0.
+$$
+Nos dois termos restantes, usamos a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ do processo de Wiener, o que nos dá
+$$
+\mathrm{Cov}((t_2 - t_1) W_{1/t_2}, (t_4 - t_3) W_{1/t_4}) = (t_2 - t_1)(t_4 - t_3)\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) = \frac{(t_2 - t_1)(t_4 - t_3)}{t_4} = (t_2 - t_1) - \frac{(t_2 - t_1)t_3}{t_4}
+$$
+e
+$$
+\begin{align}
+\mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 (W_{1/t_4} - W_{1/t_3})) & = (t_2 - t_1)t_3\mathrm{Cov}( W_{1/t_2}, W_{1/t_4}) - (t_2 - t_1)t_3\mathrm{Cov}(W_{1/t_2}, W_{1/t_3}) \\
+& = \frac{(t_2 - t_1)t_3}{t_4}  - \frac{(t_2 - t_1)t_3}{t_3} = \frac{(t_2 - t_1)t_3}{t_4} - (t_2 - t_1).
+\end{align}
+$$
+Portanto, os dois primeiros termos se cancelam e os dois últimos se anulam, nos dando
+$$
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = 0.
+$$
+
+Se $t_1 = 0$, então
+$$
+\begin{align*}
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4} - t_3 W_{1/t_3}) = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4}) - \mathrm{Cov}(t_2 W_{1/t_2}, t_3 W_{1/t_3}) \\
+  & = t_2t_4\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) - t_2t_3\mathrm{Cov}(t_2 W_{1/t_2}, W_{1/t_3}) = \frac{t_2t_4}{t_4} - \frac{t_2t_3}{t_3} = t_2 - t_2 = 0.
+\end{align*}
+$$
+
+Como os incrementos são normais, isso mostra que quaisquer dois incrementos disjuntos são independentes. Como dito acima, considerando $n$ incrementos consecutivos, o argumento acima mostra que eles são independentes dois a dois. E como são normais, isso implica neles serem mutuamente independentes.
 
 ## Distribuição de probabilidades dos incrementos
 
