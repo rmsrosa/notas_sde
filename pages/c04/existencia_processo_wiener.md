@@ -85,7 +85,7 @@ for j in 1:4
     end
     push!(
         plts,
-        plot(ttn, Wn, title = "Caminhos amostrais de \$W^n\$, \$n = 1, \\ldots, $(2j)\$", titlefont = 10, xaxis = "\$t\$", yaxis = "\$W\$", ylims = (-3, 3), marker = :circle, markersize = 3, label = false)
+        plot(ttn, Wn, title = "Caminhos amostrais de \$\\{W_d^n\\}_{d\\in D_n}\$, \$n = 1, \\ldots, $(2j)\$", titlefont = 10, xaxis = "\$t\$", yaxis = "\$W\$", ylims = (-3, 3), marker = :circle, markersize = 3, label = false)
     )
 end
 plot(plts..., layout = (2, 2), size = (800, 600))
