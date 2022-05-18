@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Teorema Central do Limite</title>  
+   <title>Não-diferenciabilidade quase sempre dos caminhos amostrais</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,6 +13,8 @@
 
   
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -163,10 +165,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.10. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/variacao_ilimitada_wiener"><kbd>→</kbd> 4.5. Variação ilimitada quase sempre dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -177,20 +179,63 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.9. Teorema Central do Limite</a></h1>
-<blockquote>
-<p>&quot;This brings us to the term &#39;central limit theorem&#39; ... This name was introduced by George Pólya &#40;1920&#41;, with the intention that the adjective &#39;central&#39; was to modify the noun &#39;theorem&#39;; i.e. it is the limit theorem that is <em>central</em> to probability. Almost universally, students today think that &#39;central&#39; modifies &#39;limit&#39;, so that it is instead a theorem about a <em>&#39;central limit&#39;</em>, whatever that means. The confusion does not occur in the original German, where Pólya’s words were: <em>Uber den zentralen Grenzwertsatz der Wahrscheinlichkeitsrechnung</em>, an interesting example where the German habit of inventing compound words removes an ambiguity in the literal English rendering.&quot; -  E. T. Jaynes &#40;2003&#41;</p>
-</blockquote>
-<p>A história do Teorema Central do Limite é muito rica e se desenvolveu ao longo de mais de um século, desde os primeiros trabalhos de Pierre-Simon Laplace, em 1810 e 1812, até os resultados de Paul Lévy e Willy Feller, em 1935 &#40;veja H. Fischer &#40;2011&#41;, &quot;A History of the Central Limit Theorem&quot;&#41;. Isso passando por publicações de outros grandes nomes, como Siméon Denis Poisson &#40;1824 e 1829&#41;, Peter Gustav Lejeune Dirichlet &#40;1846&#41;, Augustin Louis Cauchy &#40;1845&#41;, Pafnutii Lvovich Chebyshev &#40;1887&#41;, Andrei Andreevich Markov &#40;1898&#41; e Aleksandr Mikhailovich Liapunov &#40;1900&#41;, Felix Hausdorff &#40;1901&#41;, Richard von Mises &#40;1919&#41;, George Pólya &#40;1920&#41;, Jarl Waldemar Lindeberg &#40;1922&#41; e Sergei Natanovich Bernshtein &#40;1922&#41;.</p>
-<p>O Teorema Central do Limite abrange, na verdade, uma coleção de resultados, em contextos diferentes e com condições diversas, tanto condições suficientes quanto necessárias.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></h1>
+<p>Caso os caminhos amostrais de um processo de Wiener \(\{W_t\}_{t\geq 0}\) fossem diferenciáveis em um instante \(t\), teríamos a existência, quase sempre, do limite</p>
+\[
+\lim_{\tau \rightarrow 0} \frac{W_{t+\tau} - W_t}{\tau}.
+\]
+<p>Em particular, teríamos</p>
+\[
+\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty.
+\]
+<p>quase sempre. Porém, isso não é verdade. Mais do que isso. Esse limite é infinito com probabilidade um. Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.</p>
+<h2 id="não_diferenciabilidade_na_origem"><a href="#não_diferenciabilidade_na_origem" class="header-anchor">Não diferenciabilidade na origem</a></h2>
+<p>Vamos começar ilustrando isso no instante \(t = 0\). Temos</p>
+\[
+\lim_{\tau\rightarrow 0} \frac{W_\tau - W_0}{\tau} = \lim_{\tau\rightarrow 0} \frac{W_\tau}{\tau}.
+\]
+<p>Lembrando da propriedade de simetria por rescalonamento, considere os processos de Wiener definidos por</p>
+\[
+V_t^a = \frac{1}{a}W_{a^2t}, \qquad t \geq 0,
+\]
+<p>para \(a > 0\).</p>
+<p>Ambos \(\{W_t\}_{t \geq 0}\) e \(\{V_t\}_{t\geq 0}\) são processos de Wiener padrão, com mesma lei de probabilidades \(W_t, V_t \sim \mathcal{N}(0, t)\). Em particular,</p>
+\[
+\mathbb{P}(|W_\tau| > r) = \mathbb{P}(|V_\tau^a| > r), \qquad \forall r \geq 0.
+\]
+<p>Assim,</p>
+\[
+\mathbb{P}(|W_\tau| > r) = \mathbb{P}(|V_\tau^a| > r) = \mathbb{P}\left(\frac{|W_{a^2\tau}|}{a} > r\right).
+\]
+<p>Escolhendo \(a = 1/\sqrt{\tau}\), temos</p>
+\[
+\mathbb{P}(|W_\tau| > r) = \mathbb{P}\left(\sqrt{\tau}|W_{1}| > r\right).
+\]
+<p>Podemos escrever isso na forma</p>
+\[
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} > \frac{r}{\tau}\right) = \mathbb{P}\left(|W_{1}| > \frac{r}{\sqrt{\tau}}\right).
+\]
+<p>Escolhendo, agora, \(r = \tau^{3/4}\), obtemos</p>
+\[
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} > \frac{1}{\tau^{1/4}}\right) = \mathbb{P}\left(|W_{1}| > \tau^{1/4}\right).
+\]
+<p>Fazendo \(\tau \rightarrow 0\), vemos que</p>
+\[
+\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} > n \right) = \mathbb{P}\left(|W_{1}| > 0 \right) = 1,
+\]
+<p>para todo \(n \in \mathbb{N}\). Ou seja,</p>
+\[
+\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} = \infty \right) = 1.
+\]
+<p>Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.10. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/variacao_ilimitada_wiener"><kbd>→</kbd> 4.5. Variação ilimitada quase sempre dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -212,6 +257,10 @@
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     

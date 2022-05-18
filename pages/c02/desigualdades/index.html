@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Igualdades e desigualdades</title>  
+   <title>Desigualdades</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -83,19 +83,22 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.5. Igualdades e desigualdades</a></li>
+    <li><a href="/notas_sde/pages/c02/identidades">2.5. Identidades</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/multi_va">2.6. Variáveis aleatórias multivariadas</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/transformacoes">2.7. Transformações de variáveis aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.8. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.9. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.9. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.10. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -123,6 +126,15 @@
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
@@ -153,10 +165,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/identidades">2.5. Identidades <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/multi_va"><kbd>→</kbd> 2.6. Variáveis aleatórias multivariadas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/multi_va"><kbd>→</kbd> 2.7. Variáveis aleatórias multivariadas</a>
 </span>
     </p>
 </div>
@@ -167,115 +179,20 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.5. Igualdades e desigualdades</a></h1>
-<p>Vejamos alguns resultados importantes em probabilidade que nos serão úteis ao longo da matéria.</p>
-<h2 id="lei_da_probabilidade_condicionada"><a href="#lei_da_probabilidade_condicionada" class="header-anchor">Lei da probabilidade condicionada</a></h2>
-<p>Se \(A\) e \(B\) são conjuntos mensuráveis segundo uma medida de probabilidade \(\mathbb{P}\) e \(\mathbb{P}(B) > 0\), então vale a fórmula</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">2.6. Desigualdades</a></h1>
+<p>Vejamos algumas desigualdades que nos serão úteis.</p>
+<h2 id="desigualdade_de_markov"><a href="#desigualdade_de_markov" class="header-anchor">Desigualdade de Markov</a></h2>
 \[
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
+\mathbb{P}(|X| > r) \leq \frac{\mathbb{E}[|X|]}{r}, \quad \forall r > 0.
 \]
-<p>Caso \(\mathbb{P}(B) = 0\), então \(\mathbb{P}(A | B)\) é considerado <em>indefinido</em>.</p>
-<p>Por exemplo, seja \(X\) uma variável aleatória com distribuição uniforme em \(\Sigma = \{1, 2, \ldots, 9\}\). Desses, \(\{2, 4, 6, 8\}\) são pares e \(\{3, 6, 9\}\) são múltiplos de \(3\). Assim,</p>
+<h2 id="desigualdade_de_chebyshev"><a href="#desigualdade_de_chebyshev" class="header-anchor">Desigualdade de Chebyshev</a></h2>
 \[
-\mathbb{P}(X \textrm{ é par}) = \frac{4}{9} \quad \mathbb{P}(X \textrm{ é múltiplo de 3}) = \frac{3}{9} = \frac{1}{3}, \quad \mathbb{P}(X \textrm{ é par e múltiplo de 3}) = \frac{1}{9}.
+\mathbb{P}(|X - \mathbb{E}[X]| \geq r) \leq \frac{\mathrm{Var}(X)}{r^2}, \quad \forall r > 0.
 \]
-<p>Agora, sabendo-se que \(X\) é múltiplo de \(3\), quais as chances de \(X\) ser par? Naturalmente, temos uma única possibilidade em três: \(\{6\}\) em \(\{3, 6, 9\}\), ou seja,</p>
+<h2 id="desigualdade_de_lyapunov"><a href="#desigualdade_de_lyapunov" class="header-anchor">Desigualdade de Lyapunov</a></h2>
 \[
-\mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{1}{3}.
+\mathbb{E}[X] \leq \sqrt{\mathbb{E}[X^2]}.
 \]
-<p>Agora, usando a lei de probabilidade condicionada,</p>
-\[
-\mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{\mathbb{P}(X \textrm{ é par e múltiplo de 3})}{\mathbb{P}(X \textrm{ é múltiplo de 3})} = \frac{\displaystyle\frac{1}{9}}{\displaystyle\frac{1}{3}} = \frac{3}{9} = \frac{1}{3}.
-\]
-<p>E quais as chances de \(X\) ser múltiplo de três dado que é par?</p>
-<p>Um outro exemplo importante em que podemos usar probabilidade condicionada é em testes clínicos. Uma caso importante, que ficou em evidência, é na discussão da eficácia de vacinas. Considere um certo número de voluntários, digamos 1000, envolvidos em um certo ensaio clínico. Desses, 500 seguem o tratamento e 500 tomam placebo. Dos que tomam placebo, 20 desenvolvem sintomas da doença. Dos que seguem o tratamento, apenas 5 desenvolvem sintomas. Isso pode ser representado pela tabela a seguir.</p>
-<table><tr><th align="left"></th><th align="center">adoecem &#40;A&#41;</th><th align="center">não adoecem</th></tr><tr><td align="left">tratamento &#40;B&#41;</td><td align="center">5</td><td align="center">495</td></tr><tr><td align="left">placebo</td><td align="center">40</td><td align="center">460</td></tr></table>
-<p>No total, temos \(1000\) voluntários, sendo que \(25\) desse total adoecem e apenas \(5\) seguem o tratamento e adoecem. Denotando por \(A\) o evento de adoecer e por \(B\) o de seguir o tratamento, podemos escrever</p>
-\[
-\mathbb{P}(A \cap B) = \frac{5}{1000}, \quad \mathbb{P}(B) = \frac{500}{1000}.
-\]
-<p>Com isso, podemos obter a probabilidade de alguém adoecer fazendo o tratamento:</p>
-\[
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}} = \frac{\displaystyle \frac{5}{1000}}{\displaystyle \frac{500}{1000}} = \frac{5}{500} = 1\%.
-\]
-<p>Também podemos visualizar isso completando a tabela com os totais:</p>
-<table><tr><th align="left"></th><th align="center">adoecem &#40;A&#41;</th><th align="center">não adoecem</th><th align="center">total</th></tr><tr><td align="left">tratamento &#40;B&#41;</td><td align="center">5</td><td align="center">495</td><td align="center">500</td></tr><tr><td align="left">placebo</td><td align="center">40</td><td align="center">460</td><td align="center">500</td></tr><tr><td align="left">total</td><td align="center">45</td><td align="center">975</td><td align="center">1000</td></tr></table>
-<p>Vemos, diretamente, na primeira coluna, que \(5\) adoceram dentre os \(500\) que fizeram o tratamento, ou seja, há \(5/500 = 1\%\) de chance de adoecer se seguirmos o tratamento. Da mesma forma, sem tratamento, temos \(40/500 = 8\%\) de chances de adoecer. Nesse caso, podemos dizer que o tratamento reduziu de \(8\%\) a \(1\%\) as chances de adoecer. Ou seja, houve uma redução relativa de \((8\% - 1\%)/8\% = 7/8 = 87,5\%\).</p>
-<h2 id="eventos_independentes"><a href="#eventos_independentes" class="header-anchor">Eventos independentes</a></h2>
-<p>Quando as chances de um evento \(A\) acontecer independem de um outro evento \(B\), podemos expressar isso por</p>
-\[
-\mathbb{P}(A | B) = \mathbb{P}(A).
-\]
-<p>Pela lei de probabilidade condicionada, se \(\mathbb{P}(B) > 0\), temos, então, que</p>
-\[
-\mathbb{P}(A) = \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)},
-\]
-<p>ou seja,</p>
-\[
-\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B).
-\]
-<p>Se \(\mathbb{P}(B) = 0\), a igualdade acima é trivialmente válida.</p>
-<p>Se tivermos dois dados de seis faces, \(A\) e \(B\), com faces numeradas de \(1\) a \(6\), e \(X\) é a variável aleatória obtida pelo resultado do lançamento de um dos dados escolhidos aleatoriamente com igual probabilidade, então as chances de tirarmos \(3\) independe da escolha do dado. Já se um dos dados tem apenas quatro faces, numeradas de \(1\) a \(3\), então as chances de tirarmos \(3\) depende da escolha do dado.</p>
-<h2 id="lei_da_probabilidade_total"><a href="#lei_da_probabilidade_total" class="header-anchor">Lei da probabilidade total</a></h2>
-<p>Um resultado importante em probabilidade pode ser interpretado como uma estratégia de <em>dividir para conquistar</em>. Digamos que \(\mathbb{P}\) seja uma medida de probabilidade em um espaço amostral \(\Omega\). Suponha que queiramos saber a medida de um determinado conjunto \(A\). Suponha, ainda, que seja razoável dividir o espaço em subconjuntos disjuntos \(B_1, \ldots, B_k\), ou seja, \(\Omega = \cup_{j = 1}^k B_j\) e \(B_i \cap B_j = \emptyset\), \(i\neq j\), \(i, j = 1, \ldots, k\). Então, vale a <strong>lei de probabilidade total</strong></p>
-\[
-\mathbb{P}(A) = \mathbb{P}(A \cap B_1) + \ldots + \mathbb{P}(A \cap B_k).
-\]
-<p>Juntando com a lei de probabilidade condicionada, podemos escrever</p>
-\[
-\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_k)\mathbb{B_k}.
-\]
-<p>Considerando, novamente, a variável aleatória uniformemente distribuída nos dígitos \(\{1, 2, \ldots, 9\}\), temos</p>
-\[
-\mathbb{P}(X \textrm{ é múltiplo de 3}) = \mathbb{P}(X \textrm{ é par múltiplo de 3}) + \mathbb{P}(X \textrm{ é ímpar múltiplo de 3}) = \frac{1}{9} + \frac{2}{9} = \frac{3}{9} = \frac{1}{3}.
-\]
-<p>Ou, usando probabilidade condicionada,</p>
-\[
-\mathbb{P}(X \textrm{ é múltiplo de 3}) \\
-= \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é par })\mathbb{P}(X \textrm{ é par}) + \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é ímpar })\mathbb{P}(X \textrm{ é ímpar}) \\
-= \frac{1}{4}\times\frac{4}{9} + \frac{2}{5}\times\frac{5}{9} = \frac{1}{9} + \frac{2}{9} = \frac{1}{3}.
-\]
-<p>Seguindo na linha de ensaios clínicos, digamos que haja um novo teste para a detecção de alguma doença endêmica que, estima-se, atinge 1&#37; da população. Ensaios clínicos indicam que o teste possui 96&#37; de acerto, ou seja, que, em cada 100 pessoas com a doença, o teste dá resultado positivo em 96 delas. E que ele tem 0,1&#37; de falsos positivos. Ou seja, de cada 1000 pessoas sem a doença, o teste dá positivo em 1 delas. Se uma pessoa qualquer faz o teste, quais as chances dela testar positivo, independentemente de ter ou não a doença?</p>
-<p>Vejamos. Se \(D\) indica o evento de se ter a doença e \(P\), do evento do teste dar positivo, a lei da probabilidade total nos diz que</p>
-\[
-\mathbb{P}(P) = \mathbb{P}(P | D)\mathbb{P}(D) + \mathbb{P}(P | \neg D)\mathbb{\neg D},
-\]
-<p>onde \(\neg D\) é o complemento de \(D\), ou seja, nesse caso, representa não ter a doença. As informações nos dizem que</p>
-\[
-\mathbb{P}(P | D) = 0.96, \qquad \mathbb{P}(P | \neg D) = 0.001, \qquad \mathbb{P}(D) = 0.01.
-\]
-<p>Além disso,</p>
-\[
-\mathbb{P}(\neg D) = 1 - \mathbb{P}(A) = 0.99.
-\]
-<p>Portanto, as chances de uma pessoa qualquer testar positivo é de</p>
-\[
-\mathbb{P}(P) = 0.96 \times 0.01 + 0.001 \times 0.99 = 0.01059.
-\]
-<p>Ou seja, as chances de uma pessoa qualquer testar positivo são de 1,059&#37;.</p>
-<h2 id="teorema_de_bayes"><a href="#teorema_de_bayes" class="header-anchor">Teorema de Bayes</a></h2>
-<p>Dados dois eventos \(A\) e \(B\) com probabilidade positiva, temos que</p>
-\[
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
-\]
-<p>e</p>
-\[
-\mathbb{P}(B | A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}.
-\]
-<p>Substituindo, na primeira identidade, a expressão para \(\mathbb{P}(A \cap B)\) obtida da segunda identidade, obtemos o resultado do <strong>Teorema de Bayes:</strong></p>
-\[
-\mathbb{P}(A | B) = \frac{\mathbb{P}(B | A)\mathbb{P}(A)}{\mathbb{P}(B)}.
-\]
-<p>O Teorema de Bayes tem inúmeras aplicações. Pensemos, novamente, no exemplo do ensaio clínico acima, de um teste com 96&#37; de acerto para alguma doença endêmica que atinge 1&#37; da população, com 0,1&#37; de falsos positivos. Se uma pessoa qualquer testar positivo, quais as chances dela realmente estar com a doença?</p>
-<p>Vejamos. Se \(D\) indica o evento de se ter a doença e \(T\), o evento do teste dar positivo, então a probabilidade de se ter a doença dado que o teste deu positivo é representada por \(\mathbb{P}(D | T)\). De acordo com o Teorema de Bayes, </p>
-\[
-\mathbb{P}(D | T) = \frac{\mathbb{P}(T | D)\mathbb{P}(D)}{\mathbb{P}(T)}.
-\]
-<p>Sabemos que \(\mathbb{P}(T | D) = 0.96\) e que \(\mathbb{P}(D) = 0.01\). Vimos, também, usando a lei da probabilidade total, que \(\mathbb{P}(T) = 0.01059\). Logo,</p>
-\[
-\mathbb{P}(A | B) = \frac{0.96 \times 0.01}{0.01059} \approx 0.9065
-\]
-<p>Ou seja, as chances de alguém que testou positivo realmente ter a doença são de 90,65&#37;.</p>
 <h2 id="estimativas_para_eventos_conjuntos"><a href="#estimativas_para_eventos_conjuntos" class="header-anchor">Estimativas para eventos conjuntos</a></h2>
 <p>Considere dois eventos \(A\) e \(B\). Se eles forem independentes, temos \(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\).</p>
 <p>No casos deles serem dependentes e <em>mutuamente exclusivos</em>, i.e. \(A \cap B = \emptyset\), então \(\mathbb{P}(A \cap B) = 0\).</p>
@@ -292,23 +209,14 @@
 \[
 \mathbb{P}(A \cap B) \leq \min\left\{\mathbb{P}(A), \mathbb{P}(B)\right\}.
 \]
-<h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
-<ol>
-<li><p>Mostre, na lei de probabilidade total, que basta que \(\mathbb{P}(B_1 \cup \cdots \cup B_k) = 1\) e \(\mathbb{P}(B_i \cap B_j) = 0\), para \(i, j = 1, \ldots, k\), com \(i \neq j\).</p>
-</li>
-<li><p>Em um torneio de xadrez, podemos classificar os jogadores em níveis A, B e C. Além de você, há 3 jogadores de nível A, 4 de nível B e 8 de nível C. O seu primeiro oponente é sorteado aleatoriamente dentre esses. As suas chances de vitória são \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível A}) = 0.5\), \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível B}) = 0.65\) e \(\mathbb{P}(\textrm{vitória} | \textrm{oponente nível C}) = 0.8\). Quais as suas chances de vitória no primeiro jogo?</p>
-</li>
-<li><p>No exemplo do teste clínico, suponha, no entanto, que a doença atinge apenas 0,1&#37; da população, mantendo a eficácia do teste em 96&#37; e a taxa de falsos positivos em 0,1&#37;. Encontre as chances de uma pessoa qualquer ser testada positivo e as chances de uma pessoa testada positivo realmente ter a doença. Repita as contas no caso em que a doença atinge 1&#37; e a taxa de falsos positivos sobe para 1&#37;.</p>
-</li>
-</ol>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/identidades">2.5. Identidades <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/multi_va"><kbd>→</kbd> 2.6. Variáveis aleatórias multivariadas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/multi_va"><kbd>→</kbd> 2.7. Variáveis aleatórias multivariadas</a>
 </span>
     </p>
 </div>
@@ -324,7 +232,7 @@
         </div>
     
 
-    Last modified: May 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 18, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

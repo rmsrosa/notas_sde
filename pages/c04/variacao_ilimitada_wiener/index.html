@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Teorema Central do Limite</title>  
+   <title>Variação ilimitada quase sempre dos caminhos amostrais</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,6 +13,8 @@
 
   
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -163,10 +165,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.10. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/convergencias"><kbd>→</kbd> 5. Tipos de convergências</a>
 </span>
     </p>
 </div>
@@ -177,20 +179,48 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.9. Teorema Central do Limite</a></h1>
-<blockquote>
-<p>&quot;This brings us to the term &#39;central limit theorem&#39; ... This name was introduced by George Pólya &#40;1920&#41;, with the intention that the adjective &#39;central&#39; was to modify the noun &#39;theorem&#39;; i.e. it is the limit theorem that is <em>central</em> to probability. Almost universally, students today think that &#39;central&#39; modifies &#39;limit&#39;, so that it is instead a theorem about a <em>&#39;central limit&#39;</em>, whatever that means. The confusion does not occur in the original German, where Pólya’s words were: <em>Uber den zentralen Grenzwertsatz der Wahrscheinlichkeitsrechnung</em>, an interesting example where the German habit of inventing compound words removes an ambiguity in the literal English rendering.&quot; -  E. T. Jaynes &#40;2003&#41;</p>
-</blockquote>
-<p>A história do Teorema Central do Limite é muito rica e se desenvolveu ao longo de mais de um século, desde os primeiros trabalhos de Pierre-Simon Laplace, em 1810 e 1812, até os resultados de Paul Lévy e Willy Feller, em 1935 &#40;veja H. Fischer &#40;2011&#41;, &quot;A History of the Central Limit Theorem&quot;&#41;. Isso passando por publicações de outros grandes nomes, como Siméon Denis Poisson &#40;1824 e 1829&#41;, Peter Gustav Lejeune Dirichlet &#40;1846&#41;, Augustin Louis Cauchy &#40;1845&#41;, Pafnutii Lvovich Chebyshev &#40;1887&#41;, Andrei Andreevich Markov &#40;1898&#41; e Aleksandr Mikhailovich Liapunov &#40;1900&#41;, Felix Hausdorff &#40;1901&#41;, Richard von Mises &#40;1919&#41;, George Pólya &#40;1920&#41;, Jarl Waldemar Lindeberg &#40;1922&#41; e Sergei Natanovich Bernshtein &#40;1922&#41;.</p>
-<p>O Teorema Central do Limite abrange, na verdade, uma coleção de resultados, em contextos diferentes e com condições diversas, tanto condições suficientes quanto necessárias.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
+<p>Uma propriedade fundamental do processo de Wiener é que os seus caminhos são, quase sempre, de <em>variação ilimitada</em>. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes</em>.</p>
+<p>Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais do processo de Wiener serem, quase sempre, de variação ilimitada.</p>
+<h2 id="funções_de_variação_limitada_ou_ilimitada"><a href="#funções_de_variação_limitada_ou_ilimitada" class="header-anchor">Funções de variação limitada ou ilimitada</a></h2>
+<p>Se \(g = g(t)\) representa a posição de um objeto ao longo do tempo, definida em um intervalo \([a, b]\), \(a < b\), podemos estimar a distância percorrida calculando-se</p>
+\[
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})|
+\]
+<p>para instantes de tempo \(a \leq t_0 < t_1 < \ldots < t_n \leq b\). Caso \(x\) seja diferenciável, isso pode ser estimado por</p>
+\[
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|}(b-a), 
+\]
+<p>onde \(t_{j-1} \leq \theta_j \leq t_j\) e \(\Delta_j t = t_j - t_{j-1}\). Observe que a estimativa à direita independe da malha de tempo, de modo que</p>
+\[
+\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|}(b-a),
+\]
+<p>onde o supremo é tomado em relação à todas as partições possíveis do intervalo \([a, b]\).</p>
+<p>Caso a função seja Lipschitz contínua em \([a, b]\), com constante de Lipschitz \(L \geq 0\), ainda podemos limitar essa quantidade:</p>
+\[
+\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
+\]
+<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Em particular, funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.</p>
+<p>Essa quantidade é chamada de <strong>variação</strong> da função no intervalo \([a, b]\) e é denotada por \(V(g; a, b)\):</p>
+\[
+\mathrm{V}(g; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
+\]
+<p>Caso \(V(g; a, b)\) seja finito, dizemos que a função é de <strong>variação limitada</strong>, no intervalo \([a, b]\). Caso contrário, ela é dita de <strong>variação ilimitada</strong>.</p>
+<p>Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada <em>integral de Riemann-Stieltjes</em>:</p>
+\[
+\int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
+\]
+<p>O limite é tomado em relação ao refinamento das malhas. &#40;Mais detalhes depois...&#41; Desde que \(g\) seja de variação limitada, é possível mostrar que o limite converge, quando \(f\) é contínua. Obtemos a integral de Riemann ao tomarmos \(g(t) = t\).</p>
+<h2 id="caminhos_amostrais_do_processo_de_wiener"><a href="#caminhos_amostrais_do_processo_de_wiener" class="header-anchor">Caminhos amostrais do processo de Wiener</a></h2>
+<p>Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais são, quase sempre, de variação ilimitada.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.10. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/convergencias"><kbd>→</kbd> 5. Tipos de convergências</a>
 </span>
     </p>
 </div>
@@ -212,6 +242,10 @@
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     
