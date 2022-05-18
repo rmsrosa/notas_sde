@@ -64,6 +64,7 @@ menu = [
     "Processos de Wiener" => [
         "pages/c04/definicao_processo_wiener"
         "pages/c04/existencia_processo_wiener"
+        "pages/c04/simetrias_wiener"
     ]
     "pages/convergencias"
     "*Apêndice" => [
