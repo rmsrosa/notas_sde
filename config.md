@@ -48,6 +48,7 @@ menu = [
         "pages/c02/exemplos_va_discretas"
         "pages/c02/exemplos_va_continuas"
         "pages/c02/media_momentos"
+        "pages/c02/identidades"
         "pages/c02/desigualdades"
         "pages/c02/multi_va"
         "pages/c02/transformacoes"
@@ -64,6 +65,9 @@ menu = [
     "Processos de Wiener" => [
         "pages/c04/definicao_processo_wiener"
         "pages/c04/existencia_processo_wiener"
+        "pages/c04/simetrias_wiener"
+        "pages/c04/naodiferenciabilidade_wiener"
+        "pages/c04/variacao_ilimitada_wiener"
     ]
     "pages/convergencias"
     "*Apêndice" => [
