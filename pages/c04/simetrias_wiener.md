@@ -85,11 +85,11 @@ $$
 
 Nos dois termos restantes, usamos a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ do processo de Wiener, que nos dá
 $$
-t_4(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) = t_4(t_2 - t_1)\min\{\frac{1}{t_2},\frac{1}{t_4}} = t_4(t_2 - t_1)\frac{1}{t_4} = t_2 - t_1
+t_4(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) = t_4(t_2 - t_1)\min\left\{\frac{1}{t_2},\frac{1}{t_4}\right\} = t_4(t_2 - t_1)\frac{1}{t_4} = t_2 - t_1
 $$
 e
 $$
-t_3(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_3}) = t_3(t_2 - t_1)\min\{\frac{1}{t_2},\frac{1}{t_3}} = t_3(t_2 - t_1)\frac{1}{t_3} = t_2 - t_1.
+t_3(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_3}) = t_3(t_2 - t_1)\min\left\{\frac{1}{t_2},\frac{1}{t_3}\right\} = t_3(t_2 - t_1)\frac{1}{t_3} = t_2 - t_1.
 $$
 
 Portanto, os dois primeiros termos se cancelam e os dois últimos se anulam, resultando em
@@ -100,7 +100,7 @@ $$
 Se $t_1 = 0$, então
 $$
 \begin{align*}
-\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4} - t_3 W_{1/t_3}) = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4}) - \mathrm{Cov}(t_2 W_{1/t_2}, t_3 W_{1/t_3}) \\
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2} - 0, t_4 W_{1/t_4} - t_3 W_{1/t_3}) = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4}) - \mathrm{Cov}(t_2 W_{1/t_2}, t_3 W_{1/t_3}) \\
   & = t_2t_4\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) - t_2t_3\mathrm{Cov}(t_2 W_{1/t_2}, W_{1/t_3}) = \frac{t_2t_4}{t_4} - \frac{t_2t_3}{t_3} = t_2 - t_2 = 0.
 \end{align*}
 $$
