@@ -58,48 +58,41 @@ Vamos, então, considerar quatro instantes distintos $0 < t_1 < t_2 < t_3 < t_4$
 $$
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 $$
-Escrevemos
+Escrevendo
 $$
-t_2 W_{1/t_2} - t_1 W_{1/t_1} = (t_2 - t_1) W_{1/t_2} + t_1 (W_{1/t_2} - W_{1/t_1})
+t_2 W_{1/t_2} - t_1 W_{1/t_1} = (t_2 - t_1) W_{1/t_2} + t_1 (W_{1/t_2} - W_{1/t_1}),
+$$
+obtemos
+$$
+\begin{align*}
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_4 W_{1/t_4} - t_3 W_{1/t_3}) + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_4 W_{1/t_4} - t_3 W_{1/t_3}) \\
+& = \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_4 W_{1/t_4}) - \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 W_{1/t_3}) \\
+& \quad + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_4 W_{1/t_4}) - \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 W_{1/t_3})
+\end{align*}
+$$
+
+Como $W_0 = 0$ e $1/t_4 < 1/t_3 < 1/t_2 < 1/t_1$, escrevemos
+$$
+\begin{align*}
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = t_4(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) - t_3(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_3}) \\
+& \quad - t_1t_4\mathrm{Cov}(t_1 (W_{1/t_1} - W_{1/t_2}), t_4 (W_{1/t_4} - W_0)) + t_1t_3\mathrm{Cov}((W_{1/t_1} - W_{1/t_2}), (W_{1/t_3} - W_0))
+\end{align*}
+$$
+Os dois últimos termos envolvem incrementos em intervalos disjuntos, portanto independentes, de modo que
+$$
+\mathrm{Cov}(t_1 (W_{1/t_1} - W_{1/t_2}), t_4 (W_{1/t_4} - W_0)) = \mathrm{Cov}((W_{1/t_1} - W_{1/t_2}), (W_{1/t_3} - W_0)) = 0.
+$$
+
+Nos dois termos restantes, usamos a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ do processo de Wiener, que nos dá
+$$
+t_4(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) = t_4(t_2 - t_1)\min\{\frac{1}{t_2},\frac{1}{t_4}} = t_4(t_2 - t_1)\frac{1}{t_4} = t_2 - t_1
 $$
 e
 $$
-t_4 W_{1/t_4} - t_3 W_{1/t_3} = (t_4 - t_3) W_{1/t_4} + t_3 (W_{1/t_4} - W_{1/t_3}).
+t_3(t_2 - t_1)\mathrm{Cov}(W_{1/t_2}, W_{1/t_3}) = t_3(t_2 - t_1)\min\{\frac{1}{t_2},\frac{1}{t_3}} = t_3(t_2 - t_1)\frac{1}{t_3} = t_2 - t_1.
 $$
-Distribuindo, temos
-$$
-\begin{align*}
-\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, (t_4 - t_3) W_{1/t_4}) + \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 (W_{1/t_4} - W_{1/t_3})) \\
-& \quad + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), (t_4 - t_3) W_{1/t_4}) + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 (W_{1/t_4} - W_{1/t_3})).
-\end{align*}
-$$
-Como $W_0 = 0$, escrevemos
-$$
-\begin{align*}
-\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, (t_4 - t_3) W_{1/t_4}) + \mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 (W_{1/t_4} - W_{1/t_3})) \\
-& \quad + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), (t_4 - t_3) (W_{1/t_4} - W_0)) + \mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 (W_{1/t_4} - W_{1/t_3})).
-\end{align*}
-$$
-No penúltimo termo, temos os incrementos independentes nos intervalos disjuntos $0 < 1/t_4 < 1/t_3 < 1/t_2$, nos dando
-$$
-\mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), (t_4 - t_3) (W_{1/t_4} - W_0)) = t_1 (t_4 - t_3)\mathrm{Cov}(W_{1/t_2} - W_{1/t_1}, W_{1/t_4} - W_0) = 0
-$$
-No último termo, temos os incrementos independentes nos intervalos disjuntos $1/t_4 < 1/t_3 < 1/t_2 < 1/t_1$, o que nos dá
-$$
-\mathrm{Cov}(t_1 (W_{1/t_2} - W_{1/t_1}), t_3 (W_{1/t_4} - W_{1/t_3})) = t_1 t_3 \mathrm{Cov}(W_{1/t_2} - W_{1/t_1}, W_{1/t_4} - W_{1/t_3}) = 0.
-$$
-Nos dois termos restantes, usamos a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ do processo de Wiener, o que nos dá
-$$
-\mathrm{Cov}((t_2 - t_1) W_{1/t_2}, (t_4 - t_3) W_{1/t_4}) = (t_2 - t_1)(t_4 - t_3)\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) = \frac{(t_2 - t_1)(t_4 - t_3)}{t_4} = (t_2 - t_1) - \frac{(t_2 - t_1)t_3}{t_4}
-$$
-e
-$$
-\begin{align}
-\mathrm{Cov}((t_2 - t_1) W_{1/t_2}, t_3 (W_{1/t_4} - W_{1/t_3})) & = (t_2 - t_1)t_3\mathrm{Cov}( W_{1/t_2}, W_{1/t_4}) - (t_2 - t_1)t_3\mathrm{Cov}(W_{1/t_2}, W_{1/t_3}) \\
-& = \frac{(t_2 - t_1)t_3}{t_4}  - \frac{(t_2 - t_1)t_3}{t_3} = \frac{(t_2 - t_1)t_3}{t_4} - (t_2 - t_1).
-\end{align}
-$$
-Portanto, os dois primeiros termos se cancelam e os dois últimos se anulam, nos dando
+
+Portanto, os dois primeiros termos se cancelam e os dois últimos se anulam, resultando em
 $$
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = 0.
 $$
@@ -112,7 +105,7 @@ $$
 \end{align*}
 $$
 
-Como os incrementos são normais, isso mostra que quaisquer dois incrementos disjuntos são independentes. Como dito acima, considerando $n$ incrementos consecutivos, o argumento acima mostra que eles são independentes dois a dois. E como são normais, isso implica neles serem mutuamente independentes.
+Como os incrementos são normais, isso mostra que quaisquer dois incrementos disjuntos de $\{V_t\}_{t\geq 0}$ são independentes. Como dito acima, considerando $n$ incrementos consecutivos, o argumento acima mostra que eles são independentes dois a dois. E como são normais, isso implica neles serem mutuamente independentes.
 
 ## Distribuição de probabilidades dos incrementos
 
