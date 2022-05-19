@@ -196,9 +196,49 @@ V_{t + \tau}^a - V_t^a = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathc
 \]
 <p>Isso completa a demonstração dessa simetria.</p>
 <h2 id="crescimento_sublinear"><a href="#crescimento_sublinear" class="header-anchor">Crescimento sublinear</a></h2>
-<p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener. Então vale, quase sempre,</p>
+<p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener padrão. Então vale, quase sempre,</p>
 \[
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
+\]
+<p>De fato, vamos mostrar que, para todo \(r > 0\),</p>
+\[
+\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0.
+\]
+<p>Seja \(t > 0\) e escreva</p>
+\[
+\frac{W_t}{t} = \frac{V_1^{\sqrt{t}}}{\sqrt{t}},
+\]
+<p>onde \(V_t^a = W_{a^2 t}/a\) é um rescalonamento do processo de Wiener, com \(a > 0\), como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que</p>
+\[
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right),
+\]
+<p>para todo \(r > 0\) &#40;na verdade isso vale também para \(r = 0\), mas a seguir precisaremos de \(r > 0\)&#41;. Como \(V_1^a \sim \mathcal{N}(0, 1)\), independente de \(a\), temos</p>
+\[
+\mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right) = \mathbb{P}\left( |V_1^{\sqrt{t}}| \geq r\sqrt{t} \right) \rightarrow 0, \qquad t \rightarrow \infty.
+\]
+<p>Assim, para cada \(\varepsilon > 0\), existe \(T > 0\) tal que</p>
+\[
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( |V_1^{\sqrt{t}}| \geq r\sqrt{t} \right) \leq \varepsilon, \quad \forall t \geq T.
+\]
+<p>Tomando uma sequência \(\{\varepsilon_n\}_{j\in \mathbb{N}}\) de números positivos com \(\sum_n \varepsilon_n < \infty\), obtemos, uma sequência \(t_n \rightarrow \infty\) tal que</p>
+\[
+\mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \varepsilon_n.
+\]
+<p>Assim,</p>
+\[
+\sum_{n\in \mathbb{N}} \mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \sum_{n\in \mathbb{N}} \varepsilon_n < \infty.
+\]
+<p>Segue do Lema de Borel-Cantelli que</p>
+\[
+\mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
+\]
+<p>Isso implica em</p>
+\[
+\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} \geq r \right\} \right) \leq \mathbb{P}\left( \left\{ \limsup_{n \rightarrow \infty} \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = \mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
+\]
+<p>Como \(r > 0\) é arbitrário, deduzimos que</p>
+\[
+\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} > 0 \right\} \right) = 0.
 \]
 <h2 id="invariância_por_inversão_temporal"><a href="#invariância_por_inversão_temporal" class="header-anchor">Invariância por inversão temporal</a></h2>
 <p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\) e defina o processo \(\{V_t\}_{t\geq 0}\) por</p>
@@ -269,6 +309,14 @@ W_{1/(t + \tau)} - W_0 \sim \mathcal{N}(0, 1/(t + \tau)), \quad W_{1/t} - W_{1/(
 V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 0.
 \]
 <p>Isso completa a demonstração dessa simetria.</p>
+<h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
+<ol>
+<li><p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer \(p > 1/2\).</p>
+</li>
+</ol>
+\[
+\lim_{t \rightarrow \infty} \frac{W_t}{t^p} = 0.
+\]
 
     <div class="navbar">
     <p id="nav">
