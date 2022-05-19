@@ -1,4 +1,4 @@
-@def title = "Simetrias de processos de Wiener"
+@def title = "Simetrias do processo de Wiener"
 
 # {{ get_title }}
 
@@ -18,14 +18,14 @@ V_{t + \tau}^a - V_t^a = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathc
 $$
 Isso completa a demonstração dessa simetria.
 
-## Taxa de crescimento
+## Crescimento sublinear
 
 Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener. Então vale, quase sempre,
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 $$
 
-## Inversão por inversão temporal
+## Invariância por inversão temporal
 
 Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$ e defina o processo $\{V_t\}_{t\geq 0}$ por
 $$
@@ -42,11 +42,11 @@ Por construção, temos $V_0 = W_0 = 0$.
 
 ### Continuidade quase sempre dos caminhos amostrais
 
-Para quase todo $\omega$, o caminho $t \mapsto W_t(\omega)$ é contínuo. Daí tiramos que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo em $(0, \infty)$. Além disso, segue da lei dos grandes números que, quase sempre,
+Para quase todo $\omega$, o caminho $t \mapsto W_t(\omega)$ é contínuo. Daí tiramos que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo em $(0, \infty)$. Além disso, segue do crescimento sublinear dos caminhos amostrais que, quase sempre,
 $$
-\lim_{t \rightarrow 0} V_t = \lim_{t \rightarrow 0} t W_{1/t} = \lim_{s \rigtharrow \infty} \frac{W_s}{s} = 0.
+\lim_{t \rightarrow 0} V_t = \lim_{t \rightarrow 0} t W_{1/t} = \lim_{s \rightarrow \infty} \frac{W_s}{s} = 0.
 $$
-Portanto, para quase todo $\omega$, vale $t W_{1/t}(\omega) \rightarrow 0$, quando $t \rightarrow 0$, mostrando que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo em $[0, \infty)$, para quase todo $\omega$. Isso mostra a continuidade quase sempre dos caminhos amostrais de $\{V_t\}_{t\geq 0}$.
+Portanto, para quase todo $\omega$, vale $t W_{1/t}(\omega) \rightarrow 0$, quando $t \rightarrow 0$, mostrando que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo também em $t = 0$, portanto é contíno em $[0, \infty)$, para quase todo $\omega$. Isso mostra a continuidade quase sempre dos caminhos amostrais de $\{V_t\}_{t\geq 0}$.
 
 ### Independência dos incrementos
 
@@ -54,7 +54,7 @@ Quanto à independência dos incrementos, se $0 < t_0 < t_1 < \ldots < t_n$, ent
 
 Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência seque da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.
 
-Vamos, então, considerar quatro instantes distintos $0 < t_1 < t_2 < t_3 < t_4$ e olhar para as covariâncias
+Vamos, então, considerar quatro instantes distintos $0 < t_1 < t_2 < t_3 < t_4$ e olhar para as covariâncias de dois incrementos disjuntos:
 $$
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 $$
@@ -116,9 +116,7 @@ Como os incrementos são normais, isso mostra que quaisquer dois incrementos dis
 
 ## Distribuição de probabilidades dos incrementos
 
-Sejam, agora, $t \geq 0$, $\tau > 0$.
-
-Se $t = 0$, então
+Sejam, agora, $t \geq 0$, $\tau > 0$. Se $t = 0$, então
 $$
 V_{t + \tau} - V_t = V_\tau = \tau W_{1/\tau} = \tau (W_{1/\tau} - W_0) \sim \tau \mathcal{N}(0, 1/\tau) = \mathcal{N}(0, \tau).
 $$

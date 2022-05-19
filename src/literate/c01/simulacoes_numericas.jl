@@ -1,15 +1,17 @@
-# # Simulações numéricas
+# # Simulações numéricas de modelos de crescimento natural
 
 # Hora de implementarmos os métodos de Euler descritos na seção anterior.
 
-# Usaremos apenas dois pacotes do Julia. Um é o [Plots.jl](https://docs.juliaplots.org/stable/), para visualização das soluções. O outro é o [Random](https://docs.julialang.org/en/v1/stdlib/Random/), da biblioteca padrão, apenas para fixar a reprodução das notas (gerar sempre os mesmos conjuntos de números aleatórios).
+# Vamos ver variações do modelo de crescimento natural. Primeiramente, vamos considerar o modelo clássico, de uma equação diferencial ordinária $\mathrm{d}x/\mathrm{d}t = \mu x$, com um parâmetro $\mu$ constante, representando a taxa de crescimento específico. Depois, vamos permitir que $\mu$ seja uma variável aleatória, representando uma incerteza no parâmetro. Em seguida, vamos considerar o caso em que $\mu = \{\mu_t\}_{t\geq 0}$ é um processo aleatório, representando uma variabilidade temporal aleatória no parâmetro. Por último, vamos considerar $\mu$ novamente constante mas com a equação perturbada por um termo estocástico, $\mathrm{d}x = \mu x \mathrm{d}t + \sigma \mathrm{d}W_t$.
+
+# Usaremos apenas dois pacotes do Julia. Um é o [Plots.jl](https://docs.juliaplots.org/stable/), para visualização das soluções. O outro é o [Random](https://docs.julialang.org/en/v1/stdlib/Random/), da biblioteca padrão, apenas para fixar a reprodução das notas (gerar sempre os mesmos conjuntos de números aleatórios, por motivos didáticos e de controle de versão).
 
 using Plots
 theme(:ggplot2)
 using Random
 rng = Xoshiro(123)
 
-# ## Equações diferenciais ordinárias
+# ## Modelo de equação diferencial ordinária
 
 # Consideramos o problema de crescimento populacional
 # $$
@@ -74,7 +76,7 @@ end
 
 plot(t, x, title="Crescimento exponencial (x₀ = $x₀, μ = $μ, T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação", color=1)
 
-# ## Parâmetros aleatórios
+# ## Modelo com parâmetros aleatórios
 
 # Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média $\bar\mu$ e desvio padrão $\sigma$: $\mu = \mathcal{N}(\bar\mu, \sigma^2)$.
 
@@ -102,7 +104,7 @@ end
 plot(t, x, alpha = 0.2, title="Conjunto de soluções (x₀ = $x₀, μ_t = N($μ̄, $σ), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1) 
 plot!(t, x[:, 1], label="uma realização", color=2)
 
-# ## Equação aleatória
+# ## Modelo de equação diferencial aleatória
 
 # Consideramos, agora, a equação aleatória
 # $$
@@ -124,7 +126,7 @@ end
 plot(t, x, alpha = 0.2, title="Soluções RODE (x₀ = $x₀, μ_t = $μ̄ + $σ W_t), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1) 
 plot!(t, x[:, 1], label="uma realização", color=2)
 
-# ## Equação estocástica
+# ## Modelo de equação diferencial estocástica
 
 # Finalmente, vamos considerar a equação estocástica
 # $$
