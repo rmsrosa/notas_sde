@@ -52,6 +52,7 @@ menu = [
         "pages/c02/desigualdades"
         "pages/c02/multi_va"
         "pages/c02/transformacoes"
+        "pages/c02/convergencias"
         "pages/c02/teorema_central"
         "pages/c02/gerando_num_aleatorios"
     ]
@@ -68,8 +69,8 @@ menu = [
         "pages/c04/simetrias_wiener"
         "pages/c04/naodiferenciabilidade_wiener"
         "pages/c04/variacao_ilimitada_wiener"
+        "pages/c04/simulacoes_wiener"
     ]
-    "pages/convergencias"
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
     ]

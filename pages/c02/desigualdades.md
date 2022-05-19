@@ -1,4 +1,4 @@
-@def title = "Desigualdades"
+@def title = "Desigualdades importantes"
 
 # {{ get_title }}
 

@@ -1,4 +1,4 @@
-@def title = "Equações estocásticas e aleatórias"
+@def title = "Equações diferenciais aleatórias e estocásticas"
 
 # {{ get_title }}
 

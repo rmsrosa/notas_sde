@@ -1,4 +1,4 @@
-@def title = "Identidades"
+@def title = "Identidades fundamentais"
 
 # {{ get_title }}
 
