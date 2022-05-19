@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Simetrias de processos de Wiener</title>  
+   <title>Simetrias do processo de Wiener</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -50,13 +50,13 @@
     <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações estocásticas e aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas</a></li>
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
@@ -83,10 +83,10 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/identidades">2.5. Identidades</a></li>
+    <li><a href="/notas_sde/pages/c02/identidades">2.5. Identidades fundamentais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
@@ -95,10 +95,13 @@
     <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.9. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.10. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.10. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.11. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -128,7 +131,7 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
@@ -136,8 +139,8 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processs de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -179,7 +182,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Simetrias de processos de Wiener</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Simetrias do processo de Wiener</a></h1>
 <p>Processos de Wiener possuem algumas simetrias importantes.</p>
 <h2 id="invariância_por_rescalonamento"><a href="#invariância_por_rescalonamento" class="header-anchor">Invariância por rescalonamento</a></h2>
 <p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Dado \(a > 0\), defina o processo \(\{V_t^a\}_{t\geq 0}\) por</p>
@@ -192,12 +195,12 @@ V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 V_{t + \tau}^a - V_t^a = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 \]
 <p>Isso completa a demonstração dessa simetria.</p>
-<h2 id="taxa_de_crescimento"><a href="#taxa_de_crescimento" class="header-anchor">Taxa de crescimento</a></h2>
+<h2 id="crescimento_sublinear"><a href="#crescimento_sublinear" class="header-anchor">Crescimento sublinear</a></h2>
 <p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener. Então vale, quase sempre,</p>
 \[
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 \]
-<h2 id="inversão_por_inversão_temporal"><a href="#inversão_por_inversão_temporal" class="header-anchor">Inversão por inversão temporal</a></h2>
+<h2 id="invariância_por_inversão_temporal"><a href="#invariância_por_inversão_temporal" class="header-anchor">Invariância por inversão temporal</a></h2>
 <p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\) e defina o processo \(\{V_t\}_{t\geq 0}\) por</p>
 \[
 V_t = \begin{cases}
@@ -209,15 +212,15 @@ V_t = \begin{cases}
 <h3 id="estado_inicial"><a href="#estado_inicial" class="header-anchor">Estado inicial</a></h3>
 <p>Por construção, temos \(V_0 = W_0 = 0\).</p>
 <h3 id="continuidade_quase_sempre_dos_caminhos_amostrais"><a href="#continuidade_quase_sempre_dos_caminhos_amostrais" class="header-anchor">Continuidade quase sempre dos caminhos amostrais</a></h3>
-<p>Para quase todo \(\omega\), o caminho \(t \mapsto W_t(\omega)\) é contínuo. Daí tiramos que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo em \((0, \infty)\). Além disso, segue da lei dos grandes números que, quase sempre,</p>
+<p>Para quase todo \(\omega\), o caminho \(t \mapsto W_t(\omega)\) é contínuo. Daí tiramos que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo em \((0, \infty)\). Além disso, segue do crescimento sublinear dos caminhos amostrais que, quase sempre,</p>
 \[
-\lim_{t \rightarrow 0} V_t = \lim_{t \rightarrow 0} t W_{1/t} = \lim_{s \rigtharrow \infty} \frac{W_s}{s} = 0.
+\lim_{t \rightarrow 0} V_t = \lim_{t \rightarrow 0} t W_{1/t} = \lim_{s \rightarrow \infty} \frac{W_s}{s} = 0.
 \]
-<p>Portanto, para quase todo \(\omega\), vale \(t W_{1/t}(\omega) \rightarrow 0\), quando \(t \rightarrow 0\), mostrando que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo em \([0, \infty)\), para quase todo \(\omega\). Isso mostra a continuidade quase sempre dos caminhos amostrais de \(\{V_t\}_{t\geq 0}\).</p>
+<p>Portanto, para quase todo \(\omega\), vale \(t W_{1/t}(\omega) \rightarrow 0\), quando \(t \rightarrow 0\), mostrando que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo também em \(t = 0\), portanto é contíno em \([0, \infty)\), para quase todo \(\omega\). Isso mostra a continuidade quase sempre dos caminhos amostrais de \(\{V_t\}_{t\geq 0}\).</p>
 <h3 id="independência_dos_incrementos"><a href="#independência_dos_incrementos" class="header-anchor">Independência dos incrementos</a></h3>
 <p>Quanto à independência dos incrementos, se \(0 < t_0 < t_1 < \ldots < t_n\), então \(1/t_n < \ldots < 1/t_1 < t/t_0\) e vemos que os incrementos \(V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}}\), \(j = 1, \ldots, n\), também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.</p>
 <p>Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência seque da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.</p>
-<p>Vamos, então, considerar quatro instantes distintos \(0 < t_1 < t_2 < t_3 < t_4\) e olhar para as covariâncias</p>
+<p>Vamos, então, considerar quatro instantes distintos \(0 < t_1 < t_2 < t_3 < t_4\) e olhar para as covariâncias de dois incrementos disjuntos:</p>
 \[
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 \]
@@ -275,8 +278,7 @@ t_4 W_{1/t_4} - t_3 W_{1/t_3} = (t_4 - t_3) W_{1/t_4} + t_3 (W_{1/t_4} - W_{1/t_
 \]
 <p>Como os incrementos são normais, isso mostra que quaisquer dois incrementos disjuntos são independentes. Como dito acima, considerando \(n\) incrementos consecutivos, o argumento acima mostra que eles são independentes dois a dois. E como são normais, isso implica neles serem mutuamente independentes.</p>
 <h2 id="distribuição_de_probabilidades_dos_incrementos"><a href="#distribuição_de_probabilidades_dos_incrementos" class="header-anchor">Distribuição de probabilidades dos incrementos</a></h2>
-<p>Sejam, agora, \(t \geq 0\), \(\tau > 0\).</p>
-<p>Se \(t = 0\), então</p>
+<p>Sejam, agora, \(t \geq 0\), \(\tau > 0\). Se \(t = 0\), então</p>
 \[
 V_{t + \tau} - V_t = V_\tau = \tau W_{1/\tau} = \tau (W_{1/\tau} - W_0) \sim \tau \mathcal{N}(0, 1/\tau) = \mathcal{N}(0, \tau).
 \]
@@ -328,7 +330,7 @@ V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 
         </div>
     
 
-    Last modified: May 18, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

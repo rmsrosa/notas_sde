@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Desigualdades importantes</title>  
+   <title>Tipos de convergências</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,8 +13,6 @@
 
   
 
-  
-    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -168,10 +166,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/identidades">2.5. Identidades fundamentais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/multi_va"><kbd>→</kbd> 2.7. Variáveis aleatórias multivariadas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.10. Teorema Central do Limite</a>
 </span>
     </p>
 </div>
@@ -182,44 +180,18 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.6. Desigualdades importantes</a></h1>
-<p>Vejamos algumas desigualdades que nos serão úteis.</p>
-<h2 id="desigualdade_de_markov"><a href="#desigualdade_de_markov" class="header-anchor">Desigualdade de Markov</a></h2>
-\[
-\mathbb{P}(|X| > r) \leq \frac{\mathbb{E}[|X|]}{r}, \quad \forall r > 0.
-\]
-<h2 id="desigualdade_de_chebyshev"><a href="#desigualdade_de_chebyshev" class="header-anchor">Desigualdade de Chebyshev</a></h2>
-\[
-\mathbb{P}(|X - \mathbb{E}[X]| \geq r) \leq \frac{\mathrm{Var}(X)}{r^2}, \quad \forall r > 0.
-\]
-<h2 id="desigualdade_de_lyapunov"><a href="#desigualdade_de_lyapunov" class="header-anchor">Desigualdade de Lyapunov</a></h2>
-\[
-\mathbb{E}[X] \leq \sqrt{\mathbb{E}[X^2]}.
-\]
-<h2 id="estimativas_para_eventos_conjuntos"><a href="#estimativas_para_eventos_conjuntos" class="header-anchor">Estimativas para eventos conjuntos</a></h2>
-<p>Considere dois eventos \(A\) e \(B\). Se eles forem independentes, temos \(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\).</p>
-<p>No casos deles serem dependentes e <em>mutuamente exclusivos</em>, i.e. \(A \cap B = \emptyset\), então \(\mathbb{P}(A \cap B) = 0\).</p>
-<p>Caso \(A \subset B\) &#40;ou \(B \subset A\)&#41;, então \(\mathbb{P}(A \cap B) = \mathbb{P}(A)\) &#40;resp. \(\mathbb{P}(A \cap B) = \mathbb{P}(B)\)&#41;.</p>
-<p>Caso não tenhamos mais informações sobre \(A\) e \(B\), podemos, pelo menos, obter certas estimativas. Por exemplo,  como \(A \cap B \subset A\) e \(A \cap B \subset B\), temos,</p>
-\[
-\mathbb{P}(A \cap B) \leq \mathbb{P}(B)
-\]
-<p>e</p>
-\[
-\mathbb{P}(A \cap B) \leq \mathbb{P}(A).
-\]
-<p>Ou seja,</p>
-\[
-\mathbb{P}(A \cap B) \leq \min\left\{\mathbb{P}(A), \mathbb{P}(B)\right\}.
-\]
+<h1 id="get_title"><a href="#get_title" class="header-anchor">2.9. Tipos de convergências</a></h1>
+<blockquote>
+<p>&quot;Whereas weak convergence measures the <em>error of the means</em>, strong convergence measures the <em>mean of the errors</em>&quot;. - Higham &amp; Kloeden, in <em>An Introduction to the Numerical Simulation of Stochastic Differential Equations</em> &#40;SIAM, 2021&#41; página 83, Seção 8.4.</p>
+</blockquote>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/identidades">2.5. Identidades fundamentais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/multi_va"><kbd>→</kbd> 2.7. Variáveis aleatórias multivariadas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.10. Teorema Central do Limite</a>
 </span>
     </p>
 </div>
@@ -241,10 +213,6 @@
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
-    
-        <script src="/notas_sde/libs/katex/katex.min.js"></script>
-        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
-        <script>renderMathInElement(document.body)</script>
     
 
     

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Tipos de convergências</title>  
+   <title>Simulações de processs de Wiener</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -48,13 +48,13 @@
     <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações estocásticas e aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas</a></li>
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
@@ -81,10 +81,10 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/identidades">2.5. Identidades</a></li>
+    <li><a href="/notas_sde/pages/c02/identidades">2.5. Identidades fundamentais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
@@ -93,10 +93,13 @@
     <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.9. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.10. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.10. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.11. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -126,7 +129,7 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
@@ -134,8 +137,8 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
-    <div class="menu-level-1">
-    <li><a href="/notas_sde/pages/convergencias">5. Tipos de convergências</a></li>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processs de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -177,10 +180,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5. Tipos de convergências</a></h1>
-<blockquote>
-<p>&quot;Whereas weak convergence measures the <em>error of the means</em>, strong convergence measures the <em>mean of the errors</em>&quot;. - Higham &amp; Kloeden, in <em>An Introduction to the Numerical Simulation of Stochastic Differential Equations</em> &#40;SIAM, 2021&#41; página 83, Seção 8.4.</p>
-</blockquote>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.6. Simulações de processs de Wiener</a></h1>
 
     <div class="navbar">
     <p id="nav">
@@ -204,7 +204,7 @@
         </div>
     
 
-    Last modified: May 18, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
