@@ -191,7 +191,7 @@
 \[
 \limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty.
 \]
-<p>quase sempre. Porém, isso não é verdade. Mais do que isso. Esse limite é infinito com probabilidade um. Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.</p>
+<p>quase sempre. Porém, isso não é verdade. Mais do que isso. Esse limite superior é infinito com probabilidade um. Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.</p>
 <h2 id="não_diferenciabilidade_na_origem"><a href="#não_diferenciabilidade_na_origem" class="header-anchor">Não diferenciabilidade na origem</a></h2>
 <p>Vamos começar ilustrando isso no instante \(t = 0\). Temos</p>
 \[
@@ -202,35 +202,71 @@
 V_t^a = \frac{1}{a}W_{a^2t}, \qquad t \geq 0,
 \]
 <p>para \(a > 0\).</p>
-<p>Ambos \(\{W_t\}_{t \geq 0}\) e \(\{V_t\}_{t\geq 0}\) são processos de Wiener padrão, com mesma lei de probabilidades \(W_t, V_t \sim \mathcal{N}(0, t)\). Em particular,</p>
+<p>Ambos \(\{W_t\}_{t \geq 0}\) e \(\{V_t\}_{t\geq 0}\) são processos de Wiener padrão, com mesma lei de probabilidades \(W_t, V_t \sim \mathcal{N}(0, t)\). Portanto,</p>
 \[
-\mathbb{P}(|W_\tau| > r) = \mathbb{P}(|V_\tau^a| > r), \qquad \forall r \geq 0.
+\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r), \qquad \forall r \geq 0.
 \]
 <p>Assim,</p>
 \[
-\mathbb{P}(|W_\tau| > r) = \mathbb{P}(|V_\tau^a| > r) = \mathbb{P}\left(\frac{|W_{a^2\tau}|}{a} > r\right).
+\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r) = \mathbb{P}\left(\frac{|W_{a^2\tau}|}{a} \leq r\right).
 \]
 <p>Escolhendo \(a = 1/\sqrt{\tau}\), temos</p>
 \[
-\mathbb{P}(|W_\tau| > r) = \mathbb{P}\left(\sqrt{\tau}|W_{1}| > r\right).
+\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}\left(\sqrt{\tau}|W_{1}| \leq r\right).
 \]
 <p>Podemos escrever isso na forma</p>
 \[
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} > \frac{r}{\tau}\right) = \mathbb{P}\left(|W_{1}| > \frac{r}{\sqrt{\tau}}\right).
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{r}{\tau}\right) = \mathbb{P}\left(|W_{1}| \leq \frac{r}{\sqrt{\tau}}\right).
 \]
 <p>Escolhendo, agora, \(r = \tau^{3/4}\), obtemos</p>
 \[
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} > \frac{1}{\tau^{1/4}}\right) = \mathbb{P}\left(|W_{1}| > \tau^{1/4}\right).
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right) = \mathbb{P}\left(|W_{1}| \leq \tau^{1/4}\right).
 \]
-<p>Fazendo \(\tau \rightarrow 0\), vemos que</p>
+<p>Como \(W_1 \sim \mathcal{N}(0, 1)\), temos que</p>
 \[
-\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} > n \right) = \mathbb{P}\left(|W_{1}| > 0 \right) = 1,
+\mathbb{P}(|W_1| \leq \tau^{1/4}) \rightarrow 0, \qquad \tau \rightarrow 0.
 \]
-<p>para todo \(n \in \mathbb{N}\). Ou seja,</p>
+<p>Portanto, para qualquer \(\varepsilon > 0\), existe \(\tau > 0\) tal que</p>
 \[
-\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} = \infty \right) = 1.
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right)\leq \varepsilon.
 \]
-<p>Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
+<p>Escolhemos uma sequência \(\{\varepsilon_n\}_{n\in\mathbb{N}}\) tal que \(\varepsilon_n > 0\) e \(\sum_n \varepsilon_n < \infty.\) &#40;Por exemplo, \(\varepsilon_n = 2^{-n}\).&#41; Agora, dado \(M > 0\), escolhemos, para cada \(n\), instantes \(\tau_n\) tais que \(0 < \tau_n \leq 1/M^4\) e</p>
+\[
+\mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \varepsilon_n.
+\]
+<p>Assim,</p>
+\[
+\sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \sum_n \varepsilon_n < \infty
+\]
+<p>Segue, então, pelo Lema de Borel-Cantelli, que</p>
+\[
+\mathbb{P}\left(\limsup_{n\rightarrow \infty} E_n^M\right) = 0,
+\]
+<p>onde</p>
+\[
+E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
+\]
+<p>Temos</p>
+\[
+\limsup_{n\rightarrow \infty} E_n^M = \bigcap_{n\in\mathbb{N}}\bigcup_{j\geq n} E_j^M = \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\}
+\]
+<p>Observe que</p>
+\[
+\left\{\omega; \; \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < M \right\} \subset \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\} = \limsup_{n\rightarrow \infty} E_n^M.
+\]
+<p>Portanto,</p>
+\[
+\mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M\right) = 0.
+\]
+<p>Nesse momento, essa estimativa é válida para qualquer \(M>0\). Como</p>
+\[
+\left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right\} = \bigcup_{M\in \mathbb{N}} \left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M \right\},
+\]
+<p>deduzimos que</p>
+\[
+\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right) = 0.
+\]
+<p>Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
 
     <div class="navbar">
     <p id="nav">
