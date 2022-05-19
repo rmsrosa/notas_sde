@@ -20,9 +20,55 @@ Isso completa a demonstração dessa simetria.
 
 ## Crescimento sublinear
 
-Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener. Então vale, quase sempre,
+Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Então vale, quase sempre,
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
+$$
+
+De fato, vamos mostrar que, para todo $r > 0$,
+$$
+\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0.
+$$
+
+Seja $t > 0$ e escreva
+$$
+\frac{W_t}{t} = \frac{V_1^{\sqrt{t}}}{\sqrt{t}},
+$$
+onde $V_t^a = W_{a^2 t}/a$ é um rescalonamento do processo de Wiener, com $a > 0$, como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que
+$$
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right),
+$$
+para todo $r > 0$ (na verdade isso vale também para $r = 0$, mas a seguir precisaremos de $r > 0$). Como $V_1^a \sim \mathcal{N}(0, 1)$, independente de $a$, temos
+$$
+\mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right) = \mathbb{P}\left( |V_1^{\sqrt{t}}| \geq r\sqrt{t} \right) \rightarrow 0, \qquad t \rightarrow \infty.
+$$
+
+Assim, para cada $\varepsilon > 0$, existe $T > 0$ tal que
+$$
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( |V_1^{\sqrt{t}}| \geq r\sqrt{t} \right) \leq \varepsilon, \quad \forall t \geq T.
+$$
+
+Tomando uma sequência $\{\varepsilon_n\}_{j\in \mathbb{N}}$ de números positivos com $\sum_n \varepsilon_n < \infty$, obtemos, uma sequência $t_n \rightarrow \infty$ tal que
+$$
+\mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \varepsilon_n.
+$$
+Assim,
+$$
+\sum_{n\in \mathbb{N}} \mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \sum_{n\in \mathbb{N}} \varepsilon_n < \infty.
+$$
+
+Segue do Lema de Borel-Cantelli que
+$$
+\mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
+$$
+
+Isso implica em
+$$
+\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} \geq r \right\} \right) \leq \mathbb{P}\left( \left\{ \limsup_{n \rightarrow \infty} \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = \mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
+$$
+Como $r > 0$ é arbitrário, deduzimos que
+$$
+\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} > 0 \right\} \right) = 0.
 $$
 
 ## Invariância por inversão temporal
@@ -110,4 +156,9 @@ $$
 
 Isso completa a demonstração dessa simetria.
 
+## Exercício
 
+1. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2$.
+$$
+\lim_{t \rightarrow \infty} \frac{W_t}{t^p} = 0.
+$$
