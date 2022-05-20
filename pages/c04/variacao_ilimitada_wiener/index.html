@@ -148,6 +148,9 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
     <div class="menu-level-1">
     <li><a href="/notas_sde/pages/references">References</a></li>
     </div>
@@ -192,11 +195,11 @@
 \]
 <p>para instantes de tempo \(a \leq t_0 < t_1 < \ldots < t_n \leq b\). Caso \(x\) seja diferenciável, isso pode ser estimado por</p>
 \[
-\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|}(b-a), 
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|\}(b-a), 
 \]
 <p>onde \(t_{j-1} \leq \theta_j \leq t_j\) e \(\Delta_j t = t_j - t_{j-1}\). Observe que a estimativa à direita independe da malha de tempo, de modo que</p>
 \[
-\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|}(b-a),
+\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|\}(b-a),
 \]
 <p>onde o supremo é tomado em relação à todas as partições possíveis do intervalo \([a, b]\).</p>
 <p>Caso a função seja Lipschitz contínua em \([a, b]\), com constante de Lipschitz \(L \geq 0\), ainda podemos limitar essa quantidade:</p>
@@ -209,13 +212,67 @@
 \mathrm{V}(g; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
 \]
 <p>Caso \(V(g; a, b)\) seja finito, dizemos que a função é de <strong>variação limitada</strong>, no intervalo \([a, b]\). Caso contrário, ela é dita de <strong>variação ilimitada</strong>.</p>
+<h2 id="integral_de_riemann-stieltjes"><a href="#integral_de_riemann-stieltjes" class="header-anchor">Integral de Riemann-Stieltjes</a></h2>
 <p>Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada <em>integral de Riemann-Stieltjes</em>:</p>
 \[
 \int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
 \]
 <p>O limite é tomado em relação ao refinamento das malhas. &#40;Mais detalhes depois...&#41; Desde que \(g\) seja de variação limitada, é possível mostrar que o limite converge, quando \(f\) é contínua. Obtemos a integral de Riemann ao tomarmos \(g(t) = t\).</p>
+<p>Como a função de densidade de probabilidade é monónota e limitada, ela é de variação limitada, de modo que podemos representar a probabilidade de um evento \(h(X) \in (a, b)\) de uma variável aleatória \(X\) através de uma integral de Riemann-Stieltjes:</p>
+\[
+\mathbb{P}(h(X) \in (a, b)) = \int_a^b h(x) \;\mathrm{d}g(x),
+\]
+<p>onde \(g\) é a função de probabilidade acumulada de \(X\):</p>
+\[
+g(x) = \mathbb{P}(X \leq x)
+\]
+<p>Caso \(g\) seja diferenciável, então \(\mathrm{d}g = f\mathrm{d}x\), onde \(f\) é a função de densidade de probabilidade. Mas a integral acima independe de \(g\) ser diferenciável ou não.</p>
 <h2 id="caminhos_amostrais_do_processo_de_wiener"><a href="#caminhos_amostrais_do_processo_de_wiener" class="header-anchor">Caminhos amostrais do processo de Wiener</a></h2>
 <p>Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais são, quase sempre, de variação ilimitada.</p>
+<p>Queremos, então, estimar a variação</p>
+\[
+\mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\]
+<p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada.</p>
+<p>Sejam \(0 \leq t_0 < t_1 < \ldots < t_n\). Temos</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\]
+<p>Vamos mostrar que o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.</p>
+<h3 id="sobre_a_soma_dos_quadrados_dos_incrementos"><a href="#sobre_a_soma_dos_quadrados_dos_incrementos" class="header-anchor">Sobre a soma dos quadrados dos incrementos</a></h3>
+<p>O valor esperado da soma dos quadrados dos incrementos pode ser escrito como</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n \mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right].
+\]
+<p>Observe que, usando-se a propriedade \(\mathbb{E}(W_tW_s) = \mathrm{Cov}(W_t, W_s) = \min\{t, s\}\),</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] & = \mathbb{E}\left[W_{t_j}^2 - 2W_{t_j}W_{t_{j-1}} + W_{t_{j-1}}^2\right] \\
+& = \mathbb{E}\left[W_{t_j}^2\right] -2\mathbb{E}\left[W_{t_j}W_{t_{j-1}}\right] + \mathbb{E}\left[W_{t_{j-1}}^2\right] \\
+& = t_j - 2t_{j-1} + t_{j-1} \\
+& = t_j - t_{j-1}.
+\end{align*}
+\]
+<p>Assim, obtemos a identidade</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0.
+\]
+<p>Agora, estimamos a sua variância.</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right]
+\]
+<p>Para \(i\neq j\), como os incrementos são independentes e normais, temos</p>
+\[
+\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\right]\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = (t_i - t_{i-1})(t_j - t_{j-1}).
+\]
+<p>Para \(i = j\), como o incremento é normal, podemos calcular os seus momentos explicitamente, obtendo</p>
+\[
+\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^4\right] = 3(t_j - t_{j-1})^2.
+\]
+<p>Assim,</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2
+\]
 
     <div class="navbar">
     <p id="nav">
@@ -239,7 +296,7 @@
         </div>
     
 
-    Last modified: May 19, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
