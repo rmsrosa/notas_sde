@@ -70,6 +70,8 @@ $$
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
+Vamos mostrar que o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
+
 ### Sobre a soma dos quadrados dos incrementos
 
 O valor esperado da soma dos quadrados dos incrementos pode ser escrito como
