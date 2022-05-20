@@ -6,6 +6,8 @@
 
 1. [Y. Asai (2016), "Numerical Methods for Random Ordinary Differential Equations and their Applications in Biology and Medicine", tese de doutorado, Johann Wolfgang Goethe-Universität.](http://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/docId/40146)
 
+1. [R. Bass (2011), "Stochastic Processes", Cambridge Series in Statistical and Probabilistic Mathematics, Cambridge University Press.](https://www.cambridge.org/il/academic/subjects/statistics-probability/probability-theory-and-stochastic-processes/stochastic-processes-1?format=HB&isbn=9781107008007)
+
 1. [M. H. DeGroot, M. J. Schervish (2019), "Probability and statistics", 4th Edition, Pearson Education, Inc.](https://www.pearson.com/us/higher-education/program/De-Groot-Probability-and-Statistics-Classic-Version-4th-Edition/PGM2043173.html)
 
 1. [B. Eisenberg & R. Sullivan (2008), "Why Is the Sum of Independent Normal Random Variables Normal?", *Mathematics Magazine,* vol. 81, no. 5, 362-366. DOI: 10.1080/0025570X.2008.11953577](https://doi.org/10.1080/0025570X.2008.11953577)
