@@ -73,6 +73,7 @@ menu = [
     ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
+        "pages/appendix/teo_extension_kolmogorov"
     ]
     "*pages/references"
 ]
