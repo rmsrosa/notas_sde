@@ -156,6 +156,35 @@ $$
 
 Isso completa a demonstração dessa simetria.
 
+## Invariância por translações
+
+Considere, novamente, um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Seja $s > 0$ e defina o processo $\{V_t^s\}_{t\geq 0}$ por
+$$
+V_t^s = W_{s + t} - W_s, \qquad t \geq 0.
+$$
+
+Claramente,
+$$
+V_0^s = W_s - W_s = 0.
+$$
+
+Dados $t_0 < t_1 < \cdots < t_n$, temos
+$$
+V_{t_j}^s - V_{t_{j-1}}^s = W_{s + t_j} - W_s - W_{s + t_{j-1}} + W_s = W_{s + t_j} - W_{s + t_{j-1}},
+$$
+sendo evidente que os incrementos de $\{V_t^s\}_{t\geq 0}$ são independentes.
+
+Agora, dado $\tau > 0$, temos
+$$
+V_{t + \tau}^s = W_{s + t + \tau} - W_s - W_{s + t} + W_s = W_{s + t + \tau} - W_{s + t} \sim \mathcal{N}(0, \tau).
+$$
+
+Finalmente, como, para quase todo $\omega$, o caminho amostral $t \mapsto W_t(\omega)$ é contínuo, temos, em particular, que
+$$
+t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
+$$
+é também contínuo. Isso completa a demonstração de que $\{V_t^s\}_{t\geq 0}$ é um processo de Wiener padrão.
+
 ## Exercício
 
 1. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2$.
