@@ -12,10 +12,21 @@ V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 $$
 Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalor $[0, T]$, $T > 0$, então obtemos um processo de Wiener $\{V_t^a\}_{t\in [0, a^2T]}$ em $[0, a^2T]$.
 
-É imediato verificar que i) $V_0^a = W_0 = 0$; ii) quase sempre os caminhos amostrais $t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes. Falta verificar a distribuição dos incrementos:
+É imediato verificar que
+
+i) $V_0^a = W_0 = 0$;
+
+ii) quase sempre os caminhos amostrais $t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e
+
+iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes.
+
+Quando à lei de distribuição dos incrementos, temos
+
+iv) Para todo $\tau>0$, vale
 $$
-V_{t + \tau}^a - V_t^a = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
+V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \sim \frac{1}{a}\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 $$
+
 Isso completa a demonstração dessa simetria.
 
 ## Crescimento sublinear
