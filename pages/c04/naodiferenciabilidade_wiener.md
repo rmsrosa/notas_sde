@@ -95,3 +95,11 @@ $$
 $$
 
 Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em $t = 0$.
+
+## Não diferenciabilidade em qualquer ponto
+
+Como o processo de Wiener é invariante por translações, aplicando o resultado acima a $V_t^s = W_{s + t} - W_s$, para $s \geq 0$, segue que, para qualquer $t \geq 0$, quase todo caminho amostral é não diferenciável no instante $t$. Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em todos os instantes $t \geq 0$. Isso também é verdade, mas não segue diretamente do resultado acima.
+
+## Quase todo caminho amostral não é diferenciável em quase todo ponto
+
+O resultado anterior diz que, para todo $t \geq 0$ dado, os caminhos amostrais são quase todos não diferenciáveis em $t$. Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em quase todo ponto. Isso também é verdade, mas a demonstração é mais delicada. Veja, por exemplo, Mörters & Peres (2010).
