@@ -25,7 +25,7 @@ V_t^a = \frac{1}{a}W_{a^2t}, \qquad t \geq 0,
 $$
 para $a > 0$.
 
-Ambos $\{W_t\}_{t \geq 0}$ e $\{V_t\}_{t\geq 0}$ são processos de Wiener padrão, com mesma lei de probabilidades $W_t, V_t \sim \mathcal{N}(0, t)$. Portanto,
+Ambos $\{W_t\}_{t \geq 0}$ e $\{V_t^a\}_{t\geq 0}$ são processos de Wiener padrão, com mesma lei de probabilidades $W_t, V_t^a \sim \mathcal{N}(0, t)$. Portanto,
 $$
 \mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r), \qquad \forall r \geq 0.
 $$
@@ -95,3 +95,79 @@ $$
 $$
 
 Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em $t = 0$.
+
+## Não diferenciabilidade em qualquer ponto
+
+Como o processo de Wiener é invariante por translações, aplicando o resultado acima a $V_t^s = W_{s + t} - W_s$, para $s \geq 0$, segue que, para qualquer $t \geq 0$, quase todo caminho amostral é não diferenciável no instante $t$. Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em todos os instantes $t \geq 0$. Isso também é verdade, mas não segue diretamente do resultado acima.
+
+## Quase todo caminho amostral é não diferenciável em todos os pontos
+
+O resultado anterior diz que, para todo $t \geq 0$ dado, os caminhos amostrais são quase todos não diferenciáveis em $t$. Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em quase todo ponto. Isso também é verdade, mas a demonstração é mais delicada, como veremos agora (seguindo Mörters & Peres (2010)).
+
+Basta mostrarmos isso no intervalo $[0, 1]$. Seja $t \mapsto W_t(\omega)$ um caminho amostral tal que, para algum $0\leq t_0 \leq 1$,
+$$
+\limsup_{\tau \rightarrow 0} \frac{W_{t+\tau}(\omega) - W_t(\omega)}{\tau} < \infty.
+$$
+
+Os caminhos amostrais são, quase certamente, limitados, então quase certamente, existe $M > 0$ tal que
+$$
+\sup_{\tau\in [0,1]} \frac{W_{t+\tau}(\omega) - W_t(\omega)}{\tau} \leq M.
+$$
+Considere as partições diádicas $\{k/2^n, \;k=0, \ldots, n\}$, $n\in \mathbb{N}$. Suponha que $t_0$ pertence a um determinado intervalo $(k-1)/2^n \leq t_0 < k/2^n$. Então, para incrementos $W_{(k+j)/2^n} - W_{(k+j-1)/2^n}$, com
+$$
+\frac{k-1}{2^n} \leq t_0 \leq \frac{k}{2^n} \leq \frac{k + j - 1}{2^n} < \frac{k + j}{2^n}, \qquad j = 1, \ldots, 2^n - k,
+$$
+temos, pela desigualdade triangular,
+$$
+\begin{align*}
+\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| & \leq \left|W_{(k+j)/2^n} - W_{t_0}\right| + \left| W_{(k+j-1)/2^n} - W_{t_0}\right| \\
+& \leq M\left(\frac{k+j}{2^n} - \frac{k-1}{2^n}\right) + M\left(\frac{k+j-1}{2^n} - \frac{k-1}{2^n}\right) \\
+& = \frac{M(2j+1)}{2^n}.
+\end{align*}
+$$
+
+Seja
+$$
+\Omega_{n, k} = \left\{\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{M(2j+1)}{2^n}, \; j = 1, 2, 3 \right\}
+$$
+
+Como os incrementos são independentes,
+$$
+\mathbb{P}(\Omega_{n, k}) \leq \Pi_{j=1}^3 \mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{M(2j+1)}{2^n}\right).
+$$
+
+Pela invariância por translações e por rescalonamento (com $a= 2^{n/2}$), temos que
+$$
+W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
+$$
+Ou, de outra forma,
+$$
+2^{n/2}\left(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right) \sim W_1.
+$$
+Assim,
+$$
+\mathbb{P}(\Omega_{n, k}) \leq \Pi_{j=1}^3 \mathbb{P}\left(|W_1| \leq \frac{M(2j+1)}{2^{n/2}}\right).
+$$
+
+Como a função de distribuição de probabilidade da normal padrão é limitada por $1/\sqrt{2\pi}\leq 1/2$, temos
+$$
+\mathbb{P}\left(|W_1| \leq r\right) \leq \frac{2r}{\sqrt{2\pi}} = r, \qquad r > 0.
+$$
+Logo,
+$$
+\mathbb{P}(\Omega_{n, k}) \leq \Pi_{j=1}^3 \frac{M(2j+1)}{2^{n/2}} \leq \frac{7^3M^3}{2^{3n/2}}.
+$$
+
+Portanto,
+$$
+\mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n - 3} \Omega_{n, k}\right) \leq 2^n \frac{7^3M^3}{2^{3n/2}} = \frac{7^3M^3}{2^{n/2}}.
+$$
+Isso nos dá que
+$$
+\sum_n \mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n - 3} \Omega_{n, k}\right) \leq 7^3M^3\sum_n \frac{1}{2^{n/2}} < \infty.
+$$
+
+Assim, pelo Lema de Borel-Cantelli,
+$$
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1], \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} \leq M \right\}\right) \leq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \bigcup_{k=1, \ldots, 2^n-3}\Omega_{n, k}\right) = 0
+$$

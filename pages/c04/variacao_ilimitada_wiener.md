@@ -24,14 +24,14 @@ onde o supremo é tomado em relação à todas as partições possíveis do inte
 
 Caso a função seja Lipschitz contínua em $[a, b]$, com constante de Lipschitz $L \geq 0$, ainda podemos limitar essa quantidade:
 $$
-\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
+\sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 $$
 
-Mas podemos ter $g$ sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, $g(t) = \chi_{[0,1]}(t)$ (vale $1$ no intervalo $[0, 1]$ e vale $0$ fora do intervalo) é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Em particular, funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.
+Mas podemos ter $g$ sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, $g(t) = \chi_{[0,1]}(t)$ (vale $1$ no intervalo $[0, 1]$ e vale $0$ fora do intervalo) é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.
 
 Essa quantidade é chamada de **variação** da função no intervalo $[a, b]$ e é denotada por $V(g; a, b)$:
 $$
-\mathrm{V}(g; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
+\mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
 $$
 
 Caso $V(g; a, b)$ seja finito, dizemos que a função é de **variação limitada**, no intervalo $[a, b]$. Caso contrário, ela é dita de **variação ilimitada**.
@@ -42,35 +42,34 @@ Funções de variação limitada são úteis para se estender a integral de Riem
 $$
 \int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
 $$
-O limite é tomado em relação ao refinamento das malhas. (Mais detalhes depois...) Desde que $g$ seja de variação limitada, é possível mostrar que o limite converge, quando $f$ é contínua. Obtemos a integral de Riemann ao tomarmos $g(t) = t$.
+O limite é tomado em relação ao refinamento das malhas: $\max_j\{t_j - t_{j-1}\} \rightarrow 0$. Desde que $g$ seja de variação limitada, é possível mostrar que o limite converge, quando $f$ é contínua. Obtemos a integral de Riemann ao tomarmos $g(t) = t$.
 
-Como a função de densidade de probabilidade é monónota e limitada, ela é de variação limitada, de modo que podemos representar a probabilidade de um evento $h(X) \in (a, b)$ de uma variável aleatória $X$ através de uma integral de Riemann-Stieltjes:
+Como a função de probabilidade acumulada $g(x) = \mathbb{P}(X \leq x)$ de uma variável aleatória $X$ é monónota e limitada, ela é de variação limitada, de modo que podemos representar a esperança de uma nova variável $Y = h(X)$ através de uma integral de Riemann-Stieltjes:
 $$
-\mathbb{P}(h(X) \in (a, b)) = \int_a^b h(x) \;\mathrm{d}g(x),
+\mathbb{E}(h(X)) = \int_\mathbb{R} h(x) \;\mathrm{d}g(x).
 $$
-onde $g$ é a função de probabilidade acumulada de $X$:
-$$
-g(x) = \mathbb{P}(X \leq x)
-$$
+
 Caso $g$ seja diferenciável, então $\mathrm{d}g = f\mathrm{d}x$, onde $f$ é a função de densidade de probabilidade. Mas a integral acima independe de $g$ ser diferenciável ou não.
 
 ## Caminhos amostrais do processo de Wiener
 
-Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais são, quase sempre, de variação ilimitada.
+Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo $[0, T]$, $T > 0$, são, quase sempre, de variação ilimitada.
 
-Queremos, então, estimar a variação
+Queremos, para isso, estimar a variação
 $$
 \mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
-A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada.
-
-Sejam $0 \leq t_0 < t_1 < \ldots < t_n$. Temos
+A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, $0 = t_0 < t_1 < \ldots < t_n = T$. Temos
 $$
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
-Vamos mostrar que o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
+Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos diádicos, i.e. para cada $k\in \mathbb{N}$, tomamos $n = 2^k$, $\tau = T/n = T/2^k$ e $t_j = j\tau$, para $j = 0, \ldots, n$.
+
+Vamos mostrar que, quando $k \rightarrow \infty$, o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
+
+O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que as malhas são refinamentos de malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.
 
 ### Sobre a soma dos quadrados dos incrementos
 
@@ -89,10 +88,10 @@ $$
 $$
 Assim, obtemos a identidade
 $$
-\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0.
+\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T.
 $$
 
-Agora, estimamos a sua variância.
+Agora, estimamos a sua variância. Primeiro, temos
 $$
 \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right]
 $$
@@ -100,14 +99,87 @@ Para $i\neq j$, como os incrementos são independentes e normais, temos
 $$
 \mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\right]\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = (t_i - t_{i-1})(t_j - t_{j-1}).
 $$
-Para $i = j$, como o incremento é normal, podemos calcular os seus momentos explicitamente, obtendo
+Para $i = j$, como o incremento é normal, podemos calcular os seus momentos explicitamente, obtendo, em particular,
 $$
 \mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^4\right] = 3(t_j - t_{j-1})^2.
 $$
 Assim,
 $$
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2.
+$$
+Como a malha é uniforme, temos
+$$
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n(n-1)\tau^2 + 3n\tau^2 = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
 $$
 
+Assim, a variância é dada por
+$$
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
+$$
 
+Dessa forma, vemos que
+$$
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \sim \mathcal{N}(T, 2\tau T).
+$$
 
+Quando $k \rightarrow \infty$, temos $\tau \rightarrow 0$, de modo que a soma dos quadrados dos incrementos converge, em probabilidade, para a constante $T$:
+$$
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
+$$
+Agora, vamos explorar o fato das malhas serem em pontos diádicos. Para cada $k$, seja
+$$
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2.
+$$
+Obtivemos, acima, que $S_k \rigtharrow T$ em probabilidade. Agora, observe
+$$
+W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
+$$
+de modo que
+$$
+\begin{align*}
+\left(W_{j/2^k} - W_{(j-1)/2^k}\right)^2 & = \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2 \\
+& \leq \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}}\right)^2 + \left(W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2.
+\end{align*}
+$$
+Logo, para qualquer caminho amostral, temos
+$$
+S_{k+1} \geq S_k.
+$$
+A convergência em probabilidade em conjunto com a monotonicidade implica em convergência quase sempre. Logo,
+$$
+S_k \rightarrow T, \qquad k \rightarrow \infty,
+$$
+para quase todo caminho amostral.
+
+### Sobre o máximo dos incrementos
+
+Por definição, quase todos os caminhos amostrais de um processo de Wiener são contínuos. Como o intervalo $[0, T]$ é fechado e limitado, segue, que, para quase todo $\omega$, o caminho amostral $t \mapsto W_t(\omega)$ é uniformemente contínuo em $[0, T]$.
+
+Assim, dado $\varepsilon > 0$, existe $\delta > 0$ tal que
+$$
+|W_s(\omega) - W_t(\omega)| < \varepsilon, \qquad \forall t, s\in [0, T), \;|t - s| \leq \delta.
+$$
+
+No caso da malha escolhida, temos, para $\varepsilon > 0$ e $k \geq \ln (1/\delta)$, temos $1/n = 1/2^k \leq \delta$ e, portanto,
+$$
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \leq \delta.
+$$
+Dessa forma, vemos que
+$$
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \rightarrow 0, \qquad k \rightarrow \infty,
+$$
+para quase todo caminho amostral.
+
+### Variação ilimitada
+
+Voltemos, agora, à identidade
+$$
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+$$
+
+Obtivemos que, para quase todo caminho amostral, quando a malha é refinada, ao limite $k\rightarrow \infty$, o termo do lado esquerdo converge para $T$, enquanto que o primeiro termo do lado direito converge para zero. Portanto, devemos ter
+$$
+\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}| \geq \frac{\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2}{\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|} \rightarrow \infty, \qquad k \rightarrow \infty.
+$$
+
+Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada.
