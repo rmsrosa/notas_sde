@@ -50,4 +50,59 @@ $$
 
 #### Convergência em probabilidade implica em subsequência convergindo fortemente
 
+Seja $n_1$ tal que
+$$
+\mathbb{P}\left(|X_n - X| > \frac{1}{2}\right) \leq \frac{1}{2}, \qquad \forall n \geq n_1
+$$
+e defina, recursivamente, $n_k > n_{k-1}$ tal que
+$$
+\mathbb{P}\left(|X_n - X| > \frac{1}{2^k}\right) \leq \frac{1}{2^k}, \qquad \forall n \geq n_k.
+$$
+
+Temos
+$$
+\sum_k \mathbb{P}\left(|X_{n_k} - X| > \frac{1}{2^k}\right) < \infty.
+$$
+
+Pelo Lema de Borel-Cantelli,
+$$
+\mathbb{P}\left(\limsup_{k\rightarrow \infty} \left\{|X_{n_k} - X| > \frac{1}{2^k}\right\}\right) = 0.
+$$
+
+Seja
+$$
+N = \limsup_{k\rightarrow \infty} \left\{|X_{n_k} - X| > \frac{1}{2^k}\right\} = \left\{\omega; \forall j, \;\exists k \geq j, \; |X_{n_k} - X| > \frac{1}{2^k} \right\}
+$$
+
+Se $\omega\notin N$, então existe $j$ tal que
+$$
+|X_{n_k} - X| \geq \frac{1}{2^k}, \qquad \forall k \geq j.
+$$
+Ou seja,
+$$
+X_{n_k} \rightarrow X, \qquad k \rightarrow \infty.
+$$
+
+Em outras palavras, como $N$ tem probabilidade nula, temos convergência forte da subsequência:
+$$
+\mathbb{P}\left( X_{n_k} \rightarrow X \right) = 1.
+$$
+
 #### Convergência em probabilidade de sequência monótona implica em convergência forte
+
+Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência $X_{n_k} \rightarrow X$. Ou seja, para quase todo $\omega$, dado $\varepsilon > 0$, existe $j$ tal que
+$$
+X - \varepsilon < X_{n_k} < X + \varepsilon, \qquad \forall k \geq j.
+$$
+
+Como a sequência é monótona, digamos monótona não-decrescente (é análogo caso seja não-crescente), então, para todo $n \geq n_j$, temos $n_k \leq n < n_{k+1}$, para algum $k \geq j$. Assim,
+$$
+X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
+$$
+
+Em outras palavras, para todo $\varepsilon > 0$, existe $j$ tal que
+$$
+X - \varepsilon < X_n < X + \varepsilon.
+$$
+
+Isso significa que, quase certamente, $X_n \rightarrow X$, concluindo a demonstração.
