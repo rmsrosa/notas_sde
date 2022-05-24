@@ -193,9 +193,14 @@
 V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 \]
 <p>Então \(\{V_t^a\}_{t\geq 0}\) também é um processo de Wiener padrão. Caso \(\{W_t\}_{t\in [0, T]}\) só esteja definido em um intervalor \([0, T]\), \(T > 0\), então obtemos um processo de Wiener \(\{V_t^a\}_{t\in [0, a^2T]}\) em \([0, a^2T]\).</p>
-<p>É imediato verificar que i&#41; \(V_0^a = W_0 = 0\); ii&#41; quase sempre os caminhos amostrais \(t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)\) são contínuos; e iii&#41; os incrementos \(V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}\), \(j = 1, \ldots, n\), \(0 \leq t_0 < t_1 < \ldots < t_n\), são independentes. Falta verificar a distribuição dos incrementos:</p>
+<p>É imediato verificar que</p>
+<p>i&#41; \(V_0^a = W_0 = 0\);</p>
+<p>ii&#41; quase sempre os caminhos amostrais \(t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)\) são contínuos; e</p>
+<p>iii&#41; os incrementos \(V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}\), \(j = 1, \ldots, n\), \(0 \leq t_0 < t_1 < \ldots < t_n\), são independentes.</p>
+<p>Quando à lei de distribuição dos incrementos, temos</p>
+<p>iv&#41; Para todo \(\tau>0\), vale</p>
 \[
-V_{t + \tau}^a - V_t^a = (1/a)W_{a^2(t + \tau)} - (1/a)W_{a^2t} \sim (1/a)\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
+V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \sim \frac{1}{a}\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 \]
 <p>Isso completa a demonstração dessa simetria.</p>
 <h2 id="crescimento_sublinear"><a href="#crescimento_sublinear" class="header-anchor">Crescimento sublinear</a></h2>
@@ -312,6 +317,29 @@ W_{1/(t + \tau)} - W_0 \sim \mathcal{N}(0, 1/(t + \tau)), \quad W_{1/t} - W_{1/(
 V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 0.
 \]
 <p>Isso completa a demonstração dessa simetria.</p>
+<h2 id="invariância_por_translações"><a href="#invariância_por_translações" class="header-anchor">Invariância por translações</a></h2>
+<p>Considere, novamente, um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Seja \(s > 0\) e defina o processo \(\{V_t^s\}_{t\geq 0}\) por</p>
+\[
+V_t^s = W_{s + t} - W_s, \qquad t \geq 0.
+\]
+<p>Claramente,</p>
+\[
+V_0^s = W_s - W_s = 0.
+\]
+<p>Dados \(t_0 < t_1 < \cdots < t_n\), temos</p>
+\[
+V_{t_j}^s - V_{t_{j-1}}^s = W_{s + t_j} - W_s - W_{s + t_{j-1}} + W_s = W_{s + t_j} - W_{s + t_{j-1}},
+\]
+<p>sendo evidente que os incrementos de \(\{V_t^s\}_{t\geq 0}\) são independentes.</p>
+<p>Agora, dado \(\tau > 0\), temos</p>
+\[
+V_{t + \tau}^s = W_{s + t + \tau} - W_s - W_{s + t} + W_s = W_{s + t + \tau} - W_{s + t} \sim \mathcal{N}(0, \tau).
+\]
+<p>Finalmente, como, para quase todo \(\omega\), o caminho amostral \(t \mapsto W_t(\omega)\) é contínuo, temos, em particular, que</p>
+\[
+t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
+\]
+<p>é também contínuo. Isso completa a demonstração de que \(\{V_t^s\}_{t\geq 0}\) é um processo de Wiener padrão.</p>
 <h2 id="exercício"><a href="#exercício" class="header-anchor">Exercício</a></h2>
 <ol>
 <li><p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer \(p > 1/2\).</p>
@@ -343,7 +371,7 @@ V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 
         </div>
     
 
-    Last modified: May 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 24, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -204,12 +204,12 @@
 <p>onde o supremo é tomado em relação à todas as partições possíveis do intervalo \([a, b]\).</p>
 <p>Caso a função seja Lipschitz contínua em \([a, b]\), com constante de Lipschitz \(L \geq 0\), ainda podemos limitar essa quantidade:</p>
 \[
-\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
+\sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 \]
-<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Em particular, funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.</p>
+<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.</p>
 <p>Essa quantidade é chamada de <strong>variação</strong> da função no intervalo \([a, b]\) e é denotada por \(V(g; a, b)\):</p>
 \[
-\mathrm{V}(g; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
+\mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
 \]
 <p>Caso \(V(g; a, b)\) seja finito, dizemos que a função é de <strong>variação limitada</strong>, no intervalo \([a, b]\). Caso contrário, ela é dita de <strong>variação ilimitada</strong>.</p>
 <h2 id="integral_de_riemann-stieltjes"><a href="#integral_de_riemann-stieltjes" class="header-anchor">Integral de Riemann-Stieltjes</a></h2>
@@ -217,28 +217,25 @@
 \[
 \int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
 \]
-<p>O limite é tomado em relação ao refinamento das malhas. &#40;Mais detalhes depois...&#41; Desde que \(g\) seja de variação limitada, é possível mostrar que o limite converge, quando \(f\) é contínua. Obtemos a integral de Riemann ao tomarmos \(g(t) = t\).</p>
-<p>Como a função de densidade de probabilidade é monónota e limitada, ela é de variação limitada, de modo que podemos representar a probabilidade de um evento \(h(X) \in (a, b)\) de uma variável aleatória \(X\) através de uma integral de Riemann-Stieltjes:</p>
+<p>O limite é tomado em relação ao refinamento das malhas: \(\max_j\{t_j - t_{j-1}\} \rightarrow 0\). Desde que \(g\) seja de variação limitada, é possível mostrar que o limite converge, quando \(f\) é contínua. Obtemos a integral de Riemann ao tomarmos \(g(t) = t\).</p>
+<p>Como a função de probabilidade acumulada \(g(x) = \mathbb{P}(X \leq x)\) de uma variável aleatória \(X\) é monónota e limitada, ela é de variação limitada, de modo que podemos representar a esperança de uma nova variável \(Y = h(X)\) através de uma integral de Riemann-Stieltjes:</p>
 \[
-\mathbb{P}(h(X) \in (a, b)) = \int_a^b h(x) \;\mathrm{d}g(x),
-\]
-<p>onde \(g\) é a função de probabilidade acumulada de \(X\):</p>
-\[
-g(x) = \mathbb{P}(X \leq x)
+\mathbb{E}(h(X)) = \int_\mathbb{R} h(x) \;\mathrm{d}g(x).
 \]
 <p>Caso \(g\) seja diferenciável, então \(\mathrm{d}g = f\mathrm{d}x\), onde \(f\) é a função de densidade de probabilidade. Mas a integral acima independe de \(g\) ser diferenciável ou não.</p>
 <h2 id="caminhos_amostrais_do_processo_de_wiener"><a href="#caminhos_amostrais_do_processo_de_wiener" class="header-anchor">Caminhos amostrais do processo de Wiener</a></h2>
-<p>Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais são, quase sempre, de variação ilimitada.</p>
-<p>Queremos, então, estimar a variação</p>
+<p>Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase sempre, de variação ilimitada.</p>
+<p>Queremos, para isso, estimar a variação</p>
 \[
 \mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 \]
-<p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada.</p>
-<p>Sejam \(0 \leq t_0 < t_1 < \ldots < t_n\). Temos</p>
+<p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, \(0 = t_0 < t_1 < \ldots < t_n = T\). Temos</p>
 \[
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 \]
-<p>Vamos mostrar que o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.</p>
+<p>Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos diádicos, i.e. para cada \(k\in \mathbb{N}\), tomamos \(n = 2^k\), \(\tau = T/n = T/2^k\) e \(t_j = j\tau\), para \(j = 0, \ldots, n\).</p>
+<p>Vamos mostrar que, quando \(k \rightarrow \infty\), o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.</p>
+<p>O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que as malhas são refinamentos de malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.</p>
 <h3 id="sobre_a_soma_dos_quadrados_dos_incrementos"><a href="#sobre_a_soma_dos_quadrados_dos_incrementos" class="header-anchor">Sobre a soma dos quadrados dos incrementos</a></h3>
 <p>O valor esperado da soma dos quadrados dos incrementos pode ser escrito como</p>
 \[
@@ -255,9 +252,9 @@ g(x) = \mathbb{P}(X \leq x)
 \]
 <p>Assim, obtemos a identidade</p>
 \[
-\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0.
+\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T.
 \]
-<p>Agora, estimamos a sua variância.</p>
+<p>Agora, estimamos a sua variância. Primeiro, temos</p>
 \[
 \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right]
 \]
@@ -265,14 +262,79 @@ g(x) = \mathbb{P}(X \leq x)
 \[
 \mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\right]\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = (t_i - t_{i-1})(t_j - t_{j-1}).
 \]
-<p>Para \(i = j\), como o incremento é normal, podemos calcular os seus momentos explicitamente, obtendo</p>
+<p>Para \(i = j\), como o incremento é normal, podemos calcular os seus momentos explicitamente, obtendo, em particular,</p>
 \[
 \mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^4\right] = 3(t_j - t_{j-1})^2.
 \]
 <p>Assim,</p>
 \[
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2.
 \]
+<p>Como a malha é uniforme, temos</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n(n-1)\tau^2 + 3n\tau^2 = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
+\]
+<p>Assim, a variância é dada por</p>
+\[
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
+\]
+<p>Dessa forma, vemos que</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \sim \mathcal{N}(T, 2\tau T).
+\]
+<p>Quando \(k \rightarrow \infty\), temos \(\tau \rightarrow 0\), de modo que a soma dos quadrados dos incrementos converge, em probabilidade, para a constante \(T\):</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
+\]
+<p>Agora, vamos explorar o fato das malhas serem em pontos diádicos. Para cada \(k\), seja</p>
+\[
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2.
+\]
+<p>Obtivemos, acima, que \(S_k \rigtharrow T\) em probabilidade. Agora, observe</p>
+\[
+W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
+\]
+<p>de modo que</p>
+\[
+\begin{align*}
+\left(W_{j/2^k} - W_{(j-1)/2^k}\right)^2 & = \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2 \\
+& \leq \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}}\right)^2 + \left(W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2.
+\end{align*}
+\]
+<p>Logo, para qualquer caminho amostral, temos</p>
+\[
+S_{k+1} \geq S_k.
+\]
+<p>A convergência em probabilidade em conjunto com a monotonicidade implica em convergência quase sempre. Logo,</p>
+\[
+S_k \rightarrow T, \qquad k \rightarrow \infty,
+\]
+<p>para quase todo caminho amostral.</p>
+<h3 id="sobre_o_máximo_dos_incrementos"><a href="#sobre_o_máximo_dos_incrementos" class="header-anchor">Sobre o máximo dos incrementos</a></h3>
+<p>Por definição, quase todos os caminhos amostrais de um processo de Wiener são contínuos. Como o intervalo \([0, T]\) é fechado e limitado, segue, que, para quase todo \(\omega\), o caminho amostral \(t \mapsto W_t(\omega)\) é uniformemente contínuo em \([0, T]\).</p>
+<p>Assim, dado \(\varepsilon > 0\), existe \(\delta > 0\) tal que</p>
+\[
+|W_s(\omega) - W_t(\omega)| < \varepsilon, \qquad \forall t, s\in [0, T), \;|t - s| \leq \delta.
+\]
+<p>No caso da malha escolhida, temos, para \(\varepsilon > 0\) e \(k \geq \ln (1/\delta)\), temos \(1/n = 1/2^k \leq \delta\) e, portanto,</p>
+\[
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \leq \delta.
+\]
+<p>Dessa forma, vemos que</p>
+\[
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \rightarrow 0, \qquad k \rightarrow \infty,
+\]
+<p>para quase todo caminho amostral.</p>
+<h3 id="variação_ilimitada"><a href="#variação_ilimitada" class="header-anchor">Variação ilimitada</a></h3>
+<p>Voltemos, agora, à identidade</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\]
+<p>Obtivemos que, para quase todo caminho amostral, quando a malha é refinada, ao limite \(k\rightarrow \infty\), o termo do lado esquerdo converge para \(T\), enquanto que o primeiro termo do lado direito converge para zero. Portanto, devemos ter</p>
+\[
+\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}| \geq \frac{\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2}{\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|} \rightarrow \infty, \qquad k \rightarrow \infty.
+\]
+<p>Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -296,7 +358,7 @@ g(x) = \mathbb{P}(X \leq x)
         </div>
     
 
-    Last modified: May 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 24, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
