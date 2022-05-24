@@ -65,9 +65,11 @@ $$
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
-Para efeito de contradição, vamos assumir que a malha é uniforme $t_j = j\tau$, onde $\tau = T/n$.
+Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos diádicos, i.e. para cada $k\in \mathbb{N}$, tomamos $n = 2^k$, $\tau = T/n = T/2^k$ e $t_j = j\tau$, para $j = 0, \ldots, n$.
 
-Vamos mostrar que, quando $n \rightarrow \infty$, o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
+Vamos mostrar que, quando $k \rightarrow \infty$, o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
+
+O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que as malhas são refinamentos de malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.
 
 ### Sobre a soma dos quadrados dos incrementos
 
@@ -112,8 +114,42 @@ $$
 
 Assim, a variância é dada por
 $$
-\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]\right)^2\right]
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
 $$
+
+Dessa forma, vemos que
+$$
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \sim \mathcal{N}(T, 2\tau T).
+$$
+
+Quando $k \rightarrow \infty$, temos $\tau \rightarrow 0$, de modo que a soma dos quadrados dos incrementos converge, em probabilidade, para a constante $T$:
+$$
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
+$$
+Agora, vamos explorar o fato das malhas serem em pontos diádicos. Para cada $k$, seja
+$$
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2.
+$$
+Obtivemos, acima, que $S_k \rigtharrow T$ em probabilidade. Agora, observe
+$$
+W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
+$$
+de modo que
+$$
+\begin{align*}
+\left(W_{j/2^k} - W_{(j-1)/2^k}\right)^2 & = \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2 \\
+& \leq \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}}\right)^2 + \left(W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2.
+\end{align*}
+$$
+Logo, para qualquer caminho amostral, temos
+$$
+S_{k+1} \geq S_k.
+$$
+A convergência em probabilidade em conjunto com a monotonicidade implica em convergência quase sempre. Logo,
+$$
+S_k \rightarrow T, \qquad k \rightarrow \infty,
+$$
+para quase todo caminho amostral.
 
 ### Sobre o máximo dos incrementos
 
@@ -124,4 +160,26 @@ $$
 |W_s(\omega) - W_t(\omega)| < \varepsilon, \qquad \forall t, s\in [0, T), \;|t - s| \leq \delta.
 $$
 
+No caso da malha escolhida, temos, para $\varepsilon > 0$ e $k \geq \ln (1/\delta)$, temos $1/n = 1/2^k \leq \delta$ e, portanto,
+$$
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \leq \delta.
+$$
+Dessa forma, vemos que
+$$
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \rightarrow 0, \qquad k \rightarrow \infty,
+$$
+para quase todo caminho amostral.
 
+### Variação ilimitada
+
+Voltemos, agora, à identidade
+$$
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+$$
+
+Obtivemos que, para quase todo caminho amostral, quando a malha é refinada, ao limite $k\rightarrow \infty$, o termo do lado esquerdo converge para $T$, enquanto que o primeiro termo do lado direito converge para zero. Portanto, devemos ter
+$$
+\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}| \geq \frac{\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2}{\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|} \rightarrow \infty, \qquad k \rightarrow \infty.
+$$
+
+Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada.
