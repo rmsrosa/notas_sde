@@ -12,6 +12,17 @@
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
 
   
     <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
@@ -270,39 +281,72 @@ E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
 \mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right) = 0.
 \]
 <p>Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
-<h2 id="não_diferenciabilidade_em_qualquer_ponto"><a href="#não_diferenciabilidade_em_qualquer_ponto" class="header-anchor">Não diferenciabilidade em qualquer ponto</a></h2>
-<p>Como o processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em todos os instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima.</p>
-<h2 id="quase_todo_caminho_amostral_é_não_diferenciável_em_todos_os_pontos"><a href="#quase_todo_caminho_amostral_é_não_diferenciável_em_todos_os_pontos" class="header-anchor">Quase todo caminho amostral é não diferenciável em todos os pontos</a></h2>
-<p>O resultado anterior diz que, para todo \(t \geq 0\) dado, os caminhos amostrais são quase todos não diferenciáveis em \(t\). Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em quase todo ponto. Isso também é verdade, mas a demonstração é mais delicada, como veremos agora &#40;seguindo Mörters &amp; Peres &#40;2010&#41;&#41;.</p>
-<p>Basta mostrarmos isso no intervalo \([0, 1]\). Seja \(t \mapsto W_t(\omega)\) um caminho amostral tal que, para algum \(0\leq t_0 \leq 1\),</p>
+<h2 id="não_diferenciabilidade_em_nenhum_ponto"><a href="#não_diferenciabilidade_em_nenhum_ponto" class="header-anchor">Não diferenciabilidade em nenhum ponto</a></h2>
+<p>Como o processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.</p>
+<h2 id="quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto"><a href="#quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto" class="header-anchor">Quase todo caminho amostral é não diferenciável em nenhum ponto</a></h2>
+<p>O resultado anterior diz que, para todo \(t \geq 0\) dado, os caminhos amostrais são quase todos não diferenciáveis em \(t\). Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em nenhum ponto. Isso também é verdade, mas a demonstração é mais delicada, como veremos agora. Vamos seguir essencialmente a demonstração em Mörters &amp; Peres &#40;2010&#41;, com pequenas modificações.</p>
+<p>Começamos mostrando a não diferenciabilidade no intervalo \([0, 1)\). Seja \(t \mapsto W_t(\omega)\) um caminho amostral tal que, para algum \(0\leq t_0 < 1\),</p>
 \[
-\limsup_{\tau \rightarrow 0} \frac{W_{t+\tau}(\omega) - W_t(\omega)}{\tau} < \infty.
+\limsup_{\tau \rightarrow 0} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty.
 \]
-<p>Os caminhos amostrais são, quase certamente, limitados, então quase certamente, existe \(M > 0\) tal que</p>
+<p>Isso acontece se, e somente se, existem \(m, M \in \mathbb{N}\) tais que</p>
 \[
-\sup_{\tau\in [0,1]} \frac{W_{t+\tau}(\omega) - W_t(\omega)}{\tau} \leq M.
+\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M, \qquad \forall n \geq m.
 \]
-<p>Considere as partições diádicas \(\{k/2^n, \;k=0, \ldots, n\}\), \(n\in \mathbb{N}\). Suponha que \(t_0\) pertence a um determinado intervalo \((k-1)/2^n \leq t_0 < k/2^n\). Então, para incrementos \(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\), com</p>
+<p>O motivo de usarmos \(2^{-n+2}\) acima, ao invés de \(2^{-n}\), é que vamos usar, abaixo, a partição diádica de tal forma que quatro intervalos sucessivos da malha com espaçamento \(2^{-n}\) cabem em um único intervalo da malha com espaçamento \(2^{-n+2}\). A importância disso será vista em seguida.</p>
+
+<img src="/notas_sde/assets/pages/c04/naodiferenciabilidade_wiener/code/output/dyadic_points.svg" alt="">
+<p>Com a caracterização acima, podemos escrever</p>
 \[
-\frac{k-1}{2^n} \leq t_0 \leq \frac{k}{2^n} \leq \frac{k + j - 1}{2^n} < \frac{k + j}{2^n}, \qquad j = 1, \ldots, 2^n - k,
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} = \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} \left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
 \]
-<p>temos, pela desigualdade triangular,</p>
+<p>Considere as malhas diádicas \(\{k/2^n, \;k=0, \ldots, 2^n\}\), \(n\in \mathbb{N}\). O ponto \(t_0\) pode estar em qualquer um dos intervalos definidos por essa malha. Logo, podemos escrever</p>
+\[
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\} = \bigcup_{k = 1, \ldots, 2^n}\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
+\]
+<p>Suponha que \(t_0\) pertença a um determinado intervalo \((k-1)/2^n \leq t_0 < k/2^n\). Considere o incremento \(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\), para \(j=1, 2, 3\). Observe que</p>
+\[
+t_0 < \frac{k}{2^n} < \frac{k+j}{2^n} = \frac{k-1}{2^n} + \frac{j+1}{2^n} \leq \frac{k-1}{2^n} + \frac{4}{2^{n}} \leq t_0 + \frac{1}{2^{n-2}}.
+\]
+<p>Assim, todos os pontos \(k/2^n\) e \((k+j)/2^n\), para \(j=1, 2, 3\), são da forma \(t_0 + \tau\), para \(\tau\) no intervalo \((0, 2^{-n+2}]\). </p>
+
+<img src="/notas_sde/assets/pages/c04/naodiferenciabilidade_wiener/code/output/dyadic_points_increments.svg" alt="">
+<p>Dessa forma, podemos usar a estimativa acima, em conjunto com a desigualdade triangular, para obter</p>
 \[
 \begin{align*}
 \left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| & \leq \left|W_{(k+j)/2^n} - W_{t_0}\right| + \left| W_{(k+j-1)/2^n} - W_{t_0}\right| \\
-& \leq M\left(\frac{k+j}{2^n} - \frac{k-1}{2^n}\right) + M\left(\frac{k+j-1}{2^n} - \frac{k-1}{2^n}\right) \\
-& = \frac{M(2j+1)}{2^n}.
+& \leq M\left(\frac{k+j}{2^n} - t_0\right) + M \left(\frac{(k+j-1)}{2^n} - t_0\right) \\
+& \leq M\left(\frac{2k+2j-1}{2^n} - \frac{2(k-1)}{2^n}\right) \\
+& = \frac{(2j+1)M}{2^n} \\
+& \leq \frac{7M}{2^n}.
 \end{align*}
 \]
-<p>Seja</p>
+<p>Ou seja, para cada \(n, M, k\), vale</p>
 \[
-\Omega_{n, k} = \left\{\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{M(2j+1)}{2^n}, \; j = 1, 2, 3 \right\}
+\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\} \leq \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
 \]
-<p>Como os incrementos são independentes,</p>
+<p>Com isso,</p>
 \[
-\mathbb{P}(\Omega_{n, k}) \leq \Pi_{j=1}^3 \mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{M(2j+1)}{2^n}\right).
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} \subset \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_n,
 \]
-<p>Pela invariância por translações e por rescalonamento &#40;com \(a= 2^{n/2}\)&#41;, temos que</p>
+<p>onde</p>
+\[
+E_n = \bigcup_{k = 1, \ldots, 2^n} \Omega_{n, M, k}, \qquad \Omega_{n, M, k} = \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
+\]
+<p>Aqui fica evidente o uso da malha mais grossa, na estimativa da diferença finita, gerando as estimativas nos incrementos na malha mais fina. O motivo do uso desses três incrementos será aparente em seguida.</p>
+<p>Vamos mostrar, usando o Lema de Borel-Cantelli, que</p>
+\[
+\bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_n = \limsup_{n\rightarrow \infty} E_n = 0.
+\]
+<p>Para isso, basta mostrar que</p>
+\[
+\sum_{n\in \mathbb{N}} \mathbb{P}(E_n) < \infty.
+\]
+<p>Como os incrementos são independentes, temos que</p>
+\[
+\mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^n}\right).
+\]
+<p>Pela invariância do processo de Wiener padrão por translações e por rescalonamento &#40;com \(a= 2^{n/2}\)&#41;,</p>
 \[
 W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
 \]
@@ -312,7 +356,7 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
 \]
 <p>Assim,</p>
 \[
-\mathbb{P}(\Omega_{n, k}) \leq \Pi_{j=1}^3 \mathbb{P}\left(|W_1| \leq \frac{M(2j+1)}{2^{n/2}}\right).
+\mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(|W_1| \leq \frac{7M}{2^{n/2}}\right).
 \]
 <p>Como a função de distribuição de probabilidade da normal padrão é limitada por \(1/\sqrt{2\pi}\leq 1/2\), temos</p>
 \[
@@ -320,20 +364,26 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
 \]
 <p>Logo,</p>
 \[
-\mathbb{P}(\Omega_{n, k}) \leq \Pi_{j=1}^3 \frac{M(2j+1)}{2^{n/2}} \leq \frac{7^3M^3}{2^{3n/2}}.
+\mathbb{P}(\Omega_{n, k}) \leq \left(\frac{7M}{2^{n/2}}\right)^3.
 \]
 <p>Portanto,</p>
 \[
-\mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n - 3} \Omega_{n, k}\right) \leq 2^n \frac{7^3M^3}{2^{3n/2}} = \frac{7^3M^3}{2^{n/2}}.
+\mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n} \Omega_{n, k}\right) \leq 2^n \left(\frac{7M}{2^{n/2}}\right)^3 = \frac{7^3M^3}{2^{n/2}}.
 \]
 <p>Isso nos dá que</p>
 \[
 \sum_n \mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n - 3} \Omega_{n, k}\right) \leq 7^3M^3\sum_n \frac{1}{2^{n/2}} < \infty.
 \]
+<p>Aqui revelou-se a importância do uso dos três incrementos. A probabilidade de termos a limitação em um dos incrementos é da ordem de \(2^{-n/2}\). Como os incrementos são independentes, a probabilidade de termos a limitação em três incrementos consecutívos é o cubo disso, i.e. da ordem de \(2^{-3n/2}\). Como temos \(2^n\) conjuntos em cada malha, isso nos dá uma estimativa total ainda pequena, da ordem de \(2^{-n/2}\). Se usássemos só um incremento, a estimativa total cresceria exponencialmente. Se usássemos só dois, a estimativa seria uma constante. Mas usando três incrementos, conseguimos uma estimativa decrescendo exponencialmente e sendo, portanto, somável.</p>
 <p>Assim, pelo Lema de Borel-Cantelli,</p>
 \[
-\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1], \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} \leq M \right\}\right) \leq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \bigcup_{k=1, \ldots, 2^n-3}\Omega_{n, k}\right) = 0
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} \leq M \right\}\right) \leq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \bigcup_{k=1, \ldots, 2^n-3}\Omega_{n, k}\right) = 0.
 \]
+<p>Ou seja,</p>
+\[
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} < \infty \right\}\right) = 0.
+\]
+<p>Isso conclui a demonstração de que, quase certamente, os caminhos amostrais de um processo de Wiener padrão não são diferenciáveis em nenhum ponto no intervalo \([0, 1)\). Pela invariância por translações, isso se estende para qualquer intervalo \([n, n+1)\). Fazendo a interseção desse conjunto contável, obtemos que, quase certamente, os caminhos amostrais não são diferenciáveis em nenhum ponto \(t\geq 0\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -357,7 +407,7 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
         </div>
     
 
-    Last modified: May 24, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 25, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -369,6 +419,9 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
         <script>renderMathInElement(document.body)</script>
     
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>
