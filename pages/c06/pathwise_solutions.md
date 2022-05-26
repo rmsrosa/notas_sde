@@ -2,9 +2,31 @@
 
 # {{ get_title }}
 
+Vamos considerar, nesse capítulo, equações diferenciais aleatórias da forma
+$$
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
+$$
+onde $T > 0$, $\{Y_t\}_{t\in [0, T]}$ é um processo real com caminhos amostrais contínuos e $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ é contínuo.
+
+Junte-se à essa equação uma condição inicial
+$$
+\left.X_t\right|_{t = 0} = C,
+$$
+onde $C$ é uma variável aleatória real.
+
+Sob essas condições, podemos considerar soluções por caminho, da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.
+
 ## Definição
 
-*Pathwise solutions* ...
+Uma **solução por caminhos** *(ou pathwise solution)* da equação diferencial aleatória acima é um processo aleatório real $\{X_t\}_{t\in [0, T]}$ tal que quase todo caminho amostral $t\mapsto X_t(\omega)$ é continuamente diferenciável e satisfaz a equação diferencial ordinária
+$$
+\frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
+$$
+No caso do problema de valor inicial, pedimos, ainda, que
+$$
+X_0(\omega) = C(\omega),
+$$
+quase sempre.
 
 ## Exemplo linear
 
@@ -15,17 +37,23 @@ $$
 X_0 = C,
 \end{cases}
 $$
-onde $A$ e $C$ são variáveis aleatória reais. Para quase todo $\omega$, temos $A(\omega), C(\omega) \in \mathbb{R}$ e, com isso, podemos definir os caminhos amostrais
+onde $A$ e $C$ são variáveis aleatória reais. Definimos
+$$
+X_t = Ce^{tA}, \qquad t \geq 0.
+$$
+Como $f(t, a, c) = ce^{ta}$ é uma função contínua de $\mathbb{R}^3$ em $\mathbb{R}$, segue que $X_t$ está bem definido. Além disso, para quase todo $\omega$, temos $A(\omega), C(\omega) \in \mathbb{R}$ e, com isso, temos os caminhos amostrais
 $$
 X_t(\omega) = C(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
 $$
-que são soluções da equação diferencial ordinária
+que são (infinitamente) diferenciáveis em $t$ e são soluções da equação diferencial ordinária
 $$
 \begin{cases}
 \displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0 \\
 X_0(\omega) = C(\omega).
 \end{cases}
 $$
+
+Logo, $\{X_t\}_{t\geq 0}$ é um processo que é uma solução por caminhos da equação diferencial aleatória acima. Para $t = 0$, temos $X_0 = C$, portanto a condição inicial também é satisfeita.
 
 ## Exemplo com existência local
 
@@ -53,10 +81,16 @@ Como
 $$
 \frac{1}{A(\omega)} > 1,
 $$
-para quase todo $\omega$, podemos definir, para todo $0 \leq t < 1$, o processo aleatório $\{X_t\}_{t\in [0, 1)}$ através dos caminhos amostrais
+para quase todo $\omega$, podemos definir, para todo $0 \leq t < 1$, o processo aleatório $\{X_t\}_{t\in [0, 1)}$ por
+$$
+X_t = \frac{1}{1 - At},
+$$
+cujos caminhos amostrais são
 $$
 X_t(\omega) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < 1.
 $$
+
+Observe que $(t, a) \mapsto 1/(1 - at)$ é uma função contínua em $(t,a) \in [0, 1)\times [0, 1]$. Como $A$ tem suporte em $[0, 1]$, então essa função é Lebesgue-mensurável em $\mathbb{R}$. Assim, $X_t$ é uma variável aleatória bem definida.
 
 A função de distribuição acumulada de cada $X_t$ é dada por
 $$
