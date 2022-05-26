@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Tipos de convergências</title>  
+   <title>Soluções por caminhos</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -183,10 +183,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integral de processos estocásticos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.10. Teorema Central do Limite</a>
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
 </span>
     </p>
 </div>
@@ -197,113 +197,136 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.9. Tipos de convergências</a></h1>
-<blockquote>
-<p>&quot;Whereas weak convergence measures the <em>error of the means</em>, strong convergence measures the <em>mean of the errors</em>&quot;. - Higham &amp; Kloeden, in <em>An Introduction to the Numerical Simulation of Stochastic Differential Equations</em> &#40;SIAM, 2021&#41; página 83, Seção 8.4.</p>
-</blockquote>
-<h2 id="noções_de_convergência_para_sequências_de_variáveis_aleatórias_reais"><a href="#noções_de_convergência_para_sequências_de_variáveis_aleatórias_reais" class="header-anchor">Noções de convergência para sequências de variáveis aleatórias reais</a></h2>
-<p>Vamos considerar, para começar, variáveis aleatórias reais \(X\) e \(\{X_n\}_{n\in \mathbb{N}}\) em um mesmo espaço de probabilidade \((\Omega, \mathcal{A}, \mathbb{P})\).</p>
-<h3 id="convergência_forte_ou_quase_certamente"><a href="#convergência_forte_ou_quase_certamente" class="header-anchor">Convergência forte ou quase certamente</a></h3>
-<p>Dizemos que \(X_n\)<strong>converge fortemente</strong>, ou <strong>quase sempre</strong>, ou <strong>quase certamente</strong>, ou <strong>em quase toda parte</strong>, para \(X\) quando o conjunto \(\{\omega; \;X_n(\omega) \rightarrow X(\omega)\}\) tem probabilidade total, i.e.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Soluções por caminhos</a></h1>
+<p>Vamos considerar, nesse capítulo, equações diferenciais aleatórias da forma</p>
 \[
-\mathbb{P}(X_n \rightarrow X) = 1.
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
 \]
-<h3 id="convergência_em_probabilidade"><a href="#convergência_em_probabilidade" class="header-anchor">Convergência em probabilidade</a></h3>
-<p>Dizemos que \(X_n\)<strong>converge em probabilidade</strong>, ou <strong>em medida</strong>, para \(X\) quando</p>
+<p>onde \(T > 0\), \(\{Y_t\}_{t\in [0, T]}\) é um processo real com caminhos amostrais contínuos e \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) é contínuo.</p>
+<p>Junte-se à essa equação uma condição inicial</p>
 \[
-\forall \varepsilon > 0, \; \mathbb{P}(|X_n - X| > \varepsilon) \rightarrow 0.
+\left.X_t\right|_{t = 0} = C,
 \]
-<h3 id="convergência_fraca_ou_em_distribuição"><a href="#convergência_fraca_ou_em_distribuição" class="header-anchor">Convergência fraca ou em distribuição</a></h3>
-<p>Dizemos que \(X_n\)<strong>converge fracamente</strong>, ou <strong>em distribuição</strong>, para \(X\) quando</p>
+<p>onde \(C\) é uma variável aleatória real.</p>
+<p>Sob essas condições, podemos considerar soluções por caminho, da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.</p>
+<h2 id="definição"><a href="#definição" class="header-anchor">Definição</a></h2>
+<p>Uma <strong>solução por caminhos</strong> <em>&#40;ou pathwise solution&#41;</em> da equação diferencial aleatória acima é um processo aleatório real \(\{X_t\}_{t\in [0, T]}\) tal que quase todo caminho amostral \(t\mapsto X_t(\omega)\) é continuamente diferenciável e satisfaz a equação diferencial ordinária</p>
 \[
-\mathbb{P}(X_n \leq x) \rightarrow \mathbb{P}(X \leq x),
+\frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
 \]
-<p>para todo \(x\) que seja ponto de continuidade da função \(x \mapsto \mathbb{P}(X \leq x)\) de distribuição acumulada de \(X\).</p>
-<h3 id="convergência_em_média"><a href="#convergência_em_média" class="header-anchor">Convergência em média</a></h3>
-<p>Dizemos que \(X_n\)<strong>converge em média</strong> para \(X\) quando</p>
+<p>No caso do problema de valor inicial, pedimos, ainda, que</p>
 \[
-\mathbb{E}(|X_n - X|) \rightarrow 0.
+X_0(\omega) = C(\omega),
 \]
-<h3 id="convergência_em_média_quadrática"><a href="#convergência_em_média_quadrática" class="header-anchor">Convergência em média quadrática</a></h3>
-<p>Dizemos que \(X_n\)<strong>converge em média quadrática</strong> para \(X\) quando</p>
+<p>quase sempre.</p>
+<h2 id="exemplo_linear"><a href="#exemplo_linear" class="header-anchor">Exemplo linear</a></h2>
+<p>Considere o problema de valor inicial</p>
 \[
-\mathbb{E}(|X_n - X|^2) \rightarrow 0.
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t, & t \geq 0, \\
+X_0 = C,
+\end{cases}
 \]
-<h3 id="convergência_em_média_p"><a href="#convergência_em_média_p" class="header-anchor">Convergência em média \(p\)</a></h3>
-<p>Dado \(p > 0\), dizemos que \(X_n\)<strong>converge em média p</strong>, ou <strong>converge em momento de ordem p</strong> para \(X\) quando</p>
+<p>onde \(A\) e \(C\) são variáveis aleatórias reais. Definimos</p>
 \[
-\mathbb{E}(|X_n - X|^p) \rightarrow 0.
+X_t = Ce^{tA}, \qquad t \geq 0.
 \]
-<p>A convergência em média corresponde ao caso \(p = 1\) e a convergência em média quadrática corresponde a \(p = 2\). Em Teoria da Medida, dizemos que \(X_n\) converge para \(X\) em \(L^p(\Omega)\).</p>
-<p>Para todo \(p \geq 1\), \(L^p(\Omega)\) forma uma <em>espaço de Banach</em>, que é um espaço normado completo, com norma \(\|X\|_{L^p} = \left(\mathbb{E}[|X|^p]\right)^{1/p}\). No caso \(p = 2\), temos que \(L^2(\Omega)\) é um <em>espaço de Hilbert</em>, que é um espaço normado completo onde a norma está associada a um produto interno. No caso, o produto interno entre duas variáveis aleatórias \(X\) e \(Y\) é \(\langle X, Y \rangle = \mathbb{E}[XY]\). A norma \(L^2(\Omega)\) é \(\|X\|_{L^2} = \sqrt{\mathbb{E}[X^2]}\).</p>
-<h3 id="relações_entre_as_convergências"><a href="#relações_entre_as_convergências" class="header-anchor">Relações entre as convergências</a></h3>
-<h4 id="convergência_forte_implica_em_convergência_em_probabilidade"><a href="#convergência_forte_implica_em_convergência_em_probabilidade" class="header-anchor">Convergência forte implica em convergência em probabilidade</a></h4>
-<h4 id="convergência_em_probabilidade_com_erro_somável_implica_em_subsequência_convergindo_fortemente"><a href="#convergência_em_probabilidade_com_erro_somável_implica_em_subsequência_convergindo_fortemente" class="header-anchor">Convergência em probabilidade com erro somável implica em subsequência convergindo fortemente</a></h4>
-<p>Suponha que, para todo \(\varepsilon > 0\), vale</p>
+<p>Como \(f(t, a, c) = ce^{ta}\) é uma função contínua de \(\mathbb{R}^3\) em \(\mathbb{R}\), segue que \(X_t\) está bem definido. Além disso, para quase todo \(\omega\), temos \(A(\omega), C(\omega) \in \mathbb{R}\) e, com isso, temos os caminhos amostrais</p>
 \[
-\sum_{n=1}^\infty \mathbb{P}(|X_n - X| > \varepsilon) < \infty.
+X_t(\omega) = C(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
 \]
-<p>Então, pelo Lema de Borel-Cantelli,</p>
+<p>que são &#40;infinitamente&#41; diferenciáveis em \(t\) e são soluções da equação diferencial ordinária</p>
 \[
-\mathbb{P}(\limsup_{n\rightarrow\infty} |X_n - X| > \varepsilon) = 0.
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0, \\
+X_0(\omega) = C(\omega).
+\end{cases}
 \]
-<p>Observe que não há ambiguidade acima, pois</p>
+<p>Logo, \(\{X_t\}_{t\geq 0}\) é um processo que é uma solução por caminhos da equação diferencial aleatória acima. Para \(t = 0\), temos \(X_0 = C\), portanto a condição inicial também é satisfeita.</p>
+<h2 id="exemplo_com_existência_local"><a href="#exemplo_com_existência_local" class="header-anchor">Exemplo com existência local</a></h2>
+<p>Considere</p>
 \[
-\limsup_{n\rightarrow\infty} \{|X_n - X| > \varepsilon\} = 
-\bigcap_n \bigcup_k \{\omega; |X_k - X| > \varepsilon\} = \left\{\omega; \forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} = \left\{\omega; \;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0, \\
+X_0 = 1,
+\end{cases}
 \]
-<p>Tomando uma sequência positiva \(\varepsilon_n \rightarrow 0\), temos</p>
+<p>onde \(A\) é uma variável aleatória com distribuição beta, por exemplo.</p>
+<p>A distribuição beta está concentrada no intervalo \((0, 1)\), ou seja, para quase todo \(\omega\), temos \(0 < A(\omega) < 1\). Assim, para quase todo \(\omega\), a equação diferencial ordinária</p>
 \[
-\mathbb{P}\left(\limsup_{n\rightarrow\infty} |X_n - X| > 0\right) = \mathbb{P}\left(\bigcup_n \left(\limsup_{n\rightarrow\infty} |X_n - X| > \varepsilon_n\right)\right) = 0.
+\begin{cases}
+\displaystyle \frac{\mathrm{d} x(t)}{\mathrm{d} t} = A(\omega) x(t)^2, & t \geq 0, \\
+x(0) = 1,
+\end{cases}
 \]
-<p>Logo,</p>
+<p>tem uma solução única</p>
 \[
-\mathbb{P}\left(\lim_{n\rightarrow \infty} X_n = X\right) = 1,
+x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)}.
 \]
-<p>provando a convergência \(X_n \rightarrow X\) quase certamente.</p>
-<h4 id="convergência_em_probabilidade_implica_em_subsequência_convergindo_fortemente"><a href="#convergência_em_probabilidade_implica_em_subsequência_convergindo_fortemente" class="header-anchor">Convergência em probabilidade implica em subsequência convergindo fortemente</a></h4>
-<p>Seja \(n_1\) tal que</p>
+<p>Como</p>
 \[
-\mathbb{P}\left(|X_n - X| > \frac{1}{2}\right) \leq \frac{1}{2}, \qquad \forall n \geq n_1
+\frac{1}{A(\omega)} > 1,
 \]
-<p>e defina, recursivamente, \(n_k > n_{k-1}\) tal que</p>
+<p>para quase todo \(\omega\), podemos definir, para todo \(0 \leq t < 1\), o processo aleatório \(\{X_t\}_{t\in [0, 1)}\) por</p>
 \[
-\mathbb{P}\left(|X_n - X| > \frac{1}{k}\right) \leq \frac{1}{2^k}, \qquad \forall n \geq n_k.
+X_t = \frac{1}{1 - At},
 \]
-<p>Temos</p>
+<p>cujos caminhos amostrais são</p>
 \[
-\sum_k \mathbb{P}\left(|X_{n_k} - X| > \frac{1}{k}\right) < \infty.
+X_t(\omega) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < 1.
 \]
-<p>Assim, para qualquer \(\varepsilon > 0\), temos</p>
+<p>Observe que \((t, a) \mapsto 1/(1 - at)\) é uma função contínua em \((t,a) \in [0, 1)\times [0, 1]\). Como \(A\) tem suporte em \([0, 1]\), então essa função é Lebesgue-mensurável em \(\mathbb{R}\). Assim, \(X_t\) é uma variável aleatória bem definida.</p>
+<p>A função de distribuição acumulada de cada \(X_t\) é dada por</p>
 \[
-\sum_k \mathbb{P}\left(|X_{n_k} - X| > \varepsilon\right) < \infty.
+\mathbb{P}(X_t \leq x) = \mathbb{P}\left( \frac{1}{1 - A} \leq x\right) = \mathbb{P}\left( A \leq \frac{x - 1}{x}\right), \qquad 0 < x < 1,
 \]
-<p>Pelo resultado anterior de convergência com erros somáveis, obtemos a convergência forte da subsequência:</p>
+<p>com \(\mathbb{P}(X_t \leq x) = 0\), para \(x\leq 0\) e \(\mathbb{P}(X_t \leq x) = 1\), para \(x\geq 1\).</p>
+<p>A distribuição conjunta \(\mathbb{P}(X_{t_1} \leq x_1, \ldots, X_{t_n} \leq x_n)\) também pode ser obtida de forma semelhante.</p>
+<h2 id="não_existência"><a href="#não_existência" class="header-anchor">Não existência</a></h2>
+<p>Vamos ver um exemplo clássico de não existência de solução por caminhos de uma equação diferencial aleatória.</p>
+<p>Considere o problema de valor inicial</p>
 \[
-\mathbb{P}\left( X_{n_k} \rightarrow X \right) = 1.
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0 \\
+X_0 = 1.
+\end{cases}
 \]
-<h4 id="convergência_em_probabilidade_de_sequência_monótona_implica_em_convergência_forte"><a href="#convergência_em_probabilidade_de_sequência_monótona_implica_em_convergência_forte" class="header-anchor">Convergência em probabilidade de sequência monótona implica em convergência forte</a></h4>
-<p>Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência \(X_{n_k} \rightarrow X\). Ou seja, para quase todo \(\omega\), dado \(\varepsilon > 0\), existe \(j\) tal que</p>
+<p>Mas, dessa vez, assumimos que \(A\) seja uma variável aleatória com distribuição sem suporte limitado, digamos normal ou exponencial, etc.. Isso significa que \(A(\omega)\) não é limitado quase sempre. Com isso, os caminhos amostrais</p>
 \[
-X - \varepsilon < X_{n_k} < X + \varepsilon, \qquad \forall k \geq j.
+x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)},
 \]
-<p>Como a sequência é monótona, digamos monótona não-decrescente &#40;é análogo caso seja não-crescente&#41;, então, para todo \(n \geq n_j\), temos \(n_k \leq n < n_{k+1}\), para algum \(k \geq j\). Assim,</p>
+<p>estão definidos em intervalos arbitrariamente pequenos. Isso nos impede de definir um processo \(\{X_t\}_{t \in [0, \varepsilon)}\) para todos os caminhos, por menor que seja \(\varepsilon > 0\). Ou seja, não existe solução por caminhos dessa equação.</p>
+<h2 id="múltiplas_soluções_e_não-solução"><a href="#múltiplas_soluções_e_não-solução" class="header-anchor">Múltiplas soluções e não-solução</a></h2>
+<p>Agora, considere o problema de valor inicial</p>
 \[
-X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = 3X_t^{2/3}, & t \geq 0 \\
+X_0 = 0.
+\end{cases}
 \]
-<p>Em outras palavras, para todo \(\varepsilon > 0\), existe \(j\) tal que</p>
+<p>Aqui, devemos especificar onde &quot;mora&quot; \(X_0\). Podemos tomar \(X_0 = 0\) em \(\Omega = \mathbb{R}\), com \(\mathcal{A}\) sendo, por exemplo, a \(\sigma\)-álgebra de Lebesgue.</p>
+<p>Naturalmente, temos a solução trivial \(X_t^{(0)} = 0\), \(\forall t \geq 0\). Também temos</p>
 \[
-X - \varepsilon < X_n < X + \varepsilon.
+X_t^{(1)}(\omega) = t^3, \qquad t \geq 0
 \]
-<p>Isso significa que, quase certamente, \(X_n \rightarrow X\), concluindo a demonstração.</p>
+<p>como solução.</p>
+<p>Agora, para qualquer conjunto \(E\subset \Omega\), temos, ainda que \(\{X_t^{(E)}\}_{t\geq 0}\) definido através dos caminhos</p>
+\[
+X_t^{(E)}(\omega) = \begin{cases}
+t^3, &\omega \in E, \\
+0, & \omega \notin E,
+\end{cases}
+\]
+<p>é tal que cada caminho \(X_t^{(E)}(\omega)\) satisfaz a equação diferencial ordinária \(x' = 3x^{2/3}\). Se \(E\) for mensurável, então \(\{X_t^{(E)}\}_{t \geq 0}\) é, de fato, um processo que satisfaz a condição inicial \(X_0^{(E)} = 0\) e é uma solução por caminhos da equação diferencial aleatória.</p>
+<p>No entanto, se \(E\) não for mensurável, então os caminhos satisfazem a equação diferencial ordinária mas \(\{X_t^{(E)}\}_{t \geq 0}\) não define um processo.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integral de processos estocásticos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.10. Teorema Central do Limite</a>
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
 </span>
     </p>
 </div>
