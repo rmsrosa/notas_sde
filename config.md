@@ -71,6 +71,12 @@ menu = [
         "pages/c04/variacao_ilimitada_wiener"
         "pages/c04/simulacoes_wiener"
     ]
+    "Integração estocástica" => [
+        "pages/c05/integral_processos_estocasticos"
+    ]
+    "Equações diferenciais aleatórias" => [
+        "pages/c06/pathwise_solutions"
+    ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
         "pages/appendix/teo_extension_kolmogorov"
