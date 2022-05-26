@@ -37,7 +37,7 @@ $$
 X_0 = C,
 \end{cases}
 $$
-onde $A$ e $C$ são variáveis aleatória reais. Definimos
+onde $A$ e $C$ são variáveis aleatórias reais. Definimos
 $$
 X_t = Ce^{tA}, \qquad t \geq 0.
 $$
@@ -48,7 +48,7 @@ $$
 que são (infinitamente) diferenciáveis em $t$ e são soluções da equação diferencial ordinária
 $$
 \begin{cases}
-\displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0 \\
+\displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0, \\
 X_0(\omega) = C(\omega).
 \end{cases}
 $$
@@ -60,13 +60,13 @@ Logo, $\{X_t\}_{t\geq 0}$ é um processo que é uma solução por caminhos da eq
 Considere
 $$
 \begin{cases}
-\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0 \\
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0, \\
 X_0 = 1,
 \end{cases}
 $$
 onde $A$ é uma variável aleatória com distribuição beta, por exemplo.
 
-A distribuição beta está concentrada no intervalo $[0, 1]$ e de forma que, para quase todo $\omega$, temos $0 < A(\omega) < 1$. Assim, para quase todo $\omega$, a equação diferencial ordinária
+A distribuição beta está concentrada no intervalo $(0, 1)$, ou seja, para quase todo $\omega$, temos $0 < A(\omega) < 1$. Assim, para quase todo $\omega$, a equação diferencial ordinária
 $$
 \begin{cases}
 \displaystyle \frac{\mathrm{d} x(t)}{\mathrm{d} t} = A(\omega) x(t)^2, & t \geq 0, \\
