@@ -131,3 +131,61 @@ X - \varepsilon < X_n < X + \varepsilon.
 $$
 
 Isso significa que, quase certamente, $X_n \rightarrow X$, concluindo a demonstração.
+
+## Exemplos de convergências
+
+### Sequências de normais dependentes
+
+Considere uma variável aleatória normal $X \sim \mathcal{N}(0, 1)$ e defina a sequência
+$$
+X_n = \frac{1}{n}X.
+$$
+
+Observe que $X_n \sim \mathcal{N}(0, 1/n^2)$.
+
+Os caminhos amostrais são
+$$
+t\mapsto X_n(\omega) = \frac{\omega}{n}.
+$$
+Observe que essas variáveis não são independentes. Para cada $\omega$, temos
+$$
+X_n(\omega) = \frac{\omega}{n} \rightarrow 0, \qquad n \rightarrow 0.
+$$
+Ou seja, $X_n$ converge para $0$ quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer $\varepsilon > 0$,
+$$
+\mathbb{P}(X_n > \varepsilon) = \mathbb{P}(X > n\varepsilon ) \rightarrow 0, \qquad n \rightarro 0,
+$$
+mostrando a convergência em probabilidade. Agora, observe que a função de distribuição acumulada da variável limite (igual a zero quase sempre) é
+$$
+F(x) = \begin{cases} 0, & x < 0, \\
+1, & x \geq 0.
+\end{cases}
+$$
+Os pontos de continuidade de $F$ são os pontos $x \neq 0$. Nesses pontos, temos,
+$$
+\mathbb{P}(X_n \leq x) = \mathbb{P}(X \leq n x) \rightarrow \begin{cases} 0, & x < 0, \\
+1, & x > 0.
+\end{cases}
+$$
+No ponto de descontinuidade $x = 0$, temos
+$$
+\mathbb{P}(X_n \leq 0) = \frac{1}{2},
+$$
+mas isso não atrapalha a convergência em distribuição.
+
+A convergência em média quadrática pode ser obtida diretamente da variância de cada termo da sequência:
+$$
+\mathbb{P}(|X_n|^2) = \mathbb{P}(|X_n - 0|^2) = \mathrm{Var}(X_n) = \frac{1}{n^2} \rightarrow 0, \qquad n \rightarrow \infty.
+$$
+
+### Sequências de normais independentes
+
+Podemos considerar sequências independentes definindo $\Omega = \mathbb{R}^\mathbb{N} = \{\omega = (\omega_1, \omega_2, \ldots); \;\omega_n\in \mathbb{R}\}$ e definindo $\mathbb{P}$ por
+$$
+\mathbb{P}(X_{n_1} \leq x_1, \ldots, X_{n_k} \leq x_k) = \mathbb{P}(X_{n_1}\leq x_1)\times \cdots \times \mathbb{P}(X_{n_k}\leq x_k),
+$$
+onde a distribuição de cada $X_n$ é uma Gaussiana
+$$
+\frac{1}{\sqrt{2\pi \sigma_n^2}}e^{-x^2/2\sigma_n^2},
+$$
+onde $\sigma_n > 0$.
