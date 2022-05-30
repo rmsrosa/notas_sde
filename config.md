@@ -53,6 +53,7 @@ menu = [
         "pages/c02/multi_va"
         "pages/c02/transformacoes"
         "pages/c02/convergencias"
+        "pages/c02/borel_cantelli"
         "pages/c02/teorema_central"
         "pages/c02/gerando_num_aleatorios"
     ]
