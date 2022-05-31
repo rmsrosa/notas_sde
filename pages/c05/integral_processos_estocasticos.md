@@ -56,13 +56,30 @@ Como $t \mapsto f(t, X_t(\omega))$ é contínuo, portanto, integrável, segue qu
 
 Seja, agora, $\{Y_t\}_{t\in [a,b]}$ um processo estocástico com caminhos continuamente diferenciáveis, i.e. tais que, quase sempre, existe o limite
 $$
-X_t = \frac{\mathrm{d}}{\mathrm{d}t}Y_t = \lim_{\tau \rightarrow 0} \frac{Y_{t+\tau} - Y_t}{\tau}
+X_t(\omega) = \frac{\mathrm{d}Y_t}{\mathrm{d}t}(\omega) = \lim_{\tau \rightarrow 0} \frac{Y_{t+\tau}(\omega) - Y_t(\omega)}{\tau}
 $$
 para todo $t\in [a, b]$, com $t \mapsto X_t(\omega)$ contínuo.
 
-As variáveis $X_t$ são obtidas como limites pontuais de variáveis aleatórias, portanto são também variáveis aleatórias. Dessa forma, $\{X_t\}_{t\in [a, b]}$ é um processo estocástico. Além disso, por hipótese, os seus caminhos amostrais são contínuos. Com isso, a integral de $X_t$ está bem definida.
+As variáveis $X_t$ são obtidas como limites pontuais de variáveis aleatórias, portanto são também variáveis aleatórias, já que o limite de funções reais mensuráveis é mensurável. Dessa forma, $\{X_t\}_{t\in [a, b]}$ é um processo estocástico. Além disso, por hipótese, os seus caminhos amostrais são contínuos. Com isso, a integral de $X_t$ está bem definida.
 
 Finalmente, para cada $\omega$, podemos aplicar o Teorema Fundamental do Cálculo e obter
 $$
 Y_t = \int_0^t X_s \;\mathrm{d}s = \int_0^t  \frac{\mathrm{d}}{\mathrm{d}t}Y_s \;\mathrm{d}s.
+$$
+
+## Integrais em outros sentidos
+
+Podemos estender a integração acima em vários sentidos. Podemos pedir que $t \mapsto f(t, X_t(\omega))$ seja integrável a Riemann, sem necessariamente ser contínua. Também podemos pedir que seja apenas integrável à Lebesgue. Isso nos permite definir $Y(\omega)$ pontualmente. A questão mais delicada passa a ser se $Y$ é mensurável.
+
+Uma solução mais geral para isso é não pensar em definir através de caminhos, mas através da integração de uma função. Isso nos leva ao conceito de 
+$$
+Y = \int_a^b f(s, X_s) \;\mathrm{d}s,
+$$
+como *integral de Bochner*. A ideia é enxergar $s \mapsto f(x, X_s)$ como uma função de $r$ em algum espaço de Banach (espaço normado completo), como $L^2(\Omega)$, cuja norma é a da média quadrática. Buscamos, então, aproximar o integrando $s \mapsto f(s, X_s)$ por funções passo e definir a integral como uma integral de Lebesgue com valores em $L^2(\Omega)$. Essa teoria é bem mais delicada e não nos aprofundaremos nos detalhes. Um aspecto importante é que, sob as devidas condições, a integral é um limite de somas de funções simples:
+$$
+Y = \lim_n \sum_{j=1}^n f_j^n \chi_{E_j^n}(s) \;\mathrm{d}s,
+$$
+onde $f_j^n = f_j^n(\omega)$ são mensuráveis em $L^2(\Omega)$ (i.e. de média quadrádica finita). As funções simples $f^n = \sum_j f_j^n \chi_{E_j^n}$ aproximam $t \mapsto f(t, X_t)$. O limite acime é no sentido de média quadrática.
+$$
+\mathbb{P}\left( \left( Y - \sum_{j=1}^n f_j^n \chi_{E_j^n}(s) \;\mathrm{d}s\right)^2\right) \rightarrow 0.
 $$
