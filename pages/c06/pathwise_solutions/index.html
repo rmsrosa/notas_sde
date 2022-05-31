@@ -98,10 +98,13 @@
     <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.10. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.11. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.12. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -146,7 +149,7 @@
     <li>5. Integração estocástica</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integral de processos estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de processos estocásticos</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Equações diferenciais aleatórias</li>
@@ -183,7 +186,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integral de processos estocásticos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de processos estocásticos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
@@ -209,7 +212,7 @@
 \]
 <p>onde \(C\) é uma variável aleatória real.</p>
 <p>Sob essas condições, podemos considerar soluções por caminho, da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.</p>
-<h2 id="definição"><a href="#definição" class="header-anchor">Definição</a></h2>
+<h2 id="definição_de_solução_por_caminhos"><a href="#definição_de_solução_por_caminhos" class="header-anchor">Definição de solução por caminhos</a></h2>
 <p>Uma <strong>solução por caminhos</strong> <em>&#40;ou pathwise solution&#41;</em> da equação diferencial aleatória acima é um processo aleatório real \(\{X_t\}_{t\in [0, T]}\) tal que quase todo caminho amostral \(t\mapsto X_t(\omega)\) é continuamente diferenciável e satisfaz a equação diferencial ordinária</p>
 \[
 \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
@@ -319,11 +322,25 @@ t^3, &\omega \in E, \\
 \]
 <p>é tal que cada caminho \(X_t^{(E)}(\omega)\) satisfaz a equação diferencial ordinária \(x' = 3x^{2/3}\). Se \(E\) for mensurável, então \(\{X_t^{(E)}\}_{t \geq 0}\) é, de fato, um processo que satisfaz a condição inicial \(X_0^{(E)} = 0\) e é uma solução por caminhos da equação diferencial aleatória.</p>
 <p>No entanto, se \(E\) não for mensurável, então os caminhos satisfazem a equação diferencial ordinária mas \(\{X_t^{(E)}\}_{t \geq 0}\) não define um processo.</p>
+<h2 id="outros_tipos_de_solução"><a href="#outros_tipos_de_solução" class="header-anchor">Outros tipos de solução</a></h2>
+<p>Outros tipos de solução podem ser obtidas relaxando o sentido de convergência do limite</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
+\]
+<p>No caso acima, de soluções por caminhos, o limite vale quase certamente, i.e.</p>
+\[
+\mathbb{P}\left(\exists \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau} = f(t, X_t, Y_t) \right) = 1.
+\]
+<p>Mas, em princípio, a noção de derivada de um processo pode ser relaxada para convergência em probabilidade, convergência em distribuição, convergência em média-quadrática, convergência em média \(p\geq 1\), etc. A dificuldade é obtermos condições em \(f\) e em \(Y_t\), mais fracas, que garantam a existência de soluções da equação diferencial aleatória nesse sentido &#40;também&#41; mais fraco que convergência quase certamente.</p>
+<p>Uma sentido bastante utilizado é o de solução no sentido de média quadrática, em que existe um processo \(\{\mathrm{d}X_t/\mathrm{d}t\}_{t \in [0, T)}\) tal que</p>
+\[
+\mathbb{E}\left( \left| \frac{X_{t+\tau} - X_t}{\tau} - \frac{\mathrm{d}X_t}{\mathrm{d}t}\right|\right) \rightarrow 0, \quad \tau \rightarrow 0.
+\]
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integral de processos estocásticos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de processos estocásticos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
@@ -342,7 +359,7 @@ t^3, &\omega \in E, \\
         </div>
     
 
-    Last modified: May 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 31, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

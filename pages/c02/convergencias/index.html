@@ -98,10 +98,13 @@
     <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/teorema_central">2.10. Teorema Central do Limite</a></li>
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.11. Gerando números aleatórios no computador</a></li>
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.12. Gerando números aleatórios no computador</a></li>
     </div>
     <div class="menu-level-1">
     <li>3. Processos Estocásticos</li>
@@ -146,7 +149,7 @@
     <li>5. Integração estocástica</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integral de processos estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de processos estocásticos</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Equações diferenciais aleatórias</li>
@@ -186,7 +189,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.10. Teorema Central do Limite</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/borel_cantelli"><kbd>→</kbd> 2.10. Lema de Borel-Cantelli</a>
 </span>
     </p>
 </div>
@@ -296,6 +299,56 @@ X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
 X - \varepsilon < X_n < X + \varepsilon.
 \]
 <p>Isso significa que, quase certamente, \(X_n \rightarrow X\), concluindo a demonstração.</p>
+<h2 id="exemplos_de_convergências"><a href="#exemplos_de_convergências" class="header-anchor">Exemplos de convergências</a></h2>
+<h3 id="sequências_de_normais_dependentes"><a href="#sequências_de_normais_dependentes" class="header-anchor">Sequências de normais dependentes</a></h3>
+<p>Considere uma variável aleatória normal \(X \sim \mathcal{N}(0, 1)\) e defina a sequência</p>
+\[
+X_n = \frac{1}{n}X.
+\]
+<p>Observe que \(X_n \sim \mathcal{N}(0, 1/n^2)\).</p>
+<p>Os caminhos amostrais são</p>
+\[
+t\mapsto X_n(\omega) = \frac{\omega}{n}.
+\]
+<p>Observe que essas variáveis não são independentes. Para cada \(\omega\), temos</p>
+\[
+X_n(\omega) = \frac{\omega}{n} \rightarrow 0, \qquad n \rightarrow 0.
+\]
+<p>Ou seja, \(X_n\) converge para \(0\) quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer \(\varepsilon > 0\),</p>
+\[
+\mathbb{P}(X_n > \varepsilon) = \mathbb{P}(X > n\varepsilon ) \rightarrow 0, \qquad n \rightarro 0,
+\]
+<p>mostrando a convergência em probabilidade. Agora, observe que a função de distribuição acumulada da variável limite &#40;igual a zero quase sempre&#41; é</p>
+\[
+F(x) = \begin{cases} 0, & x < 0, \\
+1, & x \geq 0.
+\end{cases}
+\]
+<p>Os pontos de continuidade de \(F\) são os pontos \(x \neq 0\). Nesses pontos, temos,</p>
+\[
+\mathbb{P}(X_n \leq x) = \mathbb{P}(X \leq n x) \rightarrow \begin{cases} 0, & x < 0, \\
+1, & x > 0.
+\end{cases}
+\]
+<p>No ponto de descontinuidade \(x = 0\), temos</p>
+\[
+\mathbb{P}(X_n \leq 0) = \frac{1}{2},
+\]
+<p>mas isso não atrapalha a convergência em distribuição.</p>
+<p>A convergência em média quadrática pode ser obtida diretamente da variância de cada termo da sequência:</p>
+\[
+\mathbb{P}(|X_n|^2) = \mathbb{P}(|X_n - 0|^2) = \mathrm{Var}(X_n) = \frac{1}{n^2} \rightarrow 0, \qquad n \rightarrow \infty.
+\]
+<h3 id="sequências_de_normais_independentes"><a href="#sequências_de_normais_independentes" class="header-anchor">Sequências de normais independentes</a></h3>
+<p>Podemos considerar sequências independentes definindo \(\Omega = \mathbb{R}^\mathbb{N} = \{\omega = (\omega_1, \omega_2, \ldots); \;\omega_n\in \mathbb{R}\}\) e definindo \(\mathbb{P}\) por</p>
+\[
+\mathbb{P}(X_{n_1} \leq x_1, \ldots, X_{n_k} \leq x_k) = \mathbb{P}(X_{n_1}\leq x_1)\times \cdots \times \mathbb{P}(X_{n_k}\leq x_k),
+\]
+<p>onde a distribuição de cada \(X_n\) é uma Gaussiana</p>
+\[
+\frac{1}{\sqrt{2\pi \sigma_n^2}}e^{-x^2/2\sigma_n^2},
+\]
+<p>onde \(\sigma_n > 0\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -303,7 +356,7 @@ X - \varepsilon < X_n < X + \varepsilon.
 <a class="menu-level-1" href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/teorema_central"><kbd>→</kbd> 2.10. Teorema Central do Limite</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c02/borel_cantelli"><kbd>→</kbd> 2.10. Lema de Borel-Cantelli</a>
 </span>
     </p>
 </div>
@@ -319,7 +372,7 @@ X - \varepsilon < X_n < X + \varepsilon.
         </div>
     
 
-    Last modified: May 26, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 31, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
