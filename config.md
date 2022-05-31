@@ -74,6 +74,7 @@ menu = [
     ]
     "Integração estocástica" => [
         "pages/c05/integral_processos_estocasticos"
+        "pages/c05/integral_continua_estocastica"
     ]
     "Equações diferenciais aleatórias" => [
         "pages/c06/pathwise_solutions"
