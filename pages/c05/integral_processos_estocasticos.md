@@ -51,3 +51,18 @@ $$
 t \mapsto Y_t(\omega) = \int_a^t f(s, X_s(\omega)) \;\mathrm{d}s.
 $$
 Como $t \mapsto f(t, X_t(\omega))$ é contínuo, portanto, integrável, segue que cada caminho amostral é contínuo em $[a, b]$.
+
+## Teorema fundamental
+
+Seja, agora, $\{Y_t\}_{t\in [a,b]}$ um processo estocástico com caminhos continuamente diferenciáveis, i.e. tais que, quase sempre, existe o limite
+$$
+X_t = \frac{\mathrm{d}}{\mathrm{d}t}Y_t = \lim_{\tau \rightarrow 0} \frac{Y_{t+\tau} - Y_t}{\tau}
+$$
+para todo $t\in [a, b]$, com $t \mapsto X_t(\omega)$ contínuo.
+
+As variáveis $X_t$ são obtidas como limites pontuais de variáveis aleatórias, portanto são também variáveis aleatórias. Dessa forma, $\{X_t\}_{t\in [a, b]}$ é um processo estocástico. Além disso, por hipótese, os seus caminhos amostrais são contínuos. Com isso, a integral de $X_t$ está bem definida.
+
+Finalmente, para cada $\omega$, podemos aplicar o Teorema Fundamental do Cálculo e obter
+$$
+Y_t = \int_0^t X_s \;\mathrm{d}s = \int_0^t  \frac{\mathrm{d}}{\mathrm{d}t}Y_s \;\mathrm{d}s.
+$$
