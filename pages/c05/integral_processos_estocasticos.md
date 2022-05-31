@@ -1,4 +1,4 @@
-@def title = "Integrais de processos estocásticos"
+@def title = "Integrais de Riemann de processos estocásticos contínuos"
 
 # {{ get_title }}
 
