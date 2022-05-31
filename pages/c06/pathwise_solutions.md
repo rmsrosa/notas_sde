@@ -16,7 +16,7 @@ onde $C$ é uma variável aleatória real.
 
 Sob essas condições, podemos considerar soluções por caminho, da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.
 
-## Definição
+## Definição de solução por caminhos
 
 Uma **solução por caminhos** *(ou pathwise solution)* da equação diferencial aleatória acima é um processo aleatório real $\{X_t\}_{t\in [0, T]}$ tal que quase todo caminho amostral $t\mapsto X_t(\omega)$ é continuamente diferenciável e satisfaz a equação diferencial ordinária
 $$
@@ -144,3 +144,22 @@ $$
 é tal que cada caminho $X_t^{(E)}(\omega)$ satisfaz a equação diferencial ordinária $x' = 3x^{2/3}$. Se $E$ for mensurável, então $\{X_t^{(E)}\}_{t \geq 0}$ é, de fato, um processo que satisfaz a condição inicial $X_0^{(E)} = 0$ e é uma solução por caminhos da equação diferencial aleatória.
 
 No entanto, se $E$ não for mensurável, então os caminhos satisfazem a equação diferencial ordinária mas $\{X_t^{(E)}\}_{t \geq 0}$ não define um processo.
+
+## Outros tipos de solução
+
+Outros tipos de solução podem ser obtidas relaxando o sentido de convergência do limite
+$$
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
+$$
+
+No caso acima, de soluções por caminhos, o limite vale quase certamente, i.e.
+$$
+\mathbb{P}\left(\exists \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau} = f(t, X_t, Y_t) \right) = 1.
+$$
+
+Mas, em princípio, a noção de derivada de um processo pode ser relaxada para convergência em probabilidade, convergência em distribuição, convergência em média-quadrática, convergência em média $p\geq 1$, etc. A dificuldade é obtermos condições em $f$ e em $Y_t$, mais fracas, que garantam a existência de soluções da equação diferencial aleatória nesse sentido (também) mais fraco que convergência quase certamente.
+
+Uma sentido bastante utilizado é o de solução no sentido de média quadrática, em que existe um processo $\{\mathrm{d}X_t/\mathrm{d}t\}_{t \in [0, T)}$ tal que
+$$
+\mathbb{E}\left( \left| \frac{X_{t+\tau} - X_t}{\tau} - \frac{\mathrm{d}X_t}{\mathrm{d}t}\right|\right) \rightarrow 0, \quad \tau \rightarrow 0.
+$$
