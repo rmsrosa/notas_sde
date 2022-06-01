@@ -75,6 +75,7 @@ menu = [
     "Integração estocástica" => [
         "pages/c05/integral_processos_estocasticos"
         "pages/c05/integral_continua_estocastica"
+        "pages/c05/riemann_wiener"
     ]
     "Equações diferenciais aleatórias" => [
         "pages/c06/pathwise_solutions"
