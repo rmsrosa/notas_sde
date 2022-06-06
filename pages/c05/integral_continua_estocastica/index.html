@@ -323,6 +323,23 @@ G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g
 \]
 <h2 id="e_agora"><a href="#e_agora" class="header-anchor">E agora?</a></h2>
 <p>As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo \(\{Y_t\}_t\), uma função de outro processo \(\{X_t\}_t\), da forma \(g(t, X_t)\). De fato, muitas vezes \(\{X_t\}_t\) é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo \(\{Y_t\}_t\). Veremos como fazer isso a seguir. Veremos, em particular, um caminho em que a integral de \(\int_0^t W_t \;\mathrm{d}W_t\), do processo de Wiener, coincide com o valor \(W_t^2/2\) obtido acima &#40;integral de Stratonovich&#41;; e outro caminho em que o resultado é diferente &#40;integral de Itô&#41;.</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Seja \(\{Y_t\}_{t \in [a,b]}\), \(a < b\), um processo com caminhos amostros contínuos quase certamente. Seja \(g:\mathbb{R}\rightarrow \mathbb{R}\) uma função continuamente diferenciável. Considere a integral de \(g\) em relação a \(\{Y_t\}_{t\in [a,b]}\) como definida acima:</p>
+</li>
+</ol>
+\[
+\int_a^b g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(b)Y_b - g(a)Y_a - \int_a^b g'(s)Y_s \;\mathrm{d}s.
+\]
+<p>Mostre que essa integral possui as seguintes propriedades:</p>
+<p>a&#41; Para qualquer constante \(c\in\mathbb{R}\) e qualquer função continuamente diferenciável \(g:\mathbb{R}\rightarrow\mathbb{R}\), vale</p>
+\[
+\int_a^b c g(s)\;\mathrm{d}Y_s = c\int_a^b g(s)\;\mathrm{d}Y_s.
+\]
+<p>b&#41; Para quaisquer funções continuamente diferenciáveis \(g_1, g_2:\mathbb{R} \rightarrow \mathbb{R}\), vale</p>
+\[
+\int_a^b (g_1(s) + g_2(s)) \;\mathrm{d}Y_s = \int_a^b g_1(s) \;\mathrm{d}Y_s + \int_a^b g_2(s) \;\mathrm{d}Y_s.
+\]
 
     <div class="navbar">
     <p id="nav">
@@ -346,7 +363,7 @@ G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g
         </div>
     
 
-    Last modified: June 01, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

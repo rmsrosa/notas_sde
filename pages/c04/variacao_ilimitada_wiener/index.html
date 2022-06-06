@@ -214,7 +214,7 @@
 \[
 \sum_{j=1}^n |g(t_j) - g(t_{j-1})|
 \]
-<p>para instantes de tempo \(a \leq t_0 < t_1 < \ldots < t_n \leq b\). Caso \(x\) seja diferenciável, isso pode ser estimado por</p>
+<p>para instantes de tempo \(a \leq t_0 < t_1 < \ldots < t_n \leq b\). Caso \(x\) seja continuamente diferenciável, isso pode ser estimado por</p>
 \[
 \sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|\}(b-a), 
 \]
@@ -223,7 +223,15 @@
 \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|\}(b-a),
 \]
 <p>onde o supremo é tomado em relação à todas as partições possíveis do intervalo \([a, b]\).</p>
-<p>Caso a função seja Lipschitz contínua em \([a, b]\), com constante de Lipschitz \(L \geq 0\), ainda podemos limitar essa quantidade:</p>
+<p>Na verdade, podemos ser mais precisos em relação à distância percorrida. Sendo \(g\) continuamente diferenciável, a soma</p>
+\[
+\sum_{j=1}^n |g'(\theta_j)|\Delta_j t
+\]
+<p>é, de fato, uma soma de Riemman, cujo limite é a integral</p>
+\[
+\int_a^b |g'(t)| \;\mathrm{d}t.
+\]
+<p>Voltando à estimativa relativa a uma partição arbitrária, caso a função seja Lipschitz contínua em \([a, b]\), com constante de Lipschitz \(L \geq 0\), ainda podemos limitar essa quantidade:</p>
 \[
 \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 \]
@@ -250,13 +258,13 @@
 \[
 \mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 \]
-<p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, \(0 = t_0 < t_1 < \ldots < t_n = T\). Temos</p>
+<p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, \(0 = t_0 < t_1 < \ldots < t_n = T.\) Temos</p>
 \[
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 \]
 <p>Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos diádicos, i.e. para cada \(k\in \mathbb{N}\), tomamos \(n = 2^k\), \(\tau = T/n = T/2^k\) e \(t_j = j\tau\), para \(j = 0, \ldots, n\).</p>
 <p>Vamos mostrar que, quando \(k \rightarrow \infty\), o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.</p>
-<p>O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que as malhas são refinamentos de malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.</p>
+<p>O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que uma determinada malha seja um refinamento das malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.</p>
 <h3 id="sobre_a_soma_dos_quadrados_dos_incrementos"><a href="#sobre_a_soma_dos_quadrados_dos_incrementos" class="header-anchor">Sobre a soma dos quadrados dos incrementos</a></h3>
 <p>O valor esperado da soma dos quadrados dos incrementos pode ser escrito como</p>
 \[
@@ -299,19 +307,15 @@
 \[
 \mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
 \]
-<p>Dessa forma, vemos que</p>
+<p>Dessa forma, vemos que a soma dos quadrados dos incrementos</p>
 \[
-\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \sim \mathcal{N}(T, 2\tau T).
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2
 \]
-<p>Quando \(k \rightarrow \infty\), temos \(\tau \rightarrow 0\), de modo que a soma dos quadrados dos incrementos converge, em probabilidade, para a constante \(T\):</p>
+<p>tem valor esperado constante igual a \(T\) e variância \(2\tau T.\) Quando \(k \rightarrow \infty\), temos \(\tau \rightarrow 0\), de modo que \(S_k\) converge, em probabilidade, para a constante \(T\):</p>
 \[
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
 \]
-<p>Agora, vamos explorar o fato das malhas serem em pontos diádicos. Para cada \(k\), seja</p>
-\[
-S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2.
-\]
-<p>Obtivemos, acima, que \(S_k \rigtharrow T\) em probabilidade. Agora, observe</p>
+<p>Agora, vamos explorar o fato das malhas serem em pontos diádicos. Observe que</p>
 \[
 W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
 \]
@@ -379,7 +383,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
         </div>
     
 
-    Last modified: June 01, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
