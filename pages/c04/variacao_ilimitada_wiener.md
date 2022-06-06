@@ -12,7 +12,7 @@ Se $g = g(t)$ representa a posição de um objeto ao longo do tempo, definida em
 $$
 \sum_{j=1}^n |g(t_j) - g(t_{j-1})|
 $$
-para instantes de tempo $a \leq t_0 < t_1 < \ldots < t_n \leq b$. Caso $x$ seja diferenciável, isso pode ser estimado por
+para instantes de tempo $a \leq t_0 < t_1 < \ldots < t_n \leq b$. Caso $x$ seja continuamente diferenciável, isso pode ser estimado por
 $$
 \sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|\}(b-a), 
 $$
@@ -22,7 +22,16 @@ $$
 $$
 onde o supremo é tomado em relação à todas as partições possíveis do intervalo $[a, b]$.
 
-Caso a função seja Lipschitz contínua em $[a, b]$, com constante de Lipschitz $L \geq 0$, ainda podemos limitar essa quantidade:
+Na verdade, podemos ser mais precisos em relação à distância percorrida. Sendo $g$ continuamente diferenciável, a soma
+$$
+\sum_{j=1}^n |g'(\theta_j)|\Delta_j t
+$$
+é, de fato, uma soma de Riemman, cujo limite é a integral
+$$
+\int_a^b |g'(t)| \;\mathrm{d}t.
+$$
+
+Voltando à estimativa relativa a uma partição arbitrária, caso a função seja Lipschitz contínua em $[a, b]$, com constante de Lipschitz $L \geq 0$, ainda podemos limitar essa quantidade:
 $$
 \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 $$
@@ -60,7 +69,7 @@ $$
 \mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
-A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, $0 = t_0 < t_1 < \ldots < t_n = T$. Temos
+A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, $0 = t_0 < t_1 < \ldots < t_n = T.$ Temos
 $$
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
@@ -69,7 +78,7 @@ Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos 
 
 Vamos mostrar que, quando $k \rightarrow \infty$, o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
 
-O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que as malhas são refinamentos de malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.
+O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que uma determinada malha seja um refinamento das malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.
 
 ### Sobre a soma dos quadrados dos incrementos
 
@@ -117,20 +126,15 @@ $$
 \mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
 $$
 
-Dessa forma, vemos que
+Dessa forma, vemos que a soma dos quadrados dos incrementos
 $$
-\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \sim \mathcal{N}(T, 2\tau T).
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2
 $$
-
-Quando $k \rightarrow \infty$, temos $\tau \rightarrow 0$, de modo que a soma dos quadrados dos incrementos converge, em probabilidade, para a constante $T$:
+tem valor esperado constante igual a $T$ e variância $2\tau T.$ Quando $k \rightarrow \infty$, temos $\tau \rightarrow 0$, de modo que $S_k$ converge, em probabilidade, para a constante $T$:
 $$
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
 $$
-Agora, vamos explorar o fato das malhas serem em pontos diádicos. Para cada $k$, seja
-$$
-S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2.
-$$
-Obtivemos, acima, que $S_k \rigtharrow T$ em probabilidade. Agora, observe
+Agora, vamos explorar o fato das malhas serem em pontos diádicos. Observe que
 $$
 W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
 $$

@@ -146,3 +146,22 @@ $$
 ## E agora?
 
 As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo $\{Y_t\}_t$, uma função de outro processo $\{X_t\}_t$, da forma $g(t, X_t)$. De fato, muitas vezes $\{X_t\}_t$ é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo $\{Y_t\}_t$. Veremos como fazer isso a seguir. Veremos, em particular, um caminho em que a integral de $\int_0^t W_t \;\mathrm{d}W_t$, do processo de Wiener, coincide com o valor $W_t^2/2$ obtido acima (integral de Stratonovich); e outro caminho em que o resultado é diferente (integral de Itô).
+
+## Exercícios
+
+1. Seja $\{Y_t\}_{t \in [a,b]}$, $a < b$, um processo com caminhos amostros contínuos quase certamente. Seja $g:\mathbb{R}\rightarrow \mathbb{R}$ uma função continuamente diferenciável. Considere a integral de $g$ em relação a $\{Y_t\}_{t\in [a,b]}$ como definida acima:
+$$
+\int_a^b g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(b)Y_b - g(a)Y_a - \int_a^b g'(s)Y_s \;\mathrm{d}s.
+$$
+
+Mostre que essa integral possui as seguintes propriedades:
+
+a) Para qualquer constante $c\in\mathbb{R}$ e qualquer função continuamente diferenciável $g:\mathbb{R}\rightarrow\mathbb{R}$, vale
+$$
+\int_a^b c g(s)\;\mathrm{d}Y_s = c\int_a^b g(s)\;\mathrm{d}Y_s.
+$$
+
+b) Para quaisquer funções continuamente diferenciáveis $g_1, g_2:\mathbb{R} \rightarrow \mathbb{R}$, vale
+$$
+\int_a^b (g_1(s) + g_2(s)) \;\mathrm{d}Y_s = \int_a^b g_1(s) \;\mathrm{d}Y_s + \int_a^b g_2(s) \;\mathrm{d}Y_s.
+$$

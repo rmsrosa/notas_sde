@@ -2,6 +2,8 @@
 
 # {{ get_title }}
 
+> "To infinity and beyond!" - Buzz Lightyear, in the movie series *Toy Story* (Pixar Studios).
+
 O Lema de Borel-Cantelli é um dos resultados mais utilizados em Teoria da Medida e em Probabilidade. Com ele, podemos deduzir, a partir de certas estimativas, se um determinado conjunto é de medida nula ou não. Vejamos o resultado e algumas de suas consequências.
 
 ## Lema de Borel-Cantelli
