@@ -162,10 +162,39 @@ $$
 \begin{align*}
 R_M(1/2) = & \frac{1}{2}\sum_{j=1}^{n} (W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\\
 & - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\\
-& + \frac{1}{2}\sum_{j=1}^{n} \left(W_{t_j}^2 - W_{t_{j-1}}^2\right)\\
+& + \frac{1}{2}\sum_{j=1}^{n} \left(W_{t_j}^2 - W_{t_{j-1}}^2\right).
 \end{align*}
 $$
+A última soma é uma soma telescópica, que nos leva a
+$$
+R_M(1/2) = \frac{1}{2}\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\} + \frac{1}{2}W_T^2.
+$$
 
+Temos
+$$
+\begin{align*}
+\mathbb{E}&\left[\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\}\right] \\
+& = \sum_{j=1}^{n} \left\{\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] - \mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right]\right\} \\
+& = \sum_{j=1}^{n} \left\{ ((t_{j-1}+ t_j)/2 - t_{j-1}) - (t_j - (t_{j-1}+ t_j)/2)\right\} \\
+& = 0.
+\end{align*}
+$$
+e
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& = \mathbb{E}\left[\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right)\right)^2 \right] \\
+& = \ldots
+\end{align*}
+$$
+Portanto,
+$$
+\frac{1}{2}\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\} \rightarrow 0
+$$
+em distribuição, de modo que
+$$
+R_M(1/2) \rightarrow \frac{1}{2}W_T^2.
+$$
 
 ### Caso geral $0 \leq \lambda \leq 1$
 
