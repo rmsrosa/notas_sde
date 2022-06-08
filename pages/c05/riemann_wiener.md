@@ -240,8 +240,7 @@ Agora, observe que os dois primeiro termos se cancelam, de modo que
 $$
 \begin{align*}
 \mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
-& \quad + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2.
+& = 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2.
 \end{align*}
 $$
 Esse somatório pode ser visto como um somatório dos quadrados dos incrementos de uma malha mais fina. Mas, para simplificar, podemos simplesmente estimar
@@ -273,75 +272,48 @@ R_M(\lambda) \rightarrow \frac{1}{2}W_T^2 + \left(\lambda - \frac{1}{2}\right)T,
 $$
 em probabilidade.
 
-Para vermos isso, escrevemos
-$$
-W_{\theta_j^\lambda} = W_{\theta_j^\lambda} \pm (W_{t_j} + W_{t_{j-1}}).
-$$
 Pode-se verificar que
 $$
-R_M(\lambda) = \frac{1}{2}\sum_{j=1}^{n} \left(W_{t_j}^2 - W_{t_{j-1}}^2\right) - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 + \sum_{j=1}^{n} (W_{\theta_j} - W_{t_{j-1}})^2 + \sum_{j=1}^{n} (W_{t_j} - W_{\theta_j})(W_{\theta_j} - W_{t_{j-1}})
-$$
-
-Vamos analisar cada somatório acima.
-
-### Primeiro somatório
-
-O primeiro somatório é uma soma telescópica, resultando em
-$$
-\frac{1}{2}\sum_{j=1}^{n} \left(W_{t_j}^2 - W_{t_{j-1}}^2\right) = \frac{1}{2}W_T^2
-$$
-
-### Segundo somatório
-
-O segundo somatório envolve a soma das variações quadráticas da malha, cujo limite pode ser calculado da seguinte maneira. O valor esperado dessa soma é
-$$
-\mathbb{E}\left[ \sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \right] = \sum_{j=1}^{n} \mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = \sum_{j=1}^{n} (t_j - t_{j-1}) = T.
-$$
-
-A sua variância pode ser escrita na forma
-$$
 \begin{align*}
-\mathrm{Var}\left( \sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \right) & = \mathbb{E}\left[ \left(\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 - T \right)^2\right] \\
-& = \mathbb{E}\left[ \left(\sum_{j=1}^{n} \left((W_{t_j} - W_{t_{j-1}})^2 - (t_j - t_{j-1})\right)\right)^2 \right] \\
-& = \sum_{i,j=1}^{n} \mathbb{E}\left[ \left((W_{t_i} - W_{t_{i-1}})^2 - (t_i - t_{i-1})\right)\left((W_{t_j} - W_{t_{j-1}})^2 - (t_j - t_{j-1})\right)\right] \\
-& = \sum_{i,j=1}^{n} \left(\mathbb{E}\left[ (W_{t_i} - W_{t_{i-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right] - 2(t_i - t_{i-1})\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] + (t_i-t_{i-1})(t_j - t_{j-1}) \right) \\
-& = \sum_{i,j=1}^{n} \mathbb{E}\left[ (W_{t_i} - W_{t_{i-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right] - T^2.
+W_{\theta_j^\lambda}(W_{t_j} - W_{t_{j-1}}) & = \frac{1}{2} (W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2} (W_{t_j} - W_{t_{j-1}}) ^2 \\
+& \quad + (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 + (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}}).
 \end{align*}
 $$
-
-Para $i \neq j$, como os incrementos são independentes, temos
+De fato, isso segue de
 $$
-\mathbb{E}\left[ (W_{t_i} - W_{t_{i-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right] = \mathbb{E}\left[ (W_{t_i} - W_{t_{i-1}})^2\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = (t_i - t_{i-1})(t_j - t_{j-1}).
-$$
-Quando $i = j$, como $W_{t_j} - W_{t_{j-1}} \sim \mathcal{N}(0, t_j - t_{j-1})$, temos que o seu momento de ordem quatro é dado explicitamente por
-$$
-\mathbb{E}\left[ (W_{t_j} - W_{t_{j-1}})^4\right] = 3\mathbb{E}\left[ (W_{t_j} - W_{t_{j-1}})^2\right]^2 = 3(t_j - t_{j-1})^2.
+\begin{align*}
+\frac{b^2 - a^2 - (b - a)^2}{2} + (c - a)^2 + (b - c)(c - a) &  = ab - a^2 + c^2 - 2ac + a^2 + bc - ab - c^2 + ac \\
+& = bc - ac = c(b - a).
+\end{align*}
 $$
 Assim,
 $$
 \begin{align*}
-\sum_{i,j=1}^{n} \mathbb{E}\left[ (W_{t_i} - W_{t_{i-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right] & = \sum_{i \neq j}(t_i - t_{i-1})(t_j - t_{j-1}) + 3 \sum_j (t_j - t_{j-1})^2 \\
-& = \sum_{i,j} (t_i - t_{i-1})(t_j - t_{j-1}) + 2 \sum_j (t_j - t_{j-1})^2 \\
-& = T^2 + 2 \sum_j (t_j - t_{j-1})^2.
+R_M(\lambda) & = \frac{1}{2}\sum_{j=1}^{n} (W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \\
+& \quad + \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 + \sum_{j=1}^{n} (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}})
 \end{align*}
 $$
-Dessa forma,
+
+O primeiro termo é uma soma telescópica resultando em $W_T/2$. O segundo termo converge, em probabilidade, para $-T/2$. O terceiro termo, para $\lambda T$. E o último termo, para $0$. Isso demonstra o resultado. Deixamos os detalhes como exercício.
+
+## Considerações finais
+
+No caso mais geral, ao considerarmos um integrando da forma $g(t, X_t, Y_t)$ em relação a um processo $\{Y_t\}_t$, a escolha $\lambda = 0$ nos levará à *integral de Itô*. Nesse caso, temos, como obtido acima,
+$$
+\int_0^T W_t \;\mathrm{d}W_t = \frac{1}{2}W_T - \frac{1}{2}T.
+$$
+Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c05/integral_dualidade}}. A definição via dualidade coincide com a da escolha $\lambda = 1/2$, que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa sim coincida com a definição via dualidade, nos casos em que aquela está definida:
+$$
+\int_0^T W_t \circ\mathrm{d}W_t = \frac{1}{2}W_T.
+$$
+
+## Exercícios
+
+1. No caso geral $0\leq \lambda \leq 1$, mostre que, ao refinarmos a malha, os seguintes limites valem em probabilidade:
 $$
 \begin{align*}
-\mathrm{Var}\left( \sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \right) & = \sum_{j = 1}^{n} \mathbb{E}\left[ (W_{t_j} - W_{t_{j-1}})^4\right] - T^2 \\
-& = 2 \sum_{j = 1}^{n} (t_j - t_{j-1})^2 \\
-& \leq 2\max_j\{|t_j - t_{j-1}|\} \left( \sum_{j = 1}^{n} (t_j - t_{j-1})\right) \\
-& = 2T\max_j\{|t_j - t_{j-1}|\}.
+- \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 & \rightarrow -\frac{1}{2}T\\
+\sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 & \rightarrow \lambda T\\
+\sum_{j=1}^{n} (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}}) & \rightarrow 0.
 \end{align*}
 $$
-
-Conforme a malha é refinada, com $\max_j\{|t_j - t_{j-1}|\} \rightarrow 0$, vemos que o valor esperado do somatório permanece constante igual a $T/2$ e sua variância decresce para zero. Portanto, o somatório converge, em probabilidade, para a constante $T/2$:
-$$
-\frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{T}{2}.
-$$
-
-### Terceiro termo
-
-### Quarto termo
-
-### Limite
