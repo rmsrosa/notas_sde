@@ -1,4 +1,4 @@
-@def title = "Integrais de funções diferenciáveis com respeito a processos estocásticos"
+@def title = "Integrais via dualidade"
 
 # {{ get_title }}
 

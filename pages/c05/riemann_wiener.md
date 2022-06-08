@@ -1,4 +1,4 @@
-@def title = "Limites de somatórios de Riemann envolvendo o processo de Wiener"
+@def title = "Limites de somatórios à la Riemann-Stieltjes"
 
 # {{ get_title }}
 
