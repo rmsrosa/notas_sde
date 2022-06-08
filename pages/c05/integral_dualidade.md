@@ -14,7 +14,7 @@ $$
 
 Vamos estender isso para incluir a integral de funções $g(t, Y_t)$ continuamente diferenciáveis.
 
-## Integrando funções diferenciáveis
+## Integrando funções determinísticas diferenciáveis
 
 Considere, primeiramente, uma função real $g:\mathbb{R} \rightarrow\mathbb{R}$ continuamente diferenciável. Temos que $\{g(t)Y_t\}_t$ também é um processo continuamente diferenciável, com derivada dada quase sempre por
 $$
@@ -46,6 +46,8 @@ Essa definição de integral foi proposta por Paley, Wiener e Zygmund (veja Evan
 
 Nesse momento, estamos interpretando o lado direito da fórmula de integração por partes como uma outra forma de representar o termo à esquerda. Essa dupla representação é comumente denominada de representação dual. Ou de dualidade. Nesse sentido, dizemos que estamos usando essa dualidade para estender o conceito de integral. É uma definição por dualidade.
 
+### Exemplo
+
 No caso de integrarmos com respeito a um processo de Wiener $\{W_t\}_{t\geq 0}$, temos que o valor esperado da integral é nulo:
 $$
 \mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}Y_s\right] = g(t)\mathbb{E}[W_t] - g(0)\mathbb{E}[W_0] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
@@ -72,54 +74,9 @@ $$
 \mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) = -\int_0^{t_1} \int_0^t g'(t)g(s)\;\mathrm{d}s\;\mathrm{d}t = - \int_0^{t_1}\int_s^{t_1} g'(t)g(s) \;\mathrm{d}t\;\mathrm{d}s = \int_0^{t_1} g(s)^2\;\mathrm{d}s.
 $$
 
-## Composições diferenciáveis
+## Integrando composições diferenciáveis
 
-Podemos adaptar essa ideia para o caso de uma composição com o processo $\{Y_t\}_t$. Para isso, considere, novamente, uma função real $g:\mathbb{R} \rightarrow\mathbb{R}$ continuamente diferenciável. Defina $G:\mathbb{R} \rightarrow\mathbb{R}$ como sendo uma primitiva qualquer de $g$. Temos que $\{G(Y_t)\}_t$ também é um processo continuamente diferenciável e vale
-$$
-G(Y_t) = G(Y_0) + \int_0^t g(Y_s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s.
-$$
-
-Novamente, podemos pensar nessa integral como uma integral de Riemann-Stieltjes e escrever
-$$
-G(Y_t) = G(Y_0) + \int_0^t g(Y_s) \;\mathrm{d}Y_s.
-$$
-
-Vamos ver, agora, como podemos estender essa integral ao caso em que o processo $\{Y_t\}_t$ não tenha caminhos de variação limitada, como é o caso do processo de Wiener. Para isso, vamos, no momento, continuar assumindo que os caminhos amostrais são continuamente diferenciáveis.
-
-Assim, sendo $g$ continuamente diferenciável, podemos usar integração por partes (em cada caminho amostral) e escrever
-$$
-G(Y_t) = G(Y_0) + g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
-$$
-Substituindo $G(Y_t)$, obtemos a *fórmula de integração por partes*
-$$
-\int_0^t g(Y_s) \;\mathrm{d}Y_s = g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
-$$
-
-Agora, observe que, caso $\{Y_t\}_t$ tenha caminhos amostrais apenas contínuos, o lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir uma integral com respeito a esse processo através da fórmula a direita, novamente usando essa ideia de dualidade.
-
-Mais precisamente, **para $g:\mathbb{R}\rightarrow \mathbb{R}$ continuamente diferenciável e $\{Y_t\}_t$ um processo real com caminhos amostrais contínuos quase certamente, definimos a integral de $g(Y_t)$ com respeito a $\{Y_t\}_t$ por**
-$$
-\int_0^t g(Y_s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
-$$
-
-No caso de $g$ ser constante igual a $1$, recuperamos a identidade inicial, mas válida agora em um sentido um pouco mais geral, já que os caminhos amostrais do processo bastam ser contínuos:
-$$
-Y_t - Y_0 = \int_0^t \;\mathrm{d}Y_s.
-$$
-
-Já se $g$ for a identidade, então podemos tomar $G(y) = y^2/2$ e obter
-$$
-\int_0^t Y_s \;\mathrm{d}Y_s = \frac{1}{2}Y_t^2 - \frac{1}{2}Y_0^.
-$$
-
-No caso particular de um processo de Wiener, temos
-$$
-\int_0^t W_s \;\mathrm{d}W_s = \frac{1}{2}W_t^2.
-$$
-
-## Composição não-autônoma
-
-Considere, agora, uma função real $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ continuamente diferenciável. Integrando-se essa função em relação apenas à variável $y$, obtemos uma primitiva de $g$, em relação a $y$, ou seja, obtemos uma função $G:\mathbb{R}^2 \rightarrow \mathbb{R}$ tal que
+Podemos adaptar essa ideia para o caso de uma composição com o processo $\{Y_t\}_t$. Mais precisamente, considere uma função real $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ continuamente diferenciável. Integrando-se essa função em relação apenas à variável $y$, obtemos uma primitiva de $g$, em relação a $y$, ou seja, obtemos uma função $G:\mathbb{R}^2 \rightarrow \mathbb{R}$ tal que
 $$
 g(t, y) = \partial_y G(t, y).
 $$
@@ -139,14 +96,52 @@ $$
 G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g(s, Y_s)\;\mathrm{d}Y_s.
 $$
 
-Como antes, **assumindo $\{Y_t\}_t$ com caminhos amostrais contínuos e $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ uma função real continuamente diferenciável, definimos,** por dualidade
+Agora, observe que, caso $\{Y_t\}_t$ tenha caminhos amostrais apenas contínuos, a primeira integral no lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir a segunda integral, com respeito a esse processo, através dos termos restantes, usando novamente a ideia de dualidade.
+
+No entanto, como está fórmula não será válida em geral, vamos usar uma notação ligeiramente diferente para a integral obtida dessa maneira.
+
+Assim, **assumindo $\{Y_t\}_t$ com caminhos amostrais contínuos e $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ uma função real continuamente diferenciável, definimos,** por dualidade
 $$
-\int_0^t g(s, Y_s)\;\mathrm{d}Y_s = G(t, Y_t) - G(0, Y_0) - \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s.
+\int_0^t g(s, Y_s)\circ\mathrm{d}Y_s = G(t, Y_t) - G(0, Y_0) - \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s.
+$$
+
+Observe o símbolo "$\circ$" utilizado na integração. Esse símbolo será novamente utilizado quando definirmos a *integral no sentido de Stratonovich.* Para essa integral, a fórmula acima também será válida, nesse caso especial de integrando da forma $g(s, Y_s)$. Mas a integral de Stratonovich será válida para funções mais gerais. Essa integral difere da *integral de Itô*, que será mais usada por nós e para a qual a fórmula acima não é válida.
+
+### Caso independente de $y$
+
+No caso em que $g(t, y) = g(t)$ independe de $y$, temos $G(t, y) = g(t)y$ e recuperamos a integral anterior, também definida por dualidade:
+$$
+\int_0^t g(s)\circ\mathrm{d}Y_s = g(t)Y_t - g(0) Y_0 - \int_0^t g(s) Y_s \;\mathrm{d}s.
+$$
+
+### Caso independente de $t$
+
+No caso em que $g(t, y) = g(y)$ independe de $t$, a fórmula acima se reduz a
+$$
+\int_0^t g(Y_s)\circ\mathrm{d}Y_s = G(Y_t) - G(Y_0),
+$$
+onde $G$ é uma primitiva de $g$.
+
+### Exemplos
+
+No caso de $g$ ser constante igual a $1$, recuperamos a identidade inicial e a igualdade das duas integrais definidas por dualidade:
+$$
+\int_0^t \mathrm{d}Y_s = Y_t - Y_0 = \int_0^t 1\circ\mathrm{d}Y_s.
+$$
+
+Já se $g(t,y) = g(y) = y$, então podemos tomar $G(t, y) = y^2/2$ e obter
+$$
+\int_0^t Y_s \circ\mathrm{d}Y_s = \frac{1}{2}Y_t^2 - \frac{1}{2}Y_0^2.
+$$
+
+No caso particular de um processo de Wiener, temos
+$$
+\int_0^t W_s \circ\mathrm{d}W_s = \frac{1}{2}W_t^2.
 $$
 
 ## E agora?
 
-As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo $\{Y_t\}_t$, uma função de outro processo $\{X_t\}_t$, da forma $g(t, X_t)$. De fato, muitas vezes $\{X_t\}_t$ é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo $\{Y_t\}_t$. Veremos como fazer isso a seguir. Veremos, em particular, um caminho em que a integral de $\int_0^t W_t \;\mathrm{d}W_t$, do processo de Wiener, coincide com o valor $W_t^2/2$ obtido acima (integral de Stratonovich); e outro caminho em que o resultado é diferente (integral de Itô).
+As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo $\{Y_t\}_t$, uma função de outro processo $\{X_t\}_t$, da forma $g(t, X_t)$. De fato, muitas vezes $\{X_t\}_t$ é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo $\{Y_t\}_t$. Veremos como fazer isso a seguir, através das integrais de Itô e de Stratonovich.
 
 ## Exercícios
 
