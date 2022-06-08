@@ -36,6 +36,51 @@ Como $f$ é contínuo, cada $\omega \mapsto f(t_{j-1}, X_{t_{j-1}}(\omega))$ é 
 
 Finalmente, para quase todo $\omega$, $Y^n(\omega)$ é a soma de Riemann da integral de Riemann $Y(\omega)$. Portanto, $Y^n(\omega)$ converge para $Y(\omega)$, para quase todo $\omega$. Assim, vemos que $Y$ é o limite pontual das funções mensurávels $Y^n$. Como o limite de funções mensuráveis reais é mensurável, segue que $Y$ é mensurável. Portanto, $Y$ é uma variável aleatória.
 
+## Exemplo
+
+Para exemplificar, vamos examinar
+$$
+\int_0^T W_t \;\mathrm{d}t.
+$$
+
+Como os caminhos amostrais são contínuos, essa integral é dada, quase certamente, pela integral de Riemann dos caminhos. Pela unicidade dos limites, essa integral é a mesma que a integral do limite em probabilidade das somas de Riemann do processo:
+$$
+\int_0^T W_t \;\mathrm{d}t = \lim \sum_{j=1}^{n} W_{t_{j-1}} (t_j - t_{j-1}).
+$$
+Observe que
+$$
+\mathbb{E}\left[ \sum_{j=1}^{n} W_{t_{j-1}} (t_j - t_{j-1})\right] = \sum_{j=1}^{n} \mathbb{E}\left[W_{t_{j-1}}\right] (t_j - t_{j-1}) = 0.
+$$
+Por sua vez,
+$$
+\begin{align*}
+\mathbb{E}\left[ \left(\sum_{j=1}^{n} W_{t_{j-1}} (t_j - t_{j-1})\right)^2\right] & = \mathbb{E}\left[ \left(\sum_{i=1}^{n} W_{t_{i-1}} (t_i - t_{i-1})\right)\left(\sum_{j=1}^{n} W_{t_{j-1}} (t_j - t_{j-1})\right)\right] \\
+& = \sum_{i,j=1}^{n} \mathbb{E}\left[W_{t_{i-1}}W_{t_{j-1}}\right] (t_i - t_{i-1})(t_j - t_{j-1}) \\
+& = \sum_{i,j=1}^{n} \min\{t_{i-1}, t_{j-1}\} (t_i - t_{i-1})(t_j - t_{j-1}).
+\end{align*}
+$$
+No limite, isso converge para uma integral que pode ser facilmente calculada:
+$$
+\begin{align*}
+\mathbb{E}\left[ \left(\sum_{j=1}^{n} W_{t_{j-1}} (t_j - t_{j-1})\right)^2\right] & \rightarrow \int_0^T\int_0^T \min\{t, s\} \;\mathrm{d}s\,\mathrm{d}t = \frac{1}{3}T^3.
+\end{align*}
+$$
+
+Portanto,
+$$
+\int_0^T W_t \;\mathrm{d}t
+$$
+é uma variável aleatória com média zero e variância $T^3/3$. Observe, finalmente, que os somatórios de Riemann são combinações lineares de variáveis aleatórias normais, portanto são, também, normais. No limite, obtemos uma variável aleatória normal, com média zero e variância $T^3/3$. Logo,
+$$
+\int_0^T W_t \;\mathrm{d}t \sim \mathcal{N}\left(0, \frac{T}{3}\right).
+$$
+
+Da mesma forma,
+$$
+\int_0^t W_s \;\mathrm{d}s, \quad t \geq 0,
+$$
+nos dá um processo estocástico Gaussiano, cujas marginais tem média zero e variância $t^3/3$.
+
 ## Processos integrais
 
 Sob as mesmas hipóteses em $f$ e $\{X_t\}_{t\in [a, b]}$, podemos, também, considerar as integrais
