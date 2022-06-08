@@ -30,19 +30,21 @@ $$
 \int_0^t g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s = \int_0^t g(s)\;\mathrm{d}Y_s.
 $$
 
-Dessa forma, podemos escrever
+Dessa forma, podemos escrever a *fórmula de integração por partes*
 $$
 \int_0^t g(s)\;\mathrm{d}Y_s = g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
 $$
 
 Observe, agora, que o lado direito não involve a derivada do processo $\{Y_t\}_t$ e faz sentido mesmo quando os seus caminhos amostrais são apenas contínuos. Com isso, podemos tomar o lado direito como a definição da integral à esquerda nesse caso mais geral.
 
-Ou seja, para uma função real $g:\mathbb{R}\rightarrow \mathbb{R}$ continuamente diferencial e um processo $\{Y_t\}_t$ com caminhos amostrais contínuos quase sempre, definimos a integral de $g$ com respeito a esse processo por
+Ou seja, **para uma função real $g:\mathbb{R}\rightarrow \mathbb{R}$ continuamente diferencial e um processo $\{Y_t\}_t$ com caminhos amostrais contínuos quase sempre, definimos a integral de $g$ com respeito a esse processo por**
 $$
 \int_0^t g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
 $$
 
-Essa definição de integral foi proposta por Paley, Wiener e Zygmund (veja Evans (2013)).
+Essa definição de integral foi proposta por Paley, Wiener e Zygmund (veja Evans (2013)). Esta integral satisfaz as propriedades usuais de linearidade.
+
+Nesse momento, estamos interpretando o lado direito da fórmula de integração por partes como uma outra forma de representar o termo à esquerda. Essa dupla representação é comumente denominada de representação dual. Ou de dualidade. Nesse sentido, dizemos que estamos usando essa dualidade para estender o conceito de integral. É uma definição por dualidade.
 
 No caso de integrarmos com respeito a um processo de Wiener $\{W_t\}_{t\geq 0}$, temos que o valor esperado da integral é nulo:
 $$
@@ -88,18 +90,17 @@ Assim, sendo $g$ continuamente diferenciável, podemos usar integração por par
 $$
 G(Y_t) = G(Y_0) + g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
 $$
-Substituindo $G(Y_t)$, obtemos a identidade
+Substituindo $G(Y_t)$, obtemos a *fórmula de integração por partes*
 $$
 \int_0^t g(Y_s) \;\mathrm{d}Y_s = g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
 $$
 
-Agora, observe que, caso $\{Y_t\}_t$ tenha caminhos amostrais apenas contínuos, o lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir uma integral com respeito a esse processo através da fórmula a direita.
+Agora, observe que, caso $\{Y_t\}_t$ tenha caminhos amostrais apenas contínuos, o lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir uma integral com respeito a esse processo através da fórmula a direita, novamente usando essa ideia de dualidade.
 
-De fato, isso nos leva a definir
+Mais precisamente, **para $g:\mathbb{R}\rightarrow \mathbb{R}$ continuamente diferenciável e $\{Y_t\}_t$ um processo real com caminhos amostrais contínuos quase certamente, definimos a integral de $g(Y_t)$ com respeito a $\{Y_t\}_t$ por**
 $$
 \int_0^t g(Y_s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
 $$
-Essa definição vale no caso de $g:\mathbb{R}\rightarrow \mathbb{R}$ ser continuamente diferenciável e $\{Y_t\}_t$ ser um processo com caminhos amostrais contínuos quase sempre.
 
 No caso de $g$ ser constante igual a $1$, recuperamos a identidade inicial, mas válida agora em um sentido um pouco mais geral, já que os caminhos amostrais do processo bastam ser contínuos:
 $$
@@ -118,12 +119,12 @@ $$
 
 ## Composição não-autônoma
 
-Considere, agora, uma função real $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ continuamente diferenciável que seja a derivada parcial de uma função duas vezes continuamente diferenciável $G:\mathbb{R}^2 \rightarrow \mathbb{R}$:
+Considere, agora, uma função real $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ continuamente diferenciável. Integrando-se essa função em relação apenas à variável $y$, obtemos uma primitiva de $g$, em relação a $y$, ou seja, obtemos uma função $G:\mathbb{R}^2 \rightarrow \mathbb{R}$ tal que
 $$
 g(t, y) = \partial_y G(t, y).
 $$
 
-Temos que $\{G(t, Y_t)\}_t$ é um processo continuamente diferenciável, com derivada dada quase sempre por
+Temos que $\{G(t, Y_t)\}_t$ é um processo continuamente diferenciável, com derivada dada quase certamente por
 $$
 \frac{\mathrm{d}}{\mathrm{d}t} G(t, Y_t) = \partial_t G(t, Y_t) + \partial_y G(t, Y_t)\frac{\mathrm{d}Y_t}{\partial t} = \partial_t G(t, Y_t) + g(t, Y_t)\frac{\mathrm{d}Y_t}{\partial t}.
 $$
@@ -133,12 +134,12 @@ $$
 G(t, Y_t) = G(0, Y_0) + \int_0^t \left(\partial_s G(s, Y_s) + g(s, Y_s)\frac{\mathrm{d}Y_s}{\partial s}\right) \;\mathrm{d}s.
 $$
 
-Mais uma vez, como $\{Y_t\}_t$ é continuamente diferenciável, podemos reescrever a segunda integral como sendo de Riemann-Stieltjes:
+Mais uma vez, como $\{Y_t\}_t$ é continuamente diferenciável, podemos reescrever a segunda integral como sendo uma integral de Riemann-Stieltjes:
 $$
 G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g(s, Y_s)\;\mathrm{d}Y_s.
 $$
 
-Como antes, assumindo $\{Y_t\}_t$ com caminhos amostrais apenas contínuos, podemos definir
+Como antes, **assumindo $\{Y_t\}_t$ com caminhos amostrais contínuos e $g:\mathbb{R}^2 \rightarrow\mathbb{R}$ uma função real continuamente diferenciável, definimos,** por dualidade
 $$
 \int_0^t g(s, Y_s)\;\mathrm{d}Y_s = G(t, Y_t) - G(0, Y_0) - \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s.
 $$
