@@ -73,8 +73,8 @@ menu = [
         "pages/c04/simulacoes_wiener"
     ]
     "Integração estocástica" => [
-        "pages/c05/integral_processos_estocasticos"
-        "pages/c05/integral_continua_estocastica"
+        "pages/c05/integral_riemann"
+        "pages/c05/integral_dualidade"
         "pages/c05/riemann_wiener"
     ]
     "Equações diferenciais aleatórias" => [
