@@ -132,7 +132,7 @@ Aqui já vemos que o limite depende de $\lambda$.
 
 ### Caso $\lambda = 1/2$
 
-Este é um caso significativo. Vamos fazê-lo em separado, também. Temos
+Este também é um caso significativo, pois corresponde à integral no sentido de Stratonovich, que veremos em seguida. Temos
 $$
 R_M(1/2) = \sum_{j=1}^{n} W_{(t_{j-1}+ t_j)/2} (W_{t_j} - W_{t_{j-1}}).
 $$
@@ -170,7 +170,7 @@ $$
 R_M(1/2) = \frac{1}{2}\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\} + \frac{1}{2}W_T^2.
 $$
 
-Temos
+Vamos, agora, mostrar que o termo restante converge para zero. Primeiramente, temos o valor esperado
 $$
 \begin{align*}
 \mathbb{E}&\left[\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\}\right] \\
@@ -179,39 +179,105 @@ $$
 & = 0.
 \end{align*}
 $$
-e
+Agora, a variância pode ser escrita como
 $$
 \begin{align*}
 \mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = \mathbb{E}\left[\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right)\right)^2 \right] \\
-& = \ldots
+& = \sum_{i,j=1}^{n}\mathbb{E}\left[\left((W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2 - (W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right) \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right] \\
+& = \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
+& \quad - \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
+& \quad - \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
+& \quad + \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right].
 \end{align*}
 $$
-Portanto,
+For $i \neq j$ in the first and last sums and for any $i, j$ in the second and third sums, the summands involve increments over disjoint intervals, hence independent. Thus,
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& = \sum_{i \neq j}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2\right]\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
+& \quad - \sum_{i,j=1}^n\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2\right]\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
+& \quad - \sum_{i,j=1}^n\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right]\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
+& \quad + \sum_{i \neq j}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right]\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
+& \quad + \sum_{j=1}^n\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^4\right] \\
+& \quad + \sum_{j=1}^n\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^4\right].
+\end{align*}
+$$
+The second order moments are the variance of the corresponding increments, which is the length of the interval. The fourth order moments are given in terms of the second order moments, since the increments are normal. Thus,
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& = \sum_{i\neq j}((t_{i-1}+ t_i)/2 - t_{i-1})((t_{j-1}+ t_j)/2 - t_{j-1}) \\
+& \quad - \sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})(t_j - (t_{j-1}+ t_j)/2) \\
+& \quad - \sum_{i,j=1}^n(t_i - (t_{i-1} + t_i)/2)((t_{j-1}+ t_j)/2 - t_{j-1}) \\
+& \quad + \sum_{i \neq j}(t_i - (t_{i-1} + t_i)/2)(t_j - (t_{j-1}+ t_j)/2) \\
+& \quad + 3\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
+& \quad + 3\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2.
+\end{align*}
+$$
+Isso pode ser reescrito como
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& = \sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})((t_{j-1}+ t_j)/2 - t_{j-1}) \\
+& \quad - \sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})(t_j - (t_{j-1}+ t_j)/2) \\
+& \quad - \sum_{i,j=1}^n(t_i - (t_{i-1} + t_i)/2)((t_{j-1}+ t_j)/2 - t_{j-1}) \\
+& \quad + \sum_{i,j=1}^n(t_i - (t_{i-1} + t_i)/2)(t_j - (t_{j-1}+ t_j)/2) \\
+& \quad + 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
+& \quad + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2
+\end{align*}
+$$
+Observe a simetria que nos permite ver que o primeiro e o quarto termo são idênticos, assim como o segundo e o terceiro. Assim,
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& = 2\sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})((t_{j-1}+ t_j)/2 - t_{j-1}) \\
+& \quad - 2\sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})(t_j - (t_{j-1}+ t_j)/2) \\
+& \quad + 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
+& \quad + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2
+\end{align*}
+$$
+Agora, observe que os dois primeiro termos se cancelam, de modo que
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& = 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
+& \quad + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2.
+\end{align*}
+$$
+Esse somatório pode ser visto como um somatório dos quadrados dos incrementos de uma malha mais fina. Mas, para simplificar, podemos simplesmente estimar
+$$
+\begin{align*}
+\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
+& \leq 4\sum_{j=1}^n(t_j - t_{j-1})^2 \\
+& \leq 4T\max_{j=1, \ldots, n}|t_j - t_{j-1}| \rightarrow 0.
+\end{align*}
+$$
+Dessa forma, vemos que
 $$
 \frac{1}{2}\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\} \rightarrow 0
 $$
-em distribuição, de modo que
+em probabilidade, de modo que
 $$
 R_M(1/2) \rightarrow \frac{1}{2}W_T^2.
 $$
 
 ### Caso geral $0 \leq \lambda \leq 1$
 
-Nesse caso, escrevemos
+Vimos, acima, que
 $$
-W_{\theta_j^\lambda} = W_{\theta_j^\lambda} \pm (W_{t_j} + W_{t_{j-1}})
+R_M(0) \rightarrow \frac{1}{2}W_T^2 - \frac{1}{2}T, \quad R_M(1/2) \rightarrow \frac{1}{2}W_T^2, \quad R_M(1) \rightarrow \frac{1}{2}W_T^2 + \frac{1}{2}T.
 $$
-de forma que
+Mais geralmente, para $0 \leq \lambda \leq 1$, vale
 $$
-W_{\theta_j^\lambda}(W_{t_j} - W_{t_{j-1}}) = W_{\theta_j^\lambda}(W_{t_j} - W_{t_{j-1}}) \pm (W_{t_j} + W_{t_{j-1}})
+R_M(\lambda) \rightarrow \frac{1}{2}W_T^2 + \left(\lambda - \frac{1}{2}\right)T,
 $$
+em probabilidade.
 
-Observe que
+Para vermos isso, escrevemos
 $$
-\frac{1}{2}(b^2 - a^2) - \frac{1}{2}(b - a)^2 + (\theta - a)^2 + (b - \theta)(\theta - a) = \theta (b - a).
+W_{\theta_j^\lambda} = W_{\theta_j^\lambda} \pm (W_{t_j} + W_{t_{j-1}}).
 $$
-Assim, para cada $j = 1, \ldots, n$, escrevemos
+Pode-se verificar que
 $$
 R_M(\lambda) = \frac{1}{2}\sum_{j=1}^{n} \left(W_{t_j}^2 - W_{t_{j-1}}^2\right) - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 + \sum_{j=1}^{n} (W_{\theta_j} - W_{t_{j-1}})^2 + \sum_{j=1}^{n} (W_{t_j} - W_{\theta_j})(W_{\theta_j} - W_{t_{j-1}})
 $$
