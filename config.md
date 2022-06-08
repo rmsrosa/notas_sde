@@ -76,6 +76,7 @@ menu = [
         "pages/c05/integral_riemann"
         "pages/c05/integral_dualidade"
         "pages/c05/riemann_wiener"
+        "pages/c05/integral_ito"
     ]
     "Equações diferenciais aleatórias" => [
         "pages/c06/pathwise_solutions"
