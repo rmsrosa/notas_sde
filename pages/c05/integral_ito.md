@@ -17,6 +17,10 @@ simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais
 
 ## Integrandos permitidos
 
-Não vamos, nesse momento, definir, de forma muito rigorosa, as condições necessárias para que a integral de Itô esteja bem definida. Mas uma condição essencial pode ser posta da seguinte modo informal:
+Não vamos, nesse momento, definir, de forma muito rigorosa, as condições necessárias para que a integral de Itô esteja bem definida. Os detalhes são bastante técnicos. Mas uma condição essencial pode ser posta do seguinte modo informal:
 
 > A cada instante $t \geq 0$, o integrando $H_t$ deve ser independente dos valores futuros $s \geq t$ do processo de Wiener.
+
+Podemos, por exemplo, integrar $\int W_t \;\mathrm{d}W_t$ nesse sentido, mas $\int W_{t + 1} \;\mathrm{d}W_t$ não é permitido.
+
+O motivo disso será visto em seguida.
