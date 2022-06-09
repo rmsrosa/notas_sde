@@ -112,6 +112,17 @@ $$
 Z_t = \int_0^t X_s \;\mathrm{d}s = \int_0^t  \frac{\mathrm{d}}{\mathrm{d}t}Z_s \;\mathrm{d}s.
 $$
 
+## Integração por partes
+
+Se $\{X_t\}_t$ e $\{Y_t\}_t$ são processos diferenciáveis, então $\{X_tY_t\}_t$ também é diferenciável, com
+$$
+X_TY_T = X_0Y_0 + \int_0^T \left(\frac{\mathrm{d}X_t}{\mathrm{d}t}Y_t + X_t \frac{\mathrm{d}Y_t}{\mathrm{d}t}\right) \;\mathrm{d}t.
+$$
+Portanto, vale a fórmula de integração por partes
+$$
+\int_0^T \frac{\mathrm{d}X_t}{\mathrm{d}t}Y_t \;\mathrm{d}t = X_TY_T - X_0Y_0 - \int_0^T X_t \frac{\mathrm{d}Y_t}{\mathrm{d}t} \;\mathrm{d}t
+$$
+
 ## Integrais em outros sentidos
 
 Podemos estender a integração acima em vários sentidos. Podemos pedir que $t \mapsto f(t, X_t(\omega))$ seja integrável a Riemann, sem necessariamente ser contínua. Também podemos pedir que seja apenas integrável à Lebesgue. Isso nos permite definir $Z(\omega)$ pontualmente. A questão mais delicada passa a ser se $Z$ é mensurável.

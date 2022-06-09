@@ -74,6 +74,7 @@ menu = [
     ]
     "Integração estocástica" => [
         "pages/c05/integral_riemann"
+        "pages/c05/integral_riemannstieltjes"
         "pages/c05/integral_dualidade"
         "pages/c05/riemann_wiener"
         "pages/c05/integral_ito"
