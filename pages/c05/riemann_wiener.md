@@ -113,7 +113,7 @@ $$
 \end{align*}
 $$
 
-## Caso $\lambda = 1$
+### Caso $\lambda = 1$
 
 Nesse caso, temos
 $$
