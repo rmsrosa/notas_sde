@@ -99,6 +99,20 @@ R_M(0) \rightarrow \frac{1}{2}W_T^2 - \frac{1}{2}T,
 $$
 no limite $\max_{j=1, \ldots, n}\{t_j - t_{j-1}\} \rightarrow 0$.
 
+Observe que, no limite,
+$$
+\mathbb{E}\left[ \frac{1}{2}W_T^2 - \frac{1}{2}T\right] = \frac{1}{2}\mathbb{E}[W_T^2] - \frac{1}{2}T = \frac{1}{2}T - \frac{1}{2}T = 0.
+$$
+Na verdade, o valor esperado do somatório já é nulo:
+$$
+\begin{align*}
+\mathbb{E}\left[\sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) \right] & = \sum_{j=1}^{n} \mathbb{E}\left[W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}})\right] \\
+& = \sum_{j=1}^{n} \mathbb{E}\left[W_{t_{j-1}}W_{t_j}\right] -\sum_{j=1}^{n} \mathbb{E}\left[W_{t_{j-1}}^2\right] \\
+& = \sum_{j=1}^{n} \min\{t_{j-1}, t_j\} -\sum_{j=1}^{n} t_{j-1} \\
+& = 0.
+\end{align*}
+$$
+
 ## Caso $\lambda = 1$
 
 Nesse caso, temos
@@ -136,28 +150,12 @@ Este também é um caso significativo, pois corresponde à integral no sentido d
 $$
 R_M(1/2) = \sum_{j=1}^{n} W_{(t_{j-1}+ t_j)/2} (W_{t_j} - W_{t_{j-1}}).
 $$
-Escrevemos
+
+Para $a, b, c$ reais quaisquer temos
 $$
-\begin{align*}
-W_{(t_{j-1}+ t_j)/2} & = W_{(t_{j-1}+ t_j)/2} \pm \frac{1}{2}\left(W_{t_{j-1}} + W_{t_j}\right) \\
-& = \frac{1}{2}\left(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}}\right) - \frac{1}{2}\left(W_{t_j} - W_{(t_{j-1}+ t_j)/2}\right) + \frac{1}{2}\left(W_{t_{j-1}} + W_{t_j}\right)
-\end{align*}
+(c - a)^2 - (b - c)^2 + (b^2 - a^2) = c^2 - 2ac + a^2 - b^2 + 2bc - c^2 + b^2 - a^2 = - 2ac + 2bc = 2c(b - a).
 $$
-e
-$$
-W_{t_j} - W_{t_{j-1}} = (W_{t_j} - W_{(t_{j-1}+ t_j)/2}) + (W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}}).
-$$
-Assim, temos
-$$
-\begin{align*}
-R_M(1/2) = & \frac{1}{2}\sum_{j=1}^{n} (W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})(W_{t_j} - W_{(t_{j-1}+ t_j)/2})\\
-& + \frac{1}{2}\sum_{j=1}^{n} (W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})\\
-& - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{(t_{j-1}+ t_j)/2})(W_{t_j} - W_{(t_{j-1}+ t_j)/2})\\
-& - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{(t_{j-1}+ t_j)/2})(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})\\
-& + \frac{1}{2}\sum_{j=1}^{n} (W_{t_{j-1}} + W_{t_j})\left(W_{t_j} - W_{t_{j-1}}\right)\\
-\end{align*}
-$$
-Observe que
+Aplicando isso a $a = W_{t_{j-1}}(\omega)$, $b = W_{t_j}(\omega)$ e $c = W_{(t_{j-1}+ t_j)/2}$, vemos que
 $$
 \begin{align*}
 R_M(1/2) = & \frac{1}{2}\sum_{j=1}^{n} (W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\\
@@ -183,14 +181,15 @@ Agora, a variância pode ser escrita como
 $$
 \begin{align*}
 \mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = \sum_{i,j=1}^{n}\mathbb{E}\left[\left((W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2 - (W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right) \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right] \\
+& = \sum_{i,j=1}^{n}\mathbb{E}\left[\left((W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2 - (W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right) \right. \\
+& \qquad\qquad \left.\left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right] \\
 & = \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
 & \quad - \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
 & \quad - \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
 & \quad + \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right].
 \end{align*}
 $$
-For $i \neq j$ in the first and last sums and for any $i, j$ in the second and third sums, the summands involve increments over disjoint intervals, hence independent. Thus,
+Para $i \neq j$ no primeiro e no último somatórios e para $i, j$ quaisquer no segundo e no terceiro somatórios, os termos envolvem incrementos em intervalos disjuntos, sendo, portanto, independentes. Assim,
 $$
 \begin{align*}
 \mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
@@ -202,7 +201,7 @@ $$
 & \quad + \sum_{j=1}^n\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^4\right].
 \end{align*}
 $$
-The second order moments are the variance of the corresponding increments, which is the length of the interval. The fourth order moments are given in terms of the second order moments, since the increments are normal. Thus,
+Os momentos de segunda ordem são as variâncias dos incrementos correspondentes. O momento de ordem quatro é dado em termos do momento de ordem dois, já que os incrementos são normais. Portanto,
 $$
 \begin{align*}
 \mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
@@ -272,18 +271,11 @@ R_M(\lambda) \rightarrow \frac{1}{2}W_T^2 + \left(\lambda - \frac{1}{2}\right)T,
 $$
 em probabilidade.
 
-Pode-se verificar que
+Como no caso do ponto médio, vale a relação
 $$
 \begin{align*}
 W_{\theta_j^\lambda}(W_{t_j} - W_{t_{j-1}}) & = \frac{1}{2} (W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2} (W_{t_j} - W_{t_{j-1}}) ^2 \\
 & \quad + (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 + (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}}).
-\end{align*}
-$$
-De fato, isso segue de
-$$
-\begin{align*}
-\frac{b^2 - a^2 - (b - a)^2}{2} + (c - a)^2 + (b - c)(c - a) &  = ab - a^2 + c^2 - 2ac + a^2 + bc - ab - c^2 + ac \\
-& = bc - ac = c(b - a).
 \end{align*}
 $$
 Assim,
@@ -302,7 +294,7 @@ No caso mais geral, ao considerarmos um integrando da forma $g(t, X_t, Y_t)$ em 
 $$
 \int_0^T W_t \;\mathrm{d}W_t = \frac{1}{2}W_T - \frac{1}{2}T.
 $$
-Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c05/integral_dualidade}}. A definição via dualidade coincide com a da escolha $\lambda = 1/2$, que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa sim coincida com a definição via dualidade, nos casos em que aquela está definida:
+Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c05/integral_dualidade}}. A definição via dualidade coincide com a escolha $\lambda = 1/2$, que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa, sim, coincide com a definição via dualidade, nos casos em que aquela está definida:
 $$
 \int_0^T W_t \circ\mathrm{d}W_t = \frac{1}{2}W_T.
 $$
