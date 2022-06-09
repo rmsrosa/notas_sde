@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Integrais de funções diferenciáveis com respeito a processos estocásticos</title>  
+   <title>Integrais via dualidade</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -143,19 +143,25 @@
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processs de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processos de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Integração estocástica</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de Riemann de processos estocásticos contínuos</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/integral_continua_estocastica">5.2. Integrais de funções diferenciáveis com respeito a processos estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/riemann_wiener">5.3. Limites de somatórios de Riemann envolvendo o processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/riemann_wiener">5.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Equações diferenciais aleatórias</li>
@@ -192,10 +198,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de Riemann de processos estocásticos contínuos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c05/riemann_wiener"><kbd>→</kbd> 5.3. Limites de somatórios de Riemann envolvendo o processo de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/riemann_wiener"><kbd>→</kbd> 5.4. Limites de somatórios à la Riemann-Stieltjes</a>
 </span>
     </p>
 </div>
@@ -206,7 +212,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5.2. Integrais de funções diferenciáveis com respeito a processos estocásticos</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.3. Integrais via dualidade</a></h1>
 <p>Quando \(\{Y_t\}_t\) é um processo estocástico continuamente diferenciável quase sempre, vimos que vale a fórmula</p>
 \[
 Y_t = Y_0 + \int_0^t \frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s.
@@ -216,7 +222,7 @@ Y_t = Y_0 + \int_0^t \frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s.
 Y_t = Y_0 + \int_0^t \mathrm{d}Y_s.
 \]
 <p>Vamos estender isso para incluir a integral de funções \(g(t, Y_t)\) continuamente diferenciáveis.</p>
-<h2 id="integrando_funções_diferenciáveis"><a href="#integrando_funções_diferenciáveis" class="header-anchor">Integrando funções diferenciáveis</a></h2>
+<h2 id="integrando_funções_determinísticas_diferenciáveis"><a href="#integrando_funções_determinísticas_diferenciáveis" class="header-anchor">Integrando funções determinísticas diferenciáveis</a></h2>
 <p>Considere, primeiramente, uma função real \(g:\mathbb{R} \rightarrow\mathbb{R}\) continuamente diferenciável. Temos que \(\{g(t)Y_t\}_t\) também é um processo continuamente diferenciável, com derivada dada quase sempre por</p>
 \[
 \frac{\mathrm{d}}{\mathrm{d}t} g(t)Y_t = g'(t)Y_t + g(t)\frac{\mathrm{d}Y_t}{\mathrm{d}t}.
@@ -229,16 +235,18 @@ g(t)Y_t = g(0)Y_0 + \int_0^t g'(s)Y_s + g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;
 \[
 \int_0^t g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s = \int_0^t g(s)\;\mathrm{d}Y_s.
 \]
-<p>Dessa forma, podemos escrever</p>
+<p>Dessa forma, podemos escrever a <em>fórmula de integração por partes</em></p>
 \[
 \int_0^t g(s)\;\mathrm{d}Y_s = g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
 \]
 <p>Observe, agora, que o lado direito não involve a derivada do processo \(\{Y_t\}_t\) e faz sentido mesmo quando os seus caminhos amostrais são apenas contínuos. Com isso, podemos tomar o lado direito como a definição da integral à esquerda nesse caso mais geral.</p>
-<p>Ou seja, para uma função real \(g:\mathbb{R}\rightarrow \mathbb{R}\) continuamente diferencial e um processo \(\{Y_t\}_t\) com caminhos amostrais contínuos quase sempre, definimos a integral de \(g\) com respeito a esse processo por</p>
+<p>Ou seja, <strong>para uma função real \(g:\mathbb{R}\rightarrow \mathbb{R}\) continuamente diferencial e um processo \(\{Y_t\}_t\) com caminhos amostrais contínuos quase sempre, definimos a integral de \(g\) com respeito a esse processo por</strong></p>
 \[
 \int_0^t g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
 \]
-<p>Essa definição de integral foi proposta por Paley, Wiener e Zygmund &#40;veja Evans &#40;2013&#41;&#41;.</p>
+<p>Essa definição de integral foi proposta por Paley, Wiener e Zygmund &#40;veja Evans &#40;2013&#41;&#41;. Esta integral satisfaz as propriedades usuais de linearidade.</p>
+<p>Nesse momento, estamos interpretando o lado direito da fórmula de integração por partes como uma outra forma de representar o termo à esquerda. Essa dupla representação é comumente denominada de representação dual. Ou de dualidade. Nesse sentido, dizemos que estamos usando essa dualidade para estender o conceito de integral. É uma definição por dualidade.</p>
+<h3 id="exemplo"><a href="#exemplo" class="header-anchor">Exemplo</a></h3>
 <p>No caso de integrarmos com respeito a um processo de Wiener \(\{W_t\}_{t\geq 0}\), temos que o valor esperado da integral é nulo:</p>
 \[
 \mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}Y_s\right] = g(t)\mathbb{E}[W_t] - g(0)\mathbb{E}[W_0] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
@@ -264,48 +272,12 @@ g(t)Y_t = g(0)Y_0 + \int_0^t g'(s)Y_s + g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;
 \[
 \mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) = -\int_0^{t_1} \int_0^t g'(t)g(s)\;\mathrm{d}s\;\mathrm{d}t = - \int_0^{t_1}\int_s^{t_1} g'(t)g(s) \;\mathrm{d}t\;\mathrm{d}s = \int_0^{t_1} g(s)^2\;\mathrm{d}s.
 \]
-<h2 id="composições_diferenciáveis"><a href="#composições_diferenciáveis" class="header-anchor">Composições diferenciáveis</a></h2>
-<p>Podemos adaptar essa ideia para o caso de uma composição com o processo \(\{Y_t\}_t\). Para isso, considere, novamente, uma função real \(g:\mathbb{R} \rightarrow\mathbb{R}\) continuamente diferenciável. Defina \(G:\mathbb{R} \rightarrow\mathbb{R}\) como sendo uma primitiva qualquer de \(g\). Temos que \(\{G(Y_t)\}_t\) também é um processo continuamente diferenciável e vale</p>
-\[
-G(Y_t) = G(Y_0) + \int_0^t g(Y_s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s.
-\]
-<p>Novamente, podemos pensar nessa integral como uma integral de Riemann-Stieltjes e escrever</p>
-\[
-G(Y_t) = G(Y_0) + \int_0^t g(Y_s) \;\mathrm{d}Y_s.
-\]
-<p>Vamos ver, agora, como podemos estender essa integral ao caso em que o processo \(\{Y_t\}_t\) não tenha caminhos de variação limitada, como é o caso do processo de Wiener. Para isso, vamos, no momento, continuar assumindo que os caminhos amostrais são continuamente diferenciáveis.</p>
-<p>Assim, sendo \(g\) continuamente diferenciável, podemos usar integração por partes &#40;em cada caminho amostral&#41; e escrever</p>
-\[
-G(Y_t) = G(Y_0) + g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
-\]
-<p>Substituindo \(G(Y_t)\), obtemos a identidade</p>
-\[
-\int_0^t g(Y_s) \;\mathrm{d}Y_s = g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
-\]
-<p>Agora, observe que, caso \(\{Y_t\}_t\) tenha caminhos amostrais apenas contínuos, o lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir uma integral com respeito a esse processo através da fórmula a direita.</p>
-<p>De fato, isso nos leva a definir</p>
-\[
-\int_0^t g(Y_s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(Y_t)Y_t - g(Y_0)Y_0 - \int_0^t g'(Y_s)Y_s \;\mathrm{d}s.
-\]
-<p>Essa definição vale no caso de \(g:\mathbb{R}\rightarrow \mathbb{R}\) ser continuamente diferenciável e \(\{Y_t\}_t\) ser um processo com caminhos amostrais contínuos quase sempre.</p>
-<p>No caso de \(g\) ser constante igual a \(1\), recuperamos a identidade inicial, mas válida agora em um sentido um pouco mais geral, já que os caminhos amostrais do processo bastam ser contínuos:</p>
-\[
-Y_t - Y_0 = \int_0^t \;\mathrm{d}Y_s.
-\]
-<p>Já se \(g\) for a identidade, então podemos tomar \(G(y) = y^2/2\) e obter</p>
-\[
-\int_0^t Y_s \;\mathrm{d}Y_s = \frac{1}{2}Y_t^2 - \frac{1}{2}Y_0^.
-\]
-<p>No caso particular de um processo de Wiener, temos</p>
-\[
-\int_0^t W_s \;\mathrm{d}W_s = \frac{1}{2}W_t^2.
-\]
-<h2 id="composição_não-autônoma"><a href="#composição_não-autônoma" class="header-anchor">Composição não-autônoma</a></h2>
-<p>Considere, agora, uma função real \(g:\mathbb{R}^2 \rightarrow\mathbb{R}\) continuamente diferenciável que seja a derivada parcial de uma função duas vezes continuamente diferenciável \(G:\mathbb{R}^2 \rightarrow \mathbb{R}\):</p>
+<h2 id="integrando_composições_diferenciáveis"><a href="#integrando_composições_diferenciáveis" class="header-anchor">Integrando composições diferenciáveis</a></h2>
+<p>Podemos adaptar essa ideia para o caso de uma composição com o processo \(\{Y_t\}_t\). Mais precisamente, considere uma função real \(g:\mathbb{R}^2 \rightarrow\mathbb{R}\) continuamente diferenciável. Integrando-se essa função em relação apenas à variável \(y\), obtemos uma primitiva de \(g\), em relação a \(y\), ou seja, obtemos uma função \(G:\mathbb{R}^2 \rightarrow \mathbb{R}\) tal que</p>
 \[
 g(t, y) = \partial_y G(t, y).
 \]
-<p>Temos que \(\{G(t, Y_t)\}_t\) é um processo continuamente diferenciável, com derivada dada quase sempre por</p>
+<p>Temos que \(\{G(t, Y_t)\}_t\) é um processo continuamente diferenciável, com derivada dada quase certamente por</p>
 \[
 \frac{\mathrm{d}}{\mathrm{d}t} G(t, Y_t) = \partial_t G(t, Y_t) + \partial_y G(t, Y_t)\frac{\mathrm{d}Y_t}{\partial t} = \partial_t G(t, Y_t) + g(t, Y_t)\frac{\mathrm{d}Y_t}{\partial t}.
 \]
@@ -313,16 +285,43 @@ g(t, y) = \partial_y G(t, y).
 \[
 G(t, Y_t) = G(0, Y_0) + \int_0^t \left(\partial_s G(s, Y_s) + g(s, Y_s)\frac{\mathrm{d}Y_s}{\partial s}\right) \;\mathrm{d}s.
 \]
-<p>Mais uma vez, como \(\{Y_t\}_t\) é continuamente diferenciável, podemos reescrever a segunda integral como sendo de Riemann-Stieltjes:</p>
+<p>Mais uma vez, como \(\{Y_t\}_t\) é continuamente diferenciável, podemos reescrever a segunda integral como sendo uma integral de Riemann-Stieltjes:</p>
 \[
 G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g(s, Y_s)\;\mathrm{d}Y_s.
 \]
-<p>Como antes, assumindo \(\{Y_t\}_t\) com caminhos amostrais apenas contínuos, podemos definir</p>
+<p>Agora, observe que, caso \(\{Y_t\}_t\) tenha caminhos amostrais apenas contínuos, a primeira integral no lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir a segunda integral, com respeito a esse processo, através dos termos restantes, usando novamente a ideia de dualidade.</p>
+<p>No entanto, como está fórmula não será válida em geral, vamos usar uma notação ligeiramente diferente para a integral obtida dessa maneira.</p>
+<p>Assim, <strong>assumindo \(\{Y_t\}_t\) com caminhos amostrais contínuos e \(g:\mathbb{R}^2 \rightarrow\mathbb{R}\) uma função real continuamente diferenciável, definimos,</strong> por dualidade</p>
 \[
-\int_0^t g(s, Y_s)\;\mathrm{d}Y_s = G(t, Y_t) - G(0, Y_0) - \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s.
+\int_0^t g(s, Y_s)\circ\mathrm{d}Y_s = G(t, Y_t) - G(0, Y_0) - \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s.
+\]
+<p>Observe o símbolo &quot;\(\circ\)&quot; utilizado na integração. Esse símbolo será novamente utilizado quando definirmos a <em>integral no sentido de Stratonovich.</em> Para essa integral, a fórmula acima também será válida, nesse caso especial de integrando da forma \(g(s, Y_s)\). Mas a integral de Stratonovich será válida para funções mais gerais. Essa integral difere da <em>integral de Itô</em>, que será mais usada por nós e para a qual a fórmula acima não é válida.</p>
+<h3 id="caso_independente_de_y"><a href="#caso_independente_de_y" class="header-anchor">Caso independente de \(y\)</a></h3>
+<p>No caso em que \(g(t, y) = g(t)\) independe de \(y\), temos \(G(t, y) = g(t)y\) e recuperamos a integral anterior, também definida por dualidade:</p>
+\[
+\int_0^t g(s)\circ\mathrm{d}Y_s = g(t)Y_t - g(0) Y_0 - \int_0^t g(s) Y_s \;\mathrm{d}s.
+\]
+<h3 id="caso_independente_de_t"><a href="#caso_independente_de_t" class="header-anchor">Caso independente de \(t\)</a></h3>
+<p>No caso em que \(g(t, y) = g(y)\) independe de \(t\), a fórmula acima se reduz a</p>
+\[
+\int_0^t g(Y_s)\circ\mathrm{d}Y_s = G(Y_t) - G(Y_0),
+\]
+<p>onde \(G\) é uma primitiva de \(g\).</p>
+<h3 id="exemplos"><a href="#exemplos" class="header-anchor">Exemplos</a></h3>
+<p>No caso de \(g\) ser constante igual a \(1\), recuperamos a identidade inicial e a igualdade das duas integrais definidas por dualidade:</p>
+\[
+\int_0^t \mathrm{d}Y_s = Y_t - Y_0 = \int_0^t 1\circ\mathrm{d}Y_s.
+\]
+<p>Já se \(g(t,y) = g(y) = y\), então podemos tomar \(G(t, y) = y^2/2\) e obter</p>
+\[
+\int_0^t Y_s \circ\mathrm{d}Y_s = \frac{1}{2}Y_t^2 - \frac{1}{2}Y_0^2.
+\]
+<p>No caso particular de um processo de Wiener, temos</p>
+\[
+\int_0^t W_s \circ\mathrm{d}W_s = \frac{1}{2}W_t^2.
 \]
 <h2 id="e_agora"><a href="#e_agora" class="header-anchor">E agora?</a></h2>
-<p>As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo \(\{Y_t\}_t\), uma função de outro processo \(\{X_t\}_t\), da forma \(g(t, X_t)\). De fato, muitas vezes \(\{X_t\}_t\) é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo \(\{Y_t\}_t\). Veremos como fazer isso a seguir. Veremos, em particular, um caminho em que a integral de \(\int_0^t W_t \;\mathrm{d}W_t\), do processo de Wiener, coincide com o valor \(W_t^2/2\) obtido acima &#40;integral de Stratonovich&#41;; e outro caminho em que o resultado é diferente &#40;integral de Itô&#41;.</p>
+<p>As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo \(\{Y_t\}_t\), uma função de outro processo \(\{X_t\}_t\), da forma \(g(t, X_t)\). De fato, muitas vezes \(\{X_t\}_t\) é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo \(\{Y_t\}_t\). Veremos como fazer isso a seguir, através das integrais de Itô e de Stratonovich.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Seja \(\{Y_t\}_{t \in [a,b]}\), \(a < b\), um processo com caminhos amostros contínuos quase certamente. Seja \(g:\mathbb{R}\rightarrow \mathbb{R}\) uma função continuamente diferenciável. Considere a integral de \(g\) em relação a \(\{Y_t\}_{t\in [a,b]}\) como definida acima:</p>
@@ -344,10 +343,10 @@ G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de Riemann de processos estocásticos contínuos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c05/riemann_wiener"><kbd>→</kbd> 5.3. Limites de somatórios de Riemann envolvendo o processo de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/riemann_wiener"><kbd>→</kbd> 5.4. Limites de somatórios à la Riemann-Stieltjes</a>
 </span>
     </p>
 </div>
@@ -363,7 +362,7 @@ G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g
         </div>
     
 
-    Last modified: June 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

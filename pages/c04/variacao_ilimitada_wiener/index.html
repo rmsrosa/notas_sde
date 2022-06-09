@@ -143,19 +143,25 @@
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processs de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processos de Wiener</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Integração estocástica</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/integral_processos_estocasticos">5.1. Integrais de Riemann de processos estocásticos contínuos</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/integral_continua_estocastica">5.2. Integrais de funções diferenciáveis com respeito a processos estocásticos</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/riemann_wiener">5.3. Limites de somatórios de Riemann envolvendo o processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/riemann_wiener">5.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Equações diferenciais aleatórias</li>
@@ -195,7 +201,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/simulacoes_wiener"><kbd>→</kbd> 4.6. Simulações de processs de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/simulacoes_wiener"><kbd>→</kbd> 4.6. Simulações de processos de Wiener</a>
 </span>
     </p>
 </div>
@@ -297,11 +303,14 @@
 \]
 <p>Assim,</p>
 \[
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2.
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] & = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2 \\
+& = \sum_{i, j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
+\end{align*}
 \]
 <p>Como a malha é uniforme, temos</p>
 \[
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n(n-1)\tau^2 + 3n\tau^2 = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
 \]
 <p>Assim, a variância é dada por</p>
 \[
@@ -367,7 +376,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
 <a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/simulacoes_wiener"><kbd>→</kbd> 4.6. Simulações de processs de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/simulacoes_wiener"><kbd>→</kbd> 4.6. Simulações de processos de Wiener</a>
 </span>
     </p>
 </div>
@@ -383,7 +392,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
         </div>
     
 
-    Last modified: June 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

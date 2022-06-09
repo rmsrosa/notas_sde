@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Relações entre equações estocásticas e equações aleatórias</title>  
+   <title>Integrais de Riemann-Stieltjes</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -198,10 +198,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/integral_dualidade"><kbd>→</kbd> 5.3. Integrais via dualidade</a>
 </span>
     </p>
 </div>
@@ -212,66 +212,47 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">1.7. Relações entre equações estocásticas e equações aleatórias</a></h1>
-<p>Em muitas situações, é possível transformar uma equação estocástica em uma aleatória, e vice-versa.</p>
-<h2 id="de_equações_aleatórias_para_estocásticas"><a href="#de_equações_aleatórias_para_estocásticas" class="header-anchor">De equações aleatórias para estocásticas</a></h2>
-<p>Considere uma equação diferencial aleatória da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.2. Integrais de Riemann-Stieltjes</a></h1>
+<p>No caso de um processo \(\{Y_t\}_{t\in [a, b]}\) cujos caminhos são, quase certamente, de variação limitada, podemos definir</p>
 \[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t),
+Z = \int_a^b f(t, X_t) \;\mathrm{d}Y_t,
 \]
-<p>e suponha que o processo \(\{\Lambda_t\}_t\) seja solução de uma equação diferencial estocástica</p>
+<p>onde \(\{X_t\}_{t \in [a, b]}\) é um processo estocástico real definido em um intervalo \([a, b]\subset \mathbb{R}\).</p>
+<p>Vamos considerar, principalmente, funções e processos em que</p>
+<ol>
+<li><p>\(f:[a, b]\times \mathbb{R} \rightarrow \mathbb{R}\) é contínuo; e</p>
+</li>
+<li><p>Quase certamente, os caminhos amostrais de \(\{X_t\}_{t\in [a,b]}\) são contínuos.</p>
+</li>
+</ol>
+<p>Sob essas condições, para quase todo \(\omega\), a função</p>
 \[
-\mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
+t \mapsto f(t, X_t(\omega))
 \]
-<p>para algum outro processo \(\{W_t\}_t\).</p>
-<p>Assim, formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,</p>
+<p>é contínua e limitada no intervalo compacto \(t\in [a, b]\). Portanto, a sua integral de Riemann-Stieltjes com respeito ao caminho de variação limitada \(t \mapsto Y_t(\omega)\) está bem definida. Dessa forma, podemos definir \(Z\) pontualmente, via essa integral:</p>
 \[
-\mathrm{d}\left(\begin{matrix} X_t \\ \Lambda_t \end{matrix}\right) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t) \end{matrix}\right) + \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t) \end{matrix}\right)\mathrm{d}W_t.
+Z(\omega) = \int_a^b f(s, X_s(\omega)) \;\mathrm{d}Y_s(\omega).
 \]
-<p>Este é um sistema da forma</p>
+<p>O conjunto em que o caminho amostral não é contínuo tem medida nula e, nele, podemos definir \(Z(\omega)\) como sendo zero ou qualquer outro valor.</p>
+<h2 id="integração_por_partes"><a href="#integração_por_partes" class="header-anchor">Integração por partes</a></h2>
+<p>Se \(\{X_t\}_t\) e \(\{Y_t\}_t\) são processos com caminhos aleatórios de variação limitada, então \(\{X_tY_t\}_t\) também tem seus caminhos de variação limitada.</p>
+<p>Dada uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\), temos</p>
 \[
-\mathrm{d}U_t = F(t, U_t) + \Sigma(t, U_t)\mathrm{d}W_t,
+X_TY_T - X_0Y_0 = \sum_{j=1}^n \left(X_{t_j}Y_{t_j} - X_{t_{j-1}}Y_{t_{j-1}}\right) = \sum_{j=1}^n \left((X_{t_j} - X_{t_{j-1}})Y_{t_j} + X_{t_{j-1}}(Y_{t_j} - Y_{t_{j-1}})\right)
 \]
-<p>onde </p>
+<p>Observe que, ao refinarmos a malha, obtemos, no lado direito, duas integrais de Riemann-Stieltjes:</p>
 \[
-U_t = \left(\begin{matrix} X_t \\ \Lambda_t\end{matrix}\right), \quad F(t, U_t) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t)\end{matrix}\right), \quad \Sigma(t, U_t) = \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t)\end{matrix}\right).
+X_TY_T - X_0Y_0 = \int_0^T Y_t \;\mathrm{d}X_t + \int_0^T X_t \;\mathrm{d}X_t.
 \]
-<p>Observe que o processo \(Y_t\) entra, na equação aleatória, como um termo externo, enquanto que, na equação estocástica, ela é uma variável dependente; uma &quot;incógnita&quot; da equação.</p>
-<h2 id="de_estocásticas_com_ruído_aditivo_para_aleatórias"><a href="#de_estocásticas_com_ruído_aditivo_para_aleatórias" class="header-anchor">De estocásticas com ruído aditivo para aleatórias</a></h2>
-<p>Considere uma equação diferencial estocástica com <strong>ruído aditivo</strong>, na forma</p>
-\[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
-\]
-<p>Observe que, aqui, estamos assumindo que o termo de ruído \(\sigma(t)\) é independente do processo \(X_t\), daí o termo &quot;aditivo&quot;. Caso contrário, sendo \(\sigma = \sigma(t, X_t)\), o termo de rúido é denominado <strong>multiplicativo.</strong></p>
-<p>No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o <strong>processo de Ornstein-Uhlenbeck</strong> \(\{O_t\}_t\), que satisfaz à equação diferencial estocástica</p>
-\[
-\mathrm{d}O_t = - O_t \mathrm{d}t + \sigma(t) \mathrm{d}W_t.
-\]
-<p>Considerando um &quot;mudança de variáveis&quot; para o processo \(Z_t = X_t - O_t\), temos, formalmente,</p>
-\[
-\mathrm{d}Z_t = \mathrm{d}X_t - \mathrm{d}O_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t + O_t \mathrm{d}t - \sigma(t) \mathrm{d}W_t = (f(t, X_t) + O_t)\mathrm{d}t,
-\]
-<p>o que nos leva, finalmente, à equação diferencial aleatória</p>
-\[
-\mathrm{d}Z_t = (f(t, Z_t + O_t) + O_t)\mathrm{d}t,
-\]
-<p>ou seja,</p>
-\[
-\frac{\mathrm{d}Z_t}{\mathrm{d}t} = g(t, Z_t, O_t),
-\]
-<p>com</p>
-\[
-g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
-\]
-<p>O caso multiplicativo em que o ruído é linear, i.e. \(\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t\), também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.</p>
+<p>Esta é a fórmula de integração por partes para a integral de Riemann-Stieltjes, aqui aplicada a integração envolvendo processos com caminhos de variação limitada, quase certamente.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/integral_dualidade"><kbd>→</kbd> 5.3. Integrais via dualidade</a>
 </span>
     </p>
 </div>
