@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), como integrar processos em relação a outros processos de variação limitada (Seção ???) e como integrar certas classes de funções em relação a processos que não são de variação ilimitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas de Riemann-Stieltjes não convergem quando tentamos integrar funções mais gerais (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar um certo somatório de Riemann-Stieltjes e obter uma noção de integral que esteja bem definida.
+Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c05/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas de Riemann-Stieltjes não convergem quando tentamos integrar funções mais gerais (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar somas paricias e obter uma noção de integral que esteja bem definida.
 
 No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico $\{H_t\}_{t\geq 0}$ e a integral é em relação a um processo de Wiener $\{W_t\}_{t\geq 0}$:
 $$
@@ -13,7 +13,7 @@ Observe que se $\{X_t\}_t$ é um processo estocástico e $g = g(t, x)$ é uma fu
 $$
 \int_0^T g(t, X_t)\;\mathrm{d}W_t
 $$
-simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais do tipo acima.
+simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais de um processo $\{H_t\}_t$.
 
 ## Integrandos permitidos
 
