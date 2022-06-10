@@ -86,5 +86,38 @@ $$
 
 ## Propriedade de Martingale
 
+## Relação com a definição via dualidade
 
+Na Seção {{link_section pages/c05/integral_dualidade}}, definimos a integral de uma função determinística $g=g(t)$ continuamente diferenciável em relação a um processo estocástico como o processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade
+$$
+\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+$$
 
+Por outro lado, podemos considerar $g(t)$ como um processo estocástico $H_t = g(t)$ e interpretar a integral como uma integral de Itô. É imediato deduzir que $\{H_t\}_{t\geq 0}$ é não antecipativo. Assim, como integral de Itô, temos
+$$
+\int_0^T g(t)\;\mathrm{d}W_t = \lim_{\max_j\{t_j - t_{j-1}\} \rightarrow 0} \sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}).
+$$
+
+Agora, observe que, para cada malha,
+$$
+\begin{align*}
+\sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}) & = \sum_{j=1}^n g(t_{j-1}) W_{t_j} - \sum_{j=0}^{n-1} g(t_j) W_{t_j} \\
+& = g(t_{n-1})W_{t_n} - g(0)W_0 - \sum_{j=1}^{n-1} W_{t_j} (g(t_j) - g(t_{j-1})) \\
+& = g(T)W_T - g(0)W_0 - (g(t_n)- g(t_{n-1}))W_{T} - \sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})).
+\end{align*}
+$$
+No limite do refinamento da malha, temos
+$$
+(g(t_n)- g(t_{n-1}))W_{T} \rightarrow 0
+$$
+e
+$$
+\sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})) \rightarrow \int_0^T W_t \;\mathrm{d}g = \int_0^T g'(t) W_t \;\mathrm{d}t
+$$
+
+Portanto, obtemos também para a integral de Itô que
+$$
+\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+$$
+
+Isso mostra que a integral de Itô, definida para processos mais gerais, coincide com a integral definida via dualidade.
