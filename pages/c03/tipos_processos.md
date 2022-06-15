@@ -162,20 +162,47 @@ Um exemplo é dado pela Gaussiana senoidal $X_t = \cos(at)Y_1 + \sin(at)Y_2$, on
 
 Processos de Wiener também são processos Gaussianos, como veremos a seguir.
 
-## Processos ou cadeias de Markov
+## Processos e cadeias de Markov
 
-**Processos de Markov**, também chamados de **cadeias de Markov**, são processos estocásticos em que a mudança de estado para um estado futuro, conhecendo-se o estado atual, não depende dos estados passados. Mais precisamente, se $\{X_t\}_{t\in I}$ é um processo aleatório, $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencem a $I$, e $E, E_1, \ldots, E_n$ são possíveis eventos, então, dados $X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n$, temos que a probabilidade de $X_{t_{n+1}} \in E$ só depende da informação dada no instante mais recente $t_n$, ou seja
+**Processos e cadeias de Markov** são processos estocásticos em que a mudança de estado para um estado futuro, conhecendo-se o estado atual, não depende dos estados passados. São frequentemente chamados de processos *sem memória*. 
+
+É comum distinguir entre processos discretos e contínuos, denominando os primeiros como **cadeias de Markov** e os últimos como **processos de Markov**, mas nem todos os autores fazem essa distinção; em muitos contextos, a denominação *cadeia de Markov* se refere a processos que podem ser discretos ou contínuos.
+
+No caso discreto, se $\{X_t\}_{t\in I}$ é um processo aleatório em um conjunto discredo $I$, $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencem a $I$, e $E, E_1, \ldots, E_n$ são possíveis eventos, então, dados $X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n$, temos que a probabilidade de $X_{t_{n+1}} \in E$ só depende da informação dada no instante mais recente $t_n$, ou seja
 $$
 \mathbb{P}(X_{t_{n+1}} \in E | X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n) = \mathbb{P}(X_{t_{n+1}} \in E | X_{t_n} \in E_n).
 $$
-No caso em que o conjunto de eventos é discreto, podemos escrever
+No caso em que o conjunto de eventos também é discreto, podemos escrever
 $$
 \mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
 $$
 
-Processos de Markov são chamados de *sem memória*. Processos de Markov podem ser contínuos ou discretos e o espaço de estados também pode ser contínuo ou discreto.
+A definição formal no caso em que o processo estocástico é contínuo é um pouco delicada, pois a condição requer envolver não apenas um número finito de instantes anteriores mas, sim, um contínuo de instantes $s \leq t$. Para isso, é necessário o conceito de *filtração*. Veremos isso em outro momento.
 
-O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O modelo de Einstein para o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Faremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.
+O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O processo de Wiener, modelando o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Veremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.
+
+## Martingales
+
+Processos do tipo Martingale são processos em que o valor esperado em um instante futuro é igual ao valor atual. Mais precisamente, no caso de $I$ discreto, um processo $\{X_t\}_{t\in I}$ é **Martingale** se
+$$
+\mathbb{E}\left[|X_t|\right] < \infty, \quad \forall t\in I,
+$$
+e se, dados instantes $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencentes a $I$ e dados eventos $E_1, \ldots, E_n$, vale
+$$
+\mathbb{E}\left[X_{t_{n+1}} | X_{t_1}\in E_1, \ldots, X_{t_n}\in E_n\right] = X_{t_n}.
+$$
+
+No caso contínuo, a segunda condição pode ser informalmente escrita na forma
+$$
+\mathbb{E}\left[X_{t + \tau} | \{X_s; s\in I, \;s\geq t\}\right] = X_t, \quad \forall \tau \geq 0.
+$$
+Formalmente, a condicional $\{X_s; s\in I, \;s\geq t\}$ deve ser escrita na forma
+$$
+\mathbb{E}\left[X_{t + \tau} | X \in E_t\right] = X_t, \quad \forall \tau \geq 0,
+$$
+para qualquer evento $E_t$ em uma $\sigma$-algebra $\mathcal{F}_t$ associada a uma filtração, como a **filtração natural** dada pela $\sigma$-algebra gerada por (i.e. a menor $\sigma$-algebra contendo) $\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}$.
+
+Em particular, um processo Martingale não depende de valores anteriores. Mas ele não é necessariamente um processo de Markov, pois outras informações estatísticas diferentes do valor esperado podem depender de informações anteriores. E processos de Markov não são necessariamente Martingales, pois o valor esperado só depende da informação atual mas pode ser diferente do estado atual do processo.
 
 ## Processos de Wiener
 
