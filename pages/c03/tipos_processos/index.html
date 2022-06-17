@@ -373,8 +373,17 @@ X_t = \cos(t + U), \quad t\in \mathbb{R},
 \[
 \mathbb{E}\left[X_{t + \tau} | X \in E_t\right] = X_t, \quad \forall \tau \geq 0,
 \]
-<p>para qualquer evento \(E_t\) em uma \(\sigma\)-algebra \(\mathcal{F}_t\) associada a uma filtração, como a <strong>filtração natural</strong> dada pela \(\sigma\)-algebra gerada por &#40;i.e. a menor \(\sigma\)-algebra contendo&#41; \(\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}\).</p>
-<p>Em particular, um processo Martingale não depende de valores anteriores. Mas ele não é necessariamente um processo de Markov, pois outras informações estatísticas diferentes do valor esperado podem depender de informações anteriores. E processos de Markov não são necessariamente Martingales, pois o valor esperado só depende da informação atual mas pode ser diferente do estado atual do processo.</p>
+<p>para qualquer \(\{X \in E_t\}\) em uma \(\sigma\)-algebra \(\mathcal{F}_t\) associada a uma filtração, como a <strong>filtração natural</strong> dada pela \(\sigma\)-algebra gerada por &#40;i.e. a menor \(\sigma\)-algebra contendo&#41; \(\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}\).</p>
+<p>O exemplo clássico de Martingale é o passeio aleatório. Se \(\{X_n\}_{n\in \mathbb{Z}^*}\) denota o passeio aleatório, então, dado \(X_n\), podemos ter \(X_{n+1} = X_n + 1\) ou \(X_n - 1\) com iguais probabilidades, de modo que</p>
+\[
+\mathbb{E}[X_{n+1}|X_n] = X_n, \qquad \forall n.
+\]
+<p>Além disso, o conhecimento de posições anteriores \(X_j\), \(j = 0, \ldots, n - 1\) não modifica esse valor esperado. Ou seja,</p>
+\[
+\mathbb{E}[X_{n+1}|A_n] = X_n, \qquad \forall n,
+\]
+<p>para qualquer \(A_n\) na filtração natural até \(n\).</p>
+<p>Um processo Martingale não depende de valores anteriores. Mas ele não é necessariamente um processo de Markov, pois outras informações estatísticas diferentes do valor esperado podem depender de informações anteriores. E processos de Markov não são necessariamente Martingales, pois o valor esperado só depende da informação atual mas pode ser diferente do estado atual do processo.</p>
 <h2 id="processos_de_wiener"><a href="#processos_de_wiener" class="header-anchor">Processos de Wiener</a></h2>
 <p>Um <strong>processo de Wiener</strong>, ou <strong>processo Browniano</strong>, é um processo estocástico real \(\{W_t\}_{t \geq 0}\) tal que, para algum \(x\_0\in \mathbb{R}\),</p>
 <ol>
