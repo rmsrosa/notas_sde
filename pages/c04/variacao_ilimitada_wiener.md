@@ -114,11 +114,14 @@ $$
 $$
 Assim,
 $$
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2.
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] & = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2 \\
+& = \sum_{i, j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
+\end{align*}
 $$
 Como a malha é uniforme, temos
 $$
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n(n-1)\tau^2 + 3n\tau^2 = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
 $$
 
 Assim, a variância é dada por

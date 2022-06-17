@@ -444,3 +444,10 @@ $$
 são interpolações dos processos discretos $\{X_d^n\}_{d\in D_n}$, i.e. $W_d^n = X_d^n$, para todo $d\in D_n$ e todo $n\in\mathbb{N}$.
 
 2. Sejam $\{W_t^k\}_{t \in [0, 1]}$, $k\in \mathbb{N}$, processos de Wiener, em $[0, 1]$, independentes. Faça os detalhes da demonstração de que $W_t = W_{t - [t]}^{[t]} + \sum_{k = 0}^{[t]-1} W_1^k$ é um processo de Wiener em $[0, \infty)$.
+
+3. Na construção, definimos $X_{d}^{n+1}$, para $d \in D_{n+1}\setminus D_n$, pela fórmula $(X_{d - 1/2^n}^n + X_{d + 1/2^n}^n)/2 + Z_d/2^{(n + 1)/2}$, com os $Z_d$'s sendo mutamente independentes. Essa construção não é arbitrária. Mostre que se $\{W_t\}_{t\geq 0}$ é um processo de Wiener e $0 \leq s < t,$ então
+$$
+\frac{W_s + W_t}{2} + W_{(t + s)/2}
+$$
+é independente de $W_\tau,$ para $\tau \leq s$ e $\tau \geq t$.
+

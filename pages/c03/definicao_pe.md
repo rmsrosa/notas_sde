@@ -4,13 +4,15 @@
 
 Um processo estocástico é, essencialmente, uma família de variáveis aleatórias $\{X_t\}_{t\in I}$, indexada por algum conjunto $I$. Usualmente, $t$ representa uma variável temporal. Vamos considerar, mais especificamente, apenas $I\subset \mathbb{R}$, e em duas situações específicas descritas abaixo.
 
-De acordo com a natureza de $I\subset \mathbb{R}$, dizemos que $\{X_t\}_{t\in I}$ é um **processo estocástico discreto** (e.g. $I = \mathbb{Z}$, ou $I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}$, ou $I = \mathbb{N}$, ou $I = \{(t_1, t_2, \ldots)\; t_j \in \mathbb{R}, \; t_j < t_{j+1}\}$) ou um **processo estocástico contínuo** (e.g. $I=\mathbb{R}$, ou $I=[0, \infty)$, ou qualquer intervalo $I\subset \mathbb{R}$).
+De acordo com a natureza de $I\subset \mathbb{R}$, dizemos que $\{X_t\}_{t\in I}$ é um **processo estocástico discreto** (se $I$ for enumerável, e.g. $I = \mathbb{Z}$, ou $I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}$, ou $I = \mathbb{N}$, ou $I = \{(t_1, t_2, \ldots)\; t_j \in \mathbb{R}, \; t_j < t_{j+1}\}$) ou um **processo estocástico contínuo** (se $I$ for um intervalo, e.g. $I=\mathbb{R}$, ou $I=[0, \infty)$, exceto quando for vazio ou formado por um único ponto).
 
 Os valores assumidos pelas variáveis aleatórias $X_t$ também podem ser contínuos ou discretos, finitos ou infinitos, mas a caracterização acima se refere ao conjunto de índices.
 
 A definição acima, porém, é um tanto vaga. Uma definição mais precisa de um **processo estocástico** $\{X_t\}_{t\in I}$ é a de que as variáveis aleatórias $X_t$ são funções definidas em um mesmo **espaço amostral** $(\Omega, \mathcal{A}, \mathbb{P})$ e assumindo valores em um mesmo **espaço de estados** $(\Sigma, \mathcal{E})$.
 
-Vale ressaltar que a função $X_t$ é uma função determinística, levando cada $\omega \in \Omega$ em um estado $X_t(\omega) \in \Sigma$. A incerteza vem da interpretação de que cada **realização** $X_t(\omega)$, ou cada conjunto de realizações, vem com uma certa probabilidade de ser observado. A análise, em si, é que é probabilística por natureza.
+Vale ressaltar que a função $X_t$ é uma função determinística, levando cada $\omega \in \Omega$ em um estado $X_t(\omega) \in \Sigma$. A incerteza vem da interpretação de que cada **realização** $X_t(\omega)$, ou cada conjunto de realizações, vem com uma certa probabilidade de ser *observado.* A análise, em si, é que é probabilística por natureza.
+
+Em relação aos conjuntos amostrais, definidos pela $\sigma$-álgebra $\mathcal{A}$, é necessário que cada $X_t$ seja uma variável aleatório em relação a essa $\sigma$-álgebra. Ou seja, para cada evento $E\in \mathcal{E}$, devemos ter $X^{-1}(E)\in \mathcal{A}$. No caso de $I$ e $\Sigma$ serem discretos, de $\Omega = \Sigma^I$ e de $\mathcal{E}=\mathcal{P}(\Sigma)$ ser o conjunto de todas as partes de $\Sigma$, então $\mathcal{A}$ será o conjunto de todas as partes de $\Omega$. Mas caso $I$ e/ou $\Sigma$ serem contínuos, essa $\sigma$-álgebra pode ser relativamente bem menor do que o conjunto de todas as partes de $\Omega$.
 
 Para cada $\omega\in \Omega$, a função $t \mapsto X_t(\omega)$ é chamada de **trajetória**, ou **caminho amostral**. É comum denotarmos um caminho por $x(t, \omega) = X_t(\omega)$. A distribuição de probabilidade nos dá não apenas a probabilidade de observarmos um determinado valor, em um determinado instante, mas também a probabilidade de observamos toda uma trajetória, ou trajetórias, ou partes dela. 
 

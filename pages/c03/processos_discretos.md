@@ -64,7 +64,7 @@ $$
 \end{cases}
 $$
 
-Saber a posição da partícula no instante $n$ nos dá a distribuição de probabilidades para a posiçãm em $n+1$, o que podemos escrever na forma
+Saber a posição da partícula no instante $n$ nos dá a distribuição de probabilidades para a posição em $n+1$, o que podemos escrever na forma
 $$
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
 $$

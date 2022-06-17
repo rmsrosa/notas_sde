@@ -1,4 +1,4 @@
-@def title = "Simulações de processs de Wiener"
+@def title = "Simulações de processos de Wiener"
 
 # {{ get_title }}
 

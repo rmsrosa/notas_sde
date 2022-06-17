@@ -6,13 +6,13 @@ As coisas começam a ficar mais interessantes quando consideramos mais de uma va
 
 ## Variáveis aleatórias multivariadas
 
-Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor $\mathbf{X} = (X_1, \ldots, X_n)$ (muitas vezes se considera um vetor coluna, na verdade) cujos elementos estão em um mesmo espaço de probabilidades, digamos $(\Omega, \mathcal{A}, \mathbb{P})$. Os espaços de eventos podem ser diferentes, de forma que $\Sigma = \Sigma_1 \times \cdots \times \Sigma_n$, com a $\sigma$-algebra $\mathcal{E}$ gerada por $\mathcal{E}_1 \times \cdots \times \mathcal{E}_n$. Tal objeto é chamado de **variável aleatória multivariada.** E a probabilidade $\mathbb{P}$ é chamada de **distribuição conjunta de probabilidades.**
+Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor $X = (X_1, \ldots, X_n)$ (muitas vezes se considera um vetor coluna, na verdade) cujos elementos estão em um mesmo espaço de probabilidades, digamos $(\Omega, \mathcal{A}, \mathbb{P})$. Os espaços de eventos podem ser diferentes, de forma que $\Sigma = \Sigma_1 \times \cdots \times \Sigma_n$, com a $\sigma$-algebra $\mathcal{E}$ gerada por $\mathcal{E}_1 \times \cdots \times \mathcal{E}_n$. Tal objeto é chamado de **variável aleatória multivariada.** E a probabilidade $\mathbb{P}$ é chamada de **distribuição conjunta de probabilidades.**
 
-A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos $\mathbb{E} \in \mathcal{E}$ acontecerem:
+A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos $E \in \mathcal{E}$ acontecerem:
 $$
-\mathbb{P}(\mathbb{X} \in \mathbb{E}).
+\mathbb{P}(X \in E).
 $$
-Quando o evento conjunto é da forma $\mathbb{E} = E_1 \times \ldots \times E_n$, podemos escrever
+Quando o evento conjunto é da forma $E = E_1 \times \ldots \times E_n$, podemos escrever
 $$
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n)
 $$
@@ -21,7 +21,7 @@ Também podemos extrair a probabilidade de realização de um evento para apenas
 $$
 \mathbb{P}(X_i \in E_i).
 $$
-Isso pode ser obtido da distribuição conjunta, considerando o evento $\mathbb{E} = E_1 \times \ldots \times E_n$, com $E_j = \Sigma_j$, para $i\neq j$.
+Isso pode ser obtido da distribuição conjunta, considerando o evento $\mathbb{E} = \Sigma_1 \times \ldots \Sigma_{i-1}\times E_i \times \Sigma_{i+1} \times \cdot \times \Sigma_n$.
 
 ## Exemplo
 

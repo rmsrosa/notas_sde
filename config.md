@@ -62,6 +62,7 @@ menu = [
         "pages/c03/processos_discretos"
         "pages/c03/processos_continuos"
         "pages/c03/tipos_processos"
+        "pages/c03/filtracao"
         "pages/c03/cadeias_markov"
     ]
     "Processos de Wiener" => [
@@ -73,9 +74,11 @@ menu = [
         "pages/c04/simulacoes_wiener"
     ]
     "Integração estocástica" => [
-        "pages/c05/integral_processos_estocasticos"
-        "pages/c05/integral_continua_estocastica"
+        "pages/c05/integral_riemann"
+        "pages/c05/integral_riemannstieltjes"
+        "pages/c05/integral_dualidade"
         "pages/c05/riemann_wiener"
+        "pages/c05/integral_ito"
     ]
     "Equações diferenciais aleatórias" => [
         "pages/c06/pathwise_solutions"

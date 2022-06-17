@@ -8,6 +8,8 @@
 
 A lei da gravitação de Newton é impiedosa. Se uma maçã cair do pé, é bom você não estar dormindo embaixo dela. Mas se a macieira estiver  na encosta de um morro e você estiver descansando lá embaixo no vale, há boas chances da maçã rolar e não lhe atingir. E quais seriam as chances dela parar, apetitosamente, bem ao seu lado?
 
+![Falling Apple](/assets/images/falling_apple.svg)
+
 Modelar a queda da maçã até o chão não é difícil. Por outro lado, modelar a maçã rolando da encosta é bem mais delicado. É extremamente difícil, pra não dizer impossível, levar em consideração todos os detalhes que afetam o rolar da maçã, como as imperfeições no terreno (grama, terra, pedras) e outros obstáculos ainda mais intangíveis (pequenos e grandes animais, chuvas, etc.).
 
 Nesses e em diversos outros fenômenos é fundamental levar em consideração fatores aleatórios. Seja em fenômenos quânticos, seja em fenômenos biológicos complexos, seja em problemas dependendo de fatores sociais, ou mesmo em problemas essencialmente mecânicos como esse.
