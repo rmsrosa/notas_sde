@@ -92,9 +92,16 @@ No caso discreto $I = \mathbb{N}$, basta pedir que $\mathcal{F}_1 \subset \mathc
 
 ## Processo adaptado
 
-Um processo $\{X_t\}_{t\in I}$ em $(\Omega, \mathcal{A}, \mathbb{P})$ é dito **adaptado** a uma filtração $\{\mathcal{F}_t\}_{t\in I}$ nesse espaço de probabilidades quando $X_t$ é $\mathcal{F}_t$-mensurável, para qualquer $t \in I$.
+Um processo $\{X_t\}_{t\in I}$ em $(\Omega, \mathcal{A}, \mathbb{P})$ é dito **adaptado** a uma filtração $\{\mathcal{F}_t\}_{t\in I}$ nesse espaço de probabilidades quando $X_t$ é $\mathcal{F}_t$-mensurável, para qualquer $t \in I$. Um tal processo também é dito **não-antecipativo,** em relação a essa filtração. De fato, qualquer evento $E$ observável por $X_t$ deve estar associado a um conjunto amostral $X_t^{-1}(E)$ em $\mathcal{F}_t$, sem necessitar de conjuntos nas $\sigma$-álgebras posteriores.
 
-Por exemplo, o passeio aleatório considerado acima está adaptado à filtração natural definida por ele.
+Por exemplo, o passeio aleatório considerado acima está adaptado à filtração natural definida por ele. De fato, qualquer processo é adaptado à sua filtração natural, por construção.
+
+Esse conceito é útil na definição formal de Martingale, onde exigimos, para ser uma Martingale, um determinado processo $\{X_t\}_t$ seja tal que 
+$$
+\mathbb{E}[|X_t|] < \infty \quad \textrm{e} \quad \mathbb{E}[X_{t + \tau} | A_t] = X_t, \; \forall A_t \in \mathcal{F}_t, \;\forall t < t + \tau \text{ em } I.
+$$
+
+No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo $\{H_t\}_t$ seja adaptado à filtração natural de outro processo, como o processo de Wiener $\{W_t\}_t$. Dessa forma, teremos boas propriedades da integral de Itô $\int_a^b H_t \;\mathrm{d}W_t$ de $\{H_t\}_t$ em relação a $\{W_t\}_t$.
 
 ## Filtração natural
 
