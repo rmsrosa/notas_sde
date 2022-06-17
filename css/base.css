@@ -182,7 +182,6 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: var(--black);
     line-height: 125%;
     margin-top: 1.2em;
     margin-bottom: 0.4em;
@@ -199,13 +198,18 @@
   
   h1 {
     font-size: 2.5em;
-  
   }
   
   h2 {
     font-size: 1.8em;
   }
-  
+
+  h2::before { 
+    content: "► ";
+    color: var(--accent);
+    font-weight: bold;
+  }
+
   h3 {
     font-size: 1.5em;
   }

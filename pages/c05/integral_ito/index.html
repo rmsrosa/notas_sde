@@ -122,7 +122,10 @@
     <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/filtracao">3.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.6. Processos de Markov</a></li>
     </div>
     <div class="menu-level-1">
     <li>4. Processos de Wiener</li>
@@ -224,10 +227,93 @@
 \]
 <p>simplesmente definindo \(H_t = g(t, X_t)\). Ou seja, basta considerarmos integrais de um processo \(\{H_t\}_t\).</p>
 <h2 id="integrandos_permitidos"><a href="#integrandos_permitidos" class="header-anchor">Integrandos permitidos</a></h2>
-<p>Não vamos, nesse momento, definir, de forma muito rigorosa, as condições necessárias para que a integral de Itô esteja bem definida. Mas uma condição essencial pode ser posta da seguinte modo informal:</p>
+<p>Não vamos, nesse momento, definir, de forma muito rigorosa, as condições necessárias para que a integral de Itô esteja bem definida. Os detalhes são bastante técnicos. Mas uma condição essencial pode ser posta do seguinte modo informal:</p>
 <blockquote>
 <p>A cada instante \(t \geq 0\), o integrando \(H_t\) deve ser independente dos valores futuros \(s \geq t\) do processo de Wiener.</p>
 </blockquote>
+<p>Podemos, por exemplo, integrar \(\int W_t \;\mathrm{d}W_t\) nesse sentido, mas \(\int W_{t + 1} \;\mathrm{d}W_t\) não é permitido.</p>
+<p>Vamos chamar essa condição de <strong>não-antecipativa</strong> <em>&#40;&quot;non-antecipating&quot;&#41;</em>. Uma definição mais formal envolve uma <em>filtração</em> das \(\sigma\)-álgebras e, nesse caso, dizemos que \(\{H_t\}_t\) está <em>adaptado</em> ao processo \(\{W_t\}_t\).</p>
+<p>Sob essa condição, a integral de Itô possui boas propriedades, como veremos a seguir.</p>
+<h2 id="incrementos"><a href="#incrementos" class="header-anchor">Incrementos</a></h2>
+<p>No que se segue, para simplificar a notação, dada uma partição \(t_0 < t_1 < \ldots < t_n\), escrevemos</p>
+\[
+\Delta W_j = W_{t_j} - W_{t_{j-1}}, \qquad j = 1, \ldots, n.
+\]
+<h2 id="valor_esperado_das_integrais_de_itô"><a href="#valor_esperado_das_integrais_de_itô" class="header-anchor">Valor esperado das integrais de Itô</a></h2>
+<p>Calculemos a esperança das somas de Riemann associadas à integral de Itô. Temos</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
+\]
+<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo, temos \(H_{t_{j-1}}\) independente de \(\Delta_j = W_{t_j} - W_{t_{j-1}}\), de modo que</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
+\]
+<p>Como o processo de Wiener tem valor esperado nulo, segue que \(\mathbb{E}\left[\Delta W_j\right] = 0\), de maneira que</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
+\]
+<p>No limite, obtemos que a integral de Itô de um processo não-antecipativo tem valor esperado nulo:</p>
+\[
+\mathbb{E}\left[\int_0^T H_t \;\mathrm{d}W_t\right] = 0.
+\]
+<h2 id="isometria_de_itô"><a href="#isometria_de_itô" class="header-anchor">Isometria de Itô</a></h2>
+<p>Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô:</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
+& = \sum_{i,j=1}^n\mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] \\
+& = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\Delta W_j^2\right]
+\end{align*}
+\]
+<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo e com \(i < j\), temos \(H_{t_{i-1}}\), \(H_{t_{j-1}}\) e \(\Delta W_i\) independente de \(\Delta W_j\), de modo que</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\right]\mathbb{E}\left[\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] \mathbb{E}\left[\Delta W_j^2\right]
+\end{align*}
+\]
+<p>Como</p>
+\[
+\mathbb{E}\left[\Delta W_j\right] = 0, \qquad \mathbb{E}\left[\Delta W_j^2\right] = t_j - t_{j-1},
+\]
+<p>temos</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] = \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] (t_j - t_{j-1}) = \mathbb{E}\left[\sum_j H_{t_{j-1}}^2 (t_j - t_{j-1})\right].
+\]
+<p>No limite quando a malha é refinada, o lado direito converge para uma integral de Riemann, nos dando a seguinte identidade, conhecida como <strong>isometria de Itô:</strong></p>
+\[
+\mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
+\]
+<h2 id="propriedade_de_martingale"><a href="#propriedade_de_martingale" class="header-anchor">Propriedade de Martingale</a></h2>
+<h2 id="relação_com_a_definição_via_dualidade"><a href="#relação_com_a_definição_via_dualidade" class="header-anchor">Relação com a definição via dualidade</a></h2>
+<p>Na Seção <a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a>, definimos a integral de uma função determinística \(g=g(t)\) continuamente diferenciável em relação a um processo estocástico como o processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade</p>
+\[
+\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+\]
+<p>Por outro lado, podemos considerar \(g(t)\) como um processo estocástico \(H_t = g(t)\) e interpretar a integral como uma integral de Itô. É imediato deduzir que \(\{H_t\}_{t\geq 0}\) é não antecipativo. Assim, como integral de Itô, temos</p>
+\[
+\int_0^T g(t)\;\mathrm{d}W_t = \lim_{\max_j\{t_j - t_{j-1}\} \rightarrow 0} \sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}).
+\]
+<p>Agora, observe que, para cada malha,</p>
+\[
+\begin{align*}
+\sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}) & = \sum_{j=1}^n g(t_{j-1}) W_{t_j} - \sum_{j=0}^{n-1} g(t_j) W_{t_j} \\
+& = g(t_{n-1})W_{t_n} - g(0)W_0 - \sum_{j=1}^{n-1} W_{t_j} (g(t_j) - g(t_{j-1})) \\
+& = g(T)W_T - g(0)W_0 - (g(t_n)- g(t_{n-1}))W_{T} - \sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})).
+\end{align*}
+\]
+<p>No limite do refinamento da malha, temos</p>
+\[
+(g(t_n)- g(t_{n-1}))W_{T} \rightarrow 0
+\]
+<p>e</p>
+\[
+\sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})) \rightarrow \int_0^T W_t \;\mathrm{d}g = \int_0^T g'(t) W_t \;\mathrm{d}t
+\]
+<p>Portanto, obtemos também para a integral de Itô que</p>
+\[
+\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+\]
+<p>Isso mostra que a integral de Itô, definida para processos mais gerais, coincide com a integral definida via dualidade.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -251,7 +337,7 @@
         </div>
     
 
-    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

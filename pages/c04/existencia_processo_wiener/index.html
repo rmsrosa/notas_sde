@@ -133,7 +133,10 @@
     <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/filtracao">3.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.6. Processos de Markov</a></li>
     </div>
     <div class="menu-level-1">
     <li>4. Processos de Wiener</li>
@@ -537,7 +540,13 @@ W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_
 <ol start="2">
 <li><p>Sejam \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos de Wiener, em \([0, 1]\), independentes. Faça os detalhes da demonstração de que \(W_t = W_{t - [t]}^{[t]} + \sum_{k = 0}^{[t]-1} W_1^k\) é um processo de Wiener em \([0, \infty)\).</p>
 </li>
+<li><p>Na construção, definimos \(X_{d}^{n+1}\), para \(d \in D_{n+1}\setminus D_n\), pela fórmula \((X_{d - 1/2^n}^n + X_{d + 1/2^n}^n)/2 + Z_d/2^{(n + 1)/2}\), com os \(Z_d\)&#39;s sendo mutamente independentes. Essa construção não é arbitrária. Mostre que se \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(0 \leq s < t,\) então</p>
+</li>
 </ol>
+\[
+\frac{W_s + W_t}{2} + W_{(t + s)/2}
+\]
+<p>é independente de \(W_\tau,\) para \(\tau \leq s\) e \(\tau \geq t\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -561,7 +570,7 @@ W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_
         </div>
     
 
-    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

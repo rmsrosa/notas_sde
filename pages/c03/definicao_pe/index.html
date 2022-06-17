@@ -122,7 +122,10 @@
     <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/filtracao">3.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.6. Processos de Markov</a></li>
     </div>
     <div class="menu-level-1">
     <li>4. Processos de Wiener</li>
@@ -214,10 +217,11 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">3.1. Conceitos essenciais</a></h1>
 <p>Um processo estocástico é, essencialmente, uma família de variáveis aleatórias \(\{X_t\}_{t\in I}\), indexada por algum conjunto \(I\). Usualmente, \(t\) representa uma variável temporal. Vamos considerar, mais especificamente, apenas \(I\subset \mathbb{R}\), e em duas situações específicas descritas abaixo.</p>
-<p>De acordo com a natureza de \(I\subset \mathbb{R}\), dizemos que \(\{X_t\}_{t\in I}\) é um <strong>processo estocástico discreto</strong> &#40;e.g. \(I = \mathbb{Z}\), ou \(I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}\), ou \(I = \mathbb{N}\), ou \(I = \{(t_1, t_2, \ldots)\; t_j \in \mathbb{R}, \; t_j < t_{j+1}\}\)&#41; ou um <strong>processo estocástico contínuo</strong> &#40;e.g. \(I=\mathbb{R}\), ou \(I=[0, \infty)\), ou qualquer intervalo \(I\subset \mathbb{R}\)&#41;.</p>
+<p>De acordo com a natureza de \(I\subset \mathbb{R}\), dizemos que \(\{X_t\}_{t\in I}\) é um <strong>processo estocástico discreto</strong> &#40;se \(I\) for enumerável, e.g. \(I = \mathbb{Z}\), ou \(I=\mathbb{Z}^* = \{0, 1, 2, \ldots\}\), ou \(I = \mathbb{N}\), ou \(I = \{(t_1, t_2, \ldots)\; t_j \in \mathbb{R}, \; t_j < t_{j+1}\}\)&#41; ou um <strong>processo estocástico contínuo</strong> &#40;se \(I\) for um intervalo, e.g. \(I=\mathbb{R}\), ou \(I=[0, \infty)\), exceto quando for vazio ou formado por um único ponto&#41;.</p>
 <p>Os valores assumidos pelas variáveis aleatórias \(X_t\) também podem ser contínuos ou discretos, finitos ou infinitos, mas a caracterização acima se refere ao conjunto de índices.</p>
 <p>A definição acima, porém, é um tanto vaga. Uma definição mais precisa de um <strong>processo estocástico</strong> \(\{X_t\}_{t\in I}\) é a de que as variáveis aleatórias \(X_t\) são funções definidas em um mesmo <strong>espaço amostral</strong> \((\Omega, \mathcal{A}, \mathbb{P})\) e assumindo valores em um mesmo <strong>espaço de estados</strong> \((\Sigma, \mathcal{E})\).</p>
-<p>Vale ressaltar que a função \(X_t\) é uma função determinística, levando cada \(\omega \in \Omega\) em um estado \(X_t(\omega) \in \Sigma\). A incerteza vem da interpretação de que cada <strong>realização</strong> \(X_t(\omega)\), ou cada conjunto de realizações, vem com uma certa probabilidade de ser observado. A análise, em si, é que é probabilística por natureza.</p>
+<p>Vale ressaltar que a função \(X_t\) é uma função determinística, levando cada \(\omega \in \Omega\) em um estado \(X_t(\omega) \in \Sigma\). A incerteza vem da interpretação de que cada <strong>realização</strong> \(X_t(\omega)\), ou cada conjunto de realizações, vem com uma certa probabilidade de ser <em>observado.</em> A análise, em si, é que é probabilística por natureza.</p>
+<p>Em relação aos conjuntos amostrais, definidos pela \(\sigma\)-álgebra \(\mathcal{A}\), é necessário que cada \(X_t\) seja uma variável aleatório em relação a essa \(\sigma\)-álgebra. Ou seja, para cada evento \(E\in \mathcal{E}\), devemos ter \(X^{-1}(E)\in \mathcal{A}\). No caso de \(I\) e \(\Sigma\) serem discretos, de \(\Omega = \Sigma^I\) e de \(\mathcal{E}=\mathcal{P}(\Sigma)\) ser o conjunto de todas as partes de \(\Sigma\), então \(\mathcal{A}\) será o conjunto de todas as partes de \(\Omega\). Mas caso \(I\) e/ou \(\Sigma\) serem contínuos, essa \(\sigma\)-álgebra pode ser relativamente bem menor do que o conjunto de todas as partes de \(\Omega\).</p>
 <p>Para cada \(\omega\in \Omega\), a função \(t \mapsto X_t(\omega)\) é chamada de <strong>trajetória</strong>, ou <strong>caminho amostral</strong>. É comum denotarmos um caminho por \(x(t, \omega) = X_t(\omega)\). A distribuição de probabilidade nos dá não apenas a probabilidade de observarmos um determinado valor, em um determinado instante, mas também a probabilidade de observamos toda uma trajetória, ou trajetórias, ou partes dela. </p>
 <p>Com as variáveis aleatórias definidas no mesmo espaço amostral, com medida de probabilidade \(\mathbb{P}\), podemos representar a probabilidade do processo assumir um determinado valor \(x_1\), em um certo instante \(t\), por</p>
 \[
@@ -266,7 +270,7 @@ F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{
         </div>
     
 
-    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

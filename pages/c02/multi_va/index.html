@@ -122,7 +122,10 @@
     <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.5. Processos de Markov</a></li>
+    <li><a href="/notas_sde/pages/c03/filtracao">3.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.6. Processos de Markov</a></li>
     </div>
     <div class="menu-level-1">
     <li>4. Processos de Wiener</li>
@@ -215,12 +218,12 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.7. Variáveis aleatórias multivariadas</a></h1>
 <p>As coisas começam a ficar mais interessantes quando consideramos mais de uma variável aleatória. Para que elas sejam consideradas juntas, é necessário que estejam definidas em um mesmo espaço de probabilidades. Isso aparece de forma natural, como veremos aqui.</p>
 <h2 id="variáveis_aleatórias_multivariadas"><a href="#variáveis_aleatórias_multivariadas" class="header-anchor">Variáveis aleatórias multivariadas</a></h2>
-<p>Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor \(\mathbf{X} = (X_1, \ldots, X_n)\) &#40;muitas vezes se considera um vetor coluna, na verdade&#41; cujos elementos estão em um mesmo espaço de probabilidades, digamos \((\Omega, \mathcal{A}, \mathbb{P})\). Os espaços de eventos podem ser diferentes, de forma que \(\Sigma = \Sigma_1 \times \cdots \times \Sigma_n\), com a \(\sigma\)-algebra \(\mathcal{E}\) gerada por \(\mathcal{E}_1 \times \cdots \times \mathcal{E}_n\). Tal objeto é chamado de <strong>variável aleatória multivariada.</strong> E a probabilidade \(\mathbb{P}\) é chamada de <strong>distribuição conjunta de probabilidades.</strong></p>
-<p>A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos \(\mathbb{E} \in \mathcal{E}\) acontecerem:</p>
+<p>Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor \(X = (X_1, \ldots, X_n)\) &#40;muitas vezes se considera um vetor coluna, na verdade&#41; cujos elementos estão em um mesmo espaço de probabilidades, digamos \((\Omega, \mathcal{A}, \mathbb{P})\). Os espaços de eventos podem ser diferentes, de forma que \(\Sigma = \Sigma_1 \times \cdots \times \Sigma_n\), com a \(\sigma\)-algebra \(\mathcal{E}\) gerada por \(\mathcal{E}_1 \times \cdots \times \mathcal{E}_n\). Tal objeto é chamado de <strong>variável aleatória multivariada.</strong> E a probabilidade \(\mathbb{P}\) é chamada de <strong>distribuição conjunta de probabilidades.</strong></p>
+<p>A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos \(E \in \mathcal{E}\) acontecerem:</p>
 \[
-\mathbb{P}(\mathbb{X} \in \mathbb{E}).
+\mathbb{P}(X \in E).
 \]
-<p>Quando o evento conjunto é da forma \(\mathbb{E} = E_1 \times \ldots \times E_n\), podemos escrever</p>
+<p>Quando o evento conjunto é da forma \(E = E_1 \times \ldots \times E_n\), podemos escrever</p>
 \[
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n)
 \]
@@ -228,7 +231,7 @@
 \[
 \mathbb{P}(X_i \in E_i).
 \]
-<p>Isso pode ser obtido da distribuição conjunta, considerando o evento \(\mathbb{E} = E_1 \times \ldots \times E_n\), com \(E_j = \Sigma_j\), para \(i\neq j\).</p>
+<p>Isso pode ser obtido da distribuição conjunta, considerando o evento \(\mathbb{E} = \Sigma_1 \times \ldots \Sigma_{i-1}\times E_i \times \Sigma_{i+1} \times \cdot \times \Sigma_n\).</p>
 <h2 id="exemplo"><a href="#exemplo" class="header-anchor">Exemplo</a></h2>
 <p>Por exemplo, considere um dado de quatro lados e um de seis. Ambos dados não viciados. Há \(4 \times 6 = 24\) combinações possíveis. O espaço amostral \(\Omega\) deverá ter &#40;pelo menos&#41; 24 elementos, cada combinação com uma determinada probabilidade.</p>
 <p>Podemos representar os resultado dos dados através de duas variáveis aleatórias, digamos \(X\) e \(Y\), com \(X\) para o resultado do lançamento do dado de quatro lados e \(Y\), para o de seis. Isoladamente, teríamos um espaço amostral de quatro elementos para \(X\) e um de seis para \(Y\). Mas em conjunto, temos uma variável multivariada \((X, Y)\) em um espaço amostral de 24 elementos. Mais explicitamente, podemos considerar</p>
@@ -301,7 +304,7 @@
         </div>
     
 
-    Last modified: June 09, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
