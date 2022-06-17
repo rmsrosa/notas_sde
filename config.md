@@ -62,6 +62,7 @@ menu = [
         "pages/c03/processos_discretos"
         "pages/c03/processos_continuos"
         "pages/c03/tipos_processos"
+        "pages/c03/filtracao"
         "pages/c03/cadeias_markov"
     ]
     "Processos de Wiener" => [
