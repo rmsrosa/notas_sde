@@ -200,9 +200,19 @@ Formalmente, a condicional $\{X_s; s\in I, \;s\geq t\}$ deve ser escrita na form
 $$
 \mathbb{E}\left[X_{t + \tau} | X \in E_t\right] = X_t, \quad \forall \tau \geq 0,
 $$
-para qualquer evento $E_t$ em uma $\sigma$-algebra $\mathcal{F}_t$ associada a uma filtração, como a **filtração natural** dada pela $\sigma$-algebra gerada por (i.e. a menor $\sigma$-algebra contendo) $\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}$.
+para qualquer $\{X \in E_t\}$ em uma $\sigma$-algebra $\mathcal{F}_t$ associada a uma filtração, como a **filtração natural** dada pela $\sigma$-algebra gerada por (i.e. a menor $\sigma$-algebra contendo) $\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}$.
 
-Em particular, um processo Martingale não depende de valores anteriores. Mas ele não é necessariamente um processo de Markov, pois outras informações estatísticas diferentes do valor esperado podem depender de informações anteriores. E processos de Markov não são necessariamente Martingales, pois o valor esperado só depende da informação atual mas pode ser diferente do estado atual do processo.
+O exemplo clássico de Martingale é o passeio aleatório. Se $\{X_n\}_{n\in \mathbb{Z}^*}$ denota o passeio aleatório, então, dado $X_n$, podemos ter $X_{n+1} = X_n + 1$ ou $X_n - 1$ com iguais probabilidades, de modo que
+$$
+\mathbb{E}[X_{n+1}|X_n] = X_n, \qquad \forall n.
+$$
+Além disso, o conhecimento de posições anteriores $X_j$, $j = 0, \ldots, n - 1$ não modifica esse valor esperado. Ou seja,
+$$
+\mathbb{E}[X_{n+1}|A_n] = X_n, \qquad \forall n,
+$$
+para qualquer $A_n$ na filtração natural até $n$.
+
+Um processo Martingale não depende de valores anteriores. Mas ele não é necessariamente um processo de Markov, pois outras informações estatísticas diferentes do valor esperado podem depender de informações anteriores. E processos de Markov não são necessariamente Martingales, pois o valor esperado só depende da informação atual mas pode ser diferente do estado atual do processo.
 
 ## Processos de Wiener
 
