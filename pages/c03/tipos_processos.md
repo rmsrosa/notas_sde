@@ -271,7 +271,11 @@ $$
 
 Observe que, por definição, dois incrementos $W_{t_3} - W_{t_2}$ e $W_{t_1} - W_{t_0}$ são independentes quando $t_3 > t_2 = t_1 > t_0$. Isso se estende ao caso em que $t_2 > t_1$, pois basta acrescentar $W_{t_2} - W_{t_1}$ que teremos três incrementos independentes $W_{t_3} - W_{t_2}$, $W_{t_2} - W_{t_1}$ e $W_{t_1} - W_{t_0}$, e quaisquer dois deles também são independentes. Mas os incrementos $W_{t_3} - W_{t_2}$ e $W_{t_1} - W_{t_0}$ não são independentes quando $t_0 < t_2 < t_1 < t_3$. De fato, nesse caso, temos
 $$
-\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
+\begin{align*}
+\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) & = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) \\
+& = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} \\
+& = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
+\end{align*}
 $$
 Novamente, vemos que, se $t_1 = t_2$, então essa correlação se anula.
 
