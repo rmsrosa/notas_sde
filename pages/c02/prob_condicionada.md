@@ -1,17 +1,31 @@
-@def title = "Identidades fundamentais"
+@def title = "Probabilidade condicionada"
 
 # {{ get_title }}
 
-Vejamos algumas identidades importantes em probabilidade que nos serão úteis ao longo do trabalho.
+O conceito de probabilidade condicionada é fundamental. Vejamos, aqui, alguns aspectos importantes sobre ele.
 
-## Lei da probabilidade condicionada
+## Conceito
 
-Se $A$ e $B$ são conjuntos mensuráveis segundo uma medida de probabilidade $\mathbb{P}$ e $\mathbb{P}(B) > 0$, então vale a fórmula
+A probabilidade condicionada diz respeito à probabilidade de um determinado evento acontecer, sabendo-se que um outro evento aconteceu. A probabilidade de um evento $A$ acontecer dado que um outro evento $B$ aconteceu é denotada por
+$$
+P(A | B).
+$$
+
+Note que isso é diferente da probabilidade conjunta $A \cap B$. Observe que temos duas possibilidades, ou $A$ ou não-$A$ e a soma das probabilidades desses eventos (condicionados a $B$ ou não) deve ser um. Já a soma das probabilidades conjuntas entre $B$ e cada um desses eventos deve ser igual à probabilidade de $B$. Ou seja, se $\Omega$ é o espaço amostral, então não-$A$ é dado por $\Omega \setminus A$. Assim, $A \cup (\textrm{não } A) = \Omega$. Devemos ter
+$$
+\mathbb{P}(A | B) + \mathbb{P}(\textrm{não } A | B) = 1.
+$$
+Por outro lado,
+$$
+\mathbb{P}(A \cap B) + \mathbb{P}((\textrm{não } A) \cap B) = \mathbb{P}(B).
+$$
+
+De fato, podemos ver a probabilidade condicionada a um evento $B$ como uma fração da probabilidade do evento $B$ ocorrer:
 $$
 \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
 $$
 
-Caso $\mathbb{P}(B) = 0$, então $\mathbb{P}(A | B)$ é considerado *indefinido*.
+É claro que é necessário que $\mathbb{P}(B) > 0$ para essa fórmula valer. Essa fórmula é conhecida como a **lei da probabilidade condicionada.**
 
 Por exemplo, seja $X$ uma variável aleatória com distribuição uniforme em $\Sigma = \{1, 2, \ldots, 9\}$. Desses, $\{2, 4, 6, 8\}$ são pares e $\{3, 6, 9\}$ são múltiplos de $3$. Assim,
 $$

@@ -48,7 +48,7 @@ menu = [
         "pages/c02/exemplos_va_discretas"
         "pages/c02/exemplos_va_continuas"
         "pages/c02/media_momentos"
-        "pages/c02/identidades"
+        "pages/c02/prob_condicionada"
         "pages/c02/desigualdades"
         "pages/c02/multi_va"
         "pages/c02/transformacoes"
