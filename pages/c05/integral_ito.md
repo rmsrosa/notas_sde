@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c05/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas de Riemann-Stieltjes não convergem quando tentamos integrar funções mais gerais (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar somas paricias e obter uma noção de integral que esteja bem definida.
+Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c05/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas de Riemann-Stieltjes não convergem quando tentamos integrar funções mais gerais (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar somas parciais e obter uma noção de integral que esteja bem definida.
 
 No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico $\{H_t\}_{t\geq 0}$ e a integral é em relação a um processo de Wiener $\{W_t\}_{t\geq 0}$:
 $$
@@ -20,8 +20,6 @@ simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais
 Não vamos, nesse momento, definir, de forma muito rigorosa, as condições necessárias para que a integral de Itô esteja bem definida. Os detalhes são bastante técnicos. Mas uma condição essencial pode ser posta do seguinte modo informal:
 
 > A cada instante $t \geq 0$, o integrando $H_t$ deve ser independente dos valores futuros $s \geq t$ do processo de Wiener.
-
-Podemos, por exemplo, integrar $\int W_t \;\mathrm{d}W_t$ nesse sentido, mas $\int W_{t + 1} \;\mathrm{d}W_t$ não é permitido.
 
 Vamos chamar essa condição de **não-antecipativa** *("non-antecipating")*. Uma definição mais formal envolve uma *filtração* das $\sigma$-álgebras e, nesse caso, dizemos que $\{H_t\}_t$ está *adaptado* ao processo $\{W_t\}_t$.
 
@@ -79,12 +77,44 @@ $$
 \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] = \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] (t_j - t_{j-1}) = \mathbb{E}\left[\sum_j H_{t_{j-1}}^2 (t_j - t_{j-1})\right].
 $$
 
-No limite quando a malha é refinada, o lado direito converge para uma integral de Riemann, nos dando a seguinte identidade, conhecida como **isometria de Itô:**
+No limite quando a malha é refinada, o somatório no lado direito converge para uma integral de Riemann do processo $\{H_t^2\}_t$, nos dando a seguinte identidade, conhecida como **isometria de Itô:**
 $$
 \mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
 $$
 
 ## Propriedade de Martingale
+
+Considerando o processo $\{S_t\}_{t\geq 0}$ definido por
+$$
+S_t = \int_0^t H_s \;\mathrm{d}W_s,
+$$
+segue que $\{S_t\}_{t\geq 0}$ é um Martingale.
+
+De fato, sejam $t \geq 0$, $\tau > 0$, $\{\mathcal{F}_t\}_{t\geq 0}$ a filtração natural do processo de Wiener $\{W_t\}_{t \geq 0}$ e $\{H_t\}_{t\geq 0}$ adaptado a essa filtração. Então,
+$$
+\begin{align*}
+\mathbb{E}\left[S_{t + \tau} | \mathcal{F}_t\right] & = \mathbb{E}\left[S_t + \int_t^{t+\tau}H_s\;\mathrm{d}W_s | \mathcal{F}_t\right] \\
+& = \mathbb{E}\left[S_t | \mathcal{F}_t\right] + \int_t^{t+\tau}\mathbb{E}\left[H_s\;\mathrm{d}W_s | \mathcal{F}_t\right].
+\end{align*}
+$$
+Como $H_s$ é independente de $\mathrm{d}W_s$, temos
+$$
+\mathbb{E}\left[H_s\;\mathrm{d}W_s | \mathcal{F}_t\right] = \mathbb{E}[H_s | \mathcal{F}_t]\;\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t].
+$$
+Como $\mathcal{F}_t$ é a filtração natural de $\{W_t\}_t$, então, para $s \geq t$, temos $\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t] = 0$, de modo que
+$$
+\int_t^{t+\tau}\mathbb{E}[H_s | \mathcal{F}_t]\;\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t] = 0.
+$$
+Por outro lado,
+$$
+\mathbb{E}\left[S_t | A_t\right] = S_t.
+$$
+Portanto,
+$$
+\mathbb{E}\left[S_{t + \tau} | \mathcal{F}_t\right]
+= S_t, \qquad \forall t \geq 0,
+$$
+mostrando que $\{S_t\}_{t\geq 0}$ é uma Martingale.
 
 ## Relação com a definição via dualidade
 
@@ -93,7 +123,7 @@ $$
 \int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
 $$
 
-Por outro lado, podemos considerar $g(t)$ como um processo estocástico $H_t = g(t)$ e interpretar a integral como uma integral de Itô. É imediato deduzir que $\{H_t\}_{t\geq 0}$ é não antecipativo. Assim, como integral de Itô, temos
+Por outro lado, podemos considerar $g(t)$ como um processo estocástico $H_t = g(t)$ e interpretar a integral como uma integral de Itô. Sendo $H_t = g(t)$ determinístico, segue que $\{H_t\}_{t\geq 0}$ é não antecipativo. Assim, como integral de Itô, temos
 $$
 \int_0^T g(t)\;\mathrm{d}W_t = \lim_{\max_j\{t_j - t_{j-1}\} \rightarrow 0} \sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}).
 $$
