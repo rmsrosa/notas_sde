@@ -94,7 +94,7 @@
     <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/identidades">2.5. Identidades fundamentais</a></li>
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
@@ -443,7 +443,11 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \]
 <p>Observe que, por definição, dois incrementos \(W_{t_3} - W_{t_2}\) e \(W_{t_1} - W_{t_0}\) são independentes quando \(t_3 > t_2 = t_1 > t_0\). Isso se estende ao caso em que \(t_2 > t_1\), pois basta acrescentar \(W_{t_2} - W_{t_1}\) que teremos três incrementos independentes \(W_{t_3} - W_{t_2}\), \(W_{t_2} - W_{t_1}\) e \(W_{t_1} - W_{t_0}\), e quaisquer dois deles também são independentes. Mas os incrementos \(W_{t_3} - W_{t_2}\) e \(W_{t_1} - W_{t_0}\) não são independentes quando \(t_0 < t_2 < t_1 < t_3\). De fato, nesse caso, temos</p>
 \[
-\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
+\begin{align*}
+\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) & = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) \\
+& = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} \\
+& = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
+\end{align*}
 \]
 <p>Novamente, vemos que, se \(t_1 = t_2\), então essa correlação se anula.</p>
 <p>Um processo de Wiener não é estacionário, pois, em particular, os processos \(W_t\) não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de \(\mathbb{E}[W_t] = 0\) ser constante, temos, para \(t, s\geq 0\) e \(\tau > 0\), que</p>
@@ -589,7 +593,7 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
         </div>
     
 
-    Last modified: June 17, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
