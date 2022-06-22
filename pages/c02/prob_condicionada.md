@@ -2,46 +2,43 @@
 
 # {{ get_title }}
 
-O conceito de probabilidade condicionada é fundamental. Vejamos, aqui, alguns aspectos importantes sobre ele.
+O conceito de probabilidade condicionada é fundamental. Invariavelmente, quando queremos saber a probabilidade de um determinado evento acontecer, temos outras informações à nossa disposição que podemos aproveitar.
 
 ## Conceito
 
-A probabilidade condicionada diz respeito à probabilidade de um determinado evento acontecer, sabendo-se que um outro evento aconteceu. A probabilidade de um evento $A$ acontecer dado que um outro evento $B$ aconteceu é denotada por
+A probabilidade condicionada diz respeito à probabilidade de um determinado evento ser realizado, assumindo-se a realização de um outro evento. A probabilidade de um determinado evento $A$ dado a realização de um outro evento $B$ é denotada por
 $$
 P(A | B).
 $$
 
-Note que isso é diferente da probabilidade conjunta $A \cap B$. Observe que temos duas possibilidades, ou $A$ ou não-$A$ e a soma das probabilidades desses eventos (condicionados a $B$ ou não) deve ser um. Já a soma das probabilidades conjuntas entre $B$ e cada um desses eventos deve ser igual à probabilidade de $B$. Ou seja, se $\Omega$ é o espaço amostral, então não-$A$ é dado por $\Omega \setminus A$. Assim, $A \cup (\textrm{não } A) = \Omega$. Devemos ter
-$$
-\mathbb{P}(A | B) + \mathbb{P}(\textrm{não } A | B) = 1.
-$$
-Por outro lado,
-$$
-\mathbb{P}(A \cap B) + \mathbb{P}((\textrm{não } A) \cap B) = \mathbb{P}(B).
-$$
+Note que isso é diferente da probabilidade conjunta $A \cap B$. De fato, se $A$ for o espaço $\Omega$ todo, então a probabilidade de $\Omega$ deve ser um. Ou seja, $\mathbb{P}(\Omega | B) = 1$. Por outro lado, $\mathbb{P}(\Omega \cap B) = \mathbb{P}(B)$.
 
-De fato, podemos ver a probabilidade condicionada a um evento $B$ como uma fração da probabilidade do evento $B$ ocorrer:
+Podemos ver a probabilidade condicionada a um evento $B$ como uma fração da probabilidade do evento $B$ ocorrer:
 $$
 \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
 $$
 
 É claro que é necessário que $\mathbb{P}(B) > 0$ para essa fórmula valer. Essa fórmula é conhecida como a **lei da probabilidade condicionada.**
 
-Por exemplo, seja $X$ uma variável aleatória com distribuição uniforme em $\Sigma = \{1, 2, \ldots, 9\}$. Desses, $\{2, 4, 6, 8\}$ são pares e $\{3, 6, 9\}$ são múltiplos de $3$. Assim,
+A definição, propriamente, de probabilidade condicionada é bem mais delicada. Veremos isso posteriormente. No momento, vamos seguir com a intuição.
+
+## Exemplos
+
+Seja $X$ uma variável aleatória com distribuição uniforme em $\Sigma = \{1, 2, \ldots, 9\}$. Desses, $\{2, 4, 6, 8\}$ são pares e $\{3, 6, 9\}$ são múltiplos de $3$. Assim,
 $$
-\mathbb{P}(X \textrm{ é par}) = \frac{4}{9} \quad \mathbb{P}(X \textrm{ é múltiplo de 3}) = \frac{3}{9} = \frac{1}{3}, \quad \mathbb{P}(X \textrm{ é par e múltiplo de 3}) = \frac{1}{9}.
+\mathbb{P}(X \textrm{ é par}) = \frac{4}{9}, \quad \mathbb{P}(X \textrm{ é múltiplo de 3}) = \frac{3}{9} = \frac{1}{3}, \quad \mathbb{P}(X \textrm{ é par e múltiplo de 3}) = \frac{1}{9}.
 $$
 Agora, sabendo-se que $X$ é múltiplo de $3$, quais as chances de $X$ ser par? Naturalmente, temos uma única possibilidade em três: $\{6\}$ em $\{3, 6, 9\}$, ou seja,
 $$
 \mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{1}{3}.
 $$
-Agora, usando a lei de probabilidade condicionada,
+Podemos obter esse mesmo resultado através da lei da probabilidade condicionada:
 $$
 \mathbb{P}(X \textrm{ é par } | X \textrm{ é múltiplo de 3}) = \frac{\mathbb{P}(X \textrm{ é par e múltiplo de 3})}{\mathbb{P}(X \textrm{ é múltiplo de 3})} = \frac{\displaystyle\frac{1}{9}}{\displaystyle\frac{1}{3}} = \frac{3}{9} = \frac{1}{3}.
 $$
 E quais as chances de $X$ ser múltiplo de três dado que é par?
 
-Um outro exemplo importante em que podemos usar probabilidade condicionada é em testes clínicos. Uma caso importante, que ficou em evidência, é na discussão da eficácia de vacinas. Considere um certo número de voluntários, digamos 1000, envolvidos em um certo ensaio clínico. Desses, 500 seguem o tratamento e 500 tomam placebo. Dos que tomam placebo, 20 desenvolvem sintomas da doença. Dos que seguem o tratamento, apenas 5 desenvolvem sintomas. Isso pode ser representado pela tabela a seguir.
+Um outro exemplo importante em que podemos usar probabilidade condicionada é em testes clínicos, como a da eficácia de vacinas, que ficou tanto em evidência com a Covid-19. Considere um certo número de voluntários, digamos 1000, envolvidos em um certo ensaio clínico. Desses, 500 seguem o tratamento e 500 tomam placebo. Dos que tomam placebo, 20 desenvolvem sintomas da doença. Dos que seguem o tratamento, apenas 5 desenvolvem sintomas. Isso pode ser representado pela tabela a seguir.
 
 |                | adoecem (A)  | não adoecem  |
 |:---------------|:------------:|:------------:|
@@ -73,25 +70,39 @@ Quando as chances de um evento $A$ acontecer independem de um outro evento $B$, 
 $$
 \mathbb{P}(A | B) = \mathbb{P}(A).
 $$
-Pela lei de probabilidade condicionada, se $\mathbb{P}(B) > 0$, temos, então, que
+Essa propriedade é recíproca, ou seja, $A$ independe de $B$ se, e somente se, $B$ independe de $A$, com
+$$
+\mathbb{P}(B | A) = \mathbb{P}(B).
+$$
+
+Observe que, pela lei da probabilidade condicionada, se $\mathbb{P}(B) > 0$, então, que
 $$
 \mathbb{P}(A) = \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)},
 $$
-ou seja,
+ou seja, assumindo-se $\mathbb{P}(B) > 0$, temos a caracterização
 $$
-\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B).
+\mathbb{P}(A | B) = \mathbb{P}(A) \quad \Leftrightarrow \quad \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B).
 $$
-Se $\mathbb{P}(B) = 0$, a igualdade acima é trivialmente válida.
 
-Se tivermos dois dados de seis faces, $A$ e $B$, com faces numeradas de $1$ a $6$, e $X$ é a variável aleatória obtida pelo resultado do lançamento de um dos dados escolhidos aleatoriamente com igual probabilidade, então as chances de tirarmos $3$ independe da escolha do dado. Já se um dos dados tem apenas quatro faces, numeradas de $1$ a $3$, então as chances de tirarmos $3$ depende da escolha do dado.
+Da mesma forma, se $\mathbb{P}(A) > 0$, então, 
+$$
+\mathbb{P}(B | A) = \mathbb{P}(B) \quad \Leftrightarrow \quad \mathbb{P}(B \cap A) = \mathbb{P}(B)\mathbb{P}(A).
+$$
+
+Em particular, se $\mathbb{P}(A), \mathbb{P}(B) > 0$, então
+$$
+\mathbb{P}(A | B) = \mathbb{P}(A) \quad \Leftrightarrow \quad \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B) \quad \Leftrightarrow \quad \mathbb{P}(B | A) = \mathbb{P}(B).
+$$
+
+Por exemplo, as chances do resultado de um dado não-viciado de seis faces dar um número menor ou igual a quatro é independente do número ser par ou ímpar e é sempre igual a dois terços. Já as chances do número ser menor ou igual a três depende: é igual a meio, se não soubermos a sua paridade, é igual a um terço, se o número for par, é igual a dois terços, se o número for ímpar.
 
 ## Lei da probabilidade total
 
-Um resultado importante em probabilidade pode ser interpretado como uma estratégia de *dividir para conquistar*. Digamos que $\mathbb{P}$ seja uma medida de probabilidade em um espaço amostral $\Omega$. Suponha que queiramos saber a medida de um determinado conjunto $A$. Suponha, ainda, que seja razoável dividir o espaço em subconjuntos disjuntos $B_1, \ldots, B_k$, ou seja, $\Omega = \cup_{j = 1}^k B_j$ e $B_i \cap B_j = \emptyset$, $i\neq j$, $i, j = 1, \ldots, k$. Então, vale a **lei de probabilidade total**
+Um resultado importante em probabilidade pode ser interpretado como uma estratégia de *dividir para conquistar*. Digamos que $\mathbb{P}$ seja uma medida de probabilidade em um espaço amostral $\Omega$. Suponha que queiramos saber a medida de um determinado conjunto $A$. Suponha, ainda, que seja razoável dividir o espaço em subconjuntos disjuntos $B_1, \ldots, B_k$, ou seja, $\Omega = \cup_{j = 1}^k B_j$ e $B_i \cap B_j = \emptyset$, $i\neq j$, $i, j = 1, \ldots, k$. Então, vale a **lei da probabilidade total**
 $$
 \mathbb{P}(A) = \mathbb{P}(A \cap B_1) + \ldots + \mathbb{P}(A \cap B_k).
 $$
-Juntando com a lei de probabilidade condicionada, podemos escrever
+Juntando com a lei da probabilidade condicionada, podemos escrever
 $$
 \mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_k)\mathbb{B_k}.
 $$
@@ -102,9 +113,13 @@ $$
 $$
 Ou, usando probabilidade condicionada,
 $$
-\mathbb{P}(X \textrm{ é múltiplo de 3}) \\
-= \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é par })\mathbb{P}(X \textrm{ é par}) + \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é ímpar })\mathbb{P}(X \textrm{ é ímpar}) \\
-= \frac{1}{4}\times\frac{4}{9} + \frac{2}{5}\times\frac{5}{9} = \frac{1}{9} + \frac{2}{9} = \frac{1}{3}.
+\begin{align*}
+\mathbb{P}(X \textrm{ é múltiplo de 3})
+& = \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é par })\mathbb{P}(X \textrm{ é par}) \\
+& \qquad + \mathbb{P}(X \textrm{ é múltiplo de 3} | X \textrm{ é ímpar })\mathbb{P}(X \textrm{ é ímpar}) \\
+& = \frac{1}{4}\times\frac{4}{9} + \frac{2}{5}\times\frac{5}{9} = \frac{1}{9} + \frac{2}{9} \\
+& = \frac{1}{3}.
+\end{align*}
 $$
 
 Seguindo na linha de ensaios clínicos, digamos que haja um novo teste para a detecção de alguma doença endêmica que, estima-se, atinge 1% da população. Ensaios clínicos indicam que o teste possui 96% de acerto, ou seja, que, em cada 100 pessoas com a doença, o teste dá resultado positivo em 96 delas. E que ele tem 0,1% de falsos positivos. Ou seja, de cada 1000 pessoas sem a doença, o teste dá positivo em 1 delas. Se uma pessoa qualquer faz o teste, quais as chances dela testar positivo, independentemente de ter ou não a doença?
@@ -157,7 +172,7 @@ Ou seja, as chances de alguém que testou positivo realmente ter a doença são 
 
 ## Exercício
 
-1. Mostre, na lei de probabilidade total, que basta que $\mathbb{P}(B_1 \cup \cdots \cup B_k) = 1$ e $\mathbb{P}(B_i \cap B_j) = 0$, para $i, j = 1, \ldots, k$, com $i \neq j$.
+1. Mostre, na lei da probabilidade total, que basta que $\mathbb{P}(B_1 \cup \cdots \cup B_k) = 1$ e $\mathbb{P}(B_i \cap B_j) = 0$, para $i, j = 1, \ldots, k$, com $i \neq j$.
 
 1. Em um torneio de xadrez, podemos classificar os jogadores em níveis A, B e C. Além de você, há 3 jogadores de nível A, 4 de nível B e 8 de nível C. O seu primeiro oponente é sorteado aleatoriamente dentre esses. As suas chances de vitória são $\mathbb{P}(\textrm{vitória} | \textrm{oponente nível A}) = 0.5$, $\mathbb{P}(\textrm{vitória} | \textrm{oponente nível B}) = 0.65$ e $\mathbb{P}(\textrm{vitória} | \textrm{oponente nível C}) = 0.8$. Quais as suas chances de vitória no primeiro jogo?
 
