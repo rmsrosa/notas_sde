@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Relações entre equações estocásticas e equações aleatórias</title>  
+   <title>Propriedades da integral de Itô</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -204,10 +204,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/pathwise_solutions"><kbd>→</kbd> 6.1. Soluções por caminhos</a>
 </span>
     </p>
 </div>
@@ -218,66 +218,140 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">1.7. Relações entre equações estocásticas e equações aleatórias</a></h1>
-<p>Em muitas situações, é possível transformar uma equação estocástica em uma aleatória, e vice-versa.</p>
-<h2 id="de_equações_aleatórias_para_estocásticas"><a href="#de_equações_aleatórias_para_estocásticas" class="header-anchor">De equações aleatórias para estocásticas</a></h2>
-<p>Considere uma equação diferencial aleatória da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.6. Propriedades da integral de Itô</a></h1>
+<p>Vamos ver, aqui, algumas propriedades importantes da integral de Itô. No que se segue, vamos considerar a integral de Itô em relação ao processo de Wiener \(\{W_t\}_{t \geq 0}\), de um processo \(\{H_t\}_{t \geq 0}\) adaptado ao processo de Wiener e com caminhos amostrais quase certamente contínuos.</p>
+<p>Para simplificar a notação, dada uma partição \(t_0 < t_1 < \ldots < t_n\), escrevemos</p>
 \[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t),
+\Delta W_j = W_{t_j} - W_{t_{j-1}}, \qquad j = 1, \ldots, n.
 \]
-<p>e suponha que o processo \(\{\Lambda_t\}_t\) seja solução de uma equação diferencial estocástica</p>
+<h2 id="valor_esperado_das_integrais_de_itô"><a href="#valor_esperado_das_integrais_de_itô" class="header-anchor">Valor esperado das integrais de Itô</a></h2>
+<p>Calculemos a esperança das somas de Riemann associadas à integral de Itô. Temos</p>
 \[
-\mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
 \]
-<p>para algum outro processo \(\{W_t\}_t\).</p>
-<p>Assim, formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,</p>
+<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo, temos \(H_{t_{j-1}}\) independente de \(\Delta_j = W_{t_j} - W_{t_{j-1}}\), de modo que</p>
 \[
-\mathrm{d}\left(\begin{matrix} X_t \\ \Lambda_t \end{matrix}\right) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t) \end{matrix}\right) + \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t) \end{matrix}\right)\mathrm{d}W_t.
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
 \]
-<p>Este é um sistema da forma</p>
+<p>Como o processo de Wiener tem valor esperado nulo, segue que \(\mathbb{E}\left[\Delta W_j\right] = 0\), de maneira que</p>
 \[
-\mathrm{d}U_t = F(t, U_t) + \Sigma(t, U_t)\mathrm{d}W_t,
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
 \]
-<p>onde </p>
+<p>No limite, obtemos que a integral de Itô de um processo não-antecipativo tem valor esperado nulo:</p>
 \[
-U_t = \left(\begin{matrix} X_t \\ \Lambda_t\end{matrix}\right), \quad F(t, U_t) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t)\end{matrix}\right), \quad \Sigma(t, U_t) = \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t)\end{matrix}\right).
+\mathbb{E}\left[\int_0^T H_t \;\mathrm{d}W_t\right] = 0.
 \]
-<p>Observe que o processo \(Y_t\) entra, na equação aleatória, como um termo externo, enquanto que, na equação estocástica, ela é uma variável dependente; uma &quot;incógnita&quot; da equação.</p>
-<h2 id="de_estocásticas_com_ruído_aditivo_para_aleatórias"><a href="#de_estocásticas_com_ruído_aditivo_para_aleatórias" class="header-anchor">De estocásticas com ruído aditivo para aleatórias</a></h2>
-<p>Considere uma equação diferencial estocástica com <strong>ruído aditivo</strong>, na forma</p>
+<h2 id="linearidade"><a href="#linearidade" class="header-anchor">Linearidade</a></h2>
+<p>Primeiramente, observe que a integral de Itô é homogênea. Ou seja, sendo \(\lambda\) constante, vale a relação, </p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
+\int_0^T \lambda H_t \;\mathrm{d}W_t = \lambda \int_0^T H_t \;\mathrm{d}W_t.
 \]
-<p>Observe que, aqui, estamos assumindo que o termo de ruído \(\sigma(t)\) é independente do processo \(X_t\), daí o termo &quot;aditivo&quot;. Caso contrário, sendo \(\sigma = \sigma(t, X_t)\), o termo de rúido é denominado <strong>multiplicativo.</strong></p>
-<p>No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o <strong>processo de Ornstein-Uhlenbeck</strong> \(\{O_t\}_t\), que satisfaz à equação diferencial estocástica</p>
+<p>Isso segue direto da homogeneidade das somas parciais:</p>
 \[
-\mathrm{d}O_t = - O_t \mathrm{d}t + \sigma(t) \mathrm{d}W_t.
+\begin{align*}
+\int_0^T \lambda H_t \;\mathrm{d}W_t & = \lim \sum_{j=1}^n \lambda H_{t_{j-1}}\Delta W_j \\
+& = \lim  \sum_{j=1}^n H_{t_{j-1}}\Delta W_j \\
+& = \lambda \lim  \sum_{j=1}^n H_{t_{j-1}}\Delta W_j \\
+& = \lambda \int_0^T H_t \;\mathrm{d}W_t.
+\end{align*}
 \]
-<p>Considerando um &quot;mudança de variáveis&quot; para o processo \(Z_t = X_t - O_t\), temos, formalmente,</p>
+<p>Da mesma forma, se \(\{G_t\}_{t\geq 0}\) e \(\{H_t\}_{t\geq 0}\) são dois processos não antecipativos e \(\mu\) e \(\lambda\) são constantes, então</p>
 \[
-\mathrm{d}Z_t = \mathrm{d}X_t - \mathrm{d}O_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t + O_t \mathrm{d}t - \sigma(t) \mathrm{d}W_t = (f(t, X_t) + O_t)\mathrm{d}t,
+\int_0^T \left(\mu G_t + \lambda H_t\right)\;\mathrm{d}W_t = \mu \int_0^T G_t \;\mathrm{d}W_t + \lambda \int_0^T H^2 \;\mathrm{d}W_t.
 \]
-<p>o que nos leva, finalmente, à equação diferencial aleatória</p>
+<h2 id="isometria_de_itô"><a href="#isometria_de_itô" class="header-anchor">Isometria de Itô</a></h2>
+<p>Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô:</p>
 \[
-\mathrm{d}Z_t = (f(t, Z_t + O_t) + O_t)\mathrm{d}t,
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
+& = \sum_{i,j=1}^n\mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] \\
+& = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\Delta W_j^2\right]
+\end{align*}
 \]
-<p>ou seja,</p>
+<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo e com \(i < j\), temos \(H_{t_{i-1}}\), \(H_{t_{j-1}}\) e \(\Delta W_i\) independente de \(\Delta W_j\), de modo que</p>
 \[
-\frac{\mathrm{d}Z_t}{\mathrm{d}t} = g(t, Z_t, O_t),
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\right]\mathbb{E}\left[\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] \mathbb{E}\left[\Delta W_j^2\right]
+\end{align*}
 \]
-<p>com</p>
+<p>Como</p>
 \[
-g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
+\mathbb{E}\left[\Delta W_j\right] = 0, \qquad \mathbb{E}\left[\Delta W_j^2\right] = t_j - t_{j-1},
 \]
-<p>O caso multiplicativo em que o ruído é linear, i.e. \(\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t\), também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.</p>
+<p>temos</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] = \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] (t_j - t_{j-1}) = \mathbb{E}\left[\sum_j H_{t_{j-1}}^2 (t_j - t_{j-1})\right].
+\]
+<p>No limite quando a malha é refinada, o somatório no lado direito converge para uma integral de Riemann do processo \(\{H_t^2\}_t\), nos dando a seguinte identidade, conhecida como <strong>isometria de Itô:</strong></p>
+\[
+\mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
+\]
+<h2 id="propriedade_de_martingale"><a href="#propriedade_de_martingale" class="header-anchor">Propriedade de Martingale</a></h2>
+<p>Considerando o processo \(\{S_t\}_{t\geq 0}\) definido por</p>
+\[
+S_t = \int_0^t H_s \;\mathrm{d}W_s,
+\]
+<p>segue que \(\{S_t\}_{t\geq 0}\) é um Martingale.</p>
+<p>De fato, sejam \(t \geq 0\), \(\tau > 0\), \(\{\mathcal{F}_t\}_{t\geq 0}\) a filtração natural do processo de Wiener \(\{W_t\}_{t \geq 0}\) e \(\{H_t\}_{t\geq 0}\) adaptado a essa filtração. Então,</p>
+\[
+\begin{align*}
+\mathbb{E}\left[S_{t + \tau} | \mathcal{F}_t\right] & = \mathbb{E}\left[S_t + \int_t^{t+\tau}H_s\;\mathrm{d}W_s | \mathcal{F}_t\right] \\
+& = \mathbb{E}\left[S_t | \mathcal{F}_t\right] + \int_t^{t+\tau}\mathbb{E}\left[H_s\;\mathrm{d}W_s | \mathcal{F}_t\right].
+\end{align*}
+\]
+<p>Como \(H_s\) é independente de \(\mathrm{d}W_s\), temos</p>
+\[
+\mathbb{E}\left[H_s\;\mathrm{d}W_s | \mathcal{F}_t\right] = \mathbb{E}[H_s | \mathcal{F}_t]\;\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t].
+\]
+<p>Como \(\mathcal{F}_t\) é a filtração natural de \(\{W_t\}_t\), então, para \(s \geq t\), temos \(\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t] = 0\), de modo que</p>
+\[
+\int_t^{t+\tau}\mathbb{E}[H_s | \mathcal{F}_t]\;\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t] = 0.
+\]
+<p>Por outro lado,</p>
+\[
+\mathbb{E}\left[S_t | A_t\right] = S_t.
+\]
+<p>Portanto,</p>
+\[
+\mathbb{E}\left[S_{t + \tau} | \mathcal{F}_t\right]
+= S_t, \qquad \forall t \geq 0,
+\]
+<p>mostrando que \(\{S_t\}_{t\geq 0}\) é uma Martingale.</p>
+<h2 id="não-positividade"><a href="#não-positividade" class="header-anchor">Não-positividade</a></h2>
+<p>Uma propriedade clássica das integrais de Riemann e de Lebesgue que tanto a integral de Riemann-Stieltjes quanto a integral de Itô não têm é a de positividade. Na integral de Riemann, se \(H_t \geq 0\) para todo \(t\), então</p>
+\[
+\int_0^T H_t \;\mathrm{d}t \geq 0.
+\]
+<p>Porém, não é verdade que</p>
+\[
+\int_0^T H_t \;\mathrm{d}W_t
+\]
+<p>seja maior do que zero. De fato, se \(H_t = 1\), por exemplo, então</p>
+\[
+\int_0^T \;\mathrm{d}W_t = W_T \sim \mathcal{N}(0, T).
+\]
+<p>Consequentemente, a integral de Itô não preserva ordem, i.e. se \(G_t \leq H_t\), para todo \(t\), não é verdade que</p>
+\[
+\int_0^T G_t \;\mathrm{d}W_t
+\]
+<p>seja menor ou igual a</p>
+\[
+\int_0^T H_t \;\mathrm{d}W_t.
+\]
+<p>Isso também acontece na integral de Riemann-Stieltjes. Por exemplo, se \(g(t) = sin(t)\), que é de variação limitada, e \(f(t) = 1\), então</p>
+\[
+\int_0^T f(t) \;\mathrm{d}g(t) = g(t) - g(0) = sin(t),
+\]
+<p>que não é positiva.</p>
+<p>Para que a positividade valha na integral de Riemann-Stieltjes, é necessário impor condições extras, como \(g\) ser não-decrescente ou então \(g\) ser positiva e \(f\) ser estritamente uniformemente positiva.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/pathwise_solutions"><kbd>→</kbd> 6.1. Soluções por caminhos</a>
 </span>
     </p>
 </div>
