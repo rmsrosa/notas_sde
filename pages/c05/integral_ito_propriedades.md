@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Vamos ver, aqui, algumas propriedades importantes da integral de Itô.
+Vamos ver, aqui, algumas propriedades importantes da integral de Itô. No que se segue, vamos considerar a integral de Itô em relação ao processo de Wiener $\{W_t\}_{t \geq 0}$, de um processo $\{H_t\}_{t \geq 0}$ adaptado ao processo de Wiener e com caminhos amostrais quase certamente contínuos.
 
 Para simplificar a notação, dada uma partição $t_0 < t_1 < \ldots < t_n$, escrevemos
 $$
