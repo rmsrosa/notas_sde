@@ -147,5 +147,3 @@ $$
 que não é positiva.
 
 Para que a positividade valha na integral de Riemann-Stieltjes, é necessário impor condições extras, como $g$ ser não-decrescente ou então $g$ ser positiva e $f$ ser estritamente uniformemente positiva.
-
-No caso da integral de Itô, se a integração for feita em relação a uma martingale $\{X_t\}_t$, então é possível, também, ter $\int_0^T H_t \;\mathrm{X_t}$ sob condições extras em $\{X_t\}_t$.
