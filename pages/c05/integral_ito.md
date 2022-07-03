@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c05/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas de Riemann-Stieltjes não convergem quando tentamos integrar funções mais gerais (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar somas parciais e obter uma noção de integral que esteja bem definida.
+Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c05/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas de Riemann-Stieltjes não convergem quando tentamos integrar funções mais gerais (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar as somas parciais de Riemann-Stieltjes de forma a obter uma noção de integral que esteja bem definida nesse último caso.
 
 No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico $\{H_t\}_{t\geq 0}$ e a integral é em relação a um processo de Wiener $\{W_t\}_{t\geq 0}$:
 $$
@@ -17,104 +17,47 @@ simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais
 
 ## Integrandos permitidos
 
-Não vamos, nesse momento, definir, de forma muito rigorosa, as condições necessárias para que a integral de Itô esteja bem definida. Os detalhes são bastante técnicos. Mas uma condição essencial pode ser posta do seguinte modo informal:
+Uma condição essencial pode ser posta do seguinte modo informal:
 
 > A cada instante $t \geq 0$, o integrando $H_t$ deve ser independente dos valores futuros $s \geq t$ do processo de Wiener.
 
-Vamos chamar essa condição de **não-antecipativa** *("non-antecipating")*. Uma definição mais formal envolve uma *filtração* das $\sigma$-álgebras e, nesse caso, dizemos que $\{H_t\}_t$ está *adaptado* ao processo $\{W_t\}_t$.
+Vamos chamar essa condição de *não-antecipativa* *("non-antecipating")* ou *adaptada* ao processo $\{W_t\}_t$. Uma definição mais formal envolve uma *filtração* das $\sigma$-álgebras.
 
-Sob essa condição, a integral de Itô possui boas propriedades, como veremos a seguir.
+Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t$, para $0 \leq s \leq t$. Uma filtração é dita **não-antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$ e $W_t$ é independente das $\sigma$-álgebras geradas por $\Delta W_{t, s} = W_s - W_t$, para qualquer $s \geq t$. Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não-antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0$, $H_t$ é mensurável em relação a $\mathcal{F}_t$, onde $\{\mathcal{F}_t\}_{t\geq 0}$ é uma filtração adaptada a $\{W_t\}_{t\geq 0}$.
 
-## Incrementos
+Sob a condição de $\{H_t\}_{t\geq 0}$ estar adaptada a $\{W_t\}_{t\geq 0}$ e dos caminhos amostrais de $\{H_t\}_{t\geq 0}$ serem quase certamente contínuos, a integral de Itô está bem definida e possui boas propriedades, como veremos posteriormente.
 
-No que se segue, para simplificar a notação, dada uma partição $t_0 < t_1 < \ldots < t_n$, escrevemos
+Essa construção pode ser estendida a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam de quadrado integrável, i.e.
 $$
-\Delta W_j = W_{t_j} - W_{t_{j-1}}, \qquad j = 1, \ldots, n.
+\mathbb{E}\left[ \int_0^T  H_t^2 \;\mathrm{d}t \right]  < \infty,
 $$
+e que sejam **progressivamente mensuráveis**, ou seja, que $(t, \omega) \mapsto H_t(\omega)$ seja mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, t) \times \mathcal{F}_t$, onde $\mathcal{B}(0, t)$ é a $\sigma$-álgebra de Borel do intervalo $[0, t]$.
 
-## Valor esperado das integrais de Itô
+Vale observar que se $\{H_t\}_{t\geq 0}$ é adaptada a $\{W_t\}_{t\geq 0}$ e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.
 
-Calculemos a esperança das somas de Riemann associadas à integral de Itô. Temos
-$$
-\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
-$$
-Pela hipótese de $\{H_t\}_t$ ser não antecipativo, temos $H_{t_{j-1}}$ independente de $\Delta_j = W_{t_j} - W_{t_{j-1}}$, de modo que
-$$
-\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
-$$
-Como o processo de Wiener tem valor esperado nulo, segue que $\mathbb{E}\left[\Delta W_j\right] = 0$, de maneira que
-$$
-\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
-$$
+## Construção
 
-No limite, obtemos que a integral de Itô de um processo não-antecipativo tem valor esperado nulo:
+No caso de $\{H_t\}_{t\geq 0}$ ser adptada a $\{W_t\}_{t \geq 0}$ e com caminhos amostrais quase certamente contínuos, então a integral é definida via limite de somas parciais
 $$
-\mathbb{E}\left[\int_0^T H_t \;\mathrm{d}W_t\right] = 0.
+\int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
+$$
+onde as partições satisfazem $0 = t_0 < t_1 < \ldots < t_n = T$ e o limite é tomado quando $\max_j\{t_j - t_{j-1}\} \rightarrow 0$.
+
+No caso mais geral, de processos $\{H_t\}_{t\geq 0}$ progressivamente mensuráveis e de quadrado integrável, a ideia é aproximar o processo por processos $\{H_t^k\}_{t \geq 0}$ adaptados e com caminhos quase-certamente contínuos e tomar o limite das integrais de Itô definidas para estes.
+
+Mais precisamente, começa-se considerando processos escada, i.e. processos $\{H_t\}_{t\geq 0}$ para os quais existe uma partição $0 = t_0 < t_1 < \ldots < t_n = T$ tal que $H_t$ é constante, $H_t = H_{t_{j-1}}$, em cada intervalo $t_{j-1} \leq t < t_j$. Para esses processo, define-se, naturalmente, a integral de Itô por
+$$
+\int_0^T H_t \;\mathrm{d}W_t = \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
 $$
 
-## Isometria de Itô
+Em seguida, para um processo $\{H_t\}_{t \geq 0}$ que seja progressivamente mensurável e em $L^2(0, T)$, ...
 
-Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô:
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
-& = \sum_{i,j=1}^n\mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] \\
-& = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\Delta W_j^2\right]
-\end{align*}
-$$
-Pela hipótese de $\{H_t\}_t$ ser não antecipativo e com $i < j$, temos $H_{t_{i-1}}$, $H_{t_{j-1}}$ e $\Delta W_i$ independente de $\Delta W_j$, de modo que
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\right]\mathbb{E}\left[\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] \mathbb{E}\left[\Delta W_j^2\right]
-\end{align*}
-$$
-Como
-$$
-\mathbb{E}\left[\Delta W_j\right] = 0, \qquad \mathbb{E}\left[\Delta W_j^2\right] = t_j - t_{j-1},
-$$
-temos
-$$
-\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] = \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] (t_j - t_{j-1}) = \mathbb{E}\left[\sum_j H_{t_{j-1}}^2 (t_j - t_{j-1})\right].
-$$
 
-No limite quando a malha é refinada, o somatório no lado direito converge para uma integral de Riemann do processo $\{H_t^2\}_t$, nos dando a seguinte identidade, conhecida como **isometria de Itô:**
+Segue, ainda, que, nesse caso, também vale a fórmula através do limite
 $$
-\mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
+\int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
 $$
-
-## Propriedade de Martingale
-
-Considerando o processo $\{S_t\}_{t\geq 0}$ definido por
-$$
-S_t = \int_0^t H_s \;\mathrm{d}W_s,
-$$
-segue que $\{S_t\}_{t\geq 0}$ é um Martingale.
-
-De fato, sejam $t \geq 0$, $\tau > 0$, $\{\mathcal{F}_t\}_{t\geq 0}$ a filtração natural do processo de Wiener $\{W_t\}_{t \geq 0}$ e $\{H_t\}_{t\geq 0}$ adaptado a essa filtração. Então,
-$$
-\begin{align*}
-\mathbb{E}\left[S_{t + \tau} | \mathcal{F}_t\right] & = \mathbb{E}\left[S_t + \int_t^{t+\tau}H_s\;\mathrm{d}W_s | \mathcal{F}_t\right] \\
-& = \mathbb{E}\left[S_t | \mathcal{F}_t\right] + \int_t^{t+\tau}\mathbb{E}\left[H_s\;\mathrm{d}W_s | \mathcal{F}_t\right].
-\end{align*}
-$$
-Como $H_s$ é independente de $\mathrm{d}W_s$, temos
-$$
-\mathbb{E}\left[H_s\;\mathrm{d}W_s | \mathcal{F}_t\right] = \mathbb{E}[H_s | \mathcal{F}_t]\;\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t].
-$$
-Como $\mathcal{F}_t$ é a filtração natural de $\{W_t\}_t$, então, para $s \geq t$, temos $\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t] = 0$, de modo que
-$$
-\int_t^{t+\tau}\mathbb{E}[H_s | \mathcal{F}_t]\;\mathbb{E}[\mathrm{d}W_s | \mathcal{F}_t] = 0.
-$$
-Por outro lado,
-$$
-\mathbb{E}\left[S_t | A_t\right] = S_t.
-$$
-Portanto,
-$$
-\mathbb{E}\left[S_{t + \tau} | \mathcal{F}_t\right]
-= S_t, \qquad \forall t \geq 0,
-$$
-mostrando que $\{S_t\}_{t\geq 0}$ é uma Martingale.
+por partições arbitrárias $0 = t_0 < t_1 < \ldots < t_n = T$, com $\max_j\{t_j - t_{j-1}\} \rightarrow 0$.
 
 ## Relação com a definição via dualidade
 
