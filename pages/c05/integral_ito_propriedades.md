@@ -81,6 +81,13 @@ $$
 \mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
 $$
 
+## Isometria com dois processos
+
+Estendendo a propriedade de isometria para dois processos não-antecipativos $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$, usando que $ab = \frac{1}{2}((a + b)^2 - a^2 - b^2)$ e aplicando a isometria a cada termo, obtemos
+$$
+\mathbb{E}\left[ \left( \int_0^T G_t \;\mathrm{d}W_t\right)\left( \int_0^T H_t \;\mathrm{d}W_t\right)\right] = \mathbb{E}\left[ \int_0^T G_t H_t \;\mathrm{d}t\right].
+$$
+
 ## Propriedade de Martingale
 
 Considerando o processo $\{S_t\}_{t\geq 0}$ definido por
