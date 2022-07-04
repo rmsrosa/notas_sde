@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Vamos ver, aqui, algumas propriedades importantes da integral de Itô. No que se segue, vamos considerar a integral de Itô em relação ao processo de Wiener $\{W_t\}_{t \geq 0}$, de um processo $\{H_t\}_{t \geq 0}$ adaptado ao processo de Wiener e com caminhos amostrais quase certamente contínuos.
+Vamos ver, aqui, algumas propriedades importantes da integral de Itô. No que se segue, vamos considerar a integral de Itô em relação a um processo de Wiener $\{W_t\}_{t \geq 0}$, de um processo $\{H_t\}_{t \geq 0}$ adaptado ao processo de Wiener e com caminhos amostrais quase certamente contínuos.
 
 Para simplificar a notação, dada uma partição $t_0 < t_1 < \ldots < t_n$, escrevemos
 $$
@@ -11,7 +11,7 @@ $$
 
 ## Valor esperado das integrais de Itô
 
-Calculemos a esperança das somas de Riemann associadas à integral de Itô. Temos
+Como vimos antes, temos, para as somas de Riemann,
 $$
 \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
 $$
@@ -53,7 +53,7 @@ $$
 
 ## Isometria de Itô
 
-Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô:
+Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô. Como visto antes,
 $$
 \begin{align*}
 \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
