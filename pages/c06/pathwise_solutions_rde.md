@@ -1,8 +1,8 @@
-@def title = "Soluções por caminhos"
+@def title = "Soluções por caminhos de equações diferenciais aleatórias"
 
 # {{ get_title }}
 
-Vamos considerar, nesse capítulo, equações diferenciais aleatórias da forma
+Vamos considerar, nessa seção, equações diferenciais aleatórias da forma
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
 $$
