@@ -10,7 +10,7 @@ Z = \int_a^b f(s, X_s) \;\mathrm{d}s,
 $$
 onde $\{X_t\}_{t \in [a, b]}$ é um processo estocástico real definido em um intervalo $[a, b]\subset \mathbb{R}$.
 
-Vamos considerar, principalmente, funções e processos em que
+Vamos considerar, inicialmente, funções e processos em que
 
 1. $f:[a, b]\times \mathbb{R} \rightarrow \mathbb{R}$ é contínuo; e
 2. Quase certamente, os caminhos amostrais de $\{X_t\}_{t\in [a,b]}$ são contínuos.
@@ -125,7 +125,14 @@ $$
 
 ## Integrais em outros sentidos
 
-Podemos estender a integração acima em vários sentidos. Podemos pedir que $t \mapsto f(t, X_t(\omega))$ seja integrável a Riemann, sem necessariamente ser contínua. Também podemos pedir que seja apenas integrável à Lebesgue. Isso nos permite definir $Z(\omega)$ pontualmente. A questão mais delicada passa a ser se $Z$ é mensurável.
+Podemos estender a integração acima em vários sentidos. Primeiramente, podemos manter a regularidade em $f$ e relaxar a condição de continuidade quase certamente dos caminhos amostrais. Podemos pedir, por exemplo, que $\{X_t\}_{t \in [a, b]}$ tenha média quadrática finita, i.e.
+$$
+\int_a^b \mathbb{E}\left[X_t^2\right] \;\mathrm{d}t < \infty.
+$$
+
+Nesse caso, aproximamos o processo por processos contínuos, usando, por exemplo, molificação (convolução com uma aproximação da identidade), definimos a integral para esses aproximações contínuas e tomamos o limite das integrais.
+
+Em outra direção, podemos relaxar as condições em $f$. Podemos pedir, por exemplo, que $t \mapsto f(t, X_t(\omega))$ seja integrável a Riemann, sem necessariamente ser contínua. Também podemos pedir que seja apenas integrável à Lebesgue. Isso nos permite definir $Z(\omega)$ pontualmente. A questão mais delicada passa a ser se $Z$ é mensurável.
 
 Uma solução mais geral para isso é não pensar em definir através de caminhos, mas através da integração de uma função. Isso nos leva ao conceito de 
 $$
