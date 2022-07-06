@@ -17,11 +17,21 @@ No caso em que $u$ ainda é diferenciável mas $\{X_t\}_{t \geq 0}$ é apenas de
 
 Mas e no caso em que $X_t$ não é nem de variação limitada? Nesse caso, podemos considerar a integral de Itô em relação a $\{X_t\}_{t \geq 0}$. (Assumindo que esse processo seja uma Martingale, então $\{Y_t\}_{t \geq 0}$ também é uma Martingale e a integral de Itô a seu respeito está bem definida). Porém, isso nos trará uma correção na fórmula acima.
 
+Mais precisamente, isso nos dará uma fórmula útil, contendo um termo extra, no caso em que $\{X_t\}_{t\geq 0}$ tem uma forma especial, que o torna um tipo de processo conhecido como processo de Itô, que introduzimos a seguir.
+
 Essa mesma análise pode ser feita no caso em que $u$ depende também da variável temporal, i.e. $u:[0, \infty) \times \mathbb{R} \rightarrow \mathbb{R}$. Nesse caso, temos
 $$
 Y_t = u(t, X_t).
 $$
 Denotamos o primeiro caso por *autônomo* e este, por *não-autônomo.*
+
+## Processo de Itô
+
+Um **processo de Itô** é um processo $\{X_t\}_{t \geq 0}$ satisfazendo uma equação estocástica da forma
+$$
+\mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
+$$
+onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener e $\{A_t\}_{t \geq 0}$ e $\{B_t\}_{t \geq 0}$ são não-antecipativos em relação ao processo de Wiener.
 
 ## Fórmula de Itô no caso autônomo
 
@@ -53,7 +63,7 @@ $$
 \int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T H_t u''(X_t)\;(\mathrm{d}X_t)^2.
 $$
 
-No caso em que $\{X_t\}_{t \geq 0}$ é um processo de Wiener $\{W_t\}_{t \geq 0}$, então "$(\mathrm{d}W_t) = dt$", de modo que $Y_t = u(W_t)$ é tal que
+No caso em que $\{X_t\}_{t \geq 0}$ é o processo de Wiener $\{W_t\}_{t \geq 0}$, então "$(\mathrm{d}W_t) = dt$", de modo que $Y_t = u(W_t)$ é tal que
 $$
 \int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
 $$
@@ -63,7 +73,7 @@ $$
 $$
 Isso segue do fato de que $\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = t_j - t_{j-1}$ e de que momentos de ordem mais alta dependem de potências também maiores de $t_j - t_{j-1}$. Mostra-se, então, que o valor esperado desse termo converge para a integral em $\mathrm{d}t$ e a variância converge para zero, nos dando a convergência em probabilidade.
 
-Mais geralmente, se $\{X_t\}_{t \geq 0}$ é um *processo de Itô*, cuja definição é satisfazer a equação diferencial estocástica
+Mais geralmente, se $\{X_t\}_{t \geq 0}$ é um processo de Itô satisfazendo
 $$
 \mathrm{d}X_t = A_t\;\mathrm{d}t + B_t\;\mathrm{d}W_t,
 $$
