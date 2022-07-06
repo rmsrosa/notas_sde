@@ -169,11 +169,17 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
+    </div>
     <div class="menu-level-1">
-    <li>6. Equações diferenciais aleatórias</li>
+    <li>6. Equações diferenciais aleatórias e estocásticas</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/pathwise_solutions">6.1. Soluções por caminhos</a></li>
+    <li><a href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/solutions_sde">6.2. Soluções de equações diferenciais estocásticas</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -207,7 +213,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/pathwise_solutions"><kbd>→</kbd> 6.1. Soluções por caminhos</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito"><kbd>→</kbd> 5.7. Fórmula de Itô</a>
 </span>
     </p>
 </div>
@@ -219,13 +225,13 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">5.6. Propriedades da integral de Itô</a></h1>
-<p>Vamos ver, aqui, algumas propriedades importantes da integral de Itô. No que se segue, vamos considerar a integral de Itô em relação ao processo de Wiener \(\{W_t\}_{t \geq 0}\), de um processo \(\{H_t\}_{t \geq 0}\) adaptado ao processo de Wiener e com caminhos amostrais quase certamente contínuos.</p>
+<p>Vamos ver, aqui, algumas propriedades importantes da integral de Itô. No que se segue, vamos considerar a integral de Itô em relação a um processo de Wiener \(\{W_t\}_{t \geq 0}\), de um processo \(\{H_t\}_{t \geq 0}\) adaptado ao processo de Wiener e com caminhos amostrais quase certamente contínuos.</p>
 <p>Para simplificar a notação, dada uma partição \(t_0 < t_1 < \ldots < t_n\), escrevemos</p>
 \[
 \Delta W_j = W_{t_j} - W_{t_{j-1}}, \qquad j = 1, \ldots, n.
 \]
 <h2 id="valor_esperado_das_integrais_de_itô"><a href="#valor_esperado_das_integrais_de_itô" class="header-anchor">Valor esperado das integrais de Itô</a></h2>
-<p>Calculemos a esperança das somas de Riemann associadas à integral de Itô. Temos</p>
+<p>Como vimos antes, temos, para as somas de Riemann,</p>
 \[
 \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
 \]
@@ -260,7 +266,7 @@
 \int_0^T \left(\mu G_t + \lambda H_t\right)\;\mathrm{d}W_t = \mu \int_0^T G_t \;\mathrm{d}W_t + \lambda \int_0^T H^2 \;\mathrm{d}W_t.
 \]
 <h2 id="isometria_de_itô"><a href="#isometria_de_itô" class="header-anchor">Isometria de Itô</a></h2>
-<p>Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô:</p>
+<p>Calculemos, agora, o momento de ordem dois das somas de Riemann associadas à integral de Itô. Como visto antes,</p>
 \[
 \begin{align*}
 \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
@@ -285,6 +291,11 @@
 <p>No limite quando a malha é refinada, o somatório no lado direito converge para uma integral de Riemann do processo \(\{H_t^2\}_t\), nos dando a seguinte identidade, conhecida como <strong>isometria de Itô:</strong></p>
 \[
 \mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
+\]
+<h2 id="isometria_com_dois_processos"><a href="#isometria_com_dois_processos" class="header-anchor">Isometria com dois processos</a></h2>
+<p>Estendendo a propriedade de isometria para dois processos não-antecipativos \(\{G_t\}_{t\geq 0}\) e \(\{H_t\}_{t\geq 0}\), usando que \(ab = \frac{1}{2}((a + b)^2 - a^2 - b^2)\) e aplicando a isometria a cada termo, obtemos</p>
+\[
+\mathbb{E}\left[ \left( \int_0^T G_t \;\mathrm{d}W_t\right)\left( \int_0^T H_t \;\mathrm{d}W_t\right)\right] = \mathbb{E}\left[ \int_0^T G_t H_t \;\mathrm{d}t\right].
 \]
 <h2 id="propriedade_de_martingale"><a href="#propriedade_de_martingale" class="header-anchor">Propriedade de Martingale</a></h2>
 <p>Considerando o processo \(\{S_t\}_{t\geq 0}\) definido por</p>
@@ -351,7 +362,7 @@ S_t = \int_0^t H_s \;\mathrm{d}W_s,
 <a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/pathwise_solutions"><kbd>→</kbd> 6.1. Soluções por caminhos</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito"><kbd>→</kbd> 5.7. Fórmula de Itô</a>
 </span>
     </p>
 </div>
@@ -367,7 +378,7 @@ S_t = \int_0^t H_s \;\mathrm{d}W_s,
         </div>
     
 
-    Last modified: July 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

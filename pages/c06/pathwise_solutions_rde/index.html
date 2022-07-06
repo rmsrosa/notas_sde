@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Soluções por caminhos</title>  
+   <title>Soluções por caminhos de equações diferenciais aleatórias</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -169,11 +169,17 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
+    </div>
     <div class="menu-level-1">
-    <li>6. Equações diferenciais aleatórias</li>
+    <li>6. Equações diferenciais aleatórias e estocásticas</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/pathwise_solutions">6.1. Soluções por caminhos</a></li>
+    <li><a href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/solutions_sde">6.2. Soluções de equações diferenciais estocásticas</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -204,10 +210,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/solutions_sde"><kbd>→</kbd> 6.2. Soluções de equações diferenciais estocásticas</a>
 </span>
     </p>
 </div>
@@ -218,8 +224,8 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Soluções por caminhos</a></h1>
-<p>Vamos considerar, nesse capítulo, equações diferenciais aleatórias da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></h1>
+<p>Vamos considerar, nessa seção, equações diferenciais aleatórias da forma</p>
 \[
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
 \]
@@ -358,10 +364,10 @@ t^3, &\omega \in E, \\
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/solutions_sde"><kbd>→</kbd> 6.2. Soluções de equações diferenciais estocásticas</a>
 </span>
     </p>
 </div>
@@ -377,7 +383,7 @@ t^3, &\omega \in E, \\
         </div>
     
 
-    Last modified: July 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

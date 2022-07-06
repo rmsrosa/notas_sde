@@ -169,11 +169,17 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
+    </div>
     <div class="menu-level-1">
-    <li>6. Equações diferenciais aleatórias</li>
+    <li>6. Equações diferenciais aleatórias e estocásticas</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/pathwise_solutions">6.1. Soluções por caminhos</a></li>
+    <li><a href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/solutions_sde">6.2. Soluções de equações diferenciais estocásticas</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -225,7 +231,7 @@
 Z = \int_a^b f(s, X_s) \;\mathrm{d}s,
 \]
 <p>onde \(\{X_t\}_{t \in [a, b]}\) é um processo estocástico real definido em um intervalo \([a, b]\subset \mathbb{R}\).</p>
-<p>Vamos considerar, principalmente, funções e processos em que</p>
+<p>Vamos considerar, inicialmente, funções e processos em que</p>
 <ol>
 <li><p>\(f:[a, b]\times \mathbb{R} \rightarrow \mathbb{R}\) é contínuo; e</p>
 </li>
@@ -321,7 +327,12 @@ X_TY_T = X_0Y_0 + \int_0^T \left(\frac{\mathrm{d}X_t}{\mathrm{d}t}Y_t + X_t \fra
 \int_0^T \frac{\mathrm{d}X_t}{\mathrm{d}t}Y_t \;\mathrm{d}t = X_TY_T - X_0Y_0 - \int_0^T X_t \frac{\mathrm{d}Y_t}{\mathrm{d}t} \;\mathrm{d}t
 \]
 <h2 id="integrais_em_outros_sentidos"><a href="#integrais_em_outros_sentidos" class="header-anchor">Integrais em outros sentidos</a></h2>
-<p>Podemos estender a integração acima em vários sentidos. Podemos pedir que \(t \mapsto f(t, X_t(\omega))\) seja integrável a Riemann, sem necessariamente ser contínua. Também podemos pedir que seja apenas integrável à Lebesgue. Isso nos permite definir \(Z(\omega)\) pontualmente. A questão mais delicada passa a ser se \(Z\) é mensurável.</p>
+<p>Podemos estender a integração acima em vários sentidos. Primeiramente, podemos manter a regularidade em \(f\) e relaxar a condição de continuidade quase certamente dos caminhos amostrais. Podemos pedir, por exemplo, que \(\{X_t\}_{t \in [a, b]}\) tenha média quadrática finita, i.e.</p>
+\[
+\int_a^b \mathbb{E}\left[X_t^2\right] \;\mathrm{d}t < \infty.
+\]
+<p>Nesse caso, aproximamos o processo por processos contínuos, usando, por exemplo, molificação &#40;convolução com uma aproximação da identidade&#41;, definimos a integral para esses aproximações contínuas e tomamos o limite das integrais.</p>
+<p>Em outra direção, podemos relaxar as condições em \(f\). Podemos pedir, por exemplo, que \(t \mapsto f(t, X_t(\omega))\) seja integrável a Riemann, sem necessariamente ser contínua. Também podemos pedir que seja apenas integrável à Lebesgue. Isso nos permite definir \(Z(\omega)\) pontualmente. A questão mais delicada passa a ser se \(Z\) é mensurável.</p>
 <p>Uma solução mais geral para isso é não pensar em definir através de caminhos, mas através da integração de uma função. Isso nos leva ao conceito de </p>
 \[
 Z = \int_a^b f(s, X_s) \;\mathrm{d}s,
@@ -357,7 +368,7 @@ Z = \lim_n \sum_{j=1}^n f_j^n \chi_{E_j^n}(s) \;\mathrm{d}s,
         </div>
     
 
-    Last modified: July 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

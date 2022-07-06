@@ -12,6 +12,17 @@
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
 
   
     <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
@@ -169,11 +180,17 @@
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô</a></li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
+    </div>
     <div class="menu-level-1">
-    <li>6. Equações diferenciais aleatórias</li>
+    <li>6. Equações diferenciais aleatórias e estocásticas</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/pathwise_solutions">6.1. Soluções por caminhos</a></li>
+    <li><a href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/solutions_sde">6.2. Soluções de equações diferenciais estocásticas</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -254,42 +271,126 @@
 \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
 \]
 <p>onde as partições satisfazem \(0 = t_0 < t_1 < \ldots < t_n = T\) e o limite é tomado quando \(\max_j\{t_j - t_{j-1}\} \rightarrow 0\).</p>
-<p>No caso mais geral, de processos \(\{H_t\}_{t\geq 0}\) progressivamente mensuráveis e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^k\}_{t \geq 0}\) adaptados e com caminhos quase-certamente contínuos e tomar o limite das integrais de Itô definidas para estes.</p>
+<p>No caso mais geral, de processos \(\{H_t\}_{t\geq 0}\) progressivamente mensuráveis e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e com caminhos quase-certamente contínuos e tomar o limite das integrais de Itô definidas para estes.</p>
 <p>Usualmente, começa-se, na verdade, considerando processos escada, i.e. processos \(\{H_t\}_{t\geq 0}\) para os quais existe uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\) tal que \(H_t\) seja constante, \(H_t = H_{t_{j-1}}\), em cada intervalo \(t_{j-1} \leq t < t_j\). Para esses processo, define-se, naturalmente, a integral de Itô por</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t = \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
 \]
-<p>Em seguida, para um processo \(\{H_t\}_{t \geq 0}\) que seja progressivamente mensurável e em \(L^2(0, T)\), aproximamos o processo por processos \(\{H_t^k\}_{t \geq 0}\) do tipo escada e adaptados a \(\{W_t\}_{t\geq 0}\). Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.</p>
+<p>Em seguida, para um processo \(\{H_t\}_{t \geq 0}\) que seja progressivamente mensurável e em \(L^2(0, T)\), aproximamos o processo por processos \(\{H_t^m\}_{t \geq 0}\) do tipo escada e adaptados a \(\{W_t\}_{t\geq 0}\). Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.</p>
 <p>O passo seguinte é mostrar que as integrais de Itô dos processos escada convergem. Isso é obtido graças a duas propriedades fundamentais da integral de Itô em relação a \(\{W_t\}_{t \geq 0}\), a saber que o valor esperado é nulo e que a <em>isometria de Itô</em> vale para processos escada &#40;veremos isso em seguida&#41;:</p>
 \[
-\mathbb{E}\left[ \left(\int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] = \mathbb{E}\left[ \int_0^T\left(H_t^k\right)^2 \;\mathrm{d}t\right]  = \int_0^T\mathbb{E}\left[ \left(H_t^k\right)^2 \right] \;\mathrm{d}t
+\mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t\right)^2 \right] = \mathbb{E}\left[ \int_0^T\left(H_t^m\right)^2 \;\mathrm{d}t\right]  = \int_0^T\mathbb{E}\left[ \left(H_t^m\right)^2 \right] \;\mathrm{d}t
 \]
 <p>Como a combinação linear de processos escada também é um processo escada, temos</p>
 \[
-\mathbb{E}\left[ \int_0^T H_t^k \;\mathrm{d}W_t - \int_0^T H_t^m \;\mathrm{d}W_t \right] = 0
+\mathbb{E}\left[ \int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t \right] = 0
 \]
 <p>e</p>
 \[
-\mathbb{E}\left[ \left(\int_0^T H_t^k \;\mathrm{d}W_t - \int_0^T H_t^m \;\mathrm{d}W_t\right)^2 \right] = \int_0^T \mathbb{E}\left[ \left(H_t^k - H_t^m\right)^2 \right] \;\mathrm{d}t
+\mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] = \int_0^T \mathbb{E}\left[ \left(H_t^m - H_t^k\right)^2 \right] \;\mathrm{d}t
 \]
-<p>Com a hipótese de que \(\{H_t^k\}_{t \geq 0}\) converge em média quadrática para \(\{H_t\}_{t \geq 0}\), o lado direito da expressão acima converge para zero:</p>
+<p>Com a hipótese de que \(\{H_t^m\}_{t \geq 0}\) converge em média quadrática para \(\{H_t\}_{t \geq 0}\), o lado direito da expressão acima converge para zero:</p>
 \[
-\mathbb{E}\left[ \left(\int_0^T H_t^k \;\mathrm{d}W_t - \int_0^T H_t^m \;\mathrm{d}W_t\right)^2 \right] \rightarrow 0.
+\mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] \rightarrow 0.
 \]
 <p>Isso mostra que a sequência</p>
 \[
-\int_0^T H_t^k \;\mathrm{d}W_t
+\int_0^T H_t^m \;\mathrm{d}W_t
 \]
 <p>converge em probabilidade e para um limite que independe da escolha da sequência de funções escada.</p>
 <p>A integral de Itô é, então, definida como o limite das integrais de funções escada:</p>
 \[
-\int_0^T H_t \;\mathrm{d}W_t = \lim \int_0^T H_t^k \;\mathrm{d}W_t.
+\int_0^T H_t \;\mathrm{d}W_t = \lim \int_0^T H_t^m \;\mathrm{d}W_t.
 \]
-<p>Nesse caso mais geral de \(\{H_t\}_{t \geq 0}\) progressivamente mensurável e em \(L^2(0, T)\), assumindo ainda que os caminhos amostrais sejam, quase certamente, contínuos, então \(\{H_t^k\}_{t \geq 0}\) pode ser construído com \(H_t^k = H_{t_{j-1}^k}\), para \(t_{j-1}^k \leq t < t_j^k\), em relação à partição \(\{t_j^k\}\) de cada \(\{H_t^k\}_{t \geq 0}\). Assim, recuperamos a fórmula mais direta</p>
+<p>Nesse caso mais geral de \(\{H_t\}_{t \geq 0}\) progressivamente mensurável e em \(L^2(0, T)\), assumindo ainda que os caminhos amostrais sejam, quase certamente, contínuos, então \(\{H_t^m\}_{t \geq 0}\) pode ser construído com \(H_t^m = H_{t_{j-1}^m}\), para \(t_{j-1}^m \leq t < t_j^m\), em relação à partição \(\{t_j^m\}\) de cada \(\{H_t^m\}_{t \geq 0}\). Assim, recuperamos a fórmula mais direta</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
 \]
 <p>por partições arbitrárias \(0 = t_0 < t_1 < \ldots < t_n = T\), com \(\max_j\{t_j - t_{j-1}\} \rightarrow 0\). Mas caso os caminhos amostrais não sejam, quase certamente, contínuos, essa fórmula explícita pode não valer.</p>
+<h2 id="propriedades_da_integral_de_itô_de_funções_escada"><a href="#propriedades_da_integral_de_itô_de_funções_escada" class="header-anchor">Propriedades da integral de Itô de funções escada</a></h2>
+<p>Vamos ver aqui as duas propriedades fundamentais que utilizamos acima. Suponha que \(\{H_t\}_{t\geq 0}\) seja um função escada adaptada a \(\{W_t\}_{t \geq 0}\) e com o processo sendo constante nos intevalos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\).</p>
+<p>Calculemos, primeiramente, a esperança da integral de Itô:</p>
+\[
+\mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
+\]
+<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo, temos \(H_{t_{j-1}}\) independente de \(\Delta_j = W_{t_j} - W_{t_{j-1}}\), de modo que</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
+\]
+<p>Como o processo de Wiener tem valor esperado nulo, segue que \(\mathbb{E}\left[\Delta W_j\right] = 0\), de maneira que</p>
+\[
+\mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
+\]
+<p>Calculemos, agora, o momento de ordem dois da integral de Itô:</p>
+\[
+\begin{align*}
+\mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] & = \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] \\
+& = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
+& = \sum_{i,j=1}^n\mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] \\
+& = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\Delta W_j^2\right]
+\end{align*}
+\]
+<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo e com \(i < j\), temos \(H_{t_{i-1}}\), \(H_{t_{j-1}}\) e \(\Delta W_i\) independente de \(\Delta W_j\), de modo que</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\right]\mathbb{E}\left[\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] \mathbb{E}\left[\Delta W_j^2\right]
+\end{align*}
+\]
+<p>Como</p>
+\[
+\mathbb{E}\left[\Delta W_j\right] = 0, \qquad \mathbb{E}\left[\Delta W_j^2\right] = t_j - t_{j-1},
+\]
+<p>temos</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] = \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] (t_j - t_{j-1}) = \mathbb{E}\left[\sum_j H_{t_{j-1}}^2 (t_j - t_{j-1})\right].
+\]
+<p>Lembrando que \(\{H_t\}_{t \geq 0}\) é um processo escada, o somatório à direita é uma integral e obtemos a seguinte identidade para funções escada, conhecida como <strong>isometria de Itô:</strong></p>
+\[
+\mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
+\]
+<h2 id="aproximação_por_processos_contínuos"><a href="#aproximação_por_processos_contínuos" class="header-anchor">Aproximação por processos contínuos</a></h2>
+<p>Dada uma função de quadrado integrável \(f:\mathbb{R} \rightarrow \mathbb{R}\), uma maneira clássica de aproximá-la por funções contínuas é através da convolução \(t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t\) com aproximações da identidade \(\varphi_\varepsilon\). Essa convolução, no entanto, envolve, tipicamente, olhar para o &quot;passado&quot; e para o &quot;futuro&quot; da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não-antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,</p>
+\[
+\varphi_\varepsilon(t) = \begin{cases}
+\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \leq 0, \\
+0, & t > 0.
+\end{cases}
+\]
+
+<img src="/notas_sde/assets/pages/c05/integral_ito/code/output/aprox_id_exp.svg" alt="">
+<p>Mais especificamente, dado um processo \(\{H_t\}_{t \geq 0}\) de quadrado integrável e progressivamente mensurável em relação a \(\{W_t\}_{t \geq 0}\), definimos</p>
+\[
+H_t^m = \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s.
+\]
+<p>Como \(H_t^m\) só envolve \(H_s\), para \(0\leq s \leq t\), então \(H_t^m\) continua sendo não-antecipativo. Além disso, para \(t \geq 0\) e \(\tau > 0\),</p>
+\[
+\begin{align*}
+H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s \\
+& = \int_t^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m \left(e^{m(s - t)} - e^{m(s - t - \tau)}\right) H_s \;\mathrm{d}s
+\end{align*}
+\]
+<p>Usando que \(e^{m(s - t - \tau)} \leq 1\) e</p>
+\[
+e^{m(s - t)} - e^{m(s - t - \tau)} = \int_{s-t-\tau}^{s - t} m e^{m\eta}\;\mathrm{d}\eta \leq m \tau
+\]
+<p>obtemos</p>
+\[
+\begin{align*}
+\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m H_s \;\mathrm{d}s - \int_0^t m^2 \tau H_s \;\mathrm{d}s \\
+& \leq m \sqrt{\tau} \int_t^{t+\tau} H_s^2 \;\mathrm{d}s + m^2 \tau \sqrt{t}\int_0^t H_s^2 \;\mathrm{d}s \\
+& \leq m \sqrt{\tau}\left(1 + m\sqrt{\tau t}\right)\int_0^t H_s^2 \;\mathrm{d}s.
+\end{align*}
+\]
+<p>Para \(0 \leq \tau < t\), obtemos, analogamente, a mesma estimativa.</p>
+<p>Como \(\{H_t\}_{t\geq 0}\) é de quadrado integrável em intervalos finitos, segue que, para quase todo caminho amostral,</p>
+\[
+\int_0^t H_s(\omega)^2 \;\mathrm{d}s < \infty,
+\]
+<p>de modo que</p>
+\[
+H_{t + \tau}(\omega) \rightarrow H_t(\omega), \quad \tau \rightarrow 0,
+\]
+<p>mostrando a continuidade quase certamente das aproximações \(\{H_t^m\}_{t \geq 0}\).</p>
 <h2 id="relação_com_a_definição_via_dualidade"><a href="#relação_com_a_definição_via_dualidade" class="header-anchor">Relação com a definição via dualidade</a></h2>
 <p>Na Seção <a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a>, definimos a integral de uma função determinística \(g=g(t)\) continuamente diferenciável em relação a um processo estocástico como o processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade</p>
 \[
@@ -343,7 +444,7 @@
         </div>
     
 
-    Last modified: July 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -355,6 +456,9 @@
         <script>renderMathInElement(document.body)</script>
     
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>
