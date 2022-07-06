@@ -80,6 +80,7 @@ menu = [
         "pages/c05/riemann_wiener"
         "pages/c05/integral_ito"
         "pages/c05/integral_ito_propriedades"
+        "pages/c05/formula_ito"
     ]
     "Equações diferenciais aleatórias e estocásticas" => [
         "pages/c06/pathwise_solutions_rde"
