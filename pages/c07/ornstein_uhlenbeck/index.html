@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Teorema Central do Limite</title>  
+   <title>Processo de Ornstein-Uhlenbeck</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -226,10 +226,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.12. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
 </span>
     </p>
 </div>
@@ -240,20 +240,15 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.11. Teorema Central do Limite</a></h1>
-<blockquote>
-<p>&quot;This brings us to the term &#39;central limit theorem&#39; ... This name was introduced by George Pólya &#40;1920&#41;, with the intention that the adjective &#39;central&#39; was to modify the noun &#39;theorem&#39;; i.e. it is the limit theorem that is <em>central</em> to probability. Almost universally, students today think that &#39;central&#39; modifies &#39;limit&#39;, so that it is instead a theorem about a <em>&#39;central limit&#39;</em>, whatever that means. The confusion does not occur in the original German, where Pólya’s words were: <em>Uber den zentralen Grenzwertsatz der Wahrscheinlichkeitsrechnung</em>, an interesting example where the German habit of inventing compound words removes an ambiguity in the literal English rendering.&quot; -  E. T. Jaynes &#40;2003&#41;</p>
-</blockquote>
-<p>A história do Teorema Central do Limite é muito rica e se desenvolveu ao longo de mais de um século, desde os primeiros trabalhos de Pierre-Simon Laplace, em 1810 e 1812, até os resultados de Paul Lévy e Willy Feller, em 1935 &#40;veja H. Fischer &#40;2011&#41;, &quot;A History of the Central Limit Theorem&quot;&#41;. Isso passando por publicações de outros grandes nomes, como Siméon Denis Poisson &#40;1824 e 1829&#41;, Peter Gustav Lejeune Dirichlet &#40;1846&#41;, Augustin Louis Cauchy &#40;1845&#41;, Pafnutii Lvovich Chebyshev &#40;1887&#41;, Andrei Andreevich Markov &#40;1898&#41; e Aleksandr Mikhailovich Liapunov &#40;1900&#41;, Felix Hausdorff &#40;1901&#41;, Richard von Mises &#40;1919&#41;, George Pólya &#40;1920&#41;, Jarl Waldemar Lindeberg &#40;1922&#41; e Sergei Natanovich Bernshtein &#40;1922&#41;.</p>
-<p>O Teorema Central do Limite abrange, na verdade, uma coleção de resultados, em contextos diferentes e com condições diversas, tanto condições suficientes quanto necessárias.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.4. Processo de Ornstein-Uhlenbeck</a></h1>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.12. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
 </span>
     </p>
 </div>

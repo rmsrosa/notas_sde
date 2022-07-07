@@ -122,6 +122,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>pages/c07/setting/index.html</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>pages/c03/processo_browniano/index.html</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -159,6 +165,18 @@
 </url>
 <url>
     <loc>pages/c03/filtracao/index.html</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c07/ornstein_uhlenbeck/index.html</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c07/geometric_brownian/index.html</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

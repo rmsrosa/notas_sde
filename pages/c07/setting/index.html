@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Teorema Central do Limite</title>  
+   <title>Interpretação da equação</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,6 +13,8 @@
 
   
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -226,10 +228,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.12. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde"><kbd>→</kbd> 7.2. Existência de soluções</a>
 </span>
     </p>
 </div>
@@ -240,20 +242,58 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.11. Teorema Central do Limite</a></h1>
-<blockquote>
-<p>&quot;This brings us to the term &#39;central limit theorem&#39; ... This name was introduced by George Pólya &#40;1920&#41;, with the intention that the adjective &#39;central&#39; was to modify the noun &#39;theorem&#39;; i.e. it is the limit theorem that is <em>central</em> to probability. Almost universally, students today think that &#39;central&#39; modifies &#39;limit&#39;, so that it is instead a theorem about a <em>&#39;central limit&#39;</em>, whatever that means. The confusion does not occur in the original German, where Pólya’s words were: <em>Uber den zentralen Grenzwertsatz der Wahrscheinlichkeitsrechnung</em>, an interesting example where the German habit of inventing compound words removes an ambiguity in the literal English rendering.&quot; -  E. T. Jaynes &#40;2003&#41;</p>
-</blockquote>
-<p>A história do Teorema Central do Limite é muito rica e se desenvolveu ao longo de mais de um século, desde os primeiros trabalhos de Pierre-Simon Laplace, em 1810 e 1812, até os resultados de Paul Lévy e Willy Feller, em 1935 &#40;veja H. Fischer &#40;2011&#41;, &quot;A History of the Central Limit Theorem&quot;&#41;. Isso passando por publicações de outros grandes nomes, como Siméon Denis Poisson &#40;1824 e 1829&#41;, Peter Gustav Lejeune Dirichlet &#40;1846&#41;, Augustin Louis Cauchy &#40;1845&#41;, Pafnutii Lvovich Chebyshev &#40;1887&#41;, Andrei Andreevich Markov &#40;1898&#41; e Aleksandr Mikhailovich Liapunov &#40;1900&#41;, Felix Hausdorff &#40;1901&#41;, Richard von Mises &#40;1919&#41;, George Pólya &#40;1920&#41;, Jarl Waldemar Lindeberg &#40;1922&#41; e Sergei Natanovich Bernshtein &#40;1922&#41;.</p>
-<p>O Teorema Central do Limite abrange, na verdade, uma coleção de resultados, em contextos diferentes e com condições diversas, tanto condições suficientes quanto necessárias.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.1. Interpretação da equação</a></h1>
+<p>Neste capítulo, vamos considerar equações diferenciais estocásticas da forma</p>
+\[
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\]
+<p>onde \(T > 0\), \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\).</p>
+<p>Junte-se à essa equação uma condição inicial</p>
+\[
+\left.X_t\right|_{t = 0} = X_0,
+\]
+<p>onde \(X_0\) é uma variável aleatória real.</p>
+<h2 id="significado_da_equação"><a href="#significado_da_equação" class="header-anchor">Significado da equação</a></h2>
+<p>Os termos \(\mathrm{d}X_t\) e \(\mathrm{d}W_t\) não têm significado por si só. A equação conforme escrita acima é uma maneira de se escrever a equação integral correspondente:</p>
+\[
+X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(s, X_s)\mathrm{d}W_s.
+\]
+<p>Sob condições apropriadas em \(f\), \(g\) e na solução \(X_t\), a primeira integral é uma integral de Riemann ou de Lebesgue de um processo definido por \(H_t = f(t, X_t)\) e a segunda integral é uma integral de Itô de um processo definido por \(G_t = g(t, X_t)\), em relação ao processo \(\{W_t\}_{t\geq 0}\). Buscamos condições que garantam a existência de um processo apropriado \(\{X_t\}_{t \geq 0}\) que satisfaça essa equação integral.</p>
+<h2 id="nomenclatura"><a href="#nomenclatura" class="header-anchor">Nomenclatura</a></h2>
+<p>O termo \(f = f(t, x)\) é chamado de <em>drift</em> e \(g = g(t, x)\), de <em>difusão.</em></p>
+<p>Uma notação comum é escrevê-los como \(\mu\) e \(\sigma\). Para ver a razão disso, considere o caso com coeficientes determinísticos e condição inicial nula:</p>
+\[
+\mathrm{d}X_t = \mu(t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t, \quad \left. X_t \right|_{t = 0} = 0.
+\]
+<p>Essa equação é pra ser interpretada como a equação integral</p>
+\[
+X_t = \int_0^t \mu(s)\mathrm{d}s + \int_0^t \sigma(s)\mathrm{d}W_s.
+\]
+<p>Já vimos que</p>
+\[
+\mathbb{E}\left[\int_0^t \sigma(s)\mathrm{d}W_s\right] = 0.
+\]
+<p>Assim, o valor esperado da solução é</p>
+\[
+\mathbb{E}[X_t] = \int_0^t \mu(s)\mathrm{d}s.
+\]
+<p>Por sua vez, a variância é dada por</p>
+\[
+\mathrm{Var}(X_t) = \mathbb{E}[(X_t - \mathbb{E}[X_t])^2] = \mathbb{E}\left[\left(\int_0^t \sigma(s)\mathrm{d}W_s\right)^2\right].
+\]
+<p>Usando a isometria de Itô e o fato de \(\sigma\) ser determinístico, isso nos dá</p>
+\[
+\mathrm{Var}(X_t) = \int_0^t \sigma(s)^2\mathrm{d}W_s.
+\]
+<p>Dessa forma, associamos \(\mu\) e \(\sigma\) diretamente ao valor esperado e ao desvio padrão, respectivamente, da solução \(\{X_t\}_{t \geq 0}\) da equação.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/gerando_num_aleatorios"><kbd>→</kbd> 2.12. Gerando números aleatórios no computador</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde"><kbd>→</kbd> 7.2. Existência de soluções</a>
 </span>
     </p>
 </div>
@@ -275,6 +315,10 @@
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     
