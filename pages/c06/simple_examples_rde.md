@@ -1,59 +1,35 @@
-@def title = "Soluções por caminhos de equações diferenciais aleatórias"
+@def title = "Exemplos simples"
 
 # {{ get_title }}
 
-Vamos considerar, nessa seção, equações diferenciais aleatórias da forma
-$$
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
-$$
-onde $T > 0$, $\{Y_t\}_{t\in [0, T]}$ é um processo real com caminhos amostrais contínuos e $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ é contínuo.
-
-Junte-se à essa equação uma condição inicial
-$$
-\left.X_t\right|_{t = 0} = C,
-$$
-onde $C$ é uma variável aleatória real.
-
-Sob essas condições, podemos considerar soluções por caminho, da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.
-
-## Definição de solução por caminhos
-
-Uma **solução por caminhos** *(ou pathwise solution)* da equação diferencial aleatória acima é um processo aleatório real $\{X_t\}_{t\in [0, T]}$ tal que quase todo caminho amostral $t\mapsto X_t(\omega)$ é continuamente diferenciável e satisfaz a equação diferencial ordinária
-$$
-\frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
-$$
-No caso do problema de valor inicial, pedimos, ainda, que
-$$
-X_0(\omega) = C(\omega),
-$$
-quase sempre.
+Vamos considerar alguns exemplos simples de equações diferenciais aleatórias.
 
 ## Exemplo linear
 
-Considere o problema de valor inicial
+Começemos com o problema de valor inicial
 $$
 \begin{cases}
 \displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t, & t \geq 0, \\
-X_0 = C,
+X_t|_{t = 0} = X_0,
 \end{cases}
 $$
-onde $A$ e $C$ são variáveis aleatórias reais. Definimos
+onde $A$ e $X-0$ são variáveis aleatórias reais. Definimos
 $$
-X_t = Ce^{tA}, \qquad t \geq 0.
+X_t = X_0e^{tA}, \qquad t \geq 0.
 $$
-Como $f(t, a, c) = ce^{ta}$ é uma função contínua de $\mathbb{R}^3$ em $\mathbb{R}$, segue que $X_t$ está bem definido. Além disso, para quase todo $\omega$, temos $A(\omega), C(\omega) \in \mathbb{R}$ e, com isso, temos os caminhos amostrais
+Como $f(t, a, c) = ce^{ta}$ é uma função contínua de $\mathbb{R}^3$ em $\mathbb{R}$, segue que $X_t$ está bem definido e é uma variável aleatória. Além disso, para quase todo $\omega$, temos $A(\omega), X_0(\omega) \in \mathbb{R}$ e, com isso, temos os caminhos amostrais
 $$
-X_t(\omega) = C(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
+X_t(\omega) = X_0(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
 $$
 que são (infinitamente) diferenciáveis em $t$ e são soluções da equação diferencial ordinária
 $$
 \begin{cases}
 \displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0, \\
-X_0(\omega) = C(\omega).
+X_t(\omega)|_{t = 0} = X_0(\omega).
 \end{cases}
 $$
 
-Logo, $\{X_t\}_{t\geq 0}$ é um processo que é uma solução por caminhos da equação diferencial aleatória acima. Para $t = 0$, temos $X_0 = C$, portanto a condição inicial também é satisfeita.
+Logo, $\{X_t\}_{t\geq 0}$ é um processo que é uma solução por caminhos da equação diferencial aleatória acima, com a condição inicial desejada.
 
 ## Exemplo com existência local
 
@@ -147,7 +123,7 @@ No entanto, se $E$ não for mensurável, então os caminhos satisfazem a equaç�
 
 ## Outros tipos de solução
 
-Outros tipos de solução podem ser obtidas relaxando o sentido de convergência do limite
+Outros tipos de solução podem ser obtidas relaxando-se o sentido de convergência do limite
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
 $$

@@ -82,9 +82,13 @@ menu = [
         "pages/c05/integral_ito_propriedades"
         "pages/c05/formula_ito"
     ]
-    "Equações diferenciais aleatórias e estocásticas" => [
-        "pages/c06/pathwise_solutions_rde"
-        "pages/c06/solutions_sde"
+    "Equações diferenciais aleatórias" => [
+        "pages/c06/existence_solutions_rde"
+        "pages/c06/simple_examples_rde"
+        "pages/c06/logistic_rde"
+    ]
+    "Equações diferenciais estocásticas" => [
+        "pages/c07/existence_solutions_sde"
     ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"

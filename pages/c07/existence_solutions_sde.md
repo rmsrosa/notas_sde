@@ -1,4 +1,4 @@
-@def title = "Soluções de equações diferenciais estocásticas"
+@def title = "Existência de soluções"
 
 # {{ get_title }}
 
