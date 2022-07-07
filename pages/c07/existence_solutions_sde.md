@@ -2,61 +2,18 @@
 
 # {{ get_title }}
 
-Vamos considerar, agora, equações diferenciais estocásticas da forma
+Estamos considerando equações diferenciais estocásticas da forma
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 $$
-onde $T > 0$, $\{W_t\}_{t\geq 0}$ é um processo de Wiener e $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ são globalmente Lipschitz contínuos.
-
-Junte-se à essa equação uma condição inicial
+com uma condição inicial
 $$
-\left.X_t\right|_{t = 0} = X_0,
-$$
-onde $X_0$ é uma variável aleatória real.
-
-## Significado da equação
-
-Os termos $\mathrm{d}X_t$ e $\mathrm{d}W_t$ não têm significado por si só. A equação conforme escrita acima é uma maneira de se escrever a equação integral correspondente:
-$$
-X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(s, X_s)\mathrm{d}W_s.
-$$
-Sob condições apropriadas em $f$, $g$ e na solução $X_t$, a primeira integral é uma integral de Riemann ou de Lebesgue de um processo definido por $H_t = f(t, X_t)$ e a segunda integral é uma integral de Itô de um processo definido por $G_t = g(t, X_t)$, em relação ao processo $\{W_t\}_{t\geq 0}$. Buscamos condições que garantam a existência de um processo apropriado $\{X_t\}_{t \geq 0}$ que satisfaça essa equação integral.
-
-## Nomenclatura
-
-O termo $f = f(t, x)$ é chamado de *drift* e $g = g(t, x)$, de *difusão.*
-
-Uma notação comum é escrevê-los como $\mu$ e $\sigma$. Para ver a razão disso, considere o caso com coeficientes determinísticos e condição inicial nula:
-$$
-\mathrm{d}X_t = \mu(t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t, \quad \left. X_t \right|_{t = 0} = 0.
-$$
-Essa equação é pra ser interpretada como a equação integral
-$$
-X_t = \int_0^t \mu(s)\mathrm{d}s + \int_0^t \sigma(s)\mathrm{d}W_s.
+\left.X_t\right|_{t = 0} = X_0.
 $$
 
-Já vimos que
-$$
-\mathbb{E}\left[\int_0^t \sigma(s)\mathrm{d}W_s\right] = 0.
-$$
-Assim, o valor esperado da solução é
-$$
-\mathbb{E}[X_t] = \int_0^t \mu(s)\mathrm{d}s.
-$$
-Por sua vez, a variância é dada por
-$$
-\mathrm{Var}(X_t) = \mathbb{E}[(X_t - \mathbb{E}[X_t])^2] = \mathbb{E}\left[\left(\int_0^t \sigma(s)\mathrm{d}W_s\right)^2\right].
-$$
-Usando a isometria de Itô e o fato de $\sigma$ ser determinístico, isso nos dá
-$$
-\mathrm{Var}(X_t) = \int_0^t \sigma(s)^2\mathrm{d}W_s.
-$$
+Para os resultados de existência e unicidade, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem globalmente Lipschitz contínuas na variável $x$.
 
-Dessa forma, associamos $\mu$ e $\sigma$ diretamente ao valor esperado e ao desvio padrão, respectivamente, da solução $\{X_t\}_{t \geq 0}$ da equação.
-
-## Sobre as condições de continuidade Lipschitz global
-
-Como dito acima, supomos que $f$ e $g$ são globalmente Lipschitz contínuas, i.e. existem $L_f, L_g > 0$ tais que
+Mais precisamente, existem $L_f, L_g > 0$ tais que
 $$
 \begin{align*}
 |f(t, x) - f(t, y)| \leq L_f|x - y|, \qquad \forall x, y \in \mathbb{R}, \\
@@ -66,15 +23,17 @@ $$
 
 Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular na teoria de equações diferenciais determinísticas. A diferença é que a continuidade Lipschitz assumida é apenas local, ou seja, para $x, y$ numa vizinhança da condição inicial.
 
-No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. Essa condição pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
+No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. 
 
-## Existência e unicidade no caso de equações com difusão constante
+Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
 
-Vamos começar com um caso particular, com difusão constante $g(t, X_t ) = \sigma \in \mathbb{R}$, ou seja
+## Existência e unicidade no caso de equações com difusão constante e condição inicial determinística
+
+Vamos começar com um caso particular, com difusão constante $g(t, X_t) = \sigma \in \mathbb{R}$, ou seja
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
 $$
-Também assumimos uma condição inicial determinística, digamos $X_0 = x_0 \in \mathbb{R}$
+Também assumimos uma condição inicial determinística, digamos $X_0 = x_0 \in \mathbb{R}$.
 
 A forma integral equivalente é
 $$
@@ -91,20 +50,24 @@ $$
 |f(t, x) - f(t, y)| \leq L_T |x - y|, \qquad \forall \;0 \leq t \leq T, \;\forall x, y \in \mathbb{R}.
 $$
 
-A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos $X_t^0 = x_0$, para todo $t \geq 0$, e, para $m \in \mathbb{N}$,
+A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos,
+para todo $t \geq 0$,
 $$
-X_t^m = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t.
+\begin{align*}
+X_t^0 & = x_0, \\
+X_t^m & = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
+\end{align*}
 $$
 
 Vamos mostrar que a família $\{X_t^m\}_{0 \leq t \leq T}$ de processos converge, em média quadrática, para um processo que é solução da equação integral.
 
-Considere os processos estocásticos
+Considere, para isso, os processos estocásticos
 $$
-D_t^m = \max_{0 \leq s \leq t} |X_s^m - X_s^{m-1}|, \quad m = 1, 2, \ldots.
+D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
 $$
-Para cada $\omega\in \Omega$, temos que $W_t(\omega)$ é limitado em $[0, T]$. Além disso, $|f(t, x_0)|$ é limitado em $[0, T]$, já que $f$ é contínua. Assim,
+Para cada $\omega\in \Omega$, temos que $W_t(\omega)$ é limitado em $[0, T]$. Além disso, $f(t, x_0)$ é limitado em $[0, T]$, já que $f$ é contínua. Assim,
 $$
-D_t^1(\omega) \leq \left| \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
+D_t^0(\omega) \leq \left| \int_0^t f(s, x_0)\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
 $$
 para algum $C(\omega) \geq 0.$
 
@@ -112,24 +75,42 @@ Como no método de Picard clássico, vamos mostrar que
 $$
 D_t^m \leq C \frac{L^m}{m!} t^m.
 $$
-A estimativa acima mostra que isso é verdade para $m = 1$. Procedemos, agora, por indução, assumindo verdadeiro para $m \in \mathbb{N}$ qualquer, e analisando o termo correspondente a $m + 1.$ Temos, de fato,
+A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$ Temos,
 $$
 \begin{align*}
-D_t^{m+1} & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
+D_t^m & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
 & = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
 & \leq \max_{0 \leq s \leq t} \int_0^t L |X_s^m - X_s^{m-1}|\mathrm{d}s \\
-& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^m \;\mathrm{d}s \\
-& \leq L \int_0^t D_s^m \;\mathrm{d}s \\
-& \leq L \int_0^t C \frac{L^m}{m!} s^m \;\mathrm{d}s \\
-& = C \frac{L^{m+1}}{(m+1)!} t^{m+1}.
+& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^{m-1} \;\mathrm{d}s \\
+& \leq L \int_0^t D_s^{m-1} \;\mathrm{d}s \\
+& \leq L \int_0^t C \frac{L^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
+& \leq C \frac{L^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
+& = C \frac{L^m}{m!} t^{m}.
 \end{align*}
 $$
 
-Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq m \geq 1$,
+Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1$,
 $$
-\max_{0 \leq s \leq t} |X_s^k - X_s^m| \leq \sum_{j = m+1}^k D_t^j \leq \sum_{j = m}^\infty C \frac{L^j}{j!} t^j.
+\max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
 $$
-Como o somatório é o "rabo" da série de Taylor da função exponencial, o lado direito converge para zero, quando $m \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em $[0, T]$. No limite, temos um processo $\{X_t\}_{t \geq 0}$ satisfazendo, quase certamente, a equação integral desejada:
+Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em $[0, T]$. No limite, temos um processo $\{X_t\}_{t \geq 0}$ satisfazendo, quase certamente, a equação integral desejada:
 $$
 X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
 $$
+
+## Existência e unicidade no caso de equações com difusão determinística
+
+Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial (exceto que seja finita quase certamente).
+
+Nesse caso, temos uma equação da forma
+$$
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
+$$
+com condição inicial
+$$
+\left.X_t\right|_{t = 0} = X_0.
+$$
+
+Assumimos $f=f(t,x)$ contínua em $(t, x)\in [0, \infty]\times \mathbb{R}$ e globalmente Lipschitz contínua na variável $x$, em cada intervalo limitado $[0, T]$. Quando a $X_0$, assumimos, apenas, que seja finita quase certamente.
+
+Deixamos os detalhes da demonstração como exercício.

@@ -88,6 +88,7 @@ menu = [
         "pages/c06/logistic_rde"
     ]
     "Equações diferenciais estocásticas" => [
+        "pages/c07/setting"
         "pages/c07/existence_solutions_sde"
     ]
     "*Apêndice" => [
