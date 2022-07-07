@@ -5,23 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Variáveis aleatórias discretas</title>  
+   <title>Existência de soluções</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
-  
-    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
-    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre').forEach((el) => {
-          hljs.highlightElement(el);
-        });
-      });
-    </script>
   
 
   
@@ -230,10 +219,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas"><kbd>→</kbd> 2.3. Variáveis aleatórias contínuas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/simple_examples_rde"><kbd>→</kbd> 6.2. Exemplos simples</a>
 </span>
     </p>
 </div>
@@ -244,137 +233,62 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.2. Variáveis aleatórias discretas</a></h1>
-<p>Uma variável aleatória discreta finita possui um conjunto finito \(\{x_1, \ldots, x_J\}\) de valores possíveis, \(K\in \mathbb{N}\), com probabilidades</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Existência de soluções</a></h1>
+<p>Vamos considerar, nesse capítulo, equações diferenciais aleatórias da forma</p>
 \[
-\mathbb{P}(X = x_j) = p_j, \quad j = 1, \ldots, J.
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
 \]
-<p>O conjunto de probabilidades \(\{p_j\}_j\) é chamada de <strong>função massa de probabilidade</strong> e, naturalmente, cada probabilidade deve ser não-negativa e a soma &#40;massa&#41; total deve ser 1:</p>
+<p>onde \(T > 0\), \(\{Y_t\}_{t\in [0, T]}\) é um processo real com caminhos amostrais contínuos e \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) é contínuo.</p>
+<p>Junte-se à essa equação uma condição inicial</p>
 \[
-0 \leq p_j \leq 1, \qquad \sum_{j=1}^J p_j = 1.
+\left.X_t\right|_{t = 0} = X_0,
 \]
-<p>A <strong>função distribuição acumulada</strong> é definida por</p>
+<p>onde \(X_0\) é uma variável aleatória real.</p>
+<p>Sob essas condições, podemos considerar soluções por caminho da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.</p>
+<h2 id="definição_de_solução_por_caminhos"><a href="#definição_de_solução_por_caminhos" class="header-anchor">Definição de solução por caminhos</a></h2>
+<p>Uma <strong>solução por caminhos</strong> <em>&#40;ou pathwise solution&#41;</em> da equação diferencial aleatória acima é um processo aleatório real \(\{X_t\}_{t\in [0, T]}\) tal que quase todo caminho amostral \(t\mapsto X_t(\omega)\) é continuamente diferenciável e satisfaz a equação diferencial ordinária</p>
 \[
-  f(x) = \mathbb{P}(X \leq x) = \sum_{x_j \leq x} p_j, \qquad x\in \mathbb{R}.
+\frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
 \]
-<p>e nos dá a probabilidade de termos uma realização menor ou igual a um dado valor \(x\).</p>
-<p>Vejamos alguns exemplos.</p>
-<h2 id="variável_aleatória_uniforme"><a href="#variável_aleatória_uniforme" class="header-anchor">Variável aleatória uniforme</a></h2>
-<p>Quando o espaço de estados é finito, digamos \(\Sigma = \{1, 2, \ldots, N\}\), onde \(N\in \mathbb{N}\), uma <strong>variável aleatória uniforme</strong> em \(\Sigma\) é a variável aleatória em que cada estado tem chances iguais de ser realizado. Ou seja, nesse caso de \(N\) estados, temos</p>
+<p>No caso do problema de valor inicial, pedimos, ainda, que</p>
 \[
-\mathbb{P}(X = k) = \frac{1}{N}, \quad \forall k = 1, 2, \ldots, N.
+\left.X_0\right|_{t = 0}(\omega) = X_0(\omega),
 \]
-<p>Nesse caso, podemos escrever</p>
+<p>quase certamente.</p>
+<h2 id="existência_de_solução"><a href="#existência_de_solução" class="header-anchor">Existência de solução</a></h2>
+<p>No caso de uma equação diferencial ordinária \(x' = f(t, x, \lambda)\), sabemos que se \(f\) for contínua na vizinhança de um ponto \((t_0, x_0, \lambda)\), então existe pelo menos uma solução local do problema de valor inicial \(x(t_0) = x_0\). </p>
+<p>No caso da equação diferencial aleatória, precisamos resolver isso para cada amostra \(\omega\), ou seja, precisaríamos de soluções locais para cada \(x' = f(t, x, Y_t(\omega))\), com condição inicial \(x(0) = X_0(\omega)\). O problema é que o Teorema de Peano nos dá, para cada \(\omega\), uma solução local \(x = x(t, \omega)\) em um intervalo \((-\delta(\omega), \delta(\omega))\), com \(\delta(\omega) > 0\). E não temos, em princípio, como controlar \(\delta(\omega)\) para que fique, sempre, estritamente maior do que zero, de modo a nos garantir um intervalo mínimo no qual a equação pode ser resolvida para todo \(\omega\). Mesmo que isso possa ser feito, não temos, sob essa hipótese &#40;de mera continuidade da \(f\)&#41;, que a função \(\omega \mapsto x(t, \omega)\) esteja bem definida e seja contínua. Desse jeito, não temos como garantir que \(\omega \mapsto X_t(\omega) = x(t, \omega)\) seja mensurável e, portanto, seja uma variável aleatória.</p>
+<p>Continuando a pensar na teoria de equações diferenciais ordinárias, se assumirmos um pouco mais, que \(f\) seja localmente Lipschitz contínua na variável \(x\), então \(\omega \mapsto X_t(\omega) = x(t, \omega)\) está bem definido e é contínuo, pelo menos para os valores \(\omega\) em que a solução está definida até o instante \(t\). Mas, novamente, não temos como garantir, em geral, que a soluções existem num intervalo de tempo mínimo. Ou seja, \(\delta(\omega) > 0\) pode não estar limitado inferiormente por um valor estritamente positivo.</p>
+<p>Uma solução é pedir que a função \(f=f(t, x, y)\) seja globalmente Lipscthiz na variável \(x\), i.e. que exista \(L > 0\) tal que</p>
 \[
-X \sim \textrm{Uniforme}(1, 2, \ldots, N),
+|f(t, x_1, y) - f(t, x_2, y)| \leq L |x_1 - x_2|, \qquad \forall t, x_1, x_2, y.
 \]
-<p>onde \(\textrm{Uniforme}(\Sigma) = \textrm{Uniforme}(\{1, 2, \ldots, N\})\) é a distribuição uniforme em \(\Sigma = \{1, 2, \ldots, N\}\).</p>
-<h2 id="teste_de_bernoulli"><a href="#teste_de_bernoulli" class="header-anchor">Teste de Bernoulli</a></h2>
-<p>Uma <strong>variável aleatória de Bernoulli</strong> com parâmetro \(p\), \(0\leq p \leq 1\), possui dois resultados possíveis, \(0\) e \(1\), com probabilidades \(p\) e \(1-p\), respectivamente. Ou seja, \(J = 2\), \(x_1 = 0\), \(x_2 = 1\), \(p_1 = p\) e \(p_2 = 1 - p\). Pode ser exemplificado como o resultado do lançamento de uma moeda, com \(1\) e \(0\) representando &quot;cara&quot; e &quot;coroa&quot;, respectivamente. O resultado de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser &quot;positivo&quot; ou &quot;negativo&quot;, podendo, também, ser modelado por uma variável de Bernoulli.</p>
-<p>Denotamos a distribuição de Bernoulli com probabilidade de sucesso \(p\) &#40;e.g. \(\mathbb{P}(X = 1) = p\)&#41; por \(\mathrm{Bernoulli}(p)\). Assim, uma variável aleatória de Bernouille é indicada por</p>
+<p>Nesse caso, \(\delta(\omega) = \infty\), para todo \(\omega\in \Omega\), e a função-solução \(\omega \mapsto x(t, \omega)\) do problema de valor inicial. Assim, o processo \(\{X_t\}_{t\geq 0}\) definido por \(X_t(\omega) = x(t, \omega)\) é um processo com caminhos continuamente diferenciáveis e que é uma solução por caminhos da equação diferencial aleatória.</p>
+<p>Outra solução é exigir apenas que \(f=f(t, x, y)\) seja localmente Lipschitz em \(x\) mas que tenha alguma estrutura adicional que nos permita garantir a existência de solução por um tempo mínimo comum a todos os valores amostrais \(\omega\in\Omega\).</p>
+<p>Veremos exemplos na seção seguinte.</p>
+<h2 id="outros_tipos_de_solução"><a href="#outros_tipos_de_solução" class="header-anchor">Outros tipos de solução</a></h2>
+<p>Outros tipos de solução podem ser obtidas relaxando o sentido de convergência do limite</p>
 \[
-X \sim \mathrm{Bernoulli}(p).
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
 \]
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoulli.svg" alt="">
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoullicum.svg" alt="">
-<h2 id="número_de_sucessos_e_a_distribuição_binomial"><a href="#número_de_sucessos_e_a_distribuição_binomial" class="header-anchor">Número de sucessos e a distribuição binomial</a></h2>
-<p>Podemos, também, jogar uma moeda \(n\) vezes e contarmos o número de vezes em que o resultado é &quot;cara&quot;, por exemplo. A probabilidade de não termos nenhuma cara é \(1/2^n\), pois devemos ter exatamente \(n\) coroas lançadas, sendo que cada uma tem probabilidade 1/2 de ocorrer. A probabilidade de termos exatamente uma cara é \(n/2^n\), pois a cara pode vir em qualquer um dos \(n\) lançamentos. Mais geralmente, temos um número</p>
+<p>No caso acima, de soluções por caminhos, o limite vale quase certamente, i.e.</p>
 \[
-  \left(\begin{matrix} n \\ i \end{matrix}\right) = \frac{n!}{i!(n-i)!}
+\mathbb{P}\left(\exists \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau} = f(t, X_t, Y_t) \right) = 1.
 \]
-<p>de combinações possíveis de exatamente \(i\) resultados iguais &#40;e.g. &quot;caras&quot;&#41;, em \(n\) lançamentos. Assim, se \(X\) é a variável aleatória contando o número de &quot;caras&quot; em \(n\) lançamentos, então a probabilidade de termos \(i\) caras é</p>
+<p>Mas, em princípio, a noção de derivada de um processo pode ser relaxada para convergência em probabilidade, convergência em distribuição, convergência em média-quadrática, convergência em média \(p\geq 1\), etc. A dificuldade é obtermos condições em \(f\) e em \(Y_t\), mais fracas, que garantam a existência de soluções da equação diferencial aleatória nesse sentido &#40;também&#41; mais fraco que convergência quase certamente.</p>
+<p>Uma sentido bastante utilizado é o de solução no sentido de média quadrática, em que existe um processo \(\{\mathrm{d}X_t/\mathrm{d}t\}_{t \in [0, T)}\) tal que</p>
 \[
-  \mathbb{P}(X = i) = \frac{1}{2^n} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
+\mathbb{E}\left( \left| \frac{X_{t+\tau} - X_t}{\tau} - \frac{\mathrm{d}X_t}{\mathrm{d}t}\right|\right) \rightarrow 0, \quad \tau \rightarrow 0.
 \]
-<p>No caso de um dado viciado, ou, mais geralmente, de \(n\) testes de Bernoulli com parâmetro \(p\), \(0\leq p \leq 1\), então a probabilidade de \(i\) sucessos é</p>
-\[
-  \mathbb{P}(X = i) = p^i(1-p)^{n-i} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
-\]
-<p>Denotamos essa distribuição binomial por \(B(n, p)\). Assim,</p>
-\[
-X \sim B(n, p).
-\]
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomial.svg" alt="">
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomialcum.svg" alt="">
-<h2 id="tempo_de_espera_e_a_distribuição_geométrica"><a href="#tempo_de_espera_e_a_distribuição_geométrica" class="header-anchor">Tempo de espera e a distribuição geométrica</a></h2>
-<p>Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após \(n\) tentativas frustradas. Ou seja, em \(n\) tentativas, temos insucesso nos primeiros \(n-1\) testes e sucesso apenas no último teste. Se a chance de sucesso é \(p\) e a de fracasso é \(1-p\), com \(0 < p \leq 1\), então temos probabilidade \((1-p)^{n-1}\) de insucessos nos \(n\) primeiros testes e \(p\) de sucesso no último teste, ou seja,</p>
-\[
-\mathbb{P}(X = n) = (1-p)^{n-1}p
-\]
-<p>Essa distribuição é chamada de distribuição geométrica. Note que</p>
-\[
-  \sum_{n=1}^\infty (1-p)^{n-1}p = p + (1-p)p + (1-p)^2p + \ldots = p(1 + (1-p) + (1-p)^2 + \ldots) = p \frac{1}{p} = 1.
-\]
-<p>Observe que há uma questão de interpretação, aqui. A probabilidade \((1-p)^{n-1}p\) de termos sucesso <em>apenas</em> no \(n\)-ésimo é a mesma que a de termos apenas um sucesso em \(n\) testes, independentemente de ser no último teste ou não.</p>
-<p>Observe, ainda, que no caso da distribuição binomial discutida acima, fixamos o número \(n\) de testes e analisamos a quantidade de sucessos nesses \(n\) testes. Já na distribuição geométrica, podemos ter um número arbitrário de testes.</p>
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfgeometrica.svg" alt="">
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfgeometricacum.svg" alt="">
-<p>A distribuição geométrica é a única distribuição enumerável &quot;sem memória&quot;. Ou seja, se \(\mathbb{P}\) é uma probabilidade cujo espaço de eventos é \(\Sigma = \mathbb{N}\) e é tal que</p>
-\[
-\mathbb{P}(X \geq m + n | X \geq m) = \mathbb{P}(X \geq n), \qquad \forall m, n \in \mathbb{N},
-\]
-<p>então \(\mathbb{P}(X = n)\) é a distribuição geométrica</p>
-\[
-\mathbb{P}(X = n) = (1 - p)^{n-1}p,
-\]
-<p>onde</p>
-\[
-p = \mathbb{P}(X = 1).
-\]
-<p>A demonstração desse fato faz uso da fórmula para distribuição condicionada</p>
-\[
-\mathbb{P}(X > m + n | X > m) = \frac{\mathbb{P}(\{X > m + n\} \cap \{X > m\})}{\mathbb{P}(X > m)}.
-\]
-<p>Como \(n \geq 1\), temos \(\{X > m + n\} \subset \{X > m\}\), de modo que</p>
-\[
-\mathbb{P}(X > n) = \mathbb{P}(X > m + n | X > m) = \frac{\mathbb{P}(X > m + n)}{\mathbb{P}(X > m)}.
-\]
-<p>Ou seja,</p>
-\[
-\mathbb{P}(X > m + n) = \mathbb{P}(X > n)\mathbb{P}(X > m).
-\]
-<p>Em particular, temos a recursão</p>
-\[
-\mathbb{P}(X > n + 1) = \mathbb{P}(X > n)\mathbb{P}(X > 1),
-\]
-<p>cuja solução é</p>
-\[
-\mathbb{P}(X > n) = \mathbb{P}(X > 1)^n.
-\]
-<p>Além disso, como \(\Sigma = \mathbb{N}\) e definindo \(p = \mathbb{P}(X = 1)\), temos</p>
-\[
-\mathbb{P}(X > 1) = 1 - \mathbb{P}(X = 1) = 1 - p.
-\]
-<p>Portanto,</p>
-\[
-\mathbb{P}(X > n) = (1 - p)^n.
-\]
-<p>Daí, tiramos que</p>
-\[
-\mathbb{P}(X = 1) = \mathbb{P}(X < 1) = 1 - \mathbb{P}(X \geq 2) = 1 - p
-\]
-<p>e, para \(n = 2, \ldots,\)</p>
-\[
-\mathbb{P}(X = n) = \mathbb{P}(X > n) - \mathbb{P}(X > n - 1) = (1 - p)^n - (1 - p)^{n - 1} = (1 - p)^{n - 1}(1 - p - 1) = (1 - p)^{n - 1}p.
-\]
-<p>Assim, obtemos a distribuição geométrica</p>
-\[
-\mathbb{P}(X = n) = (1 - p)^{n - 1}p, \qquad \forall n\in \mathbb{N}.
-\]
+<p>No entanto, não exploraremos esse caminho aqui.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas"><kbd>→</kbd> 2.3. Variáveis aleatórias contínuas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/simple_examples_rde"><kbd>→</kbd> 6.2. Exemplos simples</a>
 </span>
     </p>
 </div>
@@ -402,9 +316,6 @@ p = \mathbb{P}(X = 1).
         <script>renderMathInElement(document.body)</script>
     
 
-    
-        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>

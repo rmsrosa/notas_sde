@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Soluções de equações diferenciais estocásticas</title>  
+   <title>Equação logística aleatória</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -173,13 +173,22 @@
     <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
     </div>
     <div class="menu-level-1">
-    <li>6. Equações diferenciais aleatórias e estocásticas</li>
+    <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/solutions_sde">6.2. Soluções de equações diferenciais estocásticas</a></li>
+    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.1. Existência de soluções</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -210,10 +219,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde"><kbd>→</kbd> 7.1. Existência de soluções</a>
 </span>
     </p>
 </div>
@@ -224,99 +233,91 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.2. Soluções de equações diferenciais estocásticas</a></h1>
-<p>Vamos considerar, agora, equações diferenciais estocásticas da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.3. Equação logística aleatória</a></h1>
+<p>Vamos considerar, agora, a equação diferencial aleatória</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = (A_t + B_t X_t)X_t
 \]
-<p>onde \(T > 0\), \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) são globalmente Lipschitz contínuos.</p>
-<p>Junte-se à essa equação uma condição inicial</p>
+<p>com uma condição inicial</p>
 \[
-\left.X_t\right|_{t = 0} = C,
+\left.X_t\right|_{t = 0} = X_0.
 \]
-<p>onde \(C\) é uma variável aleatória real.</p>
-<p>O termo \(f = f(t, x)\) é chamado de <em>drift</em> e \(g = g(t, x)\), de <em>difusão.</em></p>
-<h2 id="significado_da_equação"><a href="#significado_da_equação" class="header-anchor">Significado da equação</a></h2>
-<p>Os termos \(\mathrm{d}X_t\) e \(\mathrm{d}W_t\) não têm significado por si só. A equação conforme escrita acima é uma maneira de se escrever a equação integral correspondente:</p>
+<p>Assumimos que \(\{A_t\}_{t\geq 0}\) e \(\{B_t\}_{t \geq 0}\) são processos limitados satisfazendo, quase certamente, as desigualdades</p>
 \[
-X_t = X_0 + \int_0^t f(s, X_s\mathrm{d}s + \int_0^t g(s, X_s)\mathrm{d}W_s.
+a - \delta \leq A_t \leq a + \delta, \quad b - \varepsilon \leq B_t \leq b + \varepsilon,
 \]
-<p>Sob condições apropriadas em \(f\), \(g\) e na solução \(X_t\), a primeira integral é uma integral de Riemann ou de Lebesgue de um processo definido por \(H_t = f(t, X_t)\) e a segunda integral é uma integral de Itô de um processo definido por \(G_t = g(t, X_t)\), em relação ao processo \(\{W_t\}_{t\geq 0}\). Buscamos condições que garantam a existência de um processo apropriado \(\{X_t\}_{t \geq 0}\) que satisfaça essa equação integral.</p>
-<h2 id="sobre_as_condições_de_continuidade_lipschitz_global"><a href="#sobre_as_condições_de_continuidade_lipschitz_global" class="header-anchor">Sobre as condições de continuidade Lipschitz global</a></h2>
-<p>Como dito acima, supomos que \(f\) e \(g\) são globalmente Lipschitz contínuas, i.e. existem \(L_f, L_g > 0\) tais que</p>
+<p>onde</p>
 \[
-\begin{align*}
-|f(t, x) - f(t, y)| \leq L_f|x - y|, \qquad \forall x, y \in \mathbb{R}, \\
-|g(t, x) - g(t, y)| \leq L_g|x - y|, \qquad \forall x, y \in \mathbb{R}.
-\end{align*}
+a, b, \delta, \varepsilon > 0, \quad a - \delta > 0, \quad b - \varepsilon > 0.
 \]
-<p>Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular na teoria de equações diferenciais determinísticas. A diferença é que a continuidade Lipschitz assumida é apenas local, ou seja, para \(x, y\) numa vizinhança da condição inicial.</p>
-<p>No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. Essa condição pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.</p>
-<h2 id="existência_e_unicidade_no_caso_de_equações_com_difusão_constante"><a href="#existência_e_unicidade_no_caso_de_equações_com_difusão_constante" class="header-anchor">Existência e unicidade no caso de equações com difusão constante</a></h2>
-<p>Vamos começar com um caso particular, com difusão constante \(g(t, X_t ) = \sigma \in \mathbb{R}\), ou seja</p>
+<p>Por exemplo, podemos considerar</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
+A_t = a + \delta Y_t, \qquad B_t = b + \varepsilon Z_t,
 \]
-<p>Também assumimos uma condição inicial determinística, digamos \(X_0 = x_0 \in \mathbb{R}\)</p>
-<p>A forma integral equivalente é</p>
+<p>onde</p>
 \[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
+Y_t = \frac{W_t}{1 + |W_t|}, \quad Z_t = \sin(W_t),
 \]
-<p>A segunda integral é, simplesmente, o próprio \(W_t\), ou seja, chegamos na equação mais simples</p>
+<p>já que ambos \(\{Y_t\}_{t \geq 0}\) e \(\{Z_t\}_{t \geq 0}\) estão concentrados no intervalo \([-1, 1]\).</p>
+<p>Em relação a \(X_0\), assumimos que \(X_0 \geq 0\) quase certamente. Por exemplo, podemos tomar a condição como sendo uma log-normal:</p>
 \[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
+X_0 = e^{\mu + \sigma N},
 \]
-<p>Essa equação não envolve a integral de Itô.</p>
-<p>Assumimos que \(f=f(t, x)\) seja contínua nas duas variáveis e globalmente Lipschitz contínua na coordenada \(x\), uniformemente em cada intervalo limitado em \(t\), i.e. para todo \(T > 0\), existe \(L_T > 0\) tal que</p>
+<p>onde</p>
 \[
-|f(t, x) - f(t, y)| \leq L_T |x - y|, \qquad \forall \;0 \leq t \leq T, \;\forall x, y \in \mathbb{R}.
+\mu \in \mathbb{R}, \quad \sigma > 0, \quad N \sim \mathcal{N}(0, 1).
 \]
-<p>A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos \(X_t^0 = x_0\), para todo \(t \geq 0\), e, para \(m \in \mathbb{N}\),</p>
+<h2 id="existência"><a href="#existência" class="header-anchor">Existência</a></h2>
+<p>Sob essas condições, temos, para quase todo \(\omega\), que</p>
 \[
-X_t^m = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t.
+X_0(\omega), A_t(\omega), B_t(\omega) > 0.
 \]
-<p>Vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge, em média quadrática, para um processo que é solução da equação integral.</p>
-<p>Considere os processos estocásticos</p>
+<p>Dessa forma, a solução \(t \mapsto X_t(\omega)\) do problema de valor inicial da equação diferencial ordinária</p>
 \[
-D_t^m = \max_{0 \leq s \leq t} |X_s^m - X_s^{m-1}|, \quad m = 1, 2, \ldots.
+\begin{cases}
+\displaystyle \frac{\mathrm{d}X_t(\omega)}{\mathrm{d}t} = (A_t(\omega) + B_t(\omega)X_t(\omega))X_t(\omega), \quad t \geq 0, \\
+X_t(\omega)|_{t = 0} = X_0(\omega),
+\end{cases}
 \]
-<p>Para cada \(\omega\in \Omega\), temos que \(W_t(\omega)\) é limitado em \([0, T]\). Além disso, \(|f(t, x_0)|\) é limitado em \([0, T]\), já que \(f\) é contínua. Assim,</p>
+<p>está definida para todo \(t \geq 0\).</p>
+<p>Assim, \(\{X_t\}_{t \geq 0}\) nos dá um processo definido em toda a reta e que é solução da equação diferencial aleatória.</p>
+<h2 id="comportamento_assintótico"><a href="#comportamento_assintótico" class="header-anchor">Comportamento assintótico</a></h2>
+<p>Além disso, para cada \(\omega\), temos</p>
 \[
-D_t^1(\omega) \leq \left| \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
+A_t(\omega) - B_t(\omega)x \geq a - \delta - (b + \delta) x > 0,
 \]
-<p>para algum \(C(\omega) \geq 0.\)</p>
-<p>Como no método de Picard clássico, vamos mostrar que</p>
+<p>para</p>
 \[
-D_t^m \leq C \frac{L^m}{m!} t^m.
+0 < x < \frac{a - \delta}{b + \delta}.
 \]
-<p>A estimativa acima mostra que isso é verdade para \(m = 1\). Procedemos, agora, por indução, assumindo verdadeiro para \(m \in \mathbb{N}\) qualquer, e analisando o termo correspondente a \(m + 1.\) Temos, de fato,</p>
+<p>Ou seja,</p>
 \[
-\begin{align*}
-D_t^{m+1} & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
-& = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
-& \leq \max_{0 \leq s \leq t} \int_0^t L |X_s^m - X_s^{m-1}|\mathrm{d}s \\
-& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^m \;\mathrm{d}s \\
-& \leq L \int_0^t D_s^m \;\mathrm{d}s \\
-& \leq L \int_0^t C \frac{L^m}{m!} s^m \;\mathrm{d}s \\
-& = C \frac{L^{m+1}}{(m+1)!} t^{m+1}.
-\end{align*}
+\lim_{t \rightarrow \infty} X_t(\omega) \geq \frac{a - \delta}{b + \delta}.
 \]
-<p>Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer \(k \geq m \geq 1\),</p>
+<p>Analogamente,</p>
 \[
-\max_{0 \leq s \leq t} |X_s^k - X_s^m| \leq \sum_{j = m+1}^k D_t^j \leq \sum_{j = m}^\infty C \frac{L^j}{j!} t^j.
+A_t(\omega) - B_t(\omega)x \leq a + \delta - (b - \delta) x < 0,
 \]
-<p>Como o somatório é o &quot;rabo&quot; da série de Taylor da função exponencial, o lado direito converge para zero, quando \(m \rightarrow \infty\). Ou seja, quase certamente, temos \(X_t^m\) convergindo uniformemente em \([0, T]\). No limite, temos um processo \(\{X_t\}_{t \geq 0}\) satisfazendo, quase certamente, a equação integral desejada:</p>
+<p>para</p>
 \[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
+x > \frac{a + \delta}{b - \delta}.
+\]
+<p>Ou seja,</p>
+\[
+\lim_{t \rightarrow \infty} X_t(\omega) \leq \frac{a + \delta}{b - \delta}.
+\]
+<p>Portanto, para quase todo caminho amostral, temos</p>
+\[
+\frac{a - \delta}{b + \delta} \leq \lim_{t \rightarrow \infty} X_t(\omega) \leq \frac{a + \delta}{b - \delta}.
 \]
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde"><kbd>→</kbd> 7.1. Existência de soluções</a>
 </span>
     </p>
 </div>
@@ -332,7 +333,7 @@ X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
         </div>
     
 
-    Last modified: July 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

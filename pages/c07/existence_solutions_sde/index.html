@@ -5,23 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Variáveis aleatórias discretas</title>  
+   <title>Existência de soluções</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
-  
-    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
-    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre').forEach((el) => {
-          hljs.highlightElement(el);
-        });
-      });
-    </script>
   
 
   
@@ -230,10 +219,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas"><kbd>→</kbd> 2.3. Variáveis aleatórias contínuas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
 </span>
     </p>
 </div>
@@ -244,137 +233,99 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">2.2. Variáveis aleatórias discretas</a></h1>
-<p>Uma variável aleatória discreta finita possui um conjunto finito \(\{x_1, \ldots, x_J\}\) de valores possíveis, \(K\in \mathbb{N}\), com probabilidades</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.1. Existência de soluções</a></h1>
+<p>Vamos considerar, agora, equações diferenciais estocásticas da forma</p>
 \[
-\mathbb{P}(X = x_j) = p_j, \quad j = 1, \ldots, J.
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 \]
-<p>O conjunto de probabilidades \(\{p_j\}_j\) é chamada de <strong>função massa de probabilidade</strong> e, naturalmente, cada probabilidade deve ser não-negativa e a soma &#40;massa&#41; total deve ser 1:</p>
+<p>onde \(T > 0\), \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) são globalmente Lipschitz contínuos.</p>
+<p>Junte-se à essa equação uma condição inicial</p>
 \[
-0 \leq p_j \leq 1, \qquad \sum_{j=1}^J p_j = 1.
+\left.X_t\right|_{t = 0} = C,
 \]
-<p>A <strong>função distribuição acumulada</strong> é definida por</p>
+<p>onde \(C\) é uma variável aleatória real.</p>
+<p>O termo \(f = f(t, x)\) é chamado de <em>drift</em> e \(g = g(t, x)\), de <em>difusão.</em></p>
+<h2 id="significado_da_equação"><a href="#significado_da_equação" class="header-anchor">Significado da equação</a></h2>
+<p>Os termos \(\mathrm{d}X_t\) e \(\mathrm{d}W_t\) não têm significado por si só. A equação conforme escrita acima é uma maneira de se escrever a equação integral correspondente:</p>
 \[
-  f(x) = \mathbb{P}(X \leq x) = \sum_{x_j \leq x} p_j, \qquad x\in \mathbb{R}.
+X_t = X_0 + \int_0^t f(s, X_s\mathrm{d}s + \int_0^t g(s, X_s)\mathrm{d}W_s.
 \]
-<p>e nos dá a probabilidade de termos uma realização menor ou igual a um dado valor \(x\).</p>
-<p>Vejamos alguns exemplos.</p>
-<h2 id="variável_aleatória_uniforme"><a href="#variável_aleatória_uniforme" class="header-anchor">Variável aleatória uniforme</a></h2>
-<p>Quando o espaço de estados é finito, digamos \(\Sigma = \{1, 2, \ldots, N\}\), onde \(N\in \mathbb{N}\), uma <strong>variável aleatória uniforme</strong> em \(\Sigma\) é a variável aleatória em que cada estado tem chances iguais de ser realizado. Ou seja, nesse caso de \(N\) estados, temos</p>
+<p>Sob condições apropriadas em \(f\), \(g\) e na solução \(X_t\), a primeira integral é uma integral de Riemann ou de Lebesgue de um processo definido por \(H_t = f(t, X_t)\) e a segunda integral é uma integral de Itô de um processo definido por \(G_t = g(t, X_t)\), em relação ao processo \(\{W_t\}_{t\geq 0}\). Buscamos condições que garantam a existência de um processo apropriado \(\{X_t\}_{t \geq 0}\) que satisfaça essa equação integral.</p>
+<h2 id="sobre_as_condições_de_continuidade_lipschitz_global"><a href="#sobre_as_condições_de_continuidade_lipschitz_global" class="header-anchor">Sobre as condições de continuidade Lipschitz global</a></h2>
+<p>Como dito acima, supomos que \(f\) e \(g\) são globalmente Lipschitz contínuas, i.e. existem \(L_f, L_g > 0\) tais que</p>
 \[
-\mathbb{P}(X = k) = \frac{1}{N}, \quad \forall k = 1, 2, \ldots, N.
+\begin{align*}
+|f(t, x) - f(t, y)| \leq L_f|x - y|, \qquad \forall x, y \in \mathbb{R}, \\
+|g(t, x) - g(t, y)| \leq L_g|x - y|, \qquad \forall x, y \in \mathbb{R}.
+\end{align*}
 \]
-<p>Nesse caso, podemos escrever</p>
+<p>Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular na teoria de equações diferenciais determinísticas. A diferença é que a continuidade Lipschitz assumida é apenas local, ou seja, para \(x, y\) numa vizinhança da condição inicial.</p>
+<p>No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. Essa condição pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.</p>
+<h2 id="existência_e_unicidade_no_caso_de_equações_com_difusão_constante"><a href="#existência_e_unicidade_no_caso_de_equações_com_difusão_constante" class="header-anchor">Existência e unicidade no caso de equações com difusão constante</a></h2>
+<p>Vamos começar com um caso particular, com difusão constante \(g(t, X_t ) = \sigma \in \mathbb{R}\), ou seja</p>
 \[
-X \sim \textrm{Uniforme}(1, 2, \ldots, N),
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
 \]
-<p>onde \(\textrm{Uniforme}(\Sigma) = \textrm{Uniforme}(\{1, 2, \ldots, N\})\) é a distribuição uniforme em \(\Sigma = \{1, 2, \ldots, N\}\).</p>
-<h2 id="teste_de_bernoulli"><a href="#teste_de_bernoulli" class="header-anchor">Teste de Bernoulli</a></h2>
-<p>Uma <strong>variável aleatória de Bernoulli</strong> com parâmetro \(p\), \(0\leq p \leq 1\), possui dois resultados possíveis, \(0\) e \(1\), com probabilidades \(p\) e \(1-p\), respectivamente. Ou seja, \(J = 2\), \(x_1 = 0\), \(x_2 = 1\), \(p_1 = p\) e \(p_2 = 1 - p\). Pode ser exemplificado como o resultado do lançamento de uma moeda, com \(1\) e \(0\) representando &quot;cara&quot; e &quot;coroa&quot;, respectivamente. O resultado de um exame de laboratório verificando a presença de um marcador para alguma doença pode ser &quot;positivo&quot; ou &quot;negativo&quot;, podendo, também, ser modelado por uma variável de Bernoulli.</p>
-<p>Denotamos a distribuição de Bernoulli com probabilidade de sucesso \(p\) &#40;e.g. \(\mathbb{P}(X = 1) = p\)&#41; por \(\mathrm{Bernoulli}(p)\). Assim, uma variável aleatória de Bernouille é indicada por</p>
+<p>Também assumimos uma condição inicial determinística, digamos \(X_0 = x_0 \in \mathbb{R}\)</p>
+<p>A forma integral equivalente é</p>
 \[
-X \sim \mathrm{Bernoulli}(p).
+X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
 \]
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoulli.svg" alt="">
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoullicum.svg" alt="">
-<h2 id="número_de_sucessos_e_a_distribuição_binomial"><a href="#número_de_sucessos_e_a_distribuição_binomial" class="header-anchor">Número de sucessos e a distribuição binomial</a></h2>
-<p>Podemos, também, jogar uma moeda \(n\) vezes e contarmos o número de vezes em que o resultado é &quot;cara&quot;, por exemplo. A probabilidade de não termos nenhuma cara é \(1/2^n\), pois devemos ter exatamente \(n\) coroas lançadas, sendo que cada uma tem probabilidade 1/2 de ocorrer. A probabilidade de termos exatamente uma cara é \(n/2^n\), pois a cara pode vir em qualquer um dos \(n\) lançamentos. Mais geralmente, temos um número</p>
+<p>A segunda integral é, simplesmente, o próprio \(W_t\), ou seja, chegamos na equação mais simples</p>
 \[
-  \left(\begin{matrix} n \\ i \end{matrix}\right) = \frac{n!}{i!(n-i)!}
+X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
 \]
-<p>de combinações possíveis de exatamente \(i\) resultados iguais &#40;e.g. &quot;caras&quot;&#41;, em \(n\) lançamentos. Assim, se \(X\) é a variável aleatória contando o número de &quot;caras&quot; em \(n\) lançamentos, então a probabilidade de termos \(i\) caras é</p>
+<p>Essa equação não envolve a integral de Itô.</p>
+<p>Assumimos que \(f=f(t, x)\) seja contínua nas duas variáveis e globalmente Lipschitz contínua na coordenada \(x\), uniformemente em cada intervalo limitado em \(t\), i.e. para todo \(T > 0\), existe \(L_T > 0\) tal que</p>
 \[
-  \mathbb{P}(X = i) = \frac{1}{2^n} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
+|f(t, x) - f(t, y)| \leq L_T |x - y|, \qquad \forall \;0 \leq t \leq T, \;\forall x, y \in \mathbb{R}.
 \]
-<p>No caso de um dado viciado, ou, mais geralmente, de \(n\) testes de Bernoulli com parâmetro \(p\), \(0\leq p \leq 1\), então a probabilidade de \(i\) sucessos é</p>
+<p>A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos \(X_t^0 = x_0\), para todo \(t \geq 0\), e, para \(m \in \mathbb{N}\),</p>
 \[
-  \mathbb{P}(X = i) = p^i(1-p)^{n-i} \left(\begin{matrix} n \\ i \end{matrix}\right), \quad 1 \leq i \leq n.
+X_t^m = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t.
 \]
-<p>Denotamos essa distribuição binomial por \(B(n, p)\). Assim,</p>
+<p>Vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge, em média quadrática, para um processo que é solução da equação integral.</p>
+<p>Considere os processos estocásticos</p>
 \[
-X \sim B(n, p).
+D_t^m = \max_{0 \leq s \leq t} |X_s^m - X_s^{m-1}|, \quad m = 1, 2, \ldots.
 \]
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomial.svg" alt="">
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomialcum.svg" alt="">
-<h2 id="tempo_de_espera_e_a_distribuição_geométrica"><a href="#tempo_de_espera_e_a_distribuição_geométrica" class="header-anchor">Tempo de espera e a distribuição geométrica</a></h2>
-<p>Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após \(n\) tentativas frustradas. Ou seja, em \(n\) tentativas, temos insucesso nos primeiros \(n-1\) testes e sucesso apenas no último teste. Se a chance de sucesso é \(p\) e a de fracasso é \(1-p\), com \(0 < p \leq 1\), então temos probabilidade \((1-p)^{n-1}\) de insucessos nos \(n\) primeiros testes e \(p\) de sucesso no último teste, ou seja,</p>
+<p>Para cada \(\omega\in \Omega\), temos que \(W_t(\omega)\) é limitado em \([0, T]\). Além disso, \(|f(t, x_0)|\) é limitado em \([0, T]\), já que \(f\) é contínua. Assim,</p>
 \[
-\mathbb{P}(X = n) = (1-p)^{n-1}p
+D_t^1(\omega) \leq \left| \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
 \]
-<p>Essa distribuição é chamada de distribuição geométrica. Note que</p>
+<p>para algum \(C(\omega) \geq 0.\)</p>
+<p>Como no método de Picard clássico, vamos mostrar que</p>
 \[
-  \sum_{n=1}^\infty (1-p)^{n-1}p = p + (1-p)p + (1-p)^2p + \ldots = p(1 + (1-p) + (1-p)^2 + \ldots) = p \frac{1}{p} = 1.
+D_t^m \leq C \frac{L^m}{m!} t^m.
 \]
-<p>Observe que há uma questão de interpretação, aqui. A probabilidade \((1-p)^{n-1}p\) de termos sucesso <em>apenas</em> no \(n\)-ésimo é a mesma que a de termos apenas um sucesso em \(n\) testes, independentemente de ser no último teste ou não.</p>
-<p>Observe, ainda, que no caso da distribuição binomial discutida acima, fixamos o número \(n\) de testes e analisamos a quantidade de sucessos nesses \(n\) testes. Já na distribuição geométrica, podemos ter um número arbitrário de testes.</p>
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfgeometrica.svg" alt="">
-
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfgeometricacum.svg" alt="">
-<p>A distribuição geométrica é a única distribuição enumerável &quot;sem memória&quot;. Ou seja, se \(\mathbb{P}\) é uma probabilidade cujo espaço de eventos é \(\Sigma = \mathbb{N}\) e é tal que</p>
+<p>A estimativa acima mostra que isso é verdade para \(m = 1\). Procedemos, agora, por indução, assumindo verdadeiro para \(m \in \mathbb{N}\) qualquer, e analisando o termo correspondente a \(m + 1.\) Temos, de fato,</p>
 \[
-\mathbb{P}(X \geq m + n | X \geq m) = \mathbb{P}(X \geq n), \qquad \forall m, n \in \mathbb{N},
+\begin{align*}
+D_t^{m+1} & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
+& = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
+& \leq \max_{0 \leq s \leq t} \int_0^t L |X_s^m - X_s^{m-1}|\mathrm{d}s \\
+& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^m \;\mathrm{d}s \\
+& \leq L \int_0^t D_s^m \;\mathrm{d}s \\
+& \leq L \int_0^t C \frac{L^m}{m!} s^m \;\mathrm{d}s \\
+& = C \frac{L^{m+1}}{(m+1)!} t^{m+1}.
+\end{align*}
 \]
-<p>então \(\mathbb{P}(X = n)\) é a distribuição geométrica</p>
+<p>Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer \(k \geq m \geq 1\),</p>
 \[
-\mathbb{P}(X = n) = (1 - p)^{n-1}p,
+\max_{0 \leq s \leq t} |X_s^k - X_s^m| \leq \sum_{j = m+1}^k D_t^j \leq \sum_{j = m}^\infty C \frac{L^j}{j!} t^j.
 \]
-<p>onde</p>
+<p>Como o somatório é o &quot;rabo&quot; da série de Taylor da função exponencial, o lado direito converge para zero, quando \(m \rightarrow \infty\). Ou seja, quase certamente, temos \(X_t^m\) convergindo uniformemente em \([0, T]\). No limite, temos um processo \(\{X_t\}_{t \geq 0}\) satisfazendo, quase certamente, a equação integral desejada:</p>
 \[
-p = \mathbb{P}(X = 1).
-\]
-<p>A demonstração desse fato faz uso da fórmula para distribuição condicionada</p>
-\[
-\mathbb{P}(X > m + n | X > m) = \frac{\mathbb{P}(\{X > m + n\} \cap \{X > m\})}{\mathbb{P}(X > m)}.
-\]
-<p>Como \(n \geq 1\), temos \(\{X > m + n\} \subset \{X > m\}\), de modo que</p>
-\[
-\mathbb{P}(X > n) = \mathbb{P}(X > m + n | X > m) = \frac{\mathbb{P}(X > m + n)}{\mathbb{P}(X > m)}.
-\]
-<p>Ou seja,</p>
-\[
-\mathbb{P}(X > m + n) = \mathbb{P}(X > n)\mathbb{P}(X > m).
-\]
-<p>Em particular, temos a recursão</p>
-\[
-\mathbb{P}(X > n + 1) = \mathbb{P}(X > n)\mathbb{P}(X > 1),
-\]
-<p>cuja solução é</p>
-\[
-\mathbb{P}(X > n) = \mathbb{P}(X > 1)^n.
-\]
-<p>Além disso, como \(\Sigma = \mathbb{N}\) e definindo \(p = \mathbb{P}(X = 1)\), temos</p>
-\[
-\mathbb{P}(X > 1) = 1 - \mathbb{P}(X = 1) = 1 - p.
-\]
-<p>Portanto,</p>
-\[
-\mathbb{P}(X > n) = (1 - p)^n.
-\]
-<p>Daí, tiramos que</p>
-\[
-\mathbb{P}(X = 1) = \mathbb{P}(X < 1) = 1 - \mathbb{P}(X \geq 2) = 1 - p
-\]
-<p>e, para \(n = 2, \ldots,\)</p>
-\[
-\mathbb{P}(X = n) = \mathbb{P}(X > n) - \mathbb{P}(X > n - 1) = (1 - p)^n - (1 - p)^{n - 1} = (1 - p)^{n - 1}(1 - p - 1) = (1 - p)^{n - 1}p.
-\]
-<p>Assim, obtemos a distribuição geométrica</p>
-\[
-\mathbb{P}(X = n) = (1 - p)^{n - 1}p, \qquad \forall n\in \mathbb{N}.
+X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
 \]
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/exemplos_va_continuas"><kbd>→</kbd> 2.3. Variáveis aleatórias contínuas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
 </span>
     </p>
 </div>
@@ -402,9 +353,6 @@ p = \mathbb{P}(X = 1).
         <script>renderMathInElement(document.body)</script>
     
 
-    
-        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>

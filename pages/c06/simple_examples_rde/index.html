@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Soluções por caminhos de equações diferenciais aleatórias</title>  
+   <title>Exemplos simples</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -173,13 +173,22 @@
     <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
     </div>
     <div class="menu-level-1">
-    <li>6. Equações diferenciais aleatórias e estocásticas</li>
+    <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/pathwise_solutions_rde">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/solutions_sde">6.2. Soluções de equações diferenciais estocásticas</a></li>
+    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.1. Existência de soluções</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -210,10 +219,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/solutions_sde"><kbd>→</kbd> 6.2. Soluções de equações diferenciais estocásticas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde"><kbd>→</kbd> 6.3. Equação logística aleatória</a>
 </span>
     </p>
 </div>
@@ -224,52 +233,32 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Soluções por caminhos de equações diferenciais aleatórias</a></h1>
-<p>Vamos considerar, nessa seção, equações diferenciais aleatórias da forma</p>
-\[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
-\]
-<p>onde \(T > 0\), \(\{Y_t\}_{t\in [0, T]}\) é um processo real com caminhos amostrais contínuos e \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) é contínuo.</p>
-<p>Junte-se à essa equação uma condição inicial</p>
-\[
-\left.X_t\right|_{t = 0} = C,
-\]
-<p>onde \(C\) é uma variável aleatória real.</p>
-<p>Sob essas condições, podemos considerar soluções por caminho, da equação diferencial aleatória. Essas condições são suficientes para os nossos objetivos, no momento, mas podem ser relaxadas.</p>
-<h2 id="definição_de_solução_por_caminhos"><a href="#definição_de_solução_por_caminhos" class="header-anchor">Definição de solução por caminhos</a></h2>
-<p>Uma <strong>solução por caminhos</strong> <em>&#40;ou pathwise solution&#41;</em> da equação diferencial aleatória acima é um processo aleatório real \(\{X_t\}_{t\in [0, T]}\) tal que quase todo caminho amostral \(t\mapsto X_t(\omega)\) é continuamente diferenciável e satisfaz a equação diferencial ordinária</p>
-\[
-\frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
-\]
-<p>No caso do problema de valor inicial, pedimos, ainda, que</p>
-\[
-X_0(\omega) = C(\omega),
-\]
-<p>quase sempre.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.2. Exemplos simples</a></h1>
+<p>Vamos considerar alguns exemplos simples de equações diferenciais aleatórias.</p>
 <h2 id="exemplo_linear"><a href="#exemplo_linear" class="header-anchor">Exemplo linear</a></h2>
-<p>Considere o problema de valor inicial</p>
+<p>Começemos com o problema de valor inicial</p>
 \[
 \begin{cases}
 \displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t, & t \geq 0, \\
-X_0 = C,
+X_t|_{t = 0} = X_0,
 \end{cases}
 \]
-<p>onde \(A\) e \(C\) são variáveis aleatórias reais. Definimos</p>
+<p>onde \(A\) e \(X-0\) são variáveis aleatórias reais. Definimos</p>
 \[
-X_t = Ce^{tA}, \qquad t \geq 0.
+X_t = X_0e^{tA}, \qquad t \geq 0.
 \]
-<p>Como \(f(t, a, c) = ce^{ta}\) é uma função contínua de \(\mathbb{R}^3\) em \(\mathbb{R}\), segue que \(X_t\) está bem definido. Além disso, para quase todo \(\omega\), temos \(A(\omega), C(\omega) \in \mathbb{R}\) e, com isso, temos os caminhos amostrais</p>
+<p>Como \(f(t, a, c) = ce^{ta}\) é uma função contínua de \(\mathbb{R}^3\) em \(\mathbb{R}\), segue que \(X_t\) está bem definido e é uma variável aleatória. Além disso, para quase todo \(\omega\), temos \(A(\omega), X_0(\omega) \in \mathbb{R}\) e, com isso, temos os caminhos amostrais</p>
 \[
-X_t(\omega) = C(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
+X_t(\omega) = X_0(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
 \]
 <p>que são &#40;infinitamente&#41; diferenciáveis em \(t\) e são soluções da equação diferencial ordinária</p>
 \[
 \begin{cases}
 \displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0, \\
-X_0(\omega) = C(\omega).
+X_t(\omega)|_{t = 0} = X_0(\omega).
 \end{cases}
 \]
-<p>Logo, \(\{X_t\}_{t\geq 0}\) é um processo que é uma solução por caminhos da equação diferencial aleatória acima. Para \(t = 0\), temos \(X_0 = C\), portanto a condição inicial também é satisfeita.</p>
+<p>Logo, \(\{X_t\}_{t\geq 0}\) é um processo que é uma solução por caminhos da equação diferencial aleatória acima, com a condição inicial desejada.</p>
 <h2 id="exemplo_com_existência_local"><a href="#exemplo_com_existência_local" class="header-anchor">Exemplo com existência local</a></h2>
 <p>Considere</p>
 \[
@@ -347,7 +336,7 @@ t^3, &\omega \in E, \\
 <p>é tal que cada caminho \(X_t^{(E)}(\omega)\) satisfaz a equação diferencial ordinária \(x' = 3x^{2/3}\). Se \(E\) for mensurável, então \(\{X_t^{(E)}\}_{t \geq 0}\) é, de fato, um processo que satisfaz a condição inicial \(X_0^{(E)} = 0\) e é uma solução por caminhos da equação diferencial aleatória.</p>
 <p>No entanto, se \(E\) não for mensurável, então os caminhos satisfazem a equação diferencial ordinária mas \(\{X_t^{(E)}\}_{t \geq 0}\) não define um processo.</p>
 <h2 id="outros_tipos_de_solução"><a href="#outros_tipos_de_solução" class="header-anchor">Outros tipos de solução</a></h2>
-<p>Outros tipos de solução podem ser obtidas relaxando o sentido de convergência do limite</p>
+<p>Outros tipos de solução podem ser obtidas relaxando-se o sentido de convergência do limite</p>
 \[
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
 \]
@@ -364,10 +353,10 @@ t^3, &\omega \in E, \\
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/solutions_sde"><kbd>→</kbd> 6.2. Soluções de equações diferenciais estocásticas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde"><kbd>→</kbd> 6.3. Equação logística aleatória</a>
 </span>
     </p>
 </div>
@@ -383,7 +372,7 @@ t^3, &\omega \in E, \\
         </div>
     
 
-    Last modified: July 06, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
