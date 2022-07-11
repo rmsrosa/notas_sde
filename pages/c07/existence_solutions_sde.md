@@ -27,7 +27,7 @@ No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem s
 
 Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
 
-## Existência e unicidade no caso de equações com difusão constante e condição inicial determinística
+## Existência no caso de equações com difusão constante e condição inicial determinística
 
 Vamos começar com um caso particular, com difusão constante $g(t, X_t) = \sigma \in \mathbb{R}$, ou seja
 $$
@@ -98,7 +98,7 @@ $$
 X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
 $$
 
-## Existência e unicidade no caso de equações com difusão determinística
+## Existência no caso de equações com difusão determinística
 
 Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial (exceto que seja finita quase certamente).
 
@@ -114,3 +114,5 @@ $$
 Assumimos $f=f(t,x)$ contínua em $(t, x)\in [0, \infty]\times \mathbb{R}$ e globalmente Lipschitz contínua na variável $x$, em cada intervalo limitado $[0, T]$. Quando a $X_0$, assumimos, apenas, que seja finita quase certamente.
 
 Deixamos os detalhes da demonstração como exercício.
+
+## Existência no caso geral
