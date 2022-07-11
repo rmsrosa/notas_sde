@@ -84,7 +84,7 @@ menu = [
     ]
     "Equações diferenciais aleatórias" => [
         "pages/c06/existence_solutions_rde"
-        "pages/c06/simple_examples_rde"
+        "pages/c06/basic_examples_rde"
         "pages/c06/logistic_rde"
     ]
     "Equações diferenciais estocásticas" => [

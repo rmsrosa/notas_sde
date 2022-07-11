@@ -1,8 +1,8 @@
-@def title = "Exemplos simples"
+@def title = "Exemplos básicos"
 
 # {{ get_title }}
 
-Vamos considerar alguns exemplos simples de equações diferenciais aleatórias.
+Vamos considerar alguns exemplos básicos de equações diferenciais aleatórias.
 
 ## Exemplo linear
 
