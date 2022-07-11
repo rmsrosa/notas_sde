@@ -1,17 +1,19 @@
-@def title = "Existência de soluções"
+@def title = "Existência de soluções no caso geral"
 
 # {{ get_title }}
 
-Estamos considerando equações diferenciais estocásticas da forma
+Vamos considerar, agora, o caso geral de uma equação diferencial estocástica da forma
 $$
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 $$
 com uma condição inicial
 $$
 \left.X_t\right|_{t = 0} = X_0.
 $$
 
-Para os resultados de existência e unicidade, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem globalmente Lipschitz contínuas na variável $x$.
+## Hipóteses iniciais
+
+Como antes, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem uniformemente globalmente Lipschitz contínuas na variável $x$.
 
 Mais precisamente, existem $L_f, L_g > 0$ tais que
 $$
@@ -21,98 +23,74 @@ $$
 \end{align*}
 $$
 
-Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular na teoria de equações diferenciais determinísticas. A diferença é que a continuidade Lipschitz assumida é apenas local, ou seja, para $x, y$ numa vizinhança da condição inicial.
-
-No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. 
-
-Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
-
-## Existência no caso de equações com difusão constante e condição inicial determinística
-
-Vamos começar com um caso particular, com difusão constante $g(t, X_t) = \sigma \in \mathbb{R}$, ou seja
+Observe que a desigualdade para $f$ implica em
 $$
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
+|f(t, x)| = |f(t, x) - f(t, 0) + f(t, 0)| \leq |f(t, 0)| + L_f|x| \leq C_f + L_f|x|,
 $$
-Também assumimos uma condição inicial determinística, digamos $X_0 = x_0 \in \mathbb{R}$.
+para $C_f = \max_{t\in [0, T]}|f(t, 0)|$. Analogamente,
+$$
+|g(t, x)| = |g(t, x) - g(t, 0) + g(t, 0)| \leq |g(t, 0)| + L_g|x| \leq C_g + L_g|x|.
+$$
+
+## Existência de solução
 
 A forma integral equivalente é
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
-$$
-A segunda integral é, simplesmente, o próprio $W_t$, ou seja, chegamos na equação mais simples
-$$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
-$$
-Essa equação não envolve a integral de Itô.
-
-Assumimos que $f=f(t, x)$ seja contínua nas duas variáveis e globalmente Lipschitz contínua na coordenada $x$, uniformemente em cada intervalo limitado em $t$, i.e. para todo $T > 0$, existe $L_T > 0$ tal que
-$$
-|f(t, x) - f(t, y)| \leq L_T |x - y|, \qquad \forall \;0 \leq t \leq T, \;\forall x, y \in \mathbb{R}.
+X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 $$
 
-A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos,
-para todo $t \geq 0$,
+A ideia é, novamente, resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0$,
 $$
 \begin{align*}
-X_t^0 & = x_0, \\
-X_t^m & = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
+X_t^0 & = X_0, \\
+X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\;\mathrm{d}s + \int_0^t g(s, X_s^{m-1}) \;\mathrm{d}W_t, \quad m\in \mathbb{N}.
 \end{align*}
 $$
 
-Vamos mostrar que a família $\{X_t^m\}_{0 \leq t \leq T}$ de processos converge, em média quadrática, para um processo que é solução da equação integral.
+A diferença, agora, é que vamos mostrar que a família $\{X_t^m\}_{0 \leq t \leq T}$ de processos converge em média quadrática, não mais em probabilidade, para um processo que é solução da equação integral.
 
-Considere, para isso, os processos estocásticos
+Considere, para isso, as funções determinísticas
 $$
-D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
+d^m(t) = \mathbb{E}\left[\left|X_t^{m+1} - X_t^m\right|^2\right], \quad m = 0, 1, 2, \ldots, \; 0 \leq t \leq T.
 $$
-Para cada $\omega\in \Omega$, temos que $W_t(\omega)$ é limitado em $[0, T]$. Além disso, $f(t, x_0)$ é limitado em $[0, T]$, já que $f$ é contínua. Assim,
-$$
-D_t^0(\omega) \leq \left| \int_0^t f(s, x_0)\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
-$$
-para algum $C(\omega) \geq 0.$
 
-Como no método de Picard clássico, vamos mostrar que
+Vamos mostrar, por indução, que
 $$
-D_t^m \leq C \frac{L^m}{m!} t^m.
+d^m(t) \leq \frac{(Kt)^{m+1}}{(m+1)!},
 $$
-A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$ Temos,
+para alguma constante $K$ dependendo de $L_f$, $L_g$, $T$ e $X_0$.
+
+Primeiramente, temos
 $$
 \begin{align*}
-D_t^m & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
-& = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
-& \leq \max_{0 \leq s \leq t} \int_0^t L |X_s^m - X_s^{m-1}|\mathrm{d}s \\
-& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^{m-1} \;\mathrm{d}s \\
-& \leq L \int_0^t D_s^{m-1} \;\mathrm{d}s \\
-& \leq L \int_0^t C \frac{L^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
-& \leq C \frac{L^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
-& = C \frac{L^m}{m!} t^{m}.
+d^0(t) & = \mathbb{E}\left[ \left|X_t^1 - X_t^0\right|^2\right] \\
+  & = \mathbb{E}\left[ \left| \int_0^t f(s, X_s^0)\;\mathrm{d}s + \int_0^t g(s, X_s^0) \;\mathrm{d}W_t \right|^2 \right] \\
+  & \leq 2\mathbb{E}\left[ \left| \int_0^t f(s, X_s^0)\;\mathrm{d}s \right|^2\right] + 2\mathbb{E}\left[\left|\int_0^t g(s, X_s^0) \;\mathrm{d}W_t \right|^2 \right]
 \end{align*}
 $$
-
-Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1$,
+Estimando a primeira integral de maneira usual e usando a isometria de Itô na segunda integra, obtemos
 $$
-\max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
+d^0(t) \leq 2\int_0^t\mathbb{E}\left[ f(s, X_s^0)^2 \right]\;\mathrm{d}s + 2\int_0^t\mathbb{E}\left[ g(s, X_s^0)^2 \right]\;\mathrm{d}t.
 $$
-Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em $[0, T]$. No limite, temos um processo $\{X_t\}_{t \geq 0}$ satisfazendo, quase certamente, a equação integral desejada:
+Usando as estimativas para $f$ e $g$ e usando que $X_s^0 = X_0$, chegamos a
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
+\begin{align*}
+d^0(t) & \leq 2\int_0^t\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right]\;\mathrm{d}t + 2\int_0^t\mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right]\;\mathrm{d}t \\
+& \leq 2t\left(\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right] + 2\mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right]\right).
+\end{align*}
 $$
-
-## Existência no caso de equações com difusão determinística
-
-Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial (exceto que seja finita quase certamente).
-
-Nesse caso, temos uma equação da forma
+Cada valor esperado pode ser estimado de forma apropriada:
 $$
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
-$$
-com condição inicial
-$$
-\left.X_t\right|_{t = 0} = X_0.
+\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right] \leq 2C_f^2 + 2L_f^2\mathbb{E}\left[X_0^2\right], \quad \mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right] \leq 2C_g^2 + 2L_g^2\mathbb{E}\left[X_0^2\right].
 $$
 
-Assumimos $f=f(t,x)$ contínua em $(t, x)\in [0, \infty]\times \mathbb{R}$ e globalmente Lipschitz contínua na variável $x$, em cada intervalo limitado $[0, T]$. Quando a $X_0$, assumimos, apenas, que seja finita quase certamente.
+Logo, obtemos a estimativa
+$$
+d^0(t) \leq 2t\left((C_f^2 + C_g^2) + (L_f^2 + L_g^2)\mathbb{E}\left[X_0^2\right]\right) \leq \frac{Mt}{2},
+$$
+para
+$$
+M = 4\left((C_f^2 + C_g^2) + (L_f^2 + L_g^2)\mathbb{E}\left[X_0^2\right]\right).
+$$
 
-Deixamos os detalhes da demonstração como exercício.
-
-## Existência no caso geral
+Agora, prosseguindo por indução, assumimos que a estimativa é válida para $m-1$ e vamos prová-la para $m$.

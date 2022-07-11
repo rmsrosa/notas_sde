@@ -89,6 +89,7 @@ menu = [
     ]
     "Equações diferenciais estocásticas" => [
         "pages/c07/setting"
+        "pages/c07/existence_solutions_sde_particulares"
         "pages/c07/existence_solutions_sde"
         "pages/c07/geometric_brownian"
         "pages/c07/ornstein_uhlenbeck"
