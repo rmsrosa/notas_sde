@@ -11,23 +11,34 @@ $$
 
 A questão é sobre a relação entre $\mathrm{d}Y_t$ e $\mathrm{d}X_t$.
 
-Caso $u$ e $\{X_t\}_{t \geq 0}$ fossem diferenciáveis, então $\mathrm{d}Y_t/\mathrm{d}t = u'(X_t)\mathrm{d}X_t/\mathrm{d}t$. Poderíamos, nesse caso, escrever $\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t$, no sentido da integral de Riemann-Stieltjes $\int H_t \mathrm{d}Y_t = \int H_t u'(X_t)\mathrm{d}X_t$, para um processo arbitrário $\{H_t\}_{t \geq 0}$.
+Caso $u$ e $\{X_t\}_{t \geq 0}$ fossem diferenciáveis, então
+$$
+\frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
+$$
 
 No caso em que $u$ ainda é diferenciável mas $\{X_t\}_{t \geq 0}$ é apenas de variação limitada, então $\{Y_t\}_{t \geq 0}$ também é de variação limitada e ainda podemos dizer que $\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t$.
 
-Mas e no caso em que $X_t$ não é nem de variação limitada? Nesse caso, podemos considerar a integral de Itô em relação a $\{X_t\}_{t \geq 0}$. (Assumindo que esse processo seja uma Martingale, então $\{Y_t\}_{t \geq 0}$ também é uma Martingale e a integral de Itô a seu respeito está bem definida). Porém, isso nos trará uma correção na fórmula acima.
-
-Mais precisamente, isso nos dará uma fórmula útil, contendo um termo extra, no caso em que $\{X_t\}_{t\geq 0}$ tem uma forma especial, que o torna um tipo de processo conhecido como processo de Itô, que introduzimos a seguir.
+Mas e no caso em que $X_t$ não é nem de variação limitada? Se supusermos que ele seja um *processo de Itô*, ou seja, que satisfaça uma equação da forma
+$$
+\mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
+$$
+então teremos uma correção na fórmula de mudança de variáveis, nos levando à *fórmula de Itô*, que, nesse caso autônomo, tem a forma:
+$$
+\mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_tt + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
+$$
 
 Essa mesma análise pode ser feita no caso em que $u$ depende também da variável temporal, i.e. $u:[0, \infty) \times \mathbb{R} \rightarrow \mathbb{R}$. Nesse caso, temos
 $$
 Y_t = u(t, X_t).
 $$
-Denotamos o primeiro caso por *autônomo* e este, por *não-autônomo.*
+Denotamos o primeiro caso por *autônomo* e este, por *não-autônomo.*  No caso não-autônomo, a *fórmula de Itô* se torna
+$$
+\mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
+$$
 
 ## Processo de Itô
 
-Um **processo de Itô** é um processo $\{X_t\}_{t \geq 0}$ satisfazendo uma equação estocástica da forma
+Como dito acima, um **processo de Itô** é um processo $\{X_t\}_{t \geq 0}$ satisfazendo uma equação estocástica da forma
 $$
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 $$
@@ -40,7 +51,7 @@ $$
 \int_0^t H_t \;\mathrm{d}Y_t = \lim \sum_{j=1}^n H_{t_{j-1}} (Y_{t_j} - Y_{t_{j-1}}).
 $$
 
-Assumindo, agora, que $u$ é duas vezes continuamente diferenciável, podemos escrever
+Assumindo, agora, que $u$ seja duas vezes continuamente diferenciável, podemos escrever
 $$
 \begin{align*}
 Y_{t_j} - Y_{t_{j-1}} = u(X_{t_j}) - u(X_{t_{j-1}}) & = u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) + \int_{X_{t_{j-1}}}^{X_{t_j}} u''(x)(X_{t_j} - x) \;\mathrm{d}x \\
@@ -67,7 +78,7 @@ No caso em que $\{X_t\}_{t \geq 0}$ é o processo de Wiener $\{W_t\}_{t \geq 0}$
 $$
 \int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
 $$
-Mais precisamente, podemos obter isso, rigorosamente, das somas parciais, mostrando que
+Mais precisamente, podemos obter isso, rigorosamente, a partir das somas parciais, mostrando que
 $$
 \frac{1}{2} \sum_{j=1}^n H_{t_{j-1}} u''(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
 $$
@@ -90,7 +101,14 @@ $$
 \mathrm{d}Y_t = A_t u'(X_t) \;\mathrm{d}t + B_t u'(X_t)\;\mathrm{d}W_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 $$
 
-Da mesma forma, uma demonstração rigorosa pode ser feita trabalhando-se diretamente com as somas parciais.
+Da mesma forma, uma demonstração rigorosa pode ser feita trabalhando-se diretamente com as somas parciais:
+$$
+\begin{align*}
+Y_t - Y_0 & = \sum_{j=1}^n (Y_{t_j} - Y_{t_{j-1}}) \\
+  & = \sum_{j=1}^n (u(X_{t_j}) - u(X_{t_{j-1}})) \\
+  & = \sum_{j=1}^n \left( u'(X_{t_{j-1}}) + \int_{X_{t_{j-1}}}^{X_{t_j}} u''(x)(x - X_{t_{j-1}}) \;\mathrm{d}x\right)
+\end{align*}
+$$
 
 ## Fórmula de Itô no caso não-autônomo
 
@@ -100,7 +118,7 @@ $$
 $$
 então o processo $\{Y_t\}_{t\geq 0}$ definido por $Y_t = u(t, X_t)$ satisfaz a **fórmula de Itô** no caso não-autônomo, a saber
 $$
-\mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx}\;\mathrm{d}t.
+\mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx}B_t^2\;\mathrm{d}t.
 $$
 
 Para lembrar dessa fórmula, pense nas seguintes identidades "informais" (ou seja, sem significado rigoroso)
