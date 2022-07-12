@@ -9,14 +9,12 @@ $$
 Y_t = u(X_t).
 $$
 
-A questão é sobre a relação entre $\mathrm{d}Y_t$ e $\mathrm{d}X_t$.
-
-Caso $u$ e $\{X_t\}_{t \geq 0}$ fossem diferenciáveis, então
+A questão é sobre a relação entre $\mathrm{d}Y_t$ e $\mathrm{d}X_t$. Se $u$ e $\{X_t\}_{t \geq 0}$ fossem diferenciáveis, então teríamos
 $$
 \frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
 $$
 
-No caso em que $u$ ainda é diferenciável mas $\{X_t\}_{t \geq 0}$ é apenas de variação limitada, então $\{Y_t\}_{t \geq 0}$ também é de variação limitada e ainda podemos dizer que $\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t$.
+Mesmo que $\{X_t\}_{t \geq 0}$ fosse apenas de variação limitada, então $\{Y_t\}_{t \geq 0}$ também seria de variação limitada e ainda poderíamos dizer que $\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t$, no sentido de integral de Riemann-Stieltjes.
 
 Mas e no caso em que $X_t$ não é nem de variação limitada? Se supusermos que ele seja um *processo de Itô*, ou seja, que satisfaça uma equação da forma
 $$
@@ -24,7 +22,7 @@ $$
 $$
 então teremos uma correção na fórmula de mudança de variáveis, nos levando à *fórmula de Itô*, que, nesse caso autônomo, tem a forma:
 $$
-\mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_tt + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
+\mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 $$
 
 Essa mesma análise pode ser feita no caso em que $u$ depende também da variável temporal, i.e. $u:[0, \infty) \times \mathbb{R} \rightarrow \mathbb{R}$. Nesse caso, temos
@@ -36,6 +34,8 @@ $$
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
 $$
 
+Observe que, em ambos os casos, se $B_t = 0$, para todo $t$, então $\{X_t\}_{t \geq 0}$ se reduz a um processo com caminhos diferenciáveis e recuperamos a fórmula clássica.
+
 ## Processo de Itô
 
 Como dito acima, um **processo de Itô** é um processo $\{X_t\}_{t \geq 0}$ satisfazendo uma equação estocástica da forma
@@ -46,9 +46,9 @@ onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener e $\{A_t\}_{t \geq 0}$ e $\{B
 
 ## Fórmula de Itô no caso autônomo
 
-Considere, então, um processo $\{H_t\}_{t \geq 0}$ com caminhos amostrais quase certamente contínuos. Aproximemos a sua integral de Itô em relação a $\{Y_t\}_{t \geq 0}$ por somas parciais, em relação a malhas temporais $0 = t_0 < t_1 < \cdots < t_n = T$ com $\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0$:
+Considere, então, uma malha temporal $0 = t_0 < t_1 < \cdots < t_n = T$ com $\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0$. Escrevemos
 $$
-\int_0^t H_t \;\mathrm{d}Y_t = \lim \sum_{j=1}^n H_{t_{j-1}} (Y_{t_j} - Y_{t_{j-1}}).
+Y_t = Y_0 + \sum_{j = 1}^n (Y_{t_j} - Y_{t_{j-1}}).
 $$
 
 Assumindo, agora, que $u$ seja duas vezes continuamente diferenciável, podemos escrever
@@ -60,54 +60,56 @@ Y_{t_j} - Y_{t_{j-1}} = u(X_{t_j}) - u(X_{t_{j-1}}) & = u'(X_{t_{j-1}})(X_{t_j} 
 &  \qquad + \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
 \end{align*}
 $$
-Assim, as somas parcias são dadas por
+Assim,
 $$
 \begin{align*}
-\sum_{j=1}^n H_{t_{j-1}} (Y_{t_j} - Y_{t_{j-1}}) & = \sum_{j=1}^n H_{t_{j-1}} u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) \\
-& \qquad + \frac{1}{2} \sum_{j=1}^n H_{t_{j-1}} u''(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}})^2 \\
-& \qquad + \sum_{j=1}^n H_{t_{j-1}} \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
+Y_T - Y_0 & = \sum_{j=1}^n u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) \\
+& \qquad + \frac{1}{2} \sum_{j=1}^n u''(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}})^2 \\
+& \qquad + \sum_{j=1}^n \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
 \end{align*}
 $$
 
-No limite, o primeiro termo converge para uma integral de Itô; o último termo converge para zero, graças à continuidade da segunda derivada de $u = u(x)$; e o segundo podemos escrever informalmente como uma integral com $(\mathrm{d}X)^2$. Assim, obtemos
+No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de $\{X_t\}_{t \geq 0}$, com respeito a si mesmo. O último termo converge para zero, graças à continuidade da segunda derivada de $u = u(x)$. Em relação ao segundo termo, temos
 $$
-\int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T H_t u''(X_t)\;(\mathrm{d}X_t)^2.
+\begin{align*}
+(X_{t_j} - X_{t_{j-1}})^2 & \approx \left(A_{t_{j-1}}(t_j - t_{j-1}) + B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}) \right)^2 \\
+& \approx A_{t_{j-1}}^2(t_j - t_{j-1})^2 + 2A_{t_{j-1}}B_{t_{j-1}}(t_j - t_{j-1})(W_{t_j} - W_{t_{j-1}}) + B_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2
+\end{align*}
+$$
+Ao somarmos e tomarmos o limite, os dois primeiros termos se anulam, pois contém um $\Delta t$ extra que converge para zero. Mais precisamente, no primeiro termo, vale, quase certamente,
+$$
+\left|\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) A_{t_{j-1}}^2(t_j - t_{j-1})^2\right| \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \sum_{j=1}^n A_{t_{j-1}}^2(t_j - t_{j-1}) \rightarrow 0 \times \int_0^T A_t^2 \;\mathrm{d}t = 0.
+$$
+No segundo termo, em média quadrática, temos, como na isometria de Itô,
+$$
+\begin{align*}
+\mathbb{E}\left[\left|\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) 2A_{t_{j-1}}B_{t_{j-1}}(t_j - t_{j-1})(W_{t_j} - W_{t_{j-1}})\right|^2 \right] & \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 2A_{t_{j-1}}B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right|^2 \right] \\
+& \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 4A_{t_{j-1}}^2B_{t_{j-1}}^2(t_j - t_{j-1})\right|^2 \right] \\
+& \rightarrow 0 \times \int_0^T 4A_t^2 B_t^2 \;\mathrm{d}t = 0.
+\end{align*}
+$$
+No último termo, usando que $\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})$, obtemos
+$$
+\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) B_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(X_t) B_t^2 \;\mathrm{d}t.
 $$
 
-No caso em que $\{X_t\}_{t \geq 0}$ é o processo de Wiener $\{W_t\}_{t \geq 0}$, então "$(\mathrm{d}W_t) = dt$", de modo que $Y_t = u(W_t)$ é tal que
+Informalmente, podemos escrever
 $$
-\int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
+(\mathrm{d}X)^2 = A_t^2 \;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2(\mathrm{d}W_t)^2 = B_t^2\;\mathrm{d}t,
 $$
-Mais precisamente, podemos obter isso, rigorosamente, a partir das somas parciais, mostrando que
+com
 $$
-\frac{1}{2} \sum_{j=1}^n H_{t_{j-1}} u''(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
+(\mathrm{d}t)^2 = 0, \quad \mathrm{d}t\;\mathrm{d}W_t = 0, \quad (\mathrm{d}W_t)^2 = \mathrm{d}t.
 $$
-Isso segue do fato de que $\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = t_j - t_{j-1}$ e de que momentos de ordem mais alta dependem de potências também maiores de $t_j - t_{j-1}$. Mostra-se, então, que o valor esperado desse termo converge para a integral em $\mathrm{d}t$ e a variância converge para zero, nos dando a convergência em probabilidade.
 
-Mais geralmente, se $\{X_t\}_{t \geq 0}$ é um processo de Itô satisfazendo
+De qualquer forma, obtemos, no limite,
 $$
-\mathrm{d}X_t = A_t\;\mathrm{d}t + B_t\;\mathrm{d}W_t,
+Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \;\mathrm{d}t.
 $$
-então
-$$
-(\mathrm{d}X_t)^2 \sim A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t\;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2.
-$$
-como, no limite, no sentido integral, $(\mathrm{d}t)^2 = 0$, $\mathrm{d}t\;\mathrm{d}W_t = 0$ e $(\mathrm{d}W_t)^2 = \mathrm{d}t$, então
-$$
-\int_0^T H_t \;\mathrm{d}Y_t = \int_0^T A_t H_t u'(X_t) \;\mathrm{d}t + \int_0^T B_t H_t u'(X_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T B_t^2 H_t u''(X_t)\;\mathrm{d}t.
-$$
+
 Ou seja, obtemos a **fórmula de Itô** no caso autônomo:
 $$
-\mathrm{d}Y_t = A_t u'(X_t) \;\mathrm{d}t + B_t u'(X_t)\;\mathrm{d}W_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
-$$
-
-Da mesma forma, uma demonstração rigorosa pode ser feita trabalhando-se diretamente com as somas parciais:
-$$
-\begin{align*}
-Y_t - Y_0 & = \sum_{j=1}^n (Y_{t_j} - Y_{t_{j-1}}) \\
-  & = \sum_{j=1}^n (u(X_{t_j}) - u(X_{t_{j-1}})) \\
-  & = \sum_{j=1}^n \left( u'(X_{t_{j-1}}) + \int_{X_{t_{j-1}}}^{X_{t_j}} u''(x)(x - X_{t_{j-1}}) \;\mathrm{d}x\right)
-\end{align*}
+\mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 $$
 
 ## Fórmula de Itô no caso não-autônomo
@@ -121,19 +123,32 @@ $$
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx}B_t^2\;\mathrm{d}t.
 $$
 
-Para lembrar dessa fórmula, pense nas seguintes identidades "informais" (ou seja, sem significado rigoroso)
+Para lembrar dessa fórmula, pense primeiramente em uma expansão de segunda ordem
+$$
+\mathrm{d}Y_t = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{tt}\;(\mathrm{d}t)^2 + u_{tx} \;\mathrm{d}t \;\mathrm{d}X_t + \frac{1}{2} u_{xx}\;(\mathrm{d}X_t)^2.
+$$
+Em seguida, eleva-se ao quadrado a equação para $\{X_t\}_{t \geq 0}$:
+$$
+(\mathrm{d}X_t)^2 = \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right)^2 = A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2.
+$$
+Substituindo $(\mathrm{d}X_t)^2$ na expansão de segunda ordem de $\mathrm{d}Y_t$, obtemos
 $$
 \begin{align*}
-\mathrm{d}Y_t & = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{tt}\;(\mathrm{d}t)^2 + u_{tx} \;\mathrm{d}t \;\mathrm{d}X_t + \frac{1}{2} u_{xx}\;(\mathrm{d}X_t)^2, \\
-(\mathrm{d}X_t)^2 & = \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right)^2 = A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2,
+\mathrm{d}Y_t & = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t \\
+& \qquad + \frac{1}{2} u_{tt}\;(\mathrm{d}t)^2 \\
+& \qquad + u_{tx} \;\mathrm{d}t \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right) \\
+& \qquad + \frac{1}{2} u_{xx}\left(A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2\right).
 \end{align*}
 $$
-junto com
+Usando que, sob uma integração simples,
 $$
 \begin{align*}
 (\mathrm{d}t)^2 & = 0, \\
 \mathrm{d}t\;\mathrm{d}W_t & = 0, \\
-(\mathrm{d}W_t)^2 & = \mathrm{d}t.
+(\mathrm{d}W_t)^2 & = \mathrm{d}t,
 \end{align*}
 $$
-Combinadas, chegamos na fórmula de Itô.
+chega-se à fórmula de Itô
+$$
+\mathrm{d}Y_t = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2 \;\mathrm{d}t.
+$$
