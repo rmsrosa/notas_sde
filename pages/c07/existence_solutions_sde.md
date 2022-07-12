@@ -56,9 +56,9 @@ $$
 
 Vamos mostrar, por indução, que
 $$
-d^m(t) \leq \frac{(Kt)^{m+1}}{(m+1)!},
+d^m(t) \leq \frac{M K^m t^{m+1}}{(m+1)!},
 $$
-para alguma constante $K$ dependendo de $L_f$, $L_g$, $T$ e $X_0$.
+para $K = 2(L_f^2 + L_g^2)$ e para alguma constante $M$ dependendo de $C_f$, $C_g$, $L_f$, $L_g$, $T$ e $X_0$.
 
 Primeiramente, temos
 $$
@@ -93,4 +93,24 @@ $$
 M = 4\left((C_f^2 + C_g^2) + (L_f^2 + L_g^2)\mathbb{E}\left[X_0^2\right]\right).
 $$
 
-Agora, prosseguindo por indução, assumimos que a estimativa é válida para $m-1$ e vamos prová-la para $m$.
+Agora, prosseguindo por indução, assumimos que a estimativa seja válida para $m-1$ e buscamos prová-la para $m$. Temos
+$$
+\begin{align*}
+d^m(t) & = \mathbb{E}\left[\left|X_t^{m+1} - X_t^m\right|^2\right] \\
+& = \mathbb{E}\left[ \left( \int_0^t (f(s, X_s^m) - f(s, X_s^{m-1}))\;\mathrm{d}s + \int_0^t (g(s, X_s^m) - g(s, X_s^{m-1})) \;\mathrm{d}W_t\right)^2 \right] \\
+& \leq \mathbb{E}\left[ 2\left( \int_0^t L_f |X_s^m - X_s^{m-1}|\;\mathrm{d}s \right)^2 + 2\left( \int_0^t L_g |X_s^m - X_s^{m-1}| \;\mathrm{d}W_t\right)^2\right] \\
+& \leq 2L_f^2\int_0^T\mathbb{E}\left[ |X_s^m - X_s^{m-1}|^2 \right]\;\mathrm{d}s + 2L_g^2\mathbb{E}\left[\left( \int_0^t |X_s^m - X_s^{m-1}| \;\mathrm{d}W_t\right)^2\right]
+\end{align*}
+$$
+Usando a isometria de Itô no segundo termo, chegamos a
+$$
+d^m(t) \leq 2(L_f^2 + L_g^2)\int_0^T \mathbb{E}\left[ |X_s^m - X_s^{m-1}|^2 \right]\;\mathrm{d}s \leq K\int_0^T d^{m-1}(s)\;\mathrm{d}s.
+$$
+Usando a hipótese de indução para $m-1$, chegamos na estimativa para $d^m(t)$:
+$$
+d^m(t) \leq K\int_0^T \frac{MK^{m-1}s^m}{m!}\;\mathrm{d}s \leq \frac{MK^mt^{m+1}}{(m+1)!}.
+$$
+
+Agora, podemos fazer somas telescópias, como de costume, e provar que $\{X_t^m\}_{t \geq 0}$ converge em média quadrática para um processo $\{X_t\}_{t \geq 0}$ que é solução da equação integral e, portanto, da equação diferencial estocástica.
+
+## Unicidade
