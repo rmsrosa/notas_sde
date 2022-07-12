@@ -112,5 +112,3 @@ d^m(t) \leq K\int_0^T \frac{MK^{m-1}s^m}{m!}\;\mathrm{d}s \leq \frac{MK^mt^{m+1}
 $$
 
 Agora, podemos fazer somas telescópias, como de costume, e provar que $\{X_t^m\}_{t \geq 0}$ converge em média quadrática para um processo $\{X_t\}_{t \geq 0}$ que é solução da equação integral e, portanto, da equação diferencial estocástica.
-
-## Unicidade
