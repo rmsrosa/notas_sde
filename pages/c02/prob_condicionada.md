@@ -94,7 +94,7 @@ $$
 \mathbb{P}(A | B) = \mathbb{P}(A) \quad \Leftrightarrow \quad \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B) \quad \Leftrightarrow \quad \mathbb{P}(B | A) = \mathbb{P}(B).
 $$
 
-Por exemplo, as chances do resultado de um dado não-viciado de seis faces dar um número menor ou igual a quatro é independente do número ser par ou ímpar e é sempre igual a dois terços. Já as chances do número ser menor ou igual a três depende: é igual a meio, se não soubermos a sua paridade, é igual a um terço, se o número for par, é igual a dois terços, se o número for ímpar.
+Por exemplo, as chances do resultado de um dado não viciado de seis faces dar um número menor ou igual a quatro é independente do número ser par ou ímpar e é sempre igual a dois terços. Já as chances do número ser menor ou igual a três depende: é igual a meio, se não soubermos a sua paridade, é igual a um terço, se o número for par, é igual a dois terços, se o número for ímpar.
 
 ## Lei da probabilidade total
 

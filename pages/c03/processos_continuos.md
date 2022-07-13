@@ -248,7 +248,7 @@ Processos de renovação são usados para modelar sequências sucessivas de falh
 
 ## Processo de renovação e recompensa
 
-Junto com um processo de renovação $\{X_t\}_{t \geq 0}$ como acima, obtido a partir de variáveis aleatórias positivas independentes $\{Y_j\}_{j\in \mathbb{N}}$, podemos ter, a cada evento $Z_n = \sum_{j=1}^n Y_j$, uma "recompensa" $\{W_n\}_{n\in \mathbb{N}}$, que é uma variável aleatória real (ganhos e perdas). O total de recompensa após um tempo $t$ é dado por (lembrando que $X_t$ assume valores inteiros não-negativos)
+Junto com um processo de renovação $\{X_t\}_{t \geq 0}$ como acima, obtido a partir de variáveis aleatórias positivas independentes $\{Y_j\}_{j\in \mathbb{N}}$, podemos ter, a cada evento $Z_n = \sum_{j=1}^n Y_j$, uma "recompensa" $\{W_n\}_{n\in \mathbb{N}}$, que é uma variável aleatória real (ganhos e perdas). O total de recompensa após um tempo $t$ é dado por (lembrando que $X_t$ assume valores inteiros não negativos)
 $$
 Y_t = \sum_{i = 1}^{X_t} W_i.
 $$

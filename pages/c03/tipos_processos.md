@@ -10,7 +10,7 @@ Um processo $\{X_t\}_{t\in I}$ é dito **identicamente distribuído** quando as 
 
 Por exemplo, o processo de Bernoulli $\{X_n\}_{n\in\mathbb{N}}$ tem $X_n \sim \textrm{Bernoulli}(p)$, para todo $n\in \mathbb{N}$, sendo, portanto, um processo identicamente distribuído.
 
-Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identicamente distribuído, com $X_n \sim \textrm{Unif}(\Sigma),$ com $\Sigma = \{1, 2, \ldots, 6\}$, para todo $n\in \mathbb{N}$. Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.
+Jogar um mesmo dado, não viciado, várias vezes, também é um processo identicamente distribuído, com $X_n \sim \textrm{Unif}(\Sigma),$ com $\Sigma = \{1, 2, \ldots, 6\}$, para todo $n\in \mathbb{N}$. Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.
 
 O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada incremento $W_n$ tem distribuição binomial diferente $W_n \sim \textrm{Binomial}(n, p)$.
 

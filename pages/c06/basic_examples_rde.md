@@ -93,7 +93,7 @@ x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)},
 $$
 estão definidos em intervalos arbitrariamente pequenos. Isso nos impede de definir um processo $\{X_t\}_{t \in [0, \varepsilon)}$ para todos os caminhos, por menor que seja $\varepsilon > 0$. Ou seja, não existe solução por caminhos dessa equação.
 
-## Múltiplas soluções e não-solução
+## Múltiplas soluções e não solução
 
 Agora, considere o problema de valor inicial
 $$

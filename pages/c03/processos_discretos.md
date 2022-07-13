@@ -218,7 +218,7 @@ com
 $$
 W_0 = 0
 $$
-O espaço de eventos da contagem binomial é, naturalmente, $\Sigma = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$ e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não-negativos, $\Omega = {\mathbb{Z}^*}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}$.
+O espaço de eventos da contagem binomial é, naturalmente, $\Sigma = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$ e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não negativos, $\Omega = {\mathbb{Z}^*}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}$.
 
 ```julia:contagem_binomial
 #hideall

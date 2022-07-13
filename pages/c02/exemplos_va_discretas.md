@@ -7,7 +7,7 @@ $$
 \mathbb{P}(X = x_j) = p_j, \quad j = 1, \ldots, J.
 $$
 
-O conjunto de probabilidades $\{p_j\}_j$ é chamada de **função massa de probabilidade** e, naturalmente, cada probabilidade deve ser não-negativa e a soma (massa) total deve ser 1:
+O conjunto de probabilidades $\{p_j\}_j$ é chamada de **função massa de probabilidade** e, naturalmente, cada probabilidade deve ser não negativa e a soma (massa) total deve ser 1:
 $$
 0 \leq p_j \leq 1, \qquad \sum_{j=1}^J p_j = 1.
 $$

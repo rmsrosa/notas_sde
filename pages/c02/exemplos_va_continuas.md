@@ -34,7 +34,7 @@ $$
   \mathbb{P}(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
 $$
 
-Necessariamente, a função densidade de probabilidades deve ser não-negativa e ter massa 1:
+Necessariamente, a função densidade de probabilidades deve ser não negativa e ter massa 1:
 $$
 p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 $$

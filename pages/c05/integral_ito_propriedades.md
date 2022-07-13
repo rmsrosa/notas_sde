@@ -24,7 +24,7 @@ $$
 \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
 $$
 
-No limite, obtemos que a integral de Itô de um processo não-antecipativo tem valor esperado nulo:
+No limite, obtemos que a integral de Itô de um processo não antecipativo tem valor esperado nulo:
 $$
 \mathbb{E}\left[\int_0^T H_t \;\mathrm{d}W_t\right] = 0.
 $$
@@ -83,7 +83,7 @@ $$
 
 ## Isometria com dois processos
 
-Estendendo a propriedade de isometria para dois processos não-antecipativos $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$, usando que $ab = \frac{1}{2}((a + b)^2 - a^2 - b^2)$ e aplicando a isometria a cada termo, obtemos
+Estendendo a propriedade de isometria para dois processos não antecipativos $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$, usando que $ab = \frac{1}{2}((a + b)^2 - a^2 - b^2)$ e aplicando a isometria a cada termo, obtemos
 $$
 \mathbb{E}\left[ \left( \int_0^T G_t \;\mathrm{d}W_t\right)\left( \int_0^T H_t \;\mathrm{d}W_t\right)\right] = \mathbb{E}\left[ \int_0^T G_t H_t \;\mathrm{d}t\right].
 $$
@@ -122,7 +122,7 @@ $$
 $$
 mostrando que $\{S_t\}_{t\geq 0}$ é uma Martingale.
 
-## Não-positividade
+## Não positividade
 
 Uma propriedade clássica das integrais de Riemann e de Lebesgue que tanto a integral de Riemann-Stieltjes quanto a integral de Itô não têm é a de positividade. Na integral de Riemann, se $H_t \geq 0$ para todo $t$, então
 $$
@@ -153,4 +153,4 @@ $$
 $$
 que não é positiva.
 
-Para que a positividade valha na integral de Riemann-Stieltjes, é necessário impor condições extras, como $g$ ser não-decrescente ou então $g$ ser positiva e $f$ ser estritamente uniformemente positiva.
+Para que a positividade valha na integral de Riemann-Stieltjes, é necessário impor condições extras, como $g$ ser não decrescente ou então $g$ ser positiva e $f$ ser estritamente uniformemente positiva.

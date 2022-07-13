@@ -36,7 +36,7 @@ $$
 \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 $$
 
-Mas podemos ter $g$ sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, $g(t) = \chi_{[0,1]}(t)$ (vale $1$ no intervalo $[0, 1]$ e vale $0$ fora do intervalo) é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.
+Mas podemos ter $g$ sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, $g(t) = \chi_{[0,1]}(t)$ (vale $1$ no intervalo $[0, 1]$ e vale $0$ fora do intervalo) é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não decrescentes e de variação limitada.
 
 Essa quantidade é chamada de **variação** da função no intervalo $[a, b]$ e é denotada por $V(g; a, b)$:
 $$

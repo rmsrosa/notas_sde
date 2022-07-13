@@ -120,7 +120,7 @@ $$
 X - \varepsilon < X_{n_k} < X + \varepsilon, \qquad \forall k \geq j.
 $$
 
-Como a sequência é monótona, digamos monótona não-decrescente (é análogo caso seja não-crescente), então, para todo $n \geq n_j$, temos $n_k \leq n < n_{k+1}$, para algum $k \geq j$. Assim,
+Como a sequência é monótona, digamos monótona não decrescente (é análogo caso seja não crescente), então, para todo $n \geq n_j$, temos $n_k \leq n < n_{k+1}$, para algum $k \geq j$. Assim,
 $$
 X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
 $$

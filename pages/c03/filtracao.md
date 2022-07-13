@@ -80,11 +80,11 @@ onde $E_0, E_1, \ldots, E_n \subset \mathbb{Z}$. Dessa forma, não temos como ob
 
 ## Filtração
 
-Vamos, agora, à definição formal. Uma **filtração** em um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$ é uma família não-decrescente $\{\mathcal{F}_t\}_{t\in I}$, em algum espaço de índices $I$ discreto ou contínuo, de $\sigma$-álgebras contidas em $\mathcal{A}$, i.e.
+Vamos, agora, à definição formal. Uma **filtração** em um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$ é uma família não decrescente $\{\mathcal{F}_t\}_{t\in I}$, em algum espaço de índices $I$ discreto ou contínuo, de $\sigma$-álgebras contidas em $\mathcal{A}$, i.e.
 
 1. $\mathcal{F}_t$ é uma $\sigma$-álgebra em $\Omega$, para todo $t\in I$;
 2. $\mathcal{F}_t$ é uma sub $\sigma$-álgebra de $\mathcal{A}$, i.e. $\mathcal{F}_t \subset \mathcal{A}$; e
-3. É uma família não-decrescente, i.e. $\mathcal{F}_s \subset \mathcal{F}_t$, para todo $s, t\in I$ com $s < t$.
+3. É uma família não decrescente, i.e. $\mathcal{F}_s \subset \mathcal{F}_t$, para todo $s, t\in I$ com $s < t$.
 
 Denominamos um tal $(\Omega, \mathcal{A}, \{\mathcal{F}_t\}_{t\in I}$ por **espaço filtrado.**.
 
@@ -92,7 +92,7 @@ No caso discreto $I = \mathbb{N}$, basta pedir que $\mathcal{F}_1 \subset \mathc
 
 ## Processo adaptado
 
-Um processo $\{X_t\}_{t\in I}$ em $(\Omega, \mathcal{A}, \mathbb{P})$ é dito **adaptado** a uma filtração $\{\mathcal{F}_t\}_{t\in I}$ nesse espaço de probabilidades quando $X_t$ é $\mathcal{F}_t$-mensurável, para qualquer $t \in I$. Um tal processo também é dito **não-antecipativo,** em relação a essa filtração. De fato, qualquer evento $E$ observável por $X_t$ deve estar associado a um conjunto amostral $X_t^{-1}(E)$ em $\mathcal{F}_t$, sem necessitar de conjuntos nas $\sigma$-álgebras posteriores.
+Um processo $\{X_t\}_{t\in I}$ em $(\Omega, \mathcal{A}, \mathbb{P})$ é dito **adaptado** a uma filtração $\{\mathcal{F}_t\}_{t\in I}$ nesse espaço de probabilidades quando $X_t$ é $\mathcal{F}_t$-mensurável, para qualquer $t \in I$. Um tal processo também é dito **não antecipativo,** em relação a essa filtração. De fato, qualquer evento $E$ observável por $X_t$ deve estar associado a um conjunto amostral $X_t^{-1}(E)$ em $\mathcal{F}_t$, sem necessitar de conjuntos nas $\sigma$-álgebras posteriores.
 
 Por exemplo, o passeio aleatório considerado acima está adaptado à filtração natural definida por ele. De fato, qualquer processo é adaptado à sua filtração natural, por construção.
 

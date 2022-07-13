@@ -320,7 +320,7 @@ $$
 $$
 Vamos mostrar que essa série converge quase sempre.
 
-Começamos estimando cada termo do somatório. As funções $s_d$, para $d\in D_{n+1}\setminus D_n$, são não-negativas, têm suporte disjunto e alcançam um valor máximo $s_d(d) = 1/2^{(n+1)/2}$. Assim,
+Começamos estimando cada termo do somatório. As funções $s_d$, para $d\in D_{n+1}\setminus D_n$, são não negativas, têm suporte disjunto e alcançam um valor máximo $s_d(d) = 1/2^{(n+1)/2}$. Assim,
 $$
 \left|\sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d\right| \leq \frac{1}{2^{(n+1)/2}}\max_{d\in D_{n+1}\setminus D_n} |Z_d|, \quad \forall 0\leq t \leq 1.
 $$

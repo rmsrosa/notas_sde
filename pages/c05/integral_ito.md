@@ -21,9 +21,9 @@ Uma condição essencial pode ser posta do seguinte modo informal:
 
 > A cada instante $t \geq 0$, o integrando $H_t$ deve ser independente dos valores futuros $s \geq t$ do processo de Wiener.
 
-Vamos chamar essa condição de *não-antecipativa* *("non-antecipating")* ou *adaptada* ao processo $\{W_t\}_t$. Uma definição mais formal envolve o conceito de *filtração*.
+Vamos chamar essa condição de *não antecipativa* *("non-antecipating")* ou *adaptada* ao processo $\{W_t\}_t$. Uma definição mais formal envolve o conceito de *filtração*.
 
-Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t$, para $0 \leq s \leq t$. Uma filtração é dita **não-antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$, e $W_t$ é independente das $\sigma$-álgebras geradas por $\Delta W_{t, s} = W_s - W_t$, para $s \geq t$. Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não-antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0$, $H_t$ é mensurável em relação a $\mathcal{F}_t$, onde $\{\mathcal{F}_t\}_{t\geq 0}$ é uma filtração adaptada a $\{W_t\}_{t\geq 0}$.
+Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t$, para $0 \leq s \leq t$. Uma filtração é dita **não antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$, e $W_t$ é independente das $\sigma$-álgebras geradas por $\Delta W_{t, s} = W_s - W_t$, para $s \geq t$. Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0$, $H_t$ é mensurável em relação a $\mathcal{F}_t$, onde $\{\mathcal{F}_t\}_{t\geq 0}$ é uma filtração adaptada a $\{W_t\}_{t\geq 0}$.
 
 Sob a condição de $\{H_t\}_{t\geq 0}$ estar adaptada a $\{W_t\}_{t\geq 0}$ e dos caminhos amostrais de $\{H_t\}_{t\geq 0}$ serem quase certamente contínuos, a *integral de Itô* está bem definida e possui boas propriedades, como veremos posteriormente.
 
@@ -142,7 +142,7 @@ $$
 
 ## Aproximação por processos contínuos
 
-Dada uma função de quadrado integrável $f:\mathbb{R} \rightarrow \mathbb{R}$, uma maneira clássica de aproximá-la por funções contínuas é através da convolução $t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t$ com aproximações da identidade $\varphi_\varepsilon$. Essa convolução, no entanto, envolve, tipicamente, olhar para o "passado" e para o "futuro" da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não-antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,
+Dada uma função de quadrado integrável $f:\mathbb{R} \rightarrow \mathbb{R}$, uma maneira clássica de aproximá-la por funções contínuas é através da convolução $t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t$ com aproximações da identidade $\varphi_\varepsilon$. Essa convolução, no entanto, envolve, tipicamente, olhar para o "passado" e para o "futuro" da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,
 $$
 \varphi_\varepsilon(t) = \begin{cases}
 \displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \leq 0, \\
@@ -168,7 +168,7 @@ Mais especificamente, dado um processo $\{H_t\}_{t \geq 0}$ de quadrado integrá
 $$
 H_t^m = \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s.
 $$
-Como $H_t^m$ só envolve $H_s$, para $0\leq s \leq t$, então $H_t^m$ continua sendo não-antecipativo. Além disso, para $t \geq 0$ e $\tau > 0$,
+Como $H_t^m$ só envolve $H_s$, para $0\leq s \leq t$, então $H_t^m$ continua sendo não antecipativo. Além disso, para $t \geq 0$ e $\tau > 0$,
 $$
 \begin{align*}
 H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s \\
