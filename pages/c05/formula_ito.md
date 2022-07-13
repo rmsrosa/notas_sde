@@ -29,7 +29,7 @@ Essa mesma análise pode ser feita no caso em que $u$ depende também da variáv
 $$
 Y_t = u(t, X_t).
 $$
-Denotamos o primeiro caso por *autônomo* e este, por *não-autônomo.*  No caso não-autônomo, a *fórmula de Itô* se torna
+Denotamos o primeiro caso por *autônomo* e este, por *não autônomo.*  No caso não autônomo, a *fórmula de Itô* se torna
 $$
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
 $$
@@ -42,7 +42,7 @@ Como dito acima, um **processo de Itô** é um processo $\{X_t\}_{t \geq 0}$ sat
 $$
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 $$
-onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener e $\{A_t\}_{t \geq 0}$ e $\{B_t\}_{t \geq 0}$ são não-antecipativos em relação ao processo de Wiener.
+onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener e $\{A_t\}_{t \geq 0}$ e $\{B_t\}_{t \geq 0}$ são não antecipativos em relação ao processo de Wiener.
 
 ## Fórmula de Itô no caso autônomo
 
@@ -112,13 +112,13 @@ $$
 \mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 $$
 
-## Fórmula de Itô no caso não-autônomo
+## Fórmula de Itô no caso não autônomo
 
 Quando $u = u(t, x)$ é duas vezes continuamente diferenciável e $\{X_t\}_{t\geq 0}$ é um processo de Itô satisfazendo
 $$
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 $$
-então o processo $\{Y_t\}_{t\geq 0}$ definido por $Y_t = u(t, X_t)$ satisfaz a **fórmula de Itô** no caso não-autônomo, a saber
+então o processo $\{Y_t\}_{t\geq 0}$ definido por $Y_t = u(t, X_t)$ satisfaz a **fórmula de Itô** no caso não autônomo, a saber
 $$
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx}B_t^2\;\mathrm{d}t.
 $$
@@ -163,4 +163,9 @@ $$
 2. Mostre que
 $$
 \mathrm{d}(tW_t) = W_t\;\mathrm{d}t + t\;\mathrm{d}W_t.
+$$
+
+3. Mostre a "regra do produto" para o produto entre uma função determinística $f=f(t)$ e um processo de Itô $\{X_t\}_t$:
+$$
+\mathrm{d}(f(t)X_t) = f'(t)X_t\;\mathrm{d}t + f(t)\;\mathrm{d}X_t.
 $$
