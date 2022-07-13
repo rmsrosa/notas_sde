@@ -190,15 +190,15 @@ A solução dessa equação é
 $$
 Y_t = e^{-\nu t}Y_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t.
 $$
-De fato, observe que, como o integrando da integral estocástica é determinístico, ela pode ser resolvida via dualidade, nos dando
+
+De fato, escrevendo
+$$
+Y_t = e^{-\nu t}Y_0 + \sigma e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t,
+$$
+vemos que
 $$
 \begin{align*}
-\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t & = e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t \\
-& = e^{-\nu t}\left( e^{\nu t}W_t - \nu\int_0^t e^{\nu s}W_s \;\mathrm{d}t \right) \\
-& = W_t - \nu\int_0^t e^{-\nu (t - s)}W_s \;\mathrm{d}t.
+\mathrm{d}Y_t & = -\nu e^{-\nu t}Y_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
+& = -\nu Y_t + \sigma\;\mathrm{d}W_t.
 \end{align*}
-$$
-Assim,
-$$
-\mathrm{d}Y_t = -\nu e^{-\nu t}Y_0 + \sigma \;\mathrm{d}W_t + \sigma\nu^2\int_0^t e^{-\nu (t - s)}W_s \;\mathrm{d}t - \sigma \nu W_t
 $$
