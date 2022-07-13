@@ -202,3 +202,23 @@ $$
 & = -\nu Y_t + \sigma\;\mathrm{d}W_t.
 \end{align*}
 $$
+
+## Exponencial estocástica
+
+Em particular, o processo
+$$
+X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t}
+$$
+faz um papel semelhante ao da função $x(t) = x_0e^{\lambda t}$, que é solução de
+$$
+\frac{\mathrm{d}x}{\mathrm{d}t} = \lambda x,
+$$
+que pode ser escrita em forma diferencial como
+$$
+\mathrm{d}x = \lambda x \;\mathrm{d}t.
+$$
+
+Na versão estocástica, $\{X_t\}_{t \geq 0}$ é solução de
+$$
+\mathrm{d}X_t = \lambda X_t \;\mathrm{d}W_t.
+$$
