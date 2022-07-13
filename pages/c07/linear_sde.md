@@ -50,40 +50,60 @@ $$
 X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
 
-De fato, é imediato ver que a condição inicial é satisfeita.
+De fato, vamos verificar, primeiro, o caso com condição inicial igual $1$,
+$$
+\left.X_t\right|_{t = 0} = 1.
+$$
+Nesse caso, vamos verificar que a solução tem a forma
+$$
+\hat X_t = e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
+$$
+Usamos $\{\hat X_t\}_{t \geq 0}$ para representar a solução com a condição initial $\hat X_0 = 1$ e, assim, distinguir do caso mais geral.
 
-Agora, definindo
+Definindo
 $$
 Y_t = -\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s,
 $$
-e
+podemos escrever a solução como
 $$
-E_t = e^{Y_t},
+\hat X_t = e^{Y_t}.
 $$
-podemos escrever
+De outra forma, definindo a função $u(y) = e^y$, podemos escrever
 $$
-X_t = X_0 E_t.
+\hat X_t = u(Y_y).
 $$
 
 Veja que $Y_t$ é um processo de Itô, com
 $$
 \mathrm{d}Y_t = - \frac{1}{2}g_1(t)^2\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
 $$
-Assim, podemos aplicar a fórmula de Itô, com $u(y) = e^y$, e obter
+Assim, podemos aplicar a fórmula de Itô e obter
 $$
 \begin{align*}
-\mathrm{d}E_t & = u'(Y_t)\;\mathrm{d}Y_t + \frac{1}{2}u''(Y_t)g_1(t)^2\;\mathrm{d}t \\
+\mathrm{d}\hat X_t & = u'(Y_t)\;\mathrm{d}Y_t + \frac{1}{2}u''(Y_t)g_1(t)^2\;\mathrm{d}t \\
 & = e^{Y_t}\;\mathrm{d}Y_t + \frac{1}{2}e^{Y_t}g_1(t)^2\;\mathrm{d}t \\
-& = E_t\;\mathrm{d}Y_t + \frac{1}{2}g_1(t)^2E_t\;\mathrm{d}t \\
-& = g_1(t)E_t\;\mathrm{d}W_t.
+& = \hat X_t\;\mathrm{d}Y_t + \frac{1}{2}g_1(t)^2\hat X_t\;\mathrm{d}t.
 \end{align*}
 $$
+Cancelando o termo comum, chegamos a
+$$
+\mathrm{d}\hat X_t = g_1(t)\hat X_t\;\mathrm{d}W_t,
+$$
+mostrando que $\{\hat X_t\}_{t \geq 0}$ é, de fato, solução.
 
-Isso implica em
+Agora, no caso da condição inicial ser uma variável aleatória,
 $$
-\mathrm{d}X_t = X_0 \;\mathrm{d}E_t = g_1(t)X_0 E_t\;\mathrm{d}W_t = g_1(t)X_t \;\mathrm{d}W_t,
+\left. X_t \right|_{t = 0} = X_0,
 $$
-mostrando que $\{X_t\}_{t \geq 0}$ é, de fato, solução.
+escrevemos
+$$
+X_t = X_0 \hat X_t, \quad \hat X_t = u(Y_t).
+$$
+Como $\hat X_0 = 1$, segue que a condição inicial $X_t|_{t = 0} = X_0$ é satisfeita. Quanto à equação diferencial, temos
+$$
+\mathrm{d}X_t = X_0 \mathrm{d}\hat X_t = X_0 g_1(t)\hat X_t\;\mathrm{d}W_t = g_1(t) X_t\;\mathrm{d}W_t.
+$$
+Portanto, $\{X_t\}_{t \geq 0}$ é, de fato, a solução.
 
 ## Equação estocástica linear com drift determinístico e com ruído aditivo
 
@@ -91,7 +111,7 @@ Considere, agora,
 $$
 \mathrm{d}X_t = f_0(t) \;\mathrm{d}t + g_0(t) \;\mathrm{d}W_t.
 $$
-Novamente, a solução é puramente a "primitiva"
+Novamente, a solução é puramente a "primitiva" do lado direito:
 $$
 X_t = X_0 + \int_0^t f_0(s)\;\mathrm{d}s + \int_0^t g_0(s) \;\mathrm{d}W_s.
 $$
@@ -110,19 +130,19 @@ $$
 
 Novamente, escrevemos
 $$
-X_t = X_0 E_t, \quad E_t = e^{Y_t},
+X_t = X_0 \hat X_t, \quad \hat X_t = e^{Y_t},
 $$
 com
 $$
 Y_t =  \int_0^t \left(f_1(s) -\frac{1}{2}g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
 $$
 
-Como antes, $\{Y_t\}_{t \geq 0}$ é um processo de Itô, no caso com
+Como antes, $\{Y_t\}_{t \geq 0}$ é um processo de Itô, nesse caso satisfazendo
 $$
 \mathrm{d}Y_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
 $$
 
-Usando a fórmula de Itô, chega-se ao resultado.
+Novamente, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes par o leitor.
 
 ## Preço de ações (stock prices)
 
@@ -157,3 +177,28 @@ $$
 \mathbb{E}\left[P_t\right] = p_0e^{\mu t},
 $$
 que é a solução da equação diferencial ordinária obtida sem o ruído ($\sigma = 0$).
+
+## Equação de Langevin
+
+O modelo clássico (processo de Wiener) para o movimento Browniano de uma micro-partícula em um determinado meio é fundamentado na ação causada pelo bombardeamento aleatória das partículas do meio, mas não leva em consideração o momento da partícula. Uma alternativa a esse modelo é a **equação de Langevin**
+$$
+\mathbb{d}Y_t = - \nu Y_t\;\mathrm{d}t + \sigma \mathrm{d}W_t,
+$$
+onde $\{Y_t\}_{t \geq 0}$ é interpretado como sendo a velocidade da partícula e a equação é uma versão estocástica das equações de movimento de Newton. O primeiro termo do lado direito representa um termo viscoso, com uma resultante de forças proporcional à velocidade da partícula. O segundo termo do lado direito representa a ação aleatório causada pelo bombardeamento aleatório das partículas do meio. O termo viscoso representa um bombardeamento "médio" ordenado, condizente com a ideia de que a maior parte do bombardeamento ocorre à frente do objeto, conjugada com uma atração molecular das partículas que ficam para trás. Em cima desse bombardeamento médio, gerando a viscosidade, temos as flutuações desordenadas dos bombardeamentos.
+
+A solução dessa equação é
+$$
+Y_t = e^{-\nu t}Y_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t.
+$$
+De fato, observe que, como o integrando da integral estocástica é determinístico, ela pode ser resolvida via dualidade, nos dando
+$$
+\begin{align*}
+\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t & = e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t \\
+& = e^{-\nu t}\left( e^{\nu t}W_t - \nu\int_0^t e^{\nu s}W_s \;\mathrm{d}t \right) \\
+& = W_t - \nu\int_0^t e^{-\nu (t - s)}W_s \;\mathrm{d}t.
+\end{align*}
+$$
+Assim,
+$$
+\mathrm{d}Y_t = -\nu e^{-\nu t}Y_0 + \sigma \;\mathrm{d}W_t + \sigma\nu^2\int_0^t e^{-\nu (t - s)}W_s \;\mathrm{d}t - \sigma \nu W_t
+$$
