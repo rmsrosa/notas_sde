@@ -93,6 +93,7 @@ menu = [
         "pages/c07/existence_solutions_sde"
         "pages/c07/unicidade_sol_sde"
         "pages/c07/continuidade_caminhos"
+        "pages/c07/linear_sde"
         "pages/c07/geometric_brownian"
         "pages/c07/ornstein_uhlenbeck"
     ]
