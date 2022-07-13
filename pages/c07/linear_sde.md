@@ -144,7 +144,7 @@ $$
 
 Novamente, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes par o leitor.
 
-## Preço de ações (stock prices)
+## Preço de ações (stock prices) ou movimento Browniano geométrico
 
 Um modelo clássico para o preço $P_t$ de uma ação é que a mudança relativa (ou específica) de preço $\mathrm{d}P_t / P_t$ satisfaça
 $$
@@ -198,8 +198,8 @@ $$
 vemos que
 $$
 \begin{align*}
-\mathrm{d}Y_t & = -\nu e^{-\nu t}Y_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
-& = -\nu Y_t + \sigma\;\mathrm{d}W_t.
+\mathrm{d}Y_t & = -\nu e^{-\nu t}Y_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\;\mathrm{d}t \int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
+& = -\nu Y_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
 \end{align*}
 $$
 
@@ -221,4 +221,36 @@ $$
 Na versão estocástica, $\{X_t\}_{t \geq 0}$ é solução de
 $$
 \mathrm{d}X_t = \lambda X_t \;\mathrm{d}W_t.
+$$
+
+## Ponte Browniana (Brownian bridge)
+
+Uma outra equação clássica é
+$$
+\mathrm{d}B_t = - \frac{B}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
+$$
+com condição inicial
+$$
+B_0 = 0.
+$$
+
+A sua solução é
+$$
+B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 \leq t < 1.
+$$
+
+Isso pode ser verificado diretamente, já que a integral de Itô acima é explícita. Temos
+$$
+\mathrm{d}B_t = - \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s + (1 - t)\frac{\mathrm{d}W_t}{1 - t} = - \frac{1}{1-t}B_t + \;\mathrm{d}W_t.
+$$
+
+É possível mostrar, também, que
+$$
+\lim_{t \rightarrow 1} B_t = 0,
+$$
+quase certamente. Ou seja, incluindo $B_1 = 1$, o processo $\{B_t\}_{0 \leq t \leq 1}$ faz uma "ponte", saindo da origem e voltando à origem, com caminhos contínuos quase certamente.
+
+Observe que
+$$
+B_t = W_t - t W_1.
 $$
