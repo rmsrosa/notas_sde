@@ -2,9 +2,9 @@
 
 # {{ get_title }}
 
-Uma propriedade fundamental do processo de Wiener é que os seus caminhos são, quase sempre, de *variação ilimitada*. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas (as integrais de Itô e de Stratonovich). Caso contrário, usaríamos o conceito de *integral de Riemann-Stieltjes*.
+Uma propriedade fundamental dos processos de Wiener é que os seus caminhos são, quase sempre, de *variação ilimitada*. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas (as integrais de Itô e de Stratonovich). Caso contrário, usaríamos o conceito de *integral de Riemann-Stieltjes*.
 
-Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais do processo de Wiener serem, quase sempre, de variação ilimitada.
+Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais de um processo de Wiener serem, quase certamente, de variação ilimitada.
 
 ## Funções de variação limitada ou ilimitada
 
@@ -60,9 +60,9 @@ $$
 
 Caso $g$ seja diferenciável, então $\mathrm{d}g = f\mathrm{d}x$, onde $f$ é a função de densidade de probabilidade. Mas a integral acima independe de $g$ ser diferenciável ou não.
 
-## Caminhos amostrais do processo de Wiener
+## Caminhos amostrais de processos de Wiener
 
-Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo $[0, T]$, $T > 0$, são, quase sempre, de variação ilimitada.
+Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo $[0, T]$, $T > 0$, são, quase sempre, de variação ilimitada.
 
 Queremos, para isso, estimar a variação
 $$

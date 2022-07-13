@@ -27,7 +27,7 @@ $$
 
 Mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o instante $t$ em que cada incremento é dado.
 
-Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o processo de Wiener, que veremos em breve.
+Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o de processo de Wiener, que veremos em breve.
 
 Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes, com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
@@ -69,7 +69,7 @@ O caminho aleatório não é independente, como vimos, mas os seus *incrementos*
 
 Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias mutuamente independentes.
 
-Veremos que o processo de Wiener é um exemplo de processo contínuo com incrementos independentes.
+Veremos que um processo de Wiener é um exemplo de processo contínuo com incrementos independentes.
 
 O processo de renovação, por sua vez, também não tem incrementos independentes. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2$ e $\mathbb{P}(S_j < 2) = 0$, para $j \geq 2$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
@@ -179,7 +179,7 @@ $$
 
 A definição formal no caso em que o processo estocástico é contínuo é um pouco delicada, pois a condição requer envolver não apenas um número finito de instantes anteriores mas, sim, um contínuo de instantes $s \leq t$. Para isso, é necessário o conceito de *filtração*. Veremos isso em outro momento.
 
-O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O processo de Wiener, modelando o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Veremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.
+O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. Um processo de Wiener, modelando o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Veremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.
 
 ## Martingales
 

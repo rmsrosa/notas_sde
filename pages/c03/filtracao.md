@@ -101,7 +101,7 @@ $$
 \mathbb{E}[|X_t|] < \infty \quad \textrm{e} \quad \mathbb{E}[X_{t + \tau} | A_t] = X_t, \; \forall A_t \in \mathcal{F}_t, \;\forall t < t + \tau \text{ em } I.
 $$
 
-No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo $\{H_t\}_t$ seja adaptado à filtração natural de outro processo, como o processo de Wiener $\{W_t\}_t$. Dessa forma, teremos boas propriedades da integral de Itô $\int_a^b H_t \;\mathrm{d}W_t$ de $\{H_t\}_t$ em relação a $\{W_t\}_t$.
+No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo $\{H_t\}_t$ seja adaptado à filtração natural de outro processo, como um processo de Wiener $\{W_t\}_t$. Dessa forma, teremos boas propriedades da integral de Itô $\int_a^b H_t \;\mathrm{d}W_t$ de $\{H_t\}_t$ em relação a $\{W_t\}_t$.
 
 ## Filtração natural
 

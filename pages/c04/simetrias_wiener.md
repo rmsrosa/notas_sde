@@ -1,4 +1,4 @@
-@def title = "Simetrias do processo de Wiener"
+@def title = "Simetrias de processos de Wiener"
 
 # {{ get_title }}
 
@@ -45,7 +45,7 @@ Seja $t > 0$ e escreva
 $$
 \frac{W_t}{t} = \frac{V_1^{\sqrt{t}}}{\sqrt{t}},
 $$
-onde $V_t^a = W_{a^2 t}/a$ é um rescalonamento do processo de Wiener, com $a > 0$, como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que
+onde $V_t^a = W_{a^2 t}/a$ é um rescalonamento de um processo de Wiener, com $a > 0$, como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que
 $$
 \mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right),
 $$
@@ -115,7 +115,7 @@ Vamos, então, considerar quatro instantes distintos $0 \leq t_1 < t_2 < t_3 < t
 $$
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 $$
-Distribuindo os termos e usando a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ do processo de Wiener, obtemos
+Distribuindo os termos e usando a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ de processos de Wiener, obtemos
 $$
 \begin{align*}
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = t_2t_4\min\left\{\frac{1}{t_2}, \frac{1}{t_4}\right\} - t_2t_3\min\left\{\frac{1}{t_2}, \frac{1}{t_3}\right\} - t_1t_4\min\left\{\frac{1}{t_1}, \frac{1}{t_4}\right\} + t_1t_3\min\left\{\frac{1}{t_1}, \frac{1}{t_3}\right\} \\

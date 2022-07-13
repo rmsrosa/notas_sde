@@ -2,9 +2,9 @@
 
 # {{ get_title }}
 
-Um processo de Wiener não é único, assim como não há uma única variável aleatória normal. Podemos ter várias, independentes umas das outras. No caso do processo de Wiener, podemos, por exemplo, contruir um processo através do limite de interpolações de diferentes sequências de variáveis normais, obtendo diferentes processos de Wiener.
+Como visto anteriormente, um processo de Wiener não é único, assim como podemos ter várias variáveis aleatórias independentes, com a mesma distribuição.
 
-Agora, uma vez definido um processo de Wiener $\{W_t\}_{t \geq 0}$, sob as devidas condições, podemos ter a unicidade do processo estocástico $\{X_t\}_{t \geq 0}$ definido através de uma equação diferencial estocástica
+Agora, uma vez definido um processo de Wiener $\{W_t\}_{t \geq 0}$, podemos ter, sob as devidas condições nos termos $f=f(t, x)$ e $g = g(t, x)$, a unicidade do processo estocástico $\{X_t\}_{t \geq 0}$ definido através da equação diferencial estocástica
 $$
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 $$

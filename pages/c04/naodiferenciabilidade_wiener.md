@@ -98,7 +98,7 @@ Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenci
 
 ## Não diferenciabilidade em nenhum ponto
 
-Como o processo de Wiener é invariante por translações, aplicando o resultado acima a $V_t^s = W_{s + t} - W_s$, para $s \geq 0$, segue que, para qualquer $t \geq 0$, quase todo caminho amostral é não diferenciável no instante $t$. Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes $t \geq 0$. Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.
+Como um processo de Wiener é invariante por translações, aplicando o resultado acima a $V_t^s = W_{s + t} - W_s$, para $s \geq 0$, segue que, para qualquer $t \geq 0$, quase todo caminho amostral é não diferenciável no instante $t$. Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes $t \geq 0$. Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.
 
 ## Quase todo caminho amostral é não diferenciável em nenhum ponto
 
@@ -224,7 +224,7 @@ $$
 \mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^n}\right).
 $$
 
-Pela invariância do processo de Wiener padrão por translações e por rescalonamento (com $a= 2^{n/2}$),
+Pela invariância dos processos de Wiener padrão por translações e por rescalonamento (com $a= 2^{n/2}$),
 $$
 W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
 $$

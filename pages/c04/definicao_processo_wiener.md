@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-O processo de Wiener é um processo estocástico que formaliza as ideias do movimento Browniano. Por conta disso, ele é também chamado de processo Browniano, ou mesmo de movimento Browniano, mas vale ressaltar que muitos autores diferenciam o fenômeno físico observado por Robert Brown, em 1827, e denominado de movimento Browniano, da formalização matemática denominada de processo de Wiener ou processo Browniano.
+Um processo de Wiener é um processo estocástico que formaliza as ideias do movimento Browniano. Por conta disso, ele é também chamado de processo Browniano, ou mesmo de movimento Browniano, mas vale ressaltar que muitos autores diferenciam o fenômeno físico observado por Robert Brown, em 1827, e denominado de movimento Browniano, da formalização matemática denominada de processo de Wiener ou processo Browniano.
 
 ## Processo de Wiener
 
