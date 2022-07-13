@@ -152,3 +152,15 @@ chega-se à fórmula de Itô
 $$
 \mathrm{d}Y_t = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2 \;\mathrm{d}t.
 $$
+
+## Exercícios
+
+1. Mostre que
+$$
+\mathrm{d}(W_t^2) = 2W_t\;\mathrm{d}W_t + \;\mathrm{d}t.
+$$
+
+2. Mostre que
+$$
+\mathrm{d}(tW_t) = W_t\;\mathrm{d}t + t\;\mathrm{d}W_t.
+$$
