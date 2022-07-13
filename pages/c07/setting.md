@@ -53,3 +53,12 @@ $$
 $$
 
 Dessa forma, associamos $\mu$ e $\sigma$ diretamente ao valor esperado e ao desvio padrão, respectivamente, da solução $\{X_t\}_{t \geq 0}$ da equação.
+
+## Tipos de ruído
+
+Uma distinção comum é se o termo $g(t, x)$ de ruído depende ou não de $x$. Caso não dependa, dizemos que temos um **ruído aditivo,** ou seja, quando a equação tem a forma
+$$
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t.
+$$
+
+Mais geralmente, quando $g(t, x)$ depende explicitamente de $x$, dizemos que temo um **ruído multiplicativo**.
