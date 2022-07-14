@@ -11,7 +11,7 @@ $$
 x(t) = x(0)e^{\int_0^t f(s)\;\mathrm{d}s}.
 $$
 
-Vejamos, agora, versões estocástico lineares, semelhantes a essa equação.
+Vejamos, agora, versões estocásticas lineares, semelhantes a essa equação.
 
 De maneira geral, vamos ver modelos da forma
 $$
@@ -52,7 +52,7 @@ $$
 
 De fato, vamos verificar, primeiro, o caso com condição inicial igual $1$,
 $$
-\left.X_t\right|_{t = 0} = 1.
+\left.\hat X_t\right|_{t = 0} = 1.
 $$
 Nesse caso, vamos verificar que a solução tem a forma
 $$
@@ -111,7 +111,7 @@ Considere, agora,
 $$
 \mathrm{d}X_t = f_0(t) \;\mathrm{d}t + g_0(t) \;\mathrm{d}W_t.
 $$
-Novamente, a solução é puramente a "primitiva" do lado direito:
+Novamente, a solução é simplesmente a "primitiva" do lado direito:
 $$
 X_t = X_0 + \int_0^t f_0(s)\;\mathrm{d}s + \int_0^t g_0(s) \;\mathrm{d}W_s.
 $$
@@ -127,8 +127,7 @@ Nesse caso, a solução tem a forma
 $$
 X_t = X_0 e^{\int_0^t \left(f_1(s) - \frac{1}{2} g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
-
-Novamente, escrevemos
+Podemos chegar nessa fórmula via fator de integração, de maneira análoga a como é feito no caso determinístico. Faremos isso em dois exemplos específicos, abaixo. Aqui, vamos apenas verificar que tal processo é, de fato, a solução. Novamente, escrevemos
 $$
 X_t = X_0 \hat X_t, \quad \hat X_t = e^{Y_t},
 $$
@@ -142,9 +141,9 @@ $$
 \mathrm{d}Y_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
 $$
 
-Novamente, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes par o leitor.
+Como antes, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes para o leitor.
 
-## Preço de ações (stock prices) ou movimento Browniano geométrico
+## Movimento Browniano geométrico e a preço de ações (stock prices)
 
 Um modelo clássico para o preço $P_t$ de uma ação é que a mudança relativa (ou específica) de preço $\mathrm{d}P_t / P_t$ satisfaça
 $$
@@ -163,20 +162,46 @@ Nesse caso, a solução é
 $$
 P_t = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
 $$
+Isso segue da fórmula geral acima, com $f_0 = 0$, $f_1 = \mu$, $g_0 = 0$ e $g_1 = \sigma$. Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos
+$$
+\mathrm{d}P_t - \mu P_t \;\mathrm{d}t = \sigma P_t\;\mathrm{d}W_t.
+$$
+Analogamente ao caso determinístico (pense em $p' - \mu p = g(t)$), podemos considerar o fator de integração $e^{-\mu t}$. Observe que, derivando o produto $Y_t = P_t e^{-\mu t}$ pela fórmula de Itô, temos
+$$
+\begin{align*}
+\mathrm{d}Y_t & = \mathrm{d}(P_t e^{-\mu t}) \\
+& = -\mu P_t e^{-\mu t}\;\mathrm{d}t + e^{-\mu t}\;\mathrm{d}P_t \\
+& = -\mu P_t e^{-\mu t}\;\mathrm{d}t + e^{-\mu t}(\mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t) \\
+& = \sigma e^{-\mu t} P_t \;\mathrm{d}W_t \\
+& = \sigma Y_t \;\mathrm{d}W_t.
+\end{align*}
+$$
+Vimos, acima, que a solução da equação
+$$
+\mathrm{d}Y_t = \sigma Y_t \;\mathrm{d}W_t
+$$
+é
+$$
+Y_t = p_0 e^{-\frac{1}{2}\sigma^2 t + \sigma W_t}.
+$$
+Assim,
+$$
+P_t = e^{\mu t}Y_t = p_0 e^{\mu t} e^{-\frac{1}{2}\sigma^2 t + \sigma W_t} = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
+$$
 
-Observe, ainda, que, da expressão integral
+Vamos, agora, calcular o valor esperado de $P_t$. Para isso, escrevemos a equação integral associada à equação diferencial estocástica:
 $$
-P_t = p_0 + \mu \int_0^t P_s \;\mathrm{d}s + \sigma \int_0^t P_s\;\mathrm{d}W_s,
+P_t = p_0 + \mu \int_0^t P_s \;\mathrm{d}s + \sigma \int_0^t P_s\;\mathrm{d}W_s.
 $$
-temos
+Tomando o valor esperado, obtemos
 $$
-\mathbb{E}\left[P_t\right] = p_0 + \int_0^t \mathbb{E}[P_s]\;\mathrm{d}s,
+\mathbb{E}\left[P_t\right] = p_0 + \int_0^t \mathbb{E}[P_s]\;\mathrm{d}s.
 $$
-ou seja,
+A solução dessa equação integral é a função exponencial:
 $$
 \mathbb{E}\left[P_t\right] = p_0e^{\mu t},
 $$
-que é a solução da equação diferencial ordinária obtida sem o ruído ($\sigma = 0$).
+que é, também, a solução da equação diferencial ordinária obtida eliminando o ruído da equação estocástica ($\sigma = 0$).
 
 ## Equação de Langevin
 
@@ -234,14 +259,31 @@ $$
 B_0 = 0.
 $$
 
-A sua solução é
+A sua solução pode ser obtida, também, via fator de integração e tem a forma
 $$
 B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 \leq t < 1.
 $$
 
-Isso pode ser verificado diretamente, já que a integral de Itô acima é explícita. Temos
+Isso pode ser verificado diretamente, já que a integral de Itô acima é explícita. De fato,
 $$
 \mathrm{d}B_t = - \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s + (1 - t)\frac{\mathrm{d}W_t}{1 - t} = - \frac{1}{1-t}B_t + \;\mathrm{d}W_t.
+$$
+
+Para deduzir a solução via fator de integração, dividimos a equação por $1-t$:
+$$
+\frac{1}{1-t}\mathrm{d}B_t + \frac{B}{(1-t)^2}\;\mathrm{d}t = \frac{1}{1-t}\;\mathrm{d}W_t.
+$$
+O lado esquerdo é a derivada do termo $Y_t = B_t/(1-t)$, de modo que
+$$
+\mathrm{d}Y_t = \frac{1}{1-t}\;\mathrm{d}W_t.
+$$
+A solução é a primitiva do lado direito:
+$$
+Y_t = \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
+$$
+Voltando para $B_t$, temos
+$$
+B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 $$
 
 É possível mostrar, também, que
