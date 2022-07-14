@@ -143,6 +143,26 @@ $$
 
 Como antes, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes para o leitor.
 
+## Exponencial estocástica
+
+Um caso particular do anterior é o processo
+$$
+X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t},
+$$
+que faz um papel semelhante ao da função $x(t) = x_0e^{\lambda t}$, que é solução de
+$$
+\frac{\mathrm{d}x}{\mathrm{d}t} = \lambda x,
+$$
+que pode ser escrita em forma diferencial como
+$$
+\mathrm{d}x = \lambda x \;\mathrm{d}t.
+$$
+
+Na versão estocástica, $\{X_t\}_{t \geq 0}$ é solução de
+$$
+\mathrm{d}X_t = \lambda X_t \;\mathrm{d}W_t.
+$$
+
 ## Movimento Browniano geométrico e a preço de ações (stock prices)
 
 Um modelo clássico para o preço $P_t$ de uma ação é que a mudança relativa (ou específica) de preço $\mathrm{d}P_t / P_t$ satisfaça
@@ -226,26 +246,6 @@ $$
 \mathrm{d}Y_t & = -\nu e^{-\nu t}Y_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\;\mathrm{d}t \int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
 & = -\nu Y_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
 \end{align*}
-$$
-
-## Exponencial estocástica
-
-Em particular, o processo
-$$
-X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t}
-$$
-faz um papel semelhante ao da função $x(t) = x_0e^{\lambda t}$, que é solução de
-$$
-\frac{\mathrm{d}x}{\mathrm{d}t} = \lambda x,
-$$
-que pode ser escrita em forma diferencial como
-$$
-\mathrm{d}x = \lambda x \;\mathrm{d}t.
-$$
-
-Na versão estocástica, $\{X_t\}_{t \geq 0}$ é solução de
-$$
-\mathrm{d}X_t = \lambda X_t \;\mathrm{d}W_t.
 $$
 
 ## Ponte Browniana (Brownian bridge)
