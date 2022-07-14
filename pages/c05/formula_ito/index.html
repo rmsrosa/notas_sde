@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -231,7 +243,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde"><kbd>→</kbd> 6.1. Existência de soluções</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde"><kbd>→</kbd> 6.1. Existência e unicidade de soluções</a>
 </span>
     </p>
 </div>
@@ -248,28 +260,40 @@
 \[
 Y_t = u(X_t).
 \]
-<p>A questão é sobre a relação entre \(\mathrm{d}Y_t\) e \(\mathrm{d}X_t\).</p>
-<p>Caso \(u\) e \(\{X_t\}_{t \geq 0}\) fossem diferenciáveis, então \(\mathrm{d}Y_t/\mathrm{d}t = u'(X_t)\mathrm{d}X_t/\mathrm{d}t\). Poderíamos, nesse caso, escrever \(\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t\), no sentido da integral de Riemann-Stieltjes \(\int H_t \mathrm{d}Y_t = \int H_t u'(X_t)\mathrm{d}X_t\), para um processo arbitrário \(\{H_t\}_{t \geq 0}\).</p>
-<p>No caso em que \(u\) ainda é diferenciável mas \(\{X_t\}_{t \geq 0}\) é apenas de variação limitada, então \(\{Y_t\}_{t \geq 0}\) também é de variação limitada e ainda podemos dizer que \(\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t\).</p>
-<p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Nesse caso, podemos considerar a integral de Itô em relação a \(\{X_t\}_{t \geq 0}\). &#40;Assumindo que esse processo seja uma Martingale, então \(\{Y_t\}_{t \geq 0}\) também é uma Martingale e a integral de Itô a seu respeito está bem definida&#41;. Porém, isso nos trará uma correção na fórmula acima.</p>
-<p>Mais precisamente, isso nos dará uma fórmula útil, contendo um termo extra, no caso em que \(\{X_t\}_{t\geq 0}\) tem uma forma especial, que o torna um tipo de processo conhecido como processo de Itô, que introduzimos a seguir.</p>
+<p>A questão é sobre a relação entre \(\mathrm{d}Y_t\) e \(\mathrm{d}X_t\). Se \(u\) e \(\{X_t\}_{t \geq 0}\) fossem diferenciáveis, então teríamos</p>
+\[
+\frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
+\]
+<p>Mesmo que \(\{X_t\}_{t \geq 0}\) fosse apenas de variação limitada, então \(\{Y_t\}_{t \geq 0}\) também seria de variação limitada e ainda poderíamos dizer que \(\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t\), no sentido de integral de Riemann-Stieltjes.</p>
+<p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Se supusermos que ele seja um <em>processo de Itô</em>, ou seja, que satisfaça uma equação da forma</p>
+\[
+\mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
+\]
+<p>então teremos uma correção na fórmula de mudança de variáveis, nos levando à <em>fórmula de Itô</em>, que, nesse caso autônomo, tem a forma:</p>
+\[
+\mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
+\]
 <p>Essa mesma análise pode ser feita no caso em que \(u\) depende também da variável temporal, i.e. \(u:[0, \infty) \times \mathbb{R} \rightarrow \mathbb{R}\). Nesse caso, temos</p>
 \[
 Y_t = u(t, X_t).
 \]
-<p>Denotamos o primeiro caso por <em>autônomo</em> e este, por <em>não-autônomo.</em></p>
+<p>Denotamos o primeiro caso por <em>autônomo</em> e este, por <em>não autônomo.</em>  No caso não autônomo, a <em>fórmula de Itô</em> se torna</p>
+\[
+\mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
+\]
+<p>Observe que, em ambos os casos, se \(B_t = 0\), para todo \(t\), então \(\{X_t\}_{t \geq 0}\) se reduz a um processo com caminhos diferenciáveis e recuperamos a fórmula clássica.</p>
 <h2 id="processo_de_itô"><a href="#processo_de_itô" class="header-anchor">Processo de Itô</a></h2>
-<p>Um <strong>processo de Itô</strong> é um processo \(\{X_t\}_{t \geq 0}\) satisfazendo uma equação estocástica da forma</p>
+<p>Como dito acima, um <strong>processo de Itô</strong> é um processo \(\{X_t\}_{t \geq 0}\) satisfazendo uma equação estocástica da forma</p>
 \[
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 \]
-<p>onde \(\{W_t\}_{t \geq 0}\) é um processo de Wiener e \(\{A_t\}_{t \geq 0}\) e \(\{B_t\}_{t \geq 0}\) são não-antecipativos em relação ao processo de Wiener.</p>
+<p>onde \(\{W_t\}_{t \geq 0}\) é um processo de Wiener e \(\{A_t\}_{t \geq 0}\) e \(\{B_t\}_{t \geq 0}\) são não antecipativos em relação ao processo de Wiener.</p>
 <h2 id="fórmula_de_itô_no_caso_autônomo"><a href="#fórmula_de_itô_no_caso_autônomo" class="header-anchor">Fórmula de Itô no caso autônomo</a></h2>
-<p>Considere, então, um processo \(\{H_t\}_{t \geq 0}\) com caminhos amostrais quase certamente contínuos. Aproximemos a sua integral de Itô em relação a \(\{Y_t\}_{t \geq 0}\) por somas parciais, em relação a malhas temporais \(0 = t_0 < t_1 < \cdots < t_n = T\) com \(\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0\):</p>
+<p>Considere, então, uma malha temporal \(0 = t_0 < t_1 < \cdots < t_n = T\) com \(\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0\). Escrevemos</p>
 \[
-\int_0^t H_t \;\mathrm{d}Y_t = \lim \sum_{j=1}^n H_{t_{j-1}} (Y_{t_j} - Y_{t_{j-1}}).
+Y_t = Y_0 + \sum_{j = 1}^n (Y_{t_j} - Y_{t_{j-1}}).
 \]
-<p>Assumindo, agora, que \(u\) é duas vezes continuamente diferenciável, podemos escrever</p>
+<p>Assumindo, agora, que \(u\) seja duas vezes continuamente diferenciável, podemos escrever</p>
 \[
 \begin{align*}
 Y_{t_j} - Y_{t_{j-1}} = u(X_{t_j}) - u(X_{t_{j-1}}) & = u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) + \int_{X_{t_{j-1}}}^{X_{t_j}} u''(x)(X_{t_j} - x) \;\mathrm{d}x \\
@@ -278,69 +302,113 @@ Y_{t_j} - Y_{t_{j-1}} = u(X_{t_j}) - u(X_{t_{j-1}}) & = u'(X_{t_{j-1}})(X_{t_j} 
 &  \qquad + \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
 \end{align*}
 \]
-<p>Assim, as somas parcias são dadas por</p>
+<p>Assim,</p>
 \[
 \begin{align*}
-\sum_{j=1}^n H_{t_{j-1}} (Y_{t_j} - Y_{t_{j-1}}) & = \sum_{j=1}^n H_{t_{j-1}} u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) \\
-& \qquad + \frac{1}{2} \sum_{j=1}^n H_{t_{j-1}} u''(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}})^2 \\
-& \qquad + \sum_{j=1}^n H_{t_{j-1}} \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
+Y_T - Y_0 & = \sum_{j=1}^n u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) \\
+& \qquad + \frac{1}{2} \sum_{j=1}^n u''(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}})^2 \\
+& \qquad + \sum_{j=1}^n \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
 \end{align*}
 \]
-<p>No limite, o primeiro termo converge para uma integral de Itô; o último termo converge para zero, graças à continuidade da segunda derivada de \(u = u(x)\); e o segundo podemos escrever informalmente como uma integral com \((\mathrm{d}X)^2\). Assim, obtemos</p>
+<p>No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de \(\{X_t\}_{t \geq 0}\), com respeito a si mesmo. O último termo converge para zero, graças à continuidade da segunda derivada de \(u = u(x)\). Em relação ao segundo termo, temos</p>
 \[
-\int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T H_t u''(X_t)\;(\mathrm{d}X_t)^2.
+\begin{align*}
+(X_{t_j} - X_{t_{j-1}})^2 & \approx \left(A_{t_{j-1}}(t_j - t_{j-1}) + B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}) \right)^2 \\
+& \approx A_{t_{j-1}}^2(t_j - t_{j-1})^2 + 2A_{t_{j-1}}B_{t_{j-1}}(t_j - t_{j-1})(W_{t_j} - W_{t_{j-1}}) + B_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2
+\end{align*}
 \]
-<p>No caso em que \(\{X_t\}_{t \geq 0}\) é o processo de Wiener \(\{W_t\}_{t \geq 0}\), então &quot;\((\mathrm{d}W_t) = dt\)&quot;, de modo que \(Y_t = u(W_t)\) é tal que</p>
+<p>Ao somarmos e tomarmos o limite, os dois primeiros termos se anulam, pois contém um \(\Delta t\) extra que converge para zero. Mais precisamente, no primeiro termo, vale, quase certamente,</p>
 \[
-\int_0^T H_t \;\mathrm{d}Y_t = \int_0^T H_t u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
+\left|\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) A_{t_{j-1}}^2(t_j - t_{j-1})^2\right| \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \sum_{j=1}^n A_{t_{j-1}}^2(t_j - t_{j-1}) \rightarrow 0 \times \int_0^T A_t^2 \;\mathrm{d}t = 0.
 \]
-<p>Mais precisamente, podemos obter isso, rigorosamente, das somas parciais, mostrando que</p>
+<p>No segundo termo, em média quadrática, temos, como na isometria de Itô,</p>
 \[
-\frac{1}{2} \sum_{j=1}^n H_{t_{j-1}} u''(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T H_t u''(W_t)\;\mathrm{d}t.
+\begin{align*}
+\mathbb{E}\left[\left|\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) 2A_{t_{j-1}}B_{t_{j-1}}(t_j - t_{j-1})(W_{t_j} - W_{t_{j-1}})\right|^2 \right] & \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 2A_{t_{j-1}}B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right|^2 \right] \\
+& \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 4A_{t_{j-1}}^2B_{t_{j-1}}^2(t_j - t_{j-1})\right|^2 \right] \\
+& \rightarrow 0 \times \int_0^T 4A_t^2 B_t^2 \;\mathrm{d}t = 0.
+\end{align*}
 \]
-<p>Isso segue do fato de que \(\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = t_j - t_{j-1}\) e de que momentos de ordem mais alta dependem de potências também maiores de \(t_j - t_{j-1}\). Mostra-se, então, que o valor esperado desse termo converge para a integral em \(\mathrm{d}t\) e a variância converge para zero, nos dando a convergência em probabilidade.</p>
-<p>Mais geralmente, se \(\{X_t\}_{t \geq 0}\) é um processo de Itô satisfazendo</p>
+<p>No último termo, usando que \(\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})\), obtemos</p>
 \[
-\mathrm{d}X_t = A_t\;\mathrm{d}t + B_t\;\mathrm{d}W_t,
+\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) B_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(X_t) B_t^2 \;\mathrm{d}t.
 \]
-<p>então</p>
+<p>Informalmente, podemos escrever</p>
 \[
-(\mathrm{d}X_t)^2 \sim A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t\;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2.
+(\mathrm{d}X)^2 = A_t^2 \;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2(\mathrm{d}W_t)^2 = B_t^2\;\mathrm{d}t,
 \]
-<p>como, no limite, no sentido integral, \((\mathrm{d}t)^2 = 0\), \(\mathrm{d}t\;\mathrm{d}W_t = 0\) e \((\mathrm{d}W_t)^2 = \mathrm{d}t\), então</p>
+<p>com</p>
 \[
-\int_0^T H_t \;\mathrm{d}Y_t = \int_0^T A_t H_t u'(X_t) \;\mathrm{d}t + \int_0^T B_t H_t u'(X_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T B_t^2 H_t u''(X_t)\;\mathrm{d}t.
+(\mathrm{d}t)^2 = 0, \quad \mathrm{d}t\;\mathrm{d}W_t = 0, \quad (\mathrm{d}W_t)^2 = \mathrm{d}t.
+\]
+<p>De qualquer forma, obtemos, no limite,</p>
+\[
+Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \;\mathrm{d}t.
 \]
 <p>Ou seja, obtemos a <strong>fórmula de Itô</strong> no caso autônomo:</p>
 \[
-\mathrm{d}Y_t = A_t u'(X_t) \;\mathrm{d}t + B_t u'(X_t)\;\mathrm{d}W_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
+\mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 \]
-<p>Da mesma forma, uma demonstração rigorosa pode ser feita trabalhando-se diretamente com as somas parciais.</p>
-<h2 id="fórmula_de_itô_no_caso_não-autônomo"><a href="#fórmula_de_itô_no_caso_não-autônomo" class="header-anchor">Fórmula de Itô no caso não-autônomo</a></h2>
+<h2 id="fórmula_de_itô_no_caso_não_autônomo"><a href="#fórmula_de_itô_no_caso_não_autônomo" class="header-anchor">Fórmula de Itô no caso não autônomo</a></h2>
 <p>Quando \(u = u(t, x)\) é duas vezes continuamente diferenciável e \(\{X_t\}_{t\geq 0}\) é um processo de Itô satisfazendo</p>
 \[
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 \]
-<p>então o processo \(\{Y_t\}_{t\geq 0}\) definido por \(Y_t = u(t, X_t)\) satisfaz a <strong>fórmula de Itô</strong> no caso não-autônomo, a saber</p>
+<p>então o processo \(\{Y_t\}_{t\geq 0}\) definido por \(Y_t = u(t, X_t)\) satisfaz a <strong>fórmula de Itô</strong> no caso não autônomo, a saber</p>
 \[
-\mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx}\;\mathrm{d}t.
+\mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx}B_t^2\;\mathrm{d}t.
 \]
-<p>Para lembrar dessa fórmula, pense nas seguintes identidades &quot;informais&quot; &#40;ou seja, sem significado rigoroso&#41;</p>
+<p>Para lembrar dessa fórmula, pense primeiramente em uma expansão de segunda ordem</p>
+\[
+\mathrm{d}Y_t = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{tt}\;(\mathrm{d}t)^2 + u_{tx} \;\mathrm{d}t \;\mathrm{d}X_t + \frac{1}{2} u_{xx}\;(\mathrm{d}X_t)^2.
+\]
+<p>Em seguida, eleva-se ao quadrado a equação para \(\{X_t\}_{t \geq 0}\):</p>
+\[
+(\mathrm{d}X_t)^2 = \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right)^2 = A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2.
+\]
+<p>Substituindo \((\mathrm{d}X_t)^2\) na expansão de segunda ordem de \(\mathrm{d}Y_t\), obtemos</p>
 \[
 \begin{align*}
-\mathrm{d}Y_t & = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{tt}\;(\mathrm{d}t)^2 + u_{tx} \;\mathrm{d}t \;\mathrm{d}X_t + \frac{1}{2} u_{xx}\;(\mathrm{d}X_t)^2, \\
-(\mathrm{d}X_t)^2 & = \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right)^2 = A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2,
+\mathrm{d}Y_t & = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t \\
+& \qquad + \frac{1}{2} u_{tt}\;(\mathrm{d}t)^2 \\
+& \qquad + u_{tx} \;\mathrm{d}t \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right) \\
+& \qquad + \frac{1}{2} u_{xx}\left(A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2\right).
 \end{align*}
 \]
-<p>junto com</p>
+<p>Usando que, sob uma integração simples,</p>
 \[
 \begin{align*}
 (\mathrm{d}t)^2 & = 0, \\
 \mathrm{d}t\;\mathrm{d}W_t & = 0, \\
-(\mathrm{d}W_t)^2 & = \mathrm{d}t.
+(\mathrm{d}W_t)^2 & = \mathrm{d}t,
 \end{align*}
 \]
-<p>Combinadas, chegamos na fórmula de Itô.</p>
+<p>chega-se à fórmula de Itô</p>
+\[
+\mathrm{d}Y_t = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2 \;\mathrm{d}t.
+\]
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Mostre que</p>
+</li>
+</ol>
+\[
+\mathrm{d}(W_t^2) = 2W_t\;\mathrm{d}W_t + \;\mathrm{d}t.
+\]
+<ol start="2">
+<li><p>Mostre que</p>
+</li>
+</ol>
+\[
+\mathrm{d}(tW_t) = W_t\;\mathrm{d}t + t\;\mathrm{d}W_t.
+\]
+<ol start="3">
+<li><p>Mostre a &quot;regra do produto&quot; para o produto entre uma função determinística \(f=f(t)\) e um processo de Itô \(\{X_t\}_t\):</p>
+</li>
+</ol>
+\[
+\mathrm{d}(f(t)X_t) = f'(t)X_t\;\mathrm{d}t + f(t)\;\mathrm{d}X_t.
+\]
 
     <div class="navbar">
     <p id="nav">
@@ -348,7 +416,7 @@ Y_{t_j} - Y_{t_{j-1}} = u(X_{t_j}) - u(X_{t_{j-1}}) & = u'(X_{t_{j-1}})(X_{t_j} 
 <a class="menu-level-1" href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde"><kbd>→</kbd> 6.1. Existência de soluções</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde"><kbd>→</kbd> 6.1. Existência e unicidade de soluções</a>
 </span>
     </p>
 </div>
@@ -364,7 +432,7 @@ Y_{t_j} - Y_{t_{j-1}} = u(X_{t_j}) - u(X_{t_{j-1}}) & = u'(X_{t_{j-1}})(X_{t_j} 
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

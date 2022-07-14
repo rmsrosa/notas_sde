@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Não-diferenciabilidade quase sempre dos caminhos amostrais</title>  
+   <title>Não diferenciabilidade quase sempre dos caminhos amostrais</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -148,10 +148,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -187,10 +187,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -202,13 +202,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -239,7 +251,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c04/variacao_ilimitada_wiener"><kbd>→</kbd> 4.5. Variação ilimitada quase sempre dos caminhos amostrais</a>
@@ -253,7 +265,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></h1>
 <p>Caso os caminhos amostrais de um processo de Wiener \(\{W_t\}_{t\geq 0}\) fossem diferenciáveis em um instante \(t\), teríamos a existência, quase sempre, do limite</p>
 \[
 \lim_{\tau \rightarrow 0} \frac{W_{t+\tau} - W_t}{\tau}.
@@ -339,7 +351,7 @@ E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
 \]
 <p>Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
 <h2 id="não_diferenciabilidade_em_nenhum_ponto"><a href="#não_diferenciabilidade_em_nenhum_ponto" class="header-anchor">Não diferenciabilidade em nenhum ponto</a></h2>
-<p>Como o processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.</p>
+<p>Como um processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.</p>
 <h2 id="quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto"><a href="#quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto" class="header-anchor">Quase todo caminho amostral é não diferenciável em nenhum ponto</a></h2>
 <p>O resultado anterior diz que, para todo \(t \geq 0\) dado, os caminhos amostrais são quase todos não diferenciáveis em \(t\). Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em nenhum ponto. Isso também é verdade, mas a demonstração é mais delicada, como veremos agora. Vamos seguir essencialmente a demonstração em Mörters &amp; Peres &#40;2010&#41;, com pequenas modificações.</p>
 <p>Começamos mostrando a não diferenciabilidade no intervalo \([0, 1)\). Seja \(t \mapsto W_t(\omega)\) um caminho amostral tal que, para algum \(0\leq t_0 < 1\),</p>
@@ -403,7 +415,7 @@ E_n = \bigcup_{k = 1, \ldots, 2^n} \Omega_{n, M, k}, \qquad \Omega_{n, M, k} = \
 \[
 \mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^n}\right).
 \]
-<p>Pela invariância do processo de Wiener padrão por translações e por rescalonamento &#40;com \(a= 2^{n/2}\)&#41;,</p>
+<p>Pela invariância dos processos de Wiener padrão por translações e por rescalonamento &#40;com \(a= 2^{n/2}\)&#41;,</p>
 \[
 W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
 \]
@@ -445,7 +457,7 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c04/variacao_ilimitada_wiener"><kbd>→</kbd> 4.5. Variação ilimitada quase sempre dos caminhos amostrais</a>
@@ -464,7 +476,7 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

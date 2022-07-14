@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -228,7 +240,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c04/simulacoes_wiener"><kbd>→</kbd> 4.6. Simulações de processos de Wiener</a>
@@ -243,8 +255,8 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
-<p>Uma propriedade fundamental do processo de Wiener é que os seus caminhos são, quase sempre, de <em>variação ilimitada</em>. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes</em>.</p>
-<p>Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais do processo de Wiener serem, quase sempre, de variação ilimitada.</p>
+<p>Uma propriedade fundamental dos processos de Wiener é que os seus caminhos são, quase sempre, de <em>variação ilimitada</em>. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes</em>.</p>
+<p>Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais de um processo de Wiener serem, quase certamente, de variação ilimitada.</p>
 <h2 id="funções_de_variação_limitada_ou_ilimitada"><a href="#funções_de_variação_limitada_ou_ilimitada" class="header-anchor">Funções de variação limitada ou ilimitada</a></h2>
 <p>Se \(g = g(t)\) representa a posição de um objeto ao longo do tempo, definida em um intervalo \([a, b]\), \(a < b\), podemos estimar a distância percorrida calculando-se</p>
 \[
@@ -271,7 +283,7 @@
 \[
 \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 \]
-<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não-decrescentes e de variação limitada.</p>
+<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não decrescentes e de variação limitada.</p>
 <p>Essa quantidade é chamada de <strong>variação</strong> da função no intervalo \([a, b]\) e é denotada por \(V(g; a, b)\):</p>
 \[
 \mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
@@ -288,8 +300,8 @@
 \mathbb{E}(h(X)) = \int_\mathbb{R} h(x) \;\mathrm{d}g(x).
 \]
 <p>Caso \(g\) seja diferenciável, então \(\mathrm{d}g = f\mathrm{d}x\), onde \(f\) é a função de densidade de probabilidade. Mas a integral acima independe de \(g\) ser diferenciável ou não.</p>
-<h2 id="caminhos_amostrais_do_processo_de_wiener"><a href="#caminhos_amostrais_do_processo_de_wiener" class="header-anchor">Caminhos amostrais do processo de Wiener</a></h2>
-<p>Vamos, agora, mostrar essa propriedade fundamental do processo de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase sempre, de variação ilimitada.</p>
+<h2 id="caminhos_amostrais_de_processos_de_wiener"><a href="#caminhos_amostrais_de_processos_de_wiener" class="header-anchor">Caminhos amostrais de processos de Wiener</a></h2>
+<p>Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase sempre, de variação ilimitada.</p>
 <p>Queremos, para isso, estimar a variação</p>
 \[
 \mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
@@ -403,7 +415,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c04/simulacoes_wiener"><kbd>→</kbd> 4.6. Simulações de processos de Wiener</a>
@@ -422,7 +434,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

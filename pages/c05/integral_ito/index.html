@@ -148,10 +148,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -187,10 +187,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -202,13 +202,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -254,7 +266,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">5.5. Integral de Itô</a></h1>
-<p>Bom, já vimos como integrar processos em relação ao tempo &#40;Seção <a href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann</a>&#41;, em relação a processos de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes</a>&#41; e como integrar certas classes de funções em relação a processos que não são de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a>&#41;. Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar o processo de Wiener em relação a si mesmo &#40;Seção <a href="/notas_sde/pages/c05/riemann_wiener">5.4. Limites de somatórios à la Riemann-Stieltjes</a>&#41;. Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.</p>
+<p>Bom, já vimos como integrar processos em relação ao tempo &#40;Seção <a href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann</a>&#41;, em relação a processos de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes</a>&#41; e como integrar certas classes de funções em relação a processos que não são de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a>&#41;. Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo &#40;Seção <a href="/notas_sde/pages/c05/riemann_wiener">5.4. Limites de somatórios à la Riemann-Stieltjes</a>&#41;. Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.</p>
 <p>No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico \(\{H_t\}_{t\geq 0}\) e a integral é em relação a um processo de Wiener \(\{W_t\}_{t\geq 0}\):</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t.
@@ -269,8 +281,8 @@
 <blockquote>
 <p>A cada instante \(t \geq 0\), o integrando \(H_t\) deve ser independente dos valores futuros \(s \geq t\) do processo de Wiener.</p>
 </blockquote>
-<p>Vamos chamar essa condição de <em>não-antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t\). Uma definição mais formal envolve o conceito de <em>filtração</em>.</p>
-<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). Uma filtração é dita <strong>não-antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\), e \(W_t\) é independente das \(\sigma\)-álgebras geradas por \(\Delta W_{t, s} = W_s - W_t\), para \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não-antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação a \(\mathcal{F}_t\), onde \(\{\mathcal{F}_t\}_{t\geq 0}\) é uma filtração adaptada a \(\{W_t\}_{t\geq 0}\).</p>
+<p>Vamos chamar essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t\). Uma definição mais formal envolve o conceito de <em>filtração</em>.</p>
+<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\), e \(W_t\) é independente das \(\sigma\)-álgebras geradas por \(\Delta W_{t, s} = W_s - W_t\), para \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação a \(\mathcal{F}_t\), onde \(\{\mathcal{F}_t\}_{t\geq 0}\) é uma filtração adaptada a \(\{W_t\}_{t\geq 0}\).</p>
 <p>Sob a condição de \(\{H_t\}_{t\geq 0}\) estar adaptada a \(\{W_t\}_{t\geq 0}\) e dos caminhos amostrais de \(\{H_t\}_{t\geq 0}\) serem quase certamente contínuos, a <em>integral de Itô</em> está bem definida e possui boas propriedades, como veremos posteriormente.</p>
 <p>Essa construção pode ser estendida a processos \(\{H_t\}_{t\geq 0}\) adaptados a \(\{W_t\}_{t\geq 0}\) que sejam de quadrado integrável, i.e.</p>
 \[
@@ -335,7 +347,7 @@
 \[
 \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
 \]
-<p>Como o processo de Wiener tem valor esperado nulo, segue que \(\mathbb{E}\left[\Delta W_j\right] = 0\), de maneira que</p>
+<p>Como um processo de Wiener tem valor esperado nulo, segue que \(\mathbb{E}\left[\Delta W_j\right] = 0\), de maneira que</p>
 \[
 \mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
 \]
@@ -367,7 +379,7 @@
 \mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
 \]
 <h2 id="aproximação_por_processos_contínuos"><a href="#aproximação_por_processos_contínuos" class="header-anchor">Aproximação por processos contínuos</a></h2>
-<p>Dada uma função de quadrado integrável \(f:\mathbb{R} \rightarrow \mathbb{R}\), uma maneira clássica de aproximá-la por funções contínuas é através da convolução \(t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t\) com aproximações da identidade \(\varphi_\varepsilon\). Essa convolução, no entanto, envolve, tipicamente, olhar para o &quot;passado&quot; e para o &quot;futuro&quot; da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não-antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,</p>
+<p>Dada uma função de quadrado integrável \(f:\mathbb{R} \rightarrow \mathbb{R}\), uma maneira clássica de aproximá-la por funções contínuas é através da convolução \(t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t\) com aproximações da identidade \(\varphi_\varepsilon\). Essa convolução, no entanto, envolve, tipicamente, olhar para o &quot;passado&quot; e para o &quot;futuro&quot; da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,</p>
 \[
 \varphi_\varepsilon(t) = \begin{cases}
 \displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \leq 0, \\
@@ -380,7 +392,7 @@
 \[
 H_t^m = \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s.
 \]
-<p>Como \(H_t^m\) só envolve \(H_s\), para \(0\leq s \leq t\), então \(H_t^m\) continua sendo não-antecipativo. Além disso, para \(t \geq 0\) e \(\tau > 0\),</p>
+<p>Como \(H_t^m\) só envolve \(H_s\), para \(0\leq s \leq t\), então \(H_t^m\) continua sendo não antecipativo. Além disso, para \(t \geq 0\) e \(\tau > 0\),</p>
 \[
 \begin{align*}
 H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s \\
@@ -410,7 +422,7 @@ H_{t + \tau}(\omega) \rightarrow H_t(\omega), \quad \tau \rightarrow 0,
 \]
 <p>mostrando a continuidade quase certamente das aproximações \(\{H_t^m\}_{t \geq 0}\).</p>
 <h2 id="relação_com_a_definição_via_dualidade"><a href="#relação_com_a_definição_via_dualidade" class="header-anchor">Relação com a definição via dualidade</a></h2>
-<p>Na Seção <a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a>, definimos a integral de uma função determinística \(g=g(t)\) continuamente diferenciável em relação a um processo estocástico como o processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade</p>
+<p>Na Seção <a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a>, definimos a integral de uma função determinística \(g=g(t)\) continuamente diferenciável em relação a um processo estocástico como um processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade</p>
 \[
 \int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
 \]
@@ -462,7 +474,7 @@ H_{t + \tau}(\omega) \rightarrow H_t(\omega), \quad \tau \rightarrow 0,
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -148,10 +148,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -187,10 +187,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -202,13 +202,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -242,7 +254,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener"><kbd>→</kbd> 4.3. Simetrias do processo de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener"><kbd>→</kbd> 4.3. Simetrias de processos de Wiener</a>
 </span>
     </p>
 </div>
@@ -254,9 +266,10 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">4.2. Existência de processos de Wiener</a></h1>
-<p>O processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por N. Wiener, em 1923, junto com a demonstração de existência de tal processo. Vamos, a seguir, discutir uma demonstração dada por Paul Lévy, conforme apresentada em Morters &amp; Peres &#40;2010&#41; e Evans &#40;2013&#41;.</p>
+<p>O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. Vamos, a seguir, discutir uma demonstração dada por Paul Lévy, conforme apresentada em Morters &amp; Peres &#40;2010&#41; e Evans &#40;2013&#41;.</p>
 <p>A demonstração é obtida por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo \(I = [0, 1]\). A partir daí, podemos transladar e concatenar processos independentes em \([0, 1]\) para obter um processo de Wiener em \([0, \infty)\).</p>
 <p>Veremos duas formas de definir essa sequência aproximante de processos no intervalo \([0, 1]\). Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.</p>
+<p>Vale ressaltar que um processo de Wiener não é único, assim como não há uma única variável aleatória normal. Podemos, naturalmente, ter várias normais, independentes umas das outras. No caso do processo de Wiener, podemos, por exemplo, contruir um processo através do limite de interpolações de diferentes sequências de variáveis normais, obtendo diferentes processos de Wiener.</p>
 <h2 id="partição_diádica_do_intervalo_unitário"><a href="#partição_diádica_do_intervalo_unitário" class="header-anchor">Partição diádica do intervalo unitário</a></h2>
 <p>A interpolação é feita a partir de malhas formadas por números <em>diádicos</em> &#40;números racionais cujo denominador é uma potência de 2&#41; entre zero e um. Mais precisamente, considere os conjuntos</p>
 \[
@@ -269,8 +282,8 @@ D = \cup_{n\in \mathbb{N}} D_n.
 
 <img src="/notas_sde/assets/pages/c04/existencia_processo_wiener/code/output/dyadic_points.svg" alt="">
 <h2 id="processo_discreto_iid"><a href="#processo_discreto_iid" class="header-anchor">Processo discreto i.i.d.</a></h2>
-<p>Como dito, o processo de Wiener será obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em \(D\).</p>
-<p>Com esse fim, considere um processo discreto <em>i.i.d.</em> \(\{Z_d\}_{d\in D\setminus \{0\}}\), onde as variáveis \(Z_d\) são mutuamente independentes e dadas por \(Z_d \sim \mathcal{N}(0, 1)\). Como \(D\) é enumerável, podemos considerar o conjunto \(\Omega = \mathbb{R}^D\) como espaço amostral, e por \(\mathcal{A}\) a \(\sigma\)-álgebra gerada por \(\pi_d^{-1}(\mathcal{E})\), onde \(E\) é mensurável e \(\pi_d : \Omega \rightarrow \mathbb{R}\) leva um caminho \(x\in \Omega\) no elemento \(\pi_d x = x(d)\), em \(d\in D\). Denotamos a medida de probabilidade por \(\mathbb{P}\). Para simplificar, escrevemos \(Z_0 = 0\), já que queremos o processo de Wiener limite satisfaça \(W_0 = Z_0 = 0\).</p>
+<p>Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em \(D\).</p>
+<p>Com esse fim, considere um processo discreto <em>i.i.d.</em> \(\{Z_d\}_{d\in D\setminus \{0\}}\), onde as variáveis \(Z_d\) são mutuamente independentes e dadas por \(Z_d \sim \mathcal{N}(0, 1)\). Como \(D\) é enumerável, podemos considerar o conjunto \(\Omega = \mathbb{R}^D\) como espaço amostral, e por \(\mathcal{A}\) a \(\sigma\)-álgebra gerada por \(\pi_d^{-1}(\mathcal{E})\), onde \(E\) é mensurável e \(\pi_d : \Omega \rightarrow \mathbb{R}\) leva um caminho \(x\in \Omega\) no elemento \(\pi_d x = x(d)\), em \(d\in D\). Denotamos a medida de probabilidade por \(\mathbb{P}\). Para simplificar, escrevemos \(Z_0 = 0\), já que queremos que o processo de Wiener limite satisfaça \(W_0 = Z_0 = 0\).</p>
 <h2 id="sequência_de_processos_discretos"><a href="#sequência_de_processos_discretos" class="header-anchor">Sequência de processos discretos</a></h2>
 <p>Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em \(D_n\), \(n\in\mathbb{N}\). Estes processos serão interpolados para processos em \([0, 1]\). Por motivo de clareza, vamos denotar os processos discretos por \(\{X_d^n\}_{d\in D_n}\). As interpolações contínuas serão denotadas por \(\{W_t^n\}_{t\in [0, 1]}\). E, no limite, teremos o processo contínuo \(\{W_t\}_{t\in [0, 1]}\). Por serem extensões, teremos \(W_d = X_d^n = X_d^n\), nos pontos diádicos \(d\in D_n\).</p>
 <p>Para cada \(d\in D_n\), esperamos ter \(X_d^n = W_d = W_d - W_0 \sim \mathcal{N}(0, d)\). Então seria natural pensarmos em definir \(X_d^n\) como \(Z_d / \sqrt{d}\) &#40;já que \(Z_d \sim \mathcal{N}(0, 1)\), de modo que \(Z_d/\sqrt{d} \sim \mathcal{N}(0, d)\)&#41; e interpolar, de alguma forma, para \(t\in I \setminus D_n\). Apesar disso convergir para um processo, este não terá as propriedades desejadas. Mas uma variação disso funciona.</p>
@@ -467,7 +480,7 @@ W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_
 \sum_{d\in D} s_d(t)Z_d, \quad 0 \leq t \leq 1.
 \]
 <p>Vamos mostrar que essa série converge quase sempre.</p>
-<p>Começamos estimando cada termo do somatório. As funções \(s_d\), para \(d\in D_{n+1}\setminus D_n\), são não-negativas, têm suporte disjunto e alcançam um valor máximo \(s_d(d) = 1/2^{(n+1)/2}\). Assim,</p>
+<p>Começamos estimando cada termo do somatório. As funções \(s_d\), para \(d\in D_{n+1}\setminus D_n\), são não negativas, têm suporte disjunto e alcançam um valor máximo \(s_d(d) = 1/2^{(n+1)/2}\). Assim,</p>
 \[
 \left|\sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d\right| \leq \frac{1}{2^{(n+1)/2}}\max_{d\in D_{n+1}\setminus D_n} |Z_d|, \quad \forall 0\leq t \leq 1.
 \]
@@ -581,7 +594,7 @@ W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_
 <a class="menu-level-1" href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener"><kbd>→</kbd> 4.3. Simetrias do processo de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/simetrias_wiener"><kbd>→</kbd> 4.3. Simetrias de processos de Wiener</a>
 </span>
     </p>
 </div>
@@ -597,7 +610,7 @@ W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

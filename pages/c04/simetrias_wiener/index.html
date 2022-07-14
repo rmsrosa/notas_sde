@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Simetrias do processo de Wiener</title>  
+   <title>Simetrias de processos de Wiener</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -231,7 +243,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener"><kbd>→</kbd> 4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener"><kbd>→</kbd> 4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -242,7 +254,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Simetrias do processo de Wiener</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Simetrias de processos de Wiener</a></h1>
 <p>Processos de Wiener possuem algumas simetrias importantes.</p>
 <h2 id="invariância_por_rescalonamento"><a href="#invariância_por_rescalonamento" class="header-anchor">Invariância por rescalonamento</a></h2>
 <p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Dado \(a > 0\), defina o processo \(\{V_t^a\}_{t\geq 0}\) por</p>
@@ -273,7 +285,7 @@ V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \s
 \[
 \frac{W_t}{t} = \frac{V_1^{\sqrt{t}}}{\sqrt{t}},
 \]
-<p>onde \(V_t^a = W_{a^2 t}/a\) é um rescalonamento do processo de Wiener, com \(a > 0\), como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que</p>
+<p>onde \(V_t^a = W_{a^2 t}/a\) é um rescalonamento de um processo de Wiener, com \(a > 0\), como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que</p>
 \[
 \mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right),
 \]
@@ -329,7 +341,7 @@ V_t = \begin{cases}
 \[
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 \]
-<p>Distribuindo os termos e usando a propriedade \(\mathrm{Cov}(W_t, W_s) = \min\{t, s\}\) do processo de Wiener, obtemos</p>
+<p>Distribuindo os termos e usando a propriedade \(\mathrm{Cov}(W_t, W_s) = \min\{t, s\}\) de processos de Wiener, obtemos</p>
 \[
 \begin{align*}
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = t_2t_4\min\left\{\frac{1}{t_2}, \frac{1}{t_4}\right\} - t_2t_3\min\left\{\frac{1}{t_2}, \frac{1}{t_3}\right\} - t_1t_4\min\left\{\frac{1}{t_1}, \frac{1}{t_4}\right\} + t_1t_3\min\left\{\frac{1}{t_1}, \frac{1}{t_3}\right\} \\
@@ -412,7 +424,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
 <a class="menu-level-1" href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener"><kbd>→</kbd> 4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/naodiferenciabilidade_wiener"><kbd>→</kbd> 4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -428,7 +440,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

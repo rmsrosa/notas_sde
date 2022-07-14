@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -314,25 +326,25 @@ E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \tim
 \]
 <p>onde \(E_0, E_1, \ldots, E_n \subset \mathbb{Z}\). Dessa forma, não temos como observar eventos a partir de \(X_{n+1}\) olhando para a filtração até \(\mathcal{F}_n\).</p>
 <h2 id="filtração"><a href="#filtração" class="header-anchor">Filtração</a></h2>
-<p>Vamos, agora, à definição formal. Uma <strong>filtração</strong> em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\) é uma família não-decrescente \(\{\mathcal{F}_t\}_{t\in I}\), em algum espaço de índices \(I\) discreto ou contínuo, de \(\sigma\)-álgebras contidas em \(\mathcal{A}\), i.e.</p>
+<p>Vamos, agora, à definição formal. Uma <strong>filtração</strong> em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\) é uma família não decrescente \(\{\mathcal{F}_t\}_{t\in I}\), em algum espaço de índices \(I\) discreto ou contínuo, de \(\sigma\)-álgebras contidas em \(\mathcal{A}\), i.e.</p>
 <ol>
 <li><p>\(\mathcal{F}_t\) é uma \(\sigma\)-álgebra em \(\Omega\), para todo \(t\in I\);</p>
 </li>
 <li><p>\(\mathcal{F}_t\) é uma sub \(\sigma\)-álgebra de \(\mathcal{A}\), i.e. \(\mathcal{F}_t \subset \mathcal{A}\); e</p>
 </li>
-<li><p>É uma família não-decrescente, i.e. \(\mathcal{F}_s \subset \mathcal{F}_t\), para todo \(s, t\in I\) com \(s < t\).</p>
+<li><p>É uma família não decrescente, i.e. \(\mathcal{F}_s \subset \mathcal{F}_t\), para todo \(s, t\in I\) com \(s < t\).</p>
 </li>
 </ol>
 <p>Denominamos um tal \((\Omega, \mathcal{A}, \{\mathcal{F}_t\}_{t\in I}\) por <strong>espaço filtrado.</strong>.</p>
 <p>No caso discreto \(I = \mathbb{N}\), basta pedir que \(\mathcal{F}_1 \subset \mathcal{F}_2 \subset \ldots \subset \mathcal{F}_n \subset \mathcal{F}_{n+1} \subset \ldots \subset \mathcal{A}\), com cada \(\mathcal{F}_n\) sendo uma \(\sigma\)-álgebra.</p>
 <h2 id="processo_adaptado"><a href="#processo_adaptado" class="header-anchor">Processo adaptado</a></h2>
-<p>Um processo \(\{X_t\}_{t\in I}\) em \((\Omega, \mathcal{A}, \mathbb{P})\) é dito <strong>adaptado</strong> a uma filtração \(\{\mathcal{F}_t\}_{t\in I}\) nesse espaço de probabilidades quando \(X_t\) é \(\mathcal{F}_t\)-mensurável, para qualquer \(t \in I\). Um tal processo também é dito <strong>não-antecipativo,</strong> em relação a essa filtração. De fato, qualquer evento \(E\) observável por \(X_t\) deve estar associado a um conjunto amostral \(X_t^{-1}(E)\) em \(\mathcal{F}_t\), sem necessitar de conjuntos nas \(\sigma\)-álgebras posteriores.</p>
+<p>Um processo \(\{X_t\}_{t\in I}\) em \((\Omega, \mathcal{A}, \mathbb{P})\) é dito <strong>adaptado</strong> a uma filtração \(\{\mathcal{F}_t\}_{t\in I}\) nesse espaço de probabilidades quando \(X_t\) é \(\mathcal{F}_t\)-mensurável, para qualquer \(t \in I\). Um tal processo também é dito <strong>não antecipativo,</strong> em relação a essa filtração. De fato, qualquer evento \(E\) observável por \(X_t\) deve estar associado a um conjunto amostral \(X_t^{-1}(E)\) em \(\mathcal{F}_t\), sem necessitar de conjuntos nas \(\sigma\)-álgebras posteriores.</p>
 <p>Por exemplo, o passeio aleatório considerado acima está adaptado à filtração natural definida por ele. De fato, qualquer processo é adaptado à sua filtração natural, por construção.</p>
 <p>Esse conceito é útil na definição formal de Martingale, onde exigimos, para ser uma Martingale, um determinado processo \(\{X_t\}_t\) seja tal que </p>
 \[
 \mathbb{E}[|X_t|] < \infty \quad \textrm{e} \quad \mathbb{E}[X_{t + \tau} | A_t] = X_t, \; \forall A_t \in \mathcal{F}_t, \;\forall t < t + \tau \text{ em } I.
 \]
-<p>No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo \(\{H_t\}_t\) seja adaptado à filtração natural de outro processo, como o processo de Wiener \(\{W_t\}_t\). Dessa forma, teremos boas propriedades da integral de Itô \(\int_a^b H_t \;\mathrm{d}W_t\) de \(\{H_t\}_t\) em relação a \(\{W_t\}_t\).</p>
+<p>No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo \(\{H_t\}_t\) seja adaptado à filtração natural de outro processo, como um processo de Wiener \(\{W_t\}_t\). Dessa forma, teremos boas propriedades da integral de Itô \(\int_a^b H_t \;\mathrm{d}W_t\) de \(\{H_t\}_t\) em relação a \(\{W_t\}_t\).</p>
 <h2 id="filtração_natural"><a href="#filtração_natural" class="header-anchor">Filtração natural</a></h2>
 <p>Conforme feito no exemplo inicial, dado um processo discreto \(\{X_n\}_{n\in \mathbb{N}}\) em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\), com valores em um espaço mensurável \((\Sigma, \mathcal{E})\), definimos a <strong>filtração natural</strong> desse processo como sendo a filtração em que cada \(\mathcal{F}_n\) é dado pela \(\sigma\)-álgebra gerada pelas variáveis aleatórias \(X_1, \ldots, X_n\), ou seja, a menor \(\sigma\)-álgebra em que \(X_1, \ldots, X_n\) são mensuráveis &#40;mas que \(X_{n+1}, \ldots\) não precisam ser&#41;.</p>
 <p>Uma tal \(\sigma\) álgebra precisa conter todos os conjuntos da forma \(X_j^{-1}(E_j)\), onde \(j = 1, \ldots, n\) e \(E_j\in \mathcal{E}\).</p>
@@ -368,7 +380,7 @@ E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \tim
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

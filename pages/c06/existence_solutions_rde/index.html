@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Existência de soluções</title>  
+   <title>Existência e unicidade de soluções</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -231,7 +243,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/simple_examples_rde"><kbd>→</kbd> 6.2. Exemplos simples</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/basic_examples_rde"><kbd>→</kbd> 6.2. Exemplos básicos</a>
 </span>
     </p>
 </div>
@@ -242,7 +254,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Existência de soluções</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.1. Existência e unicidade de soluções</a></h1>
 <p>Vamos considerar, nesse capítulo, equações diferenciais aleatórias da forma</p>
 \[
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, Y_t), \quad 0 \leq t \leq T,
@@ -275,6 +287,30 @@
 <p>Nesse caso, \(\delta(\omega) = \infty\), para todo \(\omega\in \Omega\), e a função-solução \(\omega \mapsto x(t, \omega)\) do problema de valor inicial. Assim, o processo \(\{X_t\}_{t\geq 0}\) definido por \(X_t(\omega) = x(t, \omega)\) é um processo com caminhos continuamente diferenciáveis e que é uma solução por caminhos da equação diferencial aleatória.</p>
 <p>Outra solução é exigir apenas que \(f=f(t, x, y)\) seja localmente Lipschitz em \(x\) mas que tenha alguma estrutura adicional que nos permita garantir a existência de solução por um tempo mínimo comum a todos os valores amostrais \(\omega\in\Omega\).</p>
 <p>Veremos exemplos na seção seguinte.</p>
+<h2 id="unicidade"><a href="#unicidade" class="header-anchor">Unicidade</a></h2>
+<p>A unicidade de soluções por caminho de equações diferenciais aleatórias segue diretamente do resultado para equações diferenciais ordinárias clássicas.</p>
+<p>Sob a condição de \(f = f(t, x, y)\) ser contínua nas variáveis \((t, x, y)\), em um domínio \([0, T] \times \mathbb{R}\times \mathbb{R}\) e <em>localmente</em> Lipschhitz na variável \(x\) e com \(\{Y_t\}_{t\in [0, T]}\) com caminhos amostrais contínuos, a solução por caminhos, quando existe, é única em um sentido quase sempre, i.e. se \(\{X_t\}_{t \geq 0}\) e \(\{\tilde X_t\}_{t \geq 0}\) são soluções por caminho, então</p>
+\[
+\mathbb{P}\left(\{X_t = \tilde X_t\}_t\right) = \mathbb{P}\left(\left\{\omega \in \Omega; \;X_t(\omega) = \tilde X_t(\omega), \;\forall t\in [0, T]\right\}\right) = 1.
+\]
+<p>Aqui, a continuidade Lipschitz local significa que, para cada \(R > 0\), existe \(L_R > 0\) tal que</p>
+\[
+|f(t, x_1, y) - f(t, x_2, y)| \leq L_R|x_1 - x_2|, \qquad \forall t\in [0, T], \;\forall x_1, x_2, y \in [-R, R].
+\]
+<p>De fato, suponha que, para quase todo \(\omega\), temos</p>
+\[
+\frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = f(t, X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
+\]
+<p>e</p>
+\[
+\frac{\mathrm{d} \tilde X_t(\omega)}{\mathrm{d} t} = f(t, \tilde X_t(\omega), Y_t(\omega)), \qquad 0 \leq t \leq T.
+\]
+<p>com</p>
+\[
+\left.X_0\right|_{t = 0}(\omega) = \left.\tilde X_0\right|_{t = 0}(\omega).
+\]
+<p>Como \(t \mapsto X_t(\omega)\) e \(t \mapsto \tilde X_t\) satisfazem a mesma equação diferencial ordinária, com a mesma condição inicial, e \(f\) é localmente Lipschitz contínuo na variável \(x\) e o caminho \(t\mapsto Y_t(\omega)\) é contínuo, então a solução é contínua e limitada e, portanto, é única, ou seja \(X_t(\omega) = \tilde X_t(\omega)\) em \(t\in [0, T]\). Como isso vale quase certamente em \(\omega\), então a unicidade vale nesse sentido.</p>
+<p>Ressaltamos, aqui, que utilizamos, anteriormente, a continuidade Lipschitz <em>global</em> para garantir a <em>existência,</em> mas apenas a continuidade Lipschitz <em>local</em> é necessária, aqui, para garantir a unicidade, desde que seja possível mostrar a existência de alguma outra forma, explorando outras estruturas do termo \(f\).</p>
 <h2 id="outros_tipos_de_solução"><a href="#outros_tipos_de_solução" class="header-anchor">Outros tipos de solução</a></h2>
 <p>Outros tipos de solução podem ser obtidas relaxando o sentido de convergência do limite</p>
 \[
@@ -297,7 +333,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/simple_examples_rde"><kbd>→</kbd> 6.2. Exemplos simples</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/basic_examples_rde"><kbd>→</kbd> 6.2. Exemplos básicos</a>
 </span>
     </p>
 </div>
@@ -313,7 +349,7 @@
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

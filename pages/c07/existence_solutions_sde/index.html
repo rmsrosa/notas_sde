@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Existência de soluções</title>  
+   <title>Existência de soluções no caso geral</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -228,10 +240,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian"><kbd>→</kbd> 7.3. Movimento Browniano geométrico</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/unicidade_sol_sde"><kbd>→</kbd> 7.4. Unicidade de soluções</a>
 </span>
     </p>
 </div>
@@ -242,16 +254,17 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">7.2. Existência de soluções</a></h1>
-<p>Estamos considerando equações diferenciais estocásticas da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.3. Existência de soluções no caso geral</a></h1>
+<p>Vamos considerar, agora, o caso geral de uma equação diferencial estocástica da forma</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 \]
 <p>com uma condição inicial</p>
 \[
 \left.X_t\right|_{t = 0} = X_0.
 \]
-<p>Para os resultados de existência e unicidade, vamos assumir que \(f = f(t, x)\), \(g = g(t, x)\) são funções contínuas \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) com a propriedade de serem globalmente Lipschitz contínuas na variável \(x\).</p>
+<h2 id="hipóteses_iniciais"><a href="#hipóteses_iniciais" class="header-anchor">Hipóteses iniciais</a></h2>
+<p>Como antes, vamos assumir que \(f = f(t, x)\), \(g = g(t, x)\) são funções contínuas \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) com a propriedade de serem uniformemente globalmente Lipschitz contínuas na variável \(x\).</p>
 <p>Mais precisamente, existem \(L_f, L_g > 0\) tais que</p>
 \[
 \begin{align*}
@@ -259,90 +272,93 @@
 |g(t, x) - g(t, y)| \leq L_g|x - y|, \qquad \forall x, y \in \mathbb{R}.
 \end{align*}
 \]
-<p>Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular na teoria de equações diferenciais determinísticas. A diferença é que a continuidade Lipschitz assumida é apenas local, ou seja, para \(x, y\) numa vizinhança da condição inicial.</p>
-<p>No entanto, aqui, por conta do processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. </p>
-<p>Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural do processo de Wiener e da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.</p>
-<h2 id="existência_e_unicidade_no_caso_de_equações_com_difusão_constante_e_condição_inicial_determinística"><a href="#existência_e_unicidade_no_caso_de_equações_com_difusão_constante_e_condição_inicial_determinística" class="header-anchor">Existência e unicidade no caso de equações com difusão constante e condição inicial determinística</a></h2>
-<p>Vamos começar com um caso particular, com difusão constante \(g(t, X_t) = \sigma \in \mathbb{R}\), ou seja</p>
+<p>Observe que a desigualdade para \(f\) implica em</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
+|f(t, x)| = |f(t, x) - f(t, 0) + f(t, 0)| \leq |f(t, 0)| + L_f|x| \leq C_f + L_f|x|,
 \]
-<p>Também assumimos uma condição inicial determinística, digamos \(X_0 = x_0 \in \mathbb{R}\).</p>
+<p>para \(C_f = \max_{t\in [0, T]}|f(t, 0)|\). Analogamente,</p>
+\[
+|g(t, x)| = |g(t, x) - g(t, 0) + g(t, 0)| \leq |g(t, 0)| + L_g|x| \leq C_g + L_g|x|.
+\]
+<h2 id="existência_de_solução"><a href="#existência_de_solução" class="header-anchor">Existência de solução</a></h2>
 <p>A forma integral equivalente é</p>
 \[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
+X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 \]
-<p>A segunda integral é, simplesmente, o próprio \(W_t\), ou seja, chegamos na equação mais simples</p>
-\[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
-\]
-<p>Essa equação não envolve a integral de Itô.</p>
-<p>Assumimos que \(f=f(t, x)\) seja contínua nas duas variáveis e globalmente Lipschitz contínua na coordenada \(x\), uniformemente em cada intervalo limitado em \(t\), i.e. para todo \(T > 0\), existe \(L_T > 0\) tal que</p>
-\[
-|f(t, x) - f(t, y)| \leq L_T |x - y|, \qquad \forall \;0 \leq t \leq T, \;\forall x, y \in \mathbb{R}.
-\]
-<p>A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo \(t \geq 0\),</p>
+<p>A ideia é, novamente, resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo \(t \geq 0\),</p>
 \[
 \begin{align*}
-X_t^0 & = x_0, \\
-X_t^m & = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
+X_t^0 & = X_0, \\
+X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\;\mathrm{d}s + \int_0^t g(s, X_s^{m-1}) \;\mathrm{d}W_t, \quad m\in \mathbb{N}.
 \end{align*}
 \]
-<p>Vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge, em média quadrática, para um processo que é solução da equação integral.</p>
-<p>Considere, para isso, os processos estocásticos</p>
+<p>A diferença, agora, é que vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge em média quadrática, não mais em probabilidade, para um processo que é solução da equação integral.</p>
+<p>Considere, para isso, as funções determinísticas</p>
 \[
-D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
+d^m(t) = \mathbb{E}\left[\left|X_t^{m+1} - X_t^m\right|^2\right], \quad m = 0, 1, 2, \ldots, \; 0 \leq t \leq T.
 \]
-<p>Para cada \(\omega\in \Omega\), temos que \(W_t(\omega)\) é limitado em \([0, T]\). Além disso, \(f(t, x_0)\) é limitado em \([0, T]\), já que \(f\) é contínua. Assim,</p>
+<p>Vamos mostrar, por indução, que</p>
 \[
-D_t^0(\omega) \leq \left| \int_0^t f(s, x_0)\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
+d^m(t) \leq \frac{M K^m t^{m+1}}{(m+1)!},
 \]
-<p>para algum \(C(\omega) \geq 0.\)</p>
-<p>Como no método de Picard clássico, vamos mostrar que</p>
-\[
-D_t^m \leq C \frac{L^m}{m!} t^m.
-\]
-<p>A estimativa acima mostra que isso é verdade para \(m = 0\). Procedemos, agora, por indução, assumindo verdadeiro para \(m-1\), onde \(m\in \mathbb{N}\), e analisando \(D_t^m\) Temos,</p>
+<p>para \(K = 2(L_f^2 + L_g^2)\) e para alguma constante \(M\) dependendo de \(C_f\), \(C_g\), \(L_f\), \(L_g\), \(T\) e \(X_0\).</p>
+<p>Primeiramente, temos</p>
 \[
 \begin{align*}
-D_t^m & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
-& = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
-& \leq \max_{0 \leq s \leq t} \int_0^t L |X_s^m - X_s^{m-1}|\mathrm{d}s \\
-& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^{m-1} \;\mathrm{d}s \\
-& \leq L \int_0^t D_s^{m-1} \;\mathrm{d}s \\
-& \leq L \int_0^t C \frac{L^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
-& \leq C \frac{L^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
-& = C \frac{L^m}{m!} t^{m}.
+d^0(t) & = \mathbb{E}\left[ \left|X_t^1 - X_t^0\right|^2\right] \\
+  & = \mathbb{E}\left[ \left| \int_0^t f(s, X_s^0)\;\mathrm{d}s + \int_0^t g(s, X_s^0) \;\mathrm{d}W_t \right|^2 \right] \\
+  & \leq 2\mathbb{E}\left[ \left| \int_0^t f(s, X_s^0)\;\mathrm{d}s \right|^2\right] + 2\mathbb{E}\left[\left|\int_0^t g(s, X_s^0) \;\mathrm{d}W_t \right|^2 \right]
 \end{align*}
 \]
-<p>Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer \(k \geq j \geq 1\),</p>
+<p>Estimando a primeira integral de maneira usual e usando a isometria de Itô na segunda integra, obtemos</p>
 \[
-\max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
+d^0(t) \leq 2\int_0^t\mathbb{E}\left[ f(s, X_s^0)^2 \right]\;\mathrm{d}s + 2\int_0^t\mathbb{E}\left[ g(s, X_s^0)^2 \right]\;\mathrm{d}t.
 \]
-<p>Como o somatório é o &quot;rabo&quot; da série de Taylor da função exponencial \(Ce^{Lt}\), o lado direito converge para zero, quando \(j \rightarrow \infty\). Ou seja, quase certamente, temos \(X_t^m\) convergindo uniformemente em \([0, T]\). No limite, temos um processo \(\{X_t\}_{t \geq 0}\) satisfazendo, quase certamente, a equação integral desejada:</p>
+<p>Usando as estimativas para \(f\) e \(g\) e usando que \(X_s^0 = X_0\), chegamos a</p>
 \[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
+\begin{align*}
+d^0(t) & \leq 2\int_0^t\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right]\;\mathrm{d}t + 2\int_0^t\mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right]\;\mathrm{d}t \\
+& \leq 2t\left(\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right] + 2\mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right]\right).
+\end{align*}
 \]
-<h2 id="existência_e_unicidade_no_caso_de_equações_com_difusão_determinística"><a href="#existência_e_unicidade_no_caso_de_equações_com_difusão_determinística" class="header-anchor">Existência e unicidade no caso de equações com difusão determinística</a></h2>
-<p>Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial &#40;exceto que seja finita quase certamente&#41;.</p>
-<p>Nesse caso, temos uma equação da forma</p>
+<p>Cada valor esperado pode ser estimado de forma apropriada:</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
+\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right] \leq 2C_f^2 + 2L_f^2\mathbb{E}\left[X_0^2\right], \quad \mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right] \leq 2C_g^2 + 2L_g^2\mathbb{E}\left[X_0^2\right].
 \]
-<p>com condição inicial</p>
+<p>Logo, obtemos a estimativa</p>
 \[
-\left.X_t\right|_{t = 0} = X_0.
+d^0(t) \leq 2t\left((C_f^2 + C_g^2) + (L_f^2 + L_g^2)\mathbb{E}\left[X_0^2\right]\right) \leq \frac{Mt}{2},
 \]
-<p>Assumimos \(f=f(t,x)\) contínua em \((t, x)\in [0, \infty]\times \mathbb{R}\) e globalmente Lipschitz contínua na variável \(x\), em cada intervalo limitado \([0, T]\). Quando a \(X_0\), assumimos, apenas, que seja finita quase certamente.</p>
-<p>Deixamos os detalhes da demonstração como exercício.</p>
+<p>para</p>
+\[
+M = 4\left((C_f^2 + C_g^2) + (L_f^2 + L_g^2)\mathbb{E}\left[X_0^2\right]\right).
+\]
+<p>Agora, prosseguindo por indução, assumimos que a estimativa seja válida para \(m-1\) e buscamos prová-la para \(m\). Temos</p>
+\[
+\begin{align*}
+d^m(t) & = \mathbb{E}\left[\left|X_t^{m+1} - X_t^m\right|^2\right] \\
+& = \mathbb{E}\left[ \left( \int_0^t (f(s, X_s^m) - f(s, X_s^{m-1}))\;\mathrm{d}s + \int_0^t (g(s, X_s^m) - g(s, X_s^{m-1})) \;\mathrm{d}W_t\right)^2 \right] \\
+& \leq \mathbb{E}\left[ 2\left( \int_0^t L_f |X_s^m - X_s^{m-1}|\;\mathrm{d}s \right)^2 + 2\left( \int_0^t L_g |X_s^m - X_s^{m-1}| \;\mathrm{d}W_t\right)^2\right] \\
+& \leq 2L_f^2\int_0^T\mathbb{E}\left[ |X_s^m - X_s^{m-1}|^2 \right]\;\mathrm{d}s + 2L_g^2\mathbb{E}\left[\left( \int_0^t |X_s^m - X_s^{m-1}| \;\mathrm{d}W_t\right)^2\right]
+\end{align*}
+\]
+<p>Usando a isometria de Itô no segundo termo, chegamos a</p>
+\[
+d^m(t) \leq 2(L_f^2 + L_g^2)\int_0^T \mathbb{E}\left[ |X_s^m - X_s^{m-1}|^2 \right]\;\mathrm{d}s \leq K\int_0^T d^{m-1}(s)\;\mathrm{d}s.
+\]
+<p>Usando a hipótese de indução para \(m-1\), chegamos na estimativa para \(d^m(t)\):</p>
+\[
+d^m(t) \leq K\int_0^T \frac{MK^{m-1}s^m}{m!}\;\mathrm{d}s \leq \frac{MK^mt^{m+1}}{(m+1)!}.
+\]
+<p>Agora, podemos fazer somas telescópias, como de costume, e provar que \(\{X_t^m\}_{t \geq 0}\) converge em média quadrática para um processo \(\{X_t\}_{t \geq 0}\) que é solução da equação integral e, portanto, da equação diferencial estocástica.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian"><kbd>→</kbd> 7.3. Movimento Browniano geométrico</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/unicidade_sol_sde"><kbd>→</kbd> 7.4. Unicidade de soluções</a>
 </span>
     </p>
 </div>
@@ -358,7 +374,7 @@ X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

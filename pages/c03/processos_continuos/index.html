@@ -148,10 +148,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -187,10 +187,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -202,13 +202,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -342,7 +354,7 @@ X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 <img src="/notas_sde/assets/pages/c03/processos_continuos/code/output/renewal_uniform.svg" alt="">
 <p>Processos de renovação são usados para modelar sequências sucessivas de falhas de equipamentos &#40;e.g. máquinas, velas, cabos, lâmpadas, etc.&#41;. Por exemplo, imagine um motor que precise de um cabo para movimentar uma polia. Sempre que um cabo arrebenta, a produção é interrompida, até que a troca seja feita. A vida útil de cada cabo é uma variável aleatória e as sucessivas quebras são assumidas independentes. Cada intervalo de tempo \(Y_j\) representa a vida útil de um cabo. Cada \(Z_n\) representa o momento da \(n\)-ésima quebra. A variável \(X_t\) modela o número de quebras, ou trocas de cabo, até o instante \(t\).</p>
 <h2 id="processo_de_renovação_e_recompensa"><a href="#processo_de_renovação_e_recompensa" class="header-anchor">Processo de renovação e recompensa</a></h2>
-<p>Junto com um processo de renovação \(\{X_t\}_{t \geq 0}\) como acima, obtido a partir de variáveis aleatórias positivas independentes \(\{Y_j\}_{j\in \mathbb{N}}\), podemos ter, a cada evento \(Z_n = \sum_{j=1}^n Y_j\), uma &quot;recompensa&quot; \(\{W_n\}_{n\in \mathbb{N}}\), que é uma variável aleatória real &#40;ganhos e perdas&#41;. O total de recompensa após um tempo \(t\) é dado por &#40;lembrando que \(X_t\) assume valores inteiros não-negativos&#41;</p>
+<p>Junto com um processo de renovação \(\{X_t\}_{t \geq 0}\) como acima, obtido a partir de variáveis aleatórias positivas independentes \(\{Y_j\}_{j\in \mathbb{N}}\), podemos ter, a cada evento \(Z_n = \sum_{j=1}^n Y_j\), uma &quot;recompensa&quot; \(\{W_n\}_{n\in \mathbb{N}}\), que é uma variável aleatória real &#40;ganhos e perdas&#41;. O total de recompensa após um tempo \(t\) é dado por &#40;lembrando que \(X_t\) assume valores inteiros não negativos&#41;</p>
 \[
 Y_t = \sum_{i = 1}^{X_t} W_i.
 \]
@@ -369,7 +381,7 @@ Y_t = \sum_{i = 1}^{X_t} W_i.
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

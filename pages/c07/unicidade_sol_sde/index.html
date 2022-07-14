@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Exemplos simples</title>  
+   <title>Unicidade de soluções</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -137,10 +137,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -176,10 +176,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -191,13 +191,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -228,10 +240,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde"><kbd>→</kbd> 6.3. Equação logística aleatória</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/continuidade_caminhos"><kbd>→</kbd> 7.5. Continuidade dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -242,130 +254,98 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.2. Exemplos simples</a></h1>
-<p>Vamos considerar alguns exemplos simples de equações diferenciais aleatórias.</p>
-<h2 id="exemplo_linear"><a href="#exemplo_linear" class="header-anchor">Exemplo linear</a></h2>
-<p>Começemos com o problema de valor inicial</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.4. Unicidade de soluções</a></h1>
+<p>Como visto anteriormente, um processo de Wiener não é único, assim como podemos ter várias variáveis aleatórias independentes, com a mesma distribuição.</p>
+<p>Agora, uma vez definido um processo de Wiener \(\{W_t\}_{t \geq 0}\), podemos ter, sob as devidas condições nos termos \(f=f(t, x)\) e \(g = g(t, x)\), a unicidade do processo estocástico \(\{X_t\}_{t \geq 0}\) definido através da equação diferencial estocástica</p>
 \[
-\begin{cases}
-\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t, & t \geq 0, \\
-X_t|_{t = 0} = X_0,
-\end{cases}
+\mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 \]
-<p>onde \(A\) e \(X-0\) são variáveis aleatórias reais. Definimos</p>
+<p>com uma condição inicial</p>
 \[
-X_t = X_0e^{tA}, \qquad t \geq 0.
+\left.X_t\right|_{t = 0} = X_0.
 \]
-<p>Como \(f(t, a, c) = ce^{ta}\) é uma função contínua de \(\mathbb{R}^3\) em \(\mathbb{R}\), segue que \(X_t\) está bem definido e é uma variável aleatória. Além disso, para quase todo \(\omega\), temos \(A(\omega), X_0(\omega) \in \mathbb{R}\) e, com isso, temos os caminhos amostrais</p>
+<p>Assim como no caso de equações diferenciais ordinárias determinísticas, uma condição do tipo continuidade Lipschitz nos garante essa continuidade. No caso, vamos pedir a continuidade Lipschitz uniforme em \(t\) e global em \(x\) dos termos \(f = f(t, x)\) e \(g = g(t, x)\).</p>
+<p>A ideia é estimar a evolução temporal da média quadrática entre duas possíveis soluções no instante \(t\) e aplicar o Lema de Gronwall para relacionar essa evolução com a média quadrática inicial.</p>
+<h2 id="continuidade_em_relação_à_condição_inicial"><a href="#continuidade_em_relação_à_condição_inicial" class="header-anchor">Continuidade em relação à condição inicial</a></h2>
+<p>Sejam \(\{X_t\}_{t \geq 0}\) e \(\{\tilde X_t\}_{t \geq 0}\) duas soluções da equação diferencial estocástica, com condições iniciais \(X_0\) e \(\tilde X_0\), respectivamente. Posteriormente vamos considerar condições iniciais iguais, mas, no momento, permitimos que sejam diferentes.</p>
+<p>Considere a média quadrática da diferença entre essas duas soluções, em cada instante \(t \geq 0\):</p>
 \[
-X_t(\omega) = X_0(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
+e(t) = \mathbb{E}\left[ |X_t - \tilde X_t|^2 \right]
 \]
-<p>que são &#40;infinitamente&#41; diferenciáveis em \(t\) e são soluções da equação diferencial ordinária</p>
+<p>As formas integrais das equações diferenciais são</p>
 \[
-\begin{cases}
-\displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0, \\
-X_t(\omega)|_{t = 0} = X_0(\omega).
-\end{cases}
+X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s
 \]
-<p>Logo, \(\{X_t\}_{t\geq 0}\) é um processo que é uma solução por caminhos da equação diferencial aleatória acima, com a condição inicial desejada.</p>
-<h2 id="exemplo_com_existência_local"><a href="#exemplo_com_existência_local" class="header-anchor">Exemplo com existência local</a></h2>
-<p>Considere</p>
+<p>e</p>
 \[
-\begin{cases}
-\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0, \\
-X_0 = 1,
-\end{cases}
+\tilde X_t = \tilde X_0 + \int_0^t f(s, \tilde X_s)\;\mathrm{d}s + \int_0^t g(s, \tilde X_s)\;\mathrm{d}W_s.
 \]
-<p>onde \(A\) é uma variável aleatória com distribuição beta, por exemplo.</p>
-<p>A distribuição beta está concentrada no intervalo \((0, 1)\), ou seja, para quase todo \(\omega\), temos \(0 < A(\omega) < 1\). Assim, para quase todo \(\omega\), a equação diferencial ordinária</p>
+<p>Subtraindo, temos</p>
 \[
-\begin{cases}
-\displaystyle \frac{\mathrm{d} x(t)}{\mathrm{d} t} = A(\omega) x(t)^2, & t \geq 0, \\
-x(0) = 1,
-\end{cases}
+X_t - \tilde X_t = X_0 - \tilde X_0 + \int_0^t (f(s, X_s) - f(s, \tilde X_s))\;\mathrm{d}s + \int_0^t (g(s, X_s) - g(s, \tilde X_s))\;\mathrm{d}W_s.
 \]
-<p>tem uma solução única</p>
+<p>Usando que \(f\) e \(g\) são globalmente Lipschitz em \(x\), uniformemente em \(t\), obtemos</p>
 \[
-x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)}.
+\left| X_t - \tilde X_t \right| \leq \left| X_0 - \tilde X_0 \right| + \int_0^t L_f \left| X_s - \tilde X_s \right| \;\mathrm{d}s + \int_0^t L_g \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s.
 \]
-<p>Como</p>
+<p>Elevando ao quadrado e usando que \((a + b + c)^2 \leq 3a^2 + 3b^2 + 3c^2\),</p>
 \[
-\frac{1}{A(\omega)} > 1,
+\left| X_t - \tilde X_t \right|^2 \leq 3\left| X_0 - \tilde X_0 \right|^2 + 3L_f^2\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}s\right)^2 + 3L_g^2\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s\right)^2.
 \]
-<p>para quase todo \(\omega\), podemos definir, para todo \(0 \leq t < 1\), o processo aleatório \(\{X_t\}_{t\in [0, 1)}\) por</p>
+<p>A segunda integral pode ser estimada diretamente, consequência da desigualdade de Cauchy-Schwarz:</p>
 \[
-X_t = \frac{1}{1 - At},
+\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}s \leq \left(\int_0^t \;\mathrm{d}s\right)^{1/2}\left(\int_0^t \left| X_s - \tilde X_s \right|^2 \;\mathrm{d}s\right)^{1/2},
 \]
-<p>cujos caminhos amostrais são</p>
+<p>de modo que</p>
 \[
-X_t(\omega) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < 1.
+\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}s\right)^2 \leq t\int_0^t \left| X_s - \tilde X_s \right|^2 \;\mathrm{d}s.
 \]
-<p>Observe que \((t, a) \mapsto 1/(1 - at)\) é uma função contínua em \((t,a) \in [0, 1)\times [0, 1]\). Como \(A\) tem suporte em \([0, 1]\), então essa função é Lebesgue-mensurável em \(\mathbb{R}\). Assim, \(X_t\) é uma variável aleatória bem definida.</p>
-<p>A função de distribuição acumulada de cada \(X_t\) é dada por</p>
+<p>Assim, para o valor esperado, obtemos</p>
 \[
-\mathbb{P}(X_t \leq x) = \mathbb{P}\left( \frac{1}{1 - A} \leq x\right) = \mathbb{P}\left( A \leq \frac{x - 1}{x}\right), \qquad 0 < x < 1,
+\begin{align*}
+\mathbb{E}\left[\left| X_t - \tilde X_t \right|^2\right] & \leq 3\mathbb{E}\left[\left| X_0 - \tilde X_0 \right|^2\right] \\
+& \qquad + 3L_f^2 t \int_0^t \mathbb{E}\left[\left| X_s - \tilde X_s \right|^2\right] \;\mathrm{d}s \\
+& \qquad + 3L_g^2\mathbb{E}\left[\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s\right)^2\right].
+\end{align*}
 \]
-<p>com \(\mathbb{P}(X_t \leq x) = 0\), para \(x\leq 0\) e \(\mathbb{P}(X_t \leq x) = 1\), para \(x\geq 1\).</p>
-<p>A distribuição conjunta \(\mathbb{P}(X_{t_1} \leq x_1, \ldots, X_{t_n} \leq x_n)\) também pode ser obtida de forma semelhante.</p>
-<h2 id="não_existência"><a href="#não_existência" class="header-anchor">Não existência</a></h2>
-<p>Vamos ver um exemplo clássico de não existência de solução por caminhos de uma equação diferencial aleatória.</p>
-<p>Considere o problema de valor inicial</p>
+<p>O último termo pode ser estimado via isometria de Itô:</p>
 \[
-\begin{cases}
-\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0 \\
-X_0 = 1.
-\end{cases}
+\mathbb{E}\left[\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s\right)^2\right] \leq 
+\int_0^t \mathbb{E}\left[\left| X_s - \tilde X_s \right|^2\right] \;\mathrm{d}s.
 \]
-<p>Mas, dessa vez, assumimos que \(A\) seja uma variável aleatória com distribuição sem suporte limitado, digamos normal ou exponencial, etc.. Isso significa que \(A(\omega)\) não é limitado quase sempre. Com isso, os caminhos amostrais</p>
+<p>Dessa forma, obtemos</p>
 \[
-x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)},
+\mathbb{E}\left[\left| X_t - \tilde X_t \right|^2\right] \leq 3\mathbb{E}\left[\left| X_0 - \tilde X_0 \right|^2\right] + 3(L_f^2 t + L_g^2) \int_0^t \mathbb{E}\left[\left| X_s - \tilde X_s \right|^2\right] \;\mathrm{d}s.
 \]
-<p>estão definidos em intervalos arbitrariamente pequenos. Isso nos impede de definir um processo \(\{X_t\}_{t \in [0, \varepsilon)}\) para todos os caminhos, por menor que seja \(\varepsilon > 0\). Ou seja, não existe solução por caminhos dessa equação.</p>
-<h2 id="múltiplas_soluções_e_não-solução"><a href="#múltiplas_soluções_e_não-solução" class="header-anchor">Múltiplas soluções e não-solução</a></h2>
-<p>Agora, considere o problema de valor inicial</p>
+<p>Aplicando o Lema de Grownall, obtemos</p>
 \[
-\begin{cases}
-\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = 3X_t^{2/3}, & t \geq 0 \\
-X_0 = 0.
-\end{cases}
+\mathbb{E}\left[\left| X_t - \tilde X_t \right|^2\right] \leq \mathbb{E}\left[\left| X_0 - \tilde X_0 \right|^2\right] e^{3(L_f^2 t + L_g^2)t}, \qquad t \geq 0.
 \]
-<p>Aqui, devemos especificar onde &quot;mora&quot; \(X_0\). Podemos tomar \(X_0 = 0\) em \(\Omega = \mathbb{R}\), com \(\mathcal{A}\) sendo, por exemplo, a \(\sigma\)-álgebra de Lebesgue.</p>
-<p>Naturalmente, temos a solução trivial \(X_t^{(0)} = 0\), \(\forall t \geq 0\). Também temos</p>
+<h2 id="unicidade"><a href="#unicidade" class="header-anchor">Unicidade</a></h2>
+<p>A unicidade, agora, é consequência da estimativa acima, com \(X_0 = \tilde X_0\) quase sempre, de maneira que </p>
 \[
-X_t^{(1)}(\omega) = t^3, \qquad t \geq 0
+\mathbb{E}[|X_0 - \tilde X_0|^2] = 0
 \]
-<p>como solução.</p>
-<p>Agora, para qualquer conjunto \(E\subset \Omega\), temos, ainda que \(\{X_t^{(E)}\}_{t\geq 0}\) definido através dos caminhos</p>
+<p>e, consequentemente,</p>
 \[
-X_t^{(E)}(\omega) = \begin{cases}
-t^3, &\omega \in E, \\
-0, & \omega \notin E,
-\end{cases}
+\mathbb{E}[|X_t - \tilde X_t|^2] = 0, \qquad t \geq 0.
 \]
-<p>é tal que cada caminho \(X_t^{(E)}(\omega)\) satisfaz a equação diferencial ordinária \(x' = 3x^{2/3}\). Se \(E\) for mensurável, então \(\{X_t^{(E)}\}_{t \geq 0}\) é, de fato, um processo que satisfaz a condição inicial \(X_0^{(E)} = 0\) e é uma solução por caminhos da equação diferencial aleatória.</p>
-<p>No entanto, se \(E\) não for mensurável, então os caminhos satisfazem a equação diferencial ordinária mas \(\{X_t^{(E)}\}_{t \geq 0}\) não define um processo.</p>
-<h2 id="outros_tipos_de_solução"><a href="#outros_tipos_de_solução" class="header-anchor">Outros tipos de solução</a></h2>
-<p>Outros tipos de solução podem ser obtidas relaxando-se o sentido de convergência do limite</p>
+<p>Como os caminhos \(t \mapsto X_t(\omega)\) são contínuos, então</p>
 \[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
+\mathbb{P}\left(\max_{0\leq t \leq T} |X_t - \tilde X_t| > 0\right) = 0.
 \]
-<p>No caso acima, de soluções por caminhos, o limite vale quase certamente, i.e.</p>
+<p>Em outras palavras,</p>
 \[
-\mathbb{P}\left(\exists \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau} = f(t, X_t, Y_t) \right) = 1.
-\]
-<p>Mas, em princípio, a noção de derivada de um processo pode ser relaxada para convergência em probabilidade, convergência em distribuição, convergência em média-quadrática, convergência em média \(p\geq 1\), etc. A dificuldade é obtermos condições em \(f\) e em \(Y_t\), mais fracas, que garantam a existência de soluções da equação diferencial aleatória nesse sentido &#40;também&#41; mais fraco que convergência quase certamente.</p>
-<p>Uma sentido bastante utilizado é o de solução no sentido de média quadrática, em que existe um processo \(\{\mathrm{d}X_t/\mathrm{d}t\}_{t \in [0, T)}\) tal que</p>
-\[
-\mathbb{E}\left( \left| \frac{X_{t+\tau} - X_t}{\tau} - \frac{\mathrm{d}X_t}{\mathrm{d}t}\right|\right) \rightarrow 0, \quad \tau \rightarrow 0.
+\mathbb{P}\left(X_t = \tilde X_t, t \geq 0\right) = 1.
 \]
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/logistic_rde"><kbd>→</kbd> 6.3. Equação logística aleatória</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/continuidade_caminhos"><kbd>→</kbd> 7.5. Continuidade dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -381,7 +361,7 @@ t^3, &\omega \in E, \\
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

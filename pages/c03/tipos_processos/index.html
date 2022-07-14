@@ -148,10 +148,10 @@
     <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias do processo de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não-diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
@@ -187,10 +187,10 @@
     <li>6. Equações diferenciais aleatórias</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/simple_examples_rde">6.2. Exemplos simples</a></li>
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
@@ -202,13 +202,25 @@
     <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.2. Existência de soluções</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.3. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.4. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -258,7 +270,7 @@
 <h2 id="processos_identicamente_distribuídos"><a href="#processos_identicamente_distribuídos" class="header-anchor">Processos identicamente distribuídos</a></h2>
 <p>Um processo \(\{X_t\}_{t\in I}\) é dito <strong>identicamente distribuído</strong> quando as variáveis aleatórias \(X_t\) são identicamente distribuídas, ou seja, quando as leis de probabilidade das variáveis \(X_t\) são iguais entre si.</p>
 <p>Por exemplo, o processo de Bernoulli \(\{X_n\}_{n\in\mathbb{N}}\) tem \(X_n \sim \textrm{Bernoulli}(p)\), para todo \(n\in \mathbb{N}\), sendo, portanto, um processo identicamente distribuído.</p>
-<p>Jogar um mesmo dado, não-viciado, várias vezes, também é um processo identicamente distribuído, com \(X_n \sim \textrm{Unif}(\Sigma),\) com \(\Sigma = \{1, 2, \ldots, 6\}\), para todo \(n\in \mathbb{N}\). Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.</p>
+<p>Jogar um mesmo dado, não viciado, várias vezes, também é um processo identicamente distribuído, com \(X_n \sim \textrm{Unif}(\Sigma),\) com \(\Sigma = \{1, 2, \ldots, 6\}\), para todo \(n\in \mathbb{N}\). Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.</p>
 <p>O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada incremento \(W_n\) tem distribuição binomial diferente \(W_n \sim \textrm{Binomial}(n, p)\).</p>
 <p>Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli \(X_n\) discutido acima é tal que, para algum \(p\), vale \(X_n \sim \mathrm{Bernoulli}(p)\), para todo \(n\). Por outro lado, se definirmos o processo constante \(Y_n = Y\), onde \(Y = \mathrm{Bernoulli}(p)\), ou seja, com medida de probabilidade \(\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p\) e \(\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p\), então também temos cada \(Y_t \sim\mathrm{Bernouilli}(p)\). Mas os dois processos são bem diferentes entre si.</p>
 <h2 id="processos_com_incrementos_identicamente_distribuídos"><a href="#processos_com_incrementos_identicamente_distribuídos" class="header-anchor">Processos com incrementos identicamente distribuídos</a></h2>
@@ -268,7 +280,7 @@
 X_{n + k} - X_n = \sum_{j = 0}^{k-1} \left( X_{n + j + 1} - X_{n + j} \right) = \sum_{j = 0}^{k-1} \Delta X_{n + j} \sim \sum_{j = 0}^{k-1} \Delta X_1 = \text{ independente de $n$}.
 \]
 <p>Mais geralmente, dizemos que um processo \(\{X_t\}_{t\in I}\) é um <strong>processo com incrementos identicamente distribuídos</strong> quando, para cada \(\tau > 0\), as variáveis aleatórias \(\{\Delta X_t^\tau\}_{t, t+\tau \in I}\), definidas por \(\Delta X_t^\tau = X_{t + \tau} - X_t\), são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento \(\tau\), mas não com o instante \(t\) em que cada incremento é dado.</p>
-<p>Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o processo de Wiener, que veremos em breve.</p>
+<p>Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o de processo de Wiener, que veremos em breve.</p>
 <p>Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam \(S_j\), \(j\in \mathbb{N}\), variáveis aleatórias independentes, com distribuições \(\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2\), para \(j \in \mathbb{N}\). Seja \(X_t\) o processo de renovação associado a esses saltos. Lembremos que</p>
 \[
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
@@ -300,7 +312,7 @@ T_n = \sum_{j = 1}^n S_j.
 <h2 id="processos_com_incrementos_independentes"><a href="#processos_com_incrementos_independentes" class="header-anchor">Processos com incrementos independentes</a></h2>
 <p>O caminho aleatório não é independente, como vimos, mas os seus <em>incrementos</em> são independentes. De fato, as chances de darmos um passo \(+1\) ou \(-1\) em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os incrementos \(X_{n+1} - X_n\) são independentes entre si. Nesse caso, dizemos que o processo \(\{X_n\}_n\) tem <em>incrementos independentes.</em></p>
 <p>Mais geralmente, um processo \(\{X_t\}_{t\in I}\) tem <strong>incrementos independentes</strong> quando, para quaisquer \(0 \leq t_0 < t_1, \ldots, t_n\), os incrementos \(X_{t_1} - X_{t_0}\), \(X_{t_2} - X_{t_1}\), ..., \(X_{t_n} - X_{t_{n-1}}\) são variáveis aleatórias mutuamente independentes.</p>
-<p>Veremos que o processo de Wiener é um exemplo de processo contínuo com incrementos independentes.</p>
+<p>Veremos que um processo de Wiener é um exemplo de processo contínuo com incrementos independentes.</p>
 <p>O processo de renovação, por sua vez, também não tem incrementos independentes. De fato, sejam \(S_j\), \(j\in \mathbb{N}\), variáveis aleatórias independentes com distribuições \(\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2\) e \(\mathbb{P}(S_j < 2) = 0\), para \(j \geq 2\). Seja \(X_t\) o processo de renovação associado a esses saltos. Lembremos que</p>
 \[
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
@@ -382,7 +394,7 @@ X_t = \cos(t + U), \quad t\in \mathbb{R},
 \mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
 \]
 <p>A definição formal no caso em que o processo estocástico é contínuo é um pouco delicada, pois a condição requer envolver não apenas um número finito de instantes anteriores mas, sim, um contínuo de instantes \(s \leq t\). Para isso, é necessário o conceito de <em>filtração</em>. Veremos isso em outro momento.</p>
-<p>O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O processo de Wiener, modelando o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Veremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.</p>
+<p>O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. Um processo de Wiener, modelando o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Veremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.</p>
 <h2 id="martingales"><a href="#martingales" class="header-anchor">Martingales</a></h2>
 <p>Processos do tipo Martingale são processos em que o valor esperado em um instante futuro é igual ao valor atual. Mais precisamente, no caso de \(I\) discreto, um processo \(\{X_t\}_{t\in I}\) é <strong>Martingale</strong> se</p>
 \[
@@ -620,7 +632,7 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
         </div>
     
 
-    Last modified: July 07, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
