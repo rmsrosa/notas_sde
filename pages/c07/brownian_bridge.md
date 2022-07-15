@@ -96,3 +96,36 @@ $$
 \mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
 $$
 com condição inicial $B_0 = 0$. Ache uma fórmula explíta para $B_t$ como uma integral de Itô e encontro a variância $\mathrm{V}(B_t)$, ao longo de $0 \leq t < T$.
+
+```julia:brownian_bridge
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+rng = Xoshiro(123)
+
+M = 20
+N = 200
+t0 = 0.0
+tf = 1.0
+tt = range(t0, tf, length = N)
+dt = Float64(tt.step)
+
+Yt = Matrix{Float64}(undef, N, M)
+Yt[1, :] .= 0
+
+dWt = zeros(M)
+for n in 2:N
+    dWt .= √dt * randn(rng, M)
+    Yt[n, :] .= (
+        Yt[n-1, :]
+        .- (Yt[n-1, :] ./ (1 - tt[n-1])) * dt
+        .+ dWt
+    )
+end
+
+plot(tt, Yt, xaxis = "tempo", yaxis = "posição", title = "Ponte browniana no intervalo [0, 1]", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.25, legend = :topleft)
+plot!(tt, Yt[:, 1], color = 2, label = "um caminho amostral")
+savefig(joinpath(@OUTPUT, "brownian_bridge.svg"))
+```
+\fig{brownian_bridge}
