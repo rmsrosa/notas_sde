@@ -44,13 +44,13 @@ $$
 
 Interpretando um processo de Ornstein-Uhlenbeck como representando a evolução da velocidade de uma partícula, podemos obter a posição integrando esse processo. Nesse caso, é comum denotarmos o processo de Ornstein-Uhlenbeck, modelando a equação de Langevin, como $\{Y_t\}_{t \geq 0}$, de modo que a posição fica sendo dada por
 $$
-X_t = X_0 + \int_0^t Y_t \;\mathrm{d}t.
+X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 $$
 
 Podemos, ainda escrever ambos os processos como solução do sistema de equações diferenciais estocásticas
 $$
 \begin{cases}
-\mathrm{d}X_t = Y_t, \\
+\mathrm{d}X_t = Y_t\;\mathrm{d}t, \\
 \mathrm{d}Y_t = - \nu Y_t \;\mathrm{d}t + \sigma \;\mathrm{d}W_t,
 \end{cases}
 $$
@@ -63,3 +63,75 @@ Essa é a versão rigorosa da equação de segunda ordem
 $$
 \ddot x_t = - \nu \dot x_t + \sigma \eta_t.
 $$
+
+```julia:ornstein_uhlenbeck
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+rng = Xoshiro(123)
+
+M = 100
+N = 200
+t0 = 0.0
+tf = 10.0
+tt = range(t0, tf, length = N)
+dt = Float64(tt.step)
+
+ν, σ = 1.5, 0.2
+x0 = 0.1
+y0 = 1.0
+
+Wt = Matrix{Float64}(undef, N, M)
+Wt[1, :] .= 0
+for n in 2:N
+    Wt[n, :] .= Wt[n-1, :] .+ √dt * randn(rng, M)
+end
+
+Xt = Matrix{Float64}(undef, N, M)
+Yt = Matrix{Float64}(undef, N, M)
+Xt[1, :] .= x0
+Yt[1, :] .= y0
+
+y = y0 .* exp.(-ν .* tt)
+x = x0 .+ y0 .* (1 .- exp.(-ν .* tt)) ./ ν
+
+dWt = zeros(M)
+for n in 2:N
+    dWt .= √dt * randn(rng, M)
+    Yt[n, :] .= (
+        Yt[n-1, :]
+        .- ν * Yt[n-1, :] * dt
+        .+ σ .* dWt
+    )
+    Xt[n, :] .= Xt[n-1, :] .+ Yt[n-1, :] * dt
+end
+
+plot(tt, Yt, xaxis = "tempo", yaxis = "posição", title = "Velocidade \$\\{Y_t\\}_t\$ de acordo com\nOrnstein-Uhlenbeck \$\\mathrm{d}Y_t = -\\nu Y_t \\;\\mathrm{d}t + \\sigma Y_t \\;\\mathrm{d}W_t\$,\ncom ν = $ν, σ = $σ, \$Y_0 = \$ $y0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topright)
+plot!(tt, Yt[:, 1], color = 2, label = "um caminho amostral")
+plot!(tt, y, color = 3, label = "valor esperado")
+savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_vel.svg"))
+
+plot(tt, Xt, xaxis = "tempo", yaxis = "posição", title = "Posição \$\\{X_t\\}_t\$ de acordo com o sistema\n\$\\mathrm{d}X_t = Y_t\\;\\mathrm{d}t\$ e \$\\mathrm{d}Y_t = -\\nu Y_t \\;\\mathrm{d}t + \\sigma Y_t \\;\\mathrm{d}W_t\$,\ncom ν = $ν, σ = $σ, \$X_0 = \$ $x0, \$Y_0 = \$ $y0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topleft)
+plot!(tt, Xt[:, 1], color = 2, label = "um caminho amostral")
+plot!(tt, x, color = 3, label = "valor esperado")
+savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_pos.svg"))
+```
+\fig{ornstein_uhlenbeck_vel}
+\fig{ornstein_uhlenbeck_pos}
+
+## Exercícios
+
+1. Mostre que
+$$
+\mathbb{E}[Y_t] = \mathbb{E}[Y_0] e^{-\nu t}.
+$$
+
+2. Mostre que
+$$
+\mathbb{E}[X_t] = \mathbb{E}[X_0]  + \frac{1}{\nu}\mathbb{E}[Y_0] \left(1 - e^{-\nu t}\right).
+$$
+
+3. Para $Y_0 = y_0$ determinístico, calcule a variância $\mathrm{Var}(Y_t)$.
+
+4. Para $X_0 = x_0$, $Y_0 = y_0$ determinísticos, calcule a variância $\mathrm{Var}(X_t)$.

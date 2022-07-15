@@ -85,7 +85,7 @@ W_t = B_t + t N, \quad 0\leq t < 1,
 $$
 onde $N$ é uma variável aleatória normal e independente de $\{B_t\}_{t \geq 0}$, e
 $$
-W_t = (1 + t)W_{t/(1 + t)}, \quad t \geq 0.
+W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
 $$
 Mas deixamos isso a cargo do leitor mais interessado.
 
