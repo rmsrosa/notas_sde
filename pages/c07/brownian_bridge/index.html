@@ -5,12 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Relações entre equações estocásticas e equações aleatórias</title>  
+   <title>Ponte Browniana</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   
 
   
@@ -63,9 +74,6 @@
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
-    </div>
-    <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -203,13 +211,19 @@
     <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -240,10 +254,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/ornstein_uhlenbeck"><kbd>→</kbd> 7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a>
 </span>
     </p>
 </div>
@@ -254,66 +268,103 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">1.7. Relações entre equações estocásticas e equações aleatórias</a></h1>
-<p>Em muitas situações, é possível transformar uma equação estocástica em uma aleatória, e vice-versa.</p>
-<h2 id="de_equações_aleatórias_para_estocásticas"><a href="#de_equações_aleatórias_para_estocásticas" class="header-anchor">De equações aleatórias para estocásticas</a></h2>
-<p>Considere uma equação diferencial aleatória da forma</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.8. Ponte Browniana</a></h1>
+<p>Uma outra equação clássica é a da <strong>ponte Browniana</strong> <em>&#40;Brownian Bridge&#41;</em></p>
 \[
-\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t),
+\mathrm{d}B_t = - \frac{B_t}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
 \]
-<p>e suponha que o processo \(\{\Lambda_t\}_t\) seja solução de uma equação diferencial estocástica</p>
+<p>com condição inicial</p>
 \[
-\mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
+B_0 = 0.
 \]
-<p>para algum outro processo \(\{W_t\}_t\).</p>
-<p>Assim, formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,</p>
+<h2 id="resolução"><a href="#resolução" class="header-anchor">Resolução</a></h2>
+<p>Esta é uma equação linear e cuja solução pode ser obtida, também, via fator de integração, tendo a forma</p>
 \[
-\mathrm{d}\left(\begin{matrix} X_t \\ \Lambda_t \end{matrix}\right) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t) \end{matrix}\right) + \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t) \end{matrix}\right)\mathrm{d}W_t.
+B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 \leq t < 1.
 \]
-<p>Este é um sistema da forma</p>
+<p>Isso pode ser verificado diretamente, já que a integral de Itô acima é explícita. De fato,</p>
 \[
-\mathrm{d}U_t = F(t, U_t) + \Sigma(t, U_t)\mathrm{d}W_t,
+\mathrm{d}B_t = - \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s + (1 - t)\frac{\mathrm{d}W_t}{1 - t} = - \frac{1}{1-t}B_t + \;\mathrm{d}W_t.
 \]
-<p>onde </p>
+<p>Para deduzir a solução via fator de integração, observe que uma primitiva de \(p(t) = 1/(1-t)\) é \(-\ln(1-t) = \ln((1-t)^{-1})\), de modo que o fator de integração é \(I(t) = e^{\int^t 1/(1-s)\;\mathrm{d}s} = (1-t)^{-1}\). Dividindo, então, a equação por \(1-t\), temos</p>
 \[
-U_t = \left(\begin{matrix} X_t \\ \Lambda_t\end{matrix}\right), \quad F(t, U_t) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t)\end{matrix}\right), \quad \Sigma(t, U_t) = \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t)\end{matrix}\right).
+\frac{1}{1-t}\mathrm{d}B_t + \frac{B_t}{(1-t)^2}\;\mathrm{d}t = \frac{1}{1-t}\;\mathrm{d}W_t.
 \]
-<p>Observe que o processo \(Y_t\) entra, na equação aleatória, como um termo externo, enquanto que, na equação estocástica, ela é uma variável dependente; uma &quot;incógnita&quot; da equação.</p>
-<h2 id="de_estocásticas_com_ruído_aditivo_para_aleatórias"><a href="#de_estocásticas_com_ruído_aditivo_para_aleatórias" class="header-anchor">De estocásticas com ruído aditivo para aleatórias</a></h2>
-<p>Considere uma equação diferencial estocástica com <strong>ruído aditivo</strong>, na forma</p>
+<p>O lado esquerdo é a derivada do termo \(Y_t = B_t/(1-t)\), de modo que</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
+\mathrm{d}Y_t = \frac{1}{1-t}\;\mathrm{d}W_t.
 \]
-<p>Observe que, aqui, estamos assumindo que o termo de ruído \(\sigma(t)\) é independente do processo \(X_t\), daí o termo &quot;aditivo&quot;. Caso contrário, sendo \(\sigma = \sigma(t, X_t)\), o termo de rúido é denominado <strong>multiplicativo.</strong></p>
-<p>No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o <strong>processo de Ornstein-Uhlenbeck</strong> \(\{O_t\}_t\), que satisfaz à equação diferencial estocástica</p>
+<p>A solução é a primitiva do lado direito:</p>
 \[
-\mathrm{d}O_t = - O_t \mathrm{d}t + \sigma(t) \mathrm{d}W_t.
+Y_t = \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \]
-<p>Considerando um &quot;mudança de variáveis&quot; para o processo \(Z_t = X_t - O_t\), temos, formalmente,</p>
+<p>Voltando para \(B_t\), temos</p>
 \[
-\mathrm{d}Z_t = \mathrm{d}X_t - \mathrm{d}O_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t + O_t \mathrm{d}t - \sigma(t) \mathrm{d}W_t = (f(t, X_t) + O_t)\mathrm{d}t,
+B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \]
-<p>o que nos leva, finalmente, à equação diferencial aleatória</p>
+<h2 id="a_ponte"><a href="#a_ponte" class="header-anchor">A ponte</a></h2>
+<p>O motivo do nome desse processo vem do fato de que</p>
 \[
-\mathrm{d}Z_t = (f(t, Z_t + O_t) + O_t)\mathrm{d}t,
+\lim_{t \rightarrow 1} B_t = 0,
 \]
-<p>ou seja,</p>
+<p>quase certamente. Ou seja, o processo \(\{B_t\}_{0 \leq t < 1}\) faz uma &quot;ponte&quot;, saindo da origem e voltando à origem, com caminhos contínuos quase certamente. Para mostrar esse resultado, observe, primeiro, que</p>
 \[
-\frac{\mathrm{d}Z_t}{\mathrm{d}t} = g(t, Z_t, O_t),
+\mathbb{E}[B_t] = (1-t)\mathbb{E}\left[\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s\right] = 0.
 \]
-<p>com</p>
+<p>Temos, também, pela isometria de Itô, que</p>
 \[
-g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
+\begin{align*}
+\mathrm{Var}(B_t) & = \mathbb{E}[B_t^2] \\
+& = (1-t)^2\mathbb{E}\left[\left(\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s\right)^2\right] \\
+& = (1 - t)^2\int_0^t \frac{1}{(1-s)^2}\;\mathrm{d}s \\
+& = (1 - t)^2 \left(-\frac{1}{(1 - t)} + 1 \right) \\
+& = (1 - t)^2 - (1 - t) \\
+& = t(t - 1).
+\end{align*}
 \]
-<p>O caso multiplicativo em que o ruído é linear, i.e. \(\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t\), também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.</p>
+<p>Em particular,</p>
+\[
+\lim_{t \rightarrow 0} \mathbb{E}\left[B_t^2\right] = 0, \qquad \lim_{t \rightarrow 1} \mathbb{E}\left[B_t^2\right] = 0.
+\]
+<p>Portanto,</p>
+\[
+\lim_{t \rightarrow 0} B_t = 0, \qquad \lim_{t \rightarrow 1} B_t = 0,
+\]
+<p>em probabilidade. Como os caminhos amostrais são contínuos, obtemos a convergência quase certamente.</p>
+<p>Observe, ainda, que a variância é simétrica em relação ao instante médio \(t = 1/2\) e alcança o seu máximo exatamente nesse ponto.</p>
+<h2 id="outras_representações"><a href="#outras_representações" class="header-anchor">Outras representações</a></h2>
+<p>Uma ponte browniana também tem outras representações, como </p>
+\[
+B_t = W_t - t W_1 =  (1-t)W_{t/(1-t)}.
+\]
+<p>Por sua vez, um processo de Wiener também pode ser escrito em termos de pontes brownianas, como em </p>
+\[
+W_t = B_t + t N, \quad 0\leq t < 1,
+\]
+<p>onde \(N\) é uma variável aleatória normal e independente de \(\{B_t\}_{t \geq 0}\), e</p>
+\[
+W_t = (1 + t)W_{t/(1 + t)}, \quad t \geq 0.
+\]
+<p>Mas deixamos isso a cargo do leitor mais interessado.</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Uma ponte browniana pode ser definida, mais geralmente, em um intervalo \([0, T)\), como solução da equação</p>
+</li>
+</ol>
+\[
+\mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
+\]
+<p>com condição inicial \(B_0 = 0\). Ache uma fórmula explíta para \(B_t\) como uma integral de Itô e encontro a variância \(\mathrm{V}(B_t)\), ao longo de \(0 \leq t < T\).</p>
+
+<img src="/notas_sde/assets/pages/c07/brownian_bridge/code/output/brownian_bridge.svg" alt="">
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/ornstein_uhlenbeck"><kbd>→</kbd> 7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a>
 </span>
     </p>
 </div>
@@ -329,7 +380,7 @@ g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
         </div>
     
 
-    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -341,6 +392,9 @@ g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
         <script>renderMathInElement(document.body)</script>
     
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Relações entre equações estocásticas e equações aleatórias</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.12. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/filtracao">3.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/riemann_wiener">5.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.10. Relações entre equações estocásticas e equações aleatórias</a></h1>
+<p>Em muitas situações, é possível transformar uma equação estocástica em uma aleatória, e vice-versa.</p>
+<h2 id="de_equações_aleatórias_para_estocásticas"><a href="#de_equações_aleatórias_para_estocásticas" class="header-anchor">De equações aleatórias para estocásticas</a></h2>
+<p>Considere uma equação diferencial aleatória da forma</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t),
+\]
+<p>e suponha que o processo \(\{\Lambda_t\}_t\) seja solução de uma equação diferencial estocástica</p>
+\[
+\mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
+\]
+<p>para um dado processo de Wiener \(\{W_t\}_t\) &#40;ou algum outro Martingal&#41;.</p>
+<p>Formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,</p>
+\[
+\mathrm{d}\left(\begin{matrix} X_t \\ \Lambda_t \end{matrix}\right) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t) \end{matrix}\right) + \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t) \end{matrix}\right)\mathrm{d}W_t.
+\]
+<p>Este é um sistema da forma</p>
+\[
+\mathrm{d}U_t = F(t, U_t) + \Sigma(t, U_t)\mathrm{d}W_t,
+\]
+<p>onde </p>
+\[
+U_t = \left(\begin{matrix} X_t \\ \Lambda_t\end{matrix}\right), \quad F(t, U_t) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t)\end{matrix}\right), \quad \Sigma(t, U_t) = \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t)\end{matrix}\right).
+\]
+<p>Observe que o processo \(Y_t\) entra, na equação aleatória, como um termo externo, enquanto que, na equação estocástica, ela é uma variável dependente; uma &quot;incógnita&quot; da equação.</p>
+<h2 id="de_estocásticas_com_ruído_aditivo_para_aleatórias"><a href="#de_estocásticas_com_ruído_aditivo_para_aleatórias" class="header-anchor">De estocásticas com ruído aditivo para aleatórias</a></h2>
+<p>Considere uma equação diferencial estocástica com <strong>ruído aditivo</strong>, na forma</p>
+\[
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
+\]
+<p>Observe que, aqui, estamos assumindo que o termo de ruído \(\sigma(t)\) é independente do processo \(X_t\), daí o termo &quot;aditivo&quot;. Caso contrário, sendo \(\sigma = \sigma(t, X_t)\), o termo de rúido é denominado <strong>multiplicativo.</strong></p>
+<p>No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o <strong>processo de Ornstein-Uhlenbeck</strong> \(\{O_t\}_t\), que satisfaz à equação diferencial estocástica</p>
+\[
+\mathrm{d}O_t = - O_t \mathrm{d}t + \sigma(t) \mathrm{d}W_t.
+\]
+<p>Considerando um &quot;mudança de variáveis&quot; para o processo \(Z_t = X_t - O_t\), temos, formalmente,</p>
+\[
+\mathrm{d}Z_t = \mathrm{d}X_t - \mathrm{d}O_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t + O_t \mathrm{d}t - \sigma(t) \mathrm{d}W_t = (f(t, X_t) + O_t)\mathrm{d}t,
+\]
+<p>o que nos leva, finalmente, à equação diferencial aleatória</p>
+\[
+\mathrm{d}Z_t = (f(t, Z_t + O_t) + O_t)\mathrm{d}t,
+\]
+<p>ou seja,</p>
+\[
+\frac{\mathrm{d}Z_t}{\mathrm{d}t} = g(t, Z_t, O_t),
+\]
+<p>com</p>
+\[
+g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
+\]
+<p>O caso multiplicativo em que o ruído é linear, i.e. \(\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t\), também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

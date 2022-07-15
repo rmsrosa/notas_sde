@@ -32,9 +32,9 @@ version = "1.16.1+1"
 
 [[deps.ChainRulesCore]]
 deps = ["Compat", "LinearAlgebra", "SparseArrays"]
-git-tree-sha1 = "2dd813e5f2f7eec2d1268c57cf2373d3ee91fcea"
+git-tree-sha1 = "ff38036fb7edc903de4e79f32067d8497508616b"
 uuid = "d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4"
-version = "1.15.1"
+version = "1.15.2"
 
 [[deps.ChangesOfVariables]]
 deps = ["ChainRulesCore", "LinearAlgebra", "Test"]
@@ -83,9 +83,9 @@ uuid = "8f4d0f93-b110-5947-807f-2305c1781a2d"
 version = "1.7.0"
 
 [[deps.Contour]]
-git-tree-sha1 = "a599cfb8b1909b0f97c5e1b923ab92e1c0406076"
+git-tree-sha1 = "d05d9e7b7aedff4e5b51a029dced05cfb6125781"
 uuid = "d38c429a-6771-53c6-b99e-75d170b6e991"
-version = "0.6.1"
+version = "0.6.2"
 
 [[deps.Crayons]]
 git-tree-sha1 = "249fe38abf76d48563e2f4556bebd215aa317e15"
@@ -638,9 +638,9 @@ uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 
 [[deps.Scratch]]
 deps = ["Dates"]
-git-tree-sha1 = "0b4b7f1393cff97c33891da2a0bf69c6ed241fda"
+git-tree-sha1 = "f94f779c94e58bf9ea243e77a37e16d9de9126bd"
 uuid = "6c6a2e73-6563-6170-7368-637461726353"
-version = "1.1.0"
+version = "1.1.1"
 
 [[deps.Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"

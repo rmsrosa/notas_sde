@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Equações lineares</title>  
+   <title>Resolução de equações lineares</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -63,9 +63,6 @@
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
-    </div>
-    <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -203,13 +200,19 @@
     <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -243,7 +246,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian"><kbd>→</kbd> 7.7. Movimento Browniano geométrico</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian"><kbd>→</kbd> 7.7. Movimento Browniano geométrico e o preço de ações</a>
 </span>
     </p>
 </div>
@@ -254,16 +257,24 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">7.6. Equações lineares</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.6. Resolução de equações lineares</a></h1>
 <p>Sabemos que a equação diferencial ordinária linear homogênea</p>
 \[
-\frac{\mathrm{d}x}{\mathrm{d}t} = f(t)x
+\frac{\mathrm{d}x}{\mathrm{d}t} = b(t)x
 \]
 <p>tem as suas soluções da forma</p>
 \[
-x(t) = x(0)e^{\int_0^t f(s)\;\mathrm{d}s}.
+x(t) = x(0)e^{\int_0^t b(s)\;\mathrm{d}s}.
 \]
-<p>Vejamos, agora, versões estocásticas lineares, semelhantes a essa equação.</p>
+<p>Mais geralmente, a equação linear não homogênea</p>
+\[
+\frac{\mathrm{d}x}{\mathrm{d}t} = a(t) + b(t)x
+\]
+<p>tem as suas soluções da forma</p>
+\[
+x(t) = x(0)e^{\int_0^t b(s)\;\mathrm{d}s} + \int_0^t e^{\int_s^t b(\tau) \;\mathrm{d}\tau}a(s)\;\mathrm{d}s.
+\]
+<p>Vejamos, agora, como resolver versões estocásticas dessa equação linear.</p>
 <p>De maneira geral, vamos ver modelos da forma</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
@@ -276,6 +287,7 @@ f(t, x) = f_0(t) + f_1(t)x, \quad g(t, x) = g_0(t) + g_1(t)x.
 \[
 \left.X_t\right|_{t = 0} = X_0.
 \]
+<p>Nas seções seguintes, veremos alguns modelos clássicos que tem essa forma linear. Aqui, nos limitaremos a encontrar as soluções dessas equações. </p>
 <h2 id="equação_estocástica_linear_sem_drift_e_com_ruído_aditivo"><a href="#equação_estocástica_linear_sem_drift_e_com_ruído_aditivo" class="header-anchor">Equação estocástica linear sem drift e com ruído aditivo</a></h2>
 <p>Comecemos com a equação sem drift e com ruído &quot;aditivo&quot;,</p>
 \[
@@ -376,89 +388,12 @@ Y_t =  \int_0^t \left(f_1(s) -\frac{1}{2}g_1(s)^2\right)\;\mathrm{d}s + \int_0^t
 \mathrm{d}Y_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
 \]
 <p>Como antes, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes para o leitor.</p>
-<h2 id="movimento_browniano_geométrico_e_a_preço_de_ações_stock_prices"><a href="#movimento_browniano_geométrico_e_a_preço_de_ações_stock_prices" class="header-anchor">Movimento Browniano geométrico e a preço de ações &#40;stock prices&#41;</a></h2>
-<p>Um modelo clássico para o preço \(P_t\) de uma ação é que a mudança relativa &#40;ou específica&#41; de preço \(\mathrm{d}P_t / P_t\) satisfaça</p>
-\[
-\frac{\mathrm{d}P_t}{P_t} = \mu\;\mathrm{d}t + \sigma\;\mathrm{d}W_t,
-\]
-<p>onde \(\mu > 0\) é o <em>drift</em> &#40;tendência?&#41; e \(\sigma\), a <em>volatilidade</em> da ação. Desse modo,</p>
-\[
-\mathrm{d}P_t = \mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t,
-\]
-<p>com condição inicial sendo o preço atual da ação:</p>
-\[
-\left.P_t\right|_{t = 0} = p_0.
-\]
-<p>Nesse caso, a solução é</p>
-\[
-P_t = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
-\]
-<p>Isso segue da fórmula geral acima, com \(f_0 = 0\), \(f_1 = \mu\), \(g_0 = 0\) e \(g_1 = \sigma\). Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos</p>
-\[
-\mathrm{d}P_t - \mu P_t \;\mathrm{d}t = \sigma P_t\;\mathrm{d}W_t.
-\]
-<p>Analogamente ao caso determinístico &#40;pense em \(p' - \mu p = g(t)\)&#41;, podemos considerar o fator de integração \(e^{-\mu t}\). Observe que, derivando o produto \(Y_t = P_t e^{-\mu t}\) pela fórmula de Itô, temos</p>
-\[
-\begin{align*}
-\mathrm{d}Y_t & = \mathrm{d}(P_t e^{-\mu t}) \\
-& = -\mu P_t e^{-\mu t}\;\mathrm{d}t + e^{-\mu t}\;\mathrm{d}P_t \\
-& = -\mu P_t e^{-\mu t}\;\mathrm{d}t + e^{-\mu t}(\mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t) \\
-& = \sigma e^{-\mu t} P_t \;\mathrm{d}W_t \\
-& = \sigma Y_t \;\mathrm{d}W_t.
-\end{align*}
-\]
-<p>Vimos, acima, que a solução da equação</p>
-\[
-\mathrm{d}Y_t = \sigma Y_t \;\mathrm{d}W_t
-\]
-<p>é</p>
-\[
-Y_t = p_0 e^{-\frac{1}{2}\sigma^2 t + \sigma W_t}.
-\]
-<p>Assim,</p>
-\[
-P_t = e^{\mu t}Y_t = p_0 e^{\mu t} e^{-\frac{1}{2}\sigma^2 t + \sigma W_t} = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
-\]
-<p>Vamos, agora, calcular o valor esperado de \(P_t\). Para isso, escrevemos a equação integral associada à equação diferencial estocástica:</p>
-\[
-P_t = p_0 + \mu \int_0^t P_s \;\mathrm{d}s + \sigma \int_0^t P_s\;\mathrm{d}W_s.
-\]
-<p>Tomando o valor esperado, obtemos</p>
-\[
-\mathbb{E}\left[P_t\right] = p_0 + \int_0^t \mathbb{E}[P_s]\;\mathrm{d}s.
-\]
-<p>A solução dessa equação integral é a função exponencial:</p>
-\[
-\mathbb{E}\left[P_t\right] = p_0e^{\mu t},
-\]
-<p>que é, também, a solução da equação diferencial ordinária obtida eliminando o ruído da equação estocástica &#40;\(\sigma = 0\)&#41;.</p>
-<h2 id="equação_de_langevin"><a href="#equação_de_langevin" class="header-anchor">Equação de Langevin</a></h2>
-<p>O modelo clássico &#40;processo de Wiener&#41; para o movimento Browniano de uma micro-partícula em um determinado meio é fundamentado na ação causada pelo bombardeamento aleatória das partículas do meio, mas não leva em consideração o momento da partícula. Uma alternativa a esse modelo é a <strong>equação de Langevin</strong></p>
-\[
-\mathbb{d}Y_t = - \nu Y_t\;\mathrm{d}t + \sigma \mathrm{d}W_t,
-\]
-<p>onde \(\{Y_t\}_{t \geq 0}\) é interpretado como sendo a velocidade da partícula e a equação é uma versão estocástica das equações de movimento de Newton. O primeiro termo do lado direito representa um termo viscoso, com uma resultante de forças proporcional à velocidade da partícula. O segundo termo do lado direito representa a ação aleatório causada pelo bombardeamento aleatório das partículas do meio. O termo viscoso representa um bombardeamento &quot;médio&quot; ordenado, condizente com a ideia de que a maior parte do bombardeamento ocorre à frente do objeto, conjugada com uma atração molecular das partículas que ficam para trás. Em cima desse bombardeamento médio, gerando a viscosidade, temos as flutuações desordenadas dos bombardeamentos.</p>
-<p>A solução dessa equação é</p>
-\[
-Y_t = e^{-\nu t}Y_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t.
-\]
-<p>De fato, escrevendo</p>
-\[
-Y_t = e^{-\nu t}Y_0 + \sigma e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t,
-\]
-<p>vemos que</p>
-\[
-\begin{align*}
-\mathrm{d}Y_t & = -\nu e^{-\nu t}Y_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\;\mathrm{d}t \int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
-& = -\nu Y_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
-\end{align*}
-\]
 <h2 id="exponencial_estocástica"><a href="#exponencial_estocástica" class="header-anchor">Exponencial estocástica</a></h2>
-<p>Em particular, o processo</p>
+<p>Um caso particular do anterior é o processo</p>
 \[
-X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t}
+X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t},
 \]
-<p>faz um papel semelhante ao da função \(x(t) = x_0e^{\lambda t}\), que é solução de</p>
+<p>que faz um papel semelhante ao da função \(x(t) = x_0e^{\lambda t}\), que é solução de</p>
 \[
 \frac{\mathrm{d}x}{\mathrm{d}t} = \lambda x,
 \]
@@ -470,90 +405,6 @@ X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t}
 \[
 \mathrm{d}X_t = \lambda X_t \;\mathrm{d}W_t.
 \]
-<h2 id="ponte_browniana_brownian_bridge"><a href="#ponte_browniana_brownian_bridge" class="header-anchor">Ponte Browniana &#40;Brownian bridge&#41;</a></h2>
-<p>Uma outra equação clássica é</p>
-\[
-\mathrm{d}B_t = - \frac{B_t}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
-\]
-<p>com condição inicial</p>
-\[
-B_0 = 0.
-\]
-<p>A sua solução pode ser obtida, também, via fator de integração e tem a forma</p>
-\[
-B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 \leq t < 1.
-\]
-<p>Isso pode ser verificado diretamente, já que a integral de Itô acima é explícita. De fato,</p>
-\[
-\mathrm{d}B_t = - \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s + (1 - t)\frac{\mathrm{d}W_t}{1 - t} = - \frac{1}{1-t}B_t + \;\mathrm{d}W_t.
-\]
-<p>Para deduzir a solução via fator de integração, dividimos a equação por \(1-t\):</p>
-\[
-\frac{1}{1-t}\mathrm{d}B_t + \frac{B_t}{(1-t)^2}\;\mathrm{d}t = \frac{1}{1-t}\;\mathrm{d}W_t.
-\]
-<p>O lado esquerdo é a derivada do termo \(Y_t = B_t/(1-t)\), de modo que</p>
-\[
-\mathrm{d}Y_t = \frac{1}{1-t}\;\mathrm{d}W_t.
-\]
-<p>A solução é a primitiva do lado direito:</p>
-\[
-Y_t = \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
-\]
-<p>Voltando para \(B_t\), temos</p>
-\[
-B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
-\]
-<p>O motivo do nome desse processo vem do fato de que</p>
-\[
-\lim_{t \rightarrow 1} B_t = 0,
-\]
-<p>quase certamente. Ou seja, o processo \(\{B_t\}_{0 \leq t < 1}\) faz uma &quot;ponte&quot;, saindo da origem e voltando à origem, com caminhos contínuos quase certamente. Para mostrar esse resultado, observe, primeiro, que</p>
-\[
-\mathbb{E}[B_t] = (1-t)\mathbb{E}\left[\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s\right] = 0.
-\]
-<p>Temos, também, pela isometria de Itô, que</p>
-\[
-\begin{align*}
-\mathrm{Var}(B_t) & = \mathbb{E}[B_t^2] \\
-& = (1-t)^2\mathbb{E}\left[\left(\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s\right)^2\right] \\
-& = (1 - t)^2\int_0^t \frac{1}{(1-s)^2}\;\mathrm{d}s \\
-& = (1 - t)^2 \left(-\frac{1}{(1 - t)} + 1 \right) \\
-& = (1 - t)^2 - (1 - t) \\
-& = t(t - 1).
-\end{align*}
-\]
-<p>Em particular,</p>
-\[
-\lim_{t \rightarrow 0} \mathbb{E}\left[B_t^2\right] = 0, \qquad \lim_{t \rightarrow 1} \mathbb{E}\left[B_t^2\right] = 0.
-\]
-<p>Portanto,</p>
-\[
-\lim_{t \rightarrow 0} B_t = 0, \qquad \lim_{t \rightarrow 1} B_t = 0,
-\]
-<p>em probabilidade. Como os caminhos amostrais são contínuos, obtemos a convergência quase certamente.</p>
-<p>Observe, ainda, que a variância é simétrica em relação ao instante médio \(t = 1/2\) e alcança o seu máximo exatamente nesse ponto.</p>
-<p>Uma ponte browniana também tem outras representações, como </p>
-\[
-B_t = W_t - t W_1 =  (1-t)W_{t/(1-t)}.
-\]
-<p>Por sua vez, um processo de Wiener também pode ser escrito em termos de pontes brownianas, como em </p>
-\[
-W_t = B_t + t N, \quad 0\leq t < 1,
-\]
-<p>onde \(N\) é uma variável aleatória normal e independente de \(\{B_t\}_{t \geq 0}\), e</p>
-\[
-W_t = (1 + t)W_{t/(1 + t)}, \quad t \geq 0.
-\]
-<p>Mas deixamos isso a cargo do leitor mais interessado.</p>
-<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
-<ol>
-<li><p>Uma ponte browniana pode ser definida, mais geralmente, em um intervalo \([0, T)\), como solução da equação</p>
-</li>
-</ol>
-\[
-\mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
-\]
-<p>com condição inicial \(B_0 = 0\). Ache uma fórmula explíta para \(B_t\) como uma integral de Itô e encontro a variância \(\mathrm{V}(B_t)\), ao longo de \(0 \leq t < T\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -561,7 +412,7 @@ W_t = (1 + t)W_{t/(1 + t)}, \quad t \geq 0.
 <a class="menu-level-1" href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian"><kbd>→</kbd> 7.7. Movimento Browniano geométrico</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian"><kbd>→</kbd> 7.7. Movimento Browniano geométrico e o preço de ações</a>
 </span>
     </p>
 </div>
@@ -577,7 +428,7 @@ W_t = (1 + t)W_{t/(1 + t)}, \quad t \geq 0.
         </div>
     
 
-    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

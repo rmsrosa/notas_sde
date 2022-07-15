@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Processo de Ornstein-Uhlenbeck</title>  
+   <title>O processo de Ornstein-Uhlenbeck e a equação de Langevin</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -13,6 +13,8 @@
 
   
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -61,9 +63,6 @@
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
-    </div>
-    <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -201,13 +200,19 @@
     <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -238,10 +243,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/relacoes_rode_sde"><kbd>→</kbd> 7.10. Relações entre equações estocásticas e equações aleatórias</a>
 </span>
     </p>
 </div>
@@ -252,15 +257,66 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">7.8. Processo de Ornstein-Uhlenbeck</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></h1>
+<p>O modelo clássico &#40;processo de Wiener&#41; para o movimento Browniano de uma micro-partícula em um determinado meio é fundamentado na ação causada pelo bombardeamento aleatória das partículas do meio, mas não leva em consideração o momento da partícula. Uma alternativa a esse modelo é a <strong>equação de Langevin</strong></p>
+\[
+\frac{\mathrm{d}v_t}{\mathrm{d}t} = - \nu v_t + \sigma \xi_t
+\]
+<p>onde \(\nu > 0\), \(\sigma > 0\), \(v_t\) representa a velocidade da partícula no instante \(t\) e \(\xi_t\) é um <em>ruído branco</em>, modelado por \(\mathrm{d}W_t/\mathrm{d}t\).</p>
+<p>Essa é uma versão estocástica das equações de movimento de Newton. O primeiro termo do lado direito representa um termo viscoso, com uma resultante de forças proporcional à velocidade da partícula. O segundo termo do lado direito representa a ação causada pelo bombardeamento aleatório das partículas do meio. O termo viscoso representa um bombardeamento &quot;médio&quot; ordenado, condizente com a ideia de que a maior parte do bombardeamento ocorre à frente do objeto, conjugada com uma atração molecular das partículas que ficam para trás, puxando a partícula no sentido contrário ao do seu movimento. Em cima desse bombardeamento médio, gerando a viscosidade, temos as flutuações desordenadas dos bombardeamentos, representado pelo ruído branco.</p>
+<p>Em termos da <em>posição</em> \(x_t\) da partícula em cada instante \(t\), o modelo de Langevin toma a forma</p>
+\[
+\ddot x_t = - \nu \dot x_t + \sigma \eta_t.
+\]
+<p>No entanto, a derivada de um processo de Wiener não está bem definida no sentido clássico, de modo que a equação de Langevin tem apenas um sentido heurístico. Um modelo rigoroso utilizado com esse mesmo sentido físico é o <strong>processo de Ornstein-Uhlenbeck</strong> \(\{O_t\}_{t \geq 0}\), dado como solução da equação diferencial estocástica</p>
+\[
+\mathbb{d}O_t = - \nu O_t\;\mathrm{d}t + \sigma \mathrm{d}W_t,
+\]
+<p>onde \(O_t\) é interpretado como sendo uma variável aleatória representando a velocidade da partícula no instante \(t\).</p>
+<h2 id="resolução"><a href="#resolução" class="header-anchor">Resolução</a></h2>
+<p>A solução dessa equação é</p>
+\[
+O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t.
+\]
+<p>De fato, escrevendo</p>
+\[
+O_t = e^{-\nu t}O_0 + \sigma e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t,
+\]
+<p>vemos que</p>
+\[
+\begin{align*}
+\mathrm{d}O_t & = -\nu e^{-\nu t}O_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\;\mathrm{d}t \int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
+& = -\nu O_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
+\end{align*}
+\]
+<h2 id="posição_e_velocidade_na_forma_de_sistema"><a href="#posição_e_velocidade_na_forma_de_sistema" class="header-anchor">Posição e velocidade na forma de sistema</a></h2>
+<p>Interpretando um processo de Ornstein-Uhlenbeck como representando a evolução da velocidade de uma partícula, podemos obter a posição integrando esse processo. Nesse caso, é comum denotarmos o processo de Ornstein-Uhlenbeck, modelando a equação de Langevin, como \(\{Y_t\}_{t \geq 0}\), de modo que a posição fica sendo dada por</p>
+\[
+X_t = X_0 + \int_0^t Y_t \;\mathrm{d}t.
+\]
+<p>Podemos, ainda escrever ambos os processos como solução do sistema de equações diferenciais estocásticas</p>
+\[
+\begin{cases}
+\mathrm{d}X_t = Y_t, \\
+\mathrm{d}Y_t = - \nu Y_t \;\mathrm{d}t + \sigma \;\mathrm{d}W_t,
+\end{cases}
+\]
+<p>com condições iniciais</p>
+\[
+\left. X_t \right|_{t = 0} = X_0, \qquad \left. O_t \right|_{t = 0} = O_0.
+\]
+<p>Essa é a versão rigorosa da equação de segunda ordem</p>
+\[
+\ddot x_t = - \nu \dot x_t + \sigma \eta_t.
+\]
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/relacoes_rode_sde"><kbd>→</kbd> 7.10. Relações entre equações estocásticas e equações aleatórias</a>
 </span>
     </p>
 </div>
@@ -276,12 +332,16 @@
         </div>
     
 
-    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     

@@ -5,14 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Movimento Browniano geométrico</title>  
+   <title>Movimento Browniano geométrico e o preço de ações</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
 
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
   
 </head>
 
@@ -61,9 +74,6 @@
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
-    </div>
-    <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/relacoes_rode_sde">1.7. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -201,13 +211,19 @@
     <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares</a></li>
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.8. Processo de Ornstein-Uhlenbeck</a></li>
+    <li><a href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -238,10 +254,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c07/ornstein_uhlenbeck"><kbd>→</kbd> 7.8. Processo de Ornstein-Uhlenbeck</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/brownian_bridge"><kbd>→</kbd> 7.8. Ponte Browniana</a>
 </span>
     </p>
 </div>
@@ -252,15 +268,74 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">7.7. Movimento Browniano geométrico</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.7. Movimento Browniano geométrico e o preço de ações</a></h1>
+<p>Um modelo clássico para o preço \(P_t\) de uma ação é que a mudança relativa &#40;ou específica&#41; de preço \(\mathrm{d}P_t / P_t\) satisfaça</p>
+\[
+\frac{\mathrm{d}P_t}{P_t} = \mu\;\mathrm{d}t + \sigma\;\mathrm{d}W_t,
+\]
+<p>onde \(\mu > 0\) é o <em>drift</em> &#40;tendência?&#41; e \(\sigma\), a <em>volatilidade</em> da ação. Desse modo,</p>
+\[
+\mathrm{d}P_t = \mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t,
+\]
+<p>com condição inicial sendo o preço atual da ação:</p>
+\[
+\left.P_t\right|_{t = 0} = p_0.
+\]
+<p>Essa equação é linear e a sua solução é</p>
+\[
+P_t = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
+\]
+<h2 id="resolução"><a href="#resolução" class="header-anchor">Resolução</a></h2>
+<p>Isso segue da fórmula geral, obtida na seção anterior, com \(f_0 = 0\), \(f_1 = \mu\), \(g_0 = 0\) e \(g_1 = \sigma\). Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos</p>
+\[
+\mathrm{d}P_t - \mu P_t \;\mathrm{d}t = \sigma P_t\;\mathrm{d}W_t.
+\]
+<p>Analogamente ao caso determinístico &#40;pense em \(p' - \mu p = g(t)\)&#41;, podemos considerar o fator de integração \(e^{-\mu t}\). Observe que, derivando o produto \(Y_t = P_t e^{-\mu t}\) pela fórmula de Itô, temos</p>
+\[
+\begin{align*}
+\mathrm{d}Y_t & = \mathrm{d}(P_t e^{-\mu t}) \\
+& = -\mu P_t e^{-\mu t}\;\mathrm{d}t + e^{-\mu t}\;\mathrm{d}P_t \\
+& = -\mu P_t e^{-\mu t}\;\mathrm{d}t + e^{-\mu t}(\mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t) \\
+& = \sigma e^{-\mu t} P_t \;\mathrm{d}W_t \\
+& = \sigma Y_t \;\mathrm{d}W_t.
+\end{align*}
+\]
+<p>Vimos, anteriormente, que a solução da equação</p>
+\[
+\mathrm{d}Y_t = \sigma Y_t \;\mathrm{d}W_t
+\]
+<p>é</p>
+\[
+Y_t = p_0 e^{-\frac{1}{2}\sigma^2 t + \sigma W_t}.
+\]
+<p>Assim,</p>
+\[
+P_t = e^{\mu t}Y_t = p_0 e^{\mu t} e^{-\frac{1}{2}\sigma^2 t + \sigma W_t} = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
+\]
+<h2 id="valor_esperado"><a href="#valor_esperado" class="header-anchor">Valor esperado</a></h2>
+<p>Vamos, agora, calcular o valor esperado de \(P_t\). Para isso, escrevemos a equação integral associada à equação diferencial estocástica:</p>
+\[
+P_t = p_0 + \mu \int_0^t P_s \;\mathrm{d}s + \sigma \int_0^t P_s\;\mathrm{d}W_s.
+\]
+<p>Tomando o valor esperado, obtemos</p>
+\[
+\mathbb{E}\left[P_t\right] = p_0 + \int_0^t \mathbb{E}[P_s]\;\mathrm{d}s.
+\]
+<p>A solução dessa equação integral é a função exponencial:</p>
+\[
+\mathbb{E}\left[P_t\right] = p_0e^{\mu t},
+\]
+<p>que é, também, a solução da equação diferencial ordinária obtida eliminando o ruído da equação estocástica &#40;\(\sigma = 0\)&#41;.</p>
+
+<img src="/notas_sde/assets/pages/c07/geometric_brownian/code/output/geometric_brownian.svg" alt="">
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c07/linear_sde">7.6. Equações lineares <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c07/ornstein_uhlenbeck"><kbd>→</kbd> 7.8. Processo de Ornstein-Uhlenbeck</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c07/brownian_bridge"><kbd>→</kbd> 7.8. Ponte Browniana</a>
 </span>
     </p>
 </div>
@@ -276,14 +351,21 @@
         </div>
     
 
-    Last modified: July 14, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 15, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
     
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>
