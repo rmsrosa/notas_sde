@@ -14,9 +14,9 @@ e suponha que o processo $\{\Lambda_t\}_t$ seja solução de uma equação difer
 $$
 \mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
 $$
-para algum outro processo $\{W_t\}_t$.
+para um dado processo de Wiener $\{W_t\}_t$ (ou algum outro Martingal).
 
-Assim, formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,
+Formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,
 $$
 \mathrm{d}\left(\begin{matrix} X_t \\ \Lambda_t \end{matrix}\right) = \left(\begin{matrix} f(t, X_t, \Lambda_t) \\ a(t, \Lambda_t) \end{matrix}\right) + \left(\begin{matrix} 0 \\ \sigma(t, \Lambda_t) \end{matrix}\right)\mathrm{d}W_t.
 $$

@@ -41,7 +41,6 @@ menu = [
         "src/literate/c01/simulacoes_numericas.jl"
         "pages/c01/movimento_Browniano"
         "pages/c01/passeioaleatorio_movBrowniano"
-        "pages/c01/relacoes_rode_sde"
     ]
     "Variáveis Aleatórias" => [
         "pages/c02/definicao_va"
@@ -95,7 +94,9 @@ menu = [
         "pages/c07/continuidade_caminhos"
         "pages/c07/linear_sde"
         "pages/c07/geometric_brownian"
+        "pages/c07/brownian_bridge"
         "pages/c07/ornstein_uhlenbeck"
+        "pages/c07/relacoes_rode_sde"
     ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
