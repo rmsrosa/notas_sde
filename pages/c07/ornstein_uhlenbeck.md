@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-O modelo clássico (processo de Wiener) para o movimento Browniano de uma micro-partícula em um determinado meio é fundamentado na ação causada pelo bombardeamento aleatória das partículas do meio, mas não leva em consideração o momento da partícula. Uma alternativa a esse modelo é a **equação de Langevin**
+O modelo clássico (processo de Wiener) para o movimento Browniano de uma micro-partícula em um determinado meio é fundamentado na ação causada pelo bombardeamento aleatório das partículas do meio, mas não leva em consideração o momento da partícula. De fato, cada colisão acarreta diretamente em uma mudança de posição da micro-partícula, influenciando a taxa de variação de posição (i.e. velocidade), ao invés de acarretar em uma mudança na taxa de variação de momento (ou de aceleração). Uma alternativa a esse modelo é a **equação de Langevin**
 $$
 \frac{\mathrm{d}v_t}{\mathrm{d}t} = - \nu v_t + \sigma \xi_t
 $$
