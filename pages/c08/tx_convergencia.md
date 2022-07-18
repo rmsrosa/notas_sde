@@ -27,6 +27,23 @@ $$
 e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 $$
 
+## Erro ao longo dos caminhos amostrais
+
+A convergência forte é um resultado amostral mas tem consequências, também, nos caminhos individuais, ou em uma boa parcela deles. De fato, considerando um método numérico de ordem forte $p$, temos, pela desigualdade de Markov, que
+$$
+\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > r) \leq \frac{\mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|]}{r} \leq C\frac{\Delta t^p}{r}.
+$$
+Escolhendo $r = \Delta t^{p - \varepsilon}$, com $0 < \varepsilon < p$, obtemos
+$$
+\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p - \varepsilon}) \leq C\frac{\Delta t^p}{\Delta t^{p - \varepsilon}} = C \Delta t^\varepsilon.
+$$
+Em particular, escolhendo $r = p/2$, temos
+$$
+\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p/2}) \leq C \Delta t^{p/2}.
+$$
+
+Ou seja, tomando-se $\Delta t$ pequeno, temos, com probabilidade perto de um, que o erro ao longo de um caminho amostral é pequeno.
+
 ## Convergência fraca
 
 Em muitos casos, temos um interesse particular no valor esperado de um processo. É claro que se um método numérico converge fortemente, então ele o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência do valor esperado, que é esta chamada de convergência fraca.
