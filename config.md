@@ -98,6 +98,11 @@ menu = [
         "pages/c07/ornstein_uhlenbeck"
         "pages/c07/relacoes_rode_sde"
     ]
+    "Métodos numéricos" => [
+        "pages/c08/tx_convergencia"
+        "pages/c08/convergencia_euler_maruyama"
+        "pages/c08/milman"
+    ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
         "pages/appendix/teo_extension_kolmogorov"
