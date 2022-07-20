@@ -16,7 +16,7 @@ $$
 $$
 Isso sob a hipótese de $f$ ser localmente Lipschitz contínua.
 
-Por outro lado, no caso estocástico,
+Por outro lado, no caso estocástico, com um ruído multiplicativo $g = g(X_t),$
 $$
 \mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
 $$
@@ -24,9 +24,9 @@ com uma condição inicial
 $$
 \left.X_t\right|_{t = 0} = X_0,
 $$
-a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua.
+a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for constante, $g(X_t) = \sigma$, então ainda temos a convergência forte de ordem $1$.
 
-A diferença vem, essencialmente, do fato de que no caso estocástico, além dos termos de erro da ordem de $\Delta t$, há os termos da ordem de $\Delta W$. Nesse caso, em um sentido apropriado, temos $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
+A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há os termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
 
 Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos.
 
@@ -91,7 +91,7 @@ mostrando que é o método de Euler é de primeira ordem.
 
 ## Convergência no caso aleatório
 
-## Convergência no caso estocástico
+## Convergência no caso estocástico multiplicativo
 
 Considere, agora, a equação estocástica
 $$
@@ -110,7 +110,7 @@ Já a aproximação pelo método de Euler-Maruyama é dada por
 $$
 X_j^n = X_{j-1}^n + f(X_{j-1}^n) \Delta t + g(X_{j-1}^n) \Delta W_j,
 $$
-onde $X_0^n = X_0$ e $\Delta W_j$ (na prática, $\Delta W_j = Z_j \sqrt{\Delta t}$, onde $\{Z_j\}_{j = 1}^n$ são variáveis aleatórias i.i.d. com $Z_j \sim \mathcal{N}(0, 1)$).
+onde $X_0^n = X_0$ e $\Delta W_j$.
 
 Assumimos $f$ e $g$ globalmente Lipschitz contínuas, com constantes de Lipschitz $L_f$ e $L_g$, respectivamente.
 
@@ -129,13 +129,15 @@ $$
 \begin{align*}
 X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
 & \qquad + \int_{t_{j-1}}^{t_j} f(X_s) \;\mathrm{d}s - f(X_{j-1}^n) \Delta t \\
-& \qquad + \int_0^t g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) Z_j \sqrt{\Delta t} \\
+& \qquad + \int_0^t g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) \Delta W_j \\
 & = X_{t_{j-1}} - X_{j-1}^n \\
 & \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{j-1}^n))\;\mathrm{d}s \\
 & \qquad + \int_0^t (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s. \\
 \end{align*}
 $$
 
+## Convergência no caso estocástico com ruído constante
 
+Observe, no entanto, que quando $g(X_t) = \sigma$ é constante, os termos de ruído se cancelam, quando subtraímos $X_j^n$ de $X_{t_j}$. Sobram, então, apenas os termos que nos dão ordem de convergência forte $1$.
 
 ## Não-convergência no caso estocástico sem condição Lipschitz global
