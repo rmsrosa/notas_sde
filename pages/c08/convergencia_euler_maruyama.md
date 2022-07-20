@@ -24,9 +24,9 @@ com uma condição inicial
 $$
 \left.X_t\right|_{t = 0} = X_0,
 $$
-a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for constante, $g(X_t) = \sigma$, então ainda temos a convergência forte de ordem $1$.
+a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g(X_t) = \sigma$ (ou, mais geralmente, $g(t, X_t) = g(t)$), então ainda temos a convergência forte de ordem $1$.
 
-A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há os termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
+A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
 
 Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos.
 
@@ -129,15 +129,27 @@ $$
 \begin{align*}
 X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
 & \qquad + \int_{t_{j-1}}^{t_j} f(X_s) \;\mathrm{d}s - f(X_{j-1}^n) \Delta t \\
-& \qquad + \int_0^t g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) \Delta W_j \\
+& \qquad + \int_{t_{j-1}}^{t_j} g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) \Delta W_j \\
 & = X_{t_{j-1}} - X_{j-1}^n \\
 & \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{j-1}^n))\;\mathrm{d}s \\
-& \qquad + \int_0^t (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s. \\
+& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s. \\
 \end{align*}
 $$
 
 ## Convergência no caso estocástico com ruído constante
 
-Observe, no entanto, que quando $g(X_t) = \sigma$ é constante, os termos de ruído se cancelam, quando subtraímos $X_j^n$ de $X_{t_j}$. Sobram, então, apenas os termos que nos dão ordem de convergência forte $1$.
+Observe, no entanto, que quando $g(X_t) = \sigma$ é constante, os termos de ruído se cancelam, quando subtraímos $X_j^n$ de $X_{t_j}$. Sobram, então, apenas os termos que nos dão ordem $1$ de convergência forte.
+
+Mesmo no caso autônomo, assumindo $g(t, X_t) = g(t)$, também se obtém ordem $1$ de convergência forte. Nesse caso, o termo de ruído contribui com um erro da forma
+$$
+\int_{t_{j-1}}^{t_j} (g(s) - g(t_{j-1}))\;\mathrm{d}W_s = \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^{s} g'(\tau)\;\mathrm{d}\tau\;\mathrm{d}W_s.
+$$
+Nesse caso, usando a isometria de Itô,
+$$
+\mathbb{E}\left[ \left| \int_{t_{j-1}}^{t_j} (g(s) - g(t_{j-1}))\;\mathrm{d}W_s\right|^2\right] = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[ \left| \int_{t_{j-1}}^{s} g'(\tau)\;\mathrm{d}\tau \right|^2\right] \mathrm{d}s \leq \int_{t_{j-1}}^{t_j} (s - t_{j-1})\int_{t_{j-1}}^{s} |g'(\tau)|^2\;\mathrm{d}\tau \mathrm{d}s \leq M_g \Delta t^3,
+$$
+onde $M_g = \max |g'|^2 /3$.
+
+Ao somarmos em $j$, um $\Delta t$ é aproveitando, restando $\Delta t^2$. Ao usarmos a desigualdade de Lyapunov, isso nos dá um termos também da ordem $\Delta t$, garantindo a ordem $1$ de convergência forte.
 
 ## Não-convergência no caso estocástico sem condição Lipschitz global
