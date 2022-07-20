@@ -101,7 +101,7 @@ menu = [
     "Métodos numéricos" => [
         "pages/c08/tx_convergencia"
         "pages/c08/convergencia_euler_maruyama"
-        "pages/c08/milman"
+        "pages/c08/milstein"
     ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
