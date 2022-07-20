@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Convergências forte e fraca</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/gerando_num_aleatorios">2.12. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/definicao_pe">3.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/processos_discretos">3.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/processos_continuos">3.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/tipos_processos">3.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/filtracao">3.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/cadeias_markov">3.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_processo_wiener">4.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/existencia_processo_wiener">4.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simetrias_wiener">4.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/naodiferenciabilidade_wiener">4.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/variacao_ilimitada_wiener">4.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/simulacoes_wiener">4.6. Simulações de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_riemann">5.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_riemannstieltjes">5.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_dualidade">5.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/riemann_wiener">5.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_ito">5.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/integral_ito_propriedades">5.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/formula_ito">5.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/existence_solutions_rde">6.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/basic_examples_rde">6.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/logistic_rde">6.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/setting">7.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde_particulares">7.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_sde">7.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/unicidade_sol_sde">7.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/continuidade_caminhos">7.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/linear_sde">7.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/geometric_brownian">7.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/brownian_bridge">7.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/ornstein_uhlenbeck">7.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/tx_convergencia">8.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/convergencia_euler_maruyama">8.2. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/milstein">8.3. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c08/convergencia_euler_maruyama"><kbd>→</kbd> 8.2. Convergência do método de Euler-Maruyama</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">8.1. Convergências forte e fraca</a></h1>
+<blockquote>
+<p>&quot;Whereas weak convergence measures the &#39;error of the means,&#39; strong convergence measures the &#39;mean of the errors.&#39;&quot; - D. J. Higham &amp; P. E. Kloeden, in <em>An Introduction to the Numerical Simulation of Stochastic Differential Equations,</em> &#40;SIAM, 2021&#41;.</p>
+</blockquote>
+<p>Processos estocásticos são famílias de variáveis aleatória e qualquer noção de convergência de variáveis aleatórias pode ser utilizada para analisar a convergência de processos estocásticos. No estudo da convergência de métodos numéricos para equações aleatórias e estocásticas, no entanto, uma noção é particularmente utilizada, que é a de convergência em média, que é a convergência do valor esperado do erro absoluto, também conhecida aqui como <em>convergência forte</em> &#40;mas que é diferente da noção de convergência forte de variáveis aleatórias, que diz respeito à convergência quase certamente&#41;.</p>
+<p>Uma outra noção de convergência que não nos dá, exatamente, uma convergência de variáveis aleatórias é a chamada <em>convergência fraca</em>, que diz respeito apenas à convergência do valor esperado. A distribuição de probabilidades, em si, pode não convergir.</p>
+<p>Associadas a essas convergências, uma outra questão importante é sobre a <em>taxa</em> de convergência, ou seja, quão rápida se dá a convergência. Vejamos, aqui, mais detalhes sobre essas noções.</p>
+<h2 id="convergência_forte"><a href="#convergência_forte" class="header-anchor">Convergência forte</a></h2>
+<p>Dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_n^{\mathrm{\Delta t}}\}_n\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro forte</strong>, ou <strong>erro médio,</strong> é dado por</p>
+\[
+e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|].
+\]
+<p>Dizemos que o método numérico <strong>converge fortemente</strong> quando</p>
+\[
+e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \rightarrow 0, \qquad \Delta t \rightarrow 0.
+\]
+<p>Um aspecto fundamental em análise numérica é medir essa taxa de convergência, ou seja, quão rápida é a convergência, em função de \(\Delta t\). Nesse sentido, um método numérico, ou uma aproximação, é dita de <strong>ordem</strong> \(p > 0\), ou <strong>ordem forte</strong> \(p > 0\), quando existe uma constante \(C > 0\) e um limiar \(\delta > 0\) tais que</p>
+\[
+e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+\]
+<h2 id="erro_ao_longo_dos_caminhos_amostrais"><a href="#erro_ao_longo_dos_caminhos_amostrais" class="header-anchor">Erro ao longo dos caminhos amostrais</a></h2>
+<p>A convergência forte é um resultado amostral mas tem consequências, também, nos caminhos individuais, ou em uma boa parcela deles. De fato, considerando um método numérico de ordem forte \(p\), temos, pela desigualdade de Markov, que</p>
+\[
+\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > r) \leq \frac{\mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|]}{r} \leq C\frac{\Delta t^p}{r}.
+\]
+<p>Escolhendo \(r = \Delta t^{p - \varepsilon}\), com \(0 < \varepsilon < p\), obtemos</p>
+\[
+\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p - \varepsilon}) \leq C\frac{\Delta t^p}{\Delta t^{p - \varepsilon}} = C \Delta t^\varepsilon.
+\]
+<p>Em particular, escolhendo \(r = p/2\), temos</p>
+\[
+\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p/2}) \leq C \Delta t^{p/2}.
+\]
+<p>Ou seja, tomando-se \(\Delta t\) pequeno, temos, com probabilidade perto de um, que o erro ao longo de um caminho amostral é pequeno.</p>
+<h2 id="convergência_fraca"><a href="#convergência_fraca" class="header-anchor">Convergência fraca</a></h2>
+<p>Em muitos casos, temos um interesse particular no valor esperado de um processo. É claro que se um método numérico converge fortemente, então ele o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência do valor esperado, que é esta chamada de convergência fraca.</p>
+<p>Nesse sentido, novamente, dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_n^{\mathrm{\Delta t}}\}_n\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro fraco</strong> é dado por</p>
+\[
+e_{\Delta t}^{\mathrm{fraco}} = \max_{n} |\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]|.
+\]
+<p>Dizemos que o método numérico <strong>converge fracamente</strong> quando</p>
+\[
+e_{\Delta t}^{\mathrm{fraco}} = \max_{n} \left|\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
+\]
+<p>Um método numérico, ou uma aproximação, é dita de <strong>ordem fraca</strong> \(p > 0\), quando existe uma constante \(C > 0\) e um limiar \(\delta > 0\) tais que</p>
+\[
+e_{\Delta t}^{\mathrm{fraco}} = \max_{n} \left|\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+\]
+<p>Observe que, para cada \(n\),</p>
+\[
+\left| \mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_n} - X_n^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_n} - X_n^{\mathrm{\Delta t}}\right| \right],
+\]
+<p>de modo que</p>
+\[
+e_{\Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall \Delta t.
+\]
+<p>No entanto, como dissemos acima, um método numérico pode convergir fracamente sem que convirja fortemente &#40;e.g. Euler-Maruyama fraco, onde o termo estocástico é calculado via passeio aleatório&#41; ou ambos podem convergir mas com a ordem de convergência fraca mais alta do que a sua ordem de convergência forte.</p>
+<h2 id="outras_fontes_de_erro"><a href="#outras_fontes_de_erro" class="header-anchor">Outras fontes de erro</a></h2>
+<p>Conforme discutido em Higham &amp; Kloeden &#40;2021&#41;, há vários outras fontes de erro, além do erro de discretização considerado acima:</p>
+<ol>
+<li><p><em>Erros amostrais,</em> provenientes de se aproximar um processo com espaço amostral contínuo por um número finito de amostras, em particular aproximando-se o valor esperado do processo pela média da amostra finita.</p>
+</li>
+<li><p><em>Erros na geração de números aleatórios,</em> provenientes do fato dos números gerados usualmente em simulações computacionais serem pseudo-aleatórios e não verdadeiramente aleatórios e independentes.</p>
+</li>
+<li><p><em>Erros de arredondamento,</em> proveniente do fato de que a aritmética em ponto flutuante não ser exata.</p>
+</li>
+</ol>
+<p>No caso determinístico, temos que nos preocupar apenas com os erros de arredondamento, causados tipicamente quando o passo de tempo é muito pequeno e, com isso, os erros se acumularem significativamente.</p>
+<p>Já no caso de equações diferenciais aleatórias e estocásticas, o erro amostral tende a ser mais significativo.</p>
+<p>Além disso, especialmente no caso estocástico, os erros associados à geração de números aleatórios podem ser mais significativos do que os erros de ponto flutuante, deturpando os resultados antes dos erros de arredondamente serem significativos &#40;Komori, Saito &amp; Mitsui &#40;1994&#41;&#41;.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c07/relacoes_rode_sde">7.10. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c08/convergencia_euler_maruyama"><kbd>→</kbd> 8.2. Convergência do método de Euler-Maruyama</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 20, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>
