@@ -28,7 +28,7 @@ a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$
 
 A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
 
-Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos.
+Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos.
 
 Por último, um detalhe um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença $|x(t_j) - x_j^n|$, no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para $\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]$.
 
@@ -132,9 +132,76 @@ X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
 & \qquad + \int_{t_{j-1}}^{t_j} g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) \Delta W_j \\
 & = X_{t_{j-1}} - X_{j-1}^n \\
 & \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{j-1}^n))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s. \\
+& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s \\
+& = X_{t_{j-1}} - X_{j-1}^n \\
+& \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \\
+& \qquad + \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \\
+& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \\
+& \qquad + \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s
 \end{align*}
 $$
+
+Elevando ao quadrado e usando que $(a_1 + \ldots + a_5)^2 \leq 5(a_1^2 + \ldots + a_5^2)$, 
+$$
+\begin{align*}
+\left| X_{t_j} - X_j^n \right|^2 & \leq 5\left| X_{t_{j-1}} - X_{j-1}^n \right|^2 \\
+& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2 \\
+& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2 \\
+& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \right|^2 \\
+& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s \right|^2 
+\end{align*}
+$$
+
+Os dois primeiros termos integrais podem ser estimados por
+$$
+\begin{align*}
+\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2 & \leq (t_j - t_{j-1})\int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))^2\;\mathrm{d}s \\
+& \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} |X_s - X_{t_{j-1}}|^2\;\mathrm{d}s
+\end{align*}
+$$
+e
+$$
+\begin{align*}
+\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2 & \leq (t_j - t_{j-1})\int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))^2\;\mathrm{d}s \\
+& \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} |X_{t_{j-1}} - X_{j-1}^n|^2\;\mathrm{d}s \\
+& \leq L_f^2(t_j - t_{j-1})^2|X_{t_{j-1}} - X_{j-1}^n|^2
+\end{align*}
+$$
+
+O nosso objetivo é estimar a média quadrática. Com isso em mente, vemos que
+$$
+\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2\right] \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} \mathbb{E}\left[|X_s - X_{t_{j-1}}|^2\right]\;\mathrm{d}s
+$$
+e
+$$
+\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2\right] \leq L_f^2(t_j - t_{j-1})^2\mathbb{E}\left[|X_{t_{j-1}} - X_{j-1}^n|^2\right].
+$$
+
+Nas integrais estocásticas, usamos a isometria de Itô:
+$$
+\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \right|^2\right] = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(g(X_s) - g(X_{t_{j-1}}))^2\right]\;\mathrm{d}s \leq L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_s - X_{t_{j-1}})^2\right]\;\mathrm{d}s
+$$
+e
+$$
+\begin{align*}
+\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s \right|^2\right] & = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(g(X_{t_{j-1}}) - g(X_{j-1}^n))^2\right]\;\mathrm{d}s \\
+& \leq L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right]\;\mathrm{d}s \\
+& \leq L_g^2 (t_j - t_{j-1})\mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right].
+\end{align*}
+$$
+
+Juntando as estimativas, obtemos
+$$
+\begin{align*}
+\mathbb{E}\left[\left| X_{t_j} - X_j^n \right|^2\right] & \leq 5\mathbb{E}\left[\left| X_{t_{j-1}} - X_{j-1}^n \right|^2\right] \\
+& \qquad + 5L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} \mathbb{E}\left[|X_s - X_{t_{j-1}}|^2\right]\;\mathrm{d}s \\
+& \qquad + 5L_f^2(t_j - t_{j-1})^2\mathbb{E}\left[|X_{t_{j-1}} - X_{j-1}^n|^2\right] \\
+& \qquad + 5L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_s - X_{t_{j-1}})^2\right]\;\mathrm{d}s \\
+& \qquad + 5L_g^2 (t_j - t_{j-1}) \mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right].
+\end{align*}
+$$
+
+Agora, usamos a continuidade da solução $\{X_t\}_{t \geq 0}$ em média quadrática para estimar as integrais restantes.
 
 ## Convergência no caso estocástico com ruído constante
 
