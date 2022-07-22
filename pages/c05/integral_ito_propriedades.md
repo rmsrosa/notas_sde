@@ -31,24 +31,30 @@ $$
 
 ## Linearidade
 
-Primeiramente, observe que a integral de Itô é homogênea. Ou seja, sendo $\lambda$ constante, vale a relação, 
+Primeiramente, observe que a integral de Itô é *homogênea.* Ou seja, sendo $\lambda$ constante, vale a relação, 
 $$
 \int_0^T \lambda H_t \;\mathrm{d}W_t = \lambda \int_0^T H_t \;\mathrm{d}W_t.
 $$
 
-Isso segue direto da homogeneidade das somas parciais:
+Isso segue diretamente da homogeneidade das somas parciais e da homogeneidade do limite:
 $$
 \begin{align*}
 \int_0^T \lambda H_t \;\mathrm{d}W_t & = \lim \sum_{j=1}^n \lambda H_{t_{j-1}}\Delta W_j \\
-& = \lim  \sum_{j=1}^n H_{t_{j-1}}\Delta W_j \\
+& = \lim \sum_{j=1}^n H_{t_{j-1}}\Delta W_j \\
 & = \lambda \lim  \sum_{j=1}^n H_{t_{j-1}}\Delta W_j \\
 & = \lambda \int_0^T H_t \;\mathrm{d}W_t.
 \end{align*}
 $$
 
-Da mesma forma, se $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$ são dois processos não antecipativos e $\mu$ e $\lambda$ são constantes, então
+Da mesma forma, a integral de Itô é *aditiva,* i.e.se $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$ são dois processos não antecipativos, então
 $$
-\int_0^T \left(\mu G_t + \lambda H_t\right)\;\mathrm{d}W_t = \mu \int_0^T G_t \;\mathrm{d}W_t + \lambda \int_0^T H^2 \;\mathrm{d}W_t.
+\int_0^T \left(G_t + H_t\right)\;\mathrm{d}W_t = \int_0^T G_t \;\mathrm{d}W_t + \int_0^T H_t \;\mathrm{d}W_t.
+$$
+Isso segue da aditividade das somas parciais e da aditividade do limite.
+
+Essas duas propriedades são equivalente à linearidade, de modo que, se $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$ são dois processos não antecipativos e $\mu$ e $\lambda$ são constantes, então
+$$
+\int_0^T \left(\mu G_t + \lambda H_t\right)\;\mathrm{d}W_t = \mu \int_0^T G_t \;\mathrm{d}W_t + \lambda \int_0^T H_t \;\mathrm{d}W_t.
 $$
 
 ## Isometria de Itô
