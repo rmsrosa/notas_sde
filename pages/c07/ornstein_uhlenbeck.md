@@ -28,18 +28,25 @@ $$
 O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s.
 $$
 
-De fato, observe que
+De fato, somando e subtraindo $1$ nos dois termos e renomeando a variável de integração, temos
 $$
-\begin{align*}
-O_t & = O_0 + \left(e^{-\nu t} - 1\right)O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
-& = O_0 - \nu \int_0^t e^{-\nu s} O_0\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
-& = O_0 - \nu \int_0^t \left( e^{-\nu s} O_0 + \sigma \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau - \sigma \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\right)\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
-& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \nu \sigma \int_0^t \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
-& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \nu \sigma \int_0^t \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - \tau)}\;\mathrm{d}W_\tau \\
-& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \nu \sigma \int_0^t \int_\tau^t e^{-\nu(s - \tau)}\;\mathrm{d}s\;\mathrm{d}W_\tau + \sigma \int_0^t e^{-\nu(t - \tau)}\;\mathrm{d}W_\tau \\
-& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s - \sigma \int_0^t \left(e^{-\nu(t - \tau)} - 1 \right)\;\mathrm{d}W_\tau + \sigma \int_0^t e^{-\nu(t - \tau)}\;\mathrm{d}W_\tau \\
-& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \sigma \int_0^t \;\mathrm{d}W_\tau. \\
-\end{align*}
+O_t = O_0 + \left(e^{-\nu t} - 1\right)O_0 + \sigma \int_0^t \left(e^{-\nu(t - \tau)} - 1\right)\;\mathrm{d}W_\tau + \sigma\int_0^t \;\mathrm{d}W_s.
+$$
+Usando o Teorema Fundamental do Cálculo, escrevemos
+$$
+O_t = O_0 - \nu\left(\int_0^t e^{-\nu s}\;\mathrm{d}s\right)O_0 - \nu \sigma \int_0^t \left(\int_{\tau}^t e^{-\nu(s - \tau)}\;\mathrm{d}s\right)\;\mathrm{d}W_\tau + \sigma\int_0^t \;\mathrm{d}W_s.
+$$
+Trocando a ordem de integração do terceiro termo e reescrevendo o segundo termo, obtemos
+$$
+O_t = O_0 - \nu\int_0^t e^{-\nu s}O_0\;\mathrm{d}s - \nu \sigma \int_0^t \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\;\mathrm{d}s + \sigma\int_0^t \;\mathrm{d}W_s
+$$
+Juntando o segundo e o terceiro termos, chegamos a
+$$
+O_t = O_0 - \nu\int_0^t \left(e^{-\nu s}O_0 + \sigma \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\right)\;\mathrm{d}s + \sigma\int_0^t \;\mathrm{d}W_s.
+$$
+O integrando do segundo termo é precisamente $O_s$, de modo que
+$$
+O_t = O_0 - \int_0^t \nu O_s\;\mathrm{d}s + \int_0^t \sigma\;\mathrm{d}W_s.
 $$
 Isso significa, exatamente, que $\{O_t\}_{t \geq 0}$, conforme definido acima, satisfaz a equação diferencial estocástica
 $$
