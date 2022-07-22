@@ -101,6 +101,7 @@ menu = [
     "Métodos numéricos" => [
         "pages/c08/tx_convergencia"
         "pages/c08/convergencia_euler_maruyama"
+        "pages/c08/simulacoes_convergencia_em"
         "pages/c08/milstein"
     ]
     "*Apêndice" => [
