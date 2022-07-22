@@ -96,6 +96,7 @@ menu = [
         "pages/c07/geometric_brownian"
         "pages/c07/brownian_bridge"
         "pages/c07/ornstein_uhlenbeck"
+        "pages/c07/feynmann_kac"
         "pages/c07/relacoes_rode_sde"
     ]
     "Métodos numéricos" => [
