@@ -25,14 +25,32 @@ onde $O_t$ é interpretado como sendo uma variável aleatória representando a v
 
 A solução dessa equação é
 $$
-O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_t.
+O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s.
 $$
 
-De fato, escrevendo
+De fato, observe que
+$$
+\begin{align*}
+O_t & = O_0 + \left(e^{-\nu t} - 1\right)O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
+& = O_0 - \nu \int_0^t e^{-\nu s} O_0\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
+& = O_0 - \nu \int_0^t \left( e^{-\nu s} O_0 + \sigma \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau - \sigma \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\right)\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
+& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \nu \sigma \int_0^t \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s \\
+& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \nu \sigma \int_0^t \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\;\mathrm{d}s + \sigma \int_0^t e^{-\nu(t - \tau)}\;\mathrm{d}W_\tau \\
+& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \nu \sigma \int_0^t \int_\tau^t e^{-\nu(s - \tau)}\;\mathrm{d}s\;\mathrm{d}W_\tau + \sigma \int_0^t e^{-\nu(t - \tau)}\;\mathrm{d}W_\tau \\
+& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s - \sigma \int_0^t \left(e^{-\nu(t - \tau)} - 1 \right)\;\mathrm{d}W_\tau + \sigma \int_0^t e^{-\nu(t - \tau)}\;\mathrm{d}W_\tau \\
+& = O_0 - \nu \int_0^t O_s\;\mathrm{d}s + \sigma \int_0^t \;\mathrm{d}W_\tau. \\
+\end{align*}
+$$
+Isso significa, exatamente, que $\{O_t\}_{t \geq 0}$, conforme definido acima, satisfaz a equação diferencial estocástica
+$$
+\mathrm{d}O_t = -\nu O_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
+$$
+
+De outra forma, escrevendo
 $$
 O_t = e^{-\nu t}O_0 + \sigma e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t,
 $$
-vemos que
+e derivando informalmente os produtos, vemos que
 $$
 \begin{align*}
 \mathrm{d}O_t & = -\nu e^{-\nu t}O_0 \;\mathrm{d}t - \sigma \nu e^{-\nu t}\;\mathrm{d}t \int_0^t e^{\nu s}\;\mathrm{d}W_t + \sigma \;\mathrm{d}W_t \\
