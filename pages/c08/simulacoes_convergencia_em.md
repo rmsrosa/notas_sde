@@ -122,7 +122,7 @@ for (nfig, (M, σ, tf)) in enumerate(
     lc, p = [one.(deltas) log.(deltas)] \ log.(erros)
     linear_fit = exp(lc) * deltas .^ p
 
-    plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(erros), yaxis = "erro", title = "Erro forte p = $(round(p, digits=2))\nM = $M, σ = $σ, tf = $tf", titlefont = 12, legend = :topleft)
+    plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(erros), yaxis = "erro", title = "Erro forte p = $(round(p, digits=2))\nM = $M, σ = $σ, T = $tf", titlefont = 12, legend = :topleft)
     scatter!(deltas, erros, marker = :star, label = "erro forte $M amostras")
     scatter!(deltas, errosdec, marker = :star, label = "erro forte $(div(M, dec)) amostras")
     plot!(deltas, linear_fit, linestyle = :dash, label = "ajuste linear")
@@ -150,12 +150,69 @@ Se por outro lado, diminuirmos a amostragem, enxergamos uma ordem forte diferent
 
 \fig{geometric_brownian_EMconvfig5}
 
+## Convergência fraca de ordem 1 no movimento Browniano geométrico
 
+A ordem da convergência fraca também sofre influências do número de amostras e da intensidade de ruído. Mas não vamos ilustrar isso aqui. Exibimos apenas uma simulação, com uma ordem de convergência próxima de $1$. Observe, também, que, além da ordem mais alta de convergência, o erro em si tem uma magnitude bem menor.
 
+```julia:geometric_brownian_EMconv
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+rng = Xoshiro(123)
+
+μ = 2.0
+
+t0 = 0.0
+x0 = 1.0
+
+let M = 20_000, σ =  1.0, tf = 1.0, Ns = (50, 100, 200, 400, 800, 1600)
+
+    errosfracos = Vector{Float64}(undef, length(Ns))
+
+    deltas = Vector{Float64}(undef, length(Ns))
+
+    for (i, N) in enumerate(Ns)
+        local tt = range(t0, tf, length = N)
+        local dt = Float64(tt.step)
+        deltas[i] = dt
+
+        local Xt = Matrix{Float64}(undef, N, M)
+        Xt[1, :] .= x0
+
+        local Wt = Matrix{Float64}(undef, N, M)
+        Wt[1, :] .= 0.0
+
+        local dWt = zeros(M)
+        for n in 2:N
+            dWt .= √dt * randn(rng, M)
+            Wt[n, :] .= Wt[n-1, :] .+ dWt
+            Xt[n, :] .= Xt[n-1, :] .* (
+                1 
+                .+ μ * dt
+                .+ σ * dWt
+            )
+        end
+
+        local Yt = x0 * exp.((μ - σ^2/2) * tt .+ σ * Wt)
+
+        errosfracos[i] = maximum(abs.(sum(Xt, dims=2) - sum(Yt, dims=2))) / M
+    end
+
+    lc, p = [one.(deltas) log.(deltas)] \ log.(errosfracos)
+    linear_fit = exp(lc) * deltas .^ p
+
+    plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(errosfracos), yaxis = "erro", title = "Erro fraco p = $(round(p, digits=2))\nM = $M, σ = $σ, T = $tf", titlefont = 12, legend = :topleft)
+    scatter!(deltas, errosfracos, marker = :star, label = "erro fraco $M amostras")
+    plot!(deltas, linear_fit, linestyle = :dash, label = "ajuste linear")
+    savefig(joinpath(@OUTPUT, "geometric_brownian_EMconvfraca.svg"))
+end
+```
+\fig{geometric_brownian_EMconvfraca}
 
 ## Convergência forte de ordem 1 no processo de Orstein-Uhlenbeck
 
-A equácão, nesse caso, é
+A equação, nesse caso, é
 $$
 \mathrm{d}O_t = -\nu O_t \;\mathrm{d}t + \sigma \;\mathrm{d}W_t,
 $$
@@ -163,3 +220,5 @@ cuja solução é
 $$
 O_t = e^{-\nu t} O_0 + \int_0^t e^{-\nu (t - s)} \;\mathrm{d}W_s.
 $$
+
+Como o ruído é aditivo, esperamos recuperar a convergência forte de ordem $1$.
