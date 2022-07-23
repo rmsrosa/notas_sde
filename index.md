@@ -3,22 +3,6 @@
 @def nav = false
 # {{ title }}
 
-> "Don't go
->
-> Or do
->
-> One never knows
->
-> Where it will lead to
->
-> Just make sure
->
-> You will be true
->
-> And chances are
->
-> You will be good"
-
 Bem vindos a este sítio dedicado às notas de aula sobre equações diferenciais estocásticas e aleatórias, disciplina ministrada no Instituto de Matemática da Universidade Federal do Rio de Janeiro, em 2022/1.
 
 ```julia:sequenciaWn
