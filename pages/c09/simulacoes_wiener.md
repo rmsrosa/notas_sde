@@ -1,4 +1,4 @@
-@def title = "Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico"
+@def title = "Simulações de processos de Wiener e browniano geométrico"
 
 # {{ get_title }}
 
@@ -6,7 +6,7 @@ Nas simulações numéricas de equações estocásticas, via método de Monte-Ca
 
 A observação importante é que, a menos de erros de arredondamento para ponto flutuante e de erros na geração de números aleatórios (que na prática são pseudo aleatórios), um processo de Wiener $\{W_t\}_{t \geq 0}$ pode ser expresso de maneira exata, ao longo dos pontos de uma malha temporal.
 
-O mesmo acontece ao utilizarmos um processo de Orstein-Uhlenbeck, um movimento browniano geométrico, uma ponte browniana ou qualquer outro processo para o qual conhecemos explicitamente a solução.
+O mesmo acontece ao utilizarmos um movimento browniano geométrico, uma ponte browniana ou qualquer outro processo para o qual conhecemos explicitamente a solução.
 
 ## Simulando um processo de Wiener
 
@@ -51,10 +51,23 @@ De qualquer forma, ao analisarmos a convergência de métodos de aproximação d
 
 Mais ainda. Se tivermos uma sequência $\{W_{t_j}^n\}_{j = 0}^n$ e quisermos estender essa sequência a uma malha mais fina, podemos utilizar o procedimento feito na demonstração de existência de um processo de Wiener. Não precisamos refazer todo o processo. Basta introduzir novos pontos, de acordo com uma média ponderada entre as variáveis na malha mais grossa e acrescentar um múltiplo apropriado de uma normal padão associada ao ponto intermediário. As contas são facilitadas no caso de uma malha uniforme e de um refinamento dobrando o número de pontos, mas isso não é necessário. Qualquer refinamento pode ser considerado.
 
-## Simulando um processo de Orstein-Uhlenbeck
-
 ## Simulando um movimento browniano geométrico
 
+A solução $\{X_t\}_{t\geq 0}$ do movimento browniano geométrico, dado por
+$$
+\mathrm{d}X_t = \mu X_t \;\mathrm{d}t + \sigma X_t \;\mathrm{d}W_t,
+$$
+com uma condição inicial $X_t|_{t = 0} = X_0$, é conhecida explicitamente, pela fórmula
+$$
+X_t = X_0 e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t + \sigma W_t}.
+$$
 
+Assim, uma vez de posse de uma amostra discreta exata $\{W_{t_j}^n\}_{j = 0}^n$ de um processo de Wiener em pontos de uma malha $0 = t_0 < t_1 < \ldots < t_n = T$, podemos obter uma amostra discreta exata do movimento browniano através de
+$$
+X_{t_j}^n = X_0 e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}}.
+$$
 
-
+Mais precisamente, se $\{W_{t_j}(\omega)\}_j$ é uma amostra discreta de um determinado caminho amostral do processo de Wiener, então sorteando uma condição inicial $X_0(\omega)$, obtemos uma amostra discreta de um caminho amostral do movimento browniano geométrico, através de
+$$
+X_{t_j}^n(\omega) = X_0(\omega) e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}(\omega)}.
+$$
