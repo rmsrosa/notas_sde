@@ -120,6 +120,8 @@ menu = [
         "Soluções estacionárias"
         "Métodos numéricos"
     ]
+    "Sistemas de equações aleatórias"
+    "Sistemas de equações estocásticas"
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
         "pages/appendix/teo_extension_kolmogorov"
