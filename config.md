@@ -57,6 +57,7 @@ menu = [
     ]
     "O método de Monte-Carlo" => [
         "pages/c03/monte_carlo"
+        "pages/c03/histograma"
         "pages/c03/gerando_num_aleatorios"
     ]
     "Processos Estocásticos" => [
