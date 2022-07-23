@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</title>  
+   <title>Simulações de processos de Wiener e browniano geométrico</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -230,7 +230,7 @@
     <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
@@ -246,6 +246,9 @@
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.8. Usando o ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -320,10 +323,10 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.2. Simulações de processos de Wiener e browniano geométrico</a></h1>
 <p>Nas simulações numéricas de equações estocásticas, via método de Monte-Carlo &#40;i.e. simulando vários caminhos amostrais&#41;, precisamos, em particular, simular processos de Wiener. O mesmo acontece em equações diferenciais aleatórias, quando os parâmetros são funções explícitas de um processo de Wiener.</p>
 <p>A observação importante é que, a menos de erros de arredondamento para ponto flutuante e de erros na geração de números aleatórios &#40;que na prática são pseudo aleatórios&#41;, um processo de Wiener \(\{W_t\}_{t \geq 0}\) pode ser expresso de maneira exata, ao longo dos pontos de uma malha temporal.</p>
-<p>O mesmo acontece ao utilizarmos um processo de Orstein-Uhlenbeck, um movimento browniano geométrico, uma ponte browniana ou qualquer outro processo para o qual conhecemos explicitamente a solução.</p>
+<p>O mesmo acontece ao utilizarmos um movimento browniano geométrico, uma ponte browniana ou qualquer outro processo para o qual conhecemos explicitamente a solução.</p>
 <h2 id="simulando_um_processo_de_wiener"><a href="#simulando_um_processo_de_wiener" class="header-anchor">Simulando um processo de Wiener</a></h2>
 <p>Ao considerarmos uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\), por exemplo, começamos com</p>
 \[
@@ -359,8 +362,23 @@ W_{t_j}^n(\omega) = W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}(\omega),
 <p>Os únicos erros possíveis são os erros de arredondamente em ponto flutuante, ao calcularmos \(W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}\) e os erros na geração da sequência de números aleatórios \(Z_{t_j}(\omega)\), visto que os números gerados são pseudo aleatórios e não são amostras de uma variável verdadeiramente normal.</p>
 <p>De qualquer forma, ao analisarmos a convergência de métodos de aproximação de equações estocásticas e de equações aleatórias que envolvam um processo de Wiener, não precisamos considerar, em um primeiro momento, esses erros de arredontamento e de geração de números pseudo-aleatórios e podemos assumir que a sequência gerada \(\{W_{t_j}^n(\omega)\}_{j = 0}^n\) é uma discretização exata do processo de Wiener usado na definição da equação em questão.</p>
 <p>Mais ainda. Se tivermos uma sequência \(\{W_{t_j}^n\}_{j = 0}^n\) e quisermos estender essa sequência a uma malha mais fina, podemos utilizar o procedimento feito na demonstração de existência de um processo de Wiener. Não precisamos refazer todo o processo. Basta introduzir novos pontos, de acordo com uma média ponderada entre as variáveis na malha mais grossa e acrescentar um múltiplo apropriado de uma normal padão associada ao ponto intermediário. As contas são facilitadas no caso de uma malha uniforme e de um refinamento dobrando o número de pontos, mas isso não é necessário. Qualquer refinamento pode ser considerado.</p>
-<h2 id="simulando_um_processo_de_orstein-uhlenbeck"><a href="#simulando_um_processo_de_orstein-uhlenbeck" class="header-anchor">Simulando um processo de Orstein-Uhlenbeck</a></h2>
 <h2 id="simulando_um_movimento_browniano_geométrico"><a href="#simulando_um_movimento_browniano_geométrico" class="header-anchor">Simulando um movimento browniano geométrico</a></h2>
+<p>A solução \(\{X_t\}_{t\geq 0}\) do movimento browniano geométrico, dado por</p>
+\[
+\mathrm{d}X_t = \mu X_t \;\mathrm{d}t + \sigma X_t \;\mathrm{d}W_t,
+\]
+<p>com uma condição inicial \(X_t|_{t = 0} = X_0\), é conhecida explicitamente, pela fórmula</p>
+\[
+X_t = X_0 e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t + \sigma W_t}.
+\]
+<p>Assim, uma vez de posse de uma amostra discreta exata \(\{W_{t_j}^n\}_{j = 0}^n\) de um processo de Wiener em pontos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\), podemos obter uma amostra discreta exata do movimento browniano através de</p>
+\[
+X_{t_j}^n = X_0 e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}}.
+\]
+<p>Mais precisamente, se \(\{W_{t_j}(\omega)\}_j\) é uma amostra discreta de um determinado caminho amostral do processo de Wiener, então sorteando uma condição inicial \(X_0(\omega)\), obtemos uma amostra discreta de um caminho amostral do movimento browniano geométrico, através de</p>
+\[
+X_{t_j}^n(\omega) = X_0(\omega) e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}(\omega)}.
+\]
 
     <div class="navbar">
     <p id="nav">
