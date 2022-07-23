@@ -107,6 +107,7 @@ menu = [
         "pages/c09/tx_convergencia"
         "pages/c09/convergencia_euler_maruyama"
         "pages/c09/simulacoes_convergencia_em"
+        "pages/c09/heun"
         "pages/c09/milstein"
         "pages/c09/simulacoes_milstein"
     ]
