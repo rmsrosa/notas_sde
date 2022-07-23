@@ -123,7 +123,7 @@ let μ = 2.0, t0 = 0.0, x0 = 1.0, Nmax = 1_600
         lc, p = [one.(deltas) log.(deltas)] \ log.(erros)
         linear_fit = exp(lc) * deltas .^ p
 
-        plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(erros), yaxis = "erro", title = "Erro forte p = $(round(p, digits=2))\nM = $M, σ = $σ, T = $tf", titlefont = 12, legend = :topleft)
+        plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(erros), yaxis = "erro", title = "Erro forte p = $(round(p, digits=2))\nX₀ = $x0, μ = $μ, σ = $σ, T = $tf, M = $M", titlefont = 12, legend = :topleft)
         scatter!(deltas, erros, marker = :star, label = "erro forte $M amostras")
         plot!(deltas, linear_fit, linestyle = :dash, label = "ajuste linear")
         savefig(joinpath(@OUTPUT, "geometric_brownian_EMconvfig$nfig.svg"))
@@ -206,7 +206,7 @@ let μ = 2.0, σ = 1.0, t0 = 0.0, tf = 1.0, x0 = 1.0, M = 20_000, Nmax = 1_600
     lc, p = [one.(deltas) log.(deltas)] \ log.(errosfracos)
     linear_fit = exp(lc) * deltas .^ p
 
-    plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(errosfracos), yaxis = "erro", title = "Erro fraco p = $(round(p, digits=2))\nM = $M, σ = $σ, T = $tf", titlefont = 12, legend = :topleft)
+    plot(xscale = :log10, yscale = :log10, xaxis = "Δt", ylims = [0.1, 10.0] .* extrema(errosfracos), yaxis = "erro", title = "Erro fraco p = $(round(p, digits=2))\nX₀ = $x0, μ = $μ, σ = $σ, T = $tf, M = $M", titlefont = 12, legend = :topleft)
     scatter!(deltas, errosfracos, marker = :star, label = "erro fraco $M amostras")
     plot!(deltas, linear_fit, linestyle = :dash, label = "ajuste linear")
     savefig(joinpath(@OUTPUT, "geometric_brownian_EMconvfraca.svg"))
