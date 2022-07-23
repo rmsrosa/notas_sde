@@ -40,5 +40,5 @@ savefig(joinpath(@OUTPUT, "esperancauniformsquare.svg"))
 ```
 \fig{esperancauniformsquare}
 
-## O Teorema do limite central e a distribuição das médias amostrais
+## O Teorema Central do Limite e a distribuição das médias amostrais
 
