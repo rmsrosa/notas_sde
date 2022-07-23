@@ -74,7 +74,6 @@ menu = [
         "pages/c05/simetrias_wiener"
         "pages/c05/naodiferenciabilidade_wiener"
         "pages/c05/variacao_ilimitada_wiener"
-        "pages/c05/simulacoes_wiener"
     ]
     "Integração estocástica" => [
         "pages/c06/integral_riemann"
@@ -105,6 +104,7 @@ menu = [
     ]
     "Métodos numéricos" => [
         "pages/c09/tx_convergencia"
+        "pages/c09/simulacoes_wiener"
         "pages/c09/convergencia_euler_maruyama"
         "pages/c09/simulacoes_convergencia_em"
         "pages/c09/heun"
