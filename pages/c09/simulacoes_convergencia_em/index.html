@@ -371,7 +371,7 @@ e_n^{\mathrm{forte}} = \max_{j = 0, \ldots, n} \mathbb{E}_m\left[ \left| X_j^n -
 \]
 <p>onde o valor esperado é tomado em relação às amostras \(\omega_1, \ldots, \omega_M\).</p>
 <p>Observe que devemos considerar o erro em relação ao passo \(\Delta t\), mas também temos o erro em relação à amostragem, que pode ser significativo se \(M\) não for suficientemente grande.</p>
-<p>Nas simulações abaixo, tomamos alguns valores de \(\mu\), \(\sigma\), \(T\), \(M\) e \(n\) para ilustrar os efeitos desse parâmetros. Fazemos uma regressão linear de mínimos quadrados nos \((\Delta t^n, e_n^{\mathrm{forte}})\) para encontrar \(\ln(C)\) e \(p\) tais que</p>
+<p>Nas simulações abaixo, tomamos alguns valores de \(\mu\), \(\sigma\), \(T\), \(M\) e \(n\) para ilustrar os efeitos desse parâmetros. Fazemos uma regressão linear de mínimos quadrados nos \((\Delta t^n, e_n^{\mathrm{forte}})\) para encontrar \(\ln(C)\) e a ordem de convergência \(p\) tais que</p>
 \[
 \ln(e_n^{\mathrm{forte}}) \approx \ln(C) + p \ln(\Delta t_n),
 \]
@@ -380,7 +380,7 @@ e_n^{\mathrm{forte}} = \max_{j = 0, \ldots, n} \mathbb{E}_m\left[ \left| X_j^n -
 e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 \]
 <p>correspondendo a uma taxa de convergência da ordem de \(\Delta t^p\).</p>
-<p>Nos gráficos abaixo, ilustramos, ainda, o erro como seria se usássemos apenas um centésimo do número de amostras, mas o ajuste da ordem de convergência é feito com o número total de amostras.</p>
+<p>As amostras do processo de Wiener são calculadas na malha mais fina. Os passos correspondentes são dados a partir dessas amostras, seja na malha mais fina ou nas mais grossas.</p>
 
 <p>Se o ruído for relativamente pequeno, o erro pode não sofrer tanto e acabar sendo de ordem um pouco melhor:</p>
 <img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig1.svg" alt="">

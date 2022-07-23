@@ -5,18 +5,26 @@ using Random
 theme(:ggplot2)
 rng = Xoshiro(123)
 
-μ = 2.0
+let μ = 2.0, σ = 1.0, t0 = 0.0, tf = 1.0, x0 = 1.0, M = 20_000, Nmax = 1_600
 
-t0 = 0.0
-x0 = 1.0
+    nsteps = (2^n for n in 5:-1:0)
+    Ns = (div(Nmax, nstep) for nstep in nsteps)
 
-let M = 20_000, σ =  1.0, tf = 1.0, Ns = (50, 100, 200, 400, 800, 1600)
+    Wt = Matrix{Float64}(undef, Nmax, M)
+    Wt[1, :] .= 0.0
+
+    dWt = zeros(M)
+    dt = tf / (Nmax - 1)
+    for n in 2:Nmax
+        dWt .= √dt * randn(rng, M)
+        Wt[n, :] .= Wt[n-1, :] .+ dWt
+    end
 
     errosfracos = Vector{Float64}(undef, length(Ns))
 
     deltas = Vector{Float64}(undef, length(Ns))
 
-    for (i, N) in enumerate(Ns)
+    for (i, (nstep, N)) in enumerate(zip(nsteps, Ns))
         local tt = range(t0, tf, length = N)
         local dt = Float64(tt.step)
         deltas[i] = dt
@@ -24,13 +32,8 @@ let M = 20_000, σ =  1.0, tf = 1.0, Ns = (50, 100, 200, 400, 800, 1600)
         local Xt = Matrix{Float64}(undef, N, M)
         Xt[1, :] .= x0
 
-        local Wt = Matrix{Float64}(undef, N, M)
-        Wt[1, :] .= 0.0
-
-        local dWt = zeros(M)
         for n in 2:N
-            dWt .= √dt * randn(rng, M)
-            Wt[n, :] .= Wt[n-1, :] .+ dWt
+            dWt .= Wt[1 + nstep * (n - 1), :] - Wt[1 + nstep * (n - 2), :]
             Xt[n, :] .= Xt[n-1, :] .* (
                 1 
                 .+ μ * dt
@@ -38,7 +41,7 @@ let M = 20_000, σ =  1.0, tf = 1.0, Ns = (50, 100, 200, 400, 800, 1600)
             )
         end
 
-        local Yt = x0 * exp.((μ - σ^2/2) * tt .+ σ * Wt)
+        local Yt = x0 * exp.((μ - σ^2/2) * tt .+ σ * @view(Wt[1:nstep:end, :]))
 
         errosfracos[i] = maximum(abs.(sum(Xt, dims=2) - sum(Yt, dims=2))) / M
     end
