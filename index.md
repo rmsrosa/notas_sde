@@ -3,6 +3,22 @@
 @def nav = false
 # {{ title }}
 
+> "Don't go
+>
+> Or do
+>
+> One never knows
+>
+> Where it will lead to
+>
+> Just make sure
+>
+> You will be true
+>
+> And chances are
+>
+> You will be good"
+
 Bem vindos a este sítio dedicado às notas de aula sobre equações diferenciais estocásticas e aleatórias, disciplina ministrada no Instituto de Matemática da Universidade Federal do Rio de Janeiro, em 2022/1.
 
 ```julia:sequenciaWn
@@ -21,7 +37,7 @@ for n in 2:J
     Wn[end][begin:2:end] .= Wn[end-1]
     Wn[end][begin+1:2:end-1] .= (Wn[end][begin:2:end-2] + Wn[end][begin+2:2:end])/2 .+ randn(rng, 2^(n-2))
 end
-plot(ttn, Wn, title = "Caminhos amostrais da sequência aproximante \$\\{W_d^n\\}_{d\\in D_n}\$, \$n = 1, \\ldots, $J\$, de um processo de Wiener", titlefont = 10, xaxis = "\$t\$", yaxis = "\$W\$", ylims = (-5, 5), marker = :circle, markersize = 3, label = false, size = (800, 500))
+plot(ttn, Wn, title = "Discretizações de um processo de Wiener", titlefont = 10, xaxis = "\$t\$", yaxis = "\$W\$", ylims = (-5, 5), linestyle = :dot, marker = :circle, markersize = 3, label = false, size = (800, 500))
 savefig(joinpath(@OUTPUT, "sequenciaWn.svg"))
 ```
 \fig{sequenciaWn}
