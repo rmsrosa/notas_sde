@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Variação ilimitada quase sempre dos caminhos amostrais</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemann"><kbd>→</kbd> 6.1. Integrais de Riemann</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
+<p>Uma propriedade fundamental dos processos de Wiener é que os seus caminhos são, quase sempre, de <em>variação ilimitada</em>. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes</em>.</p>
+<p>Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais de um processo de Wiener serem, quase certamente, de variação ilimitada.</p>
+<h2 id="funções_de_variação_limitada_ou_ilimitada"><a href="#funções_de_variação_limitada_ou_ilimitada" class="header-anchor">Funções de variação limitada ou ilimitada</a></h2>
+<p>Se \(g = g(t)\) representa a posição de um objeto ao longo do tempo, definida em um intervalo \([a, b]\), \(a < b\), podemos estimar a distância percorrida calculando-se</p>
+\[
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})|
+\]
+<p>para instantes de tempo \(a \leq t_0 < t_1 < \ldots < t_n \leq b\). Caso \(x\) seja continuamente diferenciável, isso pode ser estimado por</p>
+\[
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|\}(b-a), 
+\]
+<p>onde \(t_{j-1} \leq \theta_j \leq t_j\) e \(\Delta_j t = t_j - t_{j-1}\). Observe que a estimativa à direita independe da malha de tempo, de modo que</p>
+\[
+\sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|\}(b-a),
+\]
+<p>onde o supremo é tomado em relação à todas as partições possíveis do intervalo \([a, b]\).</p>
+<p>Na verdade, podemos ser mais precisos em relação à distância percorrida. Sendo \(g\) continuamente diferenciável, a soma</p>
+\[
+\sum_{j=1}^n |g'(\theta_j)|\Delta_j t
+\]
+<p>é, de fato, uma soma de Riemman, cujo limite é a integral</p>
+\[
+\int_a^b |g'(t)| \;\mathrm{d}t.
+\]
+<p>Voltando à estimativa relativa a uma partição arbitrária, caso a função seja Lipschitz contínua em \([a, b]\), com constante de Lipschitz \(L \geq 0\), ainda podemos limitar essa quantidade:</p>
+\[
+\sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
+\]
+<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não decrescentes e de variação limitada.</p>
+<p>Essa quantidade é chamada de <strong>variação</strong> da função no intervalo \([a, b]\) e é denotada por \(V(g; a, b)\):</p>
+\[
+\mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
+\]
+<p>Caso \(V(g; a, b)\) seja finito, dizemos que a função é de <strong>variação limitada</strong>, no intervalo \([a, b]\). Caso contrário, ela é dita de <strong>variação ilimitada</strong>.</p>
+<h2 id="integral_de_riemann-stieltjes"><a href="#integral_de_riemann-stieltjes" class="header-anchor">Integral de Riemann-Stieltjes</a></h2>
+<p>Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada <em>integral de Riemann-Stieltjes</em>:</p>
+\[
+\int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
+\]
+<p>O limite é tomado em relação ao refinamento das malhas: \(\max_j\{t_j - t_{j-1}\} \rightarrow 0\). Desde que \(g\) seja de variação limitada, é possível mostrar que o limite converge, quando \(f\) é contínua. Obtemos a integral de Riemann ao tomarmos \(g(t) = t\).</p>
+<p>Como a função de probabilidade acumulada \(g(x) = \mathbb{P}(X \leq x)\) de uma variável aleatória \(X\) é monónota e limitada, ela é de variação limitada, de modo que podemos representar a esperança de uma nova variável \(Y = h(X)\) através de uma integral de Riemann-Stieltjes:</p>
+\[
+\mathbb{E}(h(X)) = \int_\mathbb{R} h(x) \;\mathrm{d}g(x).
+\]
+<p>Caso \(g\) seja diferenciável, então \(\mathrm{d}g = f\mathrm{d}x\), onde \(f\) é a função de densidade de probabilidade. Mas a integral acima independe de \(g\) ser diferenciável ou não.</p>
+<h2 id="caminhos_amostrais_de_processos_de_wiener"><a href="#caminhos_amostrais_de_processos_de_wiener" class="header-anchor">Caminhos amostrais de processos de Wiener</a></h2>
+<p>Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase sempre, de variação ilimitada.</p>
+<p>Queremos, para isso, estimar a variação</p>
+\[
+\mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\]
+<p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, \(0 = t_0 < t_1 < \ldots < t_n = T.\) Temos</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\]
+<p>Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos diádicos, i.e. para cada \(k\in \mathbb{N}\), tomamos \(n = 2^k\), \(\tau = T/n = T/2^k\) e \(t_j = j\tau\), para \(j = 0, \ldots, n\).</p>
+<p>Vamos mostrar que, quando \(k \rightarrow \infty\), o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.</p>
+<p>O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que uma determinada malha seja um refinamento das malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.</p>
+<h3 id="sobre_a_soma_dos_quadrados_dos_incrementos"><a href="#sobre_a_soma_dos_quadrados_dos_incrementos" class="header-anchor">Sobre a soma dos quadrados dos incrementos</a></h3>
+<p>O valor esperado da soma dos quadrados dos incrementos pode ser escrito como</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n \mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right].
+\]
+<p>Observe que, usando-se a propriedade \(\mathbb{E}(W_tW_s) = \mathrm{Cov}(W_t, W_s) = \min\{t, s\}\),</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] & = \mathbb{E}\left[W_{t_j}^2 - 2W_{t_j}W_{t_{j-1}} + W_{t_{j-1}}^2\right] \\
+& = \mathbb{E}\left[W_{t_j}^2\right] -2\mathbb{E}\left[W_{t_j}W_{t_{j-1}}\right] + \mathbb{E}\left[W_{t_{j-1}}^2\right] \\
+& = t_j - 2t_{j-1} + t_{j-1} \\
+& = t_j - t_{j-1}.
+\end{align*}
+\]
+<p>Assim, obtemos a identidade</p>
+\[
+\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T.
+\]
+<p>Agora, estimamos a sua variância. Primeiro, temos</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right]
+\]
+<p>Para \(i\neq j\), como os incrementos são independentes e normais, temos</p>
+\[
+\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\right]\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = (t_i - t_{i-1})(t_j - t_{j-1}).
+\]
+<p>Para \(i = j\), como o incremento é normal, podemos calcular os seus momentos explicitamente, obtendo, em particular,</p>
+\[
+\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^4\right] = 3(t_j - t_{j-1})^2.
+\]
+<p>Assim,</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] & = \sum_{i \neq j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + \sum_{j = 1}^n 3(t_j - t_{j-1})^2 \\
+& = \sum_{i, j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
+\end{align*}
+\]
+<p>Como a malha é uniforme, temos</p>
+\[
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
+\]
+<p>Assim, a variância é dada por</p>
+\[
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
+\]
+<p>Dessa forma, vemos que a soma dos quadrados dos incrementos</p>
+\[
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2
+\]
+<p>tem valor esperado constante igual a \(T\) e variância \(2\tau T.\) Quando \(k \rightarrow \infty\), temos \(\tau \rightarrow 0\), de modo que \(S_k\) converge, em probabilidade, para a constante \(T\):</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
+\]
+<p>Agora, vamos explorar o fato das malhas serem em pontos diádicos. Observe que</p>
+\[
+W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
+\]
+<p>de modo que</p>
+\[
+\begin{align*}
+\left(W_{j/2^k} - W_{(j-1)/2^k}\right)^2 & = \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2 \\
+& \leq \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}}\right)^2 + \left(W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2.
+\end{align*}
+\]
+<p>Logo, para qualquer caminho amostral, temos</p>
+\[
+S_{k+1} \geq S_k.
+\]
+<p>A convergência em probabilidade em conjunto com a monotonicidade implica em convergência quase sempre. Logo,</p>
+\[
+S_k \rightarrow T, \qquad k \rightarrow \infty,
+\]
+<p>para quase todo caminho amostral.</p>
+<h3 id="sobre_o_máximo_dos_incrementos"><a href="#sobre_o_máximo_dos_incrementos" class="header-anchor">Sobre o máximo dos incrementos</a></h3>
+<p>Por definição, quase todos os caminhos amostrais de um processo de Wiener são contínuos. Como o intervalo \([0, T]\) é fechado e limitado, segue, que, para quase todo \(\omega\), o caminho amostral \(t \mapsto W_t(\omega)\) é uniformemente contínuo em \([0, T]\).</p>
+<p>Assim, dado \(\varepsilon > 0\), existe \(\delta > 0\) tal que</p>
+\[
+|W_s(\omega) - W_t(\omega)| < \varepsilon, \qquad \forall t, s\in [0, T), \;|t - s| \leq \delta.
+\]
+<p>No caso da malha escolhida, temos, para \(\varepsilon > 0\) e \(k \geq \ln (1/\delta)\), temos \(1/n = 1/2^k \leq \delta\) e, portanto,</p>
+\[
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \leq \delta.
+\]
+<p>Dessa forma, vemos que</p>
+\[
+\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \rightarrow 0, \qquad k \rightarrow \infty,
+\]
+<p>para quase todo caminho amostral.</p>
+<h3 id="variação_ilimitada"><a href="#variação_ilimitada" class="header-anchor">Variação ilimitada</a></h3>
+<p>Voltemos, agora, à identidade</p>
+\[
+\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\]
+<p>Obtivemos que, para quase todo caminho amostral, quando a malha é refinada, ao limite \(k\rightarrow \infty\), o termo do lado esquerdo converge para \(T\), enquanto que o primeiro termo do lado direito converge para zero. Portanto, devemos ter</p>
+\[
+\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}| \geq \frac{\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2}{\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|} \rightarrow \infty, \qquad k \rightarrow \infty.
+\]
+<p>Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemann"><kbd>→</kbd> 6.1. Integrais de Riemann</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

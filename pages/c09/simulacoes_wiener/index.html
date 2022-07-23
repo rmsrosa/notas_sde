@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c09/convergencia_euler_maruyama"><kbd>→</kbd> 9.3. Convergência do método de Euler-Maruyama</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></h1>
+<p>Nas simulações numéricas de equações estocásticas, via método de Monte-Carlo &#40;i.e. simulando vários caminhos amostrais&#41;, precisamos, em particular, simular processos de Wiener. O mesmo acontece em equações diferenciais aleatórias, quando os parâmetros são funções explícitas de um processo de Wiener.</p>
+<p>A observação importante é que, a menos de erros de arredondamento para ponto flutuante e de erros na geração de números aleatórios &#40;que na prática são pseudo aleatórios&#41;, um processo de Wiener \(\{W_t\}_{t \geq 0}\) pode ser expresso de maneira exata, ao longo dos pontos de uma malha temporal.</p>
+<p>O mesmo acontece ao utilizarmos um processo de Orstein-Uhlenbeck, um movimento browniano geométrico, uma ponte browniana ou qualquer outro processo para o qual conhecemos explicitamente a solução.</p>
+<h2 id="simulando_um_processo_de_wiener"><a href="#simulando_um_processo_de_wiener" class="header-anchor">Simulando um processo de Wiener</a></h2>
+<p>Ao considerarmos uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\), por exemplo, começamos com</p>
+\[
+W_0^n = 0,
+\]
+<p>que é exato, pois \(W_0 = 0\). No próximo ponto, temos</p>
+\[
+W_{t_1} = W_{t_1} - W_0 \sim \mathbb{N}(0, t_1) = \sqrt{t_1} \mathbb{N}(0, 1).
+\]
+<p>Considerando uma variável aleatória normal padrão \(Z_{t_1} \sim \mathcal{N}(0, 1)\), podemos escrever</p>
+\[
+W_{t_1} = W_{t_1} + \sqrt{t_1} Z_1.
+\]
+<p>No ponto seguinte, temos, da mesma forma,</p>
+\[
+W_{t_2} - W_{t_1} \sim \mathcal{N}(0, t_2 - t_1) = \sqrt{t_2 - t_1}\mathcal{N}(0, 1).
+\]
+<p>Considerando uma variável aleatória normal padrão \(Z_{t_2} \sim \mathcal{N}(0, 1)\) independente de \(Z_1\), podemos escrever</p>
+\[
+W_{t_2} = W_{t_1} + \sqrt{t_2 - t_1}Z_{t_2}.
+\]
+<p>E assim sucessivamente. Consideramos variáveis aleatórias \(Z_{t_j}\). \(j = 1, \ldots, n\), com \(Z_{t_j}\) independente de \(Z_{t_1}, \ldots, Z_{t_{j-1}}\), e obtemos</p>
+\[
+W_{t_j} = W_{t_{j-1}} + \sqrt{t_j - t_{j-1}}Z_{t_j}, \quad j = 1, \ldots, n.
+\]
+<p>Essa é uma representação exata. As variáveis aleatórias \(Z_{t_j}\) formam um processo discreto \(\{Z_{t_j}\}_{j = 1}^n\) que é uma cadeia de Markov, por conta da independência do passado distante. Na verdade, ela independente até do instante imediatamente anterior.</p>
+<p>Assim, ao definirmos tomarmos amostras \(Z_{t_j}(\omega)\) dessas normais e definirmos a sequência</p>
+\[
+W_0^n(\omega) = 0, \quad 
+W_{t_j}^n(\omega) = W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}(\omega), \quad j = 1, \ldots, n,
+\]
+<p>estamos, efetivamente, calculando uma <em>discretização</em> exata de um caminho amostral de um processo de Wiener. Da mesma forma que os pontos \(\{\sin(j\pi/n)\}_{j=0, \ldots, n}\) formam uma discretização exata da função \(\sin(x)\), no intervalo \([0, \pi]\).</p>
+<p>Os únicos erros possíveis são os erros de arredondamente em ponto flutuante, ao calcularmos \(W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}\) e os erros na geração da sequência de números aleatórios \(Z_{t_j}(\omega)\), visto que os números gerados são pseudo aleatórios e não são amostras de uma variável verdadeiramente normal.</p>
+<p>De qualquer forma, ao analisarmos a convergência de métodos de aproximação de equações estocásticas e de equações aleatórias que envolvam um processo de Wiener, não precisamos considerar, em um primeiro momento, esses erros de arredontamento e de geração de números pseudo-aleatórios e podemos assumir que a sequência gerada \(\{W_{t_j}^n(\omega)\}_{j = 0}^n\) é uma discretização exata do processo de Wiener usado na definição da equação em questão.</p>
+<p>Mais ainda. Se tivermos uma sequência \(\{W_{t_j}^n\}_{j = 0}^n\) e quisermos estender essa sequência a uma malha mais fina, podemos utilizar o procedimento feito na demonstração de existência de um processo de Wiener. Não precisamos refazer todo o processo. Basta introduzir novos pontos, de acordo com uma média ponderada entre as variáveis na malha mais grossa e acrescentar um múltiplo apropriado de uma normal padão associada ao ponto intermediário. As contas são facilitadas no caso de uma malha uniforme e de um refinamento dobrando o número de pontos, mas isso não é necessário. Qualquer refinamento pode ser considerado.</p>
+<h2 id="simulando_um_processo_de_orstein-uhlenbeck"><a href="#simulando_um_processo_de_orstein-uhlenbeck" class="header-anchor">Simulando um processo de Orstein-Uhlenbeck</a></h2>
+<h2 id="simulando_um_movimento_browniano_geométrico"><a href="#simulando_um_movimento_browniano_geométrico" class="header-anchor">Simulando um movimento browniano geométrico</a></h2>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c09/convergencia_euler_maruyama"><kbd>→</kbd> 9.3. Convergência do método de Euler-Maruyama</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

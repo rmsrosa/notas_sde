@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Não diferenciabilidade quase sempre dos caminhos amostrais</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c05/variacao_ilimitada_wiener"><kbd>→</kbd> 5.5. Variação ilimitada quase sempre dos caminhos amostrais</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></h1>
+<p>Caso os caminhos amostrais de um processo de Wiener \(\{W_t\}_{t\geq 0}\) fossem diferenciáveis em um instante \(t\), teríamos a existência, quase sempre, do limite</p>
+\[
+\lim_{\tau \rightarrow 0} \frac{W_{t+\tau} - W_t}{\tau}.
+\]
+<p>Em particular, teríamos</p>
+\[
+\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty.
+\]
+<p>quase sempre. Porém, isso não é verdade. Mais do que isso. Esse limite superior é infinito com probabilidade um. Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.</p>
+<h2 id="não_diferenciabilidade_na_origem"><a href="#não_diferenciabilidade_na_origem" class="header-anchor">Não diferenciabilidade na origem</a></h2>
+<p>Vamos começar ilustrando isso no instante \(t = 0\). Temos</p>
+\[
+\lim_{\tau\rightarrow 0} \frac{W_\tau - W_0}{\tau} = \lim_{\tau\rightarrow 0} \frac{W_\tau}{\tau}.
+\]
+<p>Lembrando da propriedade de simetria por rescalonamento, considere os processos de Wiener definidos por</p>
+\[
+V_t^a = \frac{1}{a}W_{a^2t}, \qquad t \geq 0,
+\]
+<p>para \(a > 0\).</p>
+<p>Ambos \(\{W_t\}_{t \geq 0}\) e \(\{V_t^a\}_{t\geq 0}\) são processos de Wiener padrão, com mesma lei de probabilidades \(W_t, V_t^a \sim \mathcal{N}(0, t)\). Portanto,</p>
+\[
+\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r), \qquad \forall r \geq 0.
+\]
+<p>Assim,</p>
+\[
+\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r) = \mathbb{P}\left(\frac{|W_{a^2\tau}|}{a} \leq r\right).
+\]
+<p>Escolhendo \(a = 1/\sqrt{\tau}\), temos</p>
+\[
+\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}\left(\sqrt{\tau}|W_{1}| \leq r\right).
+\]
+<p>Podemos escrever isso na forma</p>
+\[
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{r}{\tau}\right) = \mathbb{P}\left(|W_{1}| \leq \frac{r}{\sqrt{\tau}}\right).
+\]
+<p>Escolhendo, agora, \(r = \tau^{3/4}\), obtemos</p>
+\[
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right) = \mathbb{P}\left(|W_{1}| \leq \tau^{1/4}\right).
+\]
+<p>Como \(W_1 \sim \mathcal{N}(0, 1)\), temos que</p>
+\[
+\mathbb{P}(|W_1| \leq \tau^{1/4}) \rightarrow 0, \qquad \tau \rightarrow 0.
+\]
+<p>Portanto, para qualquer \(\varepsilon > 0\), existe \(\tau > 0\) tal que</p>
+\[
+\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right)\leq \varepsilon.
+\]
+<p>Escolhemos uma sequência \(\{\varepsilon_n\}_{n\in\mathbb{N}}\) tal que \(\varepsilon_n > 0\) e \(\sum_n \varepsilon_n < \infty.\) &#40;Por exemplo, \(\varepsilon_n = 2^{-n}\).&#41; Agora, dado \(M > 0\), escolhemos, para cada \(n\), instantes \(\tau_n\) tais que \(0 < \tau_n \leq 1/M^4\) e</p>
+\[
+\mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \varepsilon_n.
+\]
+<p>Assim,</p>
+\[
+\sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \sum_n \varepsilon_n < \infty
+\]
+<p>Segue, então, pelo Lema de Borel-Cantelli, que</p>
+\[
+\mathbb{P}\left(\limsup_{n\rightarrow \infty} E_n^M\right) = 0,
+\]
+<p>onde</p>
+\[
+E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
+\]
+<p>Temos</p>
+\[
+\limsup_{n\rightarrow \infty} E_n^M = \bigcap_{n\in\mathbb{N}}\bigcup_{j\geq n} E_j^M = \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\}
+\]
+<p>Observe que</p>
+\[
+\left\{\omega; \; \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < M \right\} \subset \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\} = \limsup_{n\rightarrow \infty} E_n^M.
+\]
+<p>Portanto,</p>
+\[
+\mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M\right) = 0.
+\]
+<p>Nesse momento, essa estimativa é válida para qualquer \(M>0\). Como</p>
+\[
+\left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right\} = \bigcup_{M\in \mathbb{N}} \left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M \right\},
+\]
+<p>deduzimos que</p>
+\[
+\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right) = 0.
+\]
+<p>Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
+<h2 id="não_diferenciabilidade_em_nenhum_ponto"><a href="#não_diferenciabilidade_em_nenhum_ponto" class="header-anchor">Não diferenciabilidade em nenhum ponto</a></h2>
+<p>Como um processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.</p>
+<h2 id="quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto"><a href="#quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto" class="header-anchor">Quase todo caminho amostral é não diferenciável em nenhum ponto</a></h2>
+<p>O resultado anterior diz que, para todo \(t \geq 0\) dado, os caminhos amostrais são quase todos não diferenciáveis em \(t\). Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em nenhum ponto. Isso também é verdade, mas a demonstração é mais delicada, como veremos agora. Vamos seguir essencialmente a demonstração em Mörters &amp; Peres &#40;2010&#41;, com pequenas modificações.</p>
+<p>Começamos mostrando a não diferenciabilidade no intervalo \([0, 1)\). Seja \(t \mapsto W_t(\omega)\) um caminho amostral tal que, para algum \(0\leq t_0 < 1\),</p>
+\[
+\limsup_{\tau \rightarrow 0} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty.
+\]
+<p>Isso acontece se, e somente se, existem \(m, M \in \mathbb{N}\) tais que</p>
+\[
+\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M, \qquad \forall n \geq m.
+\]
+<p>O motivo de usarmos \(2^{-n+2}\) acima, ao invés de \(2^{-n}\), é que vamos usar, abaixo, a partição diádica de tal forma que quatro intervalos sucessivos da malha com espaçamento \(2^{-n}\) cabem em um único intervalo da malha com espaçamento \(2^{-n+2}\). A importância disso será vista em seguida.</p>
+
+<img src="/notas_sde/assets/pages/c05/naodiferenciabilidade_wiener/code/output/dyadic_points.svg" alt="">
+<p>Com a caracterização acima, podemos escrever</p>
+\[
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} = \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} \left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
+\]
+<p>Considere as malhas diádicas \(\{k/2^n, \;k=0, \ldots, 2^n\}\), \(n\in \mathbb{N}\). O ponto \(t_0\) pode estar em qualquer um dos intervalos definidos por essa malha. Logo, podemos escrever</p>
+\[
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\} = \bigcup_{k = 1, \ldots, 2^n}\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
+\]
+<p>Suponha que \(t_0\) pertença a um determinado intervalo \((k-1)/2^n \leq t_0 < k/2^n\). Considere o incremento \(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\), para \(j=1, 2, 3\). Observe que</p>
+\[
+t_0 < \frac{k}{2^n} < \frac{k+j}{2^n} = \frac{k-1}{2^n} + \frac{j+1}{2^n} \leq \frac{k-1}{2^n} + \frac{4}{2^{n}} \leq t_0 + \frac{1}{2^{n-2}}.
+\]
+<p>Assim, todos os pontos \(k/2^n\) e \((k+j)/2^n\), para \(j=1, 2, 3\), são da forma \(t_0 + \tau\), para \(\tau\) no intervalo \((0, 2^{-n+2}]\). </p>
+
+<img src="/notas_sde/assets/pages/c05/naodiferenciabilidade_wiener/code/output/dyadic_points_increments.svg" alt="">
+<p>Dessa forma, podemos usar a estimativa acima, em conjunto com a desigualdade triangular, para obter</p>
+\[
+\begin{align*}
+\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| & \leq \left|W_{(k+j)/2^n} - W_{t_0}\right| + \left| W_{(k+j-1)/2^n} - W_{t_0}\right| \\
+& \leq M\left(\frac{k+j}{2^n} - t_0\right) + M \left(\frac{(k+j-1)}{2^n} - t_0\right) \\
+& \leq M\left(\frac{2k+2j-1}{2^n} - \frac{2(k-1)}{2^n}\right) \\
+& = \frac{(2j+1)M}{2^n} \\
+& \leq \frac{7M}{2^n}.
+\end{align*}
+\]
+<p>Ou seja, para cada \(n, M, k\), vale</p>
+\[
+\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\} \leq \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
+\]
+<p>Com isso,</p>
+\[
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} \subset \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_n,
+\]
+<p>onde</p>
+\[
+E_n = \bigcup_{k = 1, \ldots, 2^n} \Omega_{n, M, k}, \qquad \Omega_{n, M, k} = \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
+\]
+<p>Aqui fica evidente o uso da malha mais grossa, na estimativa da diferença finita, gerando as estimativas nos incrementos na malha mais fina. O motivo do uso desses três incrementos será aparente em seguida.</p>
+<p>Vamos mostrar, usando o Lema de Borel-Cantelli, que</p>
+\[
+\bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_n = \limsup_{n\rightarrow \infty} E_n = 0.
+\]
+<p>Para isso, basta mostrar que</p>
+\[
+\sum_{n\in \mathbb{N}} \mathbb{P}(E_n) < \infty.
+\]
+<p>Como os incrementos são independentes, temos que</p>
+\[
+\mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^n}\right).
+\]
+<p>Pela invariância dos processos de Wiener padrão por translações e por rescalonamento &#40;com \(a= 2^{n/2}\)&#41;,</p>
+\[
+W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
+\]
+<p>Ou, de outra forma,</p>
+\[
+2^{n/2}\left(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right) \sim W_1.
+\]
+<p>Assim,</p>
+\[
+\mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(|W_1| \leq \frac{7M}{2^{n/2}}\right).
+\]
+<p>Como a função de distribuição de probabilidade da normal padrão é limitada por \(1/\sqrt{2\pi}\leq 1/2\), temos</p>
+\[
+\mathbb{P}\left(|W_1| \leq r\right) \leq \frac{2r}{\sqrt{2\pi}} = r, \qquad r > 0.
+\]
+<p>Logo,</p>
+\[
+\mathbb{P}(\Omega_{n, k}) \leq \left(\frac{7M}{2^{n/2}}\right)^3.
+\]
+<p>Portanto,</p>
+\[
+\mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n} \Omega_{n, k}\right) \leq 2^n \left(\frac{7M}{2^{n/2}}\right)^3 = \frac{7^3M^3}{2^{n/2}}.
+\]
+<p>Isso nos dá que</p>
+\[
+\sum_n \mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n - 3} \Omega_{n, k}\right) \leq 7^3M^3\sum_n \frac{1}{2^{n/2}} < \infty.
+\]
+<p>Aqui revelou-se a importância do uso dos três incrementos. A probabilidade de termos a limitação em um dos incrementos é da ordem de \(2^{-n/2}\). Como os incrementos são independentes, a probabilidade de termos a limitação em três incrementos consecutívos é o cubo disso, i.e. da ordem de \(2^{-3n/2}\). Como temos \(2^n\) conjuntos em cada malha, isso nos dá uma estimativa total ainda pequena, da ordem de \(2^{-n/2}\). Se usássemos só um incremento, a estimativa total cresceria exponencialmente. Se usássemos só dois, a estimativa seria uma constante. Mas usando três incrementos, conseguimos uma estimativa decrescendo exponencialmente e sendo, portanto, somável.</p>
+<p>Assim, pelo Lema de Borel-Cantelli,</p>
+\[
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} \leq M \right\}\right) \leq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \bigcup_{k=1, \ldots, 2^n-3}\Omega_{n, k}\right) = 0.
+\]
+<p>Ou seja,</p>
+\[
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} < \infty \right\}\right) = 0.
+\]
+<p>Isso conclui a demonstração de que, quase certamente, os caminhos amostrais de um processo de Wiener padrão não são diferenciáveis em nenhum ponto no intervalo \([0, 1)\). Pela invariância por translações, isso se estende para qualquer intervalo \([n, n+1)\). Fazendo a interseção desse conjunto contável, obtemos que, quase certamente, os caminhos amostrais não são diferenciáveis em nenhum ponto \(t\geq 0\).</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c05/variacao_ilimitada_wiener"><kbd>→</kbd> 5.5. Variação ilimitada quase sempre dos caminhos amostrais</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Processos discretos</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c04/processos_continuos"><kbd>→</kbd> 4.3. Processos contínuos</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.2. Processos discretos</a></h1>
+<p>A nossa intenção principal é trabalhar com processos contínuos, já que equações diferenciais estocásticas e aleatórias envolvem variáveis independentes contínuas, gerando, portanto, processos contínuos. Mas é ilustrativo iniciar os estudos de processos estocásticos com processos discretos. Além disso, alguns processos estocásticos contínuos aparecem naturalmente como limites de processos discretos.</p>
+<h2 id="processo_de_bernoulli_em_tempo_finito"><a href="#processo_de_bernoulli_em_tempo_finito" class="header-anchor">Processo de Bernoulli em tempo finito</a></h2>
+<p>Vamos começar com um processo de Bernoulli em um tempo discreto e finito \(I = \{1, 2, \ldots, N\}\), onde \(N \in \mathbb{N}\). Há dois estados possíveis, digamos \(\Sigma = \{0, 1\}\), indicando, por exemplo, o resultado do lançamento de uma moeda &#40;&quot;coroa&quot; ou &quot;cara&quot;&#41; ou de um teste de laboratório &#40;&quot;negativo&quot;, &quot;positivo&quot;&#41;.</p>
+<p>A cada passo, um <em>teste de Bernoulli</em> é feito, dando um resultado \(1\), com probabilidade \(p\), ou \(0\), com probabilidade \(1 - p\), onde \(0 < p \leq 1\). Assumimos que os testes sejam independentes, ou seja, o resultado do teste em um passo \(n_1\) independe do resultado do teste no instante \(n_2\).</p>
+<p>Fazemos o teste \(N\) vezes, obtendo uma sequência de resultados \(x = (x_1, \ldots, x_N)\), onde \(x_n \in \Sigma = \{0, 1\}\). O conjunto de possíveis sequências forma o espaço amostral \(\Omega = \{0, 1\}^N\). Há \(2^N\) sequências possíveis. Se \(i = \#\{n; \; x_n = 1\}\) denota o número de vezes em que o resultado é \(1\) e \(j = \#\{n; \; x_n = 0\}\), o número de vezes em que o resultado é \(0\), então \(i + j = n\) e a probabilidade dessa sequência \(x\) ocorrer é</p>
+\[
+\mathbb{P}(X = x) = p^i(1-p)^{n-i}, \qquad i = \#\{n; \; x_n = 1\}.
+\]
+<p>Podemos interpretar o resultado do teste de Bernoulli em cada passo \(n\) como uma variável aleatória \(X_n\) nesse espaço \((\Sigma, \mathcal{A}, \mathbb{P})\). A sequência \(\{X_n\}_{n = 1, \ldots, N}\) é um processo aleatório discreto. Um determinado resultado no instante \(n\) tem probabilidades</p>
+\[
+\mathbb{P}(X_n = 1) = \mathbb{P}(\{x \in \Omega; x_n = 1\}) = p,
+\]
+<p>e</p>
+\[
+\mathbb{P}(X_n = 0) = \mathbb{P}(\{x \in \Omega; x_n = 0\}) = 1 - p.
+\]
+<p>A distribuição de probabilidades de \(X_n\) é igual a de um único teste de Bernoulli. Podemos escrever</p>
+\[
+X_n \sim \mathrm{Bernoulli}(p),
+\]
+<p>onde \(\mathrm{Bernoulli}(p)\) é a distribuição de Bernoulli com probabilidade de sucesso \(p\).</p>
+<p>Mas enquanto um teste de Bernoulli isolado pode ser pensado como uma variável aleatória no espaço amostral \(\{0, 1\}\), o processo gerado por \(N\) testes de Bernoulli é pensado como sendo definido no espaço de trajetórias. Além disso, dessa forma, podemos considerar probabilidades conjuntas. Por exemplo, no caso do resultado dos testes em dois instantes diferentes, temos</p>
+\[
+\mathbb{P}(X_{n_1} = e_1, X_{n_2} = e_2) = \mathbb{P}(\{x \in \Omega; x_{n_1} = e_1, \;x_{n_2} = e_2\}) = p_1p_2,
+\]
+<p>onde \(p_n = p\), se \(e_n = 1\), ou \(p_n = 1 - p\), se \(e_n = 0\).</p>
+<h2 id="processo_de_bernoulli_em_tempo_infinito"><a href="#processo_de_bernoulli_em_tempo_infinito" class="header-anchor">Processo de Bernoulli em tempo infinito</a></h2>
+<p>Podemos, também, fazer um número infinito de testes de Bernoulli. Nesse caso, \(I = \mathbb{N}\) e obtemos um processo \(\{X_n\}_{n\in \mathbb{N}}\), onde, a cada \(n\), \(X_n\) indica o resultado de um teste de Bernoulli. Como antes, \(\{X_n\}_{n\in \mathbb{N}}\) é um processo estacionário e independente, com</p>
+\[
+X_n \sim \mathrm{Bernoulli}(p).
+\]
+<p>O espaço amostral também pode ser pensado como sendo o espaço de possíveis trajetórias,</p>
+\[
+\Omega = \{0, 1\}^\mathbb{N} = \{x:\mathbb{N} \rightarrow \{0, 1\}\} = \{x = (x_1, x_2, \ldots); \; x_n = 0 \textrm{ ou } 1, \; n\in \mathbb{N}\}.
+\]
+<p>Nesse caso, no entanto, esse espaço tem cardinalidade infinita. Mais precisamente, \(\#2^\mathbb{N} = 2^{\aleph_0} = \aleph_1\), que não é enumerável. A probabilidade de observamos uma sequência em particular é, portanto, necessariamente nula&#33; Mas podemos observar conjuntos de sequências, em particular conjuntos que tenham uma mesma sequência finita. Isso é uma probabilidade conjunta, digamos</p>
+\[
+\mathbb{P}(X_{n_1} = e_1, \ldots X_{n_N} = e_N) = \mathbb{P}(\{x = (x_1, x_2, \ldots) \in \{0, 1\}^\mathbb{N}; \; x_{n_1} = e_1, \ldots, x_{n_N} = e_N) \\ = p^i(1-p)^{N-1},
+\]
+<p>onde \(i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}\).</p>
+<h2 id="passeio_aleatório"><a href="#passeio_aleatório" class="header-anchor">Passeio aleatório</a></h2>
+<p>Nesse caso, \(I = \mathbb{Z}^* = \{0, 1, 2, \ldots\}\), o conjunto de estados possíveis é \(\Sigma = \mathbb{Z}\) e o espaço amostral pode ser tomado como \(\Omega = \Sigma^{\mathbb{Z}^*} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}\). Novamente, \(\Omega\) é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição \(m\), em um determinado instante \(n\):</p>
+\[
+\mathbb{P}(X_n = m) = \begin{cases}
+  \displaystyle \frac{1}{2^n} \left(\begin{matrix} n \\ \frac{n + m}{2} \end{matrix}\right), & |m| \leq n \text{ e $m$ e $n$ com a mesma paridade} \\
+  0, & |m| > n \text{ e/ou $m$ e $n$ com paridades diferentes.}
+\end{cases}
+\]
+<p>Saber a posição da partícula no instante \(n\) nos dá a distribuição de probabilidades para a posição em \(n+1\), o que podemos escrever na forma</p>
+\[
+\mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
+\]
+
+<img src="/notas_sde/assets/pages/c04/processos_discretos/code/output/passeio_aleatorio.svg" alt="">
+<h2 id="processos_decididos_na_partida"><a href="#processos_decididos_na_partida" class="header-anchor">Processos decididos na partida</a></h2>
+<p>Esses processos aparecem naturalmente em sistemas determinísticos onde há uma incerteza na condição inicial. Escolhendo-se aleatoriamente o dado inicial, determina-se os estados futuros. Os estados futuros estão unicamente condicionados pelo dado inicial.</p>
+<p>Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória \(Y\), em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\), com estados em \((\Sigma, \mathcal{E})\), podemos definir o <strong>processo constante</strong> \(X_n == Y\) também em \((\Omega, \mathcal{A}, \mathbb{P})\), ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes \(n \mapsto X_n(\omega) = Y(\omega)\), para \(\omega\in \Omega\). Sorteamos \(Y(\omega)\) inicialmente, de acordo com \(\mathbb{P}\), e fazemos \(X_n(\omega) = Y(\omega)\) constante ao longo de \(n\). Não custa ressaltar que isso não quer dizer apenas que cada \(X_n\) tem lei igual a \(Y\); isso define \(X_n\) para todo \(n\) de maneira determinada.</p>
+<p>A lei de \(\{X_n\}_n\) é denotada, também, por \(\mathbb{P}\), com o entendimento de que</p>
+\[
+\mathbb{P}(X_1 \in E_1, \ldots X_n \in E_n) = \mathbb{P}(Y \in E_1, \ldots, Y \in E_n) = \mathbb{P}(Y \in E_1 \cap \cdots \cap E_n).
+\]
+<p>Em particular, a lei conjunta de probabilidade acumulada \(F\) do processo é dada em função da lei \(G\) de \(Y\) por</p>
+\[
+F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{t_n} \leq x_n) = \mathbb{P}(Y \leq \min\{t_1, \ldots, t_n\}) = G(\min\{x_1, \ldots, x_n\}).
+\]
+<p>Podemos, também, definir processos não constantes. Por exemplo, \(\{X_n\}_{n\in \mathbb{N}}\) dado por</p>
+\[
+X_n = \frac{1}{n} Y.
+\]
+<p>Nesse caso, dada uma amostra \(\omega\), obtemos a trajetória, ou caminho amostral, correspondente</p>
+\[
+X_n(\omega) = \frac{1}{n} Y(\omega), \quad n\in \mathbb{N}.
+\]
+<p>A probabilidade de uma observação no instante \(t\) é definida pela observação inicial:</p>
+\[
+\mathbb{P}(X_n \in E) = \mathbb{P}(Y \in nE),
+\]
+<p>onde \(nE = \{n x; \;\forall x\in E\}\), para um evento qualquer \(E\in \mathcal{E}\).</p>
+
+<img src="/notas_sde/assets/pages/c04/processos_discretos/code/output/partida_decaimento.svg" alt="">
+<h2 id="urna_sem_recomposição"><a href="#urna_sem_recomposição" class="header-anchor">Urna sem recomposição</a></h2>
+<p>Imagine um saco com cinco bolinhas vermelhas e cinco bolinhas pretas. Imagine, agora, retirarmos as dez bolinhas do saco, uma a uma. Seja \(X_n\) a variável aleatória indicando a cor da bolinha retirada na \(n\)-ésima vez. Digamos que \(X_n = 1\) para uma bolinha vermelha e \(X_n = 2\) para uma bolinha preta. Isso nos leva a um processo estocástico \(\{X_n\}_{n=1, \ldots, 2N}\), em \(I=\{1, \ldots, 2N\}\), onde \(N = 5\) é o número inicial de bolinhas da mesma cor. Podemos considerar o espaço amostral como sendo \(\Omega = \{1, 2\}^N\), com \(\#\Omega = 2^{10} = 1024\) trajetórias possíveis.</p>
+<p>Na primeira retirada, temos números iguais de bolinhas de cada cor, de modo que a probabilidade de cada uma sair é igual:</p>
+\[
+\mathbb{P}(X_1 = 1) = \mathbb{P}(X_1 = 2) = \frac{1}{2}.
+\]
+<p>Já nas retiradas seguintes, no entanto, as chances de cada uma vão mudar de acordo com quais bolinhas já foram retiradas. No segundo passo, se a primeira bolinha retirada foi preta, então sobraram cinco bolinhas vermelhas e quatro pretas, de maneira que as chances de tirarmos outra preta são de 4/9 enquanto que as chances de tirarmos uma vermelha são de 5/9. Analogamente, caso a primeira bolinha retirada tenha sido vermelha. Podemos escrever isso em termos de probabilidades condicionadas:</p>
+\[
+\mathbb{P}(X_2 = 1 | X_1 = 1) = \mathbb{P}(X_2 = 2 | X_1 = 2) = \frac{4}{9}, \quad \mathbb{P}(X_2 = 1 | X_1 = 2) = \mathbb{P}(X_2 = 2 | X_1 = 1) = \frac{5}{9}.
+\]
+<p>Após o passo \(n\), com \(1 \leq n \leq 2N\), se foram retiradas \(i\) bolinhas vermelhas e \(n - i\) bolinhas pretas, então as chances de tirarmos uma bolinha vermelha ou uma bolinha preta no passo \(n+1\) são, respectivamente,</p>
+\[
+\frac{N - i}{2N - n} \quad \text{e} \quad \frac{N - n + i}{2N - n}. 
+\]
+<p>Podemos escrever isso em termos de probabilidade condicionada, em função de todas as retiradas passadas:</p>
+\[
+\mathbb{P}(X_{n + 1} = x_{n+1} | X_1 = x_1, \ldots, X_n = x_n) = \frac{N - \#\{x_i = x_{n+1}; \; i = 1, \ldots, n\}}{2N - n}.
+\]
+<p>Isso não nos impede de calcularmos a probabilidade de termos um certo resultado sem sabermos estados anteriores. Basta somarmos todas as possibilidades até o momento desejado.</p>
+<p>Por exemplo, vamos buscar encontrar \(\mathbb{P}(X_2 = 1)\). Temos</p>
+\[
+\mathbb{P}(X_2 = 1) = \mathbb{P}(X_2 = 1 | X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_2 = 1 | X_1 = 2)\mathbb{P}(X_1 = 2) = \frac{4}{9}\times \frac{1}{2} + \frac{5}{9}\times\frac{1}{2} = \frac{1}{2}.
+\]
+<p>Da mesma forma, \(\mathbb{P}(X_2 = 2) = 1/2\). Agora, quando a \(X_3\), temos</p>
+\[
+\mathbb{P}(X_3 = 1) = \mathbb{P}(X_3 = 1 | X_2 = 1)\mathbb{P}(X_2 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 2)\mathbb{P}(X_2 = 2).
+\]
+<p>Temos, ainda,</p>
+\[
+\mathbb{P}(X_3 = 1 | X_2 = 1) = \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 2)\mathbb{P}(X_1 = 2) \\
+= \frac{3}{8}\times\frac{1}{2} + \frac{4}{8}\times \frac{1}{2} = \frac{7}{16}
+\]
+<p>e</p>
+\[
+\mathbb{P}(X_3 = 1 | X_2 = 2) = \mathbb{P}(X_3 = 1 | X_2 = 2, X_1 = 1)\mathbb{P}(X_1 = 1) + \mathbb{P}(X_3 = 1 | X_2 = 2, X_1 = 2)\mathbb{P}(X_1 = 2) \\
+= \frac{4}{8}\times\frac{1}{2} + \frac{5}{8}\times \frac{1}{2} = \frac{9}{16}.
+\]
+<p>Logo,</p>
+\[
+\mathbb{P}(X_3 = 1) = \frac{7}{16}\frac{1}{2} + \frac{9}{16}\frac{1}{2} = \frac{1}{2}.
+\]
+<p>Analogamente,</p>
+\[
+\mathbb{P}(X_3 = 2) = \frac{1}{2}.
+\]
+<p>De fato, \(\mathbb{P}(X_n = 1) = \mathbb{P}(X_n = 2) = 1/2\), para qualquer \(n = 1, \ldots, 2N\). Basta pensar que, por simetria &#40;as probabilidades devem ser as mesmas para cada cor de bolinha, já que não há viés para nenhuma delas&#41;, \(\mathbb{P}(X_n = 1) = \mathbb{P}(X_n = 2)\). Além disso, a soma delas deve ser \(1\). Portanto, a única opção é cada uma ter probabilidade meio.</p>
+<p>Observe, então, que as seguintes probabilidades são diferentes:</p>
+\[
+\mathbb{P}(X_3 = 1) = \frac{1}{2}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1) = \frac{4}{9}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1) = \frac{3}{8}.
+\]
+<h2 id="contagem_binomial"><a href="#contagem_binomial" class="header-anchor">Contagem binomial</a></h2>
+<p>O processo aleatório de <strong>contagem binomial</strong> é obtido &quot;contando-se&quot; o número de sucessos de um processo de Bernoulli. Se \(\{X_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli com probabilidade de sucesso \(p\), \(0 < p \leq 1\), então o processo \(\{W_n\}_{n\in \mathbb{N}}\) de contagem binomial pode ser escrito por</p>
+\[
+W_n = \sum_{j=1}^n X_n.
+\]
+<p>O número de sucesso em \(n\) tentativas binárias é dado pela distribuição binomial,</p>
+\[
+W_n \sim B(n, p),
+\]
+<p>ou seja,</p>
+\[
+\mathbb{P}(W_n = k) = p^k(1 - p)^{n-k}\left(\begin{matrix} n \\ k \end{matrix}\right).
+\]
+<p>O processo de Bernoulli pode ser obtido da contagem binomial através de</p>
+\[
+X_n = W_n - W_{n-1}, \quad n \in \mathbb{N},
+\]
+<p>com</p>
+\[
+W_0 = 0
+\]
+<p>O espaço de eventos da contagem binomial é, naturalmente, \(\Sigma = \mathbb{Z}^* = \{0, 1, 2, \ldots\}\) e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não negativos, \(\Omega = {\mathbb{Z}^*}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}\).</p>
+
+<img src="/notas_sde/assets/pages/c04/processos_discretos/code/output/contagem_binomial_caminhos.svg" alt="">
+<p>O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação. Digamos que, em uma determinada rede, em um determinado período, as chances de um pacote de dados chegar em um intervalo arbitrário de um milisegundo é de \(\%10\). Os pacotes chegam de fontes distintas e com frequência suficiente, de modo que é razoável assumir que as chegadas são independentes entre si. Assim, podemos assumir que a chegada de dados a cada milisegundo é um processo de Bernoulli com probabilidade de sucesso \(p = 0.1\). O número de pacotes recebidos em um intervalo de \(n\) milisegundos é dado pela contagem binomial \(W_n = X_1 + \ldots + X_n\).</p>
+<p>O servidor tem uma capacidade limitada de resolver os pacotes. Digamos, então, que o servidor perca pacotes caso recebe mais de 120 pacotes por segundo. Quais as chances do servidor perder algum pacote nesse período?</p>
+<p>Um intervalo de um segundo abrange iterações entre \(n + 1\) e \(n + 1000\), já que cada passo de tempo considerado é de um milisegundo. Ou seja, \(W_{n + 1000} - W_n = X_{n + 1} + \cdots + X_{n + 1000}\). Como os incrementos são independentes, temos</p>
+\[
+\mathbb{P}(W_{n + 1000} - W_n > 120) = \mathbb{P}(W_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(W_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
+\]
+<p>Podemos estimar esse número usando o Teorema Central do Limite, mas também podemos, nesse caso, calculá-lo diretamente no computador:</p>
+<pre><code class="language-julia">p &#61; 0.1
+N &#61; 1000
+l &#61; 120
+s &#61; Float64&#40;sum&#40;p^k * &#40;1-p&#41;^&#40;N - k&#41; * binomial&#40;big&#40;N&#41;, big&#40;k&#41;&#41; for k in l&#43;1:N&#41;&#41;
+println&#40;&quot;Há &#36;&#40;100 * round&#40;s, digits &#61; 4&#41;&#41;&#37; de chances de algum pacote ser perdido.&quot;&#41;</code></pre>
+<pre><code class="plaintext code-output">Há 1.73% de chances de algum pacote ser perdido.
+</code></pre>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Seja \(U \sim Unif(0, 1)\) uma variável aleatória distribuída uniformemente no intervalo \([0, 1]\). Considere a decomposição binária de um número \(x\in [0, 1]\):</p>
+</li>
+</ol>
+\[
+x = \sum_{n = 1}^\infty b_n 2^{-n}.
+\]
+<p>Essa decomposição não é, necessariamente, única, já que cada número com expansão finita \(x = \sum_{n = 1}^N b_n 2^{-n}\) também pode ser representado pela expansão infinita \(x = \sum_{n = 1}^\infty \tilde b_n 2^{-n}\), desde que \(\tilde b_n = b_n\) para \(n < N\), \(b_N = 0\) e \(b_n = 1\), para \(n > N\). Mas ela é única se impusermos que apenas \(x = 0\) pode ser representado por uma sequência terminando em zeros. Assumindo essa representação única, podemos escrever a variável aleatória na forma \(U = \sum_{n=1}^\infty B_n 2^{-n}\), para variáveis aleatórias \(B_n\), \(n\in \mathbb{N}\). Mostre que \(\{B_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli, com \(B_n \sim Bernoulli(1/2)\).</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c04/processos_continuos"><kbd>→</kbd> 4.3. Processos contínuos</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>

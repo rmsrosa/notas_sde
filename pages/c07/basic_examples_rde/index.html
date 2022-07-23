@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Exemplos básicos</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c07/logistic_rde"><kbd>→</kbd> 7.3. Equação logística aleatória</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">7.2. Exemplos básicos</a></h1>
+<p>Vamos considerar alguns exemplos básicos de equações diferenciais aleatórias.</p>
+<h2 id="exemplo_linear"><a href="#exemplo_linear" class="header-anchor">Exemplo linear</a></h2>
+<p>Começemos com o problema de valor inicial</p>
+\[
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t, & t \geq 0, \\
+X_t|_{t = 0} = X_0,
+\end{cases}
+\]
+<p>onde \(A\) e \(X-0\) são variáveis aleatórias reais. Definimos</p>
+\[
+X_t = X_0e^{tA}, \qquad t \geq 0.
+\]
+<p>Como \(f(t, a, c) = ce^{ta}\) é uma função contínua de \(\mathbb{R}^3\) em \(\mathbb{R}\), segue que \(X_t\) está bem definido e é uma variável aleatória. Além disso, para quase todo \(\omega\), temos \(A(\omega), X_0(\omega) \in \mathbb{R}\) e, com isso, temos os caminhos amostrais</p>
+\[
+X_t(\omega) = X_0(\omega) e^{A(\omega)t}, \qquad \forall t\geq 0,
+\]
+<p>que são &#40;infinitamente&#41; diferenciáveis em \(t\) e são soluções da equação diferencial ordinária</p>
+\[
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A(\omega) X_t(\omega), & t \geq 0, \\
+X_t(\omega)|_{t = 0} = X_0(\omega).
+\end{cases}
+\]
+<p>Logo, \(\{X_t\}_{t\geq 0}\) é um processo que é uma solução por caminhos da equação diferencial aleatória acima, com a condição inicial desejada.</p>
+<h2 id="exemplo_com_existência_local"><a href="#exemplo_com_existência_local" class="header-anchor">Exemplo com existência local</a></h2>
+<p>Considere</p>
+\[
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0, \\
+X_0 = 1,
+\end{cases}
+\]
+<p>onde \(A\) é uma variável aleatória com distribuição beta, por exemplo.</p>
+<p>A distribuição beta está concentrada no intervalo \((0, 1)\), ou seja, para quase todo \(\omega\), temos \(0 < A(\omega) < 1\). Assim, para quase todo \(\omega\), a equação diferencial ordinária</p>
+\[
+\begin{cases}
+\displaystyle \frac{\mathrm{d} x(t)}{\mathrm{d} t} = A(\omega) x(t)^2, & t \geq 0, \\
+x(0) = 1,
+\end{cases}
+\]
+<p>tem uma solução única</p>
+\[
+x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)}.
+\]
+<p>Como</p>
+\[
+\frac{1}{A(\omega)} > 1,
+\]
+<p>para quase todo \(\omega\), podemos definir, para todo \(0 \leq t < 1\), o processo aleatório \(\{X_t\}_{t\in [0, 1)}\) por</p>
+\[
+X_t = \frac{1}{1 - At},
+\]
+<p>cujos caminhos amostrais são</p>
+\[
+X_t(\omega) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < 1.
+\]
+<p>Observe que \((t, a) \mapsto 1/(1 - at)\) é uma função contínua em \((t,a) \in [0, 1)\times [0, 1]\). Como \(A\) tem suporte em \([0, 1]\), então essa função é Lebesgue-mensurável em \(\mathbb{R}\). Assim, \(X_t\) é uma variável aleatória bem definida.</p>
+<p>A função de distribuição acumulada de cada \(X_t\) é dada por</p>
+\[
+\mathbb{P}(X_t \leq x) = \mathbb{P}\left( \frac{1}{1 - A} \leq x\right) = \mathbb{P}\left( A \leq \frac{x - 1}{x}\right), \qquad 0 < x < 1,
+\]
+<p>com \(\mathbb{P}(X_t \leq x) = 0\), para \(x\leq 0\) e \(\mathbb{P}(X_t \leq x) = 1\), para \(x\geq 1\).</p>
+<p>A distribuição conjunta \(\mathbb{P}(X_{t_1} \leq x_1, \ldots, X_{t_n} \leq x_n)\) também pode ser obtida de forma semelhante.</p>
+<h2 id="não_existência"><a href="#não_existência" class="header-anchor">Não existência</a></h2>
+<p>Vamos ver um exemplo clássico de não existência de solução por caminhos de uma equação diferencial aleatória.</p>
+<p>Considere o problema de valor inicial</p>
+\[
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A X_t^2, & t \geq 0 \\
+X_0 = 1.
+\end{cases}
+\]
+<p>Mas, dessa vez, assumimos que \(A\) seja uma variável aleatória com distribuição sem suporte limitado, digamos normal ou exponencial, etc.. Isso significa que \(A(\omega)\) não é limitado quase sempre. Com isso, os caminhos amostrais</p>
+\[
+x(t) = \frac{1}{1 - A(\omega)t}, \qquad 0 \leq t < \frac{1}{A(\omega)},
+\]
+<p>estão definidos em intervalos arbitrariamente pequenos. Isso nos impede de definir um processo \(\{X_t\}_{t \in [0, \varepsilon)}\) para todos os caminhos, por menor que seja \(\varepsilon > 0\). Ou seja, não existe solução por caminhos dessa equação.</p>
+<h2 id="múltiplas_soluções_e_não_solução"><a href="#múltiplas_soluções_e_não_solução" class="header-anchor">Múltiplas soluções e não solução</a></h2>
+<p>Agora, considere o problema de valor inicial</p>
+\[
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = 3X_t^{2/3}, & t \geq 0 \\
+X_0 = 0.
+\end{cases}
+\]
+<p>Aqui, devemos especificar onde &quot;mora&quot; \(X_0\). Podemos tomar \(X_0 = 0\) em \(\Omega = \mathbb{R}\), com \(\mathcal{A}\) sendo, por exemplo, a \(\sigma\)-álgebra de Lebesgue.</p>
+<p>Naturalmente, temos a solução trivial \(X_t^{(0)} = 0\), \(\forall t \geq 0\). Também temos</p>
+\[
+X_t^{(1)}(\omega) = t^3, \qquad t \geq 0
+\]
+<p>como solução.</p>
+<p>Agora, para qualquer conjunto \(E\subset \Omega\), temos, ainda que \(\{X_t^{(E)}\}_{t\geq 0}\) definido através dos caminhos</p>
+\[
+X_t^{(E)}(\omega) = \begin{cases}
+t^3, &\omega \in E, \\
+0, & \omega \notin E,
+\end{cases}
+\]
+<p>é tal que cada caminho \(X_t^{(E)}(\omega)\) satisfaz a equação diferencial ordinária \(x' = 3x^{2/3}\). Se \(E\) for mensurável, então \(\{X_t^{(E)}\}_{t \geq 0}\) é, de fato, um processo que satisfaz a condição inicial \(X_0^{(E)} = 0\) e é uma solução por caminhos da equação diferencial aleatória.</p>
+<p>No entanto, se \(E\) não for mensurável, então os caminhos satisfazem a equação diferencial ordinária mas \(\{X_t^{(E)}\}_{t \geq 0}\) não define um processo.</p>
+<h2 id="outros_tipos_de_solução"><a href="#outros_tipos_de_solução" class="header-anchor">Outros tipos de solução</a></h2>
+<p>Outros tipos de solução podem ser obtidas relaxando-se o sentido de convergência do limite</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau}.
+\]
+<p>No caso acima, de soluções por caminhos, o limite vale quase certamente, i.e.</p>
+\[
+\mathbb{P}\left(\exists \frac{\mathrm{d}X_t}{\mathrm{d}t} = \lim_{\tau \rightarrow 0} \frac{X_{t+\tau} - X_t}{\tau} = f(t, X_t, Y_t) \right) = 1.
+\]
+<p>Mas, em princípio, a noção de derivada de um processo pode ser relaxada para convergência em probabilidade, convergência em distribuição, convergência em média-quadrática, convergência em média \(p\geq 1\), etc. A dificuldade é obtermos condições em \(f\) e em \(Y_t\), mais fracas, que garantam a existência de soluções da equação diferencial aleatória nesse sentido &#40;também&#41; mais fraco que convergência quase certamente.</p>
+<p>Uma sentido bastante utilizado é o de solução no sentido de média quadrática, em que existe um processo \(\{\mathrm{d}X_t/\mathrm{d}t\}_{t \in [0, T)}\) tal que</p>
+\[
+\mathbb{E}\left( \left| \frac{X_{t+\tau} - X_t}{\tau} - \frac{\mathrm{d}X_t}{\mathrm{d}t}\right|\right) \rightarrow 0, \quad \tau \rightarrow 0.
+\]
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c07/logistic_rde"><kbd>→</kbd> 7.3. Equação logística aleatória</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Processos de Markov</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c04/filtracao">4.5. Filtração <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c05/definicao_processo_wiener"><kbd>→</kbd> 5.1. Definição</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.6. Processos de Markov</a></h1>
+<p>Como vimos anteriormente, <strong>Processos de Markov</strong>, também chamados de <strong>cadeias de Markov</strong>, são processos estocásticos em que a mudança de estado para um estado futuro, conhecendo-se o estado atual, não depende dos estados passados. Mais precisamente, se \(\{X_t\}_{t\in I}\) é um processo aleatório, \(t_1 < t_2 < \ldots < t_n < t_{n+1}\) pertencem a \(I\), e \(E, E_1, \ldots, E_n\) são possíveis eventos, então, dados \(X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} in E_n\), temos que a probabilidade de \(X_{t_{n+1}} \in E\) só depende da informação dada no instante mais recente \(t_n\), ou seja</p>
+\[
+\mathbb{P}(X_{t_{n+1}} \in E | X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n) = \mathbb{P}(X_{t_{n+1}} \in E | X_{t_n} \in E_n).
+\]
+<p>No caso em que o conjunto de eventos é discreto, podemos escrever</p>
+\[
+\mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
+\]
+<p>Processos de Markov são chamados de <em>sem memória</em>. Processos de Markov podem ser contínuos ou discretos e o espaço de estados também pode ser contínuo ou discreto.</p>
+<p>O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. O modelo de Einstein para o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os passos anteriores.</p>
+<h2 id="revisitando_o_problema_da_urna"><a href="#revisitando_o_problema_da_urna" class="header-anchor">Revisitando o problema da urna</a></h2>
+<p>Conforme formulado inicialmente, o problema da urna não é uma cadeia de Markov. Mas podemos modelar o problema de outra forma, para que seja uma cadeia de Markov. Lembramos que começamos com \(N\) bolinhas de cada cor. Podemos denotar por \(X_n\) o <em>total</em> de bolinhas vermelhas retiradas da urna <em>até</em> o passo \(n\), inclusive. Para o passo \(n + 1\), só há duas possibilidades: \(X_{n + 1} = X_n + 1\), caso uma bolinha vermelha seja retirada, ou \(X_{n + 1} = X_n\), caso a bolinha retirada seja da cor preta. Todos os outros estados tem probabilidade nula de ocorrer.</p>
+<p>Observe que, inicialmente, temos um total de \(2N\) bolinhas. Após \(n\) retiradas, sobram \(2N - n\) bolinhas. Por sua vez, inicialmente temos \(N\) bolinhas de cada cor. Após retirarmos \(X_n\) bolinhas vermelhas, temos \(N - X_n\) vermelhas restantes. As outras \((2N - n) - (N - X_n) = N - n + X_n\) são bolinhas pretas. Assim, podemos expressar as probabilidades de cada uma das duas realizações possíveis na forma</p>
+\[
+\mathbb{P}(X_{n + 1} = X_n + 1) = \frac{N - X_n}{2N - n},
+\]
+<p>e</p>
+\[
+\mathbb{P}(X_{n + 1} = X_n + 1) = \frac{N - n + X_n}{2N - n}.
+\]
+<h2 id="probabilidades_de_transição"><a href="#probabilidades_de_transição" class="header-anchor">Probabilidades de transição </a></h2>
+<p>Quando temos um número discreto de estados possíveis, podemos determinar a evolução do processo em termos das probabilidades do sistema ir de um estado \(i\), no instante \(n\), para um estado \(j\), no instante \(n+1\). Isso nos leva a definir as <strong>probabilidades de transição</strong></p>
+\[
+  p_{ij}^n = \mathbb{P}(X_{n+1} = j | X_n = i).
+\]
+<p>O processo é <strong>temporalmente homogêneo</strong> quando as probabilidades de transição são independentes do parâmetro, i.e. \(p_{ij}^n = p_{ij}\) independe de \(n\).</p>
+<p>Quando o conjunto de possíveis estados é finito, isso nos dá uma <strong>matriz de transição</strong>,</p>
+\[
+P_n = (p_{ij}^n).
+\]
+<p>Observe que cada <em>linha</em> da matriz de transição deve ter soma igual a</p>
+\[
+\sum_j p_{ij} = 1, \qquad \forall j.
+\]
+<p>No caso de um processo de Bernoulli com estados \(\{1, 0\}\) &#40;e.g. sucesso e fracasso&#41; ocorrendo com probabilidades \(p\) e \(1 - p\), respectivamente, temos a matriz de transição</p>
+\[
+P_n = P = \left[ \begin{matrix} p & 1 - p \\ p & 1 - p \end{matrix} \right].
+\]
+<p>No caso de um objeto poder ser colocado em uma de duas possíveis posições, digamos \(1\) e \(2\), e que jogamos uma moeda viciada para decidir se objeto troca de posição, com probabilidade \(p\), e se mantém na posição, com probabilidade \(1 - p\), então a matriz de transição é</p>
+\[
+P_n = P = \left[ \begin{matrix} p & 1 - p \\ 1 - p & p \end{matrix} \right].
+\]
+<p>No caso do passeio aleatório, temos um espaço de estados enumerável, \(\Omega = \mathbb{Z}\), e as probabilidades de transição são</p>
+\[
+p_{ij} = \mathbb{P}(X_{n+1} = j | X_n = i) = \begin{cases} 1/2, & j = i \pm 1, \\ 0, & \text{caso contrário} \end{cases}.
+\]
+<h2 id="previsão_ingênua_de_tempo"><a href="#previsão_ingênua_de_tempo" class="header-anchor">Previsão ingênua de tempo</a></h2>
+<p>Vamos imaginar, agora, um problema de previsão de tempo, em que classificamos o tempo em três estados: &quot;ensolarado&quot;, &quot;nublado&quot; e &quot;chuvoso&quot;. Seja \(X_n\) o estado do sistema no \(n\)-ésimo dia, com \(1\), \(2\) e \(3\) indicando cada um desses possíveis estados, respectivamente.</p>
+<p>Vamos assumir que, a partir de uma &quot;análise criteriosa do histórico do clima em uma determinada região e uma determinada época&quot;, observamos que, em média, após um dia ensolarado, temos 70&#37; de chances de termos outro dia ensolarado, 20&#37; de termos um dia nublado e 10&#37; de termos um dia chuvoso. Após um dia nublado, as chances são de 30&#37;, 40&#37;, 30&#37;, respectivamente. E após um dia chuvoso, as chances são de 20&#37;, 40&#37; e 40&#37;.</p>
+<p>Como temos um número finito de estados e as probabilidades de transição são estacionárias, podemos definir a matriz de transição de estados \(P = (p_{ij})_{ij}\) por</p>
+\[
+p_{ij} = \mathbb{P}(X_{n+1} = j | X_n = i)
+\]
+<p>No nosso caso, temos</p>
+\[
+P = \left[ \begin{matrix} 0.7 & 0.2 & 0.1 \\ 0.3 & 0.4 & 0.3 \\ 0.2 & 0.4 & 0.4 \end{matrix} \right]
+\]
+<p>Sabendo-se a distribuição de probabilidades representadas por um vetor linha \(X_n \sim w = [p1, p2, p3]\), \(p_i \geq 0\), \(p_1 + p_2 + p_3 = 1\) no instante \(n\), as probabilidades no instante \(X_{n + 1}\) são dadas por</p>
+\[
+X_{n + 1} \sim w P = ( P^t w^t)^t.
+\]
+<p>Previsões de longo prazo podem ser feitas iterando-se a matriz de transição:</p>
+\[
+X_{n+k} \sim wP^k, \quad k = 1, 2, \ldots.
+\]
+<p>Por exemplo, se em determinado momento \(n\) temos \(X_n = 1\), ou seja, temos um dia ensolarado, representado pelo vetor probabilidade \(w = [1, 0, 0]\), então daqui a dois dias teremos</p>
+\[
+X_{n+2} \sim w P^2 = \left( \left[ \begin{matrix} 0.57 & 0.39 & 0.17 \\ 0.26 & 0.44 & 0.36 \\ 0.17 & 0.27 & 0.3 \end{matrix} \right] \left(\begin{matrix} 1 \\ 0 \\ 0 \end{matrix}\right) \right)^t = \left(\begin{matrix} 0.57 \\ 0.26 \\ 0.17 \end{matrix}\right)^t = [0.57, 0.26, 0.17],
+\]
+<p>ou seja, \(57\%\) de termos um dia ensolarado, \(13\%\) de termos um dia nublado e \(17\%\) de termos um dia chuvoso.</p>
+<h2 id="distribuições_estacionárias_de_processos_temporalmente_homogêneos"><a href="#distribuições_estacionárias_de_processos_temporalmente_homogêneos" class="header-anchor">Distribuições estacionárias de processos temporalmente homogêneos</a></h2>
+<p>No caso de um processo temporalmente homogêneo em um espaço de eventos finito \(\{1, \ldots, J\}\), a matriz de transição \(P\) é independente do parâmetro temporal. Além disso, como as linhas somam \(1\), a matriz tem necessariamente um autovalor igual a \(1\), com autovetor com todos os coeficientes iguais a \(1\). De fato,</p>
+\[
+P \left(\begin{matrix} 1 \\ \vdots \\ 1 \end{matrix}\right) = \left(\begin{matrix} \sum_{j=1}^J p_{1j} \\ \vdots \\ \sum_{j=1}^J p_{Jj} \end{matrix}\right) = \left(\begin{matrix} 1 \\ \vdots \\ 1 \end{matrix}\right),
+\]
+<p>Em particular, \(\det(P - I) = 0\), portanto \(\det(P^t - I) = \det(P - I) = 0\) e \(P^t\) também possui um autovalor igual a \(1\).</p>
+<p>Isso implica na existência de &#40;pelo menos&#41; um vetor linha \(v=[v_1, \ldots, v_J]\) tal que \(v^t\) seja um autovetor de \(P^t\) associado ao autovalor \(1\) e com norma \(1\), i.e. \(P^t v^t = v^t\), ou seja</p>
+\[
+vP = v,
+\]
+<p>e tal que \(v_1 + \ldots + v_J = 1\). Isso nos dá uma distribuição estacionária</p>
+\[
+\mathbb{P}(X_n = i) = v_i.
+\]
+<p>Por exemplo, no caso da previsão ingênua de tempo, </p>
+\[
+P^t = \left[ \begin{matrix} 0.7 & 0.3 & 0.2 \\ 0.2 & 0.4 & 0.4 \\ 0.1 & 0.3 & 0.4 \end{matrix} \right]
+\]
+<p>Os autovalores são aproximadamente \(0.0438\), \(0.4562\) e \(1\). O autoespaço associado ao autovalor \(1\) é</p>
+\[
+V_1 = \{(6s, 4s, 3s); \;s\in \mathbb{R}\}.
+\]
+<p>O autovalor com elementos não negativos e com norma \(1\) é</p>
+\[
+v = \frac{1}{13}[6, 4, 3] \approx [0.4615, 0.3077, 0.2308].
+\]
+<p>Assim, a distribuição com probabilidades de aproximadamente \(46,15\%\) de sol, \(30,77\%\) de nuvens e \(23,08\%\) de chuva é uma distribuição estacionária. &#40;Ela está associada a média de dias ensolarados, nublados e chuvosos coletados para a análise&#41;. Ou seja, se em um determinado dia essas são as probabilidades para a previsão para o dia seguinte, então as previsões a longo prazo serão iguais a essa. Podemos interpretar \(v\) como sendo essa lei de distribuição de probabilidades.</p>
+<p>Como, nesse caso, há um único autovalor igual a \(1\) e os outros dois são estritamente menores do que \(1\), então a previsão &quot;assintótica&quot; é igual a essa obtida pela análise de autovalores: \(\lim_{k\rightarrow \infty} wP^{n + k} \sim v\).</p>
+<p>Além de, necessariamente, ter um autovalor igual a \(1\), qualquer matriz de transição tem autovalores com valor absoluto entre \(0\) e \(1\), mas eles podem ser negativos ou complexos.</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Qualquer matriz cujos elementos sejam não negativos e cujas linhas tenham soma igual a \(1\) define um processo de Markov. Tais matrizes são chamadas de <strong>matrizes de Markov</strong>. Encontre os autovalores das seguintes matrizes de Markov, observando que podemos ter &#40;a&#41; autovalores nulos; &#40;b&#41; autovalores negativos; &#40;c&#41; mais de um autovalor igual a \(1\); e &#40;d&#41; autovalores complexos conjugados:</p>
+</li>
+</ol>
+\[
+\textrm{(a) } P = \left[ \begin{matrix} 1 & 1 \\ 0 & 0 \end{matrix} \right], \qquad
+\textrm{(b) } P = \left[ \begin{matrix} 0 & 1 \\ 1 & 0 \end{matrix} \right]
+\]
+\[
+\textrm{(c) } P = \left[ \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} \right], \qquad
+\textrm{(d) } P = \left[ \begin{matrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0\end{matrix} \right]
+\]
+<ol start="2">
+<li><p>Mostre que quando \(1\) é o único autovalor com valor absoluto igual a \(1\), de uma matriz de Markov \(P\), então \(uP^k\) converge para um autovetor associado a esse autovalor. Se o autoespaço desse autovalor tiver dimensão um, então esse limite independe do vetor inicial \(u\), desde que ele esteja associada a uma distribuição de probabilidades, ou seja, que seja um vetor com norma \(1\).</p>
+</li>
+<li><p>Encontre os autoespaços associados aos autovalores das matrizes &#40;c&#41; e &#40;d&#41; do exercício acima, obtenha as distribuições de probabilidade associadas a esses autovalores e observe que existem distribuições cíclicas, ou seja, que se repetem após dois ou mais passos.</p>
+</li>
+<li><p>Sejá \(P\) é a matriz de transição de uma cadeia de Markov discreta em \(I = \mathbb{N}\) e temporalmente homogênea, com um número finito \(J\) de estados possíveis. Seja \(v = (v_j)_{j = 1, \ldots, J}\) uma distribuição inicial de probabilidades para o processo. Mostre que cada \(vP^n\) é uma distribuição de probabilidades, i.e. \(0 \leq (vP_n)_j \leq 1\) e \(\sum_j (vP^n)_j = 1\), para cada \(n\in \mathbb{N}\), e que não pode haver autovalor da matriz de transição com módulo maior do que \(1\).</p>
+</li>
+</ol>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c04/filtracao">4.5. Filtração <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c05/definicao_processo_wiener"><kbd>→</kbd> 5.1. Definição</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

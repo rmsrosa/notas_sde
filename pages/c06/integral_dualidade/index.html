@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Integrais via dualidade</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.3. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener, de Orstein-Uhlenbeck e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c06/riemann_wiener"><kbd>→</kbd> 6.4. Limites de somatórios à la Riemann-Stieltjes</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.3. Integrais via dualidade</a></h1>
+<p>Quando \(\{Y_t\}_t\) é um processo estocástico continuamente diferenciável quase sempre, vimos que vale a fórmula</p>
+\[
+Y_t = Y_0 + \int_0^t \frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s.
+\]
+<p>Sendo os caminhos diferenciáveis, os mesmos são de variação limitada, de modo que podemos pensar no lado direito acima como uma integral de Riemann-Stieltjes e escrever</p>
+\[
+Y_t = Y_0 + \int_0^t \mathrm{d}Y_s.
+\]
+<p>Vamos estender isso para incluir a integral de funções \(g(t, Y_t)\) continuamente diferenciáveis.</p>
+<h2 id="integrando_funções_determinísticas_diferenciáveis"><a href="#integrando_funções_determinísticas_diferenciáveis" class="header-anchor">Integrando funções determinísticas diferenciáveis</a></h2>
+<p>Considere, primeiramente, uma função real \(g:\mathbb{R} \rightarrow\mathbb{R}\) continuamente diferenciável. Temos que \(\{g(t)Y_t\}_t\) também é um processo continuamente diferenciável, com derivada dada quase sempre por</p>
+\[
+\frac{\mathrm{d}}{\mathrm{d}t} g(t)Y_t = g'(t)Y_t + g(t)\frac{\mathrm{d}Y_t}{\mathrm{d}t}.
+\]
+<p>Assim, podemos considerar a integral</p>
+\[
+g(t)Y_t = g(0)Y_0 + \int_0^t g'(s)Y_s + g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s.
+\]
+<p>Como o processo \(\{Y_t\}_t\) é continuamente diferenciável, os seus caminhos amostrais são de variação limitada e a integral do segundo termo pode ser vista como uma integral de Riemann-Stieltjes:</p>
+\[
+\int_0^t g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;\mathrm{d}s = \int_0^t g(s)\;\mathrm{d}Y_s.
+\]
+<p>Dessa forma, podemos escrever a <em>fórmula de integração por partes</em></p>
+\[
+\int_0^t g(s)\;\mathrm{d}Y_s = g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
+\]
+<p>Observe, agora, que o lado direito não involve a derivada do processo \(\{Y_t\}_t\) e faz sentido mesmo quando os seus caminhos amostrais são apenas contínuos. Com isso, podemos tomar o lado direito como a definição da integral à esquerda nesse caso mais geral.</p>
+<p>Ou seja, <strong>para uma função real \(g:\mathbb{R}\rightarrow \mathbb{R}\) continuamente diferencial e um processo \(\{Y_t\}_t\) com caminhos amostrais contínuos quase sempre, definimos a integral de \(g\) com respeito a esse processo por</strong></p>
+\[
+\int_0^t g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
+\]
+<p>Essa definição de integral foi proposta por Paley, Wiener e Zygmund &#40;veja Evans &#40;2013&#41;&#41;. Esta integral satisfaz as propriedades usuais de linearidade.</p>
+<p>Nesse momento, estamos interpretando o lado direito da fórmula de integração por partes como uma outra forma de representar o termo à esquerda. Essa dupla representação é comumente denominada de representação dual. Ou de dualidade. Nesse sentido, dizemos que estamos usando essa dualidade para estender o conceito de integral. É uma definição por dualidade.</p>
+<h3 id="exemplo"><a href="#exemplo" class="header-anchor">Exemplo</a></h3>
+<p>No caso de integrarmos com respeito a um processo de Wiener \(\{W_t\}_{t\geq 0}\), temos que o valor esperado da integral é nulo:</p>
+\[
+\mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}Y_s\right] = g(t)\mathbb{E}[W_t] - g(0)\mathbb{E}[W_0] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
+\]
+<p>E se \(g(0) = g(t_1) = 0\), para algum \(t_1 \geq 0\), então</p>
+\[
+\begin{align*}
+\mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) & = \mathbb{E}\left[\left(-\int_0^{t_1} g'(s)W_s\;\mathrm{d}s\right)^2\right] \\
+& = \int_0^{t_1}\int_0^{t_1} g'(s)g'(t)\mathbb{E}[W_sW_t]\;\mathrm{d}s\;\mathrm{d}t \\
+& = \int_0^{t_1}\int_0^{t_1} g'(s)g'(t)\min\{s,t\}\;\mathrm{d}s\;\mathrm{d}t \\
+& = \int_0^{t_1}\left(\int_0^t g'(s)g'(t)s \;\mathrm{d}s + \int_t^{t_1}g'(s)g'(t)t \;\mathrm{d}s\right)\;\mathrm{d}t.
+\end{align*}
+\]
+<p>Observe que, na primeira integral,</p>
+\[
+\int_0^t g'(s)g'(t)s \;\mathrm{d}s = g'(t)g(t)t - g'(t)\int_0^t g(s)\;\mathrm{d}s.
+\]
+<p>Já na segunda integral,</p>
+\[
+\int_t^{t_1}g'(s)g'(t)t \;\mathrm{d}s = g'(t)t(g(t_1) - g(t)) = - g'(t)g(t)t.
+\]
+<p>Cancelando o termo \(g'(t)g(t)t\), nos resta</p>
+\[
+\mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) = -\int_0^{t_1} \int_0^t g'(t)g(s)\;\mathrm{d}s\;\mathrm{d}t = - \int_0^{t_1}\int_s^{t_1} g'(t)g(s) \;\mathrm{d}t\;\mathrm{d}s = \int_0^{t_1} g(s)^2\;\mathrm{d}s.
+\]
+<h2 id="integrando_composições_diferenciáveis"><a href="#integrando_composições_diferenciáveis" class="header-anchor">Integrando composições diferenciáveis</a></h2>
+<p>Podemos adaptar essa ideia para o caso de uma composição com o processo \(\{Y_t\}_t\). Mais precisamente, considere uma função real \(g:\mathbb{R}^2 \rightarrow\mathbb{R}\) continuamente diferenciável. Integrando-se essa função em relação apenas à variável \(y\), obtemos uma primitiva de \(g\), em relação a \(y\), ou seja, obtemos uma função \(G:\mathbb{R}^2 \rightarrow \mathbb{R}\) tal que</p>
+\[
+g(t, y) = \partial_y G(t, y).
+\]
+<p>Temos que \(\{G(t, Y_t)\}_t\) é um processo continuamente diferenciável, com derivada dada quase certamente por</p>
+\[
+\frac{\mathrm{d}}{\mathrm{d}t} G(t, Y_t) = \partial_t G(t, Y_t) + \partial_y G(t, Y_t)\frac{\mathrm{d}Y_t}{\partial t} = \partial_t G(t, Y_t) + g(t, Y_t)\frac{\mathrm{d}Y_t}{\partial t}.
+\]
+<p>Dessa forma, temos</p>
+\[
+G(t, Y_t) = G(0, Y_0) + \int_0^t \left(\partial_s G(s, Y_s) + g(s, Y_s)\frac{\mathrm{d}Y_s}{\partial s}\right) \;\mathrm{d}s.
+\]
+<p>Mais uma vez, como \(\{Y_t\}_t\) é continuamente diferenciável, podemos reescrever a segunda integral como sendo uma integral de Riemann-Stieltjes:</p>
+\[
+G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g(s, Y_s)\;\mathrm{d}Y_s.
+\]
+<p>Agora, observe que, caso \(\{Y_t\}_t\) tenha caminhos amostrais apenas contínuos, a primeira integral no lado direito acima continua fazendo sentido. Isso nos leva a pensar em definir a segunda integral, com respeito a esse processo, através dos termos restantes, usando novamente a ideia de dualidade.</p>
+<p>No entanto, como está fórmula não será válida em geral, vamos usar uma notação ligeiramente diferente para a integral obtida dessa maneira.</p>
+<p>Assim, <strong>assumindo \(\{Y_t\}_t\) com caminhos amostrais contínuos e \(g:\mathbb{R}^2 \rightarrow\mathbb{R}\) uma função real continuamente diferenciável, definimos,</strong> por dualidade</p>
+\[
+\int_0^t g(s, Y_s)\circ\mathrm{d}Y_s = G(t, Y_t) - G(0, Y_0) - \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s.
+\]
+<p>Observe o símbolo &quot;\(\circ\)&quot; utilizado na integração. Esse símbolo será novamente utilizado quando definirmos a <em>integral no sentido de Stratonovich.</em> Para essa integral, a fórmula acima também será válida, nesse caso especial de integrando da forma \(g(s, Y_s)\). Mas a integral de Stratonovich será válida para funções mais gerais. Essa integral difere da <em>integral de Itô</em>, que será mais usada por nós e para a qual a fórmula acima não é válida.</p>
+<h3 id="caso_independente_de_y"><a href="#caso_independente_de_y" class="header-anchor">Caso independente de \(y\)</a></h3>
+<p>No caso em que \(g(t, y) = g(t)\) independe de \(y\), temos \(G(t, y) = g(t)y\) e recuperamos a integral anterior, também definida por dualidade:</p>
+\[
+\int_0^t g(s)\circ\mathrm{d}Y_s = g(t)Y_t - g(0) Y_0 - \int_0^t g(s) Y_s \;\mathrm{d}s.
+\]
+<h3 id="caso_independente_de_t"><a href="#caso_independente_de_t" class="header-anchor">Caso independente de \(t\)</a></h3>
+<p>No caso em que \(g(t, y) = g(y)\) independe de \(t\), a fórmula acima se reduz a</p>
+\[
+\int_0^t g(Y_s)\circ\mathrm{d}Y_s = G(Y_t) - G(Y_0),
+\]
+<p>onde \(G\) é uma primitiva de \(g\).</p>
+<h3 id="exemplos"><a href="#exemplos" class="header-anchor">Exemplos</a></h3>
+<p>No caso de \(g\) ser constante igual a \(1\), recuperamos a identidade inicial e a igualdade das duas integrais definidas por dualidade:</p>
+\[
+\int_0^t \mathrm{d}Y_s = Y_t - Y_0 = \int_0^t 1\circ\mathrm{d}Y_s.
+\]
+<p>Já se \(g(t,y) = g(y) = y\), então podemos tomar \(G(t, y) = y^2/2\) e obter</p>
+\[
+\int_0^t Y_s \circ\mathrm{d}Y_s = \frac{1}{2}Y_t^2 - \frac{1}{2}Y_0^2.
+\]
+<p>No caso particular de um processo de Wiener, temos</p>
+\[
+\int_0^t W_s \circ\mathrm{d}W_s = \frac{1}{2}W_t^2.
+\]
+<h2 id="e_agora"><a href="#e_agora" class="header-anchor">E agora?</a></h2>
+<p>As construções acima já englobam uma boa parte de funções que podem ser integradas. No entanto, em várias aplicações, precisamos integrar, em relação a um dado processo \(\{Y_t\}_t\), uma função de outro processo \(\{X_t\}_t\), da forma \(g(t, X_t)\). De fato, muitas vezes \(\{X_t\}_t\) é um processo desconhecido, dado como solução de uma equação estocástica cuja lei de evolução envolve um dado processo \(\{Y_t\}_t\). Veremos como fazer isso a seguir, através das integrais de Itô e de Stratonovich.</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Seja \(\{Y_t\}_{t \in [a,b]}\), \(a < b\), um processo com caminhos amostros contínuos quase certamente. Seja \(g:\mathbb{R}\rightarrow \mathbb{R}\) uma função continuamente diferenciável. Considere a integral de \(g\) em relação a \(\{Y_t\}_{t\in [a,b]}\) como definida acima:</p>
+</li>
+</ol>
+\[
+\int_a^b g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(b)Y_b - g(a)Y_a - \int_a^b g'(s)Y_s \;\mathrm{d}s.
+\]
+<p>Mostre que essa integral possui as seguintes propriedades:</p>
+<p>a&#41; Para qualquer constante \(c\in\mathbb{R}\) e qualquer função continuamente diferenciável \(g:\mathbb{R}\rightarrow\mathbb{R}\), vale</p>
+\[
+\int_a^b c g(s)\;\mathrm{d}Y_s = c\int_a^b g(s)\;\mathrm{d}Y_s.
+\]
+<p>b&#41; Para quaisquer funções continuamente diferenciáveis \(g_1, g_2:\mathbb{R} \rightarrow \mathbb{R}\), vale</p>
+\[
+\int_a^b (g_1(s) + g_2(s)) \;\mathrm{d}Y_s = \int_a^b g_1(s) \;\mathrm{d}Y_s + \int_a^b g_2(s) \;\mathrm{d}Y_s.
+\]
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c06/riemann_wiener"><kbd>→</kbd> 6.4. Limites de somatórios à la Riemann-Stieltjes</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

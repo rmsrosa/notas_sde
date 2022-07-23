@@ -2,362 +2,398 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>pages/c03/cadeias_markov/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c09/convergencia_euler_maruyama/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c01/aspectos_numericos/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c06/logistic_rde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c10/deterministic/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c05/integral_dualidade/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c06/formula_ito/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/unicidade_sol_sde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/setting/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c06/basic_examples_rde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c06/integral_dualidade/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c07/logistic_rde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c04/processo_browniano/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c08/unicidade_sol_sde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c09/heun/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c04/processos_discretos/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c06/integral_riemannstieltjes/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/literated/c01/simulacoes_numericas/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/exemplos_va_discretas/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c04/simulacoes_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c03/definicao_pe/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c05/riemann_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/existence_solutions_sde_particulares/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/prob_condicionada/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c04/simetrias_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c06/integral_riemann/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c05/naodiferenciabilidade_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c08/relacoes_rode_sde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c01/apresentacao/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c02/gerando_num_aleatorios/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c03/monte_carlo/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c06/integral_ito_propriedades/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/media_momentos/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c08/milstein/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c07/linear_sde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c09/simulacoes_convergencia_em/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/definicao_va/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c06/riemann_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c06/integral_ito/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c01/passeioaleatorio_movBrowniano/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c05/formula_ito/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/ornstein_uhlenbeck/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/references/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/desigualdades/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/setting/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c09/simulacoes_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c03/processo_browniano/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/linear_sde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/borel_cantelli/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c07/existence_solutions_rde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/multi_va/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c04/variacao_ilimitada_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c04/naodiferenciabilidade_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/appendix/teo_extension_kolmogorov/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c03/filtracao/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c05/definicao_processo_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/brownian_bridge/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c04/processos_continuos/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/ornstein_uhlenbeck/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/brownian_bridge/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/relacoes_rode_sde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c04/cadeias_markov/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/geometric_brownian/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c05/simetrias_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c03/processos_continuos/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c04/tipos_processos/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c04/definicao_processo_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c05/variacao_ilimitada_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c04/existencia_processo_wiener/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c05/integral_riemann/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c07/existence_solutions_sde_particulares/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c09/milstein/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c01/movimento_Browniano/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c07/basic_examples_rde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/exemplos_va_continuas/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c03/tipos_processos/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c03/processos_discretos/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c09/tx_convergencia/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/rascunho/rascunho1/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c08/tx_convergencia/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c04/filtracao/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c05/integral_ito_propriedades/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/geometric_brownian/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c06/existence_solutions_rde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c05/existencia_processo_wiener/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c04/definicao_pe/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/appendix/teo_fund_kolmogorov/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/existence_solutions_sde/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c08/continuidade_caminhos/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c01/aspectos_iniciais/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c05/integral_ito/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/teorema_central/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c08/euler_maruyama/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c09/simulacoes_milstein/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>pages/c07/continuidade_caminhos/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c05/integral_riemannstieltjes/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>pages/c03/gerando_num_aleatorios/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/transformacoes/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>pages/c08/convergencia_euler_maruyama/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>pages/c02/convergencias/index.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c03/histograma/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c08/existence_solutions_sde/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>pages/c08/feynmann_kac/index.html</loc>
+    <lastmod>2022-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
