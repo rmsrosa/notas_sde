@@ -109,6 +109,15 @@ menu = [
         "pages/c09/simulacoes_convergencia_em"
         "pages/c09/milstein"
     ]
+    "Evolução da função densidade de probabilidade" => [
+        "pages/c10/deterministic"
+        "Evolução no caso de equações aleatórias"
+        "Kolmogorov backward equation"
+        "Kolmogorov forward equation"
+        "Evolução no caso de equações estocásticas"
+        "Soluções estacionárias"
+        "Métodos numéricos"
+    ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
         "pages/appendix/teo_extension_kolmogorov"
