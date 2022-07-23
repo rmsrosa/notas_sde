@@ -110,6 +110,7 @@ menu = [
         "pages/c09/heun"
         "pages/c09/milstein"
         "pages/c09/simulacoes_milstein"
+        "pages/c09/sciml"
     ]
     "Evolução da função densidade de probabilidade" => [
         "pages/c10/deterministic"
