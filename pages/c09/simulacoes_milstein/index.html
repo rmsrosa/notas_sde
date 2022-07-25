@@ -25,6 +25,8 @@
   
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
 </head>
 
 <body>
@@ -257,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. Usando o ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -321,7 +323,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c09/sciml"><kbd>→</kbd> 9.8. Usando o ambiente SciML da linguagem Julia</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c09/sciml"><kbd>→</kbd> 9.8. O ambiente SciML da linguagem Julia</a>
 </span>
     </p>
 </div>
@@ -333,8 +335,19 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">9.7. Simulações Milstein</a></h1>
+<p>Consideramos, novamente, o movimento browniano geométrico, a título de ilustrar a ordem de convergência do método de Milstein. Enquanto que o método de Euler tem ordem forte \(1/2\), o de Milstein tem ordem \(1\), conforme podemos verificar nas simulações abaixo.</p>
+<p>Relembramos, aqui, a equação, que tem a forma</p>
+\[
+\mathrm{d}X_t = \mu X_t \;\mathrm{d}t + \sigma X_t \;\mathrm{d}W_t,
+\]
+<p>e cuja solução é</p>
+\[
+X_t = X_0 e^{(\mu + \sigma^2/2)t + \sigma W_t}.
+\]
+<p>Tomamos a condição inicial \(X_0 = 1.0\) e fixamos \(\mu = 2.0\) e o tempo final \(T = 2.0\). Variamos o coeficiente de difusão \(\sigma\) e o número \(M\) de amostras, além do número de pontos da malha, determinando o passo de tempo, que aparece no eixo das abscissas. O erro forte aparece no eixo das ordenadas.</p>
+<p>Novamente, a ordem \(p\) do método é estimada via regressão linear. Observe como está próxima de \(1\), nos primeiros exemplos, com um número relativamente grande de amostras, enquanto que nos últimos exemplos a ordem fica ligeiramente mascarada pelo baixo número de amostras.</p>
 
-<p><p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_milstein/code/geometric_brownian_Milsteinconvfig1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_milstein/code/geometric_brownian_Milsteinconvfig2' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_milstein/code/geometric_brownian_Milsteinconvfig3' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_milstein/code/geometric_brownian_Milsteinconvfig4' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_milstein/code/geometric_brownian_Milsteinconvfig5' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c09/simulacoes_milstein/code/output/geometric_brownian_Milsteinconvfig1.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_milstein/code/output/geometric_brownian_Milsteinconvfig2.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_milstein/code/output/geometric_brownian_Milsteinconvfig3.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_milstein/code/output/geometric_brownian_Milsteinconvfig4.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_milstein/code/output/geometric_brownian_Milsteinconvfig5.svg" alt=""></p>
 
     <div class="navbar">
     <p id="nav">
@@ -342,7 +355,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c09/sciml"><kbd>→</kbd> 9.8. Usando o ambiente SciML da linguagem Julia</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c09/sciml"><kbd>→</kbd> 9.8. O ambiente SciML da linguagem Julia</a>
 </span>
     </p>
 </div>
@@ -358,12 +371,16 @@
         </div>
     
 
-    Last modified: July 23, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 25, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     
