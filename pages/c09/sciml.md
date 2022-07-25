@@ -44,7 +44,6 @@ A solução numérica é obtida através de um *problema* montado via `RODEProbl
 
 A primeira é apropriada para problemas escalares, junto com uma função `f` definida da forma `f(u, p, t, W)`. Essa forma é apropriada para o caso em que `u` é imutável, como no caso escalar, e uma imutável `du` do mesmo tipo é retornado (e.g. `u::Float64` e `du::Float64`). No caso de um sistema, com `u` sendo um vetor ou um array (e.g. `u::Vector{Float64}`), então o ideal é usar a versão `f!(du, u, p, t, W)`, onde um vetor, ou array, `du`, do mesmo tipo que `u`, é utilizado para conter o resultado da função, evitando novas alocações e um acúmulo desnecessário de alocações e recursos computacionais, a cada iteração.
 
-
 Mais detalhes sobre a inferface em [RODE Problems](https://docs.sciml.ai/dev/modules/DiffEqDocs/types/rode_types/).
 
 ```julia:rode_via_sciml
@@ -57,7 +56,7 @@ function f(u, p, t, W)
     return du
 end
 
-u0 = 1.00
+u0 = 1.0
 tspan = (0.0, 5.0)
 prob = RODEProblem(f, u0, tspan)
 
@@ -65,7 +64,7 @@ sol = solve(prob, RandomEM(), dt=1/100)
 
 plot(sol)
 
-#hide savefig(joinpath(@OUTPUT, "rode_via_sciml.svg"))
+savefig(joinpath(@OUTPUT, "rode_via_sciml.svg")) # hide
 ```
 
 \output{rode_via_sciml}
@@ -96,9 +95,53 @@ sol = solve(prob, RandomEM(), dt=1/100)
 
 plot(sol)
 
-#hide savefig(joinpath(@OUTPUT, "rode_via_sciml_pop.svg"))
+savefig(joinpath(@OUTPUT, "rode_via_sciml_pop.svg")) # hide
 ```
 
 \output{rode_via_sciml_pop}
 
 \fig{rode_via_sciml_pop}
+
+
+```julia:rode_via_sciml_pop_ensemb
+using StochasticDiffEq
+using Plots
+theme(:ggplot2)
+
+function f(u, p, t, W)
+    a, b, δ, ε = p
+    Y = W / (1 + abs(W))
+    Z = sin(W)
+    A = a + δ * Y
+    B = b + ε * Z
+    du = (A - B * u) * u
+    return du
+end
+
+u0 = 1.0
+p = (3.0, 2.0, 0.1, 0.2)
+tspan = (0.0, 5.0)
+prob = RODEProblem(f, u0, tspan, p)
+
+ensembleprob = EnsembleProblem(prob)
+sol = solve(ensembleprob, RandomEM(), EnsembleThreads(), trajectories=100, dt=1/100)
+plot(title = "conjunto de soluções", titlefont = 12, xaxis = "t", yaxis = "população (MM)")
+plot!(sol, color = 1, alpha = 0.1)
+savefig(joinpath(@OUTPUT, "rode_via_sciml_pop_ensemb_trajectories.svg")) # hide
+
+sol = solve(ensembleprob, RandomEM(), EnsembleThreads(), trajectories=1000, dt=1/100)
+
+summ95 = EnsembleSummary(sol)
+summ50 = EnsembleSummary(sol; quantiles=[0.25,0.75])
+plot(title = "valor esperado e intervalos de confiança da solução", titlefont = 12, xaxis = "t", yaxis = "população (MM)")
+plot!(summ95, label = "95% intervalo de confiança")
+plot!(summ50, label = "50% intervalo de confiança")
+
+savefig(joinpath(@OUTPUT, "rode_via_sciml_pop_ensemb.svg")) # hide
+```
+
+\output{rode_via_sciml_pop_ensemb}
+
+\fig{rode_via_sciml_pop_ensemb_trajectories}
+
+\fig{rode_via_sciml_pop_ensemb}
