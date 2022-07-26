@@ -389,4 +389,58 @@ savefig(joinpath(@OUTPUT, "rode_via_sciml_pop_ensemb.svg")) # hide
 
 ## Resolvendo equações estocásticas via SciML
 
-[A interface para a resolução de equações estocásticas](https://diffeq.sciml.ai/stable/types/sde_types/) também é acessível pelo pacote [SciML/StochasticDiffEq.jl](https://github.com/SciML/StochasticDiffEq.jl). Nesse caso, precisamos informar a função de *drift* `f(u, p, t)` e a função de difusão `g(u, p, t)`. Veja os exemplos no [tutorial de SDE](https://diffeq.sciml.ai/stable/tutorials/sde_example/). Há uma [série de métodos disponíveis para equações estocásticas](https://diffeq.sciml.ai/stable/solvers/sde_solve/). O Euler-Maruyama para equações estocásticas é definido simplesmente por `EM()`. Da mesma forma, podemos usar o método de Monte Carlo através do `EnsembleProblem()`, conforme descrito em [Parallel Ensemble Simulations](https://diffeq.sciml.ai/stable/features/ensemble/).
+[A interface para a resolução de equações estocásticas](https://diffeq.sciml.ai/stable/types/sde_types/) é acessível pelo pacote [SciML/StochasticDiffEq.jl](https://github.com/SciML/StochasticDiffEq.jl). Nesse caso, precisamos informar a função de *drift* `f(u, p, t)` e a função de difusão `g(u, p, t)`. Veja os exemplos no [tutorial de SDE](https://diffeq.sciml.ai/stable/tutorials/sde_example/). A equação estocástica em questão tem a forma
+$$
+\mathrm{d}X_t = f(X_t, p, t)\;\mathrm{d}t + g(X_t, p, t)\;\mathrm{d}W_t
+$$
+onde agora incluímos explicitamente parâmetros $p$. Observe a troca de ordem dos argumentos $X_t$ e $t$, em relação ao formato tratado na parte teórica.
+
+Há uma [série de métodos disponíveis para equações estocásticas](https://diffeq.sciml.ai/stable/solvers/sde_solve/). O Euler-Maruyama para equações estocásticas é definido simplesmente por `EM()`. Da mesma forma, podemos usar o método de Monte Carlo através do `EnsembleProblem()`, conforme descrito em [Parallel Ensemble Simulations](https://diffeq.sciml.ai/stable/features/ensemble/).
+
+Vejamos um exemplo concreto, da ponte browniana, cuja equação tem a forma
+$$
+\mathrm{d}B_t = - \frac{B_t}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
+$$
+com condição inicial
+$$
+B_0 = 0.
+$$
+
+Nesse caso, resolvemos como feito a seguir.
+
+```julia:sde_via_sciml_pop_ensemb
+using StochasticDiffEq
+using Plots
+theme(:ggplot2)
+
+f(u, p, t) = - u / (1.0 - t)
+g(u, p, t) = 1.0
+
+u0 = 0.0
+tspan = (0.0, 1.0)
+prob = SDEProblem(f, g, u0, tspan)
+
+ensembleprob = EnsembleProblem(prob)
+sols = solve(ensembleprob, EM(), EnsembleThreads(), trajectories=100, dt=1/100)
+plot(title = "soluções da ponte browniana", titlefont = 12, xaxis = "t", yaxis = "x", size = (800, 600))
+plot!(sols, color = 1, alpha = 0.1)
+plot!(sols[1])
+savefig(joinpath(@OUTPUT, "sde_via_sciml_pop_ensemb_trajectories.svg")) # hide
+
+sols = solve(ensembleprob, EM(), EnsembleThreads(), trajectories=1000, dt=1/100)
+
+summ95 = EnsembleSummary(sols)
+summ50 = EnsembleSummary(sols; quantiles=[0.25,0.75])
+plot(title = "valor esperado e intervalos de amostras", titlefont = 12, xaxis = "t", yaxis = "população", size = (800, 600))
+plot!(summ95, label = "95% das amostras")
+plot!(summ50, label = "50% das amostras")
+plot!(range(tspan..., length = 200), t -> sqrt(t * (1 - t)))
+
+savefig(joinpath(@OUTPUT, "sde_via_sciml_pop_ensemb.svg")) # hide
+```
+
+\output{sde_via_sciml_pop_ensemb}
+
+\fig{sde_via_sciml_pop_ensemb_trajectories}
+
+\fig{sde_via_sciml_pop_ensemb}
