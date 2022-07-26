@@ -56,9 +56,10 @@ $$
 \mathrm{Var}(B_t) & = \mathbb{E}[B_t^2] \\
 & = (1-t)^2\mathbb{E}\left[\left(\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s\right)^2\right] \\
 & = (1 - t)^2\int_0^t \frac{1}{(1-s)^2}\;\mathrm{d}s \\
-& = (1 - t)^2 \left(-\frac{1}{(1 - t)} + 1 \right) \\
-& = (1 - t)^2 - (1 - t) \\
-& = t(t - 1).
+& = (1 - t)^2 \left.\left( \frac{1}{1-s} \right)\right|_{s = 0}^{t} \\
+& = (1 - t)^2 \left(\frac{1}{(1 - t)} - 1 \right) \\
+& = (1 - t) - (1 - t)^2 \\
+& = t(1 - t).
 \end{align*}
 $$
 Em particular,
