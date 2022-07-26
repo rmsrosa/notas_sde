@@ -145,7 +145,29 @@ savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_pos.svg"))
 \fig{ornstein_uhlenbeck_vel}
 \fig{ornstein_uhlenbeck_pos}
 
+## Propriedade de reversão à média
+
+O processo de Orstein-Uhlenbeck $\{O_t\}_{t \geq 0}$, conforme definido acima, tem a propriedade $\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0$, quando $t \rightarrow 0$ (veja os Exercícios). Nesse caso, podemos dizer que a média assintótica é nula e que o processo "reverte", assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra $\nu\mu\;\mathrm{d}t$ de *drift* aditivo, nos levando à equação
+$$
+\mathbb{d}\hat O_t = - \nu (\hat O_t - \mu)\;\mathrm{d}t + \sigma \mathrm{d}W_t.
+$$
+
+Escrevendo $O_t = \hat O_t - \mu$, vemos que $\{O_t\}_{t \geq 0}$ é um processo de  Orstein-Uhlenbeck sem o termo extra:
+$$
+\mathbb{d} O_t = -\nu O_t \;\mathrm{d}t + \sigma \mathrm{d}W_t.
+$$
+
+Como $\mathbb{E}[O_t] \rightarrow 0$, quando $t \rightarrow 0$, então $\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu$, ou seja, a esperança de $\{\hat O_t\}_{t \geq 0}$ converge para a média $\mu$. Assim, o processo de Orstein-Uhlenbeck é um exemplo de *mean-reverting process,* ou "processo que reverte à média".
+
 ## Exercícios
+
+Nos exercícios abaixo, considere o sistema
+$$
+\begin{cases}
+\mathrm{d}X_t = Y_t\;\mathrm{d}t, \\
+\mathrm{d}Y_t = - \nu Y_t \;\mathrm{d}t + \sigma \;\mathrm{d}W_t,
+\end{cases}
+$$
 
 1. Mostre que
 $$
