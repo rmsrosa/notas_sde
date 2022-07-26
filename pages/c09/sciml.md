@@ -167,18 +167,18 @@ let
     plot!(sols, color = 1, alpha = 0.1)
     plot!(sols[1])
     savefig(joinpath(@OUTPUT, "ode_via_sciml_pop_ensemb_trajectories.svg"))
-end
 # hide
 
-sols = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=250, saveat = range(tspan..., length = 200))
+    sols = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=250, saveat = range(tspan..., length = 200))
 
-summ95 = EnsembleSummary(sols)
-summ68 = EnsembleSummary(sols; quantiles=[0.16,0.84])
-plot(title = "valor esperado e intervalos de confiança", titlefont = 12, xaxis = "t", yaxis = "população", size = (800, 600))
-plot!(summ95, label = "95%")
-plot!(summ68, label = "68%", legend = :bottomright)
+    summ95 = EnsembleSummary(sols)
+    summ68 = EnsembleSummary(sols; quantiles=[0.16,0.84])
+    plot(title = "valor esperado e intervalos de confiança", titlefont = 12, xaxis = "t", yaxis = "população", size = (800, 600))
+    plot!(summ95, label = "95%")
+    plot!(summ68, label = "68%", legend = :bottomright)
 
-savefig(joinpath(@OUTPUT, "ode_via_sciml_pop_ensemb.svg")) # hide
+    savefig(joinpath(@OUTPUT, "ode_via_sciml_pop_ensemb.svg")) # hide
+end
 ```
 
 \output{ode_via_sciml_pop_ensemb}
