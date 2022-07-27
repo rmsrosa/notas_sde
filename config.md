@@ -125,6 +125,7 @@ menu = [
     "Sistemas de equações estocásticas" => [
         "pages/c11/nuclear_reactions"
         "pages/c11/stochastic_sir"
+        "pages/c11/stochastic_sir_network"
     ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
