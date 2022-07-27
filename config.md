@@ -123,6 +123,7 @@ menu = [
     ]
     "Sistemas de equações aleatórias"
     "Sistemas de equações estocásticas" => [
+        "pages/c11/nuclear_reactions"
         "pages/c11/stochastic_sir"
     ]
     "*Apêndice" => [
