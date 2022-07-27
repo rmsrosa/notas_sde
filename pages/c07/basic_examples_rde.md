@@ -4,7 +4,7 @@
 
 Vamos considerar alguns exemplos básicos de equações diferenciais aleatórias.
 
-## Exemplo linear
+## Exemplo linear autônomo
 
 Começemos com o problema de valor inicial
 $$
@@ -13,7 +13,7 @@ $$
 X_t|_{t = 0} = X_0,
 \end{cases}
 $$
-onde $A$ e $X-0$ são variáveis aleatórias reais. Definimos
+onde $X_0$ e $A$ são variáveis aleatórias reais. Definimos
 $$
 X_t = X_0e^{tA}, \qquad t \geq 0.
 $$
@@ -31,7 +31,34 @@ $$
 
 Logo, $\{X_t\}_{t\geq 0}$ é um processo que é uma solução por caminhos da equação diferencial aleatória acima, com a condição inicial desejada.
 
-## Exemplo com existência local
+## Exemplo linear não autônomo com um processo como parâmetro
+
+Vejamos, agora, o problema de valor inicial
+$$
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t}{\mathrm{d} t} = A_t X_t, & t \geq 0, \\
+X_t|_{t = 0} = X_0,
+\end{cases}
+$$
+onde $X_0$ é uma variável aleatória real e $\{A_t\}_{t \geq 0}$ é um processo real. Definimos
+$$
+X_t = X_0e^{\int_0^t A_s \;\mathrm{d}s}, \qquad t \geq 0.
+$$
+Assumimos que $t \mapsto A_t(\omega)$ é contínuo quase certamente, de maneira que os caminhos amostrais
+$$
+X_t(\omega) = X_0(\omega) e^{\int_0^t A_s(\omega) \;\mathrm{d}s}, \qquad \forall t\geq 0,
+$$
+são diferenciáveis em $t$ e são soluções da equação diferencial ordinária
+$$
+\begin{cases}
+\displaystyle \frac{\mathrm{d} X_t(\omega)}{\mathrm{d} t} = A_t(\omega) X_t(\omega), & t \geq 0, \\
+X_t(\omega)|_{t = 0} = X_0(\omega).
+\end{cases}
+$$
+
+Logo, $\{X_t\}_{t\geq 0}$ é um processo que é uma solução por caminhos da equação diferencial aleatória acima, com a condição inicial desejada.
+
+## Exemplo não linear com existência local
 
 Considere
 $$
