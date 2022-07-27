@@ -122,7 +122,9 @@ menu = [
         "Métodos numéricos"
     ]
     "Sistemas de equações aleatórias"
-    "Sistemas de equações estocásticas"
+    "Sistemas de equações estocásticas" => [
+        "pages/c11/stochastic_sir"
+    ]
     "*Apêndice" => [
         "pages/appendix/teo_fund_kolmogorov"
         "pages/appendix/teo_extension_kolmogorov"
