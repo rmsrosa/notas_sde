@@ -141,7 +141,7 @@ $$
 
 Em forma vetorial, temos
 $$
- \mathrm{d}\left( \begin{matrix} I \\ S \end{matrix} \right) = \left( \begin{matrix} - \beta_0 \frac{I}{N}S \\ \beta_0 \frac{I}{N}S - \gamma_0 I\end{matrix}\right) \mathrm{d}t + \left[ \begin{matrix} - \sigma_\beta \frac{I}{N}S & 0 \\ \sigma_\beta \frac{I}{N}S & - \sigma_\gamma I \end{matrix} \right] \mathrm{d}\left( \begin{matrix} W_1 \\ W_2 \end{matrix} \right)
+ \mathrm{d}\left( \begin{matrix} S \\ I \end{matrix} \right) = \left( \begin{matrix} - \beta_0 \frac{I}{N}S \\ \beta_0 \frac{I}{N}S - \gamma_0 I\end{matrix}\right) \mathrm{d}t + \left[ \begin{matrix} - \sigma_\beta \frac{I}{N}S & 0 \\ \sigma_\beta \frac{I}{N}S & - \sigma_\gamma I \end{matrix} \right] \mathrm{d}\left( \begin{matrix} W_1 \\ W_2 \end{matrix} \right)
 $$
 
 ### Implementando a lei de evolução
