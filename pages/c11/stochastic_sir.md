@@ -2,11 +2,9 @@
 
 # {{ get_title }}
 
-## Introduction
+Uma componente importante em epidemiologia é a característica heterogênea dos parâmetros epidemiológicos e sociais. Os indivíduos têm, naturalmente, diferentes comportamentos e diferentes capacidades de serem infectados e de se recuperarem de uma doença. Os modelos compartimentais são homogêneos por princípio e não são capazes de capturar essa heterogeneidade.
 
-Uma componente importante em epidemiologia é característica heterogênea dos parâmetros epidemiológicos. Os indivíduos têm, naturalmente, diferentes comportamentos e diferentes capacidades de ser infectados e de se recuperarem de uma doença. Os modelos compartimentais não são capazes de capturar essa heterogeneidade pois, por princípio, são baseados na hipótese das características serem homogêneas, de todos os indíviduos terem o mesmo comportamente e os mesmos atributos.
-
-Modelos mais realistas devem levar esse heterogeneidade em consideração. Num extremo, podemos modelar cada indivíduo separadamente. Isso é custoso, tanto no aspecto da simulação computacional (imagine modelar milhões de indivíduos em uma cidade grande ou em estado ou país) como no de ajuste de parâmetros.
+Modelos mais realistas devem levar esse heterogeneidade em consideração. Num caso extremo, podemos modelar cada indivíduo separadamente. Isso é custoso, tanto no aspecto da simulação computacional (imagine modelar milhões de indivíduos em uma cidade grande ou em estado ou país) como no de ajuste e escolha dos parâmetros apropriados.
 
 Uma modelagem intermediária é dividir a população em grupos e assumir a homogeneidade apenas dentro desse grupos. A divisão pode ser feita em termos geográficos (e.g. diferentes bairros em uma cidade), comportamentais (e.g. diferentes grupos sociais ou de trabalho), sociais (e.g. diferentes condições de vida), de saúde (e.g. diferentes grupos de risco), etc.
 
@@ -16,15 +14,16 @@ Aqui, vamos construir um modelo do tipo SIR, considerando os estados epidemioló
 
 Vamos, então, imaginar que a população está estruturada em diferentes regiões geográficas e que os parâmetros epidemiológicos (taxas de contágio e de recuperação) variam de região para região. Vamos imaginar que, ao longo de cada unidade de tempo (e.g. um dia), parte da população de uma região passe parte do tempo em uma das outras regiões. E vamos assumir que esse deslocamento não seja sempre o mesmo, todos os dias, permitindo que ele varie estocásticamente ao longo do tempo.
 
-Vamos construir isso aos poucos.
+Vamos construir isso aos poucos:
 
-1. We first define a classic one-site compartmental SIR model;
-1. Next we make this model stochastic;
-1. Then we build a deterministic network-structured compartmental SIR model;
-1. Finally we make that stochastic
+1. Primeiro definimos o modelo SIR compartimental determinístico clássico;
+1. Depois consideremos o SIR compartimental estocástico;
+1. Em seguida consideramos o SIR em rede determinístico; e
+1. Finalmente consideramos o SIR em rede estocástico.
 
-## Loading the necessary packages
+## Carregando os pacotes necessários
 
+Nas simulações, vamos usar o ambiente [SciML](https://sciml.ai), da [linguagem Julia](https://sciml.ai). Como vamos simular tanto sistema determinísticos como estocásticos, carregamos o [SciML/OrdinaryDiffEq](https://github.com/SciML/OrdinaryDiffEq.jl) e o [SciML/StochasticDiffEq](https://github.com/SciML/StochasticDiffEq.jl).
 
 ```julia:packages
 using OrdinaryDiffEq
@@ -37,11 +36,7 @@ using Plots
 
 ## Modelo SIR compartimental clássico
 
-This is the classic model, with the population divided into compartments with the
-number of Susceptibles, Infected, and Removed/Recovered individuals.
-
-With $S(t)$, $I(t)$, $R(t)$ denoting the population in each compartment at time $t$,
-the evolution equation for these quantities is defined by
+Esse é o modelo clássico, com a população toda dividida em três compartimentos: suscetíveis, infectados e recuperados. A população em cada compartimento, em cada instante de tempo $t$, é dada por $S(t)$, $I(t)$, $R(t)$, respectivamente. A evolução dessas quantidades é dada pelo sistema
 $$
 \begin{cases}
 S' & = - \beta \frac{I}{N}S, \\
@@ -50,14 +45,7 @@ R' & = \gamma I.
 \end{cases}
 $$
 
-The parameters $\beta$ and $\gamma$ are positive and stand for the infection
-and recovery rates, respectively, while $N = S + I + R$ is the total population
-
-In this model, there is no birth or death (or at least no birth since one may include
-the deceased in the removed compartment). Hence, the sum $S(t) + I(t) + R(t) = N$ is
-constant for all times. Due to that, we may reduce the model to a two-dimensional
-system
-
+Os parâmetros $\beta$ e $\gamma$ são positivos e determinam as taxas de infeção e recuperação, respectivamente. A população total $N = S(t) + I(t) + R(t)$ é constante ao longo do tempo; não há natalidade nem mortalidade, no intervalo de tempo considerado. Por conta disso, podemos escrever $R(t) = N - S(t) - I(t)$ e reduzir o sistema a um modelo bidimensional
 $$
 \begin{cases}
 S' & = - \beta \frac{I}{N}S, \\
@@ -65,8 +53,9 @@ I' & = \beta \frac{I}{N}S - \gamma I.
 \end{cases}
 $$
 
-### Implementing the evolution law
+### Implementando a lei de evolução
 
+Definimos a função `SIR!(du, u, p, t)` como o lado direito do sistema. Como é um sistema, consideramos a versão *inplace,* que recebe o vetor `du` de derivadas e altera os seus elementos.
 ```julia:sir
 function SIR!(du, u, p, t)
     S, I = u
@@ -75,33 +64,34 @@ function SIR!(du, u, p, t)
     du[2] = beta * S * I / N - gamma * I
 end
 ```
-
 \output{sir}
 
-### Setup
+### Parâmetros
 
-In this example, we set the whole population and fix the epidemiological parameters.
-
+Fixamos a população total e os parâmetros epidemiológicos, além do número inicial de infectados e o intervalo de tempo de interesse. Com isso em mãos, definimos o problema de valor inicial via `ODEProblem()`.
 ```julia:setup_sir
 N = 100_000
 beta = 0.2
 gamma = 0.15
 
-# Here we prepare the parameters for the solver
-
 parm_sir = (N, beta, gamma)
+
+t0 = 0.0
+tf = 360.0
+tspan = (t0, tf)
 
 inf0 = 10
 u0 = Float64[N - inf0, inf0]
-tspan = (0., 360.)
-```
 
+SIR_prob = ODEProblem(SIR!, u0, tspan, parm_sir)
+```
 \output{setup_sir}
 
-### Solution
+### Solução
+
+Com o problema montado, resolvemos o via `solve`, com o algoritmo `Tsit5()`, que é um método Runge-Kutta 5/4 de Tsitouras.
 
 ```julia:solve_sir
-SIR_prob = ODEProblem(SIR!, u0, tspan, parm_sir)
 SIR_sol = solve(SIR_prob, Tsit5())
 
 plot(
@@ -116,33 +106,32 @@ plot(
 )
 savefig(joinpath(@OUTPUT, "solve_sir_2.svg")) # hide
 ```
-
 \output{solve_sir}
 
+Podemos visualizar a evolução dos dois compartimentos nos gráficos a seguir.
 \fig{solve_sir_1}
+
 \fig{solve_sir_2}
 
-## Stochastic compartmental SIR model
+## Modelo SIR compartimental estocástico
 
-Here we write a stochastic (random) version of the classic compartmental SIR model.
-
-We keep the same parameters, changing only the evolution law, to account for randomness
-on the epidemiologic parameters.
-
-We assume each parameter, $\beta$ and $\gamma$ is a random process, with means
-$\beta_0$ and $\gamma_0$, respectively, and satisfying
+Aqui, consideramos a versão estocástica do modelo SIR clássico. Assumimos que cada parâmetro epidemiológico é dado de maneira estocástica, como uma perturbação de um valor base por um ruído branco:
 $$
-  \begin{align}
-    \dot\beta \sim \beta_0 \mathrm{d}t + \sigma_\beta \mathrm{d}W_1, \\
-    \dot\gamma \sim \gamma_0 \mathrm{d}t + \sigma_\gamma \mathrm{d}W_2,
-  \end{align}
+\begin{align*}
+\beta & = \beta_0 + \sigma_\beta \dot \eta_1 \\
+\gamma & = \gamma_0 + \sigma_\gamma \dot\eta_2.
+\end{align*}
 $$
+onde $\beta_0$ e $\gamma_0$ são os varlores de base e $\dot \eta_1$ e $\dot \eta_2$ representam dois ruídos brancos independentes. Isso é formalmente definido através das equações
+$$
+\begin{align*}
+  \beta\mathrm{d}t & = \beta_0 \mathrm{d}t + \sigma_\beta \mathrm{d}W^1, \\
+  \gamma\mathrm{d}t & = \gamma_0 \mathrm{d}t + \sigma_\gamma \mathrm{d}W^2,
+\end{align*}
+$$
+onde $\{W_t^1\}_{t \geq 0}$ e $\{W_t^2\}_{t \geq 0}$ são dois processos de Wiener independentes.
 
-where $W_1$ and $W_2$ are two (independent) Wiener processes:
-
-
-This leads us to the stochastic system with non-diagonal noise
-
+Isso nos leva ao seguinte sistema de equações com ruído não diagonal.
 $$
 \begin{cases}
   dS & = - \beta_0 \frac{I}{N}S \mathrm{d}t - \sigma_\beta \frac{I}{N}S \mathrm{d}W_1, \\
@@ -150,18 +139,14 @@ $$
 \end{cases}
 $$
 
-In vectorial form, we have
-
+Em forma vetorial, temos
 $$
  \mathrm{d}\left( \begin{matrix} I \\ S \end{matrix} \right) = \left( \begin{matrix} - \beta_0 \frac{I}{N}S \\ \beta_0 \frac{I}{N}S - \gamma_0 I\end{matrix}\right) \mathrm{d}t + \left[ \begin{matrix} - \sigma_\beta \frac{I}{N}S & 0 \\ \sigma_\beta \frac{I}{N}S & - \sigma_\gamma I \end{matrix} \right] \mathrm{d}\left( \begin{matrix} W_1 \\ W_2 \end{matrix} \right)
 $$
 
-### Evolution law
+### Implementando a lei de evolução
 
-
-
-The deterministic part is the same, we only need to define the noise term
-
+A parte determinística é a mesma, dada pela função `SIR!(du, u, p, t)`. Falta implementar a parte do ruído. A parte de ruído é uma função matricial, com componentes $(g_{ij})_{i,j=1}^2$.
 ```julia:SIR_noise
 function SIR_noise!(du, u, p, t)
     S, I = u
@@ -174,10 +159,9 @@ function SIR_noise!(du, u, p, t)
     du[2, 2] = -gW
 end
 ```
-
 \output{SIR_noise}
 
-### Parameters
+### Parâmetros
 
 ```julia:parms_SIR_noise
 sigma_beta = 0.05
@@ -187,7 +171,7 @@ parm_sir_noise = (N, beta, gamma, sigma_beta, sigma_gamma)
 
 \output{parms_SIR_noise}
 
-### Solution
+### Solução
 
 ```julia:solve_SIR_noise
 SIR_stochastic_prob = SDEProblem(SIR!, SIR_noise!, u0, tspan, parm_sir_noise, noise_rate_prototype=zeros(2,2))
@@ -246,11 +230,126 @@ savefig(joinpath(@OUTPUT, "SIR_noise_ensemble_summ_closeup.svg")) # hide
 
 \fig{SIR_noise_ensemble_summ_closeup}
 
-## Network SIR model
+## Modelo SIR determinístico em rede
 
-Now we build a network model with three sites.
+Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por $A$, $B$ e $C$.
 
-### Flux matrix
+## Modelo SIR em rede de sítios
+
+### Representação do sistema
+
+Nesse caso, consideramos 
+
+* $m$ **sítios**.
+
+* Em cada sítio, uma **população total** $N_i$, com um número $S_i$ de **suscetíveis**, $I_i$ de **infectados** e $R_i$ de **recuperados**, $i=1, \ldots, m$.
+
+* Sem vitalidade, de forma que $S_i + I_i + R_i = N_i$ é constante, para cada $i=1, \ldots, m$.
+
+### Dinâmica
+
+- Denominamos por **um ciclo** cada unidade de tempo, digamos um dia.
+
+- O **ciclo** possui uma fase **ativa**, onde a infeção pode ocorrer, e uma fase **inativa**, onde não há transmissão da infecção.
+
+- Na fase **ativa** de cada ciclo, uma **fração** $\alpha_{ij}$ da população $N_i$ migra **do sítio $i$ para o sítio $j$**, voltando ao sítio $i$ na fase **inativa**.
+
+- Naturalmente, $0\leq \alpha_{ij} \leq 1$, para cada $i,j=1, \ldots, m$, e $\sum_{j=1}^m\alpha_{ij} = 1$, para cada $i=1,\ldots, m$.
+
+- Em cada sítio $j=1, \ldots, m$, os indivíduos **suscetíveis** que lá se encontram podem se tornar **infectados** ao encontrar um indivíduo infectado no mesmo sítio, com um **fator de transmissão** $\beta_j$ característico do sítio $j$ em que se encontram.
+
+- Os indivíduos **infectados** de cada sítio, podem se recuperar com um **fator de recuperação** $\gamma_i$, característico do ambiente e dos indivíduos que habitam o sítio.
+
+### Sistema de equações diferenciais
+
+Temos o sistema
+
+$$
+\begin{cases}
+  \displaystyle \frac{\rm d S_i}{\rm d t} = - \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i, & i = 1, \ldots, m, \\
+  \displaystyle \frac{\rm d I_i}{\rm d t} = \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i - \gamma_i I_i, & i = 1, \ldots, m, \\
+  \displaystyle \frac{\rm d R_i}{\rm d t} = \gamma_i I_i, & i = 1, \ldots, m,
+\end{cases}
+$$
+
+onde
+
+$$ \tilde N_j = \sum_{i=1}^n \alpha_{ij}N_i, \qquad j = 1, \ldots, m,
+$$
+
+é a população existente no sítio $j$ durante a fase ativa do ciclo.
+
+### Conservação da população total de cada sítio
+
+Podemos verificar, como esperado da modelagem, que a população total originária de cada sítio permanece constante:
+
+$$ \frac{\rm d N_i}{\rm d t}  = \frac{\rm d}{\rm d t}\left( S_i + I_i + R_i \right) = 0.
+$$
+
+Assim, 
+
+$$ N_i = S_i + I_i + R_i = \text{ constante}, \qquad \forall i =1, \ldots, m.
+$$
+
+Como consequência, também temos que a população em cada sítio durante a fase ativa do ciclo também é constante:
+
+$$ \tilde N_j = \sum_{i=1}^n \alpha_{ij}N_i = \text{ constante}, \qquad \forall j = 1, \ldots, m.
+$$
+
+### Redução do sistema
+
+Como no caso do modelo SIR clássico, podemos reduzir o sistema a um subsistema envolvendo apenas **suscetíveis** e **infectados**, considerando que a população total é constante.
+
+Temos 
+
+$$ R_i = N_i - S_i - I_i
+$$
+
+e basta consideramos
+
+$$
+\begin{cases}
+  \displaystyle \frac{\rm d S_i}{\rm d t} = - \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i, & i = 1, \ldots, m, \\
+  \displaystyle \frac{\rm d I_i}{\rm d t} = \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i - \gamma_i I_i, & i = 1, \ldots, m,
+\end{cases}
+$$
+
+onde
+
+$$ \tilde N_j = \sum_{i=1}^n \alpha_{ij}N_i, \qquad j=1, \ldots, m,
+$$
+
+são constantes.
+
+### Representação vetorial
+
+Considerando os estados na forma de vetores, 
+
+$$ S=(S_1, \ldots, S_m), \qquad I = (I_1, \ldots, I_m),
+$$
+
+podemos escrever as equações na forma vetorial
+
+$$
+\begin{cases}
+  \displaystyle \frac{\rm d S}{\rm d t} = - \rm{diag}(AI)S, \\
+  \displaystyle \frac{\rm d I}{\rm d t} = \rm{diag}(AI)S - \Gamma I,
+\end{cases}
+$$
+
+onde 
+- $\Gamma$ é a matriz diagonal $\Gamma = \rm{diag}(\gamma_1, \ldots, \gamma_m)$, 
+- $A$ é a matriz
+
+$$ A = \left(\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j}\right)_{ik}
+$$
+
+- $\rm{diag}(AI)$ é a matriz diagonal formada pelo vetor obtido da aplicação da matriz $A$ ao vetor $I$,
+
+$$ AI = \left(\sum_{k=1}^m\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j} I_k\right)_i
+$$
+
+### Matriz de fluxo
 
 A key component of the network model is the flux matrix, defining the fraction
 of the population and of the time that the residents of a given site spend
@@ -270,7 +369,7 @@ $$
 0 \leq \phi_{ij} \leq 1, \qquad \sum_j \phi_{ij} = 1.
 $$
 
-### Parameters for sites A, B, and C.
+### Parâmetros para os sítios A, B e C.
 
 Population in each site:
 
@@ -384,3 +483,5 @@ savefig(joinpath(@OUTPUT, "plot_sol_sir_network_2.svg")) # hide
 
 \fig{plot_sol_sir_network_1}
 \fig{plot_sol_sir_network_2}
+
+## Modelos SIR estocástico em rede
