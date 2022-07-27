@@ -291,6 +291,12 @@
     <div class="menu-level-1">
     <li>12. Sistemas de equações estocásticas</li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo epidemiológico SIR estocástico estruturado em rede</a></li>
+    </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
     </div>
@@ -383,9 +389,10 @@ B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \mathrm{Var}(B_t) & = \mathbb{E}[B_t^2] \\
 & = (1-t)^2\mathbb{E}\left[\left(\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s\right)^2\right] \\
 & = (1 - t)^2\int_0^t \frac{1}{(1-s)^2}\;\mathrm{d}s \\
-& = (1 - t)^2 \left(-\frac{1}{(1 - t)} + 1 \right) \\
-& = (1 - t)^2 - (1 - t) \\
-& = t(t - 1).
+& = (1 - t)^2 \left.\left( \frac{1}{1-s} \right)\right|_{s = 0}^{t} \\
+& = (1 - t)^2 \left(\frac{1}{(1 - t)} - 1 \right) \\
+& = (1 - t) - (1 - t)^2 \\
+& = t(1 - t).
 \end{align*}
 \]
 <p>Em particular,</p>
@@ -446,7 +453,7 @@ W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
         </div>
     
 
-    Last modified: July 25, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 27, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

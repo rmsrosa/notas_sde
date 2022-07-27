@@ -291,6 +291,12 @@
     <div class="menu-level-1">
     <li>12. Sistemas de equações estocásticas</li>
     </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo epidemiológico SIR estocástico estruturado em rede</a></li>
+    </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
     </div>
@@ -412,7 +418,24 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 \]
 
 <p><img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_vel.svg" alt=""> <img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_pos.svg" alt=""></p>
+<h2 id="propriedade_de_reversão_à_média"><a href="#propriedade_de_reversão_à_média" class="header-anchor">Propriedade de reversão à média</a></h2>
+<p>O processo de Orstein-Uhlenbeck \(\{O_t\}_{t \geq 0}\), conforme definido acima, tem a propriedade \(\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0\), quando \(t \rightarrow 0\) &#40;veja os Exercícios&#41;. Nesse caso, podemos dizer que a média assintótica é nula e que o processo &quot;reverte&quot;, assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra \(\nu\mu\;\mathrm{d}t\) de <em>drift</em> aditivo, nos levando à equação</p>
+\[
+\mathbb{d}\hat O_t = - \nu (\hat O_t - \mu)\;\mathrm{d}t + \sigma \mathrm{d}W_t.
+\]
+<p>Escrevendo \(O_t = \hat O_t - \mu\), vemos que \(\{O_t\}_{t \geq 0}\) é um processo de  Orstein-Uhlenbeck sem o termo extra:</p>
+\[
+\mathbb{d} O_t = -\nu O_t \;\mathrm{d}t + \sigma \mathrm{d}W_t.
+\]
+<p>Como \(\mathbb{E}[O_t] \rightarrow 0\), quando \(t \rightarrow 0\), então \(\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu\), ou seja, a esperança de \(\{\hat O_t\}_{t \geq 0}\) converge para a média \(\mu\). Assim, o processo de Orstein-Uhlenbeck é um exemplo de <em>mean-reverting process,</em> ou &quot;processo que reverte à média&quot;.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<p>Nos exercícios abaixo, considere o sistema</p>
+\[
+\begin{cases}
+\mathrm{d}X_t = Y_t\;\mathrm{d}t, \\
+\mathrm{d}Y_t = - \nu Y_t \;\mathrm{d}t + \sigma \;\mathrm{d}W_t,
+\end{cases}
+\]
 <ol>
 <li><p>Mostre que</p>
 </li>
@@ -456,7 +479,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
         </div>
     
 
-    Last modified: July 25, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 27, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
