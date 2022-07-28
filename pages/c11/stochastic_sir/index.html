@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Modelo epidemiológico SIR estocástico estruturado em rede</title>  
+   <title>Modelo SIR estocástico</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -295,7 +295,10 @@
     <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo epidemiológico SIR estocástico estruturado em rede</a></li>
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo SIR estocástico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede</a></li>
     </div>
     <div class="menu-level-1">
     <li>Apêndice</li>
@@ -329,7 +332,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c11/stochastic_sir_network"><kbd>→</kbd> 12.3. Modelo SIR estocástico estruturado em rede</a>
 </span>
     </p>
 </div>
@@ -340,24 +343,9 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">12.2. Modelo epidemiológico SIR estocástico estruturado em rede</a></h1>
-<p>Uma componente importante em epidemiologia é a característica heterogênea dos parâmetros epidemiológicos e sociais. Os indivíduos têm, naturalmente, diferentes comportamentos e diferentes capacidades de serem infectados e de se recuperarem de uma doença. Os modelos compartimentais são homogêneos por princípio e não são capazes de capturar essa heterogeneidade.</p>
-<p>Modelos mais realistas devem levar esse heterogeneidade em consideração. Num caso extremo, podemos modelar cada indivíduo separadamente. Isso é custoso, tanto no aspecto da simulação computacional &#40;imagine modelar milhões de indivíduos em uma cidade grande ou em estado ou país&#41; como no de ajuste e escolha dos parâmetros apropriados.</p>
-<p>Uma modelagem intermediária é dividir a população em grupos e assumir a homogeneidade apenas dentro desse grupos. A divisão pode ser feita em termos geográficos &#40;e.g. diferentes bairros em uma cidade&#41;, comportamentais &#40;e.g. diferentes grupos sociais ou de trabalho&#41;, sociais &#40;e.g. diferentes condições de vida&#41;, de saúde &#40;e.g. diferentes grupos de risco&#41;, etc.</p>
-<p>Nesses casos, os grupos podem ser vistos como vértices de um grafo e a interação entre os diferentes grupos pode ser vista como sendo as arestas do grafo. Tais modelos são classificados como modelos em rede. Em cima dessa estrutura de grafo/rede, podemos considerar uma dinâmica determinística ou estocástica. E a evolução pode ser discreta ou contínua, no tempo. Além disso, a natureza da epidemia também pode ser variada &#40;se há reinfecção ou não, se leva expostos em consideração ou não, etc.&#41;</p>
-<p>Aqui, vamos construir um modelo do tipo SIR, considerando os estados epidemiológicos  <em>suscetíveis,</em> <em>infectados</em> e <em>recuperados</em>, em cada grupo. No que se segue, podemos pensar nas regiões como sendo diferentes áreas residenciais, mas vale ressaltar que, em termos do sistema de equações, é indiferente o que cada grupo representa. Isso é relevante, apenas, na definição e na interpretação dos diferentes parâmetros que aparecem no modelo. </p>
-<p>Vamos, então, imaginar que a população está estruturada em diferentes regiões geográficas e que os parâmetros epidemiológicos &#40;taxas de contágio e de recuperação&#41; variam de região para região. Vamos imaginar que, ao longo de cada unidade de tempo &#40;e.g. um dia&#41;, parte da população de uma região passe parte do tempo em uma das outras regiões. E vamos assumir que esse deslocamento não seja sempre o mesmo, todos os dias, permitindo que ele varie estocásticamente ao longo do tempo.</p>
-<p>Vamos construir isso aos poucos:</p>
-<ol>
-<li><p>Primeiro definimos o modelo SIR compartimental determinístico clássico;</p>
-</li>
-<li><p>Depois consideremos o SIR compartimental estocástico;</p>
-</li>
-<li><p>Em seguida consideramos o SIR em rede determinístico; e</p>
-</li>
-<li><p>Finalmente consideramos o SIR em rede estocástico.</p>
-</li>
-</ol>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">12.2. Modelo SIR estocástico</a></h1>
+<p>O modelo SIR é um modelo compartimental clássico, em que três estágios epidemiológicos são considerados, dividindo a população entre suscetíveis, infectados e recuperados/removidos. Cada grupo é tratado uniformemente, com os mesmos parâmetros epidemiológicos. Na versão determinística, a taxa é uniforme, com a mesma proporção de suscetíveis se tornando infectados, dependendo da proporção de infectados existentes correntes e com a mesma proporção de infectados se tornando recuperados.</p>
+<p>É natural, no entanto, que essas taxas não sejam tão precisas assim. Há um alto grau de aleatoriedade no comportamento social e nas características imunológicas dos indivíduos.Uma maneira de introduzir alguma aleatoriedade no sistema é assumir que esses parâmetros sejam perturbados estocasticamente em torno de um valor base. Dependendo da modelagem, isso pode nos levar a uma equação aleatória ou estocástica. Vejamos, aqui, uma versão estocástica do modelo SIR. Vamos começar, na verdade, relembrando e fazendo a versão determinística. Em seguida, acrescentamos os termos estocásticos.</p>
 <h2 id="carregando_os_pacotes_necessários"><a href="#carregando_os_pacotes_necessários" class="header-anchor">Carregando os pacotes necessários</a></h2>
 <p>Nas simulações, vamos usar o ambiente <a href="https://sciml.ai">SciML</a>, da <a href="https://sciml.ai">linguagem Julia</a>. Como vamos simular tanto sistema determinísticos como estocásticos, carregamos o <a href="https://github.com/SciML/OrdinaryDiffEq.jl">SciML/OrdinaryDiffEq</a> e o <a href="https://github.com/SciML/StochasticDiffEq.jl">SciML/StochasticDiffEq</a>.</p>
 <pre><code class="language-julia">using OrdinaryDiffEq
@@ -502,179 +490,6 @@ plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legen
 plot&#33;&#40;summ50, labels&#61;&#91;&quot;&quot; &quot;Middle 50&#37;&quot;&#93;, legend&#61;true&#41;
 plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legend&#61;true&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/SIR_noise_ensemble_summ_closeup.svg" alt="">
-<h2 id="modelo_sir_determinístico_em_rede"><a href="#modelo_sir_determinístico_em_rede" class="header-anchor">Modelo SIR determinístico em rede</a></h2>
-<p>Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por \(A\), \(B\) e \(C\).</p>
-<h2 id="modelo_sir_em_rede_de_sítios"><a href="#modelo_sir_em_rede_de_sítios" class="header-anchor">Modelo SIR em rede de sítios</a></h2>
-<h3 id="representação_do_sistema"><a href="#representação_do_sistema" class="header-anchor">Representação do sistema</a></h3>
-<p>Nesse caso, consideramos </p>
-<ul>
-<li><p>\(m\)<strong>sítios</strong>.</p>
-</li>
-<li><p>Em cada sítio, uma <strong>população total</strong> \(N_i\), com um número \(S_i\) de <strong>suscetíveis</strong>, \(I_i\) de <strong>infectados</strong> e \(R_i\) de <strong>recuperados</strong>, \(i=1, \ldots, m\).</p>
-</li>
-<li><p>Sem vitalidade, de forma que \(S_i + I_i + R_i = N_i\) é constante, para cada \(i=1, \ldots, m\).</p>
-</li>
-</ul>
-<h3 id="dinâmica"><a href="#dinâmica" class="header-anchor">Dinâmica</a></h3>
-<ul>
-<li><p>Denominamos por <strong>um ciclo</strong> cada unidade de tempo, digamos um dia.</p>
-</li>
-<li><p>O <strong>ciclo</strong> possui uma fase <strong>ativa</strong>, onde a infeção pode ocorrer, e uma fase <strong>inativa</strong>, onde não há transmissão da infecção.</p>
-</li>
-<li><p>Na fase <strong>ativa</strong> de cada ciclo, uma <strong>fração</strong> \(\alpha_{ij}\) da população \(N_i\) migra <strong>do sítio \(i\) para o sítio \(j\)</strong>, voltando ao sítio \(i\) na fase <strong>inativa</strong>.</p>
-</li>
-<li><p>Naturalmente, \(0\leq \alpha_{ij} \leq 1\), para cada \(i,j=1, \ldots, m\), e \(\sum_{j=1}^m\alpha_{ij} = 1\), para cada \(i=1,\ldots, m\).</p>
-</li>
-<li><p>Em cada sítio \(j=1, \ldots, m\), os indivíduos <strong>suscetíveis</strong> que lá se encontram podem se tornar <strong>infectados</strong> ao encontrar um indivíduo infectado no mesmo sítio, com um <strong>fator de transmissão</strong> \(\beta_j\) característico do sítio \(j\) em que se encontram.</p>
-</li>
-<li><p>Os indivíduos <strong>infectados</strong> de cada sítio, podem se recuperar com um <strong>fator de recuperação</strong> \(\gamma_i\), característico do ambiente e dos indivíduos que habitam o sítio.</p>
-</li>
-</ul>
-<h3 id="sistema_de_equações_diferenciais"><a href="#sistema_de_equações_diferenciais" class="header-anchor">Sistema de equações diferenciais</a></h3>
-<p>Temos o sistema</p>
-\[
-\begin{cases}
-  \displaystyle \frac{\rm d S_i}{\rm d t} = - \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i, & i = 1, \ldots, m, \\
-  \displaystyle \frac{\rm d I_i}{\rm d t} = \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i - \gamma_i I_i, & i = 1, \ldots, m, \\
-  \displaystyle \frac{\rm d R_i}{\rm d t} = \gamma_i I_i, & i = 1, \ldots, m,
-\end{cases}
-\]
-<p>onde</p>
-\[ \tilde N_j = \sum_{i=1}^n \alpha_{ij}N_i, \qquad j = 1, \ldots, m,
-\]
-<p>é a população existente no sítio \(j\) durante a fase ativa do ciclo.</p>
-<h3 id="conservação_da_população_total_de_cada_sítio"><a href="#conservação_da_população_total_de_cada_sítio" class="header-anchor">Conservação da população total de cada sítio</a></h3>
-<p>Podemos verificar, como esperado da modelagem, que a população total originária de cada sítio permanece constante:</p>
-\[ \frac{\rm d N_i}{\rm d t}  = \frac{\rm d}{\rm d t}\left( S_i + I_i + R_i \right) = 0.
-\]
-<p>Assim, </p>
-\[ N_i = S_i + I_i + R_i = \text{ constante}, \qquad \forall i =1, \ldots, m.
-\]
-<p>Como consequência, também temos que a população em cada sítio durante a fase ativa do ciclo também é constante:</p>
-\[ \tilde N_j = \sum_{i=1}^n \alpha_{ij}N_i = \text{ constante}, \qquad \forall j = 1, \ldots, m.
-\]
-<h3 id="redução_do_sistema"><a href="#redução_do_sistema" class="header-anchor">Redução do sistema</a></h3>
-<p>Como no caso do modelo SIR clássico, podemos reduzir o sistema a um subsistema envolvendo apenas <strong>suscetíveis</strong> e <strong>infectados</strong>, considerando que a população total é constante.</p>
-<p>Temos </p>
-\[ R_i = N_i - S_i - I_i
-\]
-<p>e basta consideramos</p>
-\[
-\begin{cases}
-  \displaystyle \frac{\rm d S_i}{\rm d t} = - \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i, & i = 1, \ldots, m, \\
-  \displaystyle \frac{\rm d I_i}{\rm d t} = \sum_{j=1}^m \sum_{k=1}^m \beta_j\alpha_{kj}\alpha_{ij}\frac{I_k}{\tilde N_j}S_i - \gamma_i I_i, & i = 1, \ldots, m,
-\end{cases}
-\]
-<p>onde</p>
-\[ \tilde N_j = \sum_{i=1}^n \alpha_{ij}N_i, \qquad j=1, \ldots, m,
-\]
-<p>são constantes.</p>
-<h3 id="representação_vetorial"><a href="#representação_vetorial" class="header-anchor">Representação vetorial</a></h3>
-<p>Considerando os estados na forma de vetores, </p>
-\[ S=(S_1, \ldots, S_m), \qquad I = (I_1, \ldots, I_m),
-\]
-<p>podemos escrever as equações na forma vetorial</p>
-\[
-\begin{cases}
-  \displaystyle \frac{\rm d S}{\rm d t} = - \rm{diag}(AI)S, \\
-  \displaystyle \frac{\rm d I}{\rm d t} = \rm{diag}(AI)S - \Gamma I,
-\end{cases}
-\]
-<p>onde </p>
-<ul>
-<li><p>\(\Gamma\) é a matriz diagonal \(\Gamma = \rm{diag}(\gamma_1, \ldots, \gamma_m)\), </p>
-</li>
-<li><p>\(A\) é a matriz</p>
-</li>
-</ul>
-\[ A = \left(\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j}\right)_{ik}
-\]
-<ul>
-<li><p>\(\rm{diag}(AI)\) é a matriz diagonal formada pelo vetor obtido da aplicação da matriz \(A\) ao vetor \(I\),</p>
-</li>
-</ul>
-\[ AI = \left(\sum_{k=1}^m\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j} I_k\right)_i
-\]
-<h3 id="matriz_de_fluxo"><a href="#matriz_de_fluxo" class="header-anchor">Matriz de fluxo</a></h3>
-<p>A key component of the network model is the flux matrix, defining the fraction of the population and of the time that the residents of a given site spend in another site.</p>
-<p>We denote this matrix by \(\phi = (\phi_{ij})_{i,j}\).</p>
-<p>More precisely, each individual \(k=1, \ldots, N_i\) in site \(i\) may spend a time \(\theta^k_{i,j}\) in site \(j\), during a specified unit of time. In this case,</p>
-\[
-  0 \leq \theta^k_{ij} \leq 1, \qquad \sum_j \theta^k_{i,j} = 1.
-\]
-<p>We then define \(\phi_{ij} = (1/N_i)\sum_{k=1}^{N_i} \theta^k_{i,j}\). Notice</p>
-\[
-0 \leq \phi_{ij} \leq 1, \qquad \sum_j \phi_{ij} = 1.
-\]
-<h3 id="parâmetros_para_os_sítios_a_b_e_c"><a href="#parâmetros_para_os_sítios_a_b_e_c" class="header-anchor">Parâmetros para os sítios A, B e C.</a></h3>
-<p>Population in each site:</p>
-<pre><code class="language-julia">pop &#61; &#91;0.1; 0.7; 0.2&#93; * N</code></pre>
-
-<p>Flux &#40;commuting&#41; matrix</p>
-<pre><code class="language-julia">phi &#61; &#91;
-    0.6 0.1 0.3
-    0.3 0.4 0.3
-    0.2 0.3 0.5
-&#93;</code></pre>
-
-<p>Infectivity and recovery rates in each site</p>
-<pre><code class="language-julia">sites_beta &#61; &#91;
-    0.2
-    0.4
-    0.3
-&#93;
-
-sites_gamma &#61; &#91;
-    0.3
-    0.1
-    0.2
-&#93;</code></pre>
-
-<h3 id="evolution_law"><a href="#evolution_law" class="header-anchor">Evolution law</a></h3>
-<pre><code class="language-julia">function SIR_network&#33;&#40;du, u, p, t&#41;
-    S, I &#61; eachrow&#40;u&#41;
-    M &#61; length&#40;S&#41;
-    Nd, phi, beta, gamma &#61; p
-    for i in 1:M
-        infections_i &#61; sum&#40;
-            &#91;beta&#91;j&#93; * phi&#91;i,j&#93; * phi&#91;k,j&#93; * S&#91;i&#93; * I&#91;k&#93; / Nd&#91;j&#93; for k&#61;1:M, j&#61;1:M&#93;
-        &#41;
-        du&#91;1,i&#93; &#61; dS &#61; - infections_i
-        du&#91;2,i&#93; &#61; dI &#61; infections_i - gamma&#91;i&#93; * I&#91;i&#93;
-    end
-end</code></pre>
-
-<h3 id="setup"><a href="#setup" class="header-anchor">Setup</a></h3>
-<p>Collecting the parameters</p>
-<pre><code class="language-julia">Nd &#61; transpose&#40;phi&#41; * pop # population in each site &quot;during the day&quot;
-parm_network &#61; &#40;Nd, phi, sites_beta, sites_gamma&#41;</code></pre>
-
-<p>Initial conditions</p>
-<pre><code class="language-julia">popinf0 &#61; &#91;0.8, 0.2, 0.0&#93; * inf0
-
-pop0 &#61; &#91;pop&#39; - popinf0&#39;; popinf0&#39;&#93;
-tspan &#61; &#40;0., 360.&#41;
-
-SIR_network_prob &#61; ODEProblem&#40;SIR_network&#33;, pop0, tspan, parm_network&#41;</code></pre>
-
-<h3 id="solution"><a href="#solution" class="header-anchor">Solution</a></h3>
-<pre><code class="language-julia">SIR_network_sol &#61; solve&#40;SIR_network_prob, Tsit5&#40;&#41;&#41;
-
-SIR_network_sol.retcode</code></pre>
-
-<pre><code class="language-julia">plot&#40;xlabel &#61; &quot;time &#40;days&#41;&quot;, ylabel &#61; &quot;population fraction&quot;, ylims &#61; &#40;0.0, 1.0&#41;&#41;
-for &#40;j, s&#41; in zip&#40;1:3, &#39;A&#39;:&#39;C&#39;&#41;
-    plot&#33;&#40;getindex.&#40;SIR_network_sol.u, 1, j&#41;/pop&#91;j&#93;, label &#61; &quot;Site &#36;s&quot;&#41;
-end
-plot&#33;&#40;title &#61; &quot;Fraction of susceptible individuals in each site&quot;, titlefont &#61; 10&#41;
-
-plot&#40;xlabel &#61; &quot;time &#40;days&#41;&quot;, ylabel &#61; &quot;population fraction&quot;&#41;
-for &#40;j, s&#41; in zip&#40;1:3, &#39;A&#39;:&#39;C&#39;&#41;
-    plot&#33;&#40;getindex.&#40;SIR_network_sol.u, 2, j&#41;/pop&#91;j&#93;, label &#61; &quot;Site &#36;s&quot;&#41;
-end
-plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&quot;, titlefont &#61; 10&#41;</code></pre>
-<p><img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/plot_sol_sir_network_1.svg" alt=""> <img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/plot_sol_sir_network_2.svg" alt=""></p>
-<h2 id="modelos_sir_estocástico_em_rede"><a href="#modelos_sir_estocástico_em_rede" class="header-anchor">Modelos SIR estocástico em rede</a></h2>
 
     <div class="navbar">
     <p id="nav">
@@ -682,7 +497,7 @@ plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&qu
 <a class="menu-level-1" href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_fund_kolmogorov"><kbd>→</kbd> Teorema Fundamental de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c11/stochastic_sir_network"><kbd>→</kbd> 12.3. Modelo SIR estocástico estruturado em rede</a>
 </span>
     </p>
 </div>
@@ -698,7 +513,7 @@ plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&qu
         </div>
     
 
-    Last modified: July 27, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

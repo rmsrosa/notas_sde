@@ -1,0 +1,19 @@
+Code typed for `f_logistic1(1.0, (1.5, 2.0), 3.0)):
+CodeInfo(
+1 ─ %1 = Base.getfield(p, 1)::Float64
+│   %2 = Base.getfield(p, 2)::Float64
+│   %3 = Base.mul_float(%2, u)::Float64
+│   %4 = Base.sub_float(%1, %3)::Float64
+│   %5 = Base.mul_float(%4, u)::Float64
+└──      return %5
+) => Float64
+
+Code typed for `f_logistic2(1.0, (1.5, 2.0), 3.0))
+CodeInfo(
+1 ─ %1 = Base.getfield(p, 1, true)::Float64
+│   %2 = Base.getfield(p, 2, true)::Float64
+│   %3 = Base.mul_float(%2, u)::Float64
+│   %4 = Base.sub_float(%1, %3)::Float64
+│   %5 = Base.mul_float(%4, u)::Float64
+└──      return %5
+) => Float64

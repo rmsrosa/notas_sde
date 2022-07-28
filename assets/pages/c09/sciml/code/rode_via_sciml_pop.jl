@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
 using StochasticDiffEq
 using Plots
-theme(:ggplot2)
+theme(:ggplot2) # hide
 
 let
 

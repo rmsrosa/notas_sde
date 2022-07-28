@@ -1,0 +1,23 @@
+Code lowered for `f_logistic1(1.0, (1.5, 2.0), 3.0)):
+CodeInfo(
+1 ─ %1 = Base.indexed_iterate(p, 1)
+│        α = Core.getfield(%1, 1)
+│        @_5 = Core.getfield(%1, 2)
+│   %4 = Base.indexed_iterate(p, 2, @_5)
+│        β = Core.getfield(%4, 1)
+│   %6 = α
+│   %7 = β * u
+│   %8 = %6 - %7
+│        du = %8 * u
+└──      return du
+)
+
+Code lowered for `f_logistic2(1.0, (1.5, 2.0), 3.0))
+CodeInfo(
+1 ─ %1 = Base.getindex(p, 1)
+│   %2 = Base.getindex(p, 2)
+│   %3 = %2 * u
+│   %4 = %1 - %3
+│   %5 = %4 * u
+└──      return %5
+)

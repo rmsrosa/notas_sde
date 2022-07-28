@@ -1,10 +1,9 @@
 # This file was generated, do not modify it. # hide
 using OrdinaryDiffEq
 using Plots
-theme(:ggplot2)
+theme(:ggplot2) # hide
 
 let
-
     function f_logistic(u, p, t)
         α, β = p
         du = (α - β * u) * u
@@ -27,8 +26,7 @@ let
     plot(title = "soluções da equação logística", titlefont = 12, xaxis = "t", yaxis = "população", size = (800, 600))
     plot!(sols, color = 1, alpha = 0.1)
     plot!(sols[1])
-    savefig(joinpath(@OUTPUT, "ode_via_sciml_pop_ensemb_trajectories.svg"))
-# hide
+    savefig(joinpath(@OUTPUT, "ode_via_sciml_pop_ensemb_trajectories.svg")) # hide
 
     sols = solve(ensemble_prob, Tsit5(), EnsembleThreads(), trajectories=250, saveat = range(tspan..., length = 200))
 

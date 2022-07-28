@@ -1,0 +1,1 @@
+f_logistic2 (generic function with 1 method)
