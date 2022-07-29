@@ -555,28 +555,28 @@ Outras macros também são bastante úteis na análise do código e na busca por
 Mas, voltando ao nosso caso, vamos comparar a performance, por exemplo, das seguintes funções:
 
 ```julia:sir_funs
-function fsir(u, p, t)
+function fsir1(u, p, t)
     β, γ = p
     s, i = u
     du = [-β * s * i, β * s * i - γ * i]
     return du
 end
 
-function fsir1!(du, u, p, t) # does not work as desired
+function fsir2!(du, u, p, t) # does not work as desired
     β, γ = p
     s, i = u
     du = [-β * s * i, β * s * i - γ * i]
     return du
 end
 
-function fsir2!(du, u, p, t)
+function fsir3!(du, u, p, t)
     β, γ = p
     s, i = u
     du .= [-β * s * i, β * s * i - γ * i]
     return du
 end
 
-function fsir3!(du, u, p, t)
+function fsir4!(du, u, p, t)
     β, γ = p
     s, i = u
     inew = -β * s * i
@@ -589,7 +589,7 @@ end
 
 Para quem já estudou o modelo SIR de epidemia, pode reconhecer a função como sendo a lei de evolução para o subsistema composto pelas variáveis $s = S/N$ e $i = I/N$, onde $S$ e $I$ são as populações de suscetíveis e de infectados, respectivamente, e $N$ é a população total.
 
-Observe que a primeira função, `fsir(u, p, t)`, está na forma *out of place*, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções estão na forma *inplace* e modificam a primeira variável, `du`, com o valor calculado para essas taxas. A segunda função, no entanto, aparentemente altera o valor de `du`, mas na verdade ela cria um novo vetor, local, também denominado de `du`, ao invés de alterar a variável `du` passada para a função. Muito cuidado! A segunda função não funciona como desejamos.
+Observe que a primeira função, `fsir1(u, p, t)`, está na forma *out of place*, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções, `fsir3!(du, u, p, t)`, `fsir4!(du, u, p, t)`, estão na forma *inplace* e modificam a primeira variável, `du`, com o valor calculado para essas taxas. A segunda função, `fsir2!(du, u, p, t)`, no entanto, deveria alterar o valor de `du`, mas na verdade ela cria um novo vetor, local, também denominado de `du`, ao invés de alterar a variável `du` passada para a função. Muito cuidado! Essa função não funciona como desejamos.
 
 Em relação à performance, a forma *inplace* não é necessariamente mais rápida, como mostram os resultados a seguir da utilização da macro `@btime`.
 
@@ -610,6 +610,6 @@ end
 
 \output{btime}
 
-Naturalmente, a primeira forma, `fsir`, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções, `fsir1!` e `fsir2!`, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor `[-β * s * i, β * s * i - γ * i]`. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor `du`. A função `fsir1!` é um pouco mais rápida pois apenas muda o ponteiro do vetor `du` para o vetor recém criado. A função `fsir2!` copia os valores do vetor recém criado para o espaço de memória para o qual `du` aponta, tendo, portanto, um custo extra. Porém, a função `fsir1!`, ao mudar o ponteiro, faz de `du` uma variável local, cuja mudança não se reflete na variável `du` passada para a função, que continua apontando para o mesmo endereço de memória (pode verificar isso usando a função `pointer(du)`, dentro e fora da função).
+Naturalmente, a primeira forma, `fsir1`, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções, `fsir2!` e `fsir3!`, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor `[-β * s * i, β * s * i - γ * i]`. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor `du`. A função `fsir2!` é um pouco mais rápida pois apenas muda o ponteiro do vetor `du` para o vetor recém criado. Porém, ao mudar o ponteiro, faz de `du` uma variável local, cuja mudança não se reflete na variável `du` passada para a função, que continua apontando para o mesmo endereço de memória (pode verificar isso usando a função `pointer(du)`, dentro e fora da função). A função `fsir3!` copia os valores do vetor recém criado para o espaço de memória para o qual `du` aponta, tendo, portanto, um custo extra.
 
 Só a última versão, `fsir3!`, é que não faz nenhuma alocação nova, sendo extremamente mais eficiente. Imagine resolver o sistema de EDOs e iterar isso milhares de vezes. A escolha da função mais eficiente faz uma grande diferença!
