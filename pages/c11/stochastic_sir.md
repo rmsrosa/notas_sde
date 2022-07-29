@@ -214,3 +214,34 @@ savefig(joinpath(@OUTPUT, "SIR_noise_ensemble_summ_closeup.svg")) # hide
 ```
 
 \fig{SIR_noise_ensemble_summ_closeup}
+
+## Performance das funções
+
+Aqui, vamos apenas conferir que as funções `SIR!(du, u, p, t)` e `SIR_noise!(du, u, p, t)` estão bem construídas e não alocam memória. Fazemos isso com a macro `BenchmarkTools.@btime`.
+```julia:btime_sir
+using BenchmarkTools
+
+let u = [800.0, 200.0]; p = (1000.0, 0.2, 0.15, 0.15, 0.1); t = 1.0; du = Vector{Float64}(undef, 2); du_noise = Matrix{Float64}(undef, 2, 2)
+    println("Benchmark SIR!")
+    println(@btime SIR!($du, $u, $p, $t))
+    println("\nBenchmark SIR_noise!")
+    println(@btime SIR_noise!($du_noise, $u, $p, $t))
+end
+```
+
+\output{btime_sir}
+
+Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro `InteractiveUtils.@code_warntype` para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável `u` e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável (verifique isso usando `@btime` com os parâmetros abaixo!).
+
+```julia:code_warntype_sir
+using InteractiveUtils
+
+let u = [800, 200]; p = (1000.0, 0.2, 0.15, 0.15, 1//10); t = 1.0; du = Vector{Float64}(undef, 2); du_noise = Matrix{Float64}(undef, 2, 2)
+    println("@code_warntype for SIR!")
+    println(@code_warntype SIR!(du, u, p, t))
+    println("\n@code_warntype for SIR_noise!")
+    println(@code_warntype SIR_noise!(du_noise, u, p, t))
+end
+```
+
+\output{code_warntype_sir}
