@@ -94,7 +94,7 @@
     <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades importantes</a></li>
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades fundamentais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
@@ -830,7 +830,7 @@ CodeInfo(
     return du
 end
 
-function fsir1&#33;&#40;du, u, p, t&#41;
+function fsir1&#33;&#40;du, u, p, t&#41; # does not work as desired
     β, γ &#61; p
     s, i &#61; u
     du &#61; &#91;-β * s * i, β * s * i - γ * i&#93;
@@ -854,7 +854,8 @@ function fsir3&#33;&#40;du, u, p, t&#41;
     return du
 end</code></pre>
 <p>Para quem já estudou o modelo SIR de epidemia, pode reconhecer a função como sendo a lei de evolução para o subsistema composto pelas variáveis \(s = S/N\) e \(i = I/N\), onde \(S\) e \(I\) são as populações de suscetíveis e de infectados, respectivamente, e \(N\) é a população total.</p>
-<p>Observe que a primeira função <code>fsir&#40;u, p, t&#41;</code> está na forma <em>out of place</em>, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, as outras funções estão na forma <em>inplace</em> e modificam a primeira variável, <code>du</code>, com o valor calculado para essas taxas. Mas o resultado não é tão simples assim, como mostram os resultados a seguir da utilização da macro <code>@btime</code>.</p>
+<p>Observe que a primeira função, <code>fsir&#40;u, p, t&#41;</code>, está na forma <em>out of place</em>, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções estão na forma <em>inplace</em> e modificam a primeira variável, <code>du</code>, com o valor calculado para essas taxas. A segunda função, no entanto, aparentemente altera o valor de <code>du</code>, mas na verdade ela cria um novo vetor, local, também denominado de <code>du</code>, ao invés de alterar a variável <code>du</code> passada para a função. Muito cuidado&#33; A segunda função não funciona como desejamos.</p>
+<p>Em relação à performance, a forma <em>inplace</em> não é necessariamente mais rápida, como mostram os resultados a seguir da utilização da macro <code>@btime</code>.</p>
 <pre><code class="language-julia">using BenchmarkTools
 
 let u &#61; &#91;0.8, 0.2&#93;; p &#61; &#40;0.2, 0.15&#41;; t &#61; 1.0; du &#61; similar&#40;u&#41;
@@ -868,22 +869,23 @@ let u &#61; &#91;0.8, 0.2&#93;; p &#61; &#40;0.2, 0.15&#41;; t &#61; 1.0; du &#6
     println&#40;@btime fsir3&#33;&#40;&#36;du, &#36;u, &#36;p, &#36;t&#41;&#41;
 end</code></pre>
 <pre><code class="plaintext code-output">Benchmark fsir
-  35.447 ns (1 allocation: 80 bytes)
+  33.167 ns (1 allocation: 80 bytes)
 [-0.03200000000000001, 0.0020000000000000087]
 
 Benchmark fsir1!
-  34.340 ns (1 allocation: 80 bytes)
+  32.998 ns (1 allocation: 80 bytes)
 [-0.03200000000000001, 0.0020000000000000087]
 
 Benchmark fsir2!
-  43.433 ns (1 allocation: 80 bytes)
+  41.533 ns (1 allocation: 80 bytes)
 [-0.03200000000000001, 0.0020000000000000087]
 
 Benchmark fsir3!
-  3.999 ns (0 allocations: 0 bytes)
+  3.700 ns (0 allocations: 0 bytes)
 [0.03200000000000001, -0.062000000000000006]
 </code></pre>
-<p>Naturalmente, a primeira forma, <code>fsir</code>, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções &#40;<code>fsir1&#33;</code> e <code>fsir2&#33;</code>&#41;, que já estão na forma <em>inplace</em>, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor <code>&#91;-β * s * i, β * s * i - γ * i&#93;</code>. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor <code>du</code>. A função <code>fsir1&#33;</code> é um pouco mais eficiente pois apenas muda o ponteiro do vetor <code>du</code> para o vetor recém criado. A segunda função copia os valores do vetor recém criado para o espaço de memória para o qual <code>du</code> aponta, tendo, portanto, um custo extra. Só a última versão, <code>fsir3&#33;</code>, é que não faz nenhuma alocação nova, sendo extremamente mais eficiente. Imagine resolver o sistema de EDOs e iterar isso milhares de vezes. Faz uma grande diferença&#33;</p>
+<p>Naturalmente, a primeira forma, <code>fsir</code>, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções, <code>fsir1&#33;</code> e <code>fsir2&#33;</code>, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor <code>&#91;-β * s * i, β * s * i - γ * i&#93;</code>. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor <code>du</code>. A função <code>fsir1&#33;</code> é um pouco mais rápida pois apenas muda o ponteiro do vetor <code>du</code> para o vetor recém criado. A função <code>fsir2&#33;</code> copia os valores do vetor recém criado para o espaço de memória para o qual <code>du</code> aponta, tendo, portanto, um custo extra. Porém, a função <code>fsir1&#33;</code>, ao mudar o ponteiro, faz de <code>du</code> uma variável local, cuja mudança não se reflete na variável <code>du</code> passada para a função, que continua apontando para o mesmo endereço de memória &#40;pode verificar isso usando a função <code>pointer&#40;du&#41;</code>, dentro e fora da função&#41;.</p>
+<p>Só a última versão, <code>fsir3&#33;</code>, é que não faz nenhuma alocação nova, sendo extremamente mais eficiente. Imagine resolver o sistema de EDOs e iterar isso milhares de vezes. A escolha da função mais eficiente faz uma grande diferença&#33;</p>
 
     <div class="navbar">
     <p id="nav">
@@ -907,7 +909,7 @@ Benchmark fsir3!
         </div>
     
 
-    Last modified: July 28, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

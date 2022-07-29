@@ -1,15 +1,15 @@
 Benchmark fsir
-  35.447 ns (1 allocation: 80 bytes)
+  33.167 ns (1 allocation: 80 bytes)
 [-0.03200000000000001, 0.0020000000000000087]
 
 Benchmark fsir1!
-  34.340 ns (1 allocation: 80 bytes)
+  32.998 ns (1 allocation: 80 bytes)
 [-0.03200000000000001, 0.0020000000000000087]
 
 Benchmark fsir2!
-  43.433 ns (1 allocation: 80 bytes)
+  41.533 ns (1 allocation: 80 bytes)
 [-0.03200000000000001, 0.0020000000000000087]
 
 Benchmark fsir3!
-  3.999 ns (0 allocations: 0 bytes)
+  3.700 ns (0 allocations: 0 bytes)
 [0.03200000000000001, -0.062000000000000006]

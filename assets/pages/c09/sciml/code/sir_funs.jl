@@ -6,7 +6,7 @@ function fsir(u, p, t)
     return du
 end
 
-function fsir1!(du, u, p, t)
+function fsir1!(du, u, p, t) # does not work as desired
     β, γ = p
     s, i = u
     du = [-β * s * i, β * s * i - γ * i]
