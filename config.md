@@ -108,6 +108,7 @@ menu = [
         "pages/c09/convergencia_euler_maruyama"
         "pages/c09/simulacoes_convergencia_em"
         "pages/c09/heun"
+        "pages/c09/simulacoes_convergencia_randomheun"
         "pages/c09/milstein"
         "pages/c09/simulacoes_milstein"
         "pages/c09/sciml"
