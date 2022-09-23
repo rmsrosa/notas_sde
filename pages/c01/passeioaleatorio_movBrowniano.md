@@ -36,7 +36,7 @@ Para uma partícula chegar na posição $x = \ell m$, ela deve dar $i$ passos pa
 
 Naturalmente, não há caminho caso $m < -n$ ou $m > n$. E há apenas um caminho para $m = -n$ e $m = n$. Mas pode haver vários caminhos ligando a outros pontos. Ou nenhum. De fato, se $n$ e $m$ tiverem paridades diferentes, então $n + m$ é ímpar e não tem como darmos $i = (n + m)/2$ passos para a direita, nem $j = (n - m)/2$ para a esquerda. Resta, agora, saber o número de caminhos possíveis quando $n$ e $m$ têm a mesma paridade e $|m| < n$.
 
-Para ver isso, vamos focar no fato de que, para chegarmos em $x = m\ell$ após $n$ passos, devemos dar $(n + m)/2$ passos para a direita. Se, por exemplo, $n = 6$ e $m = 2$, devemos dar $(n + m)/2 = 4$ passos para a direita, mas eles podem acontecer a quaisquer quatro dos seis momentos entre $\tau$ e $n\tau$. Isso nos dá $\left(\begin{matrix} n \\ (n + m)/2 \end{matrix}\right) = \left(\begin{matrix} 6 \\ 4 \end{matrix}\right) = 15$ possibilidades de caminhos, de um total de $2^6$. Ou seja, $p_6(2) = 15 / 64$. Mais geralmente, temos
+Para ver isso, vamos focar no fato de que, para chegarmos em $x = m\ell$ após $n$ passos, devemos dar $(n + m)/2$ passos para a direita. Se, por exemplo, $n = 6$ e $m = 2$, devemos dar $(n + m)/2 = 4$ passos para a direita, mas eles podem acontecer em quaisquer quatro dos seis momentos entre $\tau$ e $n\tau$. Isso nos dá $\left(\begin{matrix} n \\ (n + m)/2 \end{matrix}\right) = \left(\begin{matrix} 6 \\ 4 \end{matrix}\right) = 15$ possibilidades de caminhos, de um total de $2^6$. Ou seja, $p_6(2) = 15 / 64$. Mais geralmente, temos
 $$
 p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}.
 $$
@@ -117,7 +117,7 @@ $$
 
 Pensando nesse limite contínuo, e abusando da notação, já que já definimos $X_n$, podemos escrever $X_t$ como a variável aleatória indicando a posição da partícula no instante $t \sim n\tau$.
 
-## Equação de diffusão
+## Equação de difusão
 
 Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades $p(t, x)$ para a posição da partícula satisfaz a equação de difusão (e.g. equação do calor)
 $$

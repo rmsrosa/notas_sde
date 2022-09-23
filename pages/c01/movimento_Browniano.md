@@ -14,13 +14,13 @@
 >
 > random form of order from
 >
-> the patter of surrounding atoms."
+> the pattern of surrounding atoms."
 >
 > \- Myles Billard ("Dust", from ["Stochastic Reflections – Poems from the Mind"](https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/))
 
 Um fluido, seja um gás ou um líquido, é composto de átomos e/ou moléculas em constante movimento. Mesmo que o fluido pareça estar em repouso, os seus constituintes atômicos não estão. Este movimento se reflete, por exemplo, na temperatura do fluido. Mas aqui vamos explorar outro fato associado a esse movimento.
 
-Qualquer objeto imerso, ou em contato, com um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático é denominado **movimento Browniano**.
+Qualquer objeto imerso, ou em contato, com um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático causado pelo bombardeamente dos constituintes do meio é denominado de **movimento Browniano**.
 
 ## Exemplos de movimento Browniano
 
@@ -42,11 +42,11 @@ Posteriormente, Albert Einstein, em um dos seus cinco artigos fundamentais publi
 
 [![Brownian motion simulator](/assets/images/BrownianMotionSimulator.png)](https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Brownian/brownian.html).
 
-Outros cientistas também analisaram e explicaram o fenônemo de ângulos diferentes, como Marian von Smoluchowski (veja [Smoluchowski, M. M. (1906). "Essai d'une théorie cinétique du mouvement Brownien et des milieux troubles"](https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up), [Smoluchowski, M. M. (1906). "Sur le chemin moyen parcouru par les molécules d'un gaz et sur son rapport avec la théorie de la diffusion" Bulletin International de l'Académie des Sciences de Cracovie (in French): 202.](https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up) e [von Smoluchowski, M. (1906). "Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen". Annalen der Physik (in German). 326 (14): 756–780](https://zenodo.org/record/1424073)) e Norbert Wiener.
+Outros cientistas também analisaram e explicaram o fenônemo de pontos de vista diferentes, como Marian von Smoluchowski (veja [Smoluchowski, M. M. (1906). "Essai d'une théorie cinétique du mouvement Brownien et des milieux troubles"](https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up), [Smoluchowski, M. M. (1906). "Sur le chemin moyen parcouru par les molécules d'un gaz et sur son rapport avec la théorie de la diffusion" Bulletin International de l'Académie des Sciences de Cracovie (in French): 202.](https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up) e [von Smoluchowski, M. (1906). "Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen". Annalen der Physik (in German). 326 (14): 756–780](https://zenodo.org/record/1424073)) e Norbert Wiener.
 
 ## O modelo de Einstein
 
-No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
+No modelo de Einstein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
 
 A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para algum intervalo de tempo característico $\tau$, a partícula pode dar passos espaciais $\ell$ de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
 
@@ -95,14 +95,14 @@ Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\
 $$
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
 $$
-Como condição inicial, assumimos que a partícula parde da origem, ou seja, probabilidade um de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
+Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade um de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
 $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 $$
 
 Ou seja, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
 
-Em um segundo artigo, as grandezas físicas são estimadas, em particular $D$, e aproximação acima é justificada.
+Em um segundo artigo, as grandezas físicas são estimadas, em particular $D$, e a aproximação acima é justificada com um maior embasamento físico.
 
 ## Distância quadrática média percorrida
 
@@ -173,7 +173,7 @@ $$
 
 Ou seja, quase sempre, teremos ${|\Delta x|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta $.
 
-O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$. Além disso, a probabilidade $\mathbb{P}$ age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante $t$. De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$. Além disso, a probabilidade $\mathbb{P}$ age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante $t$. De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Exercícios
 

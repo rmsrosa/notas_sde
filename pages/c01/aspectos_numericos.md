@@ -6,7 +6,7 @@
 
 ## Aproximação numérica
 
-Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior.
+Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior, que nos casos aleatório e estocástico leva o nome de *método de Euler-Maruyama*.
 
 Inicialmente, no caso da equação diferencial ordinária
 $$
@@ -16,7 +16,7 @@ podemos considerar um passo de tempo $\Delta t$ e os estados discretos $x(t_n)$,
 $$
 x(t_n + \Delta t) \approx x(t_n) + f(t_n, x(t_n), \lambda)\Delta t.
 $$
-Assim, os estados $x(t_n)$, para $n\in \mathbb{N}$, são dados aproximadamente pela sequência
+Assim, os estados $x(t_n)$, para $n\in \mathbb{N}$, são aproximados pela sequência
 $$
 x_{n+1}^{\Delta t} = x_n^{\Delta t} + f(t_n, x_n^{\Delta t}, \lambda)\Delta t, \qquad n = 0, 1, \ldots,
 $$
@@ -49,7 +49,7 @@ Nesse caso, a cada passo de tempo, devemos fazer um novo "sorteio", para obter a
 $$
 x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda_n^{\omega, \Delta t})\Delta t.
 $$
-Essa é a principal diferença. O parâmetro $\lambda$ não está pré-determinado com a escolha da amostra $\omega$. A cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge e é da ordem $\mathcal{O}(\Delta^{1/2})$.
+Essa é a principal diferença. O parâmetro $\Lambda_t(\omega)$ está determinado pela escolha da amostra $\omega$ mas a sua realização $\lambda_n^{\omega, \Delta t} = \Lambda_{t_n}(\omega)$ varia com o instante $t_n$; ou seja, a cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge e a sua ordem $\mathcal{O}(\Delta^{1/2})$ está limitada pelo expoente de continuidade Hölder do processo $\Lambda_t$ (muitas vezes esse expoente é 1/2, associado à regularidade Hölder do processo de Wiener).
 
 Chegamos, então, ao caso de final de equações estocásticas. Consideremos uma equação da forma
 $$
