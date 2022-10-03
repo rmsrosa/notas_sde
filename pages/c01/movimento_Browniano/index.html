@@ -242,13 +242,16 @@
     <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -340,11 +343,11 @@
 <p>is a moment</p>
 <p>only chosen by some</p>
 <p>random form of order from</p>
-<p>the patter of surrounding atoms.&quot;</p>
+<p>the pattern of surrounding atoms.&quot;</p>
 <p>- Myles Billard &#40;&quot;Dust&quot;, from <a href="https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/">&quot;Stochastic Reflections – Poems from the Mind&quot;</a>&#41;</p>
 </blockquote>
 <p>Um fluido, seja um gás ou um líquido, é composto de átomos e/ou moléculas em constante movimento. Mesmo que o fluido pareça estar em repouso, os seus constituintes atômicos não estão. Este movimento se reflete, por exemplo, na temperatura do fluido. Mas aqui vamos explorar outro fato associado a esse movimento.</p>
-<p>Qualquer objeto imerso, ou em contato, com um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático é denominado <strong>movimento Browniano</strong>.</p>
+<p>Qualquer objeto imerso, ou em contato, com um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático causado pelo bombardeamente dos constituintes do meio é denominado de <strong>movimento Browniano</strong>.</p>
 <h2 id="exemplos_de_movimento_browniano"><a href="#exemplos_de_movimento_browniano" class="header-anchor">Exemplos de movimento Browniano</a></h2>
 <p>O nome dado a esse movimento é em homenagem ao botânico Robert Brown, que, em 1827, observou e relatou esse movimento ao observar, em um microscópio, grãos de pólen imersos em água. O artigo original está disponível em <a href="https://sciweb.nybg.org/science2/pdfs/dws/Brownian.pdf">On the particles contained in the pollen of plants</a>. Veja, também, um interessante apanhado histórico sobre isso, em <a href="https://www.aps.org/publications/apsnews/201608/physicshistory.cfm">August 1827: Robert Brown and Molecular Motion in a Pollen-filled Puddle</a>.</p>
 <p>O que Brown observou foram micro-partículas, menores que os grãos de pólen, se descolando erraticamente no meio aquoso. Primeiramente, achou que fosse um movimento ativo, de partículas &quot;vivas&quot;, provenientes do pólen. Posteriormente, realizou diversos outros experimentos, com diferentes partículas suspensas em líquido e concluiu que era um movimento passivo, mas sem explicar o mecanismo por trás do movimento.</p>
@@ -355,9 +358,9 @@
 <h2 id="os_trabalhos_de_einstein_e_de_smoluchowski"><a href="#os_trabalhos_de_einstein_e_de_smoluchowski" class="header-anchor">Os trabalhos de Einstein e de Smoluchowski</a></h2>
 <p>Posteriormente, Albert Einstein, em um dos seus cinco artigos fundamentais publicados em <a href="https://cienciahoje.org.br/artigo/1905-um-ano-miraculoso/">1905: Um ano miraculoso</a>, explicou esse movimento como resultado, de fato, do movimento térmico dos fluidos. Foi uma demonstração indireta da existência de átomos e moléculas. Einstein deu mais detalhes sobre o fenômeno em um outro artigo, de 1908. Uma simulação desse efeito pode ser vista no link a seguir:</p>
 <p><a href="https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Brownian/brownian.html"><img src="/notas_sde/assets/images/BrownianMotionSimulator.png" alt="Brownian motion simulator" /></a>.</p>
-<p>Outros cientistas também analisaram e explicaram o fenônemo de ângulos diferentes, como Marian von Smoluchowski &#40;veja <a href="https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Essai d&#39;une théorie cinétique du mouvement Brownien et des milieux troubles&quot;</a>, <a href="https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Sur le chemin moyen parcouru par les molécules d&#39;un gaz et sur son rapport avec la théorie de la diffusion&quot; Bulletin International de l&#39;Académie des Sciences de Cracovie &#40;in French&#41;: 202.</a> e <a href="https://zenodo.org/record/1424073">von Smoluchowski, M. &#40;1906&#41;. &quot;Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen&quot;. Annalen der Physik &#40;in German&#41;. 326 &#40;14&#41;: 756–780</a>&#41; e Norbert Wiener.</p>
+<p>Outros cientistas também analisaram e explicaram o fenônemo de pontos de vista diferentes, como Marian von Smoluchowski &#40;veja <a href="https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Essai d&#39;une théorie cinétique du mouvement Brownien et des milieux troubles&quot;</a>, <a href="https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up">Smoluchowski, M. M. &#40;1906&#41;. &quot;Sur le chemin moyen parcouru par les molécules d&#39;un gaz et sur son rapport avec la théorie de la diffusion&quot; Bulletin International de l&#39;Académie des Sciences de Cracovie &#40;in French&#41;: 202.</a> e <a href="https://zenodo.org/record/1424073">von Smoluchowski, M. &#40;1906&#41;. &quot;Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen&quot;. Annalen der Physik &#40;in German&#41;. 326 &#40;14&#41;: 756–780</a>&#41; e Norbert Wiener.</p>
 <h2 id="o_modelo_de_einstein"><a href="#o_modelo_de_einstein" class="header-anchor">O modelo de Einstein</a></h2>
-<p>No modelo de Eistein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
+<p>No modelo de Einstein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
 <p>A regra para o movimento é que, entre instantes \(t\) e \(t + \tau\), para algum intervalo de tempo característico \(\tau\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
 <p>Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição da partícula&#41;, isotrópica &#40;não depende da direção/sentido de movimento&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > 0\) independe do passo dado em \(0 \leq t < s\)&#41;.</p>
 <p>Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre <a href="https://www.feynmanlectures.caltech.edu/I_41.html">Movimento Browniano</a>. A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de \(10^14\) vezes. Se tomarmos o passo de tempo característico \(\tau\) como sendo da ordem de um milésimo de segundo, teremos em torno de \(10^11\) colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções aleatórias que é razoável assumir que o efeito &#40;momento ganho&#41; de colisões em instantes anteriores é &quot;esquecido&quot;, ou seja, os passos, em instantes diferentes, são independentes entre si.</p>
@@ -398,12 +401,12 @@ D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{
 \[
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
 \]
-<p>Como condição inicial, assumimos que a partícula parde da origem, ou seja, probabilidade um de encontrar a partícula em \(x = 0\). Dito de outra forma, temos que \(p(0, x)\) é a delta de Dirac \(\delta_0(x)\). O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental</p>
+<p>Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade um de encontrar a partícula em \(x = 0\). Dito de outra forma, temos que \(p(0, x)\) é a delta de Dirac \(\delta_0(x)\). O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental</p>
 \[
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 \]
 <p>Ou seja, em qualquer instante \(t\), a posição da partícula é dada de acordo com uma distribuição normal \(\mathcal{N}(0, 2Dt)\), com média zero e variância \(2Dt\).</p>
-<p>Em um segundo artigo, as grandezas físicas são estimadas, em particular \(D\), e aproximação acima é justificada.</p>
+<p>Em um segundo artigo, as grandezas físicas são estimadas, em particular \(D\), e a aproximação acima é justificada com um maior embasamento físico.</p>
 <h2 id="distância_quadrática_média_percorrida"><a href="#distância_quadrática_média_percorrida" class="header-anchor">Distância quadrática média percorrida</a></h2>
 <p>Sendo \(x \mapsto p(t, x)\) uma Gaussiana com variância \(\sigma^2 = 2Dt\), a <strong>distância quadrática média</strong> percorrida pelas partículas, após um instante \(t\), é exatamente esse desvio padrão:</p>
 \[
@@ -456,7 +459,7 @@ D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{
   \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
 \]
 <p>Ou seja, quase sempre, teremos \({|\Delta x|}/{\Delta t^\theta}\) limitado, portanto existindo \(C > 0\) tal que \(|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta \).</p>
-<p>O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para <em>todo</em> \(t\). Além disso, a probabilidade \(\mathbb{P}\) age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante \(t\). De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. O resto depende mais de argumentos topológicos. Esse resultado pode ser visto como um caso particular do <strong>Teorema de Continuidade de Kolmogorov</strong>, que mencionaremos novamente ao falarmos de processos estocásticos.</p>
+<p>O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para <em>todo</em> \(t\). Além disso, a probabilidade \(\mathbb{P}\) age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante \(t\). De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do <strong>Teorema de Continuidade de Kolmogorov</strong>, que mencionaremos novamente ao falarmos de processos estocásticos.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Considere a versão tridimensional do modelo de Einstein, onde \(\mathbf{x} = (x, y, z) \in \mathbb{R}^3\) e os passos \(\boldsymbol{\ell} = (\ell_x, \ell_y, \ell_z) \in \mathbb{R}^3\) são dados de acordo com uma distribuição de probabilidades \(g = g(\boldsymbol\ell)\) que é estacionária, homogênea e isotrópica, com passos independentes. Mostre que a densidade de probabilidades \(p(t, \mathbf{x}) = p(t, x, y, z)\) da posição da partícula satisfaz a equação de difusão</p>
@@ -496,7 +499,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x
         </div>
     
 
-    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

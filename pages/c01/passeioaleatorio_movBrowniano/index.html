@@ -242,13 +242,16 @@
     <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -361,7 +364,7 @@ p_5 = (\ldots, 0, 1/16, 0, 5/16, 0, 3/8, 0, 5/16, 0, 1/16, 0, \ldots),
 <p>etc. Podemos continuar e buscar um padrão para a sequência, mas podemos deduzir os valores de uma forma mais simples.</p>
 <p>Para uma partícula chegar na posição \(x = \ell m\), ela deve dar \(i\) passos para a direita e \(j\) passos para a esquerda, com \(i - j = m\). Para isso acontecer no passo \(m\), devemos ter \(i + j = n\). Logo, devemos ter \(i = (n + m)/2\) passos para a direita e \(j = (n - m)/2\) passos para a esquerda. Cada passo ocorre com probabilidade \(1/2\). Assim, após \(n\) passos, cada caminho ocorre com probabilidade \(1/2^n\). Resta saber quantos caminhos existem até um determinado ponto \(x = \ell m\).</p>
 <p>Naturalmente, não há caminho caso \(m < -n\) ou \(m > n\). E há apenas um caminho para \(m = -n\) e \(m = n\). Mas pode haver vários caminhos ligando a outros pontos. Ou nenhum. De fato, se \(n\) e \(m\) tiverem paridades diferentes, então \(n + m\) é ímpar e não tem como darmos \(i = (n + m)/2\) passos para a direita, nem \(j = (n - m)/2\) para a esquerda. Resta, agora, saber o número de caminhos possíveis quando \(n\) e \(m\) têm a mesma paridade e \(|m| < n\).</p>
-<p>Para ver isso, vamos focar no fato de que, para chegarmos em \(x = m\ell\) após \(n\) passos, devemos dar \((n + m)/2\) passos para a direita. Se, por exemplo, \(n = 6\) e \(m = 2\), devemos dar \((n + m)/2 = 4\) passos para a direita, mas eles podem acontecer a quaisquer quatro dos seis momentos entre \(\tau\) e \(n\tau\). Isso nos dá \(\left(\begin{matrix} n \\ (n + m)/2 \end{matrix}\right) = \left(\begin{matrix} 6 \\ 4 \end{matrix}\right) = 15\) possibilidades de caminhos, de um total de \(2^6\). Ou seja, \(p_6(2) = 15 / 64\). Mais geralmente, temos</p>
+<p>Para ver isso, vamos focar no fato de que, para chegarmos em \(x = m\ell\) após \(n\) passos, devemos dar \((n + m)/2\) passos para a direita. Se, por exemplo, \(n = 6\) e \(m = 2\), devemos dar \((n + m)/2 = 4\) passos para a direita, mas eles podem acontecer em quaisquer quatro dos seis momentos entre \(\tau\) e \(n\tau\). Isso nos dá \(\left(\begin{matrix} n \\ (n + m)/2 \end{matrix}\right) = \left(\begin{matrix} 6 \\ 4 \end{matrix}\right) = 15\) possibilidades de caminhos, de um total de \(2^6\). Ou seja, \(p_6(2) = 15 / 64\). Mais geralmente, temos</p>
 \[
 p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}.
 \]
@@ -428,7 +431,7 @@ a = \frac{\ell^2}{2\tau}.
 a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 \]
 <p>Pensando nesse limite contínuo, e abusando da notação, já que já definimos \(X_n\), podemos escrever \(X_t\) como a variável aleatória indicando a posição da partícula no instante \(t \sim n\tau\).</p>
-<h2 id="equação_de_diffusão"><a href="#equação_de_diffusão" class="header-anchor">Equação de diffusão</a></h2>
+<h2 id="equação_de_difusão"><a href="#equação_de_difusão" class="header-anchor">Equação de difusão</a></h2>
 <p>Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades \(p(t, x)\) para a posição da partícula satisfaz a equação de difusão &#40;e.g. equação do calor&#41;</p>
 \[
 \frac{\partial p}{\partial t^2} = a\frac{\partial p}{\partial x^2},
@@ -514,7 +517,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         </div>
     
 
-    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

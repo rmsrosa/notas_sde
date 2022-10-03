@@ -253,13 +253,16 @@
     <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -490,6 +493,130 @@ plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legen
 plot&#33;&#40;summ50, labels&#61;&#91;&quot;&quot; &quot;Middle 50&#37;&quot;&#93;, legend&#61;true&#41;
 plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legend&#61;true&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/SIR_noise_ensemble_summ_closeup.svg" alt="">
+<h2 id="performance_das_funções"><a href="#performance_das_funções" class="header-anchor">Performance das funções</a></h2>
+<p>Aqui, vamos apenas conferir que as funções <code>SIR&#33;&#40;du, u, p, t&#41;</code> e <code>SIR_noise&#33;&#40;du, u, p, t&#41;</code> estão bem construídas e não alocam memória. Fazemos isso com a macro <code>BenchmarkTools.@btime</code>.</p>
+<pre><code class="language-julia">using BenchmarkTools
+
+let u &#61; &#91;800.0, 200.0&#93;; p &#61; &#40;1000.0, 0.2, 0.15, 0.15, 0.1&#41;; t &#61; 1.0; du &#61; Vector&#123;Float64&#125;&#40;undef, 2&#41;; du_noise &#61; Matrix&#123;Float64&#125;&#40;undef, 2, 2&#41;
+    println&#40;&quot;Benchmark SIR&#33;&quot;&#41;
+    println&#40;@btime SIR&#33;&#40;&#36;du, &#36;u, &#36;p, &#36;t&#41;&#41;
+    println&#40;&quot;\nBenchmark SIR_noise&#33;&quot;&#41;
+    println&#40;@btime SIR_noise&#33;&#40;&#36;du_noise, &#36;u, &#36;p, &#36;t&#41;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">Benchmark SIR!
+  9.000 ns (0 allocations: 0 bytes)
+2.0
+
+Benchmark SIR_noise!
+  4.500 ns (0 allocations: 0 bytes)
+-20.0
+</code></pre>
+<p>Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro <code>InteractiveUtils.@code_warntype</code> para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável <code>u</code> e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável &#40;verifique isso usando <code>@btime</code> com os parâmetros abaixo&#33;&#41;.</p>
+<pre><code class="language-julia">using InteractiveUtils
+
+let u &#61; &#91;800, 200&#93;; p &#61; &#40;1000.0, 0.2, 0.15, 0.15, 1//10&#41;; t &#61; 1.0; du &#61; Vector&#123;Float64&#125;&#40;undef, 2&#41;; du_noise &#61; Matrix&#123;Float64&#125;&#40;undef, 2, 2&#41;
+    println&#40;&quot;@code_warntype for SIR&#33;&quot;&#41;
+    println&#40;@code_warntype SIR&#33;&#40;du, u, p, t&#41;&#41;
+    println&#40;&quot;\n@code_warntype for SIR_noise&#33;&quot;&#41;
+    println&#40;@code_warntype SIR_noise&#33;&#40;du_noise, u, p, t&#41;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">@code_warntype for SIR!
+MethodInstance for Main.FD_SANDBOX_9898039245808358067.SIR!(::Vector{Float64}, ::Vector{Int64}, ::Tuple{Float64, Float64, Float64, Float64, Rational{Int64}}, ::Float64)
+  from SIR!(du, u, p, t) in Main.FD_SANDBOX_9898039245808358067 at none:1
+Arguments
+  #self#::Core.Const(Main.FD_SANDBOX_9898039245808358067.SIR!)
+  du::Vector{Float64}
+  u::Vector{Int64}
+  p::Tuple{Float64, Float64, Float64, Float64, Rational{Int64}}
+  t::Float64
+Locals
+  @_6::Int64
+  @_7::Int64
+  gamma::Float64
+  beta::Float64
+  N::Float64
+  I::Int64
+  S::Int64
+Body::Float64
+1 ─ %1  = Base.indexed_iterate(u, 1)::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(2)])
+│         (S = Core.getfield(%1, 1))
+│         (@_7 = Core.getfield(%1, 2))
+│   %4  = Base.indexed_iterate(u, 2, @_7::Core.Const(2))::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(3)])
+│         (I = Core.getfield(%4, 1))
+│   %6  = Base.indexed_iterate(p, 1)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(2)])
+│         (N = Core.getfield(%6, 1))
+│         (@_6 = Core.getfield(%6, 2))
+│   %9  = Base.indexed_iterate(p, 2, @_6::Core.Const(2))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(3)])
+│         (beta = Core.getfield(%9, 1))
+│         (@_6 = Core.getfield(%9, 2))
+│   %12 = Base.indexed_iterate(p, 3, @_6::Core.Const(3))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(4)])
+│         (gamma = Core.getfield(%12, 1))
+│   %14 = -beta::Float64
+│   %15 = S::Int64
+│   %16 = (%14 * %15 * I)::Float64
+│   %17 = (%16 / N)::Float64
+│         Base.setindex!(du, %17, 1)
+│   %19 = (beta * S * I)::Float64
+│   %20 = (%19 / N)::Float64
+│   %21 = (gamma * I)::Float64
+│   %22 = (%20 - %21)::Float64
+│         Base.setindex!(du, %22, 2)
+└──       return %22
+
+nothing
+
+@code_warntype for SIR_noise!
+MethodInstance for Main.FD_SANDBOX_9898039245808358067.SIR_noise!(::Matrix{Float64}, ::Vector{Int64}, ::Tuple{Float64, Float64, Float64, Float64, Rational{Int64}}, ::Float64)
+  from SIR_noise!(du, u, p, t) in Main.FD_SANDBOX_9898039245808358067 at none:1
+Arguments
+  #self#::Core.Const(Main.FD_SANDBOX_9898039245808358067.SIR_noise!)
+  du::Matrix{Float64}
+  u::Vector{Int64}
+  p::Tuple{Float64, Float64, Float64, Float64, Rational{Int64}}
+  t::Float64
+Locals
+  @_6::Int64
+  @_7::Int64
+  gW::Rational{Int64}
+  bW::Float64
+  sigma_gamma::Rational{Int64}
+  sigma_beta::Float64
+  N::Float64
+  I::Int64
+  S::Int64
+Body::Rational{Int64}
+1 ─ %1  = Base.indexed_iterate(u, 1)::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(2)])
+│         (S = Core.getfield(%1, 1))
+│         (@_7 = Core.getfield(%1, 2))
+│   %4  = Base.indexed_iterate(u, 2, @_7::Core.Const(2))::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(3)])
+│         (I = Core.getfield(%4, 1))
+│   %6  = Base.indexed_iterate(p, 1)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(2)])
+│         (N = Core.getfield(%6, 1))
+│         (@_6 = Core.getfield(%6, 2))
+│   %9  = Base.indexed_iterate(p, 2, @_6::Core.Const(2))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(3)])
+│         Core.getfield(%9, 1)
+│         (@_6 = Core.getfield(%9, 2))
+│   %12 = Base.indexed_iterate(p, 3, @_6::Core.Const(3))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(4)])
+│         Core.getfield(%12, 1)
+│         (@_6 = Core.getfield(%12, 2))
+│   %15 = Base.indexed_iterate(p, 4, @_6::Core.Const(4))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(5)])
+│         (sigma_beta = Core.getfield(%15, 1))
+│         (@_6 = Core.getfield(%15, 2))
+│   %18 = Base.indexed_iterate(p, 5, @_6::Core.Const(5))::Core.PartialStruct(Tuple{Rational{Int64}, Int64}, Any[Rational{Int64}, Core.Const(6)])
+│         (sigma_gamma = Core.getfield(%18, 1))
+│   %20 = (sigma_beta * S * I)::Float64
+│         (bW = %20 / N)
+│         (gW = sigma_gamma * I)
+│   %23 = -bW::Float64
+│         Base.setindex!(du, %23, 1, 1)
+│         Base.setindex!(du, 0.0, 1, 2)
+│         Base.setindex!(du, bW, 2, 1)
+│   %27 = -gW::Rational{Int64}
+│         Base.setindex!(du, %27, 2, 2)
+└──       return %27
+
+nothing
+</code></pre>
 
     <div class="navbar">
     <p id="nav">
@@ -513,7 +640,7 @@ plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legen
         </div>
     
 
-    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

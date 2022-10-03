@@ -242,13 +242,16 @@
     <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -338,11 +341,11 @@
 </blockquote>
 <h2 id="definição_informal"><a href="#definição_informal" class="header-anchor">Definição informal</a></h2>
 <p>Uma variável, no sentido mais geral, é um elemento arbitrário de um determinado conjunto, podendo assumir qualquer valor nesse conjunto. Uma <strong>variável aleatória</strong>, por sua vez, pode ser pensada como uma variável em que cada valor, ou conjunto de valores, chamados de <strong>eventos</strong>, possui uma certa <em>probabilidade</em> de ser observado.</p>
-<p>Variáveis aleatórias estão associadas a fenômenos de difícil previsão, tanto em problemas aparentemente simples, como o resultado de um lançamento de uma moeda, do lançamento de um dado, ou de um jogo de roletas, quanto em fenômenos extremamente complexos, como previsão do tempo, de terremotos, no mercado de ações e sobre o desejo dos consumidores, por exemplo.</p>
+<p>Variáveis aleatórias estão, muitas vezes, associadas a fenômenos de difícil previsão, tanto em problemas aparentemente simples, como o resultado de um lançamento de uma moeda, do lançamento de um dado, ou de um jogo de roletas, quanto em fenômenos extremamente complexos, como previsão do tempo, de terremotos, no mercado de ações e sobre o desejo dos consumidores, por exemplo.</p>
 <p>Variáveis aleatórias podem ser classificadas de acordo com o tipo de valores que podem assumir. Esses possíveis valores podem ser <em>finitos</em> ou <em>infinitos</em>, <em>discretos</em> ou <em>contínuos</em>, <em>enumeráveis</em> ou <em>não enumeráveis</em>, <em>escalares</em> ou <em>vetoriais</em>, etc.</p>
 <h2 id="exemplos"><a href="#exemplos" class="header-anchor">Exemplos</a></h2>
 <p>Por exemplo, no caso do lançamento de uma moeda, podemos ter os eventos discretos &quot;cara&quot; e &quot;coroa&quot;, com probabilidade 1/2 de cada evento ser observado. No caso de um lançamento de um dado &quot;não viciado&quot;, temos os possíveis eventos discretos \(1, 2, 3, 4, 5, 6\), cada um com probabilidade 1/6 de ser realizado. Um dado &quot;viciado&quot; pode ter probabilidades diferentes. Estes são exemplos com um conjunto finito de possíveis observações.</p>
-<p>Se lançarmos uma moeda um número infinito de vezes, podemos observar as chances de termos sucesso apenas no enésimo lançamento. Qualquer número inteiro não negativo pode ser observado.</p>
+<p>Se lançarmos uma moeda um número arbitrário de vezes, podemos observar as chances de termos sucesso apenas em algum enésimo lançamento. Qualquer número inteiro não negativo pode ser observado.</p>
 <p>O índice pluviométrico, por sua vez, informa a quantidade de chuva por metro quadrado e é medido em milímetros, podendo teoricamente, assumir qualquer múltiplo inteiro não negativo de \(1\;\texttt{mm}\), e cujas probabilidades dependem de uma série de fatores. Dessa forma, o conjunto de possíveis valores também é discreto e infinito enumerável. Em determinados modelos, podemos tratar o índice pluviométrico como uma quantidade assumindo valores reais não negativos, com alguma unidade de comprimento.</p>
 <p>O tempo também pode ser pensado como uma variável contínua, de modo que o tempo que um objeto leva para cair de uma certa altura até o chão pode ser visto como uma variável aleatória assumindo qualquer valor real positivo. Naturalmente, há muito mais chances do valor observado ser de acordo com a segunda lei de Newton, mas há sempre alguma incerteza, por conta de diversos fatores, tanto de erros de medição &#40;da altura inicial e do cronômetro marcando o início e o fim do movimento&#41; como pelo fato de um modelo ser apenas uma aproximação da realidade.</p>
 <h2 id="notação"><a href="#notação" class="header-anchor">Notação</a></h2>
@@ -379,7 +382,7 @@ X \sim \mathbb{P}
         </div>
     
 
-    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

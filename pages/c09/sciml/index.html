@@ -253,13 +253,16 @@
     <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -329,7 +332,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c10/deterministic"><kbd>→</kbd> 10.1. Evolução no caso de equações determinísticas</a>
@@ -343,7 +346,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">9.8. O ambiente SciML da linguagem Julia</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.9. O ambiente SciML da linguagem Julia</a></h1>
 <p>Estivemos, até agora, implementando diretamente os métodos numéricos, por motivos didáticos. Nas aplicações, porém, podemos utilizar pacotes numéricos que já têm esses e outros métodos implementados. Nos basta formular o problema de acordo com a interface de cada pacote &#40;chamada de <em>api</em>, acrônimo de <em>application programming interface</em>&#41;.</p>
 <p>Com isso em mente, vamos usar o ambiente <a href="https://docs.sciml.ai/dev/">SciML - The SciML Open Source Software Ecosystem</a>, que é, de fato, um dos carros chefes da linguagem <a href="The SciML Open Source Software Ecosystem">Julia</a>, com uma ampla gama de métodos implementados e otimizados. Há não apenas métodos para aproximar os caminhos amostrais de soluções de equações estocásticas e aleatórias, mas também para serem usados em conjunto com métodos de determinação de parâmetros, quantificação de incertezas, redes neurais e modelagem simbólica.</p>
 <p>Vamos ilustrar aqui como usar esse ambiente para resolver as equações tratadas até agora. Nos capítulos seguintes, exploraremos esse ambiente na resolução de problemas mais complexos, envolvendo sistemas de equações.</p>
@@ -823,28 +826,28 @@ CodeInfo(
 <h2 id="otimização_do_código"><a href="#otimização_do_código" class="header-anchor">Otimização do código</a></h2>
 <p>Outras macros também são bastante úteis na análise do código e na busca por códigos mais eficientes. Utilizaremos, abaixo, a macro <code>@btime</code> do pacote <a href="https://github.com/JuliaCI/BenchmarkTools.jl">JuliaCI/BenchmarkTools</a>. Esse mesmo pacote possui uma macro <code>@benchmark</code> que nos fornece resultados mais completos, mas, para efeito da análise que iremos fazer, <code>@btime</code> é suficiente. Há outras ferramentas, também, como a própria macro <code>@code_warntype</code>, que ajuda a identificar problemas no código causados por mudança de tipo de alguma variável no meio da função &#40;e.g. alguma variável que em certo momento é um inteiro mas em outro é um número em ponto flutuante&#41;. Outros ajudam a identificar quais partes do código demoram mais a ser executados, nos permitindo otimizar partes mais custosas do código.</p>
 <p>Mas, voltando ao nosso caso, vamos comparar a performance, por exemplo, das seguintes funções:</p>
-<pre><code class="language-julia">function fsir&#40;u, p, t&#41;
+<pre><code class="language-julia">function fsir1&#40;u, p, t&#41;
     β, γ &#61; p
     s, i &#61; u
     du &#61; &#91;-β * s * i, β * s * i - γ * i&#93;
     return du
 end
 
-function fsir1&#33;&#40;du, u, p, t&#41; # does not work as desired
+function fsir2&#33;&#40;du, u, p, t&#41; # does not work as desired
     β, γ &#61; p
     s, i &#61; u
     du &#61; &#91;-β * s * i, β * s * i - γ * i&#93;
     return du
 end
 
-function fsir2&#33;&#40;du, u, p, t&#41;
+function fsir3&#33;&#40;du, u, p, t&#41;
     β, γ &#61; p
     s, i &#61; u
     du .&#61; &#91;-β * s * i, β * s * i - γ * i&#93;
     return du
 end
 
-function fsir3&#33;&#40;du, u, p, t&#41;
+function fsir4&#33;&#40;du, u, p, t&#41;
     β, γ &#61; p
     s, i &#61; u
     inew &#61; -β * s * i
@@ -854,7 +857,7 @@ function fsir3&#33;&#40;du, u, p, t&#41;
     return du
 end</code></pre>
 <p>Para quem já estudou o modelo SIR de epidemia, pode reconhecer a função como sendo a lei de evolução para o subsistema composto pelas variáveis \(s = S/N\) e \(i = I/N\), onde \(S\) e \(I\) são as populações de suscetíveis e de infectados, respectivamente, e \(N\) é a população total.</p>
-<p>Observe que a primeira função, <code>fsir&#40;u, p, t&#41;</code>, está na forma <em>out of place</em>, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções estão na forma <em>inplace</em> e modificam a primeira variável, <code>du</code>, com o valor calculado para essas taxas. A segunda função, no entanto, aparentemente altera o valor de <code>du</code>, mas na verdade ela cria um novo vetor, local, também denominado de <code>du</code>, ao invés de alterar a variável <code>du</code> passada para a função. Muito cuidado&#33; A segunda função não funciona como desejamos.</p>
+<p>Observe que a primeira função, <code>fsir1&#40;u, p, t&#41;</code>, está na forma <em>out of place</em>, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções, <code>fsir3&#33;&#40;du, u, p, t&#41;</code>, <code>fsir4&#33;&#40;du, u, p, t&#41;</code>, estão na forma <em>inplace</em> e modificam a primeira variável, <code>du</code>, com o valor calculado para essas taxas. A segunda função, <code>fsir2&#33;&#40;du, u, p, t&#41;</code>, no entanto, deveria alterar o valor de <code>du</code>, mas na verdade ela cria um novo vetor, local, também denominado de <code>du</code>, ao invés de alterar a variável <code>du</code> passada para a função. Muito cuidado&#33; Essa função não funciona como desejamos.</p>
 <p>Em relação à performance, a forma <em>inplace</em> não é necessariamente mais rápida, como mostram os resultados a seguir da utilização da macro <code>@btime</code>.</p>
 <pre><code class="language-julia">using BenchmarkTools
 
@@ -869,28 +872,15 @@ let u &#61; &#91;0.8, 0.2&#93;; p &#61; &#40;0.2, 0.15&#41;; t &#61; 1.0; du &#6
     println&#40;@btime fsir3&#33;&#40;&#36;du, &#36;u, &#36;p, &#36;t&#41;&#41;
 end</code></pre>
 <pre><code class="plaintext code-output">Benchmark fsir
-  33.167 ns (1 allocation: 80 bytes)
-[-0.03200000000000001, 0.0020000000000000087]
-
-Benchmark fsir1!
-  32.998 ns (1 allocation: 80 bytes)
-[-0.03200000000000001, 0.0020000000000000087]
-
-Benchmark fsir2!
-  41.533 ns (1 allocation: 80 bytes)
-[-0.03200000000000001, 0.0020000000000000087]
-
-Benchmark fsir3!
-  3.700 ns (0 allocations: 0 bytes)
-[0.03200000000000001, -0.062000000000000006]
+UndefVarError: fsir not defined
 </code></pre>
-<p>Naturalmente, a primeira forma, <code>fsir</code>, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções, <code>fsir1&#33;</code> e <code>fsir2&#33;</code>, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor <code>&#91;-β * s * i, β * s * i - γ * i&#93;</code>. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor <code>du</code>. A função <code>fsir1&#33;</code> é um pouco mais rápida pois apenas muda o ponteiro do vetor <code>du</code> para o vetor recém criado. A função <code>fsir2&#33;</code> copia os valores do vetor recém criado para o espaço de memória para o qual <code>du</code> aponta, tendo, portanto, um custo extra. Porém, a função <code>fsir1&#33;</code>, ao mudar o ponteiro, faz de <code>du</code> uma variável local, cuja mudança não se reflete na variável <code>du</code> passada para a função, que continua apontando para o mesmo endereço de memória &#40;pode verificar isso usando a função <code>pointer&#40;du&#41;</code>, dentro e fora da função&#41;.</p>
+<p>Naturalmente, a primeira forma, <code>fsir1</code>, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções, <code>fsir2&#33;</code> e <code>fsir3&#33;</code>, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor <code>&#91;-β * s * i, β * s * i - γ * i&#93;</code>. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor <code>du</code>. A função <code>fsir2&#33;</code> é um pouco mais rápida pois apenas muda o ponteiro do vetor <code>du</code> para o vetor recém criado. Porém, ao mudar o ponteiro, faz de <code>du</code> uma variável local, cuja mudança não se reflete na variável <code>du</code> passada para a função, que continua apontando para o mesmo endereço de memória &#40;pode verificar isso usando a função <code>pointer&#40;du&#41;</code>, dentro e fora da função&#41;. A função <code>fsir3&#33;</code> copia os valores do vetor recém criado para o espaço de memória para o qual <code>du</code> aponta, tendo, portanto, um custo extra.</p>
 <p>Só a última versão, <code>fsir3&#33;</code>, é que não faz nenhuma alocação nova, sendo extremamente mais eficiente. Imagine resolver o sistema de EDOs e iterar isso milhares de vezes. A escolha da função mais eficiente faz uma grande diferença&#33;</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c10/deterministic"><kbd>→</kbd> 10.1. Evolução no caso de equações determinísticas</a>
@@ -909,7 +899,7 @@ Benchmark fsir3!
         </div>
     
 
-    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

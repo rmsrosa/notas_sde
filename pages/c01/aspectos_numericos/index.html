@@ -242,13 +242,16 @@
     <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.6. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.7. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.8. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -337,7 +340,7 @@
 <p>&quot;It may very well be said that the best way to understand SDEs is to work with their numerical solutions.&quot; - Salih N. Neftci, in <em>An Introduction to the Mathematics of Financial Derivatives,</em> 2nd edition &#40;Academic Press, 2000&#41;.</p>
 </blockquote>
 <h2 id="aproximação_numérica"><a href="#aproximação_numérica" class="header-anchor">Aproximação numérica</a></h2>
-<p>Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior.</p>
+<p>Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior, que nos casos aleatório e estocástico leva o nome de <em>método de Euler-Maruyama</em>.</p>
 <p>Inicialmente, no caso da equação diferencial ordinária</p>
 \[
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x, \lambda),
@@ -346,7 +349,7 @@
 \[
 x(t_n + \Delta t) \approx x(t_n) + f(t_n, x(t_n), \lambda)\Delta t.
 \]
-<p>Assim, os estados \(x(t_n)\), para \(n\in \mathbb{N}\), são dados aproximadamente pela sequência</p>
+<p>Assim, os estados \(x(t_n)\), para \(n\in \mathbb{N}\), são aproximados pela sequência</p>
 \[
 x_{n+1}^{\Delta t} = x_n^{\Delta t} + f(t_n, x_n^{\Delta t}, \lambda)\Delta t, \qquad n = 0, 1, \ldots,
 \]
@@ -374,7 +377,7 @@ x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \Lambda(\omega
 \[
 x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda_n^{\omega, \Delta t})\Delta t.
 \]
-<p>Essa é a principal diferença. O parâmetro \(\lambda\) não está pré-determinado com a escolha da amostra \(\omega\). A cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge e é da ordem \(\mathcal{O}(\Delta^{1/2})\).</p>
+<p>Essa é a principal diferença. O parâmetro \(\Lambda_t(\omega)\) está determinado pela escolha da amostra \(\omega\) mas a sua realização \(\lambda_n^{\omega, \Delta t} = \Lambda_{t_n}(\omega)\) varia com o instante \(t_n\); ou seja, a cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge e a sua ordem \(\mathcal{O}(\Delta^{1/2})\) está limitada pelo expoente de continuidade Hölder do processo \(\Lambda_t\) &#40;muitas vezes esse expoente é 1/2, associado à regularidade Hölder do processo de Wiener&#41;.</p>
 <p>Chegamos, então, ao caso de final de equações estocásticas. Consideremos uma equação da forma</p>
 \[
 \mathrm{d}X_t = f(t, X_t, \lambda)\mathrm{d}t + \sigma(t, X_t)\mathrm{d}W_t.
@@ -407,7 +410,7 @@ x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda)\Delta
         </div>
     
 
-    Last modified: July 29, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
