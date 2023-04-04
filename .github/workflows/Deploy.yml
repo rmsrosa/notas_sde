@@ -3,18 +3,22 @@ on:
   push:
     branches:
       - main
+
+env:
+  GKSwstype: "100"
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         persist-credentials: false
     - name: Install Julia
       uses: julia-actions/setup-julia@v1
       with:
-        version: 1.7
+        version: 1.8
     # GR recommended (plots backend, in case it is used)
     - run: |
             sudo apt-get update -y
