@@ -52,7 +52,7 @@ A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para algum in
 
 Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição da partícula), isotrópica (não depende da direção/sentido de movimento) e que os passos são independentes entre si (o passo num instante $s > 0$ independe do passo dado em $0 \leq t < s$).
 
-Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^14$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^11$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores é "esquecido", ou seja, os passos, em instantes diferentes, são independentes entre si.
+Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^{14}$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^{11}$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores é "esquecido", ou seja, os passos, em instantes diferentes, são independentes entre si.
 
 Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
 
@@ -80,20 +80,20 @@ $$
 $$
 Com isso, chegamos a
 $$
-\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^3]).
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^4]).
 $$
 Ou seja,
 $$
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^3]}{\tau}\right),
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^4]}{\tau}\right),
 $$
 onde
 $$
 D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}[\ell^2].
 $$
 
-Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\ell^3] / \tau$ relativamente pequeno, obtemos, aproximadamente, a equação de difusão
+Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\ell^4] / \tau$ relativamente pequeno, obtemos, aproximadamente, a equação de difusão
 $$
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial x^2}(t, x).
 $$
 Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade um de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
 $$

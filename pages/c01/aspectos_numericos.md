@@ -6,7 +6,9 @@
 
 ## Aproximação numérica
 
-Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior, que nos casos aleatório e estocástico leva o nome de *método de Euler-Maruyama*.
+Para ilustrar como métodos numéricos podem nos ajudar a entender os modelos acima, vamos considerar aproximações de Euler para as equações descritas na seção anterior, que no caso de equações estocásticas leva o nome de *método de Euler-Maruyama*.
+
+### O método de Euler para equações diferenciais ordinárias
 
 Inicialmente, no caso da equação diferencial ordinária
 $$
@@ -26,6 +28,8 @@ com a condição inicial $x_0^{\Delta t} = x(0)$. Observe o superescrito $\Delta
 
 No caso da aproximação de Euler, em particular, é possível mostrar que, para um $T>0$ fixo, as aproximações $x_n^{\Delta t}$, no intervalo $0\leq t_n \leq T$, convergem *linearmente* para a solução exata, ou seja, com erro da ordem $\mathcal{O}(\Delta t)$.
 
+### O método de Euler no caso de equações diferenciais ordinárias com parâmetros aleatórios
+
 Vejamos, agora, o caso de uma equação diferencial aleatória da forma mais simples, onde as realizações não variam com o tempo:
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda),
@@ -40,6 +44,8 @@ x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \Lambda(\omega
 $$
 com a condição inicial $x_0^{\omega, \Delta t} = X_0(\omega)$. Observe que, agora, incluímos a amostra $\omega$ como parâmetro da família de aproximações.
 
+### O método de Euler no caso de equações diferenciais ordinárias aleatórias
+
 Consideremos, agora, o caso em que a variável aleatória $\Lambda = \Lambda_t$ é um processo estocástico, com as realizações variando com o tempo:
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t).
@@ -49,7 +55,9 @@ Nesse caso, a cada passo de tempo, devemos fazer um novo "sorteio", para obter a
 $$
 x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda_n^{\omega, \Delta t})\Delta t.
 $$
-Essa é a principal diferença. O parâmetro $\Lambda_t(\omega)$ está determinado pela escolha da amostra $\omega$ mas a sua realização $\lambda_n^{\omega, \Delta t} = \Lambda_{t_n}(\omega)$ varia com o instante $t_n$; ou seja, a cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge e a sua ordem $\mathcal{O}(\Delta^{1/2})$ está limitada pelo expoente de continuidade Hölder do processo $\Lambda_t$ (muitas vezes esse expoente é 1/2, associado à regularidade Hölder do processo de Wiener).
+Essa é a principal diferença. O parâmetro $\Lambda_t(\omega)$ está determinado pela escolha da amostra $\omega$ mas a sua realização $\lambda_n^{\omega, \Delta t} = \Lambda_{t_n}(\omega)$ varia com o instante $t_n$; ou seja, a cada instante de tempo, precisamos de uma nova realização do parâmetro. É possível mostrar que esse método converge, mas a sua ordem de convergeência $\mathcal{O}(\Delta^p)$ depende da regularidade do processo, podendo ser menor do que $1$. Um resultado clássico garante que essa ordem $p$ é dada pelo expoente de continuidade Hölder do processo $\Lambda_t$ (muitas vezes esse expoente é 1/2, como no movimento Browniano geométrico, associado à regularidade Hölder do processo de Wiener). Mas, resultados recentes indicam que essa ordem de convergência, na verdade, é muito melhor, sendo também ordem $1$, em uma ampla gama de tipos de ruídos $\{\Lambda_t\}_{t\geq 0}$.
+
+### O método de Euler-Maruyama para equações diferenciais ordinárias estocásticas
 
 Chegamos, então, ao caso de final de equações estocásticas. Consideremos uma equação da forma
 $$
@@ -60,4 +68,8 @@ $$
 x_{n+1}^{\omega, \Delta t} = x_n + f(t_n, x_n^{\omega, \Delta t}, \lambda)\Delta t + \sigma(t, x_n^{\omega, \Delta t})\Delta W_n^{\omega, \Delta t}.
 $$
 
-Em muitos casos, o processo estocástico é um **processo de Lévy**, em que os incrementos são estacionários e independentes entre si, ou seja, a distribuição de $W_{t_{n+1}} - W_{t_n}$ depende apenas do passo $\Delta t = t_{n+1} - t_n$ e as realizações a cada passo são independentes. Assim, no método de Euler, podemos sortear $\Delta W_n^{\omega, \Delta t}$ diretamente, a partir de uma determinada distribuição de probabilidades.
+Nesse caso, o método leva o nome de **método de Euler-Maruyama.**
+
+Em muitos casos, o processo estocástico é um **processo de Lévy**, em que os incrementos são estacionários e independentes entre si, ou seja, a distribuição de $W_{t_{n+1}} - W_{t_n}$ depende apenas do passo $\Delta t = t_{n+1} - t_n$ e as realizações a cada passo são independentes. Assim, no método de Euler, podemos sortear $\Delta W_n^{\omega, \Delta t}$ diretamente, a partir de uma determinada distribuição de probabilidades. Esse é o caso do processo de Wiener, associado ao movimento Browniano.
+
+Quanto à ordem de convergência, no caso de um processo de Wiener e no caso *multiplicativo,* i.e. com $\sigma(t, X_t)$ dependendo de $X_t$, a ordem de convergência do método de Euler-Maruyama cai para $1/2$, como veremos mais pra frente.
