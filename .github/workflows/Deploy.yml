@@ -20,9 +20,9 @@ jobs:
       with:
         version: 1.8
     # GR recommended (plots backend, in case it is used)
-    - run: |
-            sudo apt-get update -y
-            sudo apt-get install -y qt5-default
+#    - run: |
+#            sudo apt-get update -y
+#            sudo apt-get install -y qt5-default
     # Website build
     - run: xvfb-run julia -e '
             using Pkg; Pkg.activate("."); Pkg.instantiate();
