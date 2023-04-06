@@ -11,3 +11,21 @@ Este repositório é dedicado às notas de aula de disciplina oferecida no [Inst
 
 > "It may very well be said that
 the best way to understand SDEs is to work with their numerical solutions." - Salih N. Neftci, in *An Introduction to the Mathematics of Financial Derivatives,* 2nd edition (Academic Press, 2000).
+
+Para gerar as notas localmente e atualizá-las em tempo real, use a função `serve()` do [Franklin.jl](https://franklinjl.org):
+
+```zsh
+pkg> activate .
+
+julia> using Franklin
+
+julia> serve()
+  Activating project at `~/Documents/git-repositories/julia/notas_sde`
+→ Initial full pass...
+→ page updated [✓]                                    → Starting the server...
+✓ LiveServer listening on http://localhost:8000/ ...
+  (use CTRL+C to shut down)
+```
+
+Para atualizá-las no endereço web <https://rmsrosa.github.io/notas_sde/>, apenas atualize o ramo `main` do repositório que uma [github action](https://github.com/rmsrosa/notas_sde/actions) apropriada ira refazer as páginas com as devidas atualizações.
+
