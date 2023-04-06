@@ -363,7 +363,7 @@
 <p>No modelo de Einstein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição \(x = 0\). A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante \(t \geq 0\), temos uma <em>função densidade de probabilidades</em> \(\rho(t, x)\), para a posição da partícula.</p>
 <p>A regra para o movimento é que, entre instantes \(t\) e \(t + \tau\), para algum intervalo de tempo característico \(\tau\), a partícula pode dar passos espaciais \(\ell\) de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades \(g\).</p>
 <p>Assume-se que essa densidade é estacionária &#40;independente do tempo&#41;, homogênea &#40;não depende da posição da partícula&#41;, isotrópica &#40;não depende da direção/sentido de movimento&#41; e que os passos são independentes entre si &#40;o passo num instante \(s > 0\) independe do passo dado em \(0 \leq t < s\)&#41;.</p>
-<p>Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre <a href="https://www.feynmanlectures.caltech.edu/I_41.html">Movimento Browniano</a>. A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de \(10^14\) vezes. Se tomarmos o passo de tempo característico \(\tau\) como sendo da ordem de um milésimo de segundo, teremos em torno de \(10^11\) colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções aleatórias que é razoável assumir que o efeito &#40;momento ganho&#41; de colisões em instantes anteriores é &quot;esquecido&quot;, ou seja, os passos, em instantes diferentes, são independentes entre si.</p>
+<p>Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre <a href="https://www.feynmanlectures.caltech.edu/I_41.html">Movimento Browniano</a>. A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de \(10^{14}\) vezes. Se tomarmos o passo de tempo característico \(\tau\) como sendo da ordem de um milésimo de segundo, teremos em torno de \(10^{11}\) colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito &#40;momento ganho&#41; de colisões em instantes anteriores é &quot;esquecido&quot;, ou seja, os passos, em instantes diferentes, são independentes entre si.</p>
 <p>Assim, \(\ell\) assume valores em \(\mathbb{R}\); \(g\) é não negativa; \(g\) independe de \(x\) e de \(t\); satisfaz \(\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1\); e é simétrica em relação à origem, i.e. \(g(-\ell) = g(\ell)\).</p>
 <p>Sendo \(\rho(t, x)\) a função densidade de distribuição das partículas no instante \(t\), uma expansão em série de Taylor nos dá, por um lado</p>
 \[
@@ -387,19 +387,19 @@
 \]
 <p>Com isso, chegamos a</p>
 \[
-\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^3]).
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^4]).
 \]
 <p>Ou seja,</p>
 \[
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^3]}{\tau}\right),
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^4]}{\tau}\right),
 \]
 <p>onde</p>
 \[
 D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}[\ell^2].
 \]
-<p>Considerando uma escala de tempo relativamente pequena e assumindo \(\mathbb{E}[\ell^3] / \tau\) relativamente pequeno, obtemos, aproximadamente, a equação de difusão</p>
+<p>Considerando uma escala de tempo relativamente pequena e assumindo \(\mathbb{E}[\ell^4] / \tau\) relativamente pequeno, obtemos, aproximadamente, a equação de difusão</p>
 \[
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x).
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial x^2}(t, x).
 \]
 <p>Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade um de encontrar a partícula em \(x = 0\). Dito de outra forma, temos que \(p(0, x)\) é a delta de Dirac \(\delta_0(x)\). O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental</p>
 \[
@@ -499,7 +499,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x
         </div>
     
 
-    Last modified: October 03, 2022. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 06, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

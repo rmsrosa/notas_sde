@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c08/geometric_brownian/code/output/geometric_brownian.svg"

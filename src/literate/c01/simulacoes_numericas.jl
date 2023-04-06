@@ -82,12 +82,12 @@ plot(t, x, title="Crescimento exponencial (x₀ = $x₀, μ = $μ, T = $T, Δt =
 
 # Façamos uma amostragem de um certo número $M$ de valores.
 
-M = 20
+M = 100
 μ̄ = 0.1
 σ = 0.02
 μ = μ̄ .+ σ * randn(rng, M)
 
-histogram(μ, bins = 10)
+histogram(μ, bins = 20, xlims=(0.0, 0.2))
 
 # Agora, vamos resolver a equação para cada valor sorteado.
 

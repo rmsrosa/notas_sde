@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c11/stochastic_sir/code/output/SIR_noise_ensemble_summ_closeup.svg"

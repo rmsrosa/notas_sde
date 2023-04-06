@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c07/logistic_rde/code/output/logistic_rode.svg"

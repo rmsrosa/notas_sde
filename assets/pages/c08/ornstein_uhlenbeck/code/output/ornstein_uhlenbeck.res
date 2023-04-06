@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_pos.svg"

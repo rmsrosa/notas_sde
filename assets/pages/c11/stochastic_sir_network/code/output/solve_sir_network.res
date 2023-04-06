@@ -1,1 +1,1 @@
-:Success
+ReturnCode.Success = 1
