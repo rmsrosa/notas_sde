@@ -70,10 +70,13 @@
     <li><a href="/notas_sde/pages/literated/c01/simulacoes_numericas">1.4. Simulações numéricas de modelos de crescimento natural</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/movimento_Browniano">1.5. Movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c01/movimento_browniano">1.5. nothing</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.6. Do passeio aleatório ao movimento Browniano</a></li>
+    <li><a href="/notas_sde/pages/c01/modelo_einstein">1.6. O modelo de Einstein para o movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movBrowniano">1.7. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -504,11 +507,11 @@ let u &#61; &#91;800.0, 200.0&#93;; p &#61; &#40;1000.0, 0.2, 0.15, 0.15, 0.1&#4
     println&#40;@btime SIR_noise&#33;&#40;&#36;du_noise, &#36;u, &#36;p, &#36;t&#41;&#41;
 end</code></pre>
 <pre><code class="plaintext code-output">Benchmark SIR!
-  4.700 ns (0 allocations: 0 bytes)
+  3.600 ns (0 allocations: 0 bytes)
 2.0
 
 Benchmark SIR_noise!
-  4.600 ns (0 allocations: 0 bytes)
+  4.000 ns (0 allocations: 0 bytes)
 -20.0
 </code></pre>
 <p>Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro <code>InteractiveUtils.@code_warntype</code> para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável <code>u</code> e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável &#40;verifique isso usando <code>@btime</code> com os parâmetros abaixo&#33;&#41;.</p>
