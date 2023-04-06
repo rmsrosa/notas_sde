@@ -39,7 +39,8 @@ menu = [
         "pages/c01/aspectos_iniciais"
         "pages/c01/aspectos_numericos"
         "src/literate/c01/simulacoes_numericas.jl"
-        "pages/c01/movimento_Browniano"
+        "pages/c01/movimento_browniano"
+        "pages/c01/modelo_einstein"
         "pages/c01/passeioaleatorio_movBrowniano"
     ]
     "Variáveis Aleatórias" => [
