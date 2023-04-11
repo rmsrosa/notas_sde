@@ -79,7 +79,10 @@ De posse da solução podemos visualizar o crescimento exponencial e compará-lo
 plot(t, x, title="Crescimento exponencial (x₀ = $x₀, μ = $μ, T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação")
 
 plot!(t, t -> x₀ * exp(μ * t), label="sol. exata")
+
+savefig(joinpath(@OUTPUT, "intro_sol_exata.svg"))
 ```
+\fig{intro_sol_exata}
 
 Refinando a malha, obtemos uma solução mais próxima, onde quase não vemos diferença:
 
@@ -95,7 +98,11 @@ for n in 2:N+1
 end
 
 plot(t, x, title="Crescimento exponencial (x₀ = $x₀, μ = $μ, T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação", color=1)
+
+savefig(joinpath(@OUTPUT, "intro_sol_approx.svg"))
 ```
+\fig{intro_sol_approx}
+
 
 ## Modelo com parâmetros aleatórios
 
@@ -127,7 +134,10 @@ end
 
 plot(t, x, alpha = 0.2, title="Conjunto de soluções (x₀ = $x₀, μ_t = N($μ̄, $σ), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
 plot!(t, x[:, 1], label="uma realização", color=2)
+
+savefig(joinpath(@OUTPUT, "intro_uma_realizacao_edorv.svg"))
 ```
+\fig{intro_uma_realizacao_edorv}
 
 ## Modelo de equação diferencial aleatória
 
@@ -151,7 +161,10 @@ end
 
 plot(t, x, alpha = 0.2, title="Soluções RODE (x₀ = $x₀, μ_t = $μ̄ + $σ W_t), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
 plot!(t, x[:, 1], label="uma realização", color=2)
+
+savefig(joinpath(@OUTPUT, "intro_uma_realizacao_rode.svg"))
 ```
+\fig{intro_uma_realizacao_rode}
 
 ## Modelo de equação diferencial estocástica
 
@@ -175,7 +188,10 @@ end
 
 plot(t, x, alpha = 0.2, title="Soluções SDE (x₀ = $x₀, μ̄ = $μ̄, σ = $σ, dW_t = N(0, Δt), T = $T, Δt = $Δt)", titlefont = 9, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
 plot!(t, x[:, 1], label="uma realização", color=2)
+
+savefig(joinpath(@OUTPUT, "intro_uma_realizacao_sde.svg"))
 ```
+\fig{intro_uma_realizacao_sde}
 
 ## Exercícios
 
