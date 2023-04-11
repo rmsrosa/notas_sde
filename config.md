@@ -37,11 +37,11 @@ menu = [
     "Introdução" => [
         "pages/c01/apresentacao"
         "pages/c01/aspectos_iniciais"
-        "pages/c01/aspectos_numericos"
-        "src/literate/c01/simulacoes_numericas.jl"
         "pages/c01/movimento_browniano"
         "pages/c01/modelo_einstein"
         "pages/c01/passeioaleatorio_movBrowniano"
+        "pages/c01/aspectos_numericos"
+        "pages/c01/simulacoes_intro"
     ]
     "Variáveis Aleatórias" => [
         "pages/c02/definicao_va"
