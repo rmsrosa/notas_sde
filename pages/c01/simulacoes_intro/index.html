@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Simulações numéricas de modelos de crescimento natural</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_browniano">1.3. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_einstein">1.4. O modelo de Einstein para o movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.6. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/simulacoes_intro">1.7. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades fundamentais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo SIR estocástico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/aspectos_numericos">1.6. Aspectos numéricos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.7. Simulações numéricas de modelos de crescimento natural</a></h1>
+<p>Hora de implementarmos os métodos de Euler descritos na seção anterior.</p>
+<p>Vamos ver variações do modelo de crescimento natural. Primeiramente, vamos considerar o modelo clássico, de uma equação diferencial ordinária \(\mathrm{d}x/\mathrm{d}t = \mu x\), com um parâmetro \(\mu\) constante, representando a taxa de crescimento específico. Depois, vamos permitir que \(\mu\) seja uma variável aleatória, representando uma incerteza no parâmetro. Em seguida, vamos considerar o caso em que \(\mu = \{\mu_t\}_{t\geq 0}\) é um processo aleatório, representando uma variabilidade temporal aleatória no parâmetro. Por último, vamos considerar \(\mu\) novamente constante mas com a equação perturbada por um termo estocástico, \(\mathrm{d}x = \mu x \mathrm{d}t + \sigma \mathrm{d}W_t\).</p>
+<p>Usaremos apenas dois pacotes do Julia. Um é o <a href="https://docs.juliaplots.org/stable/">Plots.jl</a>, para visualização das soluções. O outro é o <a href="https://docs.julialang.org/en/v1/stdlib/Random/">Random</a>, da biblioteca padrão, apenas para fixar a reprodução das notas &#40;gerar sempre os mesmos conjuntos de números aleatórios, por motivos didáticos e de controle de versão&#41;.</p>
+<pre><code class="language-julia">using Plots
+theme&#40;:ggplot2&#41;
+using Random
+rng &#61; Xoshiro&#40;123&#41;</code></pre>
+<h2 id="modelo_de_equação_diferencial_ordinária"><a href="#modelo_de_equação_diferencial_ordinária" class="header-anchor">Modelo de equação diferencial ordinária</a></h2>
+<p>Consideramos o problema de crescimento populacional</p>
+\[
+\begin{cases}
+  \displaystyle \frac{\mathrm{d}x}{\mathrm{d}t} = \mu x, \quad t > 0,\\
+  x(0) = x_0.
+\end{cases}
+\]
+<p>Para cada \(\mu > 0\) fixo, temos a solução \(x(t) = x_0 e^{\mu t}\), para \(t \geq 0\).</p>
+<p>Resolvendo o problema de valor inicial pelo método de Euler, em um intervalo \(t_0 \leq t \leq T\), com \(t_0 = 0\), \(T > 0\) e um passo de tempo \(\Delta t > 0\), obtemos a sequência de valores aproximados</p>
+\[
+x_{n+1} = x_n + \mu \Delta t x_n, \quad n = 0, 1, \dots, N,
+\]
+<p>onde \(N\) é um inteiro mais próximo de \(T/\Delta t\).</p>
+<p>Escolhemos valores para \(T\), \(\mu\) e \(x_0\), além de \(t_0=0\):</p>
+<pre><code class="language-julia">t0 &#61; 0.0
+T &#61; 20.0
+μ &#61; 0.1
+x₀ &#61; 0.2
+nothing</code></pre>
+<p>Escolhemos, também, um valor para o passo de tempo, obtendo a malha temporal:</p>
+<pre><code class="language-julia">Δt &#61; 0.2
+t &#61; t0:Δt:T</code></pre>
+<p>Isso nos dá \(N+1\) pontos na malha, onde</p>
+<pre><code class="language-julia">N &#61; Int&#40;round&#40;T/Δt&#41;&#41;</code></pre>
+<p>Podemos pré-alocar um vetor para a solução numérica:</p>
+<pre><code class="language-julia">x &#61; Vector&#123;Float64&#125;&#40;undef, N&#43;1&#41;
+nothing</code></pre>
+<p>Iniciando o vetor com o valor de \(x_0\) e iterando de acordo com o método de Euler, obtemos a solução numérica aproximada:</p>
+<pre><code class="language-julia">x&#91;1&#93; &#61; x₀
+for n in 2:N&#43;1
+    x&#91;n&#93; &#61; &#40;1.0 &#43; μ * Δt&#41;x&#91;n-1&#93;
+end</code></pre>
+<p>De posse da solução podemos visualizar o crescimento exponencial e compará-lo com a solução exata</p>
+<pre><code class="language-julia">plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;&#41;
+
+plot&#33;&#40;t, t -&gt; x₀ * exp&#40;μ * t&#41;, label&#61;&quot;sol. exata&quot;&#41;
+
+savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_exata.svg&quot;&#41;&#41;</code></pre>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_exata.svg" alt="">
+<p>Refinando a malha, obtemos uma solução mais próxima, onde quase não vemos diferença:</p>
+<pre><code class="language-julia">Δt &#61; 0.02
+t &#61; t0:Δt:T
+N &#61; Int&#40;round&#40;T/Δt&#41;&#41;
+x &#61; Vector&#123;Float64&#125;&#40;undef, N&#43;1&#41;
+
+x&#91;1&#93; &#61; x₀
+for n in 2:N&#43;1
+    x&#91;n&#93; &#61; &#40;1.0 &#43; μ * Δt&#41;x&#91;n-1&#93;
+end
+
+plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;
+
+savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_approx.svg&quot;&#41;&#41;</code></pre>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_approx.svg" alt="">
+<h2 id="modelo_com_parâmetros_aleatórios"><a href="#modelo_com_parâmetros_aleatórios" class="header-anchor">Modelo com parâmetros aleatórios</a></h2>
+<p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2)\).</p>
+<p>Façamos uma amostragem de um certo número \(M\) de valores.</p>
+<pre><code class="language-julia">M &#61; 100
+μ̄ &#61; 0.1
+σ &#61; 0.02
+μ &#61; μ̄ .&#43; σ * randn&#40;rng, M&#41;
+
+histogram&#40;μ, bins &#61; 20, xlims&#61;&#40;0.0, 0.2&#41;&#41;</code></pre>
+<p>Agora, vamos resolver a equação para cada valor sorteado.</p>
+<pre><code class="language-julia">Δt &#61; 0.2
+t &#61; t0:Δt:T
+N &#61; Int&#40;round&#40;T/Δt&#41;&#41;
+x &#61; Array&#123;Float64&#125;&#40;undef, N&#43;1, M&#41;
+
+x&#91;1, :&#93; .&#61; x₀
+for n in 2:N&#43;1
+    x&#91;n, :&#93; .&#61; &#40;1.0 .&#43; μ * Δt&#41; .* x&#91;n-1, :&#93;
+end
+
+plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Conjunto de soluções &#40;x₀ &#61; &#36;x₀, μ_t &#61; N&#40;&#36;μ̄, &#36;σ&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
+plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
+
+savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_edorv.svg&quot;&#41;&#41;</code></pre>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_edorv.svg" alt="">
+<h2 id="modelo_de_equação_diferencial_aleatória"><a href="#modelo_de_equação_diferencial_aleatória" class="header-anchor">Modelo de equação diferencial aleatória</a></h2>
+<p>Consideramos, agora, a equação aleatória</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = \mu_t X_t,
+\]
+<p>onde \(\{\mu_t\}_t\) é um processo aleatório dado por \(\mu_t = \bar\mu + \sigma \sin(W_t)\), onde \(\bar\mu, \sigma > 0\) e \(\{W_t\}_{t\geq 0}\) é tal que \(W_0 = 0\), e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\) independentes.</p>
+<pre><code class="language-julia">μ̄ &#61; 0.1
+σ &#61; 0.1
+
+for m in 1:M
+    x&#91;1, m&#93; &#61; x₀
+    for n in 2:N&#43;1
+        μt &#61; μ̄ &#43; σ * randn&#40;rng&#41; * √Δt
+        x&#91;n, m&#93; &#61; &#40;1.0 &#43; μt * Δt&#41; .* x&#91;n-1, m&#93;
+    end
+end
+
+plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções RODE &#40;x₀ &#61; &#36;x₀, μ_t &#61; &#36;μ̄ &#43; &#36;σ W_t&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
+plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
+
+savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_rode.svg&quot;&#41;&#41;</code></pre>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_rode.svg" alt="">
+<h2 id="modelo_de_equação_diferencial_estocástica"><a href="#modelo_de_equação_diferencial_estocástica" class="header-anchor">Modelo de equação diferencial estocástica</a></h2>
+<p>Finalmente, vamos considerar a equação estocástica</p>
+\[
+\mathrm{d}X_t = \bar\mu X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t,
+\]
+<p>onde \(\{W_t\}_t\) é um processo aleatório. Mais especificamente, vamos assumir que \(\{W_t\}_t\) é um <strong>processo de Lévy</strong>, tendo incrementos independentes e estacionários, com \(\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)\).</p>
+<pre><code class="language-julia">μ̄ &#61; 0.1
+σ &#61; 0.05
+
+for m in 1:M
+    x&#91;1, m&#93; &#61; x₀
+    for n in 2:N&#43;1
+        dw &#61; randn&#40;rng&#41; * Δt^0.5
+        x&#91;n, m&#93; &#61; &#40;1.0 &#43; μ̄ * Δt&#41; * x&#91;n-1, m&#93; &#43; σ * x&#91;n-1, m&#93; * dw
+    end
+end
+
+plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções SDE &#40;x₀ &#61; &#36;x₀, μ̄ &#61; &#36;μ̄, σ &#61; &#36;σ, dW_t &#61; N&#40;0, Δt&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 9, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
+plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
+
+savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&#41;</code></pre>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_sde.svg" alt="">
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Resolva, via método de Euler, a equação diferencial</p>
+</li>
+</ol>
+\[
+\frac{\mathrm{d}x}{\mathrm{d}t} = (\alpha - \beta x) x, \quad x(0) = x_0,
+\]
+<p>com \(\alpha, \beta > 0, 0 < x_0 < \alpha / \beta, t_0 = 0, T > 0, 0 < \Delta t \ll T \) de sua escolha. Trace o gráfico da solução.</p>
+<ol start="2">
+<li><p>Resolva, via método de Euler, a equação diferencial</p>
+</li>
+</ol>
+\[
+\mathrm{d}X_t/\mathrm{d}t = (\alpha - \beta X_t) X_t, \quad X_0 = \mathcal{N}(\bar{x}_0, \sigma_{x_0}^2),
+\]
+<p>onde</p>
+\[
+\alpha \sim \mathcal{N}(\bar\alpha, \sigma_\alpha^2), \beta \sim \mathcal{N}(\bar\beta, \sigma_\beta^2),
+\]
+<p>com \(\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta, \bar{x}_0, \sigma_{x_0} > 0, t_0 = 0, T > 0, 0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros</p>
+<ol start="3">
+<li><p>Resolva, via método de Euler, a equação diferencial aleatória</p>
+</li>
+</ol>
+\[
+\mathrm{d}X_t/\mathrm{d}t = (A_t - b X_t) X_t, \quad X_0 = x_0,
+\]
+<p>onde \(A_t = a + \sigma\sin(W_t)\) e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(a, b, \sigma > 0\), \(0 < x_0 < a / b\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.</p>
+<ol start="4">
+<li><p>Resolva, via método de Euler, a equação diferencial estocástica</p>
+</li>
+</ol>
+\[
+\mathrm{d}X_t = (\alpha - \beta X_t) X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t, \quad X_0 = x_0,
+\]
+<p>onde \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(\alpha, \beta > 0\), \(0 < x_0 < \alpha / \beta\), \(\sigma > 0\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c01/aspectos_numericos">1.6. Aspectos numéricos <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c02/definicao_va"><kbd>→</kbd> 2.1. Conceitos essenciais</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: April 11, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>
