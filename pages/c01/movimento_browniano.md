@@ -67,3 +67,20 @@ Podemos ver esse movimento com partículas de pólen, partículas de fumaça e o
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cDcprgWiQEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </p>
 ~~~
+
+## Modelos teóricos
+
+Posteriormente, Albert Einstein, em um dos seus cinco artigos fundamentais publicados em [1905: Um ano miraculoso](https://cienciahoje.org.br/artigo/1905-um-ano-miraculoso/), explicou esse movimento como resultado, de fato, do movimento térmico dos fluidos. Foi uma demonstração indireta da existência de átomos e moléculas. Einstein deu mais detalhes sobre o fenômeno em um outro artigo, de 1908. Uma simulação desse efeito pode ser vista no link a seguir:
+
+~~~
+<p align="center">
+<iframe
+  src="https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Brownian/brownian.html"
+  title="Brownian motion simulator"
+  width="600"
+  height="450">
+</iframe>
+</p>
+~~~
+
+Outros cientistas também analisaram e explicaram o fenônemo de pontos de vista diferentes, como Marian von Smoluchowski (veja [Smoluchowski, M. M. (1906). "Essai d'une théorie cinétique du mouvement Brownien et des milieux troubles"](https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up), [Smoluchowski, M. M. (1906). "Sur le chemin moyen parcouru par les molécules d'un gaz et sur son rapport avec la théorie de la diffusion" Bulletin International de l'Académie des Sciences de Cracovie (in French): 202.](https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up) e [von Smoluchowski, M. (1906). "Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen". Annalen der Physik (in German). 326 (14): 756–780](https://zenodo.org/record/1424073)) e Norbert Wiener.

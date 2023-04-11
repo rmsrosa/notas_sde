@@ -18,20 +18,7 @@
 >
 > \- Myles Billard ("Dust", from ["Stochastic Reflections – Poems from the Mind"](https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/))
 
-Posteriormente, Albert Einstein, em um dos seus cinco artigos fundamentais publicados em [1905: Um ano miraculoso](https://cienciahoje.org.br/artigo/1905-um-ano-miraculoso/), explicou esse movimento como resultado, de fato, do movimento térmico dos fluidos. Foi uma demonstração indireta da existência de átomos e moléculas. Einstein deu mais detalhes sobre o fenômeno em um outro artigo, de 1908. Uma simulação desse efeito pode ser vista no link a seguir:
-
-~~~
-<p align="center">
-<iframe
-  src="https://galileoandeinstein.phys.virginia.edu/more_stuff/Applets/Brownian/brownian.html"
-  title="Brownian motion simulator"
-  width="600"
-  height="450">
-</iframe>
-</p>
-~~~
-
-Outros cientistas também analisaram e explicaram o fenônemo de pontos de vista diferentes, como Marian von Smoluchowski (veja [Smoluchowski, M. M. (1906). "Essai d'une théorie cinétique du mouvement Brownien et des milieux troubles"](https://archive.org/stream/bulletininternat1906pols#page/577/mode/2up), [Smoluchowski, M. M. (1906). "Sur le chemin moyen parcouru par les molécules d'un gaz et sur son rapport avec la théorie de la diffusion" Bulletin International de l'Académie des Sciences de Cracovie (in French): 202.](https://archive.org/stream/bulletininternat1906pols#page/202/mode/2up) e [von Smoluchowski, M. (1906). "Zur kinetischen Theorie der Brownschen Molekularbewegung und der Suspensionen". Annalen der Physik (in German). 326 (14): 756–780](https://zenodo.org/record/1424073)) e Norbert Wiener.
+Um aspecto do trabalho de Einstein sobre movimento Browniano (veja [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)), em particular em relação à teoria de difusão, considera a evolução da distribuição de probabilidades da posição de uma partícula devido a um deslocamento aleatório, provocado pelo bombardeamento de outras partículas. Esse modelo, em particular, trata de um movimento unidimensional.
 
 ## O modelo de Einstein
 
@@ -89,7 +76,11 @@ $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 $$
 
-Ou seja, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
+Ou seja, lembrando que a distribuição normal $\mathcal{N}(0, \sigma)$ com média zero e variância $\sigma^2$ tem densidade 
+$$
+\frac{1}{\sqrt{2\pi \sigma^2}} e^{-\displaystyle \frac{1}{2}\left(\frac{x}{\sigma}\right)^2},
+$$
+então, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
 
 Em um segundo artigo, as grandezas físicas são estimadas, em particular $D$, e a aproximação acima é justificada com um maior embasamento físico.
 
@@ -115,6 +106,34 @@ $$
 ou seja, o incremento é dado por
 $$
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2D\Delta t).
+$$
+
+```julia:pathWn
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+rng = Xoshiro(123)
+n = 2^12
+plt = plot(title="Movimentos Brownianos", titlefont = 10, xaxis = "\$t\$", yaxis = "\$X\$", ylims = (-2, 2), linestyle = :dot, marker = :circle, markersize = 3, label = false, size = (800, 500))
+
+tn = [j/n for j in 0:n]
+steps = randn(n)
+Xn = [0; cumsum(steps)] ./ sqrt(n)
+for _ in 1:10
+  plot!(tn, Xn, label=nothing, alpha=0.2, color=1)
+  randn!(steps)
+  Xn .= [0; cumsum(steps)] ./ sqrt(n)
+end
+plot!(tn, Xn, label="sample path", color=2)
+
+savefig(joinpath(@OUTPUT, "pathWn.svg"))
+```
+\fig{pathWn}
+
+Em um certo sentido, que veremos mais adiante de forma mais rigorosa, através da *isometria de Itô*, é como se $\Delta X \sim \sqrt{\Delta t}$, ou $\Delta X^2 \sim \Delta t$, com passos independentes. Assim, após $n$ passos $\Delta X_i,$ $i=1, \ldots, n,$ até um ponto $t_n = n\Delta t$, temos a posição $x = x_n$ dada por
+$$
+\mathbb{E}[x^2] = \mathbb{E}\left[\left(\sum_{i=1}^n \Delta X_i\right)^2\right] = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[\Delta X_i \Delta X_j \right] = \sum_{i=1}^n \mathbb{E}\left[\Delta X_i^2\right] \sim \sum_{i=1}^n \Delta t = t.
 $$
 
 ## Paradoxo da velocidade infinita de deslocamento
@@ -157,7 +176,7 @@ $$
 
 Com base nisso, usando um resultado conhecido como **Teorema de Borel-Cantelli**, podemos tirar
 $$
-  \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
+  \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcup_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
 $$
 
 Ou seja, quase sempre, teremos ${|\Delta x|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta $.
