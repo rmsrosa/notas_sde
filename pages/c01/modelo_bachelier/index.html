@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Teorema Fundamental de Kolmogorov</title>  
+   <title>O modelo de Bachelier para o mercado de opções</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -325,10 +325,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_extension_kolmogorov"><kbd>→</kbd> Teorema de Extensão de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c01/aspectos_numericos"><kbd>→</kbd> 1.7. Aspectos numéricos</a>
 </span>
     </p>
 </div>
@@ -339,16 +339,23 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">Teorema Fundamental de Kolmogorov</a></h1>
-<p>O Teorema Fundamental de Kolmogorov caracteriza um processo estocástico a partir da família distribuições conjuntas.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">1.6. O modelo de Bachelier para o mercado de opções</a></h1>
+<blockquote>
+<p>&quot;No scientific discovery is named after its original discoverer&quot; &#40;Stiglers law of eponymy&#41; - Gieryn, T. F., ed. &#40;1980&#41;. Science and social structure: a festschrift for Robert K. Merton. New York: NY Academy of Sciences. pp. 147.</p>
+</blockquote>
+<p>Louis Bachelier, cinco anos antes do ano miraculoso de Einstein, publicou a sua tese <a href="https://doi.org/10.24033/asens.476">L. Bachelier, Théorie de la spéculation, Annales scientifiques de l&#39;École Normale Supérieure, Serie 3, Volume 17 &#40;1900&#41;, pp. 21-86</a> sobre precificação de opções, incluindo elementos do que pode ser visto como uma versão em finanças do movimento Browniano.</p>
+<p>Bachelier teve como professores matemáticos ilustres como Emile Picard, Joseph Boussinesq e Henri Poincaré, este último seu orientador de doutorado, na Sorbonne, e com quem aprendeu o cálculo de probabilidades. Além disso, tinha a sua própria experiência no mercado financeiro. De Boussinesq, herdou o conhecimento de mecânica dos fluidos, como ilustra o título da sua segunda tese &quot;Résistance d&#39;une masse liquide indéfinie pourvue de frottements int́erieurs, régis par les formules de Navier, aux petits mouvements variés de translation d&#39;une sphère solide, immergée dans cette masse et adhérente à la couche fluide qui la touche&quot;.</p>
+<p>O modelo de Bachelier considera, por sua vez, as flutuações no mercado de ações. Segundo Bachelier, as pequenas flutuações no preço observadas em curtos intervalos de tempo são independentes do preço no momento. Implicitamente, também assume que essas flutuações são independentes das flutuações passadas. Combinando isso com o Teorema Central do Limite, Bachelier deduz que os incrementos são independentes e identicamente distribuídos, com distribuição Normal. Como descreve Mark Davies em  <a href="https://www.jstor.org/stable/j.ctt7scn4">Louis Bachelier&#39;s Theory of Speculation: The Origins of Modern Finance, Louis Bachelier, Edited and translated by Mark Davis, Alison Etheridge</a>, Bachelier obtém, assim, o movimento Browniano como limite difusivo de caminhos aleatórios. Uma demonstração mais rigoroso do processo de limite do discreto para o contínuo, no entanto, só aparece nos trabalhos de Kolomogorov, em 1931, que reconhece a influência de Bachelier.</p>
+<p>Bachelier vai além e, a partir dos incrementos independentes e normais dos incrementos dos preços, deduz o que é conhecido hoje como equação de Chapman-Kolmogorov para a distribuição conjunta de probabilidades para o preço de um ativo.</p>
+<p>Conta a história que a tese de Bachelier foi um pouco criticada por não ser muito rigorosa e por ser em uma área pouco familiar para os matemáticos da época. Mas Poincaré o apoiou, apreciando e valorizando vários aspectos do seu trabalho. O seu impacto no desenvolvimento da Teoria das Probabilidades e na Análise Estocástica acabou se mostrando significativo nas décadas seguintes. Já o seu impacto em finanças veio apenas bem mais tarde, com os seus trabalhos chegaram ao conhecimento do economista Paul Samuelson, na década de 1960.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/appendix/teo_extension_kolmogorov"><kbd>→</kbd> Teorema de Extensão de Kolmogorov</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c01/aspectos_numericos"><kbd>→</kbd> 1.7. Aspectos numéricos</a>
 </span>
     </p>
 </div>

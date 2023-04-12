@@ -60,10 +60,13 @@
     <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.6. Aspectos numéricos</a></li>
+    <li><a href="/notas_sde/pages/c01/modelo_bachelier">1.6. O modelo de Bachelier para o mercado de opções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c01/simulacoes_intro">1.7. Simulações numéricas de modelos de crescimento natural</a></li>
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.7. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/simulacoes_intro">1.8. Simulações numéricas de modelos de crescimento natural</a></li>
     </div>
     <div class="menu-level-1">
     <li>2. Variáveis Aleatórias</li>
@@ -353,11 +356,13 @@
 <p>delicately shift with shutter.</p>
 <p>- Myles Billard &#40;&quot;Dust&quot;, from <a href="https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/">&quot;Stochastic Reflections – Poems from the Mind&quot;</a>&#41;</p>
 </blockquote>
-<p>Um fluido, seja um gás ou um líquido, é composto de átomos e/ou moléculas em constante movimento. Mesmo que o fluido pareça estar em repouso, os seus constituintes atômicos não estão. Este movimento se reflete, por exemplo, na temperatura do fluido. Mas aqui vamos explorar outro fato associado a esse movimento.</p>
-<p>Qualquer objeto imerso, ou em contato, com um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático causado pelo bombardeamente dos constituintes do meio é denominado de <strong>movimento Browniano</strong>.</p>
-<h2 id="exemplos_de_movimento_browniano"><a href="#exemplos_de_movimento_browniano" class="header-anchor">Exemplos de movimento Browniano</a></h2>
+<p>Um fluido, seja um gás ou um líquido, é composto de átomos e/ou moléculas em constante movimento. Mesmo que o fluido pareça estar em repouso, os seus constituintes atômicos não estão. Este movimento se reflete, por exemplo, na temperatura do fluido. Mas aqui vamos explorar outro fato associado a esse movimento. Qualquer objeto imerso em, ou em contato com, um fluido será constantemente bombardeado por esses átomos/moléculas. Partículas microscópicos, em particular, serão significativamente afetas por esse bombardeamento, deslocando-se em um movimento errático. Esse movimento errático causado pelo bombardeamente dos constituintes do meio é denominado de <strong>movimento Browniano</strong>.</p>
+<h2 id="observações_de_movimento_browniano"><a href="#observações_de_movimento_browniano" class="header-anchor">Observações de movimento Browniano</a></h2>
 <p>O nome dado a esse movimento é em homenagem ao botânico Robert Brown, que, em 1827, observou e relatou esse movimento ao observar, em um microscópio, grãos de pólen imersos em água. O artigo original está disponível em <a href="https://sciweb.nybg.org/science2/pdfs/dws/Brownian.pdf">On the particles contained in the pollen of plants</a>. Veja, também, um interessante apanhado histórico sobre isso, em <a href="https://www.aps.org/publications/apsnews/201608/physicshistory.cfm">August 1827: Robert Brown and Molecular Motion in a Pollen-filled Puddle</a>.</p>
-<p>O que Brown observou foram micro-partículas, menores que os grãos de pólen, se descolando erraticamente no meio aquoso. Primeiramente, achou que fosse um movimento ativo, de partículas &quot;vivas&quot;, provenientes do pólen. Posteriormente, realizou diversos outros experimentos, com diferentes partículas suspensas em líquido e concluiu que era um movimento passivo, mas sem explicar o mecanismo por trás do movimento.</p>
+<p>O que Brown observou foram micro-partículas, menores que os grãos de pólen, se descolando erraticamente no meio aquoso. Primeiramente, Brown achou que fosse um movimento ativo, de partículas &quot;vivas&quot;, provenientes do pólen. Posteriormente, realizou diversos outros experimentos, com diferentes partículas suspensas em líquido e concluiu que era um movimento passivo, mas sem conseguir explicar o mecanismo por trás do movimento:</p>
+<blockquote>
+<p>&quot;extremely minute particles of solid matter,whether obtained from organic or inorganic substances, when suspended in pure water, or in some other aqueous fluids, exhibit motions for which I am unable to account...&quot; - R. Brown</p>
+</blockquote>
 <p>Podemos ver esse movimento com partículas de pólen, partículas de fumaça e outras micro-partículas, como capturado nos vídeos a seguir:</p>
 <p><strong>Pollen Grains in Water - Brownian Motion</strong></p>
 
@@ -377,6 +382,11 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cDcprgWiQEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </p>
 
+<p>Brown não foi o primeiro a observar movimentos erráticos de partículas microscópicas. Desde o século XV, começando com o inventor do microscópio, Antony van Leewenhoeck, um microbiologista holandês, os movimentos de partículas microscópicas eram observados e discutidos.</p>
+<blockquote>
+<p>&quot;... among these streaks there were besides very many little animalcules ... And the motion of most of these animalcules in the water was so swift, and so various upwards, downwards and round about that &#39;twas wonderful to see: and I judged that some of these little creatures were above a thousand times smaller than the smallest ones I have ever yet seen upon the rind of cheese&quot; – A. Leewenhoeck &#40;see <a href="https://doi.org/10.1098&#37;2Frstb.2014.0344">N. Lane, The unseen world: reflections on Leeuwenhoek &#40;1677&#41; Concerning little animals, Philos. Trans. R. Soc. Lond. B Biol. Sci., 370 &#40;1666&#41;</a>&#41;.</p>
+</blockquote>
+<p>R. Brown revisou diversos desses trabalhos e não apenas se aprofundou nas investigações como também disseminou as suas descobertas com entusiasmo.</p>
 <h2 id="modelos_teóricos"><a href="#modelos_teóricos" class="header-anchor">Modelos teóricos</a></h2>
 <p>Posteriormente, Albert Einstein, em um dos seus cinco artigos fundamentais publicados em <a href="https://cienciahoje.org.br/artigo/1905-um-ano-miraculoso/">1905: Um ano miraculoso</a>, explicou esse movimento como resultado, de fato, do movimento térmico dos fluidos. Foi uma demonstração indireta da existência de átomos e moléculas. Einstein deu mais detalhes sobre o fenômeno em um outro artigo, de 1908. Uma simulação desse efeito pode ser vista no link a seguir:</p>
 
@@ -413,7 +423,7 @@
         </div>
     
 
-    Last modified: April 11, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 12, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
