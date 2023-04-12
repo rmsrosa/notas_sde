@@ -18,21 +18,21 @@
 >
 > \- Myles Billard ("Dust", from ["Stochastic Reflections – Poems from the Mind"](https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/))
 
-Os trabalhos de Einstein sobre movimento Browniano ([Einstein, A. (1905) Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen [On the movement of small particles suspended in stationary liquids required by the molecular-kinetic theory of heat]. Annals of Physics, 322, 549560](http://dx.doi.org/10.1002/andp.19053220806); veja tradução em [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)) não é relevante apenas pelo fato de explicar o movimento Browniano, mas também por ter levado a uma das primeiras provas concretas sobre a existência dos átomos. Os átomos, como partículas elementares indivisíveis e constituintes da matéria, aparecem lá atrás com os filósofos gregos. Modelos mais concretos foram propostos a partir do século XIX, começando pelo modelo da bola de bilhar de Dalton, em 1808, seguido do modelo do pudim de passas de Thompson, em 1897, baseado nos seus próprios experimentos com descargas elétricas. Pouco antes dos trabalhos de Einstein e Thompson, já no final do século XIX, a teoria cinética dos gases nascia com Clausius, Maxwell e Boltzmann, com os átomos tendo um papel fundamental. Mas a existência dos átomos ainda não era amplamente aceita, possuindo muitos críticos renomados. A teoria de Einstein, conectando a teoria cinética dos gases ao movimento Browniano, criou um cenário plausível para se testar a existência dos átomos através da medição de suas massas.
+O trabalho de Einstein sobre movimento Browniano ([Einstein, A. (1905) Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen [On the movement of small particles suspended in stationary liquids required by the molecular-kinetic theory of heat]. Annals of Physics, 322, 549560](http://dx.doi.org/10.1002/andp.19053220806); veja tradução em [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)) não é relevante apenas pelo fato de dar uma fundamentação sólida para o movimento Browniano, mas também por ter levado a uma das primeiras provas concretas sobre a existência dos átomos. Os átomos, como partículas elementares constituintes da matéria, aparecem lá atrás com os filósofos gregos. Modelos mais concretos foram propostos a partir do século XIX, começando pelo modelo da bola de bilhar de Dalton, em 1808, seguido do modelo do pudim de passas de Thompson, em 1897, baseado em experimentos do próprio Thompson com descargas elétricas. Pouco antes dos trabalhos de Einstein e Thompson, já no final do século XIX, a teoria cinética dos gases nascia com Clausius, Maxwell e Boltzmann, com os átomos tendo um papel fundamental. Mas a existência dos átomos ainda não era amplamente aceita, possuindo muitos críticos renomados. A teoria de Einstein, conectando a teoria cinética dos gases ao movimento Browniano, criou um cenário plausível para se testar a existência dos átomos.
 
 ## O modelo de Einstein
 
-Podemos dizer que a teoria de Einstein para o movimento Browniano é composta de duas partes. Uma é um modelo probabilístico para o movimento de partículas microscópicas, supostamente devido a colisões com os átomos do meio fluido em que a partícula se encontra em suspensão. A outra conectando esse movimento à teoria dos gases, em particular à pressão osmótica gerada pelas partículas do meio, que por sua vez depende de vários parâmetros como a viscosidade do fluido, a constante universal dos gases, a temperatura do fluido e o número de átomos em uma determinada porção do fluido.
+Podemos dizer que a teoria de Einstein para o movimento Browniano é composta de duas partes. Uma é um modelo probabilístico para o movimento de partículas microscópicas, supostamente devido a colisões com os átomos e moléculas do meio fluido em que a partícula se encontra em suspensão. A outra conectando mais precisamente esse movimento à teoria cinética dos gases, em particular à pressão osmótica gerada pela movimentação errática dos átomos e moléculas do meio, que por sua vez depende de vários parâmetros como a constante universal dos gases, a temperatura do fluido e o número e a massa dos átomos e moléculas em uma determinada porção do fluido.
 
-No modelo probabilístico do movimento, consideramos uma partícula em um movimento unidimensional, inicialmente, em uma posição denotada por $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
+No modelo probabilístico do movimento, Einstein considerou uma partícula em um movimento unidimensional, inicialmente, em uma posição denotada por $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
 
-A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para um dado intervalo de tempo característico $\tau$ fixado a priori, a partícula pode dar um passo espacial $\ell$ de tamanho arbitrário, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$, que, em particular, depende do passo $\tau$.
+A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para um dado intervalo de tempo característico $\tau$ fixado a priori, a partícula pode dar um passo espacial $\ell$ de tamanho arbitrário, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$. Essa densidade depende do passo $\tau$, mas essa dependência não aparece explicitamente, uma vez que $\tau$ está fixo na teoria do Einstein, como uma unidade de medida temporal.
 
 Assume-se que essa densidade seja estacionária (independente do tempo), homogênea (independente da posição da partícula), isotrópica (independente da direção/sentido de movimento) e que os passos sejam independentes entre si (i.e. o passo num instante $s \geq t + \tau$ independe do passo dado em $t \geq 0$).
 
-Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^{14}$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^{11}$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores seja "esquecido", ou seja, os passos, em instantes diferentes, são independentes entre si.
+Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^{14}$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^{11}$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores seja "esquecido", ou seja, os passos, em instantes diferentes, sejam independentes entre si.
 
-Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
+Assim, $\ell$ assume valores em $\mathbb{R}$ e $g$ é independente de $x$ e $t$, sendo portanto uma função apenas do passo, $g=g(\ell)$. Além disso, por ser uma distribuição de probabilidades, $g$ é não negativa e satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$. Finalmente, da hipótese de isotropia, seque que $g$ é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
 
 Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t$, uma expansão em série de Taylor nos dá, por um lado
 $$
@@ -42,6 +42,7 @@ Por outro lado, usando a densidade de probabilidades $g(\ell)$ do passo espacial
 $$
 \rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell.
 $$
+Ou seja, a probabilidade da partícula estar em torno de $x$ no instante $t + \tau$ é dada pela superposição das probabilidades da partícula ter estado em $\rho(t, x - \ell)$ no instante $t$ e ter dado um passo $\ell$ para chegar em $x$.
 
 Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que
 $$
@@ -73,7 +74,7 @@ Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\
 $$
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial x^2}(t, x).
 $$
-Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade um de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
+Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade $1$ de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
 $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 $$
@@ -93,13 +94,13 @@ $$
 
 Se, por outro lado, observarmos $\mathbb{E}[|x|]$, obtemos uma distância da mesma ordem: $\mathbb{E}[|x|] = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
 
-Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pelas partículas é proporcional à raiz quadrada do tempo decorrido.
+Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pela partícula em um movimento Browniano é proporcional à raiz quadrada do tempo decorrido.
 
 Isso acontece, nesse caso, pelo movimento frenético das partículas elementares do fluido. Um fenômeno macroscópico análogo acontece em escoamentos turbulentos, que pode ser apreciado no formato de rastros de fumaça em chaminés (pelo menos em condições onde movimentos advectivos não dominam).
 
-## Conexão com difusão e a teoria cinética do calor
+## Conexão com difusão e a teoria molecular do calor
 
-Baseado na teoria cinética do calor, em que o calor é uma forma de energia associada ao movimento errático dos átomos, Einstein deduziu que uma porção de fluido exerce uma pressão $p$ da ordem de
+Baseado na teoria molecular do calor, providenciada pela teoria cinética dos gases, em que o calor é uma forma de energia associada ao movimento errático dos átomos, Einstein deduziu que uma porção de fluido exerce uma pressão osmótica $p$ da ordem de
 $$
 p = \frac{RT n}{NV},
 $$
