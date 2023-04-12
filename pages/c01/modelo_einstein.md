@@ -18,17 +18,19 @@
 >
 > \- Myles Billard ("Dust", from ["Stochastic Reflections – Poems from the Mind"](https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/))
 
-Um aspecto do trabalho de Einstein sobre movimento Browniano (veja [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)), em particular em relação à teoria de difusão, considera a evolução da distribuição de probabilidades da posição de uma partícula devido a um deslocamento aleatório, provocado pelo bombardeamento de outras partículas. Esse modelo, em particular, trata de um movimento unidimensional.
+Os trabalhos de Einstein sobre movimento Browniano ([Einstein, A. (1905) Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen [On the movement of small particles suspended in stationary liquids required by the molecular-kinetic theory of heat]. Annals of Physics, 322, 549560](http://dx.doi.org/10.1002/andp.19053220806); veja tradução em [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)) não é relevante apenas pelo fato de explicar o movimento Browniano, mas também por ter levado a uma das primeiras provas concretas sobre a existência dos átomos. Os átomos, como partículas elementares indivisíveis e constituintes da matéria, aparecem lá atrás com os filósofos gregos. Modelos mais concretos foram propostos a partir do século XIX, começando pelo modelo da bola de bilhar de Dalton, em 1808, seguido do modelo do pudim de passas de Thompson, em 1897, baseado nos seus próprios experimentos com descargas elétricas. Pouco antes dos trabalhos de Einstein e Thompson, já no final do século XIX, a teoria cinética dos gases nascia com Clausius, Maxwell e Boltzmann, com os átomos tendo um papel fundamental. Mas a existência dos átomos ainda não era amplamente aceita, possuindo muitos críticos renomados. A teoria de Einstein, conectando a teoria cinética dos gases ao movimento Browniano, criou um cenário plausível para se testar a existência dos átomos através da medição de suas massas.
 
 ## O modelo de Einstein
 
-No modelo de Einstein, para explicar o movimento Browniano, temos uma partícula em um espaço contínuo unidimensional. Inicialmente, a partícula está na posição $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
+Podemos dizer que a teoria de Einstein para o movimento Browniano é composta de duas partes. Uma é um modelo probabilístico para o movimento de partículas microscópicas, supostamente devido a colisões com os átomos do meio fluido em que a partícula se encontra em suspensão. A outra conectando esse movimento à teoria dos gases, em particular à pressão osmótica gerada pelas partículas do meio, que por sua vez depende de vários parâmetros como a viscosidade do fluido, a constante universal dos gases, a temperatura do fluido e o número de átomos em uma determinada porção do fluido.
 
-A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para algum intervalo de tempo característico $\tau$, a partícula pode dar passos espaciais $\ell$ de tamanhos diferentes, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$.
+No modelo probabilístico do movimento, consideramos uma partícula em um movimento unidimensional, inicialmente, em uma posição denotada por $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
 
-Assume-se que essa densidade é estacionária (independente do tempo), homogênea (não depende da posição da partícula), isotrópica (não depende da direção/sentido de movimento) e que os passos são independentes entre si (o passo num instante $s > 0$ independe do passo dado em $0 \leq t < s$).
+A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para um dado intervalo de tempo característico $\tau$ fixado a priori, a partícula pode dar um passo espacial $\ell$ de tamanho arbitrário, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$, que, em particular, depende do passo $\tau$.
 
-Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^{14}$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^{11}$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores é "esquecido", ou seja, os passos, em instantes diferentes, são independentes entre si.
+Assume-se que essa densidade seja estacionária (independente do tempo), homogênea (independente da posição da partícula), isotrópica (independente da direção/sentido de movimento) e que os passos sejam independentes entre si (i.e. o passo num instante $s \geq t + \tau$ independe do passo dado em $t \geq 0$).
+
+Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^{14}$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^{11}$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores seja "esquecido", ou seja, os passos, em instantes diferentes, são independentes entre si.
 
 Assim, $\ell$ assume valores em $\mathbb{R}$; $g$ é não negativa; $g$ independe de $x$ e de $t$; satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$; e é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
 
@@ -38,7 +40,7 @@ $$
 $$
 Por outro lado, usando a densidade de probabilidades $g(\ell)$ do passo espacial, obtemos que
 $$
-\rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell
+\rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell.
 $$
 
 Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que
@@ -67,7 +69,7 @@ $$
 D = \frac{1}{2\tau}\int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell = \frac{1}{2\tau}\mathbb{E}[\ell^2].
 $$
 
-Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\ell^4] / \tau$ relativamente pequeno, obtemos, aproximadamente, a equação de difusão
+Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\ell^4] / \tau$ relativamente pequeno, justificado pela hipótese dos passos de maior probabilidade serem relativamente pequenos, obtemos, aproximadamente, a equação de difusão
 $$
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial x^2}(t, x).
 $$
@@ -76,13 +78,11 @@ $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 $$
 
-Ou seja, lembrando que a distribuição normal $\mathcal{N}(0, \sigma)$ com média zero e variância $\sigma^2$ tem densidade 
+Ou seja, lembrando que a distribuição normal $\mathcal{N}(0, \sigma^2)$ com média zero e variância $\sigma^2$ tem densidade de probabilidade
 $$
 \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\displaystyle \frac{1}{2}\left(\frac{x}{\sigma}\right)^2},
 $$
 então, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
-
-Em um segundo artigo, as grandezas físicas são estimadas, em particular $D$, e a aproximação acima é justificada com um maior embasamento físico.
 
 ## Distância quadrática média percorrida
 
@@ -96,6 +96,29 @@ Se, por outro lado, observarmos $\mathbb{E}[|x|]$, obtemos uma distância da mes
 Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pelas partículas é proporcional à raiz quadrada do tempo decorrido.
 
 Isso acontece, nesse caso, pelo movimento frenético das partículas elementares do fluido. Um fenômeno macroscópico análogo acontece em escoamentos turbulentos, que pode ser apreciado no formato de rastros de fumaça em chaminés (pelo menos em condições onde movimentos advectivos não dominam).
+
+## Conexão com difusão e a teoria cinética do calor
+
+Baseado na teoria cinética do calor, em que o calor é uma forma de energia associada ao movimento errático dos átomos, Einstein deduziu que uma porção de fluido exerce uma pressão $p$ da ordem de
+$$
+p = \frac{RT n}{NV},
+$$
+onde $R$ é a constante universal dos gases, $T$ é a temperatura; $V$ é o volume de uma porção do fluido; $n$ é o número de átomos/moléculas nesse volume; e $N$ é o número de moléculas em uma grama do fluido.
+
+Em seguida, usando a teoria de difusão, Einstein argumentou que o coeficiente de difusão $D$ na equação do calor é dado por
+$$
+D = \frac{RT}{N}\frac{1}{6k\pi P},
+$$
+onde $k$ é o coeficiente de viscosidade do fluido e $P$ é o raio das moléculas do fluido, assumidas esféricas.
+
+Assim, podemos escrever a distância quadrática média percorrida por uma partícula bombardeada pelas moléculas do fluido em um intervalo de tempo $t$ por
+$$
+\sqrt{\mathbb{E}[x^2]} = \sqrt{2 D t} = \sqrt{\frac{RT}{N}\frac{1}{3k\pi P} t}.
+$$
+
+Para concluir, Einstein argumenta que se tormarmos $N = 6 \times 10^{23}$ de acordo com a teoria cinética dos gases; em um meio aquoso a uma temperatura de $T = 17\deg C$, com viscosidade $k = 1.35 \times 10^2$ e o diâmetro das partículas de $0.001\;\texttt{mm}$, então o caminho quadrático médio percorrido é da ordem de $0.8\;\mu$, um pouco abaixo de um micron. O deslocamento médio em um minuto seria da ordem de seis microns.
+
+Por outro lado, Einstein conclui que pode-se usar o cálculo desse descolamento para se deduzir quanto seria $N$ no caso desse meio aquoso, ou de qualquer outro fluido, ao invés de se considerar o valor emprestado da teoria dos gases.
 
 ## Incrementos
 
