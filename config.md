@@ -40,6 +40,7 @@ menu = [
         "pages/c01/movimento_browniano"
         "pages/c01/modelo_einstein"
         "pages/c01/passeioaleatorio_movbrowniano"
+        "pages/c01/modelo_bachelier"
         "pages/c01/aspectos_numericos"
         "pages/c01/simulacoes_intro"
     ]
