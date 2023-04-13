@@ -269,6 +269,20 @@ $$
 \int_0^1 \psi_d(t)^2 \;\mathrm{d}t = 2 \times (2^{(n-1)/2})^2 \frac{1}{2^n} = 1.
 $$
 
+## Representação em série de funções
+
+Obtivemos, acima, que
+$$
+W_t^n = \sum_{d\in D_n} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
+$$
+
+A ideia, agora, é passar ao limite e obter o processo de Wiener $\{W_t\}_{t\in [0, 1]}$ como sendo a série
+$$
+W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
+$$
+
+Para isso, precisamos mostrar a convergência dessa série. Vamos mostrar que essa convergência se dá quase sempre (na verdade sempre, i.e. para todo $\omega\in \Omega$) e uniformemente em $0\leq t \leq 1$. Isso implica, em particular, em convergência em probabilidade.
+
 ## Estimativa para as variáveis aleatórias i.i.d. normais
 
 Para a convergência, precisamos, antes, obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$, para que sejam usadas em $\{W_t^n\}$.
@@ -385,7 +399,7 @@ Considere sequências $\{t_j^k\}_{k\in \mathbb{N}}$ tais que $t_j^k\in D$, $0 \l
 
 Como os caminhos amostrais são contínuos, temos que $W_{t_j^k}$ converge quase-sempre para $W_{t_j}$, quando $k \rightarrow \infty$. Como cada incremento é Gaussiano e a função de distribuição de probabilidades de uma Gaussiana é contínua, seque que
 $$
-\mathbb{P}(W_{t_j^k} - W_{t_{j-1}^k} \in E_1) \rightarrow \mathbb{P}(W_{t_j} - W_{t_{j-1}} \in E_1), \quad k \rigtharrow \infty.
+\mathbb{P}(W_{t_j^k} - W_{t_{j-1}^k} \in E_1) \rightarrow \mathbb{P}(W_{t_j} - W_{t_{j-1}} \in E_1), \quad k \rightarrow \infty.
 $$
 Da mesma forma, o conjunto de incrementos é uma Gaussiana multivariada e a função de distribuição de probabilidades de uma Gaussiana multivariada também é contínua, de modo que
 $$
