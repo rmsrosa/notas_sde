@@ -2,7 +2,9 @@
 
 # {{ get_title }}
 
-O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. Vamos, a seguir, discutir uma demonstração dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013).
+O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. A demonstração de Wiener é baseada numa expansão em séries de senos e cossenos a partir da lei de distribuição dos coeficientes de Fourier do processo. Posteriormente, essa expansão foi estendida e atualmente atende pelo nome de decomposição ou teorema de Paley-Wiener ou de Paley-Wiener-Schwartz.
+
+Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013).
 
 A demonstração é obtida por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
