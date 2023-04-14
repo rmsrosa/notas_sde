@@ -280,7 +280,7 @@ $$
 
 ## Limite
 
-A ideia, agora, é passar ao limite e obter o processo de Wiener $\{W_t\}_{t\in [0, 1]}$ como sendo a série
+A ideia, agora, é passar ao limite e definir o processo de Wiener $\{W_t\}_{t\in [0, 1]}$ através da série
 $$
 W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 $$
@@ -292,32 +292,39 @@ $$
 
 Dada uma sequência $(a_n)_{n\in\mathbb{N}}$ qualquer de números positivos com $a_n \rightarrow 0$, temos
 $$
-\bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m - W_t^n| = 0\right\},
+\bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq a_n\right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| = 0\right\},
 $$
 para qualquer $N\in\mathbb{N}$. Então basta mostrar que
 $$
-\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\}\right) = 1,
+\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq a_n\right\}\right) = 1,
 $$
 para algum $N\in \mathbb{N}$ e alguma tal sequência $(a_n)_{n\in\mathbb{N}}$.
 
 Para isso, usamos a representacão acima de $\{W_t^n\}_n$, para estimar, para $m\geq n$,
 $$
-|W_t^m - W_t^n| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \frac{1}{2^{(k+1)/2}} |Z_k|,
+|W_t^m - W_t^n| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
 $$
-para todo $0\leq t \leq 1$. Como o lado direito é independente de $t$ e de $m \geq n$ e estendendo o somatório para começar de $N$, ou seja, para que a estimativa também independa de $n\geq N$, então
+para todo $0\leq t \leq 1$.
+
+Agora, em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes disjuntos e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
 $$
-\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\}\right) \geq \mathbb{P}\left( \sum_{k = N}^\infty \sum_{d\in D_{k+1}\setminus D_k} \frac{1}{2^{(k+1)/2}} |Z_k| \leq a_n\right).
+0 \leq \sum_{d\in D_{k+1}\setminus D_k} s_d(t) \leq \frac{1}{2^{(k+1)/2}}.
+$$
+para todo $0\leq t \leq 1$. Portanto,
+$$
+|W_t^m - W_t^n| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
+$$
+
+O lado direito é independente de $t$ e de $m \geq n$. Além disso, podemos estender o somatório para que comece em $N$, para que a estimativa também independa de $n\geq N$. Assim,
+$$
+\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq a_n\right\}\right) \geq \mathbb{P}\left( \left\{\omega; \;\sum_{k = N}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d(\omega)| \leq a_n\right\}\right).
 $$
 
 Basta mostrar, então, que
 $$
-\mathbb{P}\left( \sum_{k = N}^\infty 2^{(k-1)/2} |Z_k| \leq a_n\right) = 1,
+\mathbb{P}\left( \sum_{k = N}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq a_n\right) = 1,
 $$
-para algum $N\in \mathbb{N}$ e para uma sequência apropriada.
-
-$$
-\mathbb{P}\left(\bigcap_{n\in \mathbb{N}} \max_{0\leq t\leq 1} \left|\sum_{d\in D\setminus D_N} s_d(t)Z_d\right| \leq a_n \right) = 1.
-$$
+para algum $N\in \mathbb{N}$ e para alguma sequência apropriada. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
 
 ### Estimativa para as variáveis aleatórias i.i.d. normais
 
