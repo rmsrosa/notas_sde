@@ -298,7 +298,22 @@ para qualquer $N\in\mathbb{N}$. Então basta mostrar que
 $$
 \mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\}\right) = 1,
 $$
+para algum $N\in \mathbb{N}$ e alguma tal sequência $(a_n)_{n\in\mathbb{N}}$.
 
+Para isso, usamos a representacão acima de $\{W_t^n\}_n$, para estimar, para $m\geq n$,
+$$
+|W_t^m - W_t^n| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \frac{1}{2^{(k+1)/2}} |Z_k|,
+$$
+para todo $0\leq t \leq 1$. Como o lado direito é independente de $t$ e de $m \geq n$ e estendendo o somatório para começar de $N$, ou seja, para que a estimativa também independa de $n\geq N$, então
+$$
+\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\}\right) \geq \mathbb{P}\left( \sum_{k = N}^\infty \sum_{d\in D_{k+1}\setminus D_k} \frac{1}{2^{(k+1)/2}} |Z_k| \leq a_n\right).
+$$
+
+Basta mostrar, então, que
+$$
+\mathbb{P}\left( \sum_{k = N}^\infty 2^{(k-1)/2} |Z_k| \leq a_n\right) = 1,
+$$
+para algum $N\in \mathbb{N}$ e para uma sequência apropriada.
 
 $$
 \mathbb{P}\left(\bigcap_{n\in \mathbb{N}} \max_{0\leq t\leq 1} \left|\sum_{d\in D\setminus D_N} s_d(t)Z_d\right| \leq a_n \right) = 1.
