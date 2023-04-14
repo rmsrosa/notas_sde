@@ -236,12 +236,17 @@ savefig(joinpath(@OUTPUT, "faberschauder.svg"))
 
 Mais geralmente, definimos, para $d \in D_{n+1} \setminus D_n$, $n \in \mathbb{N}$,
 $$
-s_d(t) = \max\{0, \min\{t - d - 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2}\begin{cases}
+s_d(t) = \max\{0, \min\{t - d - 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2} \times \begin{cases}
   0, & t \leq d - \frac{1}{2^n}, \\
   t - d + \frac{1}{2^n}, & d - \frac{1}{2^n} \leq t \leq d, \\
   d + \frac{1}{2^n} - t, & d \leq t \leq d + \frac{1}{2^n}, \\
   0, & t \geq d + \frac{1}{2^n}
 \end{cases}
+$$
+
+Observe que o ponto máximo de $s_d(t)$, para $d\in D_{n+1}\setminus D_n,$ é $t=d,$ com 
+$$
+  s_d(d) = 2^{(n-1)/2} \times \frac{1}{2^n} = \frac{1}{2^{(n+1)/2}}.
 $$
 
 O que fizemos acima foi mostrar os primeiros passos do processo de indução para provar que os processos contínuos definidos por
