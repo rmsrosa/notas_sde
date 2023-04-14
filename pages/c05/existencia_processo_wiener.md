@@ -289,46 +289,66 @@ Para isso, precisamos mostrar a convergência dessa série. Vamos mostrar que, c
 $$
 \mathbb{P}\left( \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m - W_t^n| = 0\right) = 1.
 $$
-
-Dada uma sequência $(a_n)_{n\in\mathbb{N}}$ qualquer de números positivos com $a_n \rightarrow 0$, temos
+Ou, então, que
 $$
-\bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq a_n\right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| = 0\right\},
+\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m - W_t^n| = 0 \quad \textrm{quase sempre,}
+$$
+ou, ainda, que
+$$
+\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| = 0 \quad \textrm{para quase todo } \omega \in \mathbb{R}^D.
+$$
+
+### Plano para a demonstração
+
+Dada um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-positivos com $A_n \rightarrow 0$ quase sempre, temos
+$$
+\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq A_n(\omega) \;\forall m \geq n \geq N \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| = 0,
+$$
+para um dado $N\in\mathbb{N}$ qualquer. Ou seja,
+$$
+\bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq A_n(\omega)\right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| = 0\right\},
 $$
 para qualquer $N\in\mathbb{N}$. Então basta mostrar que
 $$
-\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq a_n\right\}\right) = 1,
+\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq A_n\right\}\right) = 1,
 $$
-para algum $N\in \mathbb{N}$ e alguma tal sequência $(a_n)_{n\in\mathbb{N}}$.
+para algum $N\in \mathbb{N}$ e um tal processo discreto $(A_n)_{n\in\mathbb{N}}$.
 
-Para isso, usamos a representacão acima de $\{W_t^n\}_n$, para estimar, para $m\geq n$,
+Para obter isso, usamos a representacão acima de $\{W_t^n\}_n$, para estimar, para $m\geq n$,
 $$
 |W_t^m - W_t^n| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
 $$
-para todo $0\leq t \leq 1$.
+para todo $0\leq t \leq 1$, ou, de outra forma, que
+$$
+\max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq A_n \qquad \textrm{e} \quad A_n \rightarrow 0,
+$$
+quase sempre, para algum $N\in \mathbb{N}.$
 
-Agora, em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes disjuntos e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
+### Processo $A_n$
+
+Em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes disjuntos e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
 $$
 0 \leq \sum_{d\in D_{k+1}\setminus D_k} s_d(t) \leq \frac{1}{2^{(k+1)/2}}.
 $$
-para todo $0\leq t \leq 1$. Portanto,
+Portanto,
 $$
 |W_t^m - W_t^n| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
 $$
 
-O lado direito é independente de $t$ e de $m \geq n$. Além disso, podemos estender o somatório para que comece em $N$, para que a estimativa também independa de $n\geq N$. Assim,
+O lado direito é independente de $t$ e de $m \geq n$. Assim, podemos escrever
 $$
-\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m(\omega) - W_t^n(\omega)| \leq a_n\right\}\right) \geq \mathbb{P}\left( \left\{\omega; \;\sum_{k = N}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d(\omega)| \leq a_n\right\}\right).
+\max_{m\geq n \geq N} \sup_{0\leq t \leq 1} |W_t^m - W_t^n| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
 $$
 
-Basta mostrar, então, que
+Definindo
 $$
-\mathbb{P}\left( \sum_{k = N}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq a_n\right) = 1,
+A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|,
 $$
-para algum $N\in \mathbb{N}$ e para alguma sequência apropriada. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
+vemos que basta mostrar que $A_n \rightarrow 0$ quase sempre. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
 
 ### Estimativa para as variáveis aleatórias i.i.d. normais
 
-Para a convergência, precisamos, antes, obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$, para que sejam usadas em $\{W_t^n\}$.
+Para a convergência, precisamos obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$, para que sejam usadas para estimar $\{W_t^n\}$.
 
 Como $Z_d \sim \mathcal{N}(0, 1)$ e a função de densidade de probabilidade dessa distribuição é simétrica em relação a origem e é dada pela Gaussiana padrão, temos, para $r \geq 0$,
 $$
@@ -368,6 +388,23 @@ Em outras palavras, para $N=N(\omega)\in \mathbb{N}$ aleatório suficientemente 
 $$
 \mathbb{P}(|Z_d| \leq c\sqrt{n}, \forall d\in D_n) = 1, \qquad \forall n \geq N.
 $$
+Ou, ainda,
+$$
+\max_{d\in D_n} |Z_d| \leq c\sqrt{n}.
+$$
+Assim,
+$$
+A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq \sum_{k = n}^\infty \frac{c\sqrt{k+1}}{2^{(k+1)/2}}.
+$$
+Como a série é convergente, o rabo converge para zero, de modo que
+$$
+A_n \rightarrow 0,
+$$
+quase sempre, como deseja.
+
+### Concluindo a demonstração de convergência
+
+
 
 ### Convergência
 
