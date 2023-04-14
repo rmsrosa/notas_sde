@@ -8,7 +8,7 @@ Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por
 
 A demonstração é obtida por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
-Veremos duas formas de definir essa sequência aproximante de processos no intervalo $[0, 1]$. Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.
+Veremos duas formas de escrever essa sequência aproximante de processos no intervalo $[0, 1]$. Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.
 
 Vale ressaltar que um processo de Wiener não é único, assim como não há uma única variável aleatória normal. Podemos, naturalmente, ter várias normais, independentes umas das outras. No caso do processo de Wiener, podemos, por exemplo, contruir um processo através do limite de interpolações de diferentes sequências de variáveis normais, obtendo diferentes processos de Wiener.
 
@@ -37,13 +37,13 @@ savefig(joinpath(@OUTPUT, "dyadic_points.svg"))
 ```
 \fig{dyadic_points}
 
-## Processo discreto i.i.d.
+## Processo discreto i.i.d. e espaço amostral
 
 Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em $D$.
 
 Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto $\Omega = \mathbb{R}^D$ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$. Denotamos a medida de probabilidade por $\mathbb{P}$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos que o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
 
-## Sequência de processos discretos
+## Sequência aproximante de processos discretos
 
 Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}$. Estes processos serão interpolados para processos em $[0, 1]$. Por motivo de clareza, vamos denotar os processos discretos por $\{X_d^n\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^n\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = X_d^n = X_d^n$, nos pontos diádicos $d\in D_n$.
 
@@ -97,7 +97,7 @@ savefig(joinpath(@OUTPUT, "sequenciaWn.svg"))
 ```
 \fig{sequenciaWn}
 
-## Processos discretos e incrementos são Gaussianos
+### Processos discretos e incrementos são Gaussianos
 
 Observe que os processos são construídos como combinações lineares de variáveis normais independentes. Sendo assim, os processos $\{X_d^n\}_{d\in D_n}$ são processos Gaussianos, i.e. a sua distribuição conjunta é uma normal multivariada (note que cada $D_n$ é finito, então esses processos são *vetores* aleatórios).
 
@@ -105,7 +105,7 @@ Observe que os processos são construídos como combinações lineares de variá
 
 Da mesma forma, os incrementos são combinações lineares de normais independentes, portanto também são normais multivariadas. Em princípio, também não seriam independentes. Mas veremos a seguir que os incrementos têm uma estrutura particular, de tal forma que são, sim, independentes.
 
-## Independência e distribuição dos incrementos
+### Independência e distribuição dos incrementos
 
 Observe que cada $X_d^n$ só depende das variáveis $\{Z_d\}_{d\in D_n}$, que são independentes de $\{Z_d\}_{d \in D \setminus D_n}$. Portanto, os processos $(X_d^n)_{d\in D_n}$ e $\{Z_d\}_{d \in D \setminus D_n}$ são independentes.
 
@@ -140,12 +140,12 @@ $$
 X_{d + 1/2^n}^{n+1} - X_d^{n+1} = \frac{X_{d + 1/2^n}^n - X_{d - 1/2^n}^n}{2} - \frac{Z_d}{2^{(n+1)/2}}.
 $$
 
-Observe que $X_{d + 1/2^n}^n - X_{d - 1/2^n}^n$ é um passo consecutivo do processo $\{X_d^n\}_{d\in D_n}$. Assim, usando a hipótese de indução, temos que $X_{d + 1/2^n}^n - X_{d - 1/2^n}^n$ e $Z_d$ são independentes e que $X_{d + 1/2^n}^n - X_{d - 1/2^n}^n \sim \mathcal{N}(0, 1/2^n)$. Assim, temos
+Observe que $X_{d + 1/2^n}^n - X_{d - 1/2^n}^n$ é um passo consecutivo do processo $\{X_d^n\}_{d\in D_n}$. Assim, usando a hipótese de indução, temos que $X_{d + 1/2^n}^n - X_{d - 1/2^n}^n$ e $Z_d$ são independentes e que $X_{d + 1/2^n}^n - X_{d - 1/2^n}^n \sim \mathcal{N}(0, 1/2^{n-1})$. Assim, temos
 $$
 \frac{X_{d + 1/2^n}^n - X_{d - 1/2^n}^n}{2} \quad \text{e} \quad \frac{Z_d}{2^{(n+1)/2}} \sim \mathcal{N}\left(0, \frac{1}{2^{n+1}}\right).
 $$
 
-Portanto, as suas somas e diferenças, que são exatamente os dois passos consecutivos, também são independentes e identicamente distribuídos, com distribuição $\mathcal{N}(0, 1/2^{n+1})$.
+Portanto, as suas somas e diferenças, que são exatamente os dois passos consecutivos, também são independentes e identicamente distribuídos, com distribuição $\mathcal{N}(0, 1/2^{n+1} + 1/2^{n+1}) = \mathcal{N}(0, 1/2^n)$.
 
 Isso mostra que dois passos consecutivos de $\{X_d^{n+1}\}_{d\in D_{n+1}}$, com ponto em comum $d$ em $d \in D_{n+1}\setminus D_n$, são independentes e a distribuição dada como na indução. Agora, se $d \in D_n\setminus$, então $d \pm 1/2^n \in D_{n+1} \setminus D_n$. Nesse caso, os passos consecutivos envolvem um estêncil de cinco pontos diádicos:
 $$
@@ -250,10 +250,6 @@ W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_
 $$
 são interpolações dos processos discretos $\{X_d^n\}_{d\in D_n}$, i.e. $W_d^n = X_d^n$, para todo $d\in D_n$ e todo $n\in\mathbb{N}$. Deixamos a prova completa como exercício. Apenas ressaltamos que os pontos cruciais são (i) observar que cada $s_d(\cdot)$ com $d\in D_{n+1}\setminus D_n$ se anula em todos os pontos $d'\in D_n$ e, também, em $d'\in D_n$ tal que $d' \neq d$, i.e. $s_d(d') = 0$, para todo $d, d'\in D_{n+1}$, $d' \neq d$; (ii) vale $s_d(d) = 1/2^{(n+1)/2}$, para $d\in D_{n+1}\setminus D_n$; e (iii) cada $s_d(\cdot)$ é linear em $[d-1/2^n, d]$ e $[d, d+1/2^n]$, para $d\in D_{n+1}\setminus D_n$.
 
-Observe que, fazendo $\tau = t - d + 1/2^n$, temos, para $d\in D_{n+1}\setminus D_n$,
-$$
-\int_0^1 s_d(t)^2 \;\mathrm{d}t = 2 \times 2^{n-1} \times \left.\frac{\tau^2}{2}\right|_{\tau = 0}^{s = 1/2^n} = 2^{n-1}\frac{1}{2^{2n}} = \frac{1}{2^{n + 1}}.
-$$
 Cada $s_d$ pode ser visto como uma primitiva de outra base de wavelets, a **base de Haar**, formada por funções constantes por partes,
 $$
 \psi_1(t) = 1, \quad 
@@ -269,21 +265,41 @@ $$
 \int_0^1 \psi_d(t)^2 \;\mathrm{d}t = 2 \times (2^{(n-1)/2})^2 \frac{1}{2^n} = 1.
 $$
 
-## Representação em série de funções
+### Representação em série
 
-Obtivemos, acima, que
+Obtivemos, acima, então, que
 $$
-W_t^n = \sum_{d\in D_n} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
+W_t^n = \sum_{d\in D_n} s_d(t) Z_d, \qquad 0 \leq t \leq 1
 $$
+é uma representação para a interpolação linear do processo discreto $\{X_d^n\}_{d\in D_n}$, i.e. $W_d^n = X_d^n$, para todo $d\in D_n$ e que $W_t^n$ é linear em cada intervalo $[d, d + 1/2^n]$ com $d, d + 1/2^n\in D_n$.
+
+## Limite
 
 A ideia, agora, é passar ao limite e obter o processo de Wiener $\{W_t\}_{t\in [0, 1]}$ como sendo a série
 $$
 W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 $$
 
-Para isso, precisamos mostrar a convergência dessa série. Vamos mostrar que essa convergência se dá quase sempre (na verdade sempre, i.e. para todo $\omega\in \Omega$) e uniformemente em $0\leq t \leq 1$. Isso implica, em particular, em convergência em probabilidade.
+Para isso, precisamos mostrar a convergência dessa série. Vamos mostrar que, com probabilidade $1$, essa convergência se dá uniformemente em $0 \leq t \leq 1$. Podemos escrever isso como
+$$
+\mathbb{P}\left( \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m - W_t^n| = 0\right) = 1.
+$$
 
-## Estimativa para as variáveis aleatórias i.i.d. normais
+Dada uma sequência $(a_n)_{n\in\mathbb{N}}$ qualquer de números positivos com $a_n \rightarrow 0$, temos
+$$
+\bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^m - W_t^n| = 0\right\},
+$$
+para qualquer $N\in\mathbb{N}$. Então basta mostrar que
+$$
+\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq a_n\right\}\right) = 1,
+$$
+
+
+$$
+\mathbb{P}\left(\bigcap_{n\in \mathbb{N}} \max_{0\leq t\leq 1} \left|\sum_{d\in D\setminus D_N} s_d(t)Z_d\right| \leq a_n \right) = 1.
+$$
+
+### Estimativa para as variáveis aleatórias i.i.d. normais
 
 Para a convergência, precisamos, antes, obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$, para que sejam usadas em $\{W_t^n\}$.
 
@@ -326,7 +342,7 @@ $$
 \mathbb{P}(|Z_d| \leq c\sqrt{n}, \forall d\in D_n) = 1, \qquad \forall n \geq N.
 $$
 
-## Convergência
+### Convergência
 
 Definimos os processos $\{W_t^n\}_{t \in [0, 1]}$ por
 $$
