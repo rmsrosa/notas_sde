@@ -400,53 +400,23 @@ Como a série é convergente, o rabo converge para zero, de modo que
 $$
 A_n \rightarrow 0,
 $$
-quase sempre, como deseja.
+quase sempre, como desejado.
 
 ### Concluindo a demonstração de convergência
 
-
-
-### Convergência
-
-Definimos os processos $\{W_t^n\}_{t \in [0, 1]}$ por
+Recapitulando. Provamos que $A_n \rigtharrow 0$ quase sempre e que
 $$
-W_t^{n+1} = W_t^{n} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_{n+1}} s_d(t)Z_d.
+\max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^m - W_t^n| \leq A_n
 $$
-Queremos, agora, passar ao limite e construir um processo contínuo definido pela série
+quase sempre também, de modo que
 $$
-\sum_{d\in D} s_d(t)Z_d, \quad 0 \leq t \leq 1.
+\lim_{m, n \rightarrow \infty} \max_{0\leq t\leq 1} |W_t^m - W_t^n| = 0
 $$
-Vamos mostrar que essa série converge quase sempre.
-
-Começamos estimando cada termo do somatório. As funções $s_d$, para $d\in D_{n+1}\setminus D_n$, são não negativas, têm suporte disjunto e alcançam um valor máximo $s_d(d) = 1/2^{(n+1)/2}$. Assim,
+quase sempre. Isso demonstra que a série é uniformenente convergente para quase todo $\omega\in\mathbb{R}^D$. Portanto, podemos definir $\{W_t\}_{t\in [0, 1]}$ por
 $$
-\left|\sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d\right| \leq \frac{1}{2^{(n+1)/2}}\max_{d\in D_{n+1}\setminus D_n} |Z_d|, \quad \forall 0\leq t \leq 1.
+W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 $$
-
-Isso implica em
-$$
-\mathbb{P}\left(\max_{0\leq t\leq 1} \left|\sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d\right| \leq \frac{c\sqrt{n}}{2^{(n+1)/2}}\right) \geq \mathbb{P}(|Z_d| \leq c\sqrt{n}, \forall d\in D_n) = 1, \qquad \forall n \geq N.
-$$
-
-Portanto, a estimativa a seguir vale quase sempre:
-$$
-\max_{0\leq t\leq 1} \left|\sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d\right| \leq \frac{c\sqrt{n}}{2^{(n+1)/2}}, \qquad \forall n \geq N.
-$$
-
-Agora, podemos ver a consequência disso para todo o rabo da série:
-$$
-\max_{0\leq t\leq 1} \left|\sum_{d\in D\setminus D_N} s_d(t)Z_d\right| \leq \sum_{n \geq N}\frac{c\sqrt{n}}{2^{(n+1)/2}} < \infty.
-$$
-
-Com essa estimativa, vemos que a série converge quase-sempre (uniformemente em $t\in [0, 1]$) e nos define um processo contínuo $\{W_t\}_{t\in [0,1]}$:
-$$
-W_t = \sum_{d\in D} s_d(t)Z_d, \quad 0 \leq t \leq 1.
-$$
-
-Isso implica, também, na convergência em probabilidade (uniforme em $t$):
-$$
-\mathbb{P}\left(\max_{0\leq t \leq 1} |W_t - W_t^n| > \varepsilon\right) \rightarrow 0, \quad n \rightarrow \infty, \; \forall \varepsilon > 0.
-$$
+Além disso, para quase todo $\omega$, o caminho amostral $W_t(\omega)$ é o limite uniforme dos caminhos contínuos $W_t^n(\omega)$, sendo, também, contínuo.
 
 ## Processo de Wiener no intervalo unitário
 
