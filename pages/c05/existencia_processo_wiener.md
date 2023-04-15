@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. A demonstração de Wiener é baseada numa expansão em séries de senos e cossenos a partir da lei de distribuição dos coeficientes de Fourier do processo. Posteriormente, essa expansão foi estendida e atualmente atende pelo nome de decomposição ou teorema de Paley-Wiener ou de Paley-Wiener-Schwartz.
+O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. A demonstração de Wiener é baseada em uma expansão em série de senos e cossenos a partir da lei de distribuição dos coeficientes de Fourier do processo.
 
 Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013). A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
@@ -47,11 +47,11 @@ como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d
 
 ## Sequência aproximante de processos discretos
 
-Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}$. Estes processos serão interpolados para processos em $[0, 1]$. Por motivo de clareza, vamos denotar os processos discretos por $\{X_d^{(n)}\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^{(n)}\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = X_d^{(n)} = X_d^{(n)}$, nos pontos diádicos $d\in D_n$.
+Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}$. Estes processos serão interpolados para processos em $[0, 1]$. Por motivo de clareza, vamos denotar os processos discretos por $\{X_d^{(n)}\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^{(n)}\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = W_d^{(n)} = X_d^{(n)}$, nos pontos diádicos $d\in D_n$.
 
-Para cada $d\in D_n$, esperamos ter $X_d^{(n)} = W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $X_d^{(n)}$ como $Z_d / \sqrt{d}$ (já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$) e interpolar, de alguma forma, para $t\in I \setminus D_n$. Apesar disso convergir para um processo, este não terá as propriedades desejadas. Mas uma variação disso funciona.
+Para cada $d\in D_n$, esperamos ter $X_d^{(n)} = W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $X_d^{(n)}$ como $Z_d / \sqrt{d}$, já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$, e interpolar, de alguma forma, para $t\in I \setminus D_n$. Apesar disso convergir para um processo, este não terá a distribuição correta dos passos. Mas uma variação disso funciona. Essa variação se baseia no fato de que se $A$ e $B$ são duas variáveis normais independentes com mesma variância, então $A+B$ e $A-B$ também são independentes e com o dobro da variância de $A$ e $B$.
 
-Vamos, então, definir, para cada $n\in \mathbb{N}$, o processo discreto $\{X_d^{(n)}\}_{d\in D_n}$, na malha finita $D_n$, da seguinte forma. Primeiramente, sendo $D_1 = \{0, 1\}$, definimos
+Mais precisamente, definimos, para cada $n\in \mathbb{N}$, o processo discreto $\{X_d^{(n)}\}_{d\in D_n}$, na malha finita $D_n$, da seguinte forma. Primeiramente, sendo $D_1 = \{0, 1\}$, definimos
 $$
 X_0^{(1)} = 0, \quad X_1^{(1)} = Z_1.
 $$
@@ -111,19 +111,19 @@ Da mesma forma, os incrementos são combinações lineares de normais independen
 
 Observe que cada $X_d^{(n)}$ só depende das variáveis $\{Z_d\}_{d\in D_n}$, que são independentes de $\{Z_d\}_{d \in D \setminus D_n}$. Portanto, os processos $(X_d^{(n)})_{d\in D_n}$ e $\{Z_d\}_{d \in D \setminus D_n}$ são independentes.
 
-Agora, vamos ver que os incrementos de cada processo $\{X_d^{(n)}\}_{d\in D_n}$ são independentes. Para $n = 1$, isso é vácuo, já que só há um incremento, $X_1^{(1)} - X_0^1 = Z_1$. Para $n = 2$, temos apenas dois incrementos,
+Agora, vamos ver que os incrementos de cada processo $\{X_d^{(n)}\}_{d\in D_n}$ são independentes. Para $n = 1$, isso é vácuo, já que só há um incremento, $X_1^{(1)} - X_0^{(1)} = Z_1$. Para $n = 2$, temos apenas dois incrementos,
 $$
-\Delta_{1/2}^2 = X_1^{(2)} - X_{1/2}^{(2)} = X_1^{(1)} - \frac{X_0^{(1)} + X_1^{(1)}}{2} - \frac{Z_{1/2}}{2} = \frac{X_1^{(1)} - X_0^{(1)}}{2} - \frac{Z_{1/2}}{2} = \frac{Z_1}{2} - \frac{Z_{1/2}}{2}
+\Delta_{1/2}^{(2)} = X_1^{(2)} - X_{1/2}^{(2)} = X_1^{(1)} - \frac{X_0^{(1)} + X_1^{(1)}}{2} - \frac{Z_{1/2}}{2} = \frac{X_1^{(1)} - X_0^{(1)}}{2} - \frac{Z_{1/2}}{2} = \frac{Z_1}{2} - \frac{Z_{1/2}}{2}
 $$
 e
 $$
-\Delta_0^2 = X_{1/2}^{(2)} - X_0^{(2)} = \frac{X_0^{(1)} + X_1^{(1)}}{2} + \frac{Z_{1/2}}{2} - X_0^{(2)} = \frac{X_1^{(1)} - X_0^{(1)}}{2} + \frac{Z_{1/2}}{2} = \frac{Z_1}{2} + \frac{Z_{1/2}}{2}.
+\Delta_0^{(2)} = X_{1/2}^{(2)} - X_0^{(2)} = \frac{X_0^{(1)} + X_1^{(1)}}{2} + \frac{Z_{1/2}}{2} - X_0^{(2)} = \frac{X_1^{(1)} - X_0^{(1)}}{2} + \frac{Z_{1/2}}{2} = \frac{Z_1}{2} + \frac{Z_{1/2}}{2}.
 $$
 Aparentemente, esses incrementos poderiam não ser independentes, mas são. Como $Z_1$ e $Z_{1/2}$ são independentes e são normais identicamente distribuídas com distribuição $\mathcal{N}(0,1)$, então $Z_1/2$ e $Z_{1/2}/2$ são independentes e são normais identicamente distribuídas com distribuição $\mathcal{N}(0,1/4)$. Assim, a soma e a diferença de $Z_1/2$ e $Z_{1/2}/2$, que são exatamente os incrementos, são, também, normais independentes e identicamente distribuídas, com distribuição $\mathcal{N}(0, 1/2)$. Além disso, também são independentes de $\{Z_d\}_{d \in D \setminus D_2}$.
 
-Agora, vamos assumir, em um argumento de indução, que os incrementos de $\{X_d^{(n)}\}_{d \in D_n}$ são independentes e identicamente distribuídos, com, em particular, 
+Agora, vamos assumir, em um argumento de indução, que os incrementos de $\{X_d^{(n)}\}_{d \in D_n}$ são independentes e identicamente distribuídos, com distribuição
 $$
-X_{d + 1/2^{n-1}}^n - X_d^{(n)} \sim \mathcal{N}\left(0, \frac{1}{2^{n-1}}\right).
+X_{d + 1/2^{n-1}}^{(n)} - X_d^{(n)} \sim \mathcal{N}\left(0, \frac{1}{2^{n-1}}\right).
 $$
 Além disso, assumimos que são independentes de $\{Z_d\}_{d\in D \setminus D_n}$.
 
@@ -151,11 +151,11 @@ Portanto, as suas somas e diferenças, que são exatamente os dois passos consec
 
 Isso mostra que dois passos consecutivos de $\{X_d^{(n+1)}\}_{d\in D_{n+1}}$, com ponto em comum $d$ em $d \in D_{n+1}\setminus D_n$, são independentes e a distribuição dada como na indução. Agora, se $d \in D_n\setminus$, então $d \pm 1/2^n \in D_{n+1} \setminus D_n$. Nesse caso, os passos consecutivos envolvem um estêncil de cinco pontos diádicos:
 $$
-X_d^{(n+1)} - X_{d - 1/2^n}^{(n+1)} = X_d^{(n)} - \frac{X_{d}^n + X_{d - 1/2^{n-1}}^n}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}} = \frac{X_{d}^n - X_{d - 1/2^{n-1}}^n}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}}
+X_d^{(n+1)} - X_{d - 1/2^n}^{(n+1)} = X_d^{(n)} - \frac{X_{d}^{(n)} + X_{d - 1/2^{n-1}}^{(n)}}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}} = \frac{X_{d}^{(n)} - X_{d - 1/2^{n-1}}^{(n)}}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}}
 $$
 e
 $$
-X_{d + 1/2^n}^{(n+1)} - X_d^{(n+1)} = \frac{X_{d + 1/2^{n-1}}^n - X_d^{(n)}}{2} + \frac{Z_{d+1/2^n}}{2^{(n+1)/2}}.
+X_{d + 1/2^n}^{(n+1)} - X_d^{(n+1)} = \frac{X_{d + 1/2^{n-1}}^{(n)} - X_d^{(n)}}{2} + \frac{Z_{d+1/2^n}}{2^{(n+1)/2}}.
 $$
 Observe que os dois incrementos no lado direito das duas expressões acima são incrementos consecutivos do processo $\{X_d^{(n)}\}_{d\in D_n}$ e que os termos restantes são variáveis distintas de $\{Z_d\}_{d\in D\setminus D_n}$. Pela hipótese de indução, todas essas variáveis são mutuamente independentes. Portanto, os dois incrementos acima de $\{X_d^{(n+1)}\}_{d\in D_{n+1}}$ também são independentes entre si. Além disso, como esses termos do lado direito tem distribuição normal $\mathcal{N}(0, 1/2^{n+1})$, então os incrementos tem distribuição normal $\mathcal{N}(0, 1/2^n)$.
 
@@ -188,7 +188,7 @@ $$
 s_1(t) = t, \qquad 0 \leq t \leq 1.
 $$
 
-Agora, observe que, além de $W_0^1 = X_0^{(1)}$, $W_1^1 = X_1^{(1)}$, podemos escrever o ponto médio como $W_{1/2}^1 = Z_1/2 = s_1(1/2)Z_1$, que é exatamente o primeiro termo de $X_{1/2}^{(2)}$. Assim, podemos pensar na interpolação de $\{X_d^{(2)}\}_{d\in D_2}$ dada por
+Agora, observe que, além de $W_0^{(2)} = X_0^{(1)}$, $W_1^{(2)} = X_1^{(1)}$, podemos escrever o ponto médio como $W_{1/2}^{(2)} = Z_1/2 = s_1(1/2)Z_1$, que é exatamente o primeiro termo de $X_{1/2}^{(2)}$. Assim, podemos pensar na interpolação de $\{X_d^{(2)}\}_{d\in D_2}$ dada por
 $$
 W_t^{(2)} = W_t^{(1)} + s_{1/2}(t)Z_{1/2} = s_1(t)Z_1 + s_{1/2}(t)Z_{1/2},
 $$
@@ -199,15 +199,21 @@ $$
 
 Agora, vejamos os termo de $X_d^{(3)}$:
 $$
-X_0^{(3)} = 0, \; X_{1/4}^{(2)} = \frac{1}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{4}Z_{1/4}, \; X_{1/2}^{(2)} = \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \; X_{3/4}^{(3)} = \frac{3}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{4}Z_{3/4}, \; X_1^{(3)} = Z_1;
+\begin{align*}
+X_0^{(3)} & = 0, \\
+X_{1/4}^{(3)} & = \frac{1}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{1/4}, \\
+X_{1/2}^{(3)} & = \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \\
+X_{3/4}^{(3)} & = \frac{3}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{3/4}, \\
+X_1^{(3)} & = Z_1;
+\end{align*}
 $$
 Observe que esse processo pode ser visto como os valores, em $D_3$, do processo contínuo obtido por interpolação linear por partes dado por
 $$
 W_t^{(3)} = W_t^{(2)} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4} = s_1(t)Z_1 + s_{1/2}(t)Z_{1/2} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4},
 $$
-onde $s_{1/4}(\cdot)$ e $s_{3/4}(\cdot)$ são, também, funções do tipo cabana, com suporte em $[0, 1/2]$ e $[1/2, 1]$ e valor máximo $1/4$:
+onde $s_{1/4}(\cdot)$ e $s_{3/4}(\cdot)$ são, também, funções do tipo cabana, com suporte em $[0, 1/2]$ e $[1/2, 1]$ e valor máximo $1/2^{3/2}$:
 $$
-s_{1/4}(t) = \max\{0, \min\{t, 1/2 - t\}\}, \quad s_{3/4}(t) = \max\{0, \min\{t - 1/2, 1 - t\}.\}
+s_{1/4}(t) = 2^{1/2}\max\{0, \min\{t, 1/2 - t\}\}, \quad s_{3/4}(t) = 2^{1/2}\max\{0, \min\{t - 1/2, 1 - t\}.\}
 $$
 
 ```julia:faberschauder
@@ -272,7 +278,7 @@ $$
 \int_0^1 \psi_d(t)^2 \;\mathrm{d}t = 2 \times (2^{(n-1)/2})^2 \frac{1}{2^n} = 1.
 $$
 
-### Representação em série
+### Representação em série de wavelets
 
 Obtivemos, acima, então, que
 $$
@@ -302,21 +308,19 @@ $$
 
 ### Plano para a demonstração
 
-Dada um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-positivos com $A_n \rightarrow 0$ quase sempre, temos
+Dado um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-positivos com $A_n \rightarrow 0$ quase sempre e uma variável aleatória $N$ com valores nos números naturais, ambos no mesmo espaço amostral $\Omega$, temos
 $$
-\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega) \;\forall m \geq n \geq N \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0,
+\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega) \;\forall m \geq n \geq N(\omega) \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0,
 $$
-para um dado $N\in\mathbb{N}$ qualquer. Ou seja,
+Ou seja,
 $$
-\bigcap_{m \geq n \geq N} \left\{\omega; \;\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega)\right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0\right\},
+\left\{\omega; \;\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \; \forall m \geq n \geq N(\omega) \right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0\right\},
 $$
-para qualquer $N\in\mathbb{N}$. Então basta mostrar que
+Então basta mostrar que
 $$
 \mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n\right\}\right) = 1,
 $$
-para algum $N\in \mathbb{N}$ e um tal processo discreto $(A_n)_{n\in\mathbb{N}}$.
-
-Para obter isso, usamos a representacão acima de $\{W_t^{(n)}\}_n$, para estimar, para $m\geq n$,
+para $N$ e $(A_n)_{n\in\mathbb{N}}$ apropriados. Para obter isso, usamos a representacão acima de $\{W_t^{(n)}\}_n$, para estimar, para $m\geq n$,
 $$
 |W_t^{(m)} - W_t^{(n)}| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
 $$
@@ -324,7 +328,7 @@ para todo $0\leq t \leq 1$, ou, de outra forma, que
 $$
 \max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n \qquad \textrm{e} \quad A_n \rightarrow 0,
 $$
-quase sempre, para algum $N\in \mathbb{N}.$
+quase sempre.
 
 ### Processo $A_n$
 
@@ -346,7 +350,7 @@ Definindo
 $$
 A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|,
 $$
-vemos que basta mostrar que $A_n \rightarrow 0$ quase sempre. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
+basta mostrar que $A_n \rightarrow 0$ quase sempre. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
 
 ### Estimativa para as variáveis aleatórias i.i.d. normais
 
@@ -356,9 +360,9 @@ Como $Z_d \sim \mathcal{N}(0, 1)$ e a função de densidade de probabilidade des
 $$
 \mathbb{P}(|Z_d| \geq r) = \frac{1}{\sqrt{2\pi}}\int_{|s|\geq r} e^{-\frac{s^2}{2}} \;\mathrm{d}s \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_{|s| \geq r} e^{-\frac{s^2}{4}} \;\mathrm{d}s.
 $$
-Limitando a integral e fazendo a mudança de variáveis $s = \sqrt{2}\tau$, obtemos
+Limitando a integral e fazendo a mudança de variáveis $s = \sqrt{2}\sigma$, obtemos
 $$
-\mathbb{P}(|Z_d| \geq r) \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_\mathbb{R} e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{\sqrt{2}}{\sqrt{2\pi}}e^{-\frac{r^2}{4}}\int_\mathbb{R} e^{-\frac{\tau^2}{2}} \;\mathrm{d}\tau = \sqrt{2} e^{-\frac{r^2}{4}}.
+\mathbb{P}(|Z_d| \geq r) \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_\mathbb{R} e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{\sqrt{2}}{\sqrt{2\pi}}e^{-\frac{r^2}{4}}\int_\mathbb{R} e^{-\frac{\sigma^2}{2}} \;\mathrm{d}\sigma = \sqrt{2} e^{-\frac{r^2}{4}}.
 $$
 
 A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$, considerando que $D_n$ tem $2^{n-1} + 1$ elementos:
@@ -406,7 +410,7 @@ quase sempre, como desejado.
 
 ### Concluindo a demonstração de convergência
 
-Recapitulando. Provamos que $A_n \rigtharrow 0$ quase sempre e que
+Recapitulando. Provamos que $A_n \rightarrow 0$ quase sempre e que
 $$
 \max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n
 $$
