@@ -308,9 +308,9 @@ $$
 
 ### Plano para a demonstração
 
-Dado um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-positivos com $A_n \rightarrow 0$ quase sempre e uma variável aleatória $N$ com valores nos números naturais, ambos no mesmo espaço amostral $\Omega$, temos
+Dado um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-negativos e com $A_n \rightarrow 0$ quase sempre, definido no mesmo espaço amostral $\Omega$, temos que
 $$
-\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega) \;\forall m \geq n \geq N(\omega) \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0,
+\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \;\forall m \geq n \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0,
 $$
 Ou seja,
 $$
@@ -318,21 +318,21 @@ $$
 $$
 Então basta mostrar que
 $$
-\mathbb{P}\left( \bigcap_{m \geq n \geq N} \left\{\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n\right\}\right) = 1,
+\mathbb{P}\left( \bigcap_{m \geq n} \left\{\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n\right\}\right) = 1,
 $$
-para $N$ e $(A_n)_{n\in\mathbb{N}}$ apropriados. Para obter isso, usamos a representacão acima de $\{W_t^{(n)}\}_n$, para estimar, para $m\geq n$,
+para alguma tal sequência $A_n\rightarrow 0$, ou, de outra forma, que
 $$
-|W_t^{(m)} - W_t^{(n)}| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
-$$
-para todo $0\leq t \leq 1$, ou, de outra forma, que
-$$
-\max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n \qquad \textrm{e} \quad A_n \rightarrow 0,
+\max_{m \geq n}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n \rightarrow 0,
 $$
 quase sempre.
 
 ### Processo $A_n$
 
-Em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes disjuntos e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
+Para obter a estimativa acima, usamos a representacão em wavelets de $\{W_t^{(n)}\}_n$ para estimar, para $m\geq n$,
+$$
+|W_t^{(m)} - W_t^{(n)}| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
+$$
+para todo $0\leq t \leq 1$. Em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes disjuntos e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
 $$
 0 \leq \sum_{d\in D_{k+1}\setminus D_k} s_d(t) \leq \frac{1}{2^{(k+1)/2}}.
 $$
@@ -343,18 +343,17 @@ $$
 
 O lado direito é independente de $t$ e de $m \geq n$. Assim, podemos escrever
 $$
-\max_{m\geq n \geq N} \sup_{0\leq t \leq 1} |W_t^{(m)} - W_t^{(n)}| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
+\max_{m\geq n} \sup_{0\leq t \leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n,
 $$
-
-Definindo
+onde
 $$
-A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|,
+A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
 $$
-basta mostrar que $A_n \rightarrow 0$ quase sempre. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
+Basta mostrar, agora, que $A_n \rightarrow 0$ quase sempre. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
 
 ### Estimativa para as variáveis aleatórias i.i.d. normais
 
-Para a convergência, precisamos obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$, para que sejam usadas para estimar $\{W_t^{(n)}\}$.
+Para a convergência, precisamos obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$.
 
 Como $Z_d \sim \mathcal{N}(0, 1)$ e a função de densidade de probabilidade dessa distribuição é simétrica em relação a origem e é dada pela Gaussiana padrão, temos, para $r \geq 0$,
 $$
@@ -387,20 +386,20 @@ $$
 $$
 Dessa forma,
 $$
-1 = \mathbb{P}\left(\bigcup_{n\in \mathbb{N}} \left(\Omega \setminus \bigcup_{j \geq n} E_n\right)\right) = \mathbb{P}\left(\bigcup_{n\in \mathbb{N}} \left(\bigcap_{j \geq n} \Omega \setminus E_n\right)\right) = \mathbb{P}\left(\left\{\omega\in\Omega; \;\exists N(\omega)\in \mathbb{N}; |Z_d(\omega)| \leq 2c\sqrt{n}, \;\forall n\geq N\right\}\right)
+1 = \mathbb{P}\left(\bigcup_{n\in \mathbb{N}} \left(\Omega \setminus \bigcup_{j \geq n} E_n\right)\right) = \mathbb{P}\left(\bigcup_{n\in \mathbb{N}} \left(\bigcap_{j \geq n} \Omega \setminus E_n\right)\right) = \mathbb{P}\left(\left\{\omega\in\Omega; \;\exists N(\omega)\in \mathbb{N}; |Z_d(\omega)| \leq 2c\sqrt{n}, \;\forall n\geq N(\omega), \;\forall d\in D_n \right\}\right)
 $$
 
-Em outras palavras, para $N=N(\omega)\in \mathbb{N}$ aleatório suficientemente grande,
+Em outras palavras, existe uma variável aleatória $N=N(\omega)$ com valores em $\mathbb{N}$ tal que
 $$
-\mathbb{P}(|Z_d| \leq c\sqrt{n}, \forall d\in D_n) = 1, \qquad \forall n \geq N.
+\mathbb{P}(|Z_d| \leq c\sqrt{n}, \;\forall n \geq N, \;\forall d\in D_n) = 1.
 $$
 Ou, ainda,
 $$
-\max_{d\in D_n} |Z_d| \leq c\sqrt{n}.
+\max_{d\in D_n} |Z_d| \leq c\sqrt{n}, \;\forall n \geq N.
 $$
 Assim,
 $$
-A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq \sum_{k = n}^\infty \frac{c\sqrt{k+1}}{2^{(k+1)/2}}.
+A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq \sum_{k = n}^\infty \frac{c\sqrt{k+1}}{2^{(k+1)/2}}, \quad \forall n \geq N.
 $$
 Como a série é convergente, o rabo converge para zero, de modo que
 $$
@@ -410,11 +409,11 @@ quase sempre, como desejado.
 
 ### Concluindo a demonstração de convergência
 
-Recapitulando. Provamos que $A_n \rightarrow 0$ quase sempre e que
+Recapitulando. Provamos que
 $$
-\max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n
+\max_{m \geq n \geq N}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n \rightarrow 0
 $$
-quase sempre também, de modo que
+quase sempre, de modo que
 $$
 \lim_{m, n \rightarrow \infty} \max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| = 0
 $$
@@ -441,8 +440,6 @@ Construímos $\{W_t^{(n)}\}_{t\in [0,1]}$ de tal forma que, para todo $\omega\in
 $$
 \mathbb{P}(\{\omega; \;t \mapsto W_t(\omega) \textrm{ é contínuo}\}) = 1.
 $$
-
-A construção que fizemos, em particular escolhendo $\Omega = \mathbb{R}^D$ como espaço amostral, nos levou a que todos os caminhos amostrais sejam contínuos. Mas, em geral, podemos ter um espaço amostral maior (e.g. $\Omega = \mathbb{R}^\mathbb{R}$), mas com a medida concentrada em amostras associadas a caminhos contínuos, ou seja, com probabilidade um, mas sem necessariamente ser todo o conjunto.
 
 ### Independência dos incrementos
 
