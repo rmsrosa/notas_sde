@@ -349,13 +349,56 @@ onde
 $$
 A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
 $$
-Basta mostrar, agora, que $A_n \rightarrow 0$ quase sempre. Para isso, precisamos de uma estimativa para variáveis aleatórias normais independentes, que fazemos a seguir.
+Para obter que $A_n \rightarrow 0$, basta mostrar que a série converge quase sempre.
 
-### Estimativa para as variáveis aleatórias i.i.d. normais
+### Convergência da série
 
-Para a convergência, precisamos obter uma estimativa para as variáveis aleatórias do processo $\{Z_d\}_{d\in D}$.
+Queremos mostrar, portanto, que
+$$
+\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| < \infty
+$$
+quase sempre. A ideia para isso é mostrar que podemos estimar, quase sempre,
+$$
+|Z_d| \leq r_k, \quad \forall d\in D_{k+1}\setminus D_k, \;\forall k \geq N,
+$$
+para algum $N=N(\omega)$ e para uma série apropriada $r_k$. Se isso for possível, então, quase sempre, teremos
+$$
+\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k.
+$$
 
-Como $Z_d \sim \mathcal{N}(0, 1)$ e a função de densidade de probabilidade dessa distribuição é simétrica em relação a origem e é dada pela Gaussiana padrão, temos, para $r \geq 0$,
+Assim, precisamos mostrar que existe uma sequência $\{r_k\}_{k\in\mathbb{N}}$ de números reais tais que o somatório ao lado direito acima seja finito e que a estimativa
+$$
+|Z_d| \leq r_k, \quad \forall d\in D_{k+1}\setminus D_k, \;\forall k \geq N,
+$$
+valha quase sempre, para alguma variável aleatória $N=N(\omega)$ com valores nos números naturais. Isso é equivalente a mostrar que
+$$
+\left\{ \exists d \in \in D_{k+1}\setminus D_k, \; |Z_d| > r_k \textrm{ infinitas vezes} \right\}.
+$$
+tem probabilidade nula. Ou seja, que
+$$
+\mathbb{P}\left(\limsup_{k\rightarrow \infty} \left\{\exists d \in D_{k+1}\setminus D_k, \; |Z_d| > r_k\right\} \right) = 0.
+$$
+Isso está no contexto do Lema de Borel-Cantelli, cuja condição é que
+$$
+\sum_{k=1}^\infty \mathbb{P}\left(\exists d \in D_{k+1}\setminus D_k, \; |Z_d| > r_k \right) < \infty
+$$
+Observe que 
+$$
+\sum_{k=1}^\infty \mathbb{P}\left(\exists d \in D_{k+1}\setminus D_k, \; |Z_d| > r_k \right) = \mathbb{P}\left(\bigcup_{d \in D_{k+1}\setminus D_k}\left\{|Z_d| > r_k\right\}\right) \leq \sum_{k=1}^\infty \sum_{d \in D_{k+1}\setminus D_k} \mathbb{P}\left( |Z_d| > r_k \right) < \sum_{k=1}^\infty 2^{k-1} \mathbb{P}\left( |Z_d| > r_k \right).
+$$
+
+Portanto, precisamos achar uma sequência $\{r_k\}_{k\in\mathbb{N}}$ de números positivos tais que
+$$
+\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k < \infty
+$$
+e
+$$
+\sum_{k=1}^\infty 2^{k-1} \mathbb{P}\left( |Z_d| > r_k \right) < \infty.
+$$
+
+### Estimativa para a concentração de processos i.i.d. normais
+
+Precisamos, assim, obter uma estimativa para as variáveis aleatórias $Z_d$ do processo $\{Z_d\}_{d\in D}$. Como elas são independentes, a função de densidade de probabilidade das marginais desse processo é dada pela Gaussiana padrão. Assim, para cada $d\in D$ e para $r \geq 0$ arbitrário,
 $$
 \mathbb{P}(|Z_d| \geq r) = \frac{1}{\sqrt{2\pi}}\int_{|s|\geq r} e^{-\frac{s^2}{2}} \;\mathrm{d}s \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_{|s| \geq r} e^{-\frac{s^2}{4}} \;\mathrm{d}s.
 $$
@@ -363,6 +406,29 @@ Limitando a integral e fazendo a mudança de variáveis $s = \sqrt{2}\sigma$, ob
 $$
 \mathbb{P}(|Z_d| \geq r) \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_\mathbb{R} e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{\sqrt{2}}{\sqrt{2\pi}}e^{-\frac{r^2}{4}}\int_\mathbb{R} e^{-\frac{\sigma^2}{2}} \;\mathrm{d}\sigma = \sqrt{2} e^{-\frac{r^2}{4}}.
 $$
+
+Em particular,
+$$
+\mathbb{P}(|Z_d| > r_k) \leq \sqrt{2} e^{-\frac{r_k^2}{4}},
+$$
+para um $r_k \geq 0$ qualquer.
+
+### Escolha dos $r_k$
+
+Assim, precisamos encontrar $\{r_k\}_{k\in\mathbb{N}}$ tais que
+$$
+\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^{k-1/2} e^{-\frac{r_k^2}{4}} < \infty.
+$$
+Observe que $r_k$ tem que crescer o suficiente para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Uma escolha apropriada, por exemplo, é $r_k = \sqrt{k}$. Vejamos...
+
+### Estimativa para a série
+
+Para cada $k$, tomamos um $r_k$ a ser escolhido apropriadamente. Como $D_{k+1}\setminus D_k$ tem $2^{k-1}$ pontos, então
+$$
+\mathbb{P}\left(\cap_{k\in\mathbb{N}}\cap_{d\in D_{k+1}\setminus D_k} \{|Z_d| < r_k\}\right) = 1 - \mathbb{P}\left(\cup_{k\in\mathbb{N}}\cup_{d\in D_{k+1}\setminus D_k} \{|Z_d| \geq r_k\}\right) \geq 1 - \sum_{k=1}^\infty\sum_{d\in D_{k+1}\setminus D_k} \mathbb{P}(|Z_d| \geq r_k) \geq 1 - \sum_{k=1}^{\infty}2^{k-1/2} e^{-\frac{r_k^2}{4}}.
+$$
+
+### previous stuff
 
 A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$, considerando que $D_n$ tem $2^{n-1} + 1$ elementos:
 $$
