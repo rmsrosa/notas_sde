@@ -238,7 +238,7 @@ using Plots
 theme(:ggplot2)
 t = range(0.0, 1.0, length = 200)
 s_d = Dict(n => Dict(d => 2^(max(0,(n-1)/2)) .* max.(0.0, min.(t .- d .+ 1/2^n, d .+ 1/2^n .- t)) for d in Rational.(0:1/2^(n):1) if (n == 0 || d ∉ Rational.(0:1/2^(n-1):1))) for n in 0:4)
-plot(title = "Funções da base de Faber–Schauder", titlefont = 10, xaxis = "\$t\$", ylims = (0.0, 1.0), legend = :topleft)
+plot(title = "Funções da base de Faber–Schauder", titlefont = 10, xaxis = "\$t\$", ylims = (0.0, 1.0), legend = :topleft, legendfontsize=6)
 for (n, sdn) in sort(s_d)
     for (d, sd) in sort(sdn)
         plot!(t, sd, label="\$s_{$d}(t)\$")
@@ -423,9 +423,9 @@ para um $r_k \geq 0$ qualquer.
 
 ### Escolha dos $r_k$
 
-Assim, precisamos encontrar $\{r_k\}_{k\in\mathbb{N}}$ tais que
+Assim, removendo o fator $\sqrt{2}$ que é independente de $k$, precisamos encontrar $\{r_k\}_{k\in\mathbb{N}}$ tais que
 $$
-\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^{k-1/2} e^{-\frac{r_k^2}{4}} < \infty.
+\sum_{k = 1}^\infty \frac{1}{2^{k/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^k e^{-\frac{r_k^2}{4}} < \infty.
 $$
 Observe que $r_k$ tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Uma escolha apropriada, por exemplo, é $r_k = \sqrt{k}$. Vejamos...
 
