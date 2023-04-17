@@ -169,11 +169,15 @@ Finalmente, como eles só envolvem $\{Z_d\}_{d\in D \setminus D_{n+1}}$, então 
 
 A sequência de processos $\{X_d^{(n)}\}_{d\in D_n}$ construída acima pode ser expressa de outra forma e que nos será útil na demonstração da convergência dessa sequência. Vejamos os dois primeiros termos $\{X_d^{(1)}\}_{d\in D_1}$ e $\{X_d^{(2)}\}_{d\in D_2}$:
 $$
-X_0^{(1)} = 0, \quad X_1^{(1)} = Z_1,
+X_0^{(1)} = Z_0 = 0, \quad X_1^{(1)} = Z_1,
 $$
 e
 $$
-X_0^{(2)} = 0, \quad X_{1/2}^{(2)} = \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \quad X_1^{(2)} = Z_1.
+\begin{cases}
+    X_0^{(2)} = Z_0 = 0, \\
+    X_{1/2}^{(2)} = \displaystyle \frac{X_0^{(1)} + X_1^{(1)}}{2} + \frac{1}{2}Z_{1/2} = \frac{1}{2}Z_0 + \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \\
+    X_1^{(2)} = Z_1.
+\end{cases}
 $$
 Começamos interpolando o primeiro termo de forma linear, para obter o processo contínuo
 $$
@@ -181,35 +185,47 @@ W_t^{(1)} = tZ_1, \qquad 0 \leq t \leq 1.
 $$
 Visando a generalização que queremos obter, escrevemos isso na forma
 $$
-W_t^{(1)} = s_1(t)Z_1, \qquad 0\leq t \leq 1,
+W_t^{(1)} = s_0 Z_0 + s_1(t)Z_1 = \sum_{d \in D_1} s_d(t)Z_d, \qquad 0\leq t \leq 1.
 $$
-onde
+onde $Z_0 = 0$ e
 $$
-s_1(t) = t, \qquad 0 \leq t \leq 1.
+s_0(t) = 1 - t, \quad s_1(t) = t, \qquad 0 \leq t \leq 1.
 $$
 
-Agora, observe que, além de $W_0^{(2)} = X_0^{(1)}$, $W_1^{(2)} = X_1^{(1)}$, podemos escrever o ponto médio como $W_{1/2}^{(2)} = Z_1/2 = s_1(1/2)Z_1$, que é exatamente o primeiro termo de $X_{1/2}^{(2)}$. Assim, podemos pensar na interpolação de $\{X_d^{(2)}\}_{d\in D_2}$ dada por
+Para $W_t^{(2)},$ observe que, além de
 $$
-W_t^{(2)} = W_t^{(1)} + s_{1/2}(t)Z_{1/2} = s_1(t)Z_1 + s_{1/2}(t)Z_{1/2},
+W_0^{(2)} = X_0^{(1)}, \qquad W_1^{(2)} = X_1^{(1)},
+$$
+podemos escrever o ponto médio como
+$$
+W_{1/2}^{(2)} = \frac{1}{2}Z_0 + \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2} = s_0(1/2)Z_0 + s_1(1/2)Z_1 + \frac{1}{2} Z_{1/2} = X_{1/2}^{(2)} + \frac{1}{2} Z_{1/2}.
+$$
+Assim, podemos escrever a interpolação de $\{X_d^{(2)}\}_{d\in D_2}$ na forma
+$$
+W_t^{(2)} = W_t^{(1)} + s_{1/2}(t)Z_{1/2} = s_0(t) Z_0 + s_1(t)Z_1 + s_{1/2}(t)Z_{1/2} = \sum_{d\in D_2} s_d(t) Z_d,
 $$
 onde $s_{1/2}(\cdot)$ é uma função linear por partes que se anula em $t = 0$ e $t = 1$ e vale $1/2$ em $t = 1/2$. Ou seja, $s_{1/2}(\cdot)$ é a função "cabana"
 $$
-s_{1/2}(t) = \min\{t, 1 - t\}, \qquad 0 \leq t \leq 1.
+s_{1/2}(t) = \min\{t, 1 - t\}, \qquad 0 \leq t \leq 1,
+$$
+que pode ser escrita, para $n=1$ e $d=1/2\in D_{n+1}\setminus D_n$, na forma
+$$
+s_d(t) = 2^{(n-1)/2}\min\{t - d + 1/2^n, d + 1/2^n - t\}, \qquad 0 \leq t \leq 1.
 $$
 
 Agora, vejamos os termo de $X_d^{(3)}$:
 $$
-\begin{align*}
-X_0^{(3)} & = 0, \\
-X_{1/4}^{(3)} & = \frac{1}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{1/4}, \\
-X_{1/2}^{(3)} & = \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \\
-X_{3/4}^{(3)} & = \frac{3}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{3/4}, \\
-X_1^{(3)} & = Z_1;
-\end{align*}
+\begin{cases}
+    X_0^{(3)} = 0, \\
+    X_{1/4}^{(3)} = \frac{1}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{1/4}, \\
+    X_{1/2}^{(3)} = \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \\
+    X_{3/4}^{(3)} = \frac{3}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{3/4}, \\
+    X_1^{(3)} = Z_1;
+\end{cases}
 $$
 Observe que esse processo pode ser visto como os valores, em $D_3$, do processo contínuo obtido por interpolação linear por partes dado por
 $$
-W_t^{(3)} = W_t^{(2)} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4} = s_1(t)Z_1 + s_{1/2}(t)Z_{1/2} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4},
+W_t^{(3)} = W_t^{(2)} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4} = s_0(t) Z_0 + s_1(t)Z_1 + s_{1/2}(t)Z_{1/2} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4},
 $$
 onde $s_{1/4}(\cdot)$ e $s_{3/4}(\cdot)$ são, também, funções do tipo cabana, com suporte em $[0, 1/2]$ e $[1/2, 1]$ e valor máximo $1/2^{3/2}$:
 $$
@@ -221,38 +237,30 @@ $$
 using Plots
 theme(:ggplot2)
 t = range(0.0, 1.0, length = 200)
-s_1 = copy(t) ## n = 1
-s_1_2 = 2^(1/2) * min.(t, 1 .- t) ## n  = 2
-s_1_4 = 2 * max.(0, min.(t, 1/2 .- t)) ## n = 3
-s_3_4 = 2 * max.(0, min.(t .- 1/2, 1 .- t)) ## n = 3
-s_1_8 = 2^(3/2) * max.(0, min.(t, 1/4 .- t)) ## n = 4
-s_3_8 = 2^(3/2) * max.(0, min.(t .- 1/4, 1/2 .- t)) ## n = 4
-s_5_8 = 2^(3/2) * max.(0, min.(t .- 1/2, 3/4 .- t)) ## n = 4
-s_7_8 = 2^(3/2) * max.(0, min.(t .- 3/4, 1 .- t)) ## n = 4
+s_d = Dict(n => Dict(d => 2^(max(0,(n-1)/2)) .* max.(0.0, min.(t .- d .+ 1/2^n, d .+ 1/2^n .- t)) for d in Rational.(0:1/2^(n):1) if (n == 0 || d ∉ Rational.(0:1/2^(n-1):1))) for n in 0:4)
 plot(title = "Funções da base de Faber–Schauder", titlefont = 10, xaxis = "\$t\$", ylims = (0.0, 1.0), legend = :topleft)
-plot!(t, s_1, label = "\$s_1(t)\$")
-plot!(t, s_1_2, label = "\$s_{1/2}(t)\$")
-plot!(t, s_1_4, label = "\$s_{1/4}(t)\$")
-plot!(t, s_3_4, label = "\$s_{3/4}(t)\$")
-plot!(t, s_1_8, label = "\$s_{1/8}(t)\$")
-plot!(t, s_3_8, label = "\$s_{3/8}(t)\$")
-plot!(t, s_5_8, label = "\$s_{5/8}(t)\$")
-plot!(t, s_7_8, label = "\$s_{7/8}(t)\$")
+for (n, sdn) in sort(s_d)
+    for (d, sd) in sort(sdn)
+        plot!(t, sd, label="\$s_{$d}(t)\$")
+    end
+end
 savefig(joinpath(@OUTPUT, "faberschauder.svg"))
 ```
 \fig{faberschauder}
 
+
 Mais geralmente, definimos, para $d \in D_{n+1} \setminus D_n$, $n \in \mathbb{N}$,
 $$
-s_d(t) = \max\{0, \min\{t - d - 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2} \times \begin{cases}
+s_d(t) = 2^{(n-1)/2} \max\{0, \min\{t - d + 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2} \times \begin{cases}
   0, & t \leq d - \frac{1}{2^n}, \\
   t - d + \frac{1}{2^n}, & d - \frac{1}{2^n} \leq t \leq d, \\
   d + \frac{1}{2^n} - t, & d \leq t \leq d + \frac{1}{2^n}, \\
   0, & t \geq d + \frac{1}{2^n}
 \end{cases}
 $$
+Note que essa fórmula não inclui $s_d(t)$ para $d\in D_1$. Para incluir esses pontos, podemos permitir $n=0$ e modificar o fator multiplicativo para $2^{\max\{0, n-1\}/2}.$
 
-Observe que o ponto máximo de $s_d(t)$, para $d\in D_{n+1}\setminus D_n,$ é $t=d,$ com 
+Observe, ainda, que o ponto máximo de $s_d(t)$, para $d\in D_{n+1}\setminus D_n,$ é $t=d,$ com 
 $$
   s_d(d) = 2^{(n-1)/2} \times \frac{1}{2^n} = \frac{1}{2^{(n+1)/2}}.
 $$
