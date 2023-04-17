@@ -301,7 +301,7 @@ Ou, então, que
 $$
 \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| = 0 \quad \textrm{quase sempre,}
 $$
-ou, ainda, que
+ou, mais explicitamente,
 $$
 \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0 \quad \textrm{para quase todo } \omega \in \mathbb{R}^D.
 $$
@@ -314,7 +314,7 @@ $$
 $$
 Ou seja,
 $$
-\left\{\omega; \;\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \; \forall m \geq n \geq N(\omega) \right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0\right\},
+\left\{\omega; \;\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \; \forall m \geq n \right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0\right\},
 $$
 Então basta mostrar que
 $$
@@ -363,7 +363,7 @@ $$
 $$
 para algum $N=N(\omega)$ e para uma série apropriada $r_k$. Se isso for possível, então, quase sempre, teremos
 $$
-\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k.
+\sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq \sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k.
 $$
 
 Assim, precisamos mostrar que existe uma sequência $\{r_k\}_{k\in\mathbb{N}}$ de números reais tais que o somatório ao lado direito acima seja finito e que a estimativa
@@ -419,59 +419,7 @@ Assim, precisamos encontrar $\{r_k\}_{k\in\mathbb{N}}$ tais que
 $$
 \sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^{k-1/2} e^{-\frac{r_k^2}{4}} < \infty.
 $$
-Observe que $r_k$ tem que crescer o suficiente para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Uma escolha apropriada, por exemplo, é $r_k = \sqrt{k}$. Vejamos...
-
-### Estimativa para a série
-
-Para cada $k$, tomamos um $r_k$ a ser escolhido apropriadamente. Como $D_{k+1}\setminus D_k$ tem $2^{k-1}$ pontos, então
-$$
-\mathbb{P}\left(\cap_{k\in\mathbb{N}}\cap_{d\in D_{k+1}\setminus D_k} \{|Z_d| < r_k\}\right) = 1 - \mathbb{P}\left(\cup_{k\in\mathbb{N}}\cup_{d\in D_{k+1}\setminus D_k} \{|Z_d| \geq r_k\}\right) \geq 1 - \sum_{k=1}^\infty\sum_{d\in D_{k+1}\setminus D_k} \mathbb{P}(|Z_d| \geq r_k) \geq 1 - \sum_{k=1}^{\infty}2^{k-1/2} e^{-\frac{r_k^2}{4}}.
-$$
-
-### previous stuff
-
-A partir disso, obtemos a seguinte estimativa para cada subprocesso $\{Z_d\}_{d\in D_n}$, considerando que $D_n$ tem $2^{n-1} + 1$ elementos:
-$$
-\mathbb{P}\left(\{\omega; \;\exists d \in D_n, \;|Z_d(\omega)| \geq c\sqrt{n}\}\right) = \mathbb{P}\left(\bigcup_{d\in D_n} \left\{|Z_d| \geq c\sqrt{n}\right\}\right) \leq \sum_{d\in D_n} \mathbb{P}(|Z_d| \geq c\sqrt{n}) \leq (2^{n-1}+1)\sqrt{2} e^{-\frac{c^2 n}{4}}.
-$$
-Considerando que $2^{n-1} + 1 \leq 2^n$, temos, para $c^2 > 4\ln(2)$, que
-$$
-\sum_{n\in \mathbb{N}} \mathbb{P}(\exists d \in D_n, \;|Z_d| \geq c\sqrt{n}) \leq \sqrt{2}\sum_{n\in \mathbb{N}}2^n e^{-\frac{c^2 n}{2}} = \sqrt{2}\sum_{n\in \mathbb{N}}e^{n\ln 2} e^{-\frac{c^2 n}{4}} = \sqrt{2}\sum_{n\in \mathbb{N}}e^{-\frac{\left(c^2 - 4\ln(2)\right)n}{4}}< \infty
-$$
-Com essa estimativa, segue, do Lema de Borel-Cantelli, que
-$$
-\mathbb{P}\left(\limsup_{n\rightarrow \infty} \left\{\exists d \in D_n, \;|Z_d| \geq c\sqrt{n}\right\}\right) = 0.
-$$
-Lembremos que o limsup de uma sequência de conjuntos $E_n$ é 
-$$
-\limsup_{n\rightarrow \infty} E_n = \bigcap_{n\in\mathbb{N}}\left(\bigcup_{j \geq n} E_n\right).
-$$
-No caso, temos $E_n = \{\omega\in \Omega; \;\exists d \in D_n, \;|Z_d(\omega)| \geq c\sqrt{n}\}$. Podemos escrever, também, que
-$$
-\mathbb{P}\left(\Omega \setminus \limsup_{n\rightarrow \infty} E_n\right) = 1.
-$$
-Dessa forma,
-$$
-1 = \mathbb{P}\left(\bigcup_{n\in \mathbb{N}} \left(\Omega \setminus \bigcup_{j \geq n} E_n\right)\right) = \mathbb{P}\left(\bigcup_{n\in \mathbb{N}} \left(\bigcap_{j \geq n} \Omega \setminus E_n\right)\right) = \mathbb{P}\left(\left\{\omega\in\Omega; \;\exists N(\omega)\in \mathbb{N}; |Z_d(\omega)| \leq 2c\sqrt{n}, \;\forall n\geq N(\omega), \;\forall d\in D_n \right\}\right)
-$$
-
-Em outras palavras, existe uma variável aleatória $N=N(\omega)$ com valores em $\mathbb{N}$ tal que
-$$
-\mathbb{P}(|Z_d| \leq c\sqrt{n}, \;\forall n \geq N, \;\forall d\in D_n) = 1.
-$$
-Ou, ainda,
-$$
-\max_{d\in D_n} |Z_d| \leq c\sqrt{n}, \;\forall n \geq N.
-$$
-Assim,
-$$
-A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq \sum_{k = n}^\infty \frac{c\sqrt{k+1}}{2^{(k+1)/2}}, \quad \forall n \geq N.
-$$
-Como a série é convergente, o rabo converge para zero, de modo que
-$$
-A_n \rightarrow 0,
-$$
-quase sempre, como desejado.
+Observe que $r_k$ tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Uma escolha apropriada, por exemplo, é $r_k = \sqrt{k}$. Vejamos...
 
 ### Concluindo a demonstração de convergência
 
