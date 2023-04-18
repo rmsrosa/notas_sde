@@ -140,8 +140,7 @@ Considere uma variável aleatória normal $X \sim \mathcal{N}(0, 1)$ e defina a 
 $$
 X_n = \frac{1}{n}X.
 $$
-
-Observe que $X_n \sim \mathcal{N}(0, 1/n^2)$.
+Observe que $X_n \sim \mathcal{N}(0, 1/n^2)$. Vamos mostrar que essa sequência converge para zero, cuja distribuição é a delta de Dirac $0 \sim \mathrm{Dirac}(0) = \mathcal{N}(0, 0)$, em vários sentidos.
 
 Os caminhos amostrais são
 $$
@@ -153,7 +152,7 @@ X_n(\omega) = \frac{\omega}{n} \rightarrow 0, \qquad n \rightarrow 0.
 $$
 Ou seja, $X_n$ converge para $0$ quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer $\varepsilon > 0$,
 $$
-\mathbb{P}(X_n > \varepsilon) = \mathbb{P}(X > n\varepsilon ) \rightarrow 0, \qquad n \rightarro 0,
+\mathbb{P}(|X_n| > \varepsilon) = \mathbb{P}(|X| > n\varepsilon ) \rightarrow 0, \qquad n \rightarrow 0,
 $$
 mostrando a convergência em probabilidade. Agora, observe que a função de distribuição acumulada da variável limite (igual a zero quase sempre) é
 $$
@@ -171,11 +170,11 @@ No ponto de descontinuidade $x = 0$, temos
 $$
 \mathbb{P}(X_n \leq 0) = \frac{1}{2},
 $$
-mas isso não atrapalha a convergência em distribuição.
+mas isso não atrapalha a convergência $X_n \rightarrow 0$ em distribuição.
 
 A convergência em média quadrática pode ser obtida diretamente da variância de cada termo da sequência:
 $$
-\mathbb{P}(|X_n|^2) = \mathbb{P}(|X_n - 0|^2) = \mathrm{Var}(X_n) = \frac{1}{n^2} \rightarrow 0, \qquad n \rightarrow \infty.
+\mathbb{P}(|X_n - 0|^2) = \mathrm{Var}(X_n) = \frac{1}{n^2} \rightarrow 0, \qquad n \rightarrow \infty.
 $$
 
 ### Sequências de normais independentes
