@@ -427,7 +427,7 @@ Assim, removendo o fator $\sqrt{2}$ que é independente de $k$, precisamos encon
 $$
 \sum_{k = 1}^\infty \frac{1}{2^{k/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^k e^{-\frac{r_k^2}{4}} < \infty.
 $$
-Observe que $r_k$ tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Uma escolha apropriada, por exemplo, é $r_k = \sqrt{k}$. Vejamos...
+Observe que $r_k$ tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Procurando um crescimento potencial $r_k = k^\alpha$, vemos que qualquer valor $\alpha>1/2$ é suficiente, já que é subexponencial, perdendo pro decrescimento exponencial $1/2^k$, e $r_k^2 \geq k$, de tal forma que $e^{-r_k^2} \leq e^{-k}$, que ganha de $2^k$. O que nos dá a taxa de decrescimento mais rápido dos coeficientes é $\alpha = 1/2$, i.e. $r_k = \sqrt{k}$.
 
 ### Concluindo a demonstração de convergência
 
