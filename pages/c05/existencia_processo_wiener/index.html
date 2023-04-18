@@ -628,7 +628,7 @@ A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} 
 \]
 <p>valha quase sempre, para alguma variável aleatória \(N=N(\omega)\) com valores nos números naturais. Isso é equivalente a mostrar que</p>
 \[
-\left\{ \exists d \in \in D_{k+1}\setminus D_k, \; |Z_d| > r_k \textrm{ infinitas vezes} \right\}.
+\left\{ \exists d \in D_{k+1}\setminus D_k, \; |Z_d| > r_k \textrm{ infinitas vezes} \right\}.
 \]
 <p>tem probabilidade nula. Ou seja, que</p>
 \[
@@ -669,7 +669,14 @@ A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} 
 \[
 \sum_{k = 1}^\infty \frac{1}{2^{k/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^k e^{-\frac{r_k^2}{4}} < \infty.
 \]
-<p>Observe que \(r_k\) tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Procurando um crescimento potencial \(r_k = k^\alpha\), vemos que qualquer valor \(\alpha>1/2\) é suficiente, já que é subexponencial, perdendo pro decrescimento exponencial \(1/2^k\), e \(r_k^2 \geq k\), de tal forma que \(e^{-r_k^2} \leq e^{-k}\), que ganha de \(2^k\). O que nos dá a taxa de decrescimento mais rápido dos coeficientes é \(\alpha = 1/2\), i.e. \(r_k = \sqrt{k}\).</p>
+<p>Observe que \(r_k\) tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Procurando um crescimento potencial \(r_k = k^\alpha\), vemos que qualquer valor \(\alpha>1/2\) é suficiente, já que é subexponencial, perdendo pro decrescimento exponencial \(1/2^k\), e \(r_k^2 \geq k^{2\alpha}\), de tal forma que \(e^{-r_k^2} \leq e^{-k^{2\alpha}}\), que ganha de \(2^k\). Também podemos escolher \(\alpha=1/2\) desde que multipiquemos a sequência por um fator apropriado. Essa escolha nos dá a taxa de decrescimento dos coeficientes a mais rápida possível. Observe que, escolhendo \(r_k = 2\sqrt{k}\), temos</p>
+\[
+\sum_{k=1}^\infty 2^k e^{-\frac{r_k^2}{4}} \leq \sum_{k=1}^\infty 2^k e^{-k} \leq \sum_{k=1}^\infty e^{k\ln 2} e^{-k} = \sum_{k=1}^\infty e^{- (1 - \ln 2)k} < \infty,
+\]
+<p>já que \(\ln 2 < 1.\) Por outro lado,</p>
+\[
+\sum_{k = 1}^\infty \frac{1}{2^{k/2}}r_k \leq \sum_{k = 1}^\infty \frac{1}{2^{k/2}}2\sqrt{k} < \infty.
+\]
 <h3 id="concluindo_a_demonstração_de_convergência"><a href="#concluindo_a_demonstração_de_convergência" class="header-anchor">Concluindo a demonstração de convergência</a></h3>
 <p>Recapitulando. Provamos que</p>
 \[
@@ -739,14 +746,14 @@ W_{t + \tau} - W_{t} \sim \mathcal{N}(0, \tau).
 \]
 <p>Isso completa a demonstração de que \(\{W_t\}_{t\in [0, 1]}\) é um processo de Wiener em \([0, 1]\).</p>
 <h2 id="extensão_para_a_semireta"><a href="#extensão_para_a_semireta" class="header-anchor">Extensão para a semireta</a></h2>
-<p>Construímos um processo \(\{W_t\}_{t\in [0, 1]}\) com todas as propriedades de um processo de Wiener, exceto que só está definido no intervalo \([0, 1]\). Podemos construir um processo de Wiener, em \([0, \infty)\), transladando e concatenando processos em \([0, 1]\).</p>
-<p>Sejam, então, \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos independentes em \([0, 1]\) com as propriedades de um processo de Wiener. &#40;Podem ser construídos, de forma que sejam independentes, a partir de processos \(\{Z_d\}_{d \in D^\mathbb{N}}\)&#41;.</p>
-<p>Definimos</p>
+<p>Construímos um processo \(\{W_t\}_{t\in [0, 1]}\) com todas as propriedades de um processo de Wiener, exceto que só está definido no intervalo \([0, 1]\). Podemos construir um processo de Wiener em \([0, \infty)\) simplesmente transladando e concatenando processos em \([0, 1]\).</p>
+<p>Sejam, então, \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos independentes com as propriedades de um processo de Wiener no intervalo \(0\leq t \leq 1.\) Podem ser construídos através de uma família \(\{Z_d^{(n)}\}_{d\in D, n\in \mathbb{N}}\) de processos independentes normais, com \(Z_d^{(n)} \sim \mathcal{N}(0, 1)\) e \(Z_0^{(n)} = 0 \sim \mathcal{N}(0, 0)\), com espaço amostral \(\tilde\Omega = \Omega^{\mathbb{N}} = \mathbb{R}^{D^{\mathbb{N}}}\).</p>
+<p>Definimos cada \(\{W_t^{(n)}\}_{0 \leq t \leq 1}\) a partir de \(\{Z_d^{(n)}\}_{d\in D}\) e, em seguida, concatenamo-los através da fórmula</p>
 \[
-W_t = W_{t - [t]}^{[t]} + \sum_{k = 0}^{[t]-1} W_1^k, \qquad \forall t \geq 0,
+W_t = \sum_{k = 1}^{[t]} W_1^k + W_{t - [t]}^{[t]+1}, \qquad \forall t \geq 0,
 \]
 <p>onde \([t] = \max\{n \leq t, n \in \mathbb{Z}\}\) é o maior inteiro menor do que \(t \geq 0\).</p>
-<p>Isso define um processo estocástico contínuo com todos as condições necessárias para ser um processo de Wiener.</p>
+<p>Isso define um processo estocástico contínuo com todos as condições necessárias para ser um processo de Wiener. A demonstração disso fica como exercício.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Faça os detalhes da demonstração por indução de que os processos contínuos definidos por</p>
@@ -757,7 +764,7 @@ W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\i
 \]
 <p>são interpolações dos processos discretos \(\{X_d^{(n)}\}_{d\in D_n}\), i.e. \(W_d^{(n)} = X_d^{(n)}\), para todo \(d\in D_n\) e todo \(n\in\mathbb{N}\).</p>
 <ol start="2">
-<li><p>Sejam \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos de Wiener, em \([0, 1]\), independentes. Faça os detalhes da demonstração de que \(W_t = W_{t - [t]}^{[t]} + \sum_{k = 0}^{[t]-1} W_1^k\) é um processo de Wiener em \([0, \infty)\).</p>
+<li><p>Sejam \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos de Wiener, em \([0, 1]\), independentes. Faça os detalhes da demonstração de que \(W_t = \sum_{k = 1}^{[t]} W_1^k + W_{t - [t]}^{[t]+1}\) é um processo de Wiener em \([0, \infty)\).</p>
 </li>
 <li><p>Na construção, definimos \(X_{d}^{n+1}\), para \(d \in D_{n+1}\setminus D_n\), pela fórmula \((X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)})/2 + Z_d/2^{(n + 1)/2}\), com os \(Z_d\)&#39;s sendo mutamente independentes. Essa construção não é arbitrária. Mostre que se \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(0 \leq s < t,\) então</p>
 </li>

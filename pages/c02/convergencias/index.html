@@ -446,7 +446,7 @@ X - \varepsilon < X_n < X + \varepsilon.
 \[
 X_n = \frac{1}{n}X.
 \]
-<p>Observe que \(X_n \sim \mathcal{N}(0, 1/n^2)\).</p>
+<p>Observe que \(X_n \sim \mathcal{N}(0, 1/n^2)\). Vamos mostrar que essa sequência converge para zero, cuja distribuição é a delta de Dirac \(0 \sim \mathrm{Dirac}(0) = \mathcal{N}(0, 0)\), em vários sentidos.</p>
 <p>Os caminhos amostrais são</p>
 \[
 t\mapsto X_n(\omega) = \frac{\omega}{n}.
@@ -457,7 +457,7 @@ X_n(\omega) = \frac{\omega}{n} \rightarrow 0, \qquad n \rightarrow 0.
 \]
 <p>Ou seja, \(X_n\) converge para \(0\) quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer \(\varepsilon > 0\),</p>
 \[
-\mathbb{P}(X_n > \varepsilon) = \mathbb{P}(X > n\varepsilon ) \rightarrow 0, \qquad n \rightarro 0,
+\mathbb{P}(|X_n| > \varepsilon) = \mathbb{P}(|X| > n\varepsilon ) \rightarrow 0, \qquad n \rightarrow 0,
 \]
 <p>mostrando a convergência em probabilidade. Agora, observe que a função de distribuição acumulada da variável limite &#40;igual a zero quase sempre&#41; é</p>
 \[
@@ -475,10 +475,10 @@ F(x) = \begin{cases} 0, & x < 0, \\
 \[
 \mathbb{P}(X_n \leq 0) = \frac{1}{2},
 \]
-<p>mas isso não atrapalha a convergência em distribuição.</p>
+<p>mas isso não atrapalha a convergência \(X_n \rightarrow 0\) em distribuição.</p>
 <p>A convergência em média quadrática pode ser obtida diretamente da variância de cada termo da sequência:</p>
 \[
-\mathbb{P}(|X_n|^2) = \mathbb{P}(|X_n - 0|^2) = \mathrm{Var}(X_n) = \frac{1}{n^2} \rightarrow 0, \qquad n \rightarrow \infty.
+\mathbb{P}(|X_n - 0|^2) = \mathrm{Var}(X_n) = \frac{1}{n^2} \rightarrow 0, \qquad n \rightarrow \infty.
 \]
 <h3 id="sequências_de_normais_independentes"><a href="#sequências_de_normais_independentes" class="header-anchor">Sequências de normais independentes</a></h3>
 <p>Podemos considerar sequências independentes definindo \(\Omega = \mathbb{R}^\mathbb{N} = \{\omega = (\omega_1, \omega_2, \ldots); \;\omega_n\in \mathbb{R}\}\) e definindo \(\mathbb{P}\) por</p>
