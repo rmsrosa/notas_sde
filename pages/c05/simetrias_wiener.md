@@ -14,15 +14,15 @@ Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W
 
 É imediato verificar que
 
-i) $V_0^a = W_0 = 0$;
+  (i) $V_0^a = W_0 = 0$;
 
-ii) quase sempre os caminhos amostrais $t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e
-
-iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes.
+  (ii) quase sempre os caminhos amostrais $t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e
+  
+  (iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes.
 
 Quando à lei de distribuição dos incrementos, temos
 
-iv) Para todo $\tau>0$, vale
+  (iv) Para todo $\tau>0$, vale
 $$
 V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \sim \frac{1}{a}\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 $$
@@ -41,22 +41,18 @@ $$
 \mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0.
 $$
 
-Seja $t > 0$ e escreva
+Podemos escrever
 $$
-\frac{W_t}{t} = \frac{V_1^{\sqrt{t}}}{\sqrt{t}},
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right),
 $$
-onde $V_t^a = W_{a^2 t}/a$ é um rescalonamento de um processo de Wiener, com $a > 0$, como feito anteriormente. Como vimos, este é, também, um processo de Wiener padrão, de modo que
+para todo $r > 0$ (inclusive $r=0,$ mas isso não é necessário). Como $W_t / \sqrt{t} \sim \mathcal{N}(0, 1)$ é uma normal independente de $t$ e $r\sqrt{t}\rightarrow \infty$ quando $t\rightarrow \infty$, então
 $$
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right),
-$$
-para todo $r > 0$ (na verdade isso vale também para $r = 0$, mas a seguir precisaremos de $r > 0$). Como $V_1^a \sim \mathcal{N}(0, 1)$, independente de $a$, temos
-$$
-\mathbb{P}\left( \frac{|V_1^{\sqrt{t}}|}{\sqrt{t}} \geq r \right) = \mathbb{P}\left( |V_1^{\sqrt{t}}| \geq r\sqrt{t} \right) \rightarrow 0, \qquad t \rightarrow \infty.
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right) \rightarrow 0, \qquad t \rightarrow \infty.
 $$
 
 Assim, para cada $\varepsilon > 0$, existe $T > 0$ tal que
 $$
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( |V_1^{\sqrt{t}}| \geq r\sqrt{t} \right) \leq \varepsilon, \quad \forall t \geq T.
+\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right) \leq \varepsilon, \quad \forall t \geq T.
 $$
 
 Tomando uma sequência $\{\varepsilon_n\}_{j\in \mathbb{N}}$ de números positivos com $\sum_n \varepsilon_n < \infty$, obtemos, uma sequência $t_n \rightarrow \infty$ tal que
@@ -88,7 +84,7 @@ Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$ e defina o processo 
 $$
 V_t = \begin{cases}
 0, & t = 0, \\
- tW_{1/t}, & t \in (0, \infty).
+ tW_{1/t}, & t > 0.
 \end{cases}
 $$
 Então $\{V_t\}_{t\geq 0}$ também é um processo de Wiener padrão em $[0, \infty)$. Vamos verificar isso.
@@ -109,7 +105,7 @@ Portanto, para quase todo $\omega$, vale $t W_{1/t}(\omega) \rightarrow 0$, quan
 
 Quanto à independência dos incrementos, se $0 < t_0 < t_1 < \ldots < t_n$, então $1/t_n < \ldots < 1/t_1 < t/t_0$ e vemos que os incrementos $V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}}$, $j = 1, \ldots, n$, também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.
 
-Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência seque da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.
+Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência segue da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.
 
 Vamos, então, considerar quatro instantes distintos $0 \leq t_1 < t_2 < t_3 < t_4$ e olhar para as covariâncias de dois incrementos disjuntos. Se $t_1 > 0$, temos
 $$
@@ -118,16 +114,21 @@ $$
 Distribuindo os termos e usando a propriedade $\mathrm{Cov}(W_t, W_s) = \min\{t, s\}$ de processos de Wiener, obtemos
 $$
 \begin{align*}
-\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = t_2t_4\min\left\{\frac{1}{t_2}, \frac{1}{t_4}\right\} - t_2t_3\min\left\{\frac{1}{t_2}, \frac{1}{t_3}\right\} - t_1t_4\min\left\{\frac{1}{t_1}, \frac{1}{t_4}\right\} + t_1t_3\min\left\{\frac{1}{t_1}, \frac{1}{t_3}\right\} \\
-& = t_2t_4\frac{1}{t_4} - t_2t_3\frac{1}{t_3} - t_1t_4\frac{1}{t_4} + t_1t_3\frac{1}{t_3} = t_2 - t_2 - t_1 + t_1 = 0.
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = t_2t_4\min\left\{\frac{1}{t_2}, \frac{1}{t_4}\right\} - t_2t_3\min\left\{\frac{1}{t_2}, \frac{1}{t_3}\right\} \\
+& \qquad - t_1t_4\min\left\{\frac{1}{t_1}, \frac{1}{t_4}\right\} + t_1t_3\min\left\{\frac{1}{t_1}, \frac{1}{t_3}\right\} \\
+& = t_2t_4\frac{1}{t_4} - t_2t_3\frac{1}{t_3} - t_1t_4\frac{1}{t_4} + t_1t_3\frac{1}{t_3} \\ 
+& = t_2 - t_2 - t_1 + t_1 = 0.
 \end{align*}
 $$
 
 Se $t_1 = 0$, então
 $$
 \begin{align*}
-\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2} - 0, t_4 W_{1/t_4} - t_3 W_{1/t_3}) = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4}) - \mathrm{Cov}(t_2 W_{1/t_2}, t_3 W_{1/t_3}) \\
-  & = t_2t_4\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) - t_2t_3\mathrm{Cov}(t_2 W_{1/t_2}, W_{1/t_3}) = \frac{t_2t_4}{t_4} - \frac{t_2t_3}{t_3} = t_2 - t_2 = 0.
+\mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2} - 0, t_4 W_{1/t_4} - t_3 W_{1/t_3}) \\
+  & = \mathrm{Cov}(t_2 W_{1/t_2}, t_4 W_{1/t_4}) - \mathrm{Cov}(t_2 W_{1/t_2}, t_3 W_{1/t_3}) \\
+  & = t_2t_4\mathrm{Cov}(W_{1/t_2}, W_{1/t_4}) - t_2t_3\mathrm{Cov}(t_2 W_{1/t_2}, W_{1/t_3}) \\
+  & = \frac{t_2t_4}{t_4} - \frac{t_2t_3}{t_3} \\
+  & = t_2 - t_2 = 0.
 \end{align*}
 $$
 
