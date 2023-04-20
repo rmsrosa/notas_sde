@@ -149,13 +149,16 @@
     <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.3. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -327,7 +330,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemann"><kbd>→</kbd> 6.1. Integrais de Riemann</a>
@@ -341,7 +344,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5.5. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
 <p>Uma propriedade fundamental dos processos de Wiener é que os seus caminhos são, quase sempre, de <em>variação ilimitada</em>. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes</em>.</p>
 <p>Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais de um processo de Wiener serem, quase certamente, de variação ilimitada.</p>
 <h2 id="funções_de_variação_limitada_ou_ilimitada"><a href="#funções_de_variação_limitada_ou_ilimitada" class="header-anchor">Funções de variação limitada ou ilimitada</a></h2>
@@ -351,16 +354,16 @@
 \]
 <p>para instantes de tempo \(a \leq t_0 < t_1 < \ldots < t_n \leq b\). Caso \(x\) seja continuamente diferenciável, isso pode ser estimado por</p>
 \[
-\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|\}(b-a), 
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta t_j \leq \max\{|g'|\}(b-a), 
 \]
-<p>onde \(t_{j-1} \leq \theta_j \leq t_j\) e \(\Delta_j t = t_j - t_{j-1}\). Observe que a estimativa à direita independe da malha de tempo, de modo que</p>
+<p>onde \(t_{j-1} \leq \theta_j \leq t_j\) e \(\Delta t_j = t_j - t_{j-1}\). Observe que a estimativa à direita independe da malha de tempo, de modo que</p>
 \[
 \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|\}(b-a),
 \]
 <p>onde o supremo é tomado em relação à todas as partições possíveis do intervalo \([a, b]\).</p>
 <p>Na verdade, podemos ser mais precisos em relação à distância percorrida. Sendo \(g\) continuamente diferenciável, a soma</p>
 \[
-\sum_{j=1}^n |g'(\theta_j)|\Delta_j t
+\sum_{j=1}^n |g'(\theta_j)|\Delta t_j
 \]
 <p>é, de fato, uma soma de Riemman, cujo limite é a integral</p>
 \[
@@ -370,7 +373,7 @@
 \[
 \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 \]
-<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não decrescentes e de variação limitada.</p>
+<p>Mas podemos ter \(g\) sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, \(g(t) = \chi_{[0,1]}(t)\) &#40;vale \(1\) no intervalo \([0, 1]\) e vale \(0\) fora do intervalo&#41; é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada de probabilidade são monótonas não decrescentes e de variação limitada.</p>
 <p>Essa quantidade é chamada de <strong>variação</strong> da função no intervalo \([a, b]\) e é denotada por \(V(g; a, b)\):</p>
 \[
 \mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
@@ -391,7 +394,7 @@
 <p>Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase sempre, de variação ilimitada.</p>
 <p>Queremos, para isso, estimar a variação</p>
 \[
-\mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\mathrm{V}(W_t; 0, T) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 \]
 <p>A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, \(0 = t_0 < t_1 < \ldots < t_n = T.\) Temos</p>
 \[
@@ -479,7 +482,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
 \[
 |W_s(\omega) - W_t(\omega)| < \varepsilon, \qquad \forall t, s\in [0, T), \;|t - s| \leq \delta.
 \]
-<p>No caso da malha escolhida, temos, para \(\varepsilon > 0\) e \(k \geq \ln (1/\delta)\), temos \(1/n = 1/2^k \leq \delta\) e, portanto,</p>
+<p>No caso da malha escolhida, temos, para \(\varepsilon > 0\) e \(k \geq \ln (1/\delta)\), que \(t_j - t_{j-1} = 1/n = 1/2^k \leq \delta\) e, portanto,</p>
 \[
 \max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \leq \delta.
 \]
@@ -497,12 +500,15 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
 \[
 \sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}| \geq \frac{\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2}{\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|} \rightarrow \infty, \qquad k \rightarrow \infty.
 \]
-<p>Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada.</p>
+<p>Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada, i.e.</p>
+\[
+    \mathbb{P}\left(\mathrm{V}(W_t; 0, T) = \infty\right) = 1.
+\]
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.4. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemann"><kbd>→</kbd> 6.1. Integrais de Riemann</a>
@@ -521,7 +527,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
         </div>
     
 
-    Last modified: April 18, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

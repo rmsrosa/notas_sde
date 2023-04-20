@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Propriedades de processos de Wiener</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_browniano">1.3. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_einstein">1.4. O modelo de Einstein para o movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_bachelier">1.6. O modelo de Bachelier para o mercado de opções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.7. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/simulacoes_intro">1.8. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades fundamentais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>6. Integração estocástica</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/tx_convergencia">9.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.2. Evolução no caso de equações aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.3. Kolmogorov backward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.4. Kolmogorov forward equation</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.5. Evolução no caso de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.6. Soluções estacionárias</li>
+    </div>
+    <div class="menu-level-2">
+    <li>10.7. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo SIR estocástico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c05/simetrias_wiener"><kbd>→</kbd> 5.4. Simetrias de processos de Wiener</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.3. Propriedades de processos de Wiener</a></h1>
+<h2 id="processo_gaussiano"><a href="#processo_gaussiano" class="header-anchor">Processo Gaussiano</a></h2>
+<p>Um processo de Wiener é um exemplo de processo Gaussiano. Para ver isso, dados \(t_1, \ldots, t_n \geq 0\), podemos escrever cada \(W_{t_1}, \ldots, W_{t_n}\) como combinação linear das normais independentes \(W_{t_1} - W_{t_0}\), \(W_{t_2} - W_{t_1}\), ..., \(W_{t_n} - W_{t_{n-1}}\), onde \(t_0 = 0\), i.e.</p>
+\[
+W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
+\]
+<p>Dessa forma, a distribuição conjunta de \(W_{t_1}, \ldots, W_{t_n}\) é dada por</p>
+\[
+\mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} - W_{t_0} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} + \cdots + W_{t_1} - W_{t_0} \leq x_n)
+\]
+<p>Isso pode ser reescrito na forma</p>
+\[
+\mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} \leq x_n - \cdots - x_1) = F(x_1, \ldots, x_n - \cdots - x_1),
+\]
+<p>onde \(F\) é a função de distribuição acumulada da normal multivariada associada às normais independentes \(W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}\). Portanto, \(\{W_t\}_{t\geq 0}\) é um processo Gaussiano.</p>
+<h2 id="esperança_e_variância"><a href="#esperança_e_variância" class="header-anchor">Esperança e variância</a></h2>
+<p>Como \(W_0 = 0\) e \(W_t - W_0 \sim \mathcal{N}(0, t)\), então</p>
+\[
+\mathbb{E}[W_t] = \mathbb{E}[W_t - X_0] = 0
+\]
+<p>e</p>
+\[
+\mathrm{Var}(W_t) = \mathrm{Var}(W_t - W_0) = t.
+\]
+<h2 id="covariância"><a href="#covariância" class="header-anchor">Covariância</a></h2>
+<p>Para quaisquer \(t \geq s \geq 0\), como os <em>incrementos</em> são independentes e, portanto, tem correlação nula, segue que</p>
+\[
+\begin{align*}
+\mathrm{Cov}(W_t, W_s) & = \mathrm{Cov}(W_s + W_t - W_s, W_s) = \mathrm{Cov}(W_s, W_s) + \mathrm{Cov}(W_t - W_s, W_s) \\ & = \mathrm{Cov}(W_s - W_0, W_s - W_0) + \mathrm{Cov}(W_t - W_s, W_s - W_0) = \mathrm{Var}(W_s - W_0) = s, \quad \forall t \geq s \geq 0.
+\end{align*}
+\]
+<p>Observe que, se \(t = s > 0\), então o segundo termo se anula pois \(W_t - W_s = 0\). Já se \(t \geq s = 0\), então todos os termos se anulam, já que \(W_s - W_0 = 0\).</p>
+<p>Por simetria, como \(\mathrm{Cov}(W_t, W_s) = \mathrm{Cov}(W_s, W_t)\), então, se, por outro lado, \(s \geq t \geq 0\), obtemos</p>
+\[
+\mathrm{Cov}(W_t, W_s) = t, \qquad \forall s \geq t \geq 0.
+\]
+<p>De qualquer forma, podemos escrever, para \(t, s \geq 0\) quaisquer,</p>
+\[
+\mathrm{Cov}(W_t, W_s) = \min\{t, s\}.
+\]
+<h2 id="não_independência_de_incrementos_em_intervalos_que_se_interceptam"><a href="#não_independência_de_incrementos_em_intervalos_que_se_interceptam" class="header-anchor">Não independência de incrementos em intervalos que se interceptam</a></h2>
+<p>Por definição, dois incrementos \(W_{t_3} - W_{t_2}\) e \(W_{t_1} - W_{t_0}\) são independentes quando \(t_3 > t_2 = t_1 > t_0\). Isso se estende ao caso em que \(t_2 > t_1\), pois basta acrescentar \(W_{t_2} - W_{t_1}\) que teremos três incrementos independentes \(W_{t_3} - W_{t_2}\), \(W_{t_2} - W_{t_1}\) e \(W_{t_1} - W_{t_0}\), e quaisquer dois deles também são independentes.</p>
+<p>Contudo, os incrementos \(W_{t_3} - W_{t_1}\) e \(W_{t_2} - W_{t_0}\) não são independentes quando \(t_1 \leq t_2 < t_3 \leq t_4,\) porque os intervalos \([t_0, t_2]\) e \([t_1, t_3]\) tem interseção não trivial. De fato, nesse caso, temos</p>
+\[
+\begin{align*}
+\mathbb{E}((W_{t_3} - W_{t_1})(W_{t_2} - W_{t_0})) & = \mathbb{E}(W_{t_3}W_{t_2} - W_{t_3}W_{t_0} - W_{t_1}W_{t_2} + W_{t_1}W_{t_0}) \\
+& = \min\{t_3, t_2\} - \min\{t_3, t_0\} - \min\{t_1, t_2\} + \min\{t_1, t_0\} \\
+& = t_2 - t_0 - t_1 + t_0 = t_2 - t_1 > 0,
+\end{align*}
+\]
+<p>que é exatamente o tamanho do intervalo de tempo em que os incrementos coincidem.</p>
+<p>Novamente, vemos que, se \(t_1 = t_2\), então essa correlação se anula.</p>
+<h2 id="não_estacionário"><a href="#não_estacionário" class="header-anchor">Não estacionário</a></h2>
+<p>Um processo de Wiener não é estacionário, pois, em particular, os processos \(W_t\) não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de \(\mathbb{E}[W_t] = 0\) ser constante, temos, para \(t, s\geq 0\) e \(\tau > 0\), que</p>
+\[
+\begin{align*}
+\mathbb{E}[W_{t + \tau}W_{s + \tau}] & = \mathbb{E}[(W_{t + \tau} - \mathbb{E}[W_{t + \tau}])(W_{s + \tau} - \mathbb{E}[W_{s + \tau}])] \\
+& = \mathrm{Cov}(W_{t + \tau}, W_{s + \tau}) = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
+\end{align*}
+\]
+<p>Ou seja, \(\mathbb{E}[W_{t + \tau}W_{s + \tau}]\) depende de \(\tau\).</p>
+<h2 id="condição_para_processo_gaussiano_ser_wiener"><a href="#condição_para_processo_gaussiano_ser_wiener" class="header-anchor">Condição para processo Gaussiano ser Wiener</a></h2>
+<p>Vamos concluir afirmando que um processo Gaussiano \(\{W_t\}_{t\geq 0}\) com caminhos contínuous quase certamente e satisfazendo \(\mathbb{E}[W_t] = 0\) e \(\mathbb{E}[W_t W_s] = \min\{t, s\}\), para todo \(t, s \geq 0\), é um processo de Wiener.</p>
+<p>De fato, temos, por definição, \(W_0\) normal com</p>
+\[
+\mathbb{E}[W_0] = 0, \qquad \mathbb{E}[W_0^2] = 0,
+\]
+<p>de modo que</p>
+\[
+    W_0 = 0.
+\]
+<p>Para \(t, \Delta t \geq 0,\), temos o incremento \(W_{t+\Delta t} - W_t\) como sendo uma normal com esperança e variância dadas por</p>
+\[
+    \mathbb{E}[W_{t+\Delta t} - W_t] = \mathbb{E}[W_{t+\Delta t}] - \mathbb{E}[W_t] = 0 - 0 = 0
+\]
+<p>e </p>
+\[
+    \mathbb{E}[(W_{t+\Delta t} - W_t)^2] = \mathbb{E}[W_{t+\Delta t}^2] - 2\mathbb{E}[W_{t+\Delta t}W_2] + \mathbb{E}[W_t^2] = t + \Delta t - 2t + t = \Delta t,
+\]
+<p>portanto</p>
+\[
+    W_{t+\Delta t} - W_t \sim \mathcal{N}(0, \Delta t).
+\]
+<p>Por hipótese, os caminhos são quase certamente contínuos. Por fim, para a independência dos incrementos, como os incrementos são normais, basta mostrar a independência dois a dois. Assim, temos, para \(0 \leq t_0 \leq t_1 \leq t_2 \leq t_3\),</p>
+\[
+\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) & = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_3}W_{t_0} - W_{t_2}W_{t_1} + W_{t_2}W_{t_0}) \\
+& = \min\{t_3, t_1\} - \min\{t_3, t_0\} - \min\{t_2, t_1\} + \min\{t_2, t_0\} \\
+& = t_1 - t_0 - t_1 + t_0 = 0.
+\end{align*}
+\]
+<p>Como as esperanças também são nulas, isso implica na covariância ser nula e, portanto, os incrementos são independentes.</p>
+<h2 id="derivada_de_um_processo_de_wiener_como_ruído_branco"><a href="#derivada_de_um_processo_de_wiener_como_ruído_branco" class="header-anchor">&quot;Derivada&quot; de um processo de Wiener como ruído branco</a></h2>
+<p>Seguimos, aqui, a derivação feita no Capítulo 3.8 de Higham &amp; Kloeden &#40;2021&#41;. Lembremos que um processo estacionário \(\{X_t\}_t\) é um ruído branco quando a sua função de covariância \(c(\tau) = \mathrm{Cov}(X_{t+\tau}X_t)\) é uma distribuição da forma</p>
+\[
+c(\tau) = \sigma_0^2\delta_0,
+\]
+<p>para alguma \(\sigma_0 > 0\) e onde \(\delta_0\) é a delta de Dirac. Assim, o seu espectro \(\hat c(\varpi)\) é, de fato, constante &#40;usamos \(\varpi\), aqui, para denotar a frequência, já que \(\omega\) é usado como elemento do espaço amostral&#41;:</p>
+\[
+\hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\varpi^2, \quad \forall \varpi \in \mathbb{R}.
+\]
+<p>Vamos considerar as diferenças finitas de um processo de Wiener \(\{W_t\}_{t\geq 0}\):</p>
+\[
+D_h^+(t) = \frac{W(t+h) - W(t)}{h}.
+\]
+<p>Defina</p>
+\[
+c_h(t, s) = \mathbb{E}\left[ D_h^+(t)D_h^+(s)\right] = \mathbb{E}\left[ \left(\frac{W(t+h) - W(t)}{h} \right) \left(\frac{W(s+h) - W(s)}{h}\right)\right].
+\]
+<p>Expandindo, temos</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
+\]
+<p>Usando a expressão para a covariância de um processo de Wiener, obtemos</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
+\]
+<p>Observe que, se \(t \leq s - h\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
+\]
+<p>Se \(s - h \leq t \leq s\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
+\]
+<p>que é linearmente crescente, de \(0\) a \(1/h\). Se \(s \leq t \leq s + h\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
+\]
+<p>que é linearmente decrescente, de \(1/h\) a \(0\). Por último, se \(t \geq s + h\), então</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
+\]
+<p>Assim,</p>
+\[
+c_h(t, s) = \frac{1}{h^2}\begin{cases}
+0, & t \leq s - h, \\
+t + h - s, & s - h \leq t \leq s, \\
+h + s - h, & s \leq t \leq s + h, \\
+0, & t \geq s + h.
+\end{cases}
+\]
+
+<img src="/notas_sde/assets/pages/c05/propriedades_wiener/code/output/diffwiener_hatfunction.svg" alt="">
+<p>Observe, ainda, que</p>
+\[
+\int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
+\]
+<p>Ou seja, no limite, temos, de fato, uma delta de Dirac:</p>
+\[
+c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
+\]
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c05/simetrias_wiener"><kbd>→</kbd> 5.4. Simetrias de processos de Wiener</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>

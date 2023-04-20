@@ -1,1 +1,0 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c04/tipos_processos/code/output/diffwiener_hatfunction.svg"
