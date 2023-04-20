@@ -189,3 +189,13 @@ Ou seja, no limite, temos, de fato, uma delta de Dirac:
 $$
 c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
 $$
+
+Uma outra maneira de ver isso é através da representação de Paley-Wiener de um processo de Wiener, dada por
+$$
+    W_t = \frac{t}{\sqrt{2\pi}} Z_0 + \frac{2}{\sqrt{2\pi}}\sum_{n=1}^\infty \frac{\sin(\frac{1}{2}nt)}{n}Z_n, \qquad 0 \leq t \leq 2\pi.
+$$
+Formalmente, derivando a série termo a termo, temos que a derivada temporal $\dot W_t$ do processo se escreve como
+$$
+    \dot W_t = \frac{1}{\sqrt{2\pi}} Z_0 + \frac{1}{\sqrt{2\pi}}\sum_{n=1}^\infty \sin(\frac{1}{2}nt)Z_n, \qquad 0 \leq t \leq 2\pi,
+$$
+de modo que os coeficientes de Fourier são constantes. É claro que a série acima não converge em um sentido clássico. Mas serve como conexão com a ideia da derivada ser um ruído branco. De qualquer forma, um sentido mais preciso pode ser dado em um espaço apropriado de distribuições.
