@@ -234,7 +234,7 @@ W_0 = 0,
 $$
 o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**. Dado um processo de Wiener padrão $\{W_t\}_{t\geq 0}$, o processo $\tilde W_t = x_0 + W_t$ é um processo de Wiener com $W_0 = x_0$.
 
-Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. O processo de Wiener é um dos temas centrais em equações diferenciais estocásticos. O estudaremos em detalhes em capítulos subsequentes. Em particular, veremos que o processo de Wiener é um exemplo de processo Gaussiano. Reciprocamente, se pode mostrar que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener.
+Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. O processo de Wiener é um dos temas centrais em equações diferenciais estocásticos. O estudaremos em detalhes em capítulos subsequentes. Em particular, veremos que o processo de Wiener é um exemplo de processo Gaussiano. Reciprocamente, se pode mostrar que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com caminhos contínuous quase certamente e satisfazendo $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener.
 
 ## Processos de Lévy
 
