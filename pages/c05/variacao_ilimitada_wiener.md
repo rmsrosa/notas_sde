@@ -14,9 +14,9 @@ $$
 $$
 para instantes de tempo $a \leq t_0 < t_1 < \ldots < t_n \leq b$. Caso $x$ seja continuamente diferenciável, isso pode ser estimado por
 $$
-\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta_j t \leq \max\{|g'|\}(b-a), 
+\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \sum_{j=1}^n |g'(\theta_j)|\Delta t_j \leq \max\{|g'|\}(b-a), 
 $$
-onde $t_{j-1} \leq \theta_j \leq t_j$ e $\Delta_j t = t_j - t_{j-1}$. Observe que a estimativa à direita independe da malha de tempo, de modo que
+onde $t_{j-1} \leq \theta_j \leq t_j$ e $\Delta t_j = t_j - t_{j-1}$. Observe que a estimativa à direita independe da malha de tempo, de modo que
 $$
 \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq \max_{[a, b]}\{|g'|\}(b-a),
 $$
@@ -24,7 +24,7 @@ onde o supremo é tomado em relação à todas as partições possíveis do inte
 
 Na verdade, podemos ser mais precisos em relação à distância percorrida. Sendo $g$ continuamente diferenciável, a soma
 $$
-\sum_{j=1}^n |g'(\theta_j)|\Delta_j t
+\sum_{j=1}^n |g'(\theta_j)|\Delta t_j
 $$
 é, de fato, uma soma de Riemman, cujo limite é a integral
 $$
@@ -36,7 +36,7 @@ $$
 \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})| \leq L(b-a).
 $$
 
-Mas podemos ter $g$ sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, $g(t) = \chi_{[0,1]}(t)$ (vale $1$ no intervalo $[0, 1]$ e vale $0$ fora do intervalo) é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada são monótonas não decrescentes e de variação limitada.
+Mas podemos ter $g$ sem ser Lipschitz contínua e, ainda assim, essa quantidade ser limitada. Mesmo certas funções descontínuas são de variação limitada. Por exemplo, $g(t) = \chi_{[0,1]}(t)$ (vale $1$ no intervalo $[0, 1]$ e vale $0$ fora do intervalo) é de variação limitada. Em particular, qualquer função monótona limitada é de variação limitada. Funções de distribuição acumulada de probabilidade são monótonas não decrescentes e de variação limitada.
 
 Essa quantidade é chamada de **variação** da função no intervalo $[a, b]$ e é denotada por $V(g; a, b)$:
 $$
@@ -167,7 +167,7 @@ $$
 |W_s(\omega) - W_t(\omega)| < \varepsilon, \qquad \forall t, s\in [0, T), \;|t - s| \leq \delta.
 $$
 
-No caso da malha escolhida, temos, para $\varepsilon > 0$ e $k \geq \ln (1/\delta)$, temos $1/n = 1/2^k \leq \delta$ e, portanto,
+No caso da malha escolhida, temos, para $\varepsilon > 0$ e $k \geq \ln (1/\delta)$, que $t_j - t_{j-1} = 1/n = 1/2^k \leq \delta$ e, portanto,
 $$
 \max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}| \leq \delta.
 $$
