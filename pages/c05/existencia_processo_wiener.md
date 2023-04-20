@@ -2,7 +2,13 @@
 
 # {{ get_title }}
 
-O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. A demonstração de Wiener é baseada em uma expansão em série de senos e cossenos a partir da lei de distribuição dos coeficientes de Fourier do processo.
+O tipo de processo conhecido atualmente como processo de Wiener foi introduzido, como modelo para o movimento Browniano, por Norbert Wiener, em 1923, junto com a demonstração de existência de tal processo. A demonstração de Wiener é baseada em uma expansão senoidal a partir da lei de distribuição dos coeficientes de Fourier do processo. Essa expansão é feita no intervalo $[0, 2\pi]$ e toma a forma
+$$
+    W_t = \frac{t}{\sqrt{2\pi}} Z_0 + \frac{2}{\sqrt{2\pi}}\sum_{n=1}^\infty \frac{\sin(\frac{1}{2}nt)}{n}Z_n, \qquad 0 \leq t \leq 2\pi,
+$$
+onde $\{Z_n\}_{n\in\mathbb{N}}$ são normais $\mathcal{N}(0, 1)$ independentes e identicamente distribuídas. É possível mostrar que essa série converge para um processo de Wiener.
+
+Da mesma forma que séries de Fourier de funções determinísticas, expansões em séries senoidas podem ser feitas para outros processos estocásticos, a partir dos trabalhos seguintes de Wiener, em conjunto com Zygmund e Paley e levam, atualmente, o nome de representação de Paley-Wiener.
 
 Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013). A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
