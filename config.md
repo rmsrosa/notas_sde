@@ -73,6 +73,7 @@ menu = [
     "Processos de Wiener" => [
         "pages/c05/definicao_processo_wiener"
         "pages/c05/existencia_processo_wiener"
+        "pages/c05/propriedades_wiener"
         "pages/c05/simetrias_wiener"
         "pages/c05/naodiferenciabilidade_wiener"
         "pages/c05/variacao_ilimitada_wiener"

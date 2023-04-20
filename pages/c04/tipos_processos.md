@@ -27,7 +27,7 @@ $$
 
 Mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o instante $t$ em que cada incremento é dado.
 
-Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o de processo de Wiener, que veremos em breve.
+Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o de processo de Wiener, que veremos mais pra frente.
 
 Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes, com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
@@ -160,7 +160,7 @@ Um **processo Gaussiano** é um processo contínuo $\{X_t\}_{t\in I}$, em um int
 
 Um exemplo é dado pela Gaussiana senoidal $X_t = \cos(at)Y_1 + \sin(at)Y_2$, onde $a > 0$ e $Y_i = \mathcal{N}(\mu_i, \sigma_i^2)$ são normais independentes, $i = 1, 2$.
 
-Processos de Wiener também são processos Gaussianos, como veremos a seguir.
+Processos de Wiener também são processos Gaussianos.
 
 ## Processos e cadeias de Markov
 
@@ -216,8 +216,8 @@ Um processo Martingale não depende de valores anteriores. Mas ele não é neces
 
 ## Processos de Wiener
 
-Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x\_0\in \mathbb{R}$,
-1. $W_0 = x\_0$;
+Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x_0\in \mathbb{R}$,
+1. $W_0 = x_0$;
 2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, onde $j = 1, \ldots, J$, $J\in\mathbb{N}$, temos que as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
 3. Para qualquer $\tau > 0$, os incrementos $W_{t + \tau} - W_t$ são identicamente distribuídos, com distribuição normal com média zero e desvio padrão $\tau$, i.e.
 $$
@@ -234,61 +234,7 @@ W_0 = 0,
 $$
 o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**. Dado um processo de Wiener padrão $\{W_t\}_{t\geq 0}$, o processo $\tilde W_t = x_0 + W_t$ é um processo de Wiener com $W_0 = x_0$.
 
-Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. Veremos esse resultado de existência posteriormente.
-
-Um processo de Wiener é um exemplo de processo Gaussiano. Para ver isso, dados $t_1, \ldots, t_n \geq 0$, podemos escrever cada $W_{t_1}, \ldots, W_{t_n}$ como combinação linear das normais independentes $W_{t_1} - W_{t_0}$, $W_{t_2} - W_{t_1}$, ..., $W_{t_n} - W_{t_{n-1}}$, onde $t_0 = 0$, i.e.
-$$
-W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
-$$
-Dessa forma, a distribuição conjunta de $W_{t_1}, \ldots, W_{t_n}$ é dada por
-$$
-\mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} - W_{t_0} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} + \cdots + W_{t_1} - W_{t_0} \leq x_n)
-$$
-Isso pode ser reescrito na forma
-$$
-\mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} \leq x_n - \cdots - x_1) = F(x_1, \ldots, x_n - \cdots - x_1),
-$$
-onde $F$ é a função de distribuição acumulada da normal multivariada associada às normais independentes $W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}$. Portanto, $\{W_t\}_{t\geq 0}$ é um processo Gaussiano.
-
-Note, ainda, que, como $W_0 = 0$ e $W_t - W_0 \sim \mathcal{N}(0, t)$, então
-$$
-\mathbb{E}[W_t] = \mathbb{E}[W_t - X_0] = 0
-$$
-e
-$$
-\mathrm{Var}(W_t) = \mathrm{Var}(W_t - W_0) = t.
-$$
-Além disso, para quaisquer $t \geq s \geq 0$, como os incrementos são independentes e, portanto, tem correlação nula,
-$$
-\begin{align*}
-\mathrm{Cov}(W_t, W_s) & = \mathrm{Cov}(W_s + W_t - W_s, W_s) = \mathrm{Cov}(W_s, W_s) + \mathrm{Cov}(W_t - W_s, W_s) \\ & = \mathrm{Cov}(W_s - W_0, W_s - W_0) + \mathrm{Cov}(W_t - W_s, W_s - W_0) = \mathrm{Var}(W_s - W_0) = s.
-\end{align*}
-$$
-Observe que, se $t = s > 0$, então o segundo termo se anula pois $W_t - W_s = 0$. Já se $t \geq s = 0$, então todos os termos se anulam, já que $W_s - W_0 = 0$. De qualquer forma, podemos escrever, para $t, s \geq 0$ quaisquer,
-$$
-\mathrm{Cov}(W_t, W_s) = \min\{t, s\}.
-$$
-
-Observe que, por definição, dois incrementos $W_{t_3} - W_{t_2}$ e $W_{t_1} - W_{t_0}$ são independentes quando $t_3 > t_2 = t_1 > t_0$. Isso se estende ao caso em que $t_2 > t_1$, pois basta acrescentar $W_{t_2} - W_{t_1}$ que teremos três incrementos independentes $W_{t_3} - W_{t_2}$, $W_{t_2} - W_{t_1}$ e $W_{t_1} - W_{t_0}$, e quaisquer dois deles também são independentes. Mas os incrementos $W_{t_3} - W_{t_2}$ e $W_{t_1} - W_{t_0}$ não são independentes quando $t_0 < t_2 < t_1 < t_3$. De fato, nesse caso, temos
-$$
-\begin{align*}
-\mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) & = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_2}W_{t_1} - W_{t_3}W_{t_0} + W_{t_0}W_{t_2}) \\
-& = \min\{t_3, t_1\} - \min\{t_2, t_1\} - \min\{t_3, t_0\} + \min\{t_0, t_2\} \\
-& = t_1 - t_2 + t_0 - t_0 = t_1 - t_2 > 0.
-\end{align*}
-$$
-Novamente, vemos que, se $t_1 = t_2$, então essa correlação se anula.
-
-Um processo de Wiener não é estacionário, pois, em particular, os processos $W_t$ não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de $\mathbb{E}[W_t] = 0$ ser constante, temos, para $t, s\geq 0$ e $\tau > 0$, que
-$$
-\begin{align*}
-\mathbb{E}[W_{t + \tau}W_{s + \tau}] & = \mathbb{E}[(W_{t + \tau} - \mathbb{E}[W_{t + \tau}])(W_{s + \tau} - \mathbb{E}[W_{s + \tau}])] \\
-& = \mathrm{Cov}(W_{t + \tau}, W_{s + \tau}) = \min\{t + \tau, s + \tau\} = \min\{t, s\} + \tau,
-\end{align*}
-$$
-Ou seja, $\mathbb{E}[W_{t + \tau}W_{s + \tau}]$ depende de $\tau$.
-
-Vamos concluir afirmando que um processo Gaussiano $\{W_t\}_{t\geq 0}$ com $\mathbb{E}[W_t] = 0$ e $\mathbb{E}[W_t W_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener. A demonstração, no entanto, não é tão imediata e não a faremos aqui.
+Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. O processo de Wiener é um dos temas centrais em equações diferenciais estocásticos. O estudaremos em detalhes em capítulos subsequentes. Em particular, veremos que o processo de Wiener é um exemplo de processo Gaussiano. Reciprocamente, se pode mostrar que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener.
 
 ## Processos de Lévy
 
@@ -306,7 +252,7 @@ Processos de Lévy podem ser caracterizados através de uma representação cham
 
 ## Ruído branco
 
-O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que é obtida pela mistura uniforme de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações, ou por suas covariâncias, como faremos a seguir. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas covariâncias são dadas por
+O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que pode ser obtida pela mistura uniforme de fontes lumiosas de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações, ou por suas covariâncias, como faremos a seguir. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas covariâncias são dadas por
 $$
 \mathrm{Cov}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
 $$
@@ -345,80 +291,12 @@ c(\tau) = \sigma_0^2\delta_0,
 $$
 para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, como de costume nesse contexto, ao invés de denotar um elemento do espaço amostral):
 $$
-\hat c(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
+\hat c(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
 $$
 
 Algumas definições pedem, ainda, que os eventos, em instantes diferentes, sejam independentes entre si.
 
-Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de que a "derivada" de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte. Seguimos, aqui, a derivação feita no Capítulo 3.8 de Higham & Kloeden (2021).
-
-Vamos considerar as diferenças finitas de um processo de Wiener $\{W_t\}_{t\geq 0}$:
-$$
-D_h^+(t) = \frac{W(t+h) - W(t)}{h}.
-$$
-Defina
-$$
-c_h(t, s) = \mathbb{E}\left[ D_h^+(t)D_h^+(s)\right] = \mathbb{E}\left[ \left(\frac{W(t+h) - W(t)}{h} \right) \left(\frac{W(s+h) - W(s)}{h}\right)\right].
-$$
-Expandindo, temos
-$$
-c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
-$$
-Usando a expressão para a covariância de um processo de Wiener, obtemos
-$$
-c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
-$$
-Observe que, se $t \leq s - h$, então
-$$
-c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
-$$
-Se $s - h \leq t \leq s$, então
-$$
-c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
-$$
-que é linearmente crescente, de $0$ a $1/h$. Se $s \leq t \leq s + h$, então
-$$
-c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
-$$
-que é linearmente decrescente, de $1/h$ a $0$. Por último, se $t \geq s + h$, então
-$$
-c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
-$$
-
-Assim,
-$$
-c_h(t, s) = \frac{1}{h^2}\begin{cases}
-0, & t \leq s - h, \\
-t + h - s, & s - h \leq t \leq s, \\
-h + s - h, & s \leq t \leq s + h, \\
-0, & t \geq s + h.
-\end{cases}
-$$
-
-```julia:diffwiener_hatfunction
-#hideall
-using Plots
-theme(:ggplot2)
-t0 = 0.0
-t1 = 4.0
-s = 2.0
-h = 0.5
-tt = range(t0, t1, length = 200)
-dh(t, s, h) = (min(t+h, s+h) - min(t, s+h) - min(t+h, s) + min(t,s))/h^2
-
-plot(tt, t -> dh(t, s, h), xaxis = "tempo", yaxis = "valor", title = "Covariância Dₕ⁺(t, s) das diferenças finitas de um processo de Wiener\ncom s = $s e h = $h", titlefont = 8, label = false)
-savefig(joinpath(@OUTPUT, "diffwiener_hatfunction.svg"))
-```
-\fig{diffwiener_hatfunction}
-
-Observe, ainda, que
-$$
-\int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
-$$
-Ou seja, no limite, temos, de fato, uma delta de Dirac:
-$$
-c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
-$$
+Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de que a "derivada" de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte.
 
 ## Exercícios
 
