@@ -66,7 +66,7 @@ Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é
 
 Queremos, para isso, estimar a variação
 $$
-\mathrm{V}(W_t; a, b) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
+\mathrm{V}(W_t; 0, T) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
 A ideia é considerar uma estimativa por baixo para mostrar que essa variação é ilimitada. Sejam, então, $0 = t_0 < t_1 < \ldots < t_n = T.$ Temos
@@ -189,4 +189,7 @@ $$
 \sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}| \geq \frac{\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2}{\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|} \rightarrow \infty, \qquad k \rightarrow \infty.
 $$
 
-Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada.
+Isso implica, em particular, que, para quase todo caminho amostral, a variação do caminho é ilimitada, i.e.
+$$
+    \mathbb{P}\left(\mathrm{V}(W_t; 0, T) = \infty\right) = 1.
+$$
