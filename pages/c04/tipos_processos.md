@@ -1,4 +1,4 @@
-@def title = "Tipos de processos"
+@def title = "Classes de processos"
 
 # {{ get_title }}
 
