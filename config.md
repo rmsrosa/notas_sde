@@ -69,6 +69,8 @@ menu = [
         "pages/c04/tipos_processos"
         "pages/c04/filtracao"
         "pages/c04/cadeias_markov"
+        "pages/c04/existencia_processo_wiener"
+        "pages/c04/continuity_kolmogorov"
     ]
     "Processos de Wiener" => [
         "pages/c05/definicao_processo_wiener"
