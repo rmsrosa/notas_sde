@@ -2,13 +2,13 @@
 
 # {{ get_title }}
 
-Uma propriedade fundamental dos processos de Wiener é que os seus caminhos são, quase sempre, de *variação ilimitada*. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas (as integrais de Itô e de Stratonovich). Caso contrário, usaríamos o conceito de *integral de Riemann-Stieltjes*.
+Uma característica fundamental dos processos de Wiener é a de que os seus caminhos amostrais são, quase certamente, de *variação ilimitada.* Por esse motivo precisamos de conceitos diferentes de integração para dar sentido às equações estocásticas (as integrais de Itô e de Stratonovich). Caso contrário, usaríamos o conceito de *integral de Riemann-Stieltjes.*
 
 Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais de um processo de Wiener serem, quase certamente, de variação ilimitada.
 
 ## Funções de variação limitada ou ilimitada
 
-Se $g = g(t)$ representa a posição de um objeto ao longo do tempo, definida em um intervalo $[a, b]$, $a < b$, podemos estimar a distância percorrida calculando-se
+Se $g = g(t)$ representa a posição de um objeto ao longo do tempo, definida em um intervalo temporal $[a, b]$, com $a < b$, a distância entre o ponto inicial e o ponto final é simplesmente $|g(b) - g(a)|$. Mas, ao longo do caminho, o objeto pode ir para frente e para trás diversas vezes, como em um *zig-zag.* Nesse caso, podemos estimar a distância percorrida calculando
 $$
 \sum_{j=1}^n |g(t_j) - g(t_{j-1})|
 $$
@@ -43,11 +43,11 @@ $$
 \mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
 $$
 
-Caso $V(g; a, b)$ seja finito, dizemos que a função é de **variação limitada**, no intervalo $[a, b]$. Caso contrário, ela é dita de **variação ilimitada**.
+Caso $V(g; a, b)$ seja finito, dizemos que a função é de **variação limitada,** no intervalo $[a, b]$. Caso contrário, ela é dita de **variação ilimitada.**
 
 ## Integral de Riemann-Stieltjes
 
-Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada *integral de Riemann-Stieltjes*:
+Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada *integral de Riemann-Stieltjes:*
 $$
 \int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
 $$
@@ -60,9 +60,27 @@ $$
 
 Caso $g$ seja diferenciável, então $\mathrm{d}g = f\mathrm{d}x$, onde $f$ é a função de densidade de probabilidade. Mas a integral acima independe de $g$ ser diferenciável ou não.
 
+A integral de Riemann-Stieltjes possui diversas propriedades análogas à da integral de Riemann, como linearidade:
+$$
+\int_a^b (\lambda_1 f_1(t) + \lambda_2 f_2(t))\;\mathrm{d}g(t) = \lambda_1 \int_a^b f_1(t)\;\mathrm{d}g(t) + \lambda_2 \int_a^b f_2(t)\;\mathrm{d}g(t).
+$$
+Também podemos concatenar integrais
+$$
+\int_a^b f(t)\;\mathrm{d}g(t) + \int_b^c f(t)\;\mathrm{d}g(t) = \int_a^c f(t)\;\mathrm{d}g(t),
+$$
+independentemente da ordem de $a, b, c.$
+
+Mas a integral de Riemann-Stieltjes não é positiva, i.e.
+$$
+\int_a^b f(t)\;\mathrm{d}g(t)
+$$
+pode ser negativa, mesmo que $f\geq 0.$ Para ver isso, basta considerar $g(t) = -t$. Isso nos impede de estimar a integral de uma função em termos da integral de outra função que a limite.
+
+Veremos que algo parecido ocorre com a integral de Itô.
+
 ## Caminhos amostrais de processos de Wiener
 
-Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo $[0, T]$, $T > 0$, são, quase sempre, de variação ilimitada.
+Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo $[0, T]$, $T > 0$, são, quase certamente, de variação ilimitada.
 
 Queremos, para isso, estimar a variação
 $$
