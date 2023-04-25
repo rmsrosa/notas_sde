@@ -36,10 +36,39 @@ $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 $$
 
-De fato, vamos mostrar que, para todo $r > 0$,
+De fato, vamos mostrar que, para todo $r > 0,$
 $$
-\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0.
+\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0,
 $$
+de modo que
+$$
+\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} > 0 \right) = \mathbb{P}\left(\bigcup_{r > 0} \left\{\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right\}\right) = 0.
+$$
+
+Podemos escrever
+$$
+\begin{align*}
+  \mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) & = \mathbb{P}\left( \bigcap_{N\in\mathbb{N}} \left\{\sup_{t \geq T} \frac{|W_t|}{t} > r \right\}\right) \\
+  & \leq \mathbb{P}\left(\sup_{t \geq N} \frac{|W_t|}{t} > r \right), \quad \forall N \in \mathbb{N}, \\
+  & = \mathbb{P}\left(\bigcup_{n = N}^\infty \left\{\sup_{n\leq t < n+1} \frac{|W_t|}{t} > r \right\}\right), \quad \forall N \in \mathbb{N}, \\
+  & = \mathbb{P}\left(\bigcup_{n = N}^\infty \left\{\sup_{n \leq t < n+1} \frac{|W_t|}{\sqrt{t}} > r\sqrt{t} \right\}\right), \quad \forall N \in \mathbb{N}, \\
+  & \leq \mathbb{P}\left(\bigcup_{n = N}^\infty \left\{\sup_{n\leq t < n+1} \frac{|W_t|}{\sqrt{t}} > r\sqrt{n} \right\}\right), \quad \forall N \in \mathbb{N}.
+\end{align*}
+$$
+Como $W_t / \sqrt{t} \sim \mathcal{N}(0, 1)$, então
+$$
+\mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} > r\sqrt{n}\right) = \frac{1}{\sqrt{2\pi}}\int_{|x| \geq r\sqrt{n}} e^{-x^2/2} \;\mathrm{d}x.
+$$
+Splitting the exponent in half, bounding one half of it and extending the domains of integration yields
+$$
+\mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} > r\sqrt{n}\right) \leq \frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{-nr^2/4} e^{-x^2/4}\;\mathrm{d}x \leq \frac{e^{-nr^2/4}}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{-x^2/4} \;\mathrm{d}x.
+$$
+Changing variables gives us
+$$
+\mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} > r\sqrt{n}\right) \leq \frac{\sqrt{2}e^{-nr^2/4}}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{-x^2/2} \;\mathrm{d}x = \sqrt{2}e^{-nr^2/4}.
+$$
+
+WRONG. NEED TO FIX THIS. USE Doob's INEQUALITY OR TRY $W_t = W_n + W_t - W_n$, WHICH ARE INDEPENDENT.
 
 Podemos escrever
 $$
