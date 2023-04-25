@@ -37,4 +37,4 @@ $$
 X_TY_T - X_0Y_0 = \int_0^T Y_t \;\mathrm{d}X_t + \int_0^T X_t \;\mathrm{d}X_t.
 $$
 
-Esta é a fórmula de integração por partes para a integral de Riemann-Stieltjes, aqui aplicada a integração envolvendo processos com caminhos de variação limitada, quase certamente.
+Esta é a fórmula de integração por partes para a integral de Riemann-Stieltjes, aqui aplicada à integração envolvendo processos com caminhos de variação limitada, quase certamente.
