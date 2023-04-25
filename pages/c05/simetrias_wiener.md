@@ -36,76 +36,19 @@ $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 $$
 
-De fato, vamos mostrar que, para todo $r > 0,$
+A demonstração desse fato é delicada. É fácil mostrar que a convergência ocorre em probabilidade. De fato, temos
 $$
-\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0,
+\mathbb{E}\left[ \frac{W_t}{t} \right] = \frac{\mathbb{E}\left[W_t\right]}{t} = 0,
 $$
-de modo que
+para todo $t > 0,$ e
 $$
-\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} > 0 \right) = \mathbb{P}\left(\bigcup_{r > 0} \left\{\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right\}\right) = 0.
+\mathbb{E}\left[ \left(\frac{W_t}{t}\right)^2 \right] = \frac{\mathbb{E}\left[W_t^2\right]}{t^2} = \frac{t}{t^2} = \frac{1}{t} \rightarrow 0, \quad t\rightarrow \infty.
 $$
-
-Podemos escrever
+Portanto,
 $$
-\begin{align*}
-  \mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) & = \mathbb{P}\left( \bigcap_{N\in\mathbb{N}} \left\{\sup_{t \geq T} \frac{|W_t|}{t} > r \right\}\right) \\
-  & \leq \mathbb{P}\left(\sup_{t \geq N} \frac{|W_t|}{t} > r \right), \quad \forall N \in \mathbb{N}, \\
-  & = \mathbb{P}\left(\bigcup_{n = N}^\infty \left\{\sup_{n\leq t < n+1} \frac{|W_t|}{t} > r \right\}\right), \quad \forall N \in \mathbb{N}, \\
-  & = \mathbb{P}\left(\bigcup_{n = N}^\infty \left\{\sup_{n \leq t < n+1} \frac{|W_t|}{\sqrt{t}} > r\sqrt{t} \right\}\right), \quad \forall N \in \mathbb{N}, \\
-  & \leq \mathbb{P}\left(\bigcup_{n = N}^\infty \left\{\sup_{n\leq t < n+1} \frac{|W_t|}{\sqrt{t}} > r\sqrt{n} \right\}\right), \quad \forall N \in \mathbb{N}.
-\end{align*}
+\frac{W_t}{t} \rightarrow 0
 $$
-Como $W_t / \sqrt{t} \sim \mathcal{N}(0, 1)$, então
-$$
-\mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} > r\sqrt{n}\right) = \frac{1}{\sqrt{2\pi}}\int_{|x| \geq r\sqrt{n}} e^{-x^2/2} \;\mathrm{d}x.
-$$
-Splitting the exponent in half, bounding one half of it and extending the domains of integration yields
-$$
-\mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} > r\sqrt{n}\right) \leq \frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{-nr^2/4} e^{-x^2/4}\;\mathrm{d}x \leq \frac{e^{-nr^2/4}}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{-x^2/4} \;\mathrm{d}x.
-$$
-Changing variables gives us
-$$
-\mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} > r\sqrt{n}\right) \leq \frac{\sqrt{2}e^{-nr^2/4}}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{-x^2/2} \;\mathrm{d}x = \sqrt{2}e^{-nr^2/4}.
-$$
-
-WRONG. NEED TO FIX THIS. USE Doob's INEQUALITY OR TRY $W_t = W_n + W_t - W_n$, WHICH ARE INDEPENDENT.
-
-Podemos escrever
-$$
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right),
-$$
-para todo $r > 0$ (inclusive $r=0,$ mas isso não é necessário). Como $W_t / \sqrt{t} \sim \mathcal{N}(0, 1)$ é uma normal independente de $t$ e $r\sqrt{t}\rightarrow \infty$ quando $t\rightarrow \infty$, então
-$$
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right) \rightarrow 0, \qquad t \rightarrow \infty.
-$$
-
-Assim, para cada $\varepsilon > 0$, existe $T > 0$ tal que
-$$
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right) \leq \varepsilon, \quad \forall t \geq T.
-$$
-
-Tomando uma sequência $\{\varepsilon_n\}_{j\in \mathbb{N}}$ de números positivos com $\sum_n \varepsilon_n < \infty$, obtemos, uma sequência $t_n \rightarrow \infty$ tal que
-$$
-\mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \varepsilon_n.
-$$
-Assim,
-$$
-\sum_{n\in \mathbb{N}} \mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \sum_{n\in \mathbb{N}} \varepsilon_n < \infty.
-$$
-
-Segue do Lema de Borel-Cantelli que
-$$
-\mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
-$$
-
-Isso implica em
-$$
-\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} \geq r \right\} \right) \leq \mathbb{P}\left( \left\{ \limsup_{n \rightarrow \infty} \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = \mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
-$$
-Como $r > 0$ é arbitrário, deduzimos que
-$$
-\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} > 0 \right\} \right) = 0.
-$$
+em probabilidade. Mas a demonstração de a convergência ocorre quase certamente é não trivial.
 
 ## Invariância por inversão temporal
 
