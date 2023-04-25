@@ -42,34 +42,58 @@ $$
 \int_0^t g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
 $$
 
-Essa definição de integral foi proposta por Paley, Wiener e Zygmund (veja Evans (2013)). Esta integral satisfaz as propriedades usuais de linearidade.
-
 Nesse momento, estamos interpretando o lado direito da fórmula de integração por partes como uma outra forma de representar o termo à esquerda. Essa dupla representação é comumente denominada de representação dual. Ou de dualidade. Nesse sentido, dizemos que estamos usando essa dualidade para estender o conceito de integral. É uma definição por dualidade.
 
-### Exemplo
+### Integral via dualidade de uma função determinística em relação a um processo de Wiener
 
-No caso de integrarmos com respeito a um processo de Wiener $\{W_t\}_{t\geq 0}$, temos que o valor esperado da integral é nulo:
+Como exemplo, podemos integrar uma função determinística continuamente diferenciável $g=g(t)$ com respeito a um processo de Wiener $\{W_t\}_{t\geq 0}.$ Como $W_0 = 0$, isso nos leva à fórmula
 $$
-\mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}Y_s\right] = g(t)\mathbb{E}[W_t] - g(0)\mathbb{E}[W_0] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
+    \int_0^t g(s)\;\mathrm{d}W_s \stackrel{\mathrm{def}}{=} g(t)W_t - \int_0^t g'(s)W_s \;\mathrm{d}s.
 $$
-E se $g(0) = g(t_1) = 0$, para algum $t_1 \geq 0$, então
+
+Essa definição, usando dualidade, de integral com relação a um processo de Wiener, foi proposta por Paley, Wiener e Zygmund (veja Evans (2013)). Esta integral satisfaz as propriedades usuais de linearidade.
+
+Como $\mathbb{E}[W_t] = 0,$ para todo $t \geq 0$, o valor esperado da integral também é sempre nulo:
+$$
+\mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}W_s\right] = g(t)\mathbb{E}[W_t] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
+$$
+
+Quanto ao momento de segunda ordem,
 $$
 \begin{align*}
-\mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) & = \mathbb{E}\left[\left(-\int_0^{t_1} g'(s)W_s\;\mathrm{d}s\right)^2\right] \\
-& = \int_0^{t_1}\int_0^{t_1} g'(s)g'(t)\mathbb{E}[W_sW_t]\;\mathrm{d}s\;\mathrm{d}t \\
-& = \int_0^{t_1}\int_0^{t_1} g'(s)g'(t)\min\{s,t\}\;\mathrm{d}s\;\mathrm{d}t \\
-& = \int_0^{t_1}\left(\int_0^t g'(s)g'(t)s \;\mathrm{d}s + \int_t^{t_1}g'(s)g'(t)t \;\mathrm{d}s\right)\;\mathrm{d}t.
+    \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] & = \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)\left(\int_0^t g(\tau)\;\mathrm{d}W_\tau\right) \right] \\
+    & = \mathbb{E}\left[\left(g(t)W_t - \int_0^t g'(s)W_s \;\mathrm{d}s\right)\left(g(t)W_t - \int_0^t g'(\tau) W_\tau \;\mathrm{d}\tau\right) \right] \\
+    & = g(t)^2\mathbb{E}[W_t^2]  - \mathbb{E}\left[\int_0^t g(t)g'(\tau) W_t W_\tau \;\mathrm{d}\tau\right] \\
+    & \quad - \mathbb{E}\left[\int_0^t g'(s)g(t)W_sW_t \;\mathrm{d}s\right] + \mathbb{E}\left[\int_0^t\int_0^t g'(s)g'(\tau)W_sW_\tau \;\mathrm{d}\tau\;\mathrm{d}s\right] \\
+    & = g(t)^2\mathbb{E}[W_t^2]  - 2\int_0^t g(t)g'(s) \mathbb{E}\left[W_t W_s\right] \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_0^t g'(s)g'(\tau)\mathbb{E}\left[W_sW_\tau\right] \;\mathrm{d}\tau\;\mathrm{d}s.
 \end{align*}
 $$
-Observe que, na primeira integral,
+Usando a propriedade $\mathbb{E}[W_tW_s] = \min\{t, s\}$, obtemos
 $$
-\int_0^t g'(s)g'(t)s \;\mathrm{d}s = g'(t)g(t)t - g'(t)\int_0^t g(s)\;\mathrm{d}s.
+\begin{align*}
+    \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_0^s g'(s)g'(\tau)\tau \;\mathrm{d}\tau\;\mathrm{d}s + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_0^s g'(s)g'(\tau)\tau \;\mathrm{d}\tau\;\mathrm{d}s + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_\tau^t g'(s)g'(\tau)\tau \;\mathrm{d}s\;\mathrm{d}\tau + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t (g(t) - g(\tau))g'(\tau)\tau\;\mathrm{d}\tau + \int_0^t g'(s)(g(t) - g(s))s \;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + 2\int_0^t g(t)g'(s)s\;\mathrm{d}s - 2\int_0^t g'(s)g(s)s \;\mathrm{d}s \\
+    & = g(t)^2t - 2\int_0^t g'(s)g(s)s \;\mathrm{d}s \\
+    & = g(t)^2t - \int_0^t (g(s)^2)'s \;\mathrm{d}s \\
+    & = g(t)^2 t - g(t)^2 t + \int_0^t g(s)^2 \;\mathrm{d}s.
+\end{align*}
 $$
-Já na segunda integral,
+Portanto, obtemos a igualdade
 $$
-\int_t^{t_1}g'(s)g'(t)t \;\mathrm{d}s = g'(t)t(g(t_1) - g(t)) = - g'(t)g(t)t.
+\mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] = \int_0^t g(s)^2 \;\mathrm{d}s.
 $$
-Cancelando o termo $g'(t)g(t)t$, nos resta
+Essa é a versão com integrando determinístico de uma identidade fundamental chamada de *isometria de Itô.*
+
+Como a esperança da integral é nula, isso significa que podemos escrever
 $$
 \mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) = -\int_0^{t_1} \int_0^t g'(t)g(s)\;\mathrm{d}s\;\mathrm{d}t = - \int_0^{t_1}\int_s^{t_1} g'(t)g(s) \;\mathrm{d}t\;\mathrm{d}s = \int_0^{t_1} g(s)^2\;\mathrm{d}s.
 $$
