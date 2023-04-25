@@ -59,6 +59,25 @@ Para todo $p \geq 1$, $L^p(\Omega)$ forma uma *espaço de Banach*, que é um esp
 
 #### Convergência forte implica em convergência em probabilidade
 
+Considere $\{X_n\}_n$ convergindo fortemente para $X$. Então $\mathbb{P}(X_n \rightarrow X) = 1$. De outra forma, temos que
+$$
+\mathbb{P}(\lim_{n\rightarrow \infty} X_n \neq X) = 0.
+$$
+
+Podemos escrever
+$$
+\left\{\lim_{n\rightarrow \infty} X_n \neq X\right\} = \left\{\lim_{n\rightarrow \infty} \|X_n - X\| > 0\right\} = \bigcup_{k\in \mathbb{N}}\left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon_k\right\},
+$$
+para uma sequência qualquer $\{\varepsilon_k\}_{k\in\mathbb{N}}$ de números positivos com $\varepsilon_k \rightarrow 0.$ Isso implica em
+$$
+\mathbb{P}\left( \left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon_k\right\}\right) = 0, \quad \forall k\in\mathbb{N}.
+$$
+Como $\varepsilon_k \rightarrow 0,$ então
+$$
+\mathbb{P}\left( \left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon\right\}\right) = 0, \quad \forall \varepsilon > 0,
+$$
+o que significa dizer que $X_n \rightarrow X$ em probabilidade.
+
 #### Convergência em probabilidade com erro somável implica em subsequência convergindo fortemente
 
 Suponha que, para todo $\varepsilon > 0$, vale
