@@ -131,13 +131,16 @@
     <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Processos de Wiener</li>
@@ -152,13 +155,16 @@
     <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -376,31 +382,52 @@ g(t)Y_t = g(0)Y_0 + \int_0^t g'(s)Y_s + g(s)\frac{\mathrm{d}Y_s}{\mathrm{d}s} \;
 \[
 \int_0^t g(s)\;\mathrm{d}Y_s \stackrel{\mathrm{def}}{=} g(t)Y_t - g(0)Y_0 - \int_0^t g'(s)Y_s \;\mathrm{d}s.
 \]
-<p>Essa definição de integral foi proposta por Paley, Wiener e Zygmund &#40;veja Evans &#40;2013&#41;&#41;. Esta integral satisfaz as propriedades usuais de linearidade.</p>
 <p>Nesse momento, estamos interpretando o lado direito da fórmula de integração por partes como uma outra forma de representar o termo à esquerda. Essa dupla representação é comumente denominada de representação dual. Ou de dualidade. Nesse sentido, dizemos que estamos usando essa dualidade para estender o conceito de integral. É uma definição por dualidade.</p>
-<h3 id="exemplo"><a href="#exemplo" class="header-anchor">Exemplo</a></h3>
-<p>No caso de integrarmos com respeito a um processo de Wiener \(\{W_t\}_{t\geq 0}\), temos que o valor esperado da integral é nulo:</p>
+<h3 id="integral_via_dualidade_de_uma_função_determinística_em_relação_a_um_processo_de_wiener"><a href="#integral_via_dualidade_de_uma_função_determinística_em_relação_a_um_processo_de_wiener" class="header-anchor">Integral via dualidade de uma função determinística em relação a um processo de Wiener</a></h3>
+<p>Como exemplo, podemos integrar uma função determinística continuamente diferenciável \(g=g(t)\) com respeito a um processo de Wiener \(\{W_t\}_{t\geq 0}.\) Como \(W_0 = 0\), isso nos leva à fórmula</p>
 \[
-\mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}Y_s\right] = g(t)\mathbb{E}[W_t] - g(0)\mathbb{E}[W_0] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
+    \int_0^t g(s)\;\mathrm{d}W_s \stackrel{\mathrm{def}}{=} g(t)W_t - \int_0^t g'(s)W_s \;\mathrm{d}s.
 \]
-<p>E se \(g(0) = g(t_1) = 0\), para algum \(t_1 \geq 0\), então</p>
+<p>Essa definição, usando dualidade, de integral com relação a um processo de Wiener, foi proposta por Paley, Wiener e Zygmund &#40;veja Evans &#40;2013&#41;&#41;. Esta integral satisfaz as propriedades usuais de linearidade.</p>
+<p>Como \(\mathbb{E}[W_t] = 0,\) para todo \(t \geq 0\), o valor esperado da integral também é sempre nulo:</p>
+\[
+\mathbb{E}\left[\int_0^t g(s)\;\mathrm{d}W_s\right] = g(t)\mathbb{E}[W_t] - \int_0^t g'(s)\mathbb{E}[W_s] \;\mathrm{d}s = 0, \quad \forall t \geq 0.
+\]
+<p>Quanto ao momento de segunda ordem,</p>
 \[
 \begin{align*}
-\mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) & = \mathbb{E}\left[\left(-\int_0^{t_1} g'(s)W_s\;\mathrm{d}s\right)^2\right] \\
-& = \int_0^{t_1}\int_0^{t_1} g'(s)g'(t)\mathbb{E}[W_sW_t]\;\mathrm{d}s\;\mathrm{d}t \\
-& = \int_0^{t_1}\int_0^{t_1} g'(s)g'(t)\min\{s,t\}\;\mathrm{d}s\;\mathrm{d}t \\
-& = \int_0^{t_1}\left(\int_0^t g'(s)g'(t)s \;\mathrm{d}s + \int_t^{t_1}g'(s)g'(t)t \;\mathrm{d}s\right)\;\mathrm{d}t.
+    \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] & = \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)\left(\int_0^t g(\tau)\;\mathrm{d}W_\tau\right) \right] \\
+    & = \mathbb{E}\left[\left(g(t)W_t - \int_0^t g'(s)W_s \;\mathrm{d}s\right)\left(g(t)W_t - \int_0^t g'(\tau) W_\tau \;\mathrm{d}\tau\right) \right] \\
+    & = g(t)^2\mathbb{E}[W_t^2]  - \mathbb{E}\left[\int_0^t g(t)g'(\tau) W_t W_\tau \;\mathrm{d}\tau\right] \\
+    & \quad - \mathbb{E}\left[\int_0^t g'(s)g(t)W_sW_t \;\mathrm{d}s\right] + \mathbb{E}\left[\int_0^t\int_0^t g'(s)g'(\tau)W_sW_\tau \;\mathrm{d}\tau\;\mathrm{d}s\right] \\
+    & = g(t)^2\mathbb{E}[W_t^2]  - 2\int_0^t g(t)g'(s) \mathbb{E}\left[W_t W_s\right] \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_0^t g'(s)g'(\tau)\mathbb{E}\left[W_sW_\tau\right] \;\mathrm{d}\tau\;\mathrm{d}s.
 \end{align*}
 \]
-<p>Observe que, na primeira integral,</p>
+<p>Usando a propriedade \(\mathbb{E}[W_tW_s] = \min\{t, s\}\), obtemos</p>
 \[
-\int_0^t g'(s)g'(t)s \;\mathrm{d}s = g'(t)g(t)t - g'(t)\int_0^t g(s)\;\mathrm{d}s.
+\begin{align*}
+    \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_0^s g'(s)g'(\tau)\tau \;\mathrm{d}\tau\;\mathrm{d}s + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_0^s g'(s)g'(\tau)\tau \;\mathrm{d}\tau\;\mathrm{d}s + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t\int_\tau^t g'(s)g'(\tau)\tau \;\mathrm{d}s\;\mathrm{d}\tau + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + \int_0^t (g(t) - g(\tau))g'(\tau)\tau\;\mathrm{d}\tau + \int_0^t g'(s)(g(t) - g(s))s \;\mathrm{d}s \\
+    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
+    & \quad + 2\int_0^t g(t)g'(s)s\;\mathrm{d}s - 2\int_0^t g'(s)g(s)s \;\mathrm{d}s \\
+    & = g(t)^2t - 2\int_0^t g'(s)g(s)s \;\mathrm{d}s \\
+    & = g(t)^2t - \int_0^t (g(s)^2)'s \;\mathrm{d}s \\
+    & = g(t)^2 t - g(t)^2 t + \int_0^t g(s)^2 \;\mathrm{d}s.
+\end{align*}
 \]
-<p>Já na segunda integral,</p>
+<p>Portanto, obtemos a igualdade</p>
 \[
-\int_t^{t_1}g'(s)g'(t)t \;\mathrm{d}s = g'(t)t(g(t_1) - g(t)) = - g'(t)g(t)t.
+\mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] = \int_0^t g(s)^2 \;\mathrm{d}s.
 \]
-<p>Cancelando o termo \(g'(t)g(t)t\), nos resta</p>
+<p>Essa é a versão com integrando determinístico de uma identidade fundamental chamada de <em>isometria de Itô.</em></p>
+<p>Como a esperança da integral é nula, isso significa que podemos escrever</p>
 \[
 \mathrm{Var}\left(\int_0^{t_1} g(s)\;\mathrm{d}W_s\right) = -\int_0^{t_1} \int_0^t g'(t)g(s)\;\mathrm{d}s\;\mathrm{d}t = - \int_0^{t_1}\int_s^{t_1} g'(t)g(s) \;\mathrm{d}t\;\mathrm{d}s = \int_0^{t_1} g(s)^2\;\mathrm{d}s.
 \]
@@ -494,7 +521,7 @@ G(t, Y_t) = G(0, Y_0) + \int_0^t \partial_s G(s, Y_s) \;\mathrm{d}s + \int_0^t g
         </div>
     
 
-    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 27, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

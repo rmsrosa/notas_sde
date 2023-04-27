@@ -131,13 +131,16 @@
     <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Processos de Wiener</li>
@@ -152,13 +155,16 @@
     <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -385,6 +391,23 @@
 <p>Para todo \(p \geq 1\), \(L^p(\Omega)\) forma uma <em>espaço de Banach</em>, que é um espaço normado completo, com norma \(\|X\|_{L^p} = \left(\mathbb{E}[|X|^p]\right)^{1/p}\). No caso \(p = 2\), temos que \(L^2(\Omega)\) é um <em>espaço de Hilbert</em>, que é um espaço normado completo onde a norma está associada a um produto interno. No caso, o produto interno entre duas variáveis aleatórias \(X\) e \(Y\) é \(\langle X, Y \rangle = \mathbb{E}[XY]\). A norma \(L^2(\Omega)\) é \(\|X\|_{L^2} = \sqrt{\mathbb{E}[X^2]}\).</p>
 <h3 id="relações_entre_as_convergências"><a href="#relações_entre_as_convergências" class="header-anchor">Relações entre as convergências</a></h3>
 <h4 id="convergência_forte_implica_em_convergência_em_probabilidade"><a href="#convergência_forte_implica_em_convergência_em_probabilidade" class="header-anchor">Convergência forte implica em convergência em probabilidade</a></h4>
+<p>Considere \(\{X_n\}_n\) convergindo fortemente para \(X\). Então \(\mathbb{P}(X_n \rightarrow X) = 1\). De outra forma, temos que</p>
+\[
+\mathbb{P}(\lim_{n\rightarrow \infty} X_n \neq X) = 0.
+\]
+<p>Podemos escrever</p>
+\[
+\left\{\lim_{n\rightarrow \infty} X_n \neq X\right\} = \left\{\lim_{n\rightarrow \infty} \|X_n - X\| > 0\right\} = \bigcup_{k\in \mathbb{N}}\left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon_k\right\},
+\]
+<p>para uma sequência qualquer \(\{\varepsilon_k\}_{k\in\mathbb{N}}\) de números positivos com \(\varepsilon_k \rightarrow 0.\) Isso implica em</p>
+\[
+\mathbb{P}\left( \left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon_k\right\}\right) = 0, \quad \forall k\in\mathbb{N}.
+\]
+<p>Como \(\varepsilon_k \rightarrow 0,\) então</p>
+\[
+\mathbb{P}\left( \left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon\right\}\right) = 0, \quad \forall \varepsilon > 0,
+\]
+<p>o que significa dizer que \(X_n \rightarrow X\) em probabilidade.</p>
 <h4 id="convergência_em_probabilidade_com_erro_somável_implica_em_subsequência_convergindo_fortemente"><a href="#convergência_em_probabilidade_com_erro_somável_implica_em_subsequência_convergindo_fortemente" class="header-anchor">Convergência em probabilidade com erro somável implica em subsequência convergindo fortemente</a></h4>
 <p>Suponha que, para todo \(\varepsilon > 0\), vale</p>
 \[
@@ -396,8 +419,12 @@
 \]
 <p>Observe que não há ambiguidade acima, pois</p>
 \[
-\limsup_{n\rightarrow\infty} \{|X_n - X| > \varepsilon\} = 
-\bigcap_n \bigcup_k \{\omega; |X_k - X| > \varepsilon\} = \left\{\omega; \forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} = \left\{\omega; \;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
+\begin{align*}
+\limsup_{n\rightarrow\infty} \{|X_n - X| > \varepsilon\} & = 
+\bigcap_n \bigcup_k \{\omega; |X_k - X| > \varepsilon\} \\
+& = \left\{\omega; \forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} \\
+& = \left\{\omega; \;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
+\end{align*}
 \]
 <p>Tomando uma sequência positiva \(\varepsilon_n \rightarrow 0\), temos</p>
 \[
@@ -443,6 +470,25 @@ X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
 X - \varepsilon < X_n < X + \varepsilon.
 \]
 <p>Isso significa que, quase certamente, \(X_n \rightarrow X\), concluindo a demonstração.</p>
+<h2 id="esperança_convergindo_e_variância_esvanecendo_implica_em_convergência_em_probabilidade_para_constante"><a href="#esperança_convergindo_e_variância_esvanecendo_implica_em_convergência_em_probabilidade_para_constante" class="header-anchor">Esperança convergindo e variância esvanecendo implica em convergência em probabilidade para constante</a></h2>
+<p>Suponha que \(\{X_n\}_{n\in\mathbb{N}}\) seja um processo discreto real tal que</p>
+\[
+    \mathbb{E}[X_n] \rightarrow c, \quad \mathrm{Var}(X_n) = 0.
+\]
+<p>Então</p>
+\[
+    \mathbb{P}\left(|X_n - c| > \varepsilon\right) = \int_{|X_n - c| > \varepsilon} \;\mathrm{d}F_{X_n}(x),
+\]
+<p>onde \(F_{X_n}(x) = \mathbb{P}(X_n < x)\) é a função de probabilidade acumulada de \(X_n.\)</p>
+<p>Como \(1 \leq (X_n - c)^2 / \varepsilon^2\) no domínio de integração,</p>
+\[
+\begin{align*}
+    \mathbb{P}\left(|X_n - c| > \varepsilon\right) & \leq \frac{1}{\varepsilon^2}\int_{\mathbb{R}} (X_n - c)^2 \;\mathbb{d}F_{X_n}(x) \\
+    & \leq \frac{1}{\varepsilon^2}\int_{\mathbb{R}} (X_n - E[X_n])^2 \;\mathrm{d}F_{X_n}(x) + \frac{1}{\varepsilon^2}\int_{\mathbb{R}} (E[X_n] - c)^2 \;\mathrm{d}F_{X_n}(x) \\
+    & = \frac{1}{\varepsilon^2}\mathrm{Var}(X_n) + \frac{1}{\varepsilon^2}(E[X_n] - c)^2 \rightarrow 0, \quad n\rightarrow \infty,
+\end{align*}
+\]
+<p>provando a convergência em probabilidade para uma constante.</p>
 <h2 id="exemplos_de_convergências"><a href="#exemplos_de_convergências" class="header-anchor">Exemplos de convergências</a></h2>
 <h3 id="sequências_de_normais_dependentes"><a href="#sequências_de_normais_dependentes" class="header-anchor">Sequências de normais dependentes</a></h3>
 <p>Considere uma variável aleatória normal \(X \sim \mathcal{N}(0, 1)\) e defina a sequência</p>
@@ -516,7 +562,7 @@ F(x) = \begin{cases} 0, & x < 0, \\
         </div>
     
 
-    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 27, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

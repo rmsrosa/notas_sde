@@ -131,13 +131,16 @@
     <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Processos de Wiener</li>
@@ -152,13 +155,16 @@
     <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -330,7 +336,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemann"><kbd>→</kbd> 6.1. Integrais de Riemann</a>
@@ -344,11 +350,11 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
-<p>Uma propriedade fundamental dos processos de Wiener é que os seus caminhos são, quase sempre, de <em>variação ilimitada</em>. Por esse motivo precisaremos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes</em>.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></h1>
+<p>Uma característica fundamental dos processos de Wiener é a de que os seus caminhos amostrais são, quase certamente, de <em>variação ilimitada.</em> Por esse motivo precisamos de conceitos diferentes de integração para dar sentido às equações estocásticas &#40;as integrais de Itô e de Stratonovich&#41;. Caso contrário, usaríamos o conceito de <em>integral de Riemann-Stieltjes.</em></p>
 <p>Vejamos, abaixo, esses conceitos de variação limitada/ilimitada e de integral de Riemann-Stieltjes e o fato dos caminhos amostrais de um processo de Wiener serem, quase certamente, de variação ilimitada.</p>
 <h2 id="funções_de_variação_limitada_ou_ilimitada"><a href="#funções_de_variação_limitada_ou_ilimitada" class="header-anchor">Funções de variação limitada ou ilimitada</a></h2>
-<p>Se \(g = g(t)\) representa a posição de um objeto ao longo do tempo, definida em um intervalo \([a, b]\), \(a < b\), podemos estimar a distância percorrida calculando-se</p>
+<p>Se \(g = g(t)\) representa a posição de um objeto ao longo do tempo, definida em um intervalo temporal \([a, b]\), com \(a < b\), a distância entre o ponto inicial e o ponto final é simplesmente \(|g(b) - g(a)|\). Mas, ao longo do caminho, o objeto pode ir para frente e para trás diversas vezes, como em um <em>zig-zag.</em> Nesse caso, podemos estimar a distância percorrida calculando</p>
 \[
 \sum_{j=1}^n |g(t_j) - g(t_{j-1})|
 \]
@@ -378,9 +384,9 @@
 \[
 \mathrm{V}(g; a, b) = \sup_{a\leq t_0 < t_1 < \ldots t_n \leq b}\sum_{j=1}^n |g(t_j) - g(t_{j-1})|.
 \]
-<p>Caso \(V(g; a, b)\) seja finito, dizemos que a função é de <strong>variação limitada</strong>, no intervalo \([a, b]\). Caso contrário, ela é dita de <strong>variação ilimitada</strong>.</p>
+<p>Caso \(V(g; a, b)\) seja finito, dizemos que a função é de <strong>variação limitada,</strong> no intervalo \([a, b]\). Caso contrário, ela é dita de <strong>variação ilimitada.</strong></p>
 <h2 id="integral_de_riemann-stieltjes"><a href="#integral_de_riemann-stieltjes" class="header-anchor">Integral de Riemann-Stieltjes</a></h2>
-<p>Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada <em>integral de Riemann-Stieltjes</em>:</p>
+<p>Funções de variação limitada são úteis para se estender a integral de Riemann para a chamada <em>integral de Riemann-Stieltjes:</em></p>
 \[
 \int_a^b f(t)\;\mathrm{d}g(t) = \lim \sum_{j=1}^n f(\theta_i) (g(t_j) - g(t_{j-1})).
 \]
@@ -390,8 +396,23 @@
 \mathbb{E}(h(X)) = \int_\mathbb{R} h(x) \;\mathrm{d}g(x).
 \]
 <p>Caso \(g\) seja diferenciável, então \(\mathrm{d}g = f\mathrm{d}x\), onde \(f\) é a função de densidade de probabilidade. Mas a integral acima independe de \(g\) ser diferenciável ou não.</p>
+<p>A integral de Riemann-Stieltjes possui diversas propriedades análogas à da integral de Riemann, como linearidade:</p>
+\[
+\int_a^b (\lambda_1 f_1(t) + \lambda_2 f_2(t))\;\mathrm{d}g(t) = \lambda_1 \int_a^b f_1(t)\;\mathrm{d}g(t) + \lambda_2 \int_a^b f_2(t)\;\mathrm{d}g(t).
+\]
+<p>Também podemos concatenar integrais</p>
+\[
+\int_a^b f(t)\;\mathrm{d}g(t) + \int_b^c f(t)\;\mathrm{d}g(t) = \int_a^c f(t)\;\mathrm{d}g(t),
+\]
+<p>independentemente da ordem de \(a, b, c.\)</p>
+<p>Mas a integral de Riemann-Stieltjes não é positiva, i.e.</p>
+\[
+\int_a^b f(t)\;\mathrm{d}g(t)
+\]
+<p>pode ser negativa, mesmo que \(f\geq 0.\) Para ver isso, basta considerar \(g(t) = -t\). Isso nos impede de estimar a integral de uma função em termos da integral de outra função que a limite.</p>
+<p>Veremos que algo parecido ocorre com a integral de Itô.</p>
 <h2 id="caminhos_amostrais_de_processos_de_wiener"><a href="#caminhos_amostrais_de_processos_de_wiener" class="header-anchor">Caminhos amostrais de processos de Wiener</a></h2>
-<p>Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase sempre, de variação ilimitada.</p>
+<p>Vamos, agora, mostrar essa propriedade fundamental de processos de Wiener que é a de que os seus caminhos amostrais, em qualquer intervalo \([0, T]\), \(T > 0\), são, quase certamente, de variação ilimitada.</p>
 <p>Queremos, para isso, estimar a variação</p>
 \[
 \mathrm{V}(W_t; 0, T) = \sup_{0\leq t_0 < t_1 < \ldots t_n \leq T}\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
@@ -508,7 +529,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemann"><kbd>→</kbd> 6.1. Integrais de Riemann</a>
@@ -527,7 +548,7 @@ S_k \rightarrow T, \qquad k \rightarrow \infty,
         </div>
     
 
-    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 27, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

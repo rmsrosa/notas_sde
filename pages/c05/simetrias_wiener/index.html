@@ -131,13 +131,16 @@
     <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Processos de Wiener</li>
@@ -152,13 +155,16 @@
     <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -330,10 +336,10 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener"><kbd>→</kbd> 5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener"><kbd>→</kbd> 5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -344,7 +350,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">5.4. Simetrias de processos de Wiener</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">5.5. Simetrias de processos de Wiener</a></h1>
 <p>Processos de Wiener possuem algumas simetrias importantes.</p>
 <h2 id="invariância_por_rescalonamento"><a href="#invariância_por_rescalonamento" class="header-anchor">Invariância por rescalonamento</a></h2>
 <p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Dado \(a > 0\), defina o processo \(\{V_t^a\}_{t\geq 0}\) por</p>
@@ -367,42 +373,19 @@ V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \s
 \[
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 \]
-<p>De fato, vamos mostrar que, para todo \(r > 0\),</p>
+<p>A demonstração desse fato é delicada. É fácil mostrar que a convergência ocorre em probabilidade. De fato, temos</p>
 \[
-\mathbb{P}\left(\limsup_{t \rightarrow \infty} \frac{|W_t|}{t} \geq r\right) = 0.
+\mathbb{E}\left[ \frac{W_t}{t} \right] = \frac{\mathbb{E}\left[W_t\right]}{t} = 0,
 \]
-<p>Podemos escrever</p>
+<p>para todo \(t > 0,\) e</p>
 \[
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right),
+\mathbb{E}\left[ \left(\frac{W_t}{t}\right)^2 \right] = \frac{\mathbb{E}\left[W_t^2\right]}{t^2} = \frac{t}{t^2} = \frac{1}{t} \rightarrow 0, \quad t\rightarrow \infty.
 \]
-<p>para todo \(r > 0\) &#40;inclusive \(r=0,\) mas isso não é necessário&#41;. Como \(W_t / \sqrt{t} \sim \mathcal{N}(0, 1)\) é uma normal independente de \(t\) e \(r\sqrt{t}\rightarrow \infty\) quando \(t\rightarrow \infty\), então</p>
+<p>Portanto,</p>
 \[
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right) \rightarrow 0, \qquad t \rightarrow \infty.
+\frac{W_t}{t} \rightarrow 0
 \]
-<p>Assim, para cada \(\varepsilon > 0\), existe \(T > 0\) tal que</p>
-\[
-\mathbb{P}\left( \frac{|W_t|}{t} \geq r \right) = \mathbb{P}\left( \frac{|W_t|}{\sqrt{t}} \geq r\sqrt{t} \right) \leq \varepsilon, \quad \forall t \geq T.
-\]
-<p>Tomando uma sequência \(\{\varepsilon_n\}_{j\in \mathbb{N}}\) de números positivos com \(\sum_n \varepsilon_n < \infty\), obtemos, uma sequência \(t_n \rightarrow \infty\) tal que</p>
-\[
-\mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \varepsilon_n.
-\]
-<p>Assim,</p>
-\[
-\sum_{n\in \mathbb{N}} \mathbb{P}\left( \frac{|W_{t_n}|}{t_n} \geq r \right) \leq \sum_{n\in \mathbb{N}} \varepsilon_n < \infty.
-\]
-<p>Segue do Lema de Borel-Cantelli que</p>
-\[
-\mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
-\]
-<p>Isso implica em</p>
-\[
-\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} \geq r \right\} \right) \leq \mathbb{P}\left( \left\{ \limsup_{n \rightarrow \infty} \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = \mathbb{P}\left(\limsup_{n \rightarrow \infty} \left\{ \frac{|W_{t_n}|}{t_n} \geq r \right\} \right) = 0.
-\]
-<p>Como \(r > 0\) é arbitrário, deduzimos que</p>
-\[
-\mathbb{P}\left(\left\{ \limsup_{t \rightarrow \infty} \frac{|W_{t}|}{t} > 0 \right\} \right) = 0.
-\]
+<p>em probabilidade. Mas a demonstração de a convergência ocorre quase certamente é não trivial.</p>
 <h2 id="invariância_por_inversão_temporal"><a href="#invariância_por_inversão_temporal" class="header-anchor">Invariância por inversão temporal</a></h2>
 <p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\) e defina o processo \(\{V_t\}_{t\geq 0}\) por</p>
 \[
@@ -512,10 +495,10 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener"><kbd>→</kbd> 5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/naodiferenciabilidade_wiener"><kbd>→</kbd> 5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a>
 </span>
     </p>
 </div>
@@ -531,7 +514,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
         </div>
     
 
-    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 27, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

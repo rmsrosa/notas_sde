@@ -12,17 +12,6 @@
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
-    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
-    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre').forEach((el) => {
-          hljs.highlightElement(el);
-        });
-      });
-    </script>
-  
 
   
     <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
@@ -142,13 +131,16 @@
     <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Processos de Wiener</li>
@@ -163,13 +155,16 @@
     <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -344,7 +339,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c05/simetrias_wiener"><kbd>→</kbd> 5.4. Simetrias de processos de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/ruido_branco"><kbd>→</kbd> 5.4. Relação com ruído branco</a>
 </span>
     </p>
 </div>
@@ -356,7 +351,8 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">5.3. Propriedades de processos de Wiener</a></h1>
-<h2 id="processo_gaussiano"><a href="#processo_gaussiano" class="header-anchor">Processo Gaussiano</a></h2>
+<p>Vejamos diversas propriedades de processos de Wiener.</p>
+<h2 id="são_processo_gaussiano"><a href="#são_processo_gaussiano" class="header-anchor">São processo Gaussiano</a></h2>
 <p>Um processo de Wiener é um exemplo de processo Gaussiano. Para ver isso, dados \(t_1, \ldots, t_n \geq 0\), podemos escrever cada \(W_{t_1}, \ldots, W_{t_n}\) como combinação linear das normais independentes \(W_{t_1} - W_{t_0}\), \(W_{t_2} - W_{t_1}\), ..., \(W_{t_n} - W_{t_{n-1}}\), onde \(t_0 = 0\), i.e.</p>
 \[
 W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
@@ -395,6 +391,11 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \[
 \mathrm{Cov}(W_t, W_s) = \min\{t, s\}.
 \]
+<h2 id="correlação"><a href="#correlação" class="header-anchor">Correlação</a></h2>
+<p>Como o desvio padrão de \(W_t\) é \(\sigma(W_t) = \sqrt{t}\), temos, da covariância obtida acima, que</p>
+\[
+    \mathrm{corr}(W_t, W_s) = \frac{\mathrm{Cov}(W_t, W_s)}{\sigma(W_t)\sigma(W_s)} = \frac{\min\{t, s\}}{\sqrt{t}\sqrt{s}} = \frac{1}{\max\{t, s\}}.
+\]
 <h2 id="não_independência_de_incrementos_em_intervalos_que_se_interceptam"><a href="#não_independência_de_incrementos_em_intervalos_que_se_interceptam" class="header-anchor">Não independência de incrementos em intervalos que se interceptam</a></h2>
 <p>Por definição, dois incrementos \(W_{t_3} - W_{t_2}\) e \(W_{t_1} - W_{t_0}\) são independentes quando \(t_3 > t_2 = t_1 > t_0\). Isso se estende ao caso em que \(t_2 > t_1\), pois basta acrescentar \(W_{t_2} - W_{t_1}\) que teremos três incrementos independentes \(W_{t_3} - W_{t_2}\), \(W_{t_2} - W_{t_1}\) e \(W_{t_1} - W_{t_0}\), e quaisquer dois deles também são independentes.</p>
 <p>Contudo, os incrementos \(W_{t_3} - W_{t_1}\) e \(W_{t_2} - W_{t_0}\) não são independentes quando \(t_1 \leq t_2 < t_3 \leq t_4,\) porque os intervalos \([t_0, t_2]\) e \([t_1, t_3]\) tem interseção não trivial. De fato, nesse caso, temos</p>
@@ -407,7 +408,7 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \]
 <p>que é exatamente o tamanho do intervalo de tempo em que os incrementos coincidem.</p>
 <p>Novamente, vemos que, se \(t_1 = t_2\), então essa correlação se anula.</p>
-<h2 id="não_estacionário"><a href="#não_estacionário" class="header-anchor">Não estacionário</a></h2>
+<h2 id="não_é_um_processo_estacionário"><a href="#não_é_um_processo_estacionário" class="header-anchor">Não é um processo estacionário</a></h2>
 <p>Um processo de Wiener não é estacionário, pois, em particular, os processos \(W_t\) não tem a mesma lei de probabilidades. E também não é fracamente estacionário, já que, apesar de \(\mathbb{E}[W_t] = 0\) ser constante, temos, para \(t, s\geq 0\) e \(\tau > 0\), que</p>
 \[
 \begin{align*}
@@ -416,7 +417,7 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \end{align*}
 \]
 <p>Ou seja, \(\mathbb{E}[W_{t + \tau}W_{s + \tau}]\) depende de \(\tau\).</p>
-<h2 id="condição_para_processo_gaussiano_ser_wiener"><a href="#condição_para_processo_gaussiano_ser_wiener" class="header-anchor">Condição para processo Gaussiano ser Wiener</a></h2>
+<h2 id="condição_para_um_processo_gaussiano_ser_um_processo_de_wiener"><a href="#condição_para_um_processo_gaussiano_ser_um_processo_de_wiener" class="header-anchor">Condição para um processo Gaussiano ser um processo de Wiener</a></h2>
 <p>Vamos concluir afirmando que um processo Gaussiano \(\{W_t\}_{t\geq 0}\) com caminhos contínuous quase certamente e satisfazendo \(\mathbb{E}[W_t] = 0\) e \(\mathbb{E}[W_t W_s] = \min\{t, s\}\), para todo \(t, s \geq 0\), é um processo de Wiener.</p>
 <p>De fato, temos, por definição, \(W_0\) normal com</p>
 \[
@@ -440,81 +441,13 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \]
 <p>Por hipótese, os caminhos são quase certamente contínuos. Por fim, para a independência dos incrementos, como os incrementos são normais, basta mostrar a independência dois a dois. Assim, temos, para \(0 \leq t_0 \leq t_1 \leq t_2 \leq t_3\),</p>
 \[
+\begin{align*}
 \mathbb{E}((W_{t_3} - W_{t_2})(W_{t_1} - W_{t_0})) & = \mathbb{E}(W_{t_3}W_{t_1} - W_{t_3}W_{t_0} - W_{t_2}W_{t_1} + W_{t_2}W_{t_0}) \\
 & = \min\{t_3, t_1\} - \min\{t_3, t_0\} - \min\{t_2, t_1\} + \min\{t_2, t_0\} \\
 & = t_1 - t_0 - t_1 + t_0 = 0.
 \end{align*}
 \]
 <p>Como as esperanças também são nulas, isso implica na covariância ser nula e, portanto, os incrementos são independentes.</p>
-<h2 id="derivada_de_um_processo_de_wiener_como_ruído_branco"><a href="#derivada_de_um_processo_de_wiener_como_ruído_branco" class="header-anchor">&quot;Derivada&quot; de um processo de Wiener como ruído branco</a></h2>
-<p>Seguimos, aqui, a derivação feita no Capítulo 3.8 de Higham &amp; Kloeden &#40;2021&#41;. Lembremos que um processo estacionário \(\{X_t\}_t\) é um ruído branco quando a sua função de covariância \(c(\tau) = \mathrm{Cov}(X_{t+\tau}X_t)\) é uma distribuição da forma</p>
-\[
-c(\tau) = \sigma_0^2\delta_0,
-\]
-<p>para alguma \(\sigma_0 > 0\) e onde \(\delta_0\) é a delta de Dirac. Assim, o seu espectro \(\hat c(\varpi)\) é, de fato, constante &#40;usamos \(\varpi\), aqui, para denotar a frequência, já que \(\omega\) é usado como elemento do espaço amostral&#41;:</p>
-\[
-\hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\varpi^2, \quad \forall \varpi \in \mathbb{R}.
-\]
-<p>Vamos considerar as diferenças finitas de um processo de Wiener \(\{W_t\}_{t\geq 0}\):</p>
-\[
-D_h^+(t) = \frac{W(t+h) - W(t)}{h}.
-\]
-<p>Defina</p>
-\[
-c_h(t, s) = \mathbb{E}\left[ D_h^+(t)D_h^+(s)\right] = \mathbb{E}\left[ \left(\frac{W(t+h) - W(t)}{h} \right) \left(\frac{W(s+h) - W(s)}{h}\right)\right].
-\]
-<p>Expandindo, temos</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W(t+h)W(s + h) - W(t)W(s + h) - W(t + h)W(s) + W(t)W(s)\right].
-\]
-<p>Usando a expressão para a covariância de um processo de Wiener, obtemos</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
-\]
-<p>Observe que, se \(t \leq s - h\), então</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
-\]
-<p>Se \(s - h \leq t \leq s\), então</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
-\]
-<p>que é linearmente crescente, de \(0\) a \(1/h\). Se \(s \leq t \leq s + h\), então</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
-\]
-<p>que é linearmente decrescente, de \(1/h\) a \(0\). Por último, se \(t \geq s + h\), então</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
-\]
-<p>Assim,</p>
-\[
-c_h(t, s) = \frac{1}{h^2}\begin{cases}
-0, & t \leq s - h, \\
-t + h - s, & s - h \leq t \leq s, \\
-h + s - h, & s \leq t \leq s + h, \\
-0, & t \geq s + h.
-\end{cases}
-\]
-
-<img src="/notas_sde/assets/pages/c05/propriedades_wiener/code/output/diffwiener_hatfunction.svg" alt="">
-<p>Observe, ainda, que</p>
-\[
-\int_\mathbb{R} c_h(t, s) \;\mathrm{d}t = 1, \qquad \forall s\in \mathbb{R}.
-\]
-<p>Ou seja, no limite, temos, de fato, uma delta de Dirac:</p>
-\[
-c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
-\]
-<p>Uma outra maneira de ver isso é através da representação de Paley-Wiener de um processo de Wiener, dada por</p>
-\[
-    W_t = \frac{t}{\sqrt{2\pi}} Z_0 + \frac{2}{\sqrt{2\pi}}\sum_{n=1}^\infty \frac{\sin(\frac{1}{2}nt)}{n}Z_n, \qquad 0 \leq t \leq 2\pi.
-\]
-<p>Formalmente, derivando a série termo a termo, temos que a derivada temporal \(\dot W_t\) do processo se escreve como</p>
-\[
-    \dot W_t = \frac{1}{\sqrt{2\pi}} Z_0 + \frac{1}{\sqrt{2\pi}}\sum_{n=1}^\infty \sin(\frac{1}{2}nt)Z_n, \qquad 0 \leq t \leq 2\pi,
-\]
-<p>de modo que os coeficientes de Fourier são constantes. É claro que a série acima não converge em um sentido clássico. Mas serve como conexão com a ideia da derivada ser um ruído branco. De qualquer forma, um sentido mais preciso pode ser dado em um espaço apropriado de distribuições.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -522,7 +455,7 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
 <a class="menu-level-1" href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c05/simetrias_wiener"><kbd>→</kbd> 5.4. Simetrias de processos de Wiener</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c05/ruido_branco"><kbd>→</kbd> 5.4. Relação com ruído branco</a>
 </span>
     </p>
 </div>
@@ -538,7 +471,7 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
         </div>
     
 
-    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 27, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -550,9 +483,6 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
         <script>renderMathInElement(document.body)</script>
     
 
-    
-        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>

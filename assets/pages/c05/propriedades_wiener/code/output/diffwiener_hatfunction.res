@@ -1,1 +1,0 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c05/propriedades_wiener/code/output/diffwiener_hatfunction.svg"

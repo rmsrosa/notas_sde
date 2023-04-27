@@ -131,13 +131,16 @@
     <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Tipos de processos</a></li>
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
     </div>
     <div class="menu-level-1">
     <li>5. Processos de Wiener</li>
@@ -152,13 +155,16 @@
     <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.4. Simetrias de processos de Wiener</a></li>
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.5. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.6. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada quase sempre dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
     <li>6. Integração estocástica</li>
@@ -375,7 +381,8 @@ F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{
 <li><p><strong>Compatibilidade:</strong> Para \(m < n\), \(m, n \in \mathbb{N}\), e \(t_1, \ldots, t_n \in I\), vale \(F_{t_1, \ldots, t_m}(x_1, \ldots, x_m) = F_{t_1, \ldots, t_m, t_{m+1}, \ldots, t_n}(x_1, \ldots, x_m, \infty, \ldots, \infty)\).</p>
 </li>
 </ol>
-<p>Por outro lado, um resultado importante de Kolmogorov, conhecido como o <strong>Teorema Fundamental de Kolmogorov</strong> garante que qualquer família de funções de distribuição satisfazendo as condições de simetria e compatibilidade definem um processo estocástico.</p>
+<p>Por outro lado, um resultado importante de Kolmogorov, conhecido como o <strong>Teorema Fundamental de Kolmogorov</strong> &#40;além de outros nomes, tais como <strong>Teorema de Existência de Kolmogorov</strong> e <strong>Teorema de Extensão de Daniell-Kolmogorov</strong>&#41; garante que qualquer família de funções de distribuição satisfazendo as condições de simetria e compatibilidade definem um processo estocástico.</p>
+<p>Este é um dos primeiros resultados profundos envolvendo processos estocásticos contínuous. Vejam, por exemplo <a href="https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem">Kolmogorov extension theorem</a> e <a href="https://fabricebaudoin.wordpress.com/2012/03/25/lecture-5-the-daniell-kolmogorov-existence-theorem/">Lecture 5. The Daniell-Kolmogorov existence theorem</a> e <a href="https://terrytao.wordpress.com/2010/10/30/245a-notes-6-outer-measures-pre-measures-and-product-measures/">245A, Notes 6: Outer measures, pre-measures, and product measures</a>. Sua demonstração é baseada no Teorema de Extensão de Carathéodory, usualmente visto em Teoria da Medida</p>
 
     <div class="navbar">
     <p id="nav">
@@ -399,7 +406,7 @@ F_{t_1, \ldots, t_n}(x_1, \ldots, x_n) = \mathbb{P}(X_{t_1} \leq x_1, \ldots X_{
         </div>
     
 
-    Last modified: April 20, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 27, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
