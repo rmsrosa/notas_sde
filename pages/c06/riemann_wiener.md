@@ -2,20 +2,27 @@
 
 # {{ get_title }}
 
-Vimos uma maneira de definir a integral em relação a processos $\{Y_t\}_t$ cujos caminhos amostrais não são de variação limitada. Mas apenas integrandos da forma $g(t, Y_t)$, para certos tipos particulares de funções, são permitidos (continuamente diferenciáveis e da forma $g(t, y) = \partial_y G(t, y)$). Queremos estender a noção de integral para funções mais gerais e com integrandos da forma $g(t, X_t)$, i.e. envolvendo processos $\{X_t\}_t$ diferentes daquele em relação ao qual estamos integrando. A motivação é prática: queremos integrar em relação a um processo de Wiener.
+Vimos uma maneira de definir a integral em relação a processos $\{Y_t\}_t$ cujos caminhos amostrais não são de variação limitada. Mas apenas integrandos da forma $g(t, Y_t)$, para certos tipos particulares de funções, são permitidos ($g = g(t)$ continuamente diferenciáveis ou $g=g(t, y) = \partial_y G(t, y)$). Queremos estender a noção de integral para funções mais gerais e com integrandos da forma $g(t, X_t)$, i.e. envolvendo processos $\{X_t\}_t$ diferentes daquele em relação ao qual estamos integrando. A motivação é prática: queremos integrar em relação a um processo de Wiener.
 
-A integral definida anteriormente não foi feita diretamente em termos de somas de Riemann ou de integrais de funções simples. Foi definida na forma de dualidade. Aqui, por outro lado, vamos investigar um caminho semelhante ao feito em integrais de Riemann.
+A integral definida anteriormente não foi feita diretamente em termos de somas de Riemann ou de integrais de funções simples. Foi definida na forma de dualidade (seja via fórmula de integração por parte, quando $g=g(t)$ é diferenciável, ou via fórmula de mudança de variáveis, quando $g=g(t, y) = \partial_y G(t, y)$). Aqui, por outro lado, vamos investigar um caminho semelhante ao feito em integrais de Riemann.
 
-Na integral de Riemann, consideramos malhas cada vez mais finas e aproximamos a função por funções constantes por partes, constantes em cada subintervalo da malha, cuja integral se reduz a um somatório finito. O valor em cada subintervalo da malha é determinado pelo valor da função em um ponto escolhido arbitrariamente em cada subintervalo. O limite do somatório deve existir e ser único independentemente da escolha desse ponto em cada subintervalo. Isso é possível sempre que a função integrada é contínua ou tem descontinuidades em um conjunto de medida nula.
+Na integral de Riemann, consideramos malhas cada vez mais finas e aproximamos a função por funções constantes por partes, mais precisamente constantes em cada subintervalo da malha, cuja integral se reduz a um somatório finito. O valor em cada subintervalo da malha é determinado pelo valor da função em um ponto escolhido arbitrariamente em cada subintervalo. O limite do somatório deve existir e ser único independentemente da escolha desse ponto em cada subintervalo. Isso é possível sempre que a função integrada é contínua ou tem descontinuidades em um conjunto de medida nula.
 
 Veremos, a seguir, que esse limite pode não ser único, ou não existir, quando integramos em relação a um processo de Wiener e escolhemos os pontos de forma arbitrária.
-
-## Somas de Riemann de um processo de Wiener
 
 Para ilustrar a complexidade do problema, vamos considerar diferentes somas de Riemann associadas à seguinte integral envolvendo um processo de Wiener $\{W_t\}_{t\geq 0}$:
 $$
 \int_0^T W_t \;\mathrm{d}W_t.
 $$
+
+Observe que, via dualidade com a fórmula de mudança de variáveis, tomando $G(y) = y^2/2$, temos $g(y) = G'(y) = y$ e 
+$$
+\int_0^T W_t \circ \;\mathrm{d}W_t = G(W_T) - G(W_0) = \frac{W_T}{2}.
+$$
+
+O que acontece se, por outro lado, considerarmos as somas de Riemann-Stieltjes associada a essa integral?
+
+## Somas de Riemann-Stieltjes
 
 Se os caminhos fossem, quase certamente, de variação limitada, poderiamos definir, para quase todo $\omega$,
 $$
@@ -36,7 +43,7 @@ $$
 R_M(\lambda) = \sum_{j=1}^{n} W_{\theta_j^\lambda} (W_{t_j} - W_{t_{j-1}}).
 $$
 
-Vamos calcular, a seguir, o limite no caso $\lambda = 0$, depois no caso $\lambda = 1$ e, finalmente, o caso geral $0 \leq \lambda \leq 1$.
+Vamos calcular, a seguir, o limite no caso $\lambda = 0$, depois no caso $\lambda = 1$, em seguida no caso $\lambda = 1/2$ e, finalmente, o caso geral $0 \leq \lambda \leq 1$.
 
 ### Caso $\lambda = 0$
 

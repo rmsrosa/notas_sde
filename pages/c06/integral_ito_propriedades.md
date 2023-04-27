@@ -153,9 +153,9 @@ $$
 \int_0^T H_t \;\mathrm{d}W_t.
 $$
 
-Isso também acontece na integral de Riemann-Stieltjes. Por exemplo, se $g(t) = sin(t)$, que é de variação limitada, e $f(t) = 1$, então
+Isso também acontece na integral de Riemann-Stieltjes. Por exemplo, se $g(t) = \sin(t)$, que é de variação limitada, e $f(t) = 1$, então
 $$
-\int_0^T f(t) \;\mathrm{d}g(t) = g(t) - g(0) = sin(t),
+\int_0^T f(t) \;\mathrm{d}g(t) = g(t) - g(0) = \sin(t),
 $$
 que não é positiva.
 
