@@ -151,6 +151,29 @@ $$
 
 Isso significa que, quase certamente, $X_n \rightarrow X$, concluindo a demonstração.
 
+## Esperança convergindo e variância esvanecendo implica em convergência em probabilidade para constante
+
+Suponha que $\{X_n\}_{n\in\mathbb{N}}$ seja um processo discreto real tal que
+$$
+    \mathbb{E}[X_n] \rightarrow c, \quad \mathrm{Var}(X_n) = 0.
+$$
+
+Então
+$$
+    \mathbb{P}\left(|X_n - c| > \varepsilon\right) = \int_{|X_n - c| > \varepsilon} \;\mathrm{d}F_{X_n}(x),
+$$
+onde $F_{X_n}(x) = \mathbb{P}(X_n < x)$ é a função de probabilidade acumulada de $X_n.$
+
+Como $1 \leq (X_n - c)^2 / \varepsilon^2$ no domínio de integração,
+$$
+\begin{align*}
+    \mathbb{P}\left(|X_n - c| > \varepsilon\right) & \leq \frac{1}{\varepsilon^2}\int_{\mathbb{R}} (X_n - c)^2 \;\mathbb{d}F_{X_n}(x) \\
+    & \leq \frac{1}{\varepsilon^2}\int_{\mathbb{R}} (X_n - E[X_n])^2 \;\mathrm{d}F_{X_n}(x) + \frac{1}{\varepsilon^2}\int_{\mathbb{R}} (E[X_n] - c)^2 \;\mathrm{d}F_{X_n}(x) \\
+    & = \frac{1}{\varepsilon^2}\mathrm{Var}(X_n) + \frac{1}{\varepsilon^2}(E[X_n] - c)^2 \rightarrow 0, \quad n\rightarrow \infty,
+\end{align*}
+$$
+provando a convergência em probabilidade para uma constante.
+
 ## Exemplos de convergências
 
 ### Sequências de normais dependentes
