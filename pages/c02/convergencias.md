@@ -92,8 +92,12 @@ $$
 
 Observe que não há ambiguidade acima, pois
 $$
-\limsup_{n\rightarrow\infty} \{|X_n - X| > \varepsilon\} = 
-\bigcap_n \bigcup_k \{\omega; |X_k - X| > \varepsilon\} = \left\{\omega; \forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} = \left\{\omega; \;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
+\begin{align*}
+\limsup_{n\rightarrow\infty} \{|X_n - X| > \varepsilon\} & = 
+\bigcap_n \bigcup_k \{\omega; |X_k - X| > \varepsilon\} \\
+& = \left\{\omega; \forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} \\
+& = \left\{\omega; \;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
+\end{align*}
 $$
 
 Tomando uma sequência positiva $\varepsilon_n \rightarrow 0$, temos
