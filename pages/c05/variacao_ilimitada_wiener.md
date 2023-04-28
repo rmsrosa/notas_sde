@@ -1,4 +1,4 @@
-@def title = "Variação ilimitada quase sempre dos caminhos amostrais"
+@def title = "Variação ilimitada dos caminhos amostrais"
 
 # {{ get_title }}
 
@@ -92,22 +92,28 @@ $$
 \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \leq \left(\max_{j=1, \ldots, n} |W_{t_j} - W_{t_{j-1}}|\right)\sum_{j=1}^n |W_{t_j} - W_{t_{j-1}}|.
 $$
 
-Para efeito de contradição, vamos assumir que a malha é uniforme e em pontos diádicos, i.e. para cada $k\in \mathbb{N}$, tomamos $n = 2^k$, $\tau = T/n = T/2^k$ e $t_j = j\tau$, para $j = 0, \ldots, n$.
+Para efeito de contradição, vamos assumir que a malha seja uniforme e em pontos diádicos, i.e. para cada $k\in \mathbb{N}$, tomamos $n = 2^k$, $\tau = T/n = T/2^k$ e $t_j = j\tau=j/2^k,$ para $j = 0, \ldots, n$.
 
 Vamos mostrar que, quando $k \rightarrow \infty$, o lado esquerdo converge para um valor finito positivo e o primeiro termo do lado direito converge para zero, de modo que a variação tem que ser ilimitada.
 
-O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos garante que uma determinada malha seja um refinamento das malhas anteriores, algo que será fundamental para garantirmos a convergência quase sempre a partir da convergência em probabilidade.
+O fato da malha ser uniforme facilita obtermos expressões mais explícitas para certas quantidades. Por outro lado, o uso dos pontos diádicos nos dá um decrescimento rápido o suficiente que nos permite usar o Lema de Borel-Cantelli. Nenhuma dessas duas condições é necessária. Há outras demonstrações mais delicadas que se aplicam a malhas arbitrárias. Mas o resultado com malhas diádicas é suficiente.
 
 ### Sobre a soma dos quadrados dos incrementos
 
+Denote a soma dos quadrados dos incrementos por
+$$
+S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2,
+$$
+lembrando que $n = 2^k$ e $t_j = j/2^k$.
+
 O valor esperado da soma dos quadrados dos incrementos pode ser escrito como
 $$
-\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n \mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right].
+\mathbb{E}\left[S_k\right] = \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n \mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right].
 $$
 Observe que, usando-se a propriedade $\mathbb{E}(W_tW_s) = \mathrm{Cov}(W_t, W_s) = \min\{t, s\}$,
 $$
 \begin{align*}
-\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] & = \mathbb{E}\left[W_{t_j}^2 - 2W_{t_j}W_{t_{j-1}} + W_{t_{j-1}}^2\right] \\
+\mathbb{E}\left[S_k\right] & = \mathbb{E}\left[W_{t_j}^2 - 2W_{t_j}W_{t_{j-1}} + W_{t_{j-1}}^2\right] \\
 & = \mathbb{E}\left[W_{t_j}^2\right] -2\mathbb{E}\left[W_{t_j}W_{t_{j-1}}\right] + \mathbb{E}\left[W_{t_{j-1}}^2\right] \\
 & = t_j - 2t_{j-1} + t_{j-1} \\
 & = t_j - t_{j-1}.
@@ -115,12 +121,13 @@ $$
 $$
 Assim, obtemos a identidade
 $$
-\mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T.
+\mathbb{E}\left[S_k\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T.
 $$
+Observe que, aqui, o resultado vale para uma malha arbitrária.
 
 Agora, estimamos a sua variância. Primeiro, temos
 $$
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right]
+\mathbb{E}\left[S_k^2\right] = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n\mathbb{E}\left[\left(W_{t_i} - W_{t_{i-1}}\right)^2\left(W_{t_j} - W_{t_{j-1}}\right)^2\right]
 $$
 Para $i\neq j$, como os incrementos são independentes e normais, temos
 $$
@@ -137,44 +144,64 @@ $$
 & = \sum_{i, j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
 \end{align*}
 $$
-Como a malha é uniforme, temos
-$$
-\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = n^2\tau^2 + 2n\tau^2 = T^2 + 2\tau T.
-$$
-
-Assim, a variância é dada por
-$$
-\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 = T^2 + 2\tau T - T^2 = 2\tau T.
-$$
-
-Dessa forma, vemos que a soma dos quadrados dos incrementos
-$$
-S_k = \sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2
-$$
-tem valor esperado constante igual a $T$ e variância $2\tau T.$ Quando $k \rightarrow \infty$, temos $\tau \rightarrow 0$, de modo que $S_k$ converge, em probabilidade, para a constante $T$:
-$$
-\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2 \rightarrow T, \qquad k \rightarrow \infty.
-$$
-Agora, vamos explorar o fato das malhas serem em pontos diádicos. Observe que
-$$
-W_{j/2^k} - W_{(j-1)/2^k} \leq W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k},
-$$
-de modo que
+Os termos do primeiro somatório são separáveis em $i$ e $j$, de modo que
 $$
 \begin{align*}
-\left(W_{j/2^k} - W_{(j-1)/2^k}\right)^2 & = \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}} + W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2 \\
-& \leq \left(W_{j/2^k} - W_{j/2^k + 1/2^{k+1}}\right)^2 + \left(W_{j/2^k + 1/2^{k+1}} - W_{(j-1)/2^k}\right)^2.
+\mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] & = \left(\sum_{i = 1}^n (t_i - t_{i-1})\right)\left(\sum_{j = 1}^n (t_j - t_{j-1})\right) + 2\sum_{j = 1}^n (t_j - t_{j-1})^2 \\
+& = T^2 + 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
 \end{align*}
 $$
-Logo, para qualquer caminho amostral, temos
+Portanto, a variância é dada por
 $$
-S_{k+1} \geq S_k.
+\begin{align*}
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) & = \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] - \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right]^2 \\
+& = T^2 + 2\sum_{j = 1}^n (t_j - t_{j-1})^2 - T^2 \\
+& = 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
+\end{align*}
 $$
-A convergência em probabilidade em conjunto com a monotonicidade implica em convergência quase sempre. Logo,
+
+Podemos estimar
 $$
-S_k \rightarrow T, \qquad k \rightarrow \infty,
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) \leq 2T\max_{j=1,\ldots, n}\{(t_j - t_{j-1})\}.
 $$
-para quase todo caminho amostral.
+Novamente, essa estimativa vale para uma malha arbitrária. No caso da malha uniforme, com $\tau = 1/2^k,$ temos, mais precisamente,
+$$
+\mathrm{Var}\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right) \leq 2T\tau = \frac{T}{2^{k-1}}.
+$$
+
+No limite do refinamento da malha, temos
+$$
+\mathbb{E}[S_k] = T, \quad \mathrm{Var}(S_k) \rightarrow 0,
+$$
+portanto
+$$
+S_k \rightarrow T,
+$$
+quando $k\rightarrow \infty.$ Mais importante é a estimativa
+$$
+    \mathbb{P}\left(|S_k - T| \geq \varepsilon \right) \leq \mathbb{E}\left[\frac{(S_k - T)^2}{\varepsilon^2}\right] \leq \frac{T}{\varepsilon^2}\frac{1}{2^{k-1}},
+$$
+para $\varepsilon>0$ arbitrário. Com isso,
+$$
+    \sum_{k = 1}^\infty \mathbb{P}\left(|S_{k} - T| \geq \varepsilon \right) \leq \frac{2T}{\varepsilon^2} < \infty.
+$$
+Portanto, pelo Lema de Borel-Cantelli,
+$$
+\mathbb{P}\left(\limsup_{k\rightarrow \infty} |S_k - T| \geq \varepsilon\right) = 0.
+$$
+Como $\varepsilon > 0$ é arbitrário, segue que
+$$
+\mathbb{P}\left( \limsup_{k\rightarrow \infty} |S_k - T| > 0 \right) = 0.
+$$
+Escrito de outra maneira,
+$$
+\mathbb{P}\left( \lim_{k\rightarrow \infty} |S_k - T| = 0 \right) = 1,
+$$
+ou seja,
+$$
+S_{k} \rightarrow T,
+$$
+quase certamente.
 
 ### Sobre o máximo dos incrementos
 
