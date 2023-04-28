@@ -4,7 +4,7 @@
 
 Vejamos diversas propriedades de processos de Wiener.
 
-## São processo Gaussiano
+## Processo Gaussiano
 
 Um processo de Wiener é um exemplo de processo Gaussiano. Para ver isso, dados $t_1, \ldots, t_n \geq 0$, podemos escrever cada $W_{t_1}, \ldots, W_{t_n}$ como combinação linear das normais independentes $W_{t_1} - W_{t_0}$, $W_{t_2} - W_{t_1}$, ..., $W_{t_n} - W_{t_{n-1}}$, onde $t_0 = 0$, i.e.
 $$
