@@ -177,7 +177,7 @@ portanto
 $$
 S_k \rightarrow T,
 $$
-quando $k\rightarrow \infty.$ Mais importante é a estimativa
+quando $k\rightarrow \infty.$ Mais importante é a estimativa que segue da desigualdade de Chebyshev,
 $$
     \mathbb{P}\left(|S_k - T| \geq \varepsilon \right) \leq \mathbb{E}\left[\frac{(S_k - T)^2}{\varepsilon^2}\right] \leq \frac{T}{\varepsilon^2}\frac{1}{2^{k-1}},
 $$
