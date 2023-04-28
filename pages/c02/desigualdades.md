@@ -10,6 +10,19 @@ $$
 \mathbb{P}(|X| > r) \leq \frac{\mathbb{E}[|X|]}{r}, \quad \forall r > 0.
 $$
 
+Denotando $\mathbf{1}_E(x)$ a função característica de um conjunto $E,$ a desigualdade acima segue de
+$$
+\mathbb{P}(|X| > r) = \mathbb{E}[\mathbf{1}_{|X| > r}] = \frac{1}{r}\mathbb{E}[r\mathbf{1}_{|X| > r}] \leq \frac{1}{r}\mathbb{E}[|X|\mathbf{1}_{|X| > r}] \leq \frac{1}{r}\mathbb{E}[|X|].
+$$
+
+## Desigualdade de Chernoff
+
+Como a exponencial é uma função crescente, temos que $|X| > r$ é equivalente a $e^{\lambda |X|} > e^{\lambda r},$ para $\lambda, r > 0$ arbitrários. Assim, usando a desigualdade de Markov,
+$$
+    \mathbb{P}(|X| > r) = \mathbb{P}(e^{\lambda |X|} > e^{\lambda r}) \leq e^{-\lambda r}\mathbb{E}\left[ e^{\lambda |X|} \right]
+$$
+
+
 ## Desigualdade de Chebyshev
 
 $$
