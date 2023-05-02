@@ -416,6 +416,118 @@
 \mathbb{P}(X = 0, Y = 0, Z = 0) = 0 \neq \mathbb{P}(X = 0)\mathbb{P}(Y = 0)\mathbb{P}(Z = 0).
 \]
 <p>Da mesma forma, pode-se verificar que as variáveis são independentes duas a duas.</p>
+<h2 id="desigualdade_maximal_de_kolmogorov"><a href="#desigualdade_maximal_de_kolmogorov" class="header-anchor">Desigualdade maximal de Kolmogorov</a></h2>
+<p>Como uma aplicação interessante, considere \(n\) variáveis aleatórias independentes \(X_1, \ldots, X_n\) com \(\mathbb{E}[X_j] = 0,\) \(j = 1, \ldots, n,\) e defina</p>
+\[
+    S_k = \sum_{i=1}^k X_i,
+\]
+<p>com \(S_0 = 0.\) Estamos interessados em estimar</p>
+\[
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right),
+\]
+<p>para \(r \geq 0\) arbitrário. Para isso, usamos a decomposição</p>
+\[
+    \left\{\max_{1\leq k \leq n} \{S_k\} \geq r\right\} = \left\{S_1 \geq r\right\} \bigcup \left\{S_1 < r, S_2 \geq r\right\} \bigcup \cdots \bigcup \left\{S_1 < r, \ldots S_{n-1} < r, S_n \geq r\right\}.
+\]
+<p>Denotamos</p>
+\[
+    A_k = \left\{S_1 < r, \ldots S_{k-1} < r, S_k \geq r \right\}.
+\]
+<p>Como as uniões são disjuntas,</p>
+\[
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) = \mathbb{P}\left(A_1\right) + \mathbb{P}\left(A_2\right) + \cdots + \mathbb{P}\left(A_n\right)
+\]
+<p>Usando a desigualdade de Chebyshev,</p>
+\[
+    \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^2}\mathbb{E}[S_k^2 \chi_{A_k}] \leq \frac{1}{r^2} \mathbb{E}[(S_k^2 + (S_n - S_k)^2) \chi_{A_k}].
+\]
+<p>Como as variáveis \(X_k,\) \(k=1, \ldots, n,\) são independentes, temos que</p>
+\[
+S_k=\sum_{1\leq i \leq k} X_i \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < i \leq n} X_i
+\]
+<p>são independentes entre si. Além disso, \(\chi_{A_k}\) só envolve os processos \(X_1, \ldots, X_k,\) sendo também independente de \(S_n - S_k\). Desse modo,</p>
+\[
+    \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) = 0
+\]
+<p>e</p>
+\[
+    \mathbb{E}[S_k\chi_{A_k}(S_n - S_k)] = \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) + \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right] = \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right].
+\]
+<p>Observe que \(S_k \geq r\) em \(A_k\), logo</p>
+\[
+    \mathbb{E}\left[S_k\chi_{A_k}\right] \geq r,
+\]
+<p>mas</p>
+\[
+    \mathbb{E}\left[S_n - S_k\right] = 0,
+\]
+<p>de maneira que</p>
+\[
+    \mathbb{E}[S_k\chi_{A_k}(S_n - S_k)] = 0.
+\]
+<p>Assim, podemos completar os quadrados e escrever</p>
+\[
+\begin{align*}
+    \mathbb{E}[(S_k^2 + (S_n - S_k)^2) \chi_{A_k}] & = \mathbb{E}[(S_k^2 + 2S_k(S_n - S_k) + (S_n - S_k)^2)\chi_{A_k}] \\
+    & = \mathbb{E}[(S_k + (S_n - S_k))^2\chi_{A_k}] \\
+    & = \mathbb{E}[S_n^2\chi_{A_k}].
+\end{align*}
+\]
+<p>Desta forma,</p>
+\[
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\left( \mathbb{E}[S_n^2\chi_{A_1}] + \cdots + \mathbb{E}[S_n^2\chi_{A_n}]\right) = \frac{1}{r^2}\mathbb{E}[S_n^2\left(\chi_{A_1} + \cdots + \chi_{A_n}\right)].
+\]
+<p>Como os conjuntos \(A_1, \ldots, A_n\) são disjuntos, temos</p>
+\[
+    \chi_{A_1} + \ldots + \chi_{A_n} = \chi_{A_1 \cup \cdots \cup A_n} \leq 1,
+\]
+<p>de modo que</p>
+\[
+    \mathbb{E}[S_n^2\chi_{A_1 \cup \ldots \cup A_n}] \leq \mathbb{E}[S_n^2].
+\]
+<p>Como \(S_n\) também tem valor esperado nulo, o lado direito é igual à variância de \(S_n\), nos levando à desigualdade final, conhecida como <strong>desigualdade de Kolmogorov:</strong></p>
+\[
+    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
+\]
+<p>para \(r > 0\) arbitrário.</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Modifique a demonstração acima da desigualdade maxima de Kolmogorov para obter que</p>
+</li>
+</ol>
+\[
+    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right],
+\]
+<p>para todo \(r > 0\) e todo inteiro \(m\in\mathbb{N}.\)</p>
+<p><em>Dicas:</em></p>
+<p>&#40;i&#41; Substitua a desigualdade de Chebyshev por</p>
+\[
+        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}].
+    \]
+<p>&#40;ii&#41; Escreva</p>
+\[
+        S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{j=0}^{2m} \left( \begin{matrix} n \\ j \end{matrix}\right)S_k^{2m - j}(S_n - S_k)^{j}.
+    \]
+<p>&#40;iii&#41; Quando \(j\) é ímpar, \(\mathbb{E}\left[(S_n - S_k)^j\right] = 0\) e \(S_n - S_k\) é independente de \(S_k^{2m - j}\chi_{A_k},\) de modo que</p>
+\[
+        \mathbb{E}[S_k^{2m - j}(S_n - S_k)^{j} \chi_{A_k}] = 0.
+    \]
+<p>&#40;iv&#41; Quando \(j\) é par, \(2m-j\) também é par e</p>
+\[
+        \mathbb{E}[S_k^{2m - j}(S_n - S_k)^{j} \chi_{A_k}] \geq 0.
+    \]
+<p>&#40;v&#41; Mantendo apenas o termo \(j=0,\) obtemos</p>
+\[
+        \mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].
+    \]
+<p>&#40;vi&#41; Isso nos dá que</p>
+\[
+        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_n^{2m} \chi_{A_k}].
+    \]
+<p>&#40;vii&#41; Somando em \(k\) e usando que os conjuntos \(A_1, \ldots, A_n\) são disjuntos, como na demonstração acima, obtemos, finalmente</p>
+\[
+        \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right].
+    \]
 
     <div class="navbar">
     <p id="nav">
@@ -439,7 +551,7 @@
         </div>
     
 
-    Last modified: April 28, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 02, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

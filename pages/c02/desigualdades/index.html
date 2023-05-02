@@ -356,6 +356,15 @@
 \[
 \mathbb{P}(|X| > r) \leq \frac{\mathbb{E}[|X|]}{r}, \quad \forall r > 0.
 \]
+<p>Denotando \(\mathbf{1}_E(x)\) a função característica de um conjunto \(E,\) a desigualdade acima segue de</p>
+\[
+\mathbb{P}(|X| > r) = \mathbb{E}[\mathbf{1}_{|X| > r}] = \frac{1}{r}\mathbb{E}[r\mathbf{1}_{|X| > r}] \leq \frac{1}{r}\mathbb{E}[|X|\mathbf{1}_{|X| > r}] \leq \frac{1}{r}\mathbb{E}[|X|].
+\]
+<h2 id="desigualdade_de_chernoff"><a href="#desigualdade_de_chernoff" class="header-anchor">Desigualdade de Chernoff</a></h2>
+<p>Como a exponencial é uma função crescente, temos que \(|X| > r\) é equivalente a \(e^{\lambda |X|} > e^{\lambda r},\) para \(\lambda, r > 0\) arbitrários. Assim, usando a desigualdade de Markov,</p>
+\[
+    \mathbb{P}(|X| > r) = \mathbb{P}(e^{\lambda |X|} > e^{\lambda r}) \leq e^{-\lambda r}\mathbb{E}\left[ e^{\lambda |X|} \right]
+\]
 <h2 id="desigualdade_de_chebyshev"><a href="#desigualdade_de_chebyshev" class="header-anchor">Desigualdade de Chebyshev</a></h2>
 \[
 \mathbb{P}(|X - \mathbb{E}[X]| \geq r) \leq \frac{\mathrm{Var}(X)}{r^2}, \quad \forall r > 0.
@@ -403,7 +412,7 @@
         </div>
     
 
-    Last modified: April 28, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 02, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
