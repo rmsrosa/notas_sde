@@ -31,24 +31,97 @@ Isso completa a demonstração dessa simetria.
 
 ## Crescimento sublinear
 
-Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Então vale, quase sempre,
+Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Então vale, quase certamente,
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t} = 0.
 $$
 
-A demonstração desse fato é delicada. É fácil mostrar que a convergência ocorre em probabilidade. De fato, temos
+### Convergência em probabilidade
+
+É fácil mostrar que a convergência ocorre em probabilidade. De fato, temos
 $$
 \mathbb{E}\left[ \frac{W_t}{t} \right] = \frac{\mathbb{E}\left[W_t\right]}{t} = 0,
 $$
 para todo $t > 0,$ e
 $$
-\mathbb{E}\left[ \left(\frac{W_t}{t}\right)^2 \right] = \frac{\mathbb{E}\left[W_t^2\right]}{t^2} = \frac{t}{t^2} = \frac{1}{t} \rightarrow 0, \quad t\rightarrow \infty.
+\mathrm{Var}\left(\frac{W_t}{t}\right) = \mathbb{E}\left[ \left(\frac{W_t}{t}\right)^2 \right] = \frac{\mathbb{E}\left[W_t^2\right]}{t^2} = \frac{t}{t^2} = \frac{1}{t} \rightarrow 0, \quad t\rightarrow \infty.
 $$
 Portanto,
 $$
 \frac{W_t}{t} \rightarrow 0
 $$
-em probabilidade. Mas a demonstração de a convergência ocorre quase certamente é não trivial.
+em probabilidade.
+
+### Convergência quase certamente
+
+A demonstração de que a convergência ocorre quase certamente requer um pouco mais de trabalho. Observe, primeiro, que $W_t/t \rightarrow 0$ quase certamente é equivalente a
+$$
+    \mathbb{P}\left(\limsup_{t\rightarrow \infty} \left|\frac{W_t}{t}\right| \geq \varepsilon\right) = 0,
+$$
+para $\varepsilon > 0$ arbitrário. Isso, por sua vez, é equivalente a
+$$
+    \mathbb{P}\left(\limsup_{n\rightarrow \infty} \max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) = 0,
+$$
+onde $n \rightarrow \infty$ ao longo dos números naturais. (Lembramos que, quase certamente, os caminhos amostrais são contínuous, de modo que podemos considerar o máximo acima, ao invés do supremo.) Pelo Lema de Borel-Cantelli, isso seque se mostrarmos que
+$$
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) < \infty.
+$$
+Para isso, precisamos de uma estimativa para cada termo da série. Observe que
+$$
+\begin{align*}
+    \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) & = \mathbb{P}\left(\max_{n-1 \leq t \leq n}|W_t| \geq t\varepsilon\right) \\
+    & \leq \mathbb{P}\left(\max_{n-1 \leq t \leq n}|W_t| \geq n\varepsilon\right) \\
+    & \leq \mathbb{P}\left(\max_{0 \leq t \leq n}|W_t| \geq n\varepsilon\right).
+\end{align*}
+$$
+
+Agora, um resultado essencial para a estimativa do termo acima é a seguinte igualdade maximal, associada à estimativa maximal de Doob:
+$$
+    \mathbb{P}\left( \max_{0 \leq s \leq t} |W_s| \geq r\right) = 2\mathbb{P}\left( |W_t| \geq r\right),
+$$
+para $t \geq 0$, $r \geq 0$ quaisquer.
+
+A estimativa maximal de Doob combina isso com a desigualdade de Chernov, que nos dá uma estimativa para o termo do lado direito da expressão. De fato, pela desigualdade de Chernov,
+$$
+    \mathbb{P}\left( |W_t| \geq r\right) \leq e^{-\lambda r}\mathbb{E}\left[e^{\lambda |W_t|}\right],
+$$
+para $\lambda > 0$ arbitrário. Como $W_t/\sqrt{t}\sim \mathcal{N}(0, 1),$ escolhemos $r = n\varepsilon$ e $\lambda = 1/\sqrt{t},$ de modo que
+$$
+    \mathbb{P}\left( |W_t| \geq n\varepsilon\right) \leq e^{-\varepsilon(n/\sqrt{t})}\mathbb{E}\left[e^{|W_t|/\sqrt{t}}\right].
+$$
+
+
+
+
+De fato, observe que
+$$
+    \mathbb{P}\left(\left|\frac{W_t}{t}\right| > \varepsilon\right) = \mathbb{P}\left(\frac{|W_t|}{\sqrt{t}} > \varepsilon\sqrt{t}\right).
+$$
+Pela desigualdade de Chernov,
+$$
+    \mathbb{P}\left(\frac{|W_t|}{\sqrt{t}} > \varepsilon\sqrt{t}\right) \leq e^{-\lambda \varepsilon\sqrt{t}}\mathbb{E}\left[e^{\lambda|W_t|/\sqrt{t}}\right].
+$$
+Notice $W_t/\sqrt{t} \sim \mathcal{N}(0, 1),$ de modo que o valor esperado pode ser calculado como feito para funções geradoras de momento:
+$$
+\begin{align*}
+    \mathbb{E}\left[e^{\lambda|W_t|/\sqrt{t}}\right] & = \frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{\lambda |x|}e^{-x^2/2} \;\mathrm{d}x \\
+    & = \frac{e^{\lambda^2/2}}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{- \lambda^2/2 + \lambda |x| - x^2/2} \;\mathrm{d}x \\
+    & = \frac{e^{\lambda^2/2}}{\sqrt{2\pi}}\left(\int_{-\infty}^0 e^{-(x+\lambda)^2/2} \;\mathrm{d}x + \int_0^\infty e^{-(x-\lambda)^2/2} \;\mathrm{d}x\right) \\
+    & \leq \frac{e^{\lambda^2/2}}{\sqrt{2\pi}}\left(\int_{\mathbb{R}} e^{-(x+\lambda)^2/2} \;\mathrm{d}x + \int_{\mathbb{R}} e^{-(x-\lambda)^2/2} \;\mathrm{d}x\right) \\
+    & = 2e^{\lambda^2/2}.
+\end{align*}
+$$
+Portanto,
+$$
+    \mathbb{P}\left(\left|\frac{W_t}{t}\right| > \varepsilon\right) \leq 2e^{-\lambda \varepsilon\sqrt{t}}e^{\lambda^2/2}.
+$$
+Escolhendo $\lambda = \varepsilon\sqrt{t}$, obtemos
+$$
+    \mathbb{P}\left(\left|\frac{W_t}{t}\right| > \varepsilon\right) \leq 2e^{-\varepsilon^2 t},
+$$
+para todo $t > 0.$
+
+...  Essa desigualdade é válida mais geralmente para qualquer Martingale.
 
 ## Invariância por inversão temporal
 
@@ -106,7 +179,7 @@ $$
 
 Como os incrementos são normais, isso mostra que quaisquer dois incrementos disjuntos de $\{V_t\}_{t\geq 0}$ são independentes. Agora, considerando $n$ incrementos consecutivos, o argumento acima mostra que eles são independentes dois a dois. E como são normais, isso implica neles serem mutuamente independentes.
 
-## Distribuição de probabilidades dos incrementos
+### Distribuição de probabilidades dos incrementos
 
 Sejam, agora, $t \geq 0$, $\tau > 0$. Se $t = 0$, então
 $$
