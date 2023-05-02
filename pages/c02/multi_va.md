@@ -106,9 +106,9 @@ Da mesma forma, pode-se verificar que as variáveis são independentes duas a du
 
 ## Desigualdade maximal de Kolmogorov
 
-Como uma aplicação interessante, considere $n$ variáveis aleatórias independentes $X_1, \ldots, X_n$ com $\mathbb{E}[X_j] = 0,$ $j = 1, \ldots, n,$ e defina
+Como uma aplicação interessante, considere $n$ variáveis aleatórias independentes $X_1, \ldots, X_n$ com $\mathbb{E}[X_k] = 0,$ $k = 1, \ldots, n,$ e defina
 $$
-    S_k = \sum_{i=1}^k X_i,
+    S_k = \sum_{j=1}^k X_j,
 $$
 com $S_0 = 0.$ Estamos interessados em estimar
 $$
@@ -132,7 +132,7 @@ $$
 $$
 Como as variáveis $X_k,$ $k=1, \ldots, n,$ são independentes, temos que
 $$
-S_k=\sum_{1\leq i \leq k} X_i \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < i \leq n} X_i
+S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j \leq n} X_j
 $$
 são independentes entre si. Além disso, $\chi_{A_k}$ só envolve os processos $X_1, \ldots, X_k,$ sendo também independente de $S_n - S_k$. Desse modo,
 $$
@@ -177,15 +177,15 @@ $$
 $$
 Como $S_n$ também tem valor esperado nulo, o lado direito é igual à variância de $S_n$, nos levando à desigualdade final, conhecida como **desigualdade de Kolmogorov:**
 $$
-    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
 $$
 para $r > 0$ arbitrário.
 
 ## Exercícios
 
-1. Modifique a demonstração acima da desigualdade maxima de Kolmogorov para obter que
+1. Considere um vetor aleatório $(X_1, \ldots, X_n)$ como na desigualdade maximal de Kolmogorov, com variáveis independentes e assuma, mais geralmente, que, para um dado $m\in\mathbb{N},$ os momentos são finitos, i.e. $\mathbb{E}[X_k^{2m}] < \infty,$ $k=1, \ldots, n,$ e que cada $X_k$ é simétrico em relação à origem, ou seja, $X_k$ e $-X_k$ tem a mesma distribuição. Modifique a demonstração acima da desigualdade maximal de Kolmogorov para obter que
 $$
-    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right],
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right],
 $$
 para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 
@@ -198,19 +198,19 @@ para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 
 (ii) Escreva
     $$
-        S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{j=0}^{2m} \left( \begin{matrix} n \\ j \end{matrix}\right)S_k^{2m - j}(S_n - S_k)^{j}.
+        S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{i=0}^{2m} \left( \begin{matrix} n \\ i \end{matrix}\right)S_k^{2m - i}(S_n - S_k)^{i}.
     $$
 
-(iii) Quando $j$ é ímpar, $\mathbb{E}\left[(S_n - S_k)^j\right] = 0$ e $S_n - S_k$ é independente de $S_k^{2m - j}\chi_{A_k},$ de modo que
+(iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $\mathbb{E}\left[(S_n - S_k)^i\right] = 0$. Além disso, $S_n - S_k$ é independente de $S_k^{2m - i}\chi_{A_k}.$ Portanto,
     $$
-        \mathbb{E}[S_k^{2m - j}(S_n - S_k)^{j} \chi_{A_k}] = 0.
+        \mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] = 0.
     $$
 
-(iv) Quando $j$ é par, $2m-j$ também é par e
+(iv) Quando $i$ é par, $2m-i$ também é par e
     $$
-        \mathbb{E}[S_k^{2m - j}(S_n - S_k)^{j} \chi_{A_k}] \geq 0.
+        \mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.
     $$
-(v) Mantendo apenas o termo $j=0,$ obtemos
+(v) Mantendo apenas o termo $i=0,$ obtemos
     $$
         \mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].
     $$
@@ -222,5 +222,5 @@ para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 
 (vii) Somando em $k$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente
     $$
-        \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right].
+        \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right].
     $$
