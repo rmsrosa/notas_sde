@@ -134,10 +134,27 @@ Como as variáveis $X_k,$ $k=1, \ldots, n,$ são independentes, temos que
 $$
 S_k=\sum_{1\leq i \leq k} X_i \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < i \leq n} X_i
 $$
-são independentes entre si, de modo que
+são independentes entre si. Além disso, $\chi_{A_k}$ só envolve os processos $X_1, \ldots, X_k,$ sendo também independente de $S_n - S_k$. Desse modo,
 $$
-    \mathbb{E}[S_k(S_n - S_k)] = 0.
+    \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) = 0
 $$
+e
+$$
+    \mathbb{E}[S_k\chi_{A_k}(S_n - S_k)] = \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) + \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right] = \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right].
+$$
+Observe que $S_k \geq r$ em $A_k$, logo
+$$
+    \mathbb{E}\left[S_k\chi_{A_k}\right] \geq r,
+$$
+mas
+$$
+    \mathbb{E}\left[S_n - S_k\right] = 0,
+$$
+de maneira que
+$$
+    \mathbb{E}[S_k\chi_{A_k}(S_n - S_k)] = 0.
+$$
+
 Assim, podemos completar os quadrados e escrever
 $$
 \begin{align*}
@@ -163,11 +180,3 @@ $$
     \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
 $$
 para $r > 0$ arbitrário.
-
-## Exercícios
-
-1. Modifique a demonstração acima da desigualdade de Kolmogorov para mostrar que
-$$
-    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^4}\mathbb{E}\left[S_n^4\right],
-$$
-para todo $r > 0.$
