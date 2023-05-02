@@ -180,3 +180,47 @@ $$
     \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
 $$
 para $r > 0$ arbitrário.
+
+## Exercícios
+
+1. Modifique a demonstração acima da desigualdade maxima de Kolmogorov para obter que
+$$
+    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right],
+$$
+para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
+
+*Dicas:*
+  
+(i) Substitua a desigualdade de Chebyshev por
+    $$
+        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}].
+    $$
+
+(ii) Escreva
+    $$
+        S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{j=0}^{2m} \left( \begin{matrix} n \\ j \end{matrix}\right)S_k^{2m - j}(S_n - S_k)^{j}.
+    $$
+
+(iii) Quando $j$ é ímpar, $\mathbb{E}\left[(S_n - S_k)^j\right] = 0$ e $S_n - S_k$ é independente de $S_k^{2m - j}\chi_{A_k},$ de modo que
+    $$
+        \mathbb{E}[S_k^{2m - j}(S_n - S_k)^{j} \chi_{A_k}] = 0.
+    $$
+
+(iv) Quando $j$ é par, $2m-j$ também é par e
+    $$
+        \mathbb{E}[S_k^{2m - j}(S_n - S_k)^{j} \chi_{A_k}] \geq 0.
+    $$
+(v) Mantendo apenas o termo $j=0,$ obtemos
+    $$
+        \mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].
+    $$
+
+(vi) Isso nos dá que
+    $$
+        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_n^{2m} \chi_{A_k}].
+    $$
+
+(vii) Somando em $k$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente
+    $$
+        \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right].
+    $$
