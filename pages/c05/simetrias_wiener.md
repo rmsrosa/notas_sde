@@ -4,6 +4,17 @@
 
 Processos de Wiener possuem algumas simetrias importantes.
 
+
+## Invariância por reflexão
+
+Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Então o processo $\{V_t\}_{t \geq 0}$ definido por $V_t = - W_t$ também é um processo de Wiener padrão. De fato, observe, inicialmente, que $V_0 = -W_0 = 0$. Agora, se $0 \leq t_0 \leq \cdots \leq t_k$ então os passos $\{W_{t_j} - W_{t_{j-1}}\}_{j=1}^k$ são independentes. Como $V_{t_j} - V_{t_{j-1}} =  - (W_{t_j} - W_{t_{j-1}})$, então os passos $\{V_{t_j} - V_{t_{j-1}}\}_{j=1}^k$ também são independentes. Além disso, $V_{t + \tau} - V_t = - (W_{t+\tau} - W_t) \sim -\mathcal{N}(0, \tau) = \mathcal{N}(0, \tau).$ Finalmente, como os caminhos amostrais $t \mapsto W_t$ são continuos, então $t \mapsto V_t = -W_t$ também os são.
+
+Observe que, por conta dessa simetria,
+$$
+    \mathbb{P}(|W_t| \geq r) = 2\mathbb{P}(W_t \geq r),
+$$
+para todo $r \geq 0.$
+
 ## Invariância por rescalonamento
 
 Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Dado $a > 0$, defina o processo $\{V_t^a\}_{t\geq 0}$ por
@@ -75,53 +86,62 @@ $$
 \end{align*}
 $$
 
-Agora, um resultado essencial para a estimativa do termo acima é a seguinte igualdade maximal, associada à estimativa maximal de Doob:
+Agora, um resultado essencial para a estimativa do termo acima é uma versão contínua e estendida da desigualdade maximal de Kolmorov:
 $$
-    \mathbb{P}\left( \max_{0 \leq s \leq t} |W_s| \geq r\right) = 2\mathbb{P}\left( |W_t| \geq r\right),
+    \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) \leq \frac{2}{r^p}\mathbb{E}\left[ W_T^p \right],
 $$
-para $t \geq 0$, $r \geq 0$ quaisquer.
+para $T > 0,$ $r > 0$ e $p\in \mathbb{N}$ arbitrários. Essa desigualdade se aplica, mais geralmente, para qualquer Martingale e é conhecida como *desigualdade maximal de Doob.* Vamos mostrar o resultado no caso $p = 4,$ suficiente para o nosso propósito. Mas antes vamos assumir que o resultado vale e concluir a demonstração de convergência. De fato, nesse caso, temos
+$$
+    \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) \leq \frac{1}{n^4\varepsilon^4}\mathbb{E}\left[W_n^4\right].
+$$
+Como $W_n/\sqrt{n} \sim \mathcal{N}(0, 1),$ podemos estimar
+$$
+    \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) \leq \frac{2}{n^2\varepsilon^4}\mathbb{E}\left[\left(\frac{W_n}{\sqrt{n}}\right)^4\right] = \frac{6}{n^2\varepsilon^4}.
+$$
+Desse modo,
+$$
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) \leq \frac{6}{\varepsilon^4}\sum_{n\in\mathbb{N}} \frac{1}{n^2} = \frac{12}{\varepsilon^4} < \infty.
+$$
+Portanto, como desejado, segue pelo Lema de Borel Cantelli que
+$$
+    \mathbb{P}\left(\limsup_{t\rightarrow \infty} \left|\frac{W_t}{t}\right| \geq \varepsilon\right) = 0,
+$$
+para $\varepsilon > 0$ arbitrário, de modo que, quando $t\rightarrow \infty,$, obtemos  $W_t/t \rightarrow 0$ quase certamente.
 
-A estimativa maximal de Doob combina isso com a desigualdade de Chernov, que nos dá uma estimativa para o termo do lado direito da expressão. De fato, pela desigualdade de Chernov,
+### Desigualdade maximal
+
+Para completar, vamos mostrar que
 $$
-    \mathbb{P}\left( |W_t| \geq r\right) \leq e^{-\lambda r}\mathbb{E}\left[e^{\lambda |W_t|}\right],
+    \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) \leq \frac{2}{r^4}\mathbb{E}\left[ W_T^4 \right],
 $$
-para $\lambda > 0$ arbitrário. Como $W_t/\sqrt{t}\sim \mathcal{N}(0, 1),$ escolhemos $r = n\varepsilon$ e $\lambda = 1/\sqrt{t},$ de modo que
+para $T > 0$ e $r > 0$.
+
+Pela simetria por reflexão $W_t \mapsto -W_t,$ segue que
 $$
-    \mathbb{P}\left( |W_t| \geq n\varepsilon\right) \leq e^{-\varepsilon(n/\sqrt{t})}\mathbb{E}\left[e^{|W_t|/\sqrt{t}}\right].
+    \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) = 2 \mathbb{P}\left(\max_{0 \leq t \leq T} W_t \geq r \right).
 $$
 
-
-
-
-De fato, observe que
+Pela continuidade dos caminhos amostrais, temos
 $$
-    \mathbb{P}\left(\left|\frac{W_t}{t}\right| > \varepsilon\right) = \mathbb{P}\left(\frac{|W_t|}{\sqrt{t}} > \varepsilon\sqrt{t}\right).
+    \mathbb{P}\left(\max_{0 \leq t \leq T} W_t \geq r \right) = \mathbb{P}\left(\sup_{t \in D} W_t \geq r \right),
 $$
-Pela desigualdade de Chernov,
+onde $D = \cup_{k\in\mathbb{N}}D_k$ é o conjunto de pontos formado por
 $$
-    \mathbb{P}\left(\frac{|W_t|}{\sqrt{t}} > \varepsilon\sqrt{t}\right) \leq e^{-\lambda \varepsilon\sqrt{t}}\mathbb{E}\left[e^{\lambda|W_t|/\sqrt{t}}\right].
+    D_k = \left\{ \frac{jT}{2^k}; \; j = 0, \ldots, 2^k\right\},
 $$
-Notice $W_t/\sqrt{t} \sim \mathcal{N}(0, 1),$ de modo que o valor esperado pode ser calculado como feito para funções geradoras de momento:
+ou seja, $D$ é uma dilatação dos pontos diádicos, que é denso em $[0, T].$ Além disso, como os conjuntos $\{D_k\}$ são crescentes,
 $$
-\begin{align*}
-    \mathbb{E}\left[e^{\lambda|W_t|/\sqrt{t}}\right] & = \frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{\lambda |x|}e^{-x^2/2} \;\mathrm{d}x \\
-    & = \frac{e^{\lambda^2/2}}{\sqrt{2\pi}}\int_{\mathbb{R}} e^{- \lambda^2/2 + \lambda |x| - x^2/2} \;\mathrm{d}x \\
-    & = \frac{e^{\lambda^2/2}}{\sqrt{2\pi}}\left(\int_{-\infty}^0 e^{-(x+\lambda)^2/2} \;\mathrm{d}x + \int_0^\infty e^{-(x-\lambda)^2/2} \;\mathrm{d}x\right) \\
-    & \leq \frac{e^{\lambda^2/2}}{\sqrt{2\pi}}\left(\int_{\mathbb{R}} e^{-(x+\lambda)^2/2} \;\mathrm{d}x + \int_{\mathbb{R}} e^{-(x-\lambda)^2/2} \;\mathrm{d}x\right) \\
-    & = 2e^{\lambda^2/2}.
-\end{align*}
+    \mathbb{P}\left(\sup_{t \in D} W_t \geq r \right) = \mathbb{P}\left(\lim_{k\rightarrow \infty} \sup_{t \in D_k} W_t \geq r \right).
 $$
-Portanto,
+Assim, basta mostrarmos que
 $$
-    \mathbb{P}\left(\left|\frac{W_t}{t}\right| > \varepsilon\right) \leq 2e^{-\lambda \varepsilon\sqrt{t}}e^{\lambda^2/2}.
+    \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r \right) \leq \frac{1}{r^4}\mathbb{E}\left[ W_T^4 \right],
 $$
-Escolhendo $\lambda = \varepsilon\sqrt{t}$, obtemos
+para todo $k\in\mathbb{N}.$ Para isso, fazemos como na demonstração da desigualdade maximal de Kolmogorov. Dado $D_k$, escrevemos $t_j^k = jT/2^k,$ $j=0, \ldots, 2^k,$ de modo que
 $$
-    \mathbb{P}\left(\left|\frac{W_t}{t}\right| > \varepsilon\right) \leq 2e^{-\varepsilon^2 t},
+    W_T = \sum_{j=1}^{2^k} (W_{t_j} - W_{t_{j-1}}).
 $$
-para todo $t > 0.$
-
-...  Essa desigualdade é válida mais geralmente para qualquer Martingale.
+Os passos $X_j = W_{t_j} - W_{t_{j-1}}$ são independentes e com valor esperado nulo. Estamos, portanto, no contexto da desigualdade maximal de Kolmogorov.
 
 ## Invariância por inversão temporal
 
