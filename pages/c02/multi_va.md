@@ -103,3 +103,59 @@ $$
 \mathbb{P}(X = 0, Y = 0, Z = 0) = 0 \neq \mathbb{P}(X = 0)\mathbb{P}(Y = 0)\mathbb{P}(Z = 0).
 $$
 Da mesma forma, pode-se verificar que as variáveis são independentes duas a duas.
+
+## Desigualdade maximal de Kolmogorov
+
+Como uma aplicação interessante, considere $n$ variáveis aleatórias independentes $X_1, \ldots, X_n$ com $\mathbb{E}[X_j] = 0,$ $j = 1, \ldots, n,$ e defina
+$$
+    S_k = \sum_{i=1}^k X_i,
+$$
+com $S_0 = 0.$ Estamos interessados em estimar
+$$
+    \mathbb{P}(\max_{1\leq k \leq n} \{S_k\} \geq r),
+$$
+para $r \geq 0$ arbitrário. Para isso, usamos a decomposição
+$$
+    \left\{\max_{1\leq k \leq n} \{S_k\} \geq r\right\} = \left\{S_1 \geq r\right\} \bigcup \left\{S_1 < r, S_2 \geq r\right\} \bigcup \cdots \bigcup \left\{S_1 < r, \ldots S_{n-1} < r, S_n \geq r\right\}.
+$$
+Denotamos
+$$
+    A_k = \left\{S_1 < r, \ldots S_{k-1} < r, S_k \geq r \right\}.
+$$
+Como as uniões são disjuntas,
+$$
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) = \mathbb{P}\left(A_1\right) + \mathbb{P}\left(A_2\right) + \cdots + \mathbb{P}\left(A_n\right)
+$$
+Usando a desigualdade de Chebyshev,
+$$
+    \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^2}\mathbb{E}[S_k^2 \chi_{A_k}] \leq \frac{1}{r^2} \mathbb{E}[(S_k^2 + (S_n - S_k)^2) \chi_{A_k}].
+$$
+Como as variáveis $X_k,$ $k=1, \ldots, n,$ são independentes, temos que
+$$
+S_k=\sum_{1\leq i \leq k} X_i \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < i \leq n} X_i
+$$
+são independentes entre si, de modo que
+$$
+    \mathbb{E}[S_k(S_n - S_k)] = 0.
+$$
+Assim, podemos escrever
+$$
+    \mathbb{E}[(S_k^2 + (S_n - S_k)^2) \chi_{A_k}] = \mathbb{E}[(S_k^2 + 2S_k(S_n - S_k) + (S_n - S_k)^2)\chi_{A_k}] = \mathbb{E}[(S_k + (S_n - S_k))^2\chi_{A_k}] = \mathbb{E}[S_n^2\chi_{A_k}].
+$$
+Desta forma,
+$$
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\left( \mathbb{E}[S_n^2\chi_{A_1}] + \cdots + \mathbb{E}[S_n^2\chi_{A_n}]\right) = \frac{1}{r^2}\mathbb{E}[S_n^2\left(\chi_{A_1} + \cdots + \chi_{A_n}\right)].
+$$
+Como os conjuntos $A_1, \ldots, A_n$ são disjuntos, temos
+$$
+    \chi_{A_1} + \ldots + \chi_{A_n} = \chi_{A_1 \cup \cdots \cup A_n} \leq 1,
+$$
+de modo que
+$$
+    \mathbb{E}[S_n^2\chi_{A_1 \cup \ldots \cup A_n}] \leq \mathbb{E}[S_n^2].
+$$
+Com isso, chegamos a desigualdade final, conhecida como **desigualdade de Kolmogorov:**
+$$
+    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathbb{E}[S_n^2],
+$$
+para $r > 0$ arbitrário.
