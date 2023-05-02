@@ -112,7 +112,7 @@ $$
 $$
 com $S_0 = 0.$ Estamos interessados em estimar
 $$
-    \mathbb{P}(\max_{1\leq k \leq n} \{S_k\} \geq r),
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right),
 $$
 para $r \geq 0$ arbitrário. Para isso, usamos a decomposição
 $$
@@ -138,9 +138,13 @@ são independentes entre si, de modo que
 $$
     \mathbb{E}[S_k(S_n - S_k)] = 0.
 $$
-Assim, podemos escrever
+Assim, podemos completar os quadrados e escrever
 $$
-    \mathbb{E}[(S_k^2 + (S_n - S_k)^2) \chi_{A_k}] = \mathbb{E}[(S_k^2 + 2S_k(S_n - S_k) + (S_n - S_k)^2)\chi_{A_k}] = \mathbb{E}[(S_k + (S_n - S_k))^2\chi_{A_k}] = \mathbb{E}[S_n^2\chi_{A_k}].
+\begin{align*}
+    \mathbb{E}[(S_k^2 + (S_n - S_k)^2) \chi_{A_k}] & = \mathbb{E}[(S_k^2 + 2S_k(S_n - S_k) + (S_n - S_k)^2)\chi_{A_k}] \\
+    & = \mathbb{E}[(S_k + (S_n - S_k))^2\chi_{A_k}] \\
+    & = \mathbb{E}[S_n^2\chi_{A_k}].
+\end{align*}
 $$
 Desta forma,
 $$
@@ -154,8 +158,16 @@ de modo que
 $$
     \mathbb{E}[S_n^2\chi_{A_1 \cup \ldots \cup A_n}] \leq \mathbb{E}[S_n^2].
 $$
-Com isso, chegamos a desigualdade final, conhecida como **desigualdade de Kolmogorov:**
+Como $S_n$ também tem valor esperado nulo, o lado direito é igual à variância de $S_n$, nos levando à desigualdade final, conhecida como **desigualdade de Kolmogorov:**
 $$
-    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathbb{E}[S_n^2],
+    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
 $$
 para $r > 0$ arbitrário.
+
+## Exercícios
+
+1. Modifique a demonstração acima da desigualdade de Kolmogorov para mostrar que
+$$
+    \mathbb{P}\left(\max_{1\leq j \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^4}\mathbb{E}\left[S_n^4\right],
+$$
+para todo $r > 0.$
