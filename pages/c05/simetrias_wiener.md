@@ -86,17 +86,17 @@ $$
 \end{align*}
 $$
 
-Agora, um resultado essencial para a estimativa do termo acima é uma versão contínua e estendida da desigualdade maximal de Kolmorov:
+Agora, um resultado essencial para a estimativa do termo acima é a estimativa maximal
 $$
     \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) \leq \frac{2}{r^p}\mathbb{E}\left[ W_T^p \right],
 $$
-para $T > 0,$ $r > 0$ e $p\in \mathbb{N}$ arbitrários. Essa desigualdade se aplica, mais geralmente, para qualquer Martingale e é conhecida como *desigualdade maximal de Doob.* Vamos mostrar o resultado no caso $p = 4,$ suficiente para o nosso propósito. Mas antes vamos assumir que o resultado vale e concluir a demonstração de convergência. De fato, nesse caso, temos
+para $T > 0,$ $r > 0$ e $p\in \mathbb{N}$ arbitrários. Esta é uma versão contínua e estendida da desigualdade maximal de Kolmogorov, correspondente ao caso $p=2.$ Essa desigualdade se aplica, mais geralmente, a qualquer Martingale e é conhecida como *desigualdade maximal de Doob.* O caso $p = 4$ é suficiente para o nosso propósito. Mas antes vamos assumir que o resultado vale e concluir a demonstração de convergência. De fato, nesse caso, temos
 $$
     \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) \leq \frac{1}{n^4\varepsilon^4}\mathbb{E}\left[W_n^4\right].
 $$
 Como $W_n/\sqrt{n} \sim \mathcal{N}(0, 1),$ podemos estimar
 $$
-    \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) \leq \frac{2}{n^2\varepsilon^4}\mathbb{E}\left[\left(\frac{W_n}{\sqrt{n}}\right)^4\right] = \frac{6}{n^2\varepsilon^4}.
+    \mathbb{P}\left(\max_{n-1 \leq t \leq n}\left|\frac{W_t}{t}\right| \geq \varepsilon\right) \leq \frac{2}{n^2\varepsilon^4}\mathbb{E}\left[\left(\frac{W_n}{\sqrt{n}}\right)^4\right] = \frac{6}{n^2\varepsilon^4}\mathbb{E}\left[\left(\frac{W_n}{\sqrt{n}}\right)^2\right] = \frac{6}{n^2\varepsilon^4}.
 $$
 Desse modo,
 $$
@@ -125,15 +125,15 @@ Pela continuidade dos caminhos amostrais, temos
 $$
     \mathbb{P}\left(\max_{0 \leq t \leq T} W_t \geq r \right) = \mathbb{P}\left(\sup_{t \in D} W_t \geq r \right),
 $$
-onde $D = \cup_{k\in\mathbb{N}}D_k$ é o conjunto de pontos formado por
+onde $D = \cup_{k\in\mathbb{N}}D_k$ é o conjunto de pontos da forma $jT/2^k,$ $j=0, \ldots, 2^k,$ $k\in\mathbb{N},$ com
 $$
     D_k = \left\{ \frac{jT}{2^k}; \; j = 0, \ldots, 2^k\right\},
 $$
-ou seja, $D$ é uma dilatação dos pontos diádicos, que é denso em $[0, T].$ Além disso, como os conjuntos $\{D_k\}$ são crescentes,
+ou seja, $D$ é uma dilatação dos pontos diádicos. Esse conjunto $D$ é denso em $[0, T]$ e a sequência $\{D_k\}_{k\in\mathbb{N}}$ é monótona crescente. Assim,
 $$
     \mathbb{P}\left(\sup_{t \in D} W_t \geq r \right) = \mathbb{P}\left(\lim_{k\rightarrow \infty} \sup_{t \in D_k} W_t \geq r \right).
 $$
-Assim, basta mostrarmos que
+Logo, basta mostrarmos que
 $$
     \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r \right) \leq \frac{1}{r^4}\mathbb{E}\left[ W_T^4 \right],
 $$
@@ -141,7 +141,19 @@ para todo $k\in\mathbb{N}.$ Para isso, fazemos como na demonstração da desigua
 $$
     W_T = \sum_{j=1}^{2^k} (W_{t_j} - W_{t_{j-1}}).
 $$
-Os passos $X_j = W_{t_j} - W_{t_{j-1}}$ são independentes e com valor esperado nulo. Estamos, portanto, no contexto da desigualdade maximal de Kolmogorov.
+Os passos $X_j = W_{t_j} - W_{t_{j-1}}$ são independentes e com valor esperado nulo. Estamos, portanto, no contexto da desigualdade maximal de Kolmogorov, que nos dá
+$$
+    \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r\right) \leq \frac{1}{r^2}\mathbb{E}\left[W_t^2\right].
+$$
+No entanto, essa potência quadrática não é suficiente. Observamos, então, que $X_j$ e $-X_j$ têm a mesma distribuição $\mathcal{N}(0, t_j - t_{j-1})$ e todos os $X_j$ têm momentos finitos. Assim, vale
+$$
+    \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r\right) \leq \frac{1}{r^m}\mathbb{E}\left[W_T^m\right]
+$$
+para qualquer potência $m\in\mathbb{N}.$ Escolhendo $m=4,$ obtemos
+$$
+\mathbb{P}\left(\sup_{t \in D} |W_t| \geq r \right) = 2\mathbb{P}\left(\lim_{k\rightarrow \infty} \sup_{t \in D_k} W_t \geq r \right) \leq \frac{2}{r^4}\mathbb{E}\left[W_T^4\right],
+$$
+como desejado.
 
 ## Invariância por inversão temporal
 
