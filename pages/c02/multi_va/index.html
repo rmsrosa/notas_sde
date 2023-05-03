@@ -492,42 +492,31 @@ S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j 
 <p>para \(r > 0\) arbitrário.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
-<li><p>Considere um vetor aleatório \((X_1, \ldots, X_n)\) como na desigualdade maximal de Kolmogorov, com variáveis independentes e assuma, mais geralmente, que, para um dado \(m\in\mathbb{N},\) os momentos são finitos, i.e. \(\mathbb{E}[X_k^{2m}] < \infty,\) \(k=1, \ldots, n,\) e que cada \(X_k\) é simétrico em relação à origem, ou seja, \(X_k\) e \(-X_k\) tem a mesma distribuição. Modifique a demonstração acima da desigualdade maximal de Kolmogorov para obter que</p>
+<li><p>Considere um vetor aleatório \((X_1, \ldots, X_n)\) como na desigualdade maximal de Kolmogorov, com variáveis independentes e assuma, mais geralmente, que, para um dado \(m\in\mathbb{N},\) os momentos são finitos, i.e. \(\mathbb{E}[X_k^{m}] < \infty,\) \(k=1, \ldots, n,\) e que cada \(X_k\) é simétrico em relação à origem, ou seja, \(X_k\) e \(-X_k\) tem a mesma distribuição. Modifique a demonstração acima da desigualdade maximal de Kolmogorov para obter que</p>
 </li>
 </ol>
 \[
-    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right],
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{m}}\mathbb{E}\left[S_n^{m}\right],
 \]
 <p>para todo \(r > 0\) e todo inteiro \(m\in\mathbb{N}.\)</p>
+<blockquote>
 <p><em>Dicas:</em></p>
-<p>&#40;i&#41; Substitua a desigualdade de Chebyshev por</p>
+<p>&#40;i&#41; Substitua a desigualdade de Chebyshev por \( \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_k^{m} \chi_{A_k}]. \)</p>
+<p>&#40;ii&#41; Escreva \( S_n^{m} = (S_k + (S_n - S_k))^{m} = \sum_{i=0}^{m} \left( \begin{matrix} m \\ i \end{matrix}\right)S_k^{m - i}(S_n - S_k)^{i}.\)</p>
+<p>&#40;iii&#41; Quando \(i\) é ímpar, segue da simetria de cada \(X_j\) que \(S_n - S_k\) também é simétrico em relação a origem e, portanto, \(\mathbb{E}\left[(S_n - S_k)^i\right] = 0\). Além disso, \(S_n - S_k\) é independente de \(S_k^{m - i}\chi_{A_k}.\) Assim, \(\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{m - i}\chi_{A_k}]\mathbb{E}[(S_n - S_k)^{i}] = 0.\)</p>
+<p>&#40;iv&#41; Quando \(i\) é par, temos \((S_n - S_k)^i \geq 0\). Além disso, \(S_k \geq r > 0\) em \(A_k\), de modo que \(S_k^{m - i}\chi_{A_k} \geq 0.\) Portanto, \(\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.\)</p>
+<p>&#40;v&#41; Mantendo apenas o termo \(i=0\) e descartando os outros que se anulam ou são não-negativos, obtemos \(\mathbb{E}[S_n^{m} \chi_{A_k}] \geq \mathbb{E}[S_k^{m}\chi_{A_k}].\)</p>
+<p>&#40;vi&#41; Isso nos dá que \(\mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_k^{m} \chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_n^{m} \chi_{A_k}].\)</p>
+<p>&#40;vii&#41; Somando em \(k=1, \ldots, n\) e usando que os conjuntos \(A_1, \ldots, A_n\) são disjuntos, como na demonstração acima, obtemos, finalmente, a desigualdade desejada.</p>
+</blockquote>
+<ol start="2">
+<li><p>Sob as condições do exercício anterior, assume, ainda, que \(\mathbb{E}[e^{X_k}] < \infty,\) para todo \(k=1, \ldots, n\). Mostre que</p>
+</li>
+</ol>
 \[
-        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}].
-    \]
-<p>&#40;ii&#41; Escreva</p>
-\[
-        S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{i=0}^{2m} \left( \begin{matrix} n \\ i \end{matrix}\right)S_k^{2m - i}(S_n - S_k)^{i}.
-    \]
-<p>&#40;iii&#41; Quando \(i\) é ímpar, segue da simetria de cada \(X_j\) que \(\mathbb{E}\left[(S_n - S_k)^i\right] = 0\). Além disso, \(S_n - S_k\) é independente de \(S_k^{2m - i}\chi_{A_k}.\) Portanto,</p>
-\[
-        \mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] = 0.
-    \]
-<p>&#40;iv&#41; Quando \(i\) é par, \(2m-i\) também é par e</p>
-\[
-        \mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.
-    \]
-<p>&#40;v&#41; Mantendo apenas o termo \(i=0,\) obtemos</p>
-\[
-        \mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].
-    \]
-<p>&#40;vi&#41; Isso nos dá que</p>
-\[
-        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_n^{2m} \chi_{A_k}].
-    \]
-<p>&#40;vii&#41; Somando em \(k\) e usando que os conjuntos \(A_1, \ldots, A_n\) são disjuntos, como na demonstração acima, obtemos, finalmente</p>
-\[
-        \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right].
-    \]
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq e^{-\lambda r}\mathbb{E}\left[e^{\lambda S_n}\right],
+\]
+<p>para \(r > 0\) e \(\lambda \geq 0\) quaisquer. <em>Dica: use o resultado anterior em uma série de potências.</em></p>
 
     <div class="navbar">
     <p id="nav">
@@ -551,7 +540,7 @@ S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j 
         </div>
     
 
-    Last modified: May 02, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 03, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
