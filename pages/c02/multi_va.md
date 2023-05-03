@@ -183,31 +183,31 @@ para $r > 0$ arbitrário.
 
 ## Exercícios
 
-1. Considere um vetor aleatório $(X_1, \ldots, X_n)$ como na desigualdade maximal de Kolmogorov, com variáveis independentes e assuma, mais geralmente, que, para um dado $m\in\mathbb{N},$ os momentos são finitos, i.e. $\mathbb{E}[X_k^{2m}] < \infty,$ $k=1, \ldots, n,$ e que cada $X_k$ é simétrico em relação à origem, ou seja, $X_k$ e $-X_k$ tem a mesma distribuição. Modifique a demonstração acima da desigualdade maximal de Kolmogorov para obter que
+1. Considere um vetor aleatório $(X_1, \ldots, X_n)$ como na desigualdade maximal de Kolmogorov, com variáveis independentes e assuma, mais geralmente, que, para um dado $m\in\mathbb{N},$ os momentos são finitos, i.e. $\mathbb{E}[X_k^{m}] < \infty,$ $k=1, \ldots, n,$ e que cada $X_k$ é simétrico em relação à origem, ou seja, $X_k$ e $-X_k$ tem a mesma distribuição. Modifique a demonstração acima da desigualdade maximal de Kolmogorov para obter que
 $$
-    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right],
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{m}}\mathbb{E}\left[S_n^{m}\right],
 $$
 para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 
 > *Dicas:*
 >
 > (i) Substitua a desigualdade de Chebyshev por
->    $ \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}]. $
+>    $ \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_k^{m} \chi_{A_k}]. $
 >
-> (ii) Escreva $ S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{i=0}^{2m} \left( \begin{matrix} n \\ i \end{matrix}\right)S_k^{2m - i}(S_n - S_k)^{i}.$
+> (ii) Escreva $ S_n^{m} = (S_k + (S_n - S_k))^{m} = \sum_{i=0}^{m} \left( \begin{matrix} m \\ i \end{matrix}\right)S_k^{m - i}(S_n - S_k)^{i}.$
 >
-> (iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $\mathbb{E}\left[(S_n - S_k)^i\right] = 0$. Além disso, $S_n - S_k$ é independente de $S_k^{2m - i}\chi_{A_k}.$ Portanto, $\mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{2m - i}]\mathbb{E}[(S_n - S_k)^{i} \chi_{A_k}] = 0.$
+> (iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $S_n - S_k$ também é simétrico em relação a origem e, portanto, $\mathbb{E}\left[(S_n - S_k)^i\right] = 0$. Além disso, $S_n - S_k$ é independente de $S_k^{m - i}\chi_{A_k}.$ Assim, $\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{m - i}\chi_{A_k}]\mathbb{E}[(S_n - S_k)^{i}] = 0.$
 >
-> (iv) Quando $i$ é par, $2m-i$ também é par e $\mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.$
+> (iv) Quando $i$ é par, temos $(S_n - S_k)^i \geq 0$. Além disso, $S_k \geq r > 0$ em $A_k$, de modo que $S_k^{m - i}\chi_{A_k} \geq 0.$ Portanto, $\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.$
 >
-> (v) Mantendo apenas o termo $i=0,$ obtemos $\mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].$
+> (v) Mantendo apenas o termo $i=0$ e descartando os outros que se anulam ou são não-negativos, obtemos $\mathbb{E}[S_n^{m} \chi_{A_k}] \geq \mathbb{E}[S_k^{m}\chi_{A_k}].$
 >
->  (vi) Isso nos dá que $\mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_n^{2m} \chi_{A_k}].$
+>  (vi) Isso nos dá que $\mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_k^{m} \chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_n^{m} \chi_{A_k}].$
 >
-> (vii) Somando em $k$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente, a desigualdade desejada.
+> (vii) Somando em $k=1, \ldots, n$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente, a desigualdade desejada.
 
 2. Sob as condições do exercício anterior, assume, ainda, que $\mathbb{E}[e^{X_k}] < \infty,$ para todo $k=1, \ldots, n$. Mostre que
 $$
     \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq e^{-\lambda r}\mathbb{E}\left[e^{\lambda S_n}\right],
 $$
-para $r > 0$ e $\lambda \geq 0$ quaisquer.
+para $r > 0$ e $\lambda \geq 0$ quaisquer. *Dica: use o resultado anterior em uma série de potências.*
