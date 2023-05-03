@@ -189,38 +189,25 @@ $$
 $$
 para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 
-*Dicas:*
-  
-(i) Substitua a desigualdade de Chebyshev por
-    $$
-        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}].
-    $$
+> *Dicas:*
+>
+> (i) Substitua a desigualdade de Chebyshev por
+>    $ \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}]. $
+>
+> (ii) Escreva $ S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{i=0}^{2m} \left( \begin{matrix} n \\ i \end{matrix}\right)S_k^{2m - i}(S_n - S_k)^{i}.$
+>
+> (iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $\mathbb{E}\left[(S_n - S_k)^i\right] = 0$. Além disso, $S_n - S_k$ é independente de $S_k^{2m - i}\chi_{A_k}.$ Portanto, $\mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{2m - i}]\mathbb{E}[(S_n - S_k)^{i} \chi_{A_k}] = 0.$
+>
+> (iv) Quando $i$ é par, $2m-i$ também é par e $\mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.$
+>
+> (v) Mantendo apenas o termo $i=0,$ obtemos $\mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].$
+>
+>  (vi) Isso nos dá que $\mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_n^{2m} \chi_{A_k}].$
+>
+> (vii) Somando em $k$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente, a desigualdade desejada.
 
-(ii) Escreva
-    $$
-        S_n^{2m} = (S_k + (S_n - S_k))^{2m} = \sum_{i=0}^{2m} \left( \begin{matrix} n \\ i \end{matrix}\right)S_k^{2m - i}(S_n - S_k)^{i}.
-    $$
-
-(iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $\mathbb{E}\left[(S_n - S_k)^i\right] = 0$. Além disso, $S_n - S_k$ é independente de $S_k^{2m - i}\chi_{A_k}.$ Portanto,
-    $$
-        \mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] = 0.
-    $$
-
-(iv) Quando $i$ é par, $2m-i$ também é par e
-    $$
-        \mathbb{E}[S_k^{2m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.
-    $$
-(v) Mantendo apenas o termo $i=0,$ obtemos
-    $$
-        \mathbb{E}[S_n^{2m} \chi_{A_k}] \geq \mathbb{E}[S_k^{2m}\chi_{A_k}].
-    $$
-
-(vi) Isso nos dá que
-    $$
-        \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_k^{2m} \chi_{A_k}] \leq \frac{1}{r^{2m}}\mathbb{E}[S_n^{2m} \chi_{A_k}].
-    $$
-
-(vii) Somando em $k$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente
-    $$
-        \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^{2m}}\mathbb{E}\left[S_n^{2m}\right].
-    $$
+2. Sob as condições do exercício anterior, assume, ainda, que $\mathbb{E}[e^{X_k}] < \infty,$ para todo $k=1, \ldots, n$. Mostre que
+$$
+    \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq e^{-\lambda r}\mathbb{E}\left[e^{\lambda S_n}\right],
+$$
+para $r > 0$ e $\lambda \geq 0$ quaisquer.
