@@ -43,7 +43,7 @@ está bem definida.
 
 ## Construção
 
-No caso de $\{H_t\}_{t\geq 0}$ ser adptada a $\{W_t\}_{t \geq 0}$ e com caminhos amostrais quase certamente contínuos, então a integral é definida via limite de somas parciais
+No caso de $\{H_t\}_{t\geq 0}$ ser adaptada a $\{W_t\}_{t \geq 0}$ e com caminhos amostrais quase certamente contínuos, então a integral é definida via limite de somas parciais
 $$
 \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
 $$
@@ -145,8 +145,8 @@ $$
 Dada uma função de quadrado integrável $f:\mathbb{R} \rightarrow \mathbb{R}$, uma maneira clássica de aproximá-la por funções contínuas é através da convolução $t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t$ com aproximações da identidade $\varphi_\varepsilon$. Essa convolução, no entanto, envolve, tipicamente, olhar para o "passado" e para o "futuro" da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,
 $$
 \varphi_\varepsilon(t) = \begin{cases}
-\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \leq 0, \\
-0, & t > 0.
+\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \geq 0, \\
+0, & t < 0.
 \end{cases}
 $$
 
@@ -157,7 +157,7 @@ theme(:ggplot2)
 N = 3
 tt = -4:0.01:4
 xx = [
-    m * ifelse.(tt .≤ 0, exp.( m * tt), 0) for m in 1:N
+    m * ifelse.(tt .≥  0, exp.( -m * tt), 0) for m in 1:N
 ]
 plot(tt, xx, title = "aproximações da identidade \$t \\rightarrow m e^{m t}\$", titlefont = 10, xaxis = "\$t\$", yaxis = "\$x\$", label=reshape("m = " .* string.(1:N), 1, :))
 savefig(joinpath(@OUTPUT, "aprox_id_exp.svg"))
@@ -166,24 +166,24 @@ savefig(joinpath(@OUTPUT, "aprox_id_exp.svg"))
 
 Mais especificamente, dado um processo $\{H_t\}_{t \geq 0}$ de quadrado integrável e progressivamente mensurável em relação a $\{W_t\}_{t \geq 0}$, definimos
 $$
-H_t^m = \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s.
+H_t^m = \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s.
 $$
 Como $H_t^m$ só envolve $H_s$, para $0\leq s \leq t$, então $H_t^m$ continua sendo não antecipativo. Além disso, para $t \geq 0$ e $\tau > 0$,
 $$
 \begin{align*}
-H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s \\
-& = \int_t^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m \left(e^{m(s - t)} - e^{m(s - t - \tau)}\right) H_s \;\mathrm{d}s
+H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s - \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s \\
+& = \int_t^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s + \int_0^t m \left(e^{-m(t + \tau - s)} - e^{-m(t - s)}\right) H_s \;\mathrm{d}s
 \end{align*}
 $$
 
-Usando que $e^{m(s - t - \tau)} \leq 1$ e
+Usando que $e^{-m(t + \tau - s)} \leq 1$ e
 $$
-e^{m(s - t)} - e^{m(s - t - \tau)} = \int_{s-t-\tau}^{s - t} m e^{m\eta}\;\mathrm{d}\eta \leq m \tau
+\left|e^{-m(t + \tau - s)} - e^{-m(t - s)}\right| = \int_{t - s}^{t + \tau - s} m e^{-m\eta}\;\mathrm{d}\eta \leq m \tau,
 $$
 obtemos
 $$
 \begin{align*}
-\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m H_s \;\mathrm{d}s - \int_0^t m^2 \tau H_s \;\mathrm{d}s \\
+\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m |H_s| \;\mathrm{d}s - \int_0^t m^2 \tau |H_s| \;\mathrm{d}s \\
 & \leq m \sqrt{\tau} \int_t^{t+\tau} H_s^2 \;\mathrm{d}s + m^2 \tau \sqrt{t}\int_0^t H_s^2 \;\mathrm{d}s \\
 & \leq m \sqrt{\tau}\left(1 + m\sqrt{\tau t}\right)\int_0^t H_s^2 \;\mathrm{d}s.
 \end{align*}
