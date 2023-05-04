@@ -45,6 +45,11 @@ $$
 & = \lambda \int_0^T H_t \;\mathrm{d}W_t.
 \end{align*}
 $$
+Essa relação ainda é válidade no caso de uma variável aleatória $\Lambda=\Lambda(\omega)$ independente do processo de Wiener. Só precisa ser constante em $t.$ Nesse caso,
+$$
+\int_0^T \Lambda H_t \;\mathrm{d}W_t = \Lambda \int_0^T H_t \;\mathrm{d}W_t.
+$$
+
 
 Da mesma forma, a integral de Itô é *aditiva,* i.e.se $\{G_t\}_{t\geq 0}$ e $\{H_t\}_{t\geq 0}$ são dois processos não antecipativos, então
 $$
