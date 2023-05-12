@@ -276,7 +276,9 @@ $$
 
 ## Exercício
 
-1. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2$.
+1. Mostre que a combinação convexa $W_t = (1-\theta)W_t^{(1)} + \theta W_t^{(2)},$ $0\leq \theta \leq 1,$ entre dois processos de Wiener independentes $\{W_t^{(1)}\}_{t\geq 0}$ e $\{W_t^{(1)}\}_{t\geq 0}$ também é um processo de Wiener.
+
+2. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2$.
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t^p} = 0.
 $$
