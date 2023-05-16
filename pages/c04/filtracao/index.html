@@ -422,7 +422,7 @@ E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \tim
 \]
 <p>onde \(E_0, E_1, \ldots, E_n \subset \mathbb{Z}\). Dessa forma, não temos como observar eventos a partir de \(X_{n+1}\) olhando para a filtração até \(\mathcal{F}_n\).</p>
 <h2 id="filtração"><a href="#filtração" class="header-anchor">Filtração</a></h2>
-<p>Vamos, agora, à definição formal. Uma <strong>filtração</strong> em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\) é uma família não decrescente \(\{\mathcal{F}_t\}_{t\in I}\), em algum espaço de índices \(I\) discreto ou contínuo, de \(\sigma\)-álgebras contidas em \(\mathcal{A}\), i.e.</p>
+<p>Vamos, agora, à definição formal. Uma <strong>filtração</strong> em um espaço mensurável \((\Omega, \mathcal{A})\) é uma família não decrescente \(\{\mathcal{F}_t\}_{t\in I}\), em algum espaço de índices \(I\) discreto ou contínuo, de \(\sigma\)-álgebras contidas em \(\mathcal{A}\), i.e.</p>
 <ol>
 <li><p>\(\mathcal{F}_t\) é uma \(\sigma\)-álgebra em \(\Omega\), para todo \(t\in I\);</p>
 </li>
@@ -431,7 +431,7 @@ E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \tim
 <li><p>É uma família não decrescente, i.e. \(\mathcal{F}_s \subset \mathcal{F}_t\), para todo \(s, t\in I\) com \(s < t\).</p>
 </li>
 </ol>
-<p>Denominamos um tal \((\Omega, \mathcal{A}, \{\mathcal{F}_t\}_{t\in I}\) por <strong>espaço filtrado.</strong>.</p>
+<p>Denominamos um tal \((\Omega, \mathcal{A}, \{\mathcal{F}_t\}_{t\in I})\) por <strong>espaço filtrado.</strong>.</p>
 <p>No caso discreto \(I = \mathbb{N}\), basta pedir que \(\mathcal{F}_1 \subset \mathcal{F}_2 \subset \ldots \subset \mathcal{F}_n \subset \mathcal{F}_{n+1} \subset \ldots \subset \mathcal{A}\), com cada \(\mathcal{F}_n\) sendo uma \(\sigma\)-álgebra.</p>
 <h2 id="processo_adaptado"><a href="#processo_adaptado" class="header-anchor">Processo adaptado</a></h2>
 <p>Um processo \(\{X_t\}_{t\in I}\) em \((\Omega, \mathcal{A}, \mathbb{P})\) é dito <strong>adaptado</strong> a uma filtração \(\{\mathcal{F}_t\}_{t\in I}\) nesse espaço de probabilidades quando \(X_t\) é \(\mathcal{F}_t\)-mensurável, para qualquer \(t \in I\). Um tal processo também é dito <strong>não antecipativo,</strong> em relação a essa filtração. De fato, qualquer evento \(E\) observável por \(X_t\) deve estar associado a um conjunto amostral \(X_t^{-1}(E)\) em \(\mathcal{F}_t\), sem necessitar de conjuntos nas \(\sigma\)-álgebras posteriores.</p>
@@ -476,7 +476,7 @@ E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \tim
         </div>
     
 
-    Last modified: May 03, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

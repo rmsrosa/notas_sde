@@ -375,35 +375,36 @@
 <h2 id="integrandos_permitidos"><a href="#integrandos_permitidos" class="header-anchor">Integrandos permitidos</a></h2>
 <p>Uma condição essencial pode ser posta do seguinte modo informal:</p>
 <blockquote>
-<p>A cada instante \(t \geq 0\), o integrando \(H_t\) deve ser independente dos valores futuros \(s \geq t\) do processo de Wiener.</p>
+<p>A cada instante \(t \geq 0\), o integrando \(H_t\) deve ser independente da evolução futura \(s \geq t\) do processo de Wiener.</p>
 </blockquote>
 <p>Vamos chamar essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t\). Uma definição mais formal envolve o conceito de <em>filtração</em>.</p>
-<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\), e \(W_t\) é independente das \(\sigma\)-álgebras geradas por \(\Delta W_{t, s} = W_s - W_t\), para \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação a \(\mathcal{F}_t\), onde \(\{\mathcal{F}_t\}_{t\geq 0}\) é uma filtração adaptada a \(\{W_t\}_{t\geq 0}\).</p>
-<p>Sob a condição de \(\{H_t\}_{t\geq 0}\) estar adaptada a \(\{W_t\}_{t\geq 0}\) e dos caminhos amostrais de \(\{H_t\}_{t\geq 0}\) serem quase certamente contínuos, a <em>integral de Itô</em> está bem definida e possui boas propriedades, como veremos posteriormente.</p>
-<p>Essa construção pode ser estendida a processos \(\{H_t\}_{t\geq 0}\) adaptados a \(\{W_t\}_{t\geq 0}\) que sejam de quadrado integrável, i.e.</p>
+<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de sub \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação a \(\mathcal{F}_t\), onde \(\{\mathcal{F}_t\}_{t\geq 0}\) é a filtração natural de \(\{W_t\}_{t\geq 0}\).</p>
+<p>Sob a condição de \(\{H_t\}_{t\geq 0}\) estar adaptada a \(\{W_t\}_{t\geq 0}\) e dos caminhos amostrais de \(\{H_t\}_{t\geq 0}\) serem quase certamente contínuos, a <em>integral de Itô</em> pode ser bem definida e possui boas propriedades, como veremos posteriormente.</p>
+<p>Essa construção pode ser estendida a processos \(\{H_t\}_{t\geq 0}\) adaptados a \(\{W_t\}_{t\geq 0}\) que sejam <em>progressivamente mensuráveis</em> e de <em>quadrado integrável.</em> Mais precisamente, \(\{H_t\}_{t\geq 0}\) é dito <strong>progressivamente mensurável</strong> em relação uma filtração \(\mathcal{F}_t\) quando, para cada \(t' \geq 0\), a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, t'] \times \Omega\) é mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, t') \times \mathcal{F}_{t'}\), onde \(\mathcal{B}(0, t')\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, t'].\) Um tal processo progressivamente mensurável é dito de quadrado integrável quando</p>
 \[
-\mathbb{E}\left[ \int_0^T  H_t^2 \;\mathrm{d}t \right]  < \infty,
+\int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
 \]
-<p>e que sejam <strong>progressivamente mensuráveis</strong>, ou seja, que \((t, \omega) \mapsto H_t(\omega)\) seja mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, t) \times \mathcal{F}_t\), onde \(\mathcal{B}(0, t)\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, t]\).</p>
+<p>Observe que, pelo Teorema de Fubini, essa condição garante que</p>
+\[
+\int_{[0, T]\times \Omega} H_t(\omega)^2 \;\mathrm{d}(\lambda \times \mathbb{P})(t, \omega) = \int_0^T \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t = \mathbb{E}\left[\int_0^T H_t(\omega)^2 \;\mathrm{d}t\right] < \infty,
+\]
+<p>onde \(\lambda \times \mathbb{P}\) denota a medida produto entre a medida de Lebesgue \(\lambda\) e a medida de probabilidade \(\mathbb{P}\) em \(\Omega.\)</p>
 <p>Vale observar que se \(\{H_t\}_{t\geq 0}\) é adaptada a \(\{W_t\}_{t\geq 0}\) e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.</p>
-<p>Essa construção pode ser estendida a integrais em relação a processos \(\{Z_t\}_{t\geq 0}\) que sejam <em>martingales</em> &#40;ou, mais geralmente ainda, semi-martingales&#41;. Sendo \(\{H_t\}_{t \geq 0}\) progressivamente mensurável em relação a \(\{Z_t\}_{t\geq 0}\) e de quadrado integrável em \((0, T)\), então a <em>integral de Itô</em></p>
+<p>Essa construção pode ser estendida a integrais em relação a processos \(\{Z_t\}_{t\geq 0}\) que sejam <em>martingales</em> &#40;ou, mais geralmente ainda, semi-martingales&#41;, i.e. sendo \(\{H_t\}_{t \geq 0}\) progressivamente mensurável em relação a \(\{Z_t\}_{t\geq 0}\) e de quadrado integrável em \((0, T)\), então a <em>integral de Itô</em></p>
 \[
 \int_0^T H_t \;\mathrm{d}Z_t
 \]
-<p>está bem definida.</p>
+<p>está bem definida no sentido de média quadrática, como veremos agora no caso da integral de Itô com relação a \(\{W_t\}_t.\)</p>
 <h2 id="construção"><a href="#construção" class="header-anchor">Construção</a></h2>
-<p>No caso de \(\{H_t\}_{t\geq 0}\) ser adptada a \(\{W_t\}_{t \geq 0}\) e com caminhos amostrais quase certamente contínuos, então a integral é definida via limite de somas parciais</p>
-\[
-\int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
-\]
-<p>onde as partições satisfazem \(0 = t_0 < t_1 < \ldots < t_n = T\) e o limite é tomado quando \(\max_j\{t_j - t_{j-1}\} \rightarrow 0\).</p>
-<p>No caso mais geral, de processos \(\{H_t\}_{t\geq 0}\) progressivamente mensuráveis e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e com caminhos quase-certamente contínuos e tomar o limite das integrais de Itô definidas para estes.</p>
-<p>Usualmente, começa-se, na verdade, considerando processos escada, i.e. processos \(\{H_t\}_{t\geq 0}\) para os quais existe uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\) tal que \(H_t\) seja constante, \(H_t = H_{t_{j-1}}\), em cada intervalo \(t_{j-1} \leq t < t_j\). Para esses processo, define-se, naturalmente, a integral de Itô por</p>
+<p>No caso de \(\{H_t\}_{t\geq 0}\) ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos tratar primeiro de processos do tipo escada.</p>
+<h3 id="processo_escada_e_integral_de_itô"><a href="#processo_escada_e_integral_de_itô" class="header-anchor">Processo escada e integral de Itô</a></h3>
+<p>Um processo \(\{H_t\}_{t\geq 0}\) é do tipo escada quando é &quot;constante por partes&quot;, i.e. quando existe uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\) tal que \(H_t\) seja constante, \(H_t = H_{t_{j-1}}\), em cada intervalo \(t_{j-1} \leq t < t_j\). Para esses processo, define-se, naturalmente, a integral de Itô por</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t = \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
 \]
-<p>Em seguida, para um processo \(\{H_t\}_{t \geq 0}\) que seja progressivamente mensurável e em \(L^2(0, T)\), aproximamos o processo por processos \(\{H_t^m\}_{t \geq 0}\) do tipo escada e adaptados a \(\{W_t\}_{t\geq 0}\). Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.</p>
-<p>O passo seguinte é mostrar que as integrais de Itô dos processos escada convergem. Isso é obtido graças a duas propriedades fundamentais da integral de Itô em relação a \(\{W_t\}_{t \geq 0}\), a saber que o valor esperado é nulo e que a <em>isometria de Itô</em> vale para processos escada &#40;veremos isso em seguida&#41;:</p>
+<h3 id="integral_de_itô_via_aproximação_por_processo_escada"><a href="#integral_de_itô_via_aproximação_por_processo_escada" class="header-anchor">Integral de Itô via aproximação por processo escada</a></h3>
+<p>Para um processo \(\{H_t\}_{t \geq 0}\) que seja progressivamente mensurável e em \(L^2((0, T)\times \Omega)\), aproximamos o processo por processos \(\{H_t^m\}_{t \geq 0}\) do tipo escada e adaptados a \(\{W_t\}_{t\geq 0}\). Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.</p>
+<p>O passo seguinte é mostrar que as integrais de Itô dos processos escada convergem em média quadrática. Isso é obtido graças a duas propriedades fundamentais da integral de Itô em relação a \(\{W_t\}_{t \geq 0}\), a saber que o valor esperado é nulo e que a <em>isometria de Itô</em> vale para processos escada &#40;veremos isso em seguida&#41;:</p>
 \[
 \mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t\right)^2 \right] = \mathbb{E}\left[ \int_0^T\left(H_t^m\right)^2 \;\mathrm{d}t\right]  = \int_0^T\mathbb{E}\left[ \left(H_t^m\right)^2 \right] \;\mathrm{d}t
 \]
@@ -423,18 +424,13 @@
 \[
 \int_0^T H_t^m \;\mathrm{d}W_t
 \]
-<p>converge em probabilidade e para um limite que independe da escolha da sequência de funções escada.</p>
+<p>converge em média quadrática e em probabilidade para um limite que independe da escolha da sequência de funções escada.</p>
 <p>A integral de Itô é, então, definida como o limite das integrais de funções escada:</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t = \lim \int_0^T H_t^m \;\mathrm{d}W_t.
 \]
-<p>Nesse caso mais geral de \(\{H_t\}_{t \geq 0}\) progressivamente mensurável e em \(L^2(0, T)\), assumindo ainda que os caminhos amostrais sejam, quase certamente, contínuos, então \(\{H_t^m\}_{t \geq 0}\) pode ser construído com \(H_t^m = H_{t_{j-1}^m}\), para \(t_{j-1}^m \leq t < t_j^m\), em relação à partição \(\{t_j^m\}\) de cada \(\{H_t^m\}_{t \geq 0}\). Assim, recuperamos a fórmula mais direta</p>
-\[
-\int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}}\; (W_{t_j} - W_{t_{j-1}}),
-\]
-<p>por partições arbitrárias \(0 = t_0 < t_1 < \ldots < t_n = T\), com \(\max_j\{t_j - t_{j-1}\} \rightarrow 0\). Mas caso os caminhos amostrais não sejam, quase certamente, contínuos, essa fórmula explícita pode não valer.</p>
-<h2 id="propriedades_da_integral_de_itô_de_funções_escada"><a href="#propriedades_da_integral_de_itô_de_funções_escada" class="header-anchor">Propriedades da integral de Itô de funções escada</a></h2>
-<p>Vamos ver aqui as duas propriedades fundamentais que utilizamos acima. Suponha que \(\{H_t\}_{t\geq 0}\) seja um função escada adaptada a \(\{W_t\}_{t \geq 0}\) e com o processo sendo constante nos intevalos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\).</p>
+<h3 id="propriedades_da_integral_de_itô_de_funções_escada"><a href="#propriedades_da_integral_de_itô_de_funções_escada" class="header-anchor">Propriedades da integral de Itô de funções escada</a></h3>
+<p>Vamos ver aqui as duas propriedades fundamentais que utilizamos acima. Suponha que \(\{H_t\}_{t\geq 0}\) seja um função escada adaptada a \(\{W_t\}_{t \geq 0}\) e com o processo sendo constante nos intervalos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\).</p>
 <p>Calculemos, primeiramente, a esperança da integral de Itô:</p>
 \[
 \mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
@@ -474,35 +470,35 @@
 \[
 \mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
 \]
-<h2 id="aproximação_por_processos_contínuos"><a href="#aproximação_por_processos_contínuos" class="header-anchor">Aproximação por processos contínuos</a></h2>
+<h3 id="aproximação_por_processos_contínuos"><a href="#aproximação_por_processos_contínuos" class="header-anchor">Aproximação por processos contínuos</a></h3>
 <p>Dada uma função de quadrado integrável \(f:\mathbb{R} \rightarrow \mathbb{R}\), uma maneira clássica de aproximá-la por funções contínuas é através da convolução \(t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t\) com aproximações da identidade \(\varphi_\varepsilon\). Essa convolução, no entanto, envolve, tipicamente, olhar para o &quot;passado&quot; e para o &quot;futuro&quot; da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,</p>
 \[
 \varphi_\varepsilon(t) = \begin{cases}
-\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \leq 0, \\
-0, & t > 0.
+\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \geq 0, \\
+0, & t < 0.
 \end{cases}
 \]
 
 <img src="/notas_sde/assets/pages/c06/integral_ito/code/output/aprox_id_exp.svg" alt="">
-<p>Mais especificamente, dado um processo \(\{H_t\}_{t \geq 0}\) de quadrado integrável e progressivamente mensurável em relação a \(\{W_t\}_{t \geq 0}\), definimos</p>
+<p>Mais especificamente, dado um processo \(\{H_t\}_{t \geq 0}\) de quadrado integrável e progressivamente mensurável em relação a \(\{W_t\}_{t \geq 0}\), estendemos \(H_t = 0,\) para \(t \leq 0\) e definimos</p>
 \[
-H_t^m = \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s.
+H_t^m = \varphi_{1/m} \star H_t = \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s.
 \]
 <p>Como \(H_t^m\) só envolve \(H_s\), para \(0\leq s \leq t\), então \(H_t^m\) continua sendo não antecipativo. Além disso, para \(t \geq 0\) e \(\tau > 0\),</p>
 \[
 \begin{align*}
-H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m e^{m(s - t)} H_s \;\mathrm{d}s \\
-& = \int_t^{t+\tau} m e^{m(s - t - \tau)} H_s \;\mathrm{d}s - \int_0^t m \left(e^{m(s - t)} - e^{m(s - t - \tau)}\right) H_s \;\mathrm{d}s
+H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s - \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s \\
+& = \int_t^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s + \int_0^t m \left(e^{-m(t + \tau - s)} - e^{-m(t - s)}\right) H_s \;\mathrm{d}s
 \end{align*}
 \]
-<p>Usando que \(e^{m(s - t - \tau)} \leq 1\) e</p>
+<p>Usando que \(e^{-m(t + \tau - s)} \leq 1\) e</p>
 \[
-e^{m(s - t)} - e^{m(s - t - \tau)} = \int_{s-t-\tau}^{s - t} m e^{m\eta}\;\mathrm{d}\eta \leq m \tau
+\left|e^{-m(t + \tau - s)} - e^{-m(t - s)}\right| = \int_{t - s}^{t + \tau - s} m e^{-m\eta}\;\mathrm{d}\eta \leq m \tau,
 \]
 <p>obtemos</p>
 \[
 \begin{align*}
-\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m H_s \;\mathrm{d}s - \int_0^t m^2 \tau H_s \;\mathrm{d}s \\
+\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m |H_s| \;\mathrm{d}s - \int_0^t m^2 \tau |H_s| \;\mathrm{d}s \\
 & \leq m \sqrt{\tau} \int_t^{t+\tau} H_s^2 \;\mathrm{d}s + m^2 \tau \sqrt{t}\int_0^t H_s^2 \;\mathrm{d}s \\
 & \leq m \sqrt{\tau}\left(1 + m\sqrt{\tau t}\right)\int_0^t H_s^2 \;\mathrm{d}s.
 \end{align*}
@@ -517,6 +513,28 @@ e^{m(s - t)} - e^{m(s - t - \tau)} = \int_{s-t-\tau}^{s - t} m e^{m\eta}\;\mathr
 H_{t + \tau}(\omega) \rightarrow H_t(\omega), \quad \tau \rightarrow 0,
 \]
 <p>mostrando a continuidade quase certamente das aproximações \(\{H_t^m\}_{t \geq 0}\).</p>
+<h3 id="aproximação_por_processo_escada"><a href="#aproximação_por_processo_escada" class="header-anchor">Aproximação por processo escada</a></h3>
+<p>Assumindo \(\{H_t\}_{t \geq 0}\) com caminhos contínuous e \(T > 0,\) consideramos as malhas \(\{t_j^n\}_j\) dadas por</p>
+\[
+    t_j^n = \frac{j T}{2^n}, \quad j = 0, \ldots, 2^n,
+\]
+<p>para \(n\in \mathbb{N}.\) Em cada malha, consideramos o processo escada \(\{H_t^n\}_t\) dado por</p>
+\[
+    H_t^n = H_{t_{j-1}^n}, \quad t_{j-1}^n \leq t < t_j^n, \; j = 1, \ldots, 2^n,
+\]
+<p>com</p>
+\[
+    H_t^n = H_{T}, \quad t \geq T.
+\]
+<p>Para quase todo \(\omega\in\Omega\), como \(t\mapsto H_t(\omega)\) é um caminho contínuo, portanto uniformemente contínuo em \([0, T],\) temos</p>
+\[
+    H_t^n(\omega) \rightarrow H_t(\omega)
+\]
+<p>uniformemente em \(t \in [0, T].\) Pelo Teorema da Convergência Dominada de Lebesgue,</p>
+\[
+    H_t^n \rightarrow H_t
+\]
+<p>em \(L^2((0, T)\times \Omega),\) ou seja, \(\{H_t^n\}_{0 \leq t \leq T}\) é uma aproximação, em média quadrática, do processo \(\{H_t\}_{0 \leq t \leq T},\) por processos do tipo escada.</p>
 <h2 id="relação_com_a_definição_via_dualidade"><a href="#relação_com_a_definição_via_dualidade" class="header-anchor">Relação com a definição via dualidade</a></h2>
 <p>Na Seção <a href="/notas_sde/pages/c05/integral_dualidade">pages/c05/integral_dualidade.md</a>, definimos a integral de uma função determinística \(g=g(t)\) continuamente diferenciável em relação a um processo estocástico como um processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade</p>
 \[
@@ -570,7 +588,7 @@ H_{t + \tau}(\omega) \rightarrow H_t(\omega), \quad \tau \rightarrow 0,
         </div>
     
 
-    Last modified: May 03, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

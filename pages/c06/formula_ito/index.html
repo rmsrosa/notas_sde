@@ -356,12 +356,15 @@
 \[
 Y_t = u(X_t).
 \]
-<p>A questão é sobre a relação entre \(\mathrm{d}Y_t\) e \(\mathrm{d}X_t\). Se \(u\) e \(\{X_t\}_{t \geq 0}\) fossem diferenciáveis, então teríamos</p>
+<p>A questão é sobre a relação entre \(\mathrm{d}Y_t\) e \(\mathrm{d}X_t\). Quando \(u\) e \(\{X_t\}_{t \geq 0}\) são diferenciáveis, temos simplesmente</p>
 \[
 \frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
 \]
-<p>Mesmo que \(\{X_t\}_{t \geq 0}\) fosse apenas de variação limitada, então \(\{Y_t\}_{t \geq 0}\) também seria de variação limitada e ainda poderíamos dizer que \(\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t\), no sentido de integral de Riemann-Stieltjes.</p>
-<p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Se supusermos que ele seja um <em>processo de Itô</em>, ou seja, que satisfaça uma equação da forma</p>
+<p>Mesmo quando os caminhos amostrais de \(\{X_t\}_{t \geq 0}\) são apenas de variação limitada, ainda temos \(\{Y_t\}_{t \geq 0}\) de variação limitada e ainda temos que \(\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t\), no sentido de integral de Riemann-Stieltjes:</p>
+\[
+    \int_a^b g(t) \;\mathrm{d}Y_t = \int_a^b u'(X_t)\;\mathrm{d}X_t.
+\]
+<p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Se supusermos que ele seja um <em>processo de Itô,</em> ou seja, que satisfaça uma equação da forma</p>
 \[
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 \]
@@ -373,11 +376,67 @@ Y_t = u(X_t).
 \[
 Y_t = u(t, X_t).
 \]
-<p>Denotamos o primeiro caso por <em>autônomo</em> e este, por <em>não autônomo.</em>  No caso não autônomo, a <em>fórmula de Itô</em> se torna</p>
+<p>Denotamos o primeiro caso por <em>autônomo</em> e este por <em>não autônomo.</em>  No caso não autônomo, a <em>fórmula de Itô</em> se torna</p>
 \[
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
 \]
-<p>Observe que, em ambos os casos, se \(B_t = 0\), para todo \(t\), então \(\{X_t\}_{t \geq 0}\) se reduz a um processo com caminhos diferenciáveis e recuperamos a fórmula clássica.</p>
+<p>Observe que, em ambos os casos, se \(B_t = 0\), para todo \(t\), então \(\{X_t\}_{t \geq 0}\) se reduz a um processo com caminhos diferenciáveis &#40;ou de variação limitada&#41; e recuperamos a fórmula clássica.</p>
+<h2 id="fórmula_de_itô_no_caso_de_um_processo_de_wiener"><a href="#fórmula_de_itô_no_caso_de_um_processo_de_wiener" class="header-anchor">Fórmula de Itô no caso de um processo de Wiener</a></h2>
+<p>Para deixar as ideias claras, vamos considerar o caso mais simples em que \(X_t=W_t\) é o próprio processo de Wiener e \(u=u(x)\) é uma função duas vezes continuamente diferenciável definida para todo \(x\in\mathbb{R}.\) Estamos interessados em obter uma fórmula para \(\mathrm{d}Y_t\), onde \(\{Y_t\}_{t\geq 0}\) é dado por</p>
+\[
+    Y_t = u(W_t).
+\]
+<p>Considere uma malha temporal \(0 = t_0 < t_1 < \cdots < t_n = T\). Escrevemos</p>
+\[
+Y_t = Y_0 + \sum_{j = 1}^n (Y_{t_j} - Y_{t_{j-1}}),
+\]
+<p>que é uma soma telescópica. Como \(u\) é duas vezes continuamente diferenciável, temos a fórmula de expansão de Taylor com resto</p>
+\[
+\begin{align*}
+    u(b) & = u(a) + \int_a^b u'(s) \;\mathrm{d}s \\
+    & = u(a) + \int_a^b \left(u'(a) + \int_a^s u''(\xi)\;\mathrm{d}\xi \right)\mathrm{d}s \\
+    & = u(a) + u'(a) (b - a) + \int_a^b \int_\xi^b u''(\xi);\mathrm{d}s \;\mathrm{d}\xi \\
+    & = u(a) + u'(a) (b - a) + \int_a^b u''(\xi)(b - \xi)\;\mathrm{d}\xi.
+\end{align*}
+\]
+<p>Assim, podemos escrever, fazendo \(a = W_{t_{j-1}}\) e \(b=W_{t_j}\) em cada termo,</p>
+\[
+\begin{align*}
+Y_{t_j} - Y_{t_{j-1}} = u(W_{t_j}) - u(W_{t_{j-1}}) & = u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) + \int_{W_{t_{j-1}}}^{W_{t_j}} u''(\xi)(W_{t_j} - \xi) \;\mathrm{d}\xi \\
+& = u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
+& \qquad + \frac{1}{2}u''(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})^2 \\
+&  \qquad + \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi.
+\end{align*}
+\]
+<p>Portanto,</p>
+\[
+\begin{align*}
+Y_T - Y_0 & = \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
+& \qquad + \frac{1}{2} \sum_{j=1}^n u''(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})^2 \\
+& \qquad + \sum_{j=1}^n \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi.
+\end{align*}
+\]
+<p>No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de \(\{u'(W_t)\}_{t \geq 0},\) i.e.</p>
+\[
+    \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \rightarrow \int_0^T u'(W_t)\;\mathrm{d}W_t.
+\]
+<p>No segundo termo, usamos que \(\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})\), de maneira que</p>
+\[
+\frac{1}{2}\sum_{j=1}^n u''(W_{t_{j-1}}) (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(W_t)  \;\mathrm{d}t.
+\]
+<p>O último termo converge para zero, graças à continuidade da segunda derivada de \(u = u(x),\)</p>
+\[
+    \sum_{j=1}^n \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi \rightarrow 0.
+\]
+<p>Logo,</p>
+\[
+    Y_T - Y_0 = \int_0^T u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}\int_0^T u''(W_t) \;\mathrm{d}t.
+\]
+<p>Em forma diferencial, escrevemos que</p>
+\[
+    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(X_t)\;\mathrm{d}t,
+\]
+<p>que é um caso particular da fórmula de Itô mencionada acima. Veremos agora a fórmula de Itô para processos de Itô.</p>
 <h2 id="processo_de_itô"><a href="#processo_de_itô" class="header-anchor">Processo de Itô</a></h2>
 <p>Como dito acima, um <strong>processo de Itô</strong> é um processo \(\{X_t\}_{t \geq 0}\) satisfazendo uma equação estocástica da forma</p>
 \[
@@ -385,7 +444,7 @@ Y_t = u(t, X_t).
 \]
 <p>onde \(\{W_t\}_{t \geq 0}\) é um processo de Wiener e \(\{A_t\}_{t \geq 0}\) e \(\{B_t\}_{t \geq 0}\) são não antecipativos em relação ao processo de Wiener.</p>
 <h2 id="fórmula_de_itô_no_caso_autônomo"><a href="#fórmula_de_itô_no_caso_autônomo" class="header-anchor">Fórmula de Itô no caso autônomo</a></h2>
-<p>Considere, então, uma malha temporal \(0 = t_0 < t_1 < \cdots < t_n = T\) com \(\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0\). Escrevemos</p>
+<p>Considere, novamente, uma malha temporal \(0 = t_0 < t_1 < \cdots < t_n = T\) com \(\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0\). Escrevemos</p>
 \[
 Y_t = Y_0 + \sum_{j = 1}^n (Y_{t_j} - Y_{t_{j-1}}).
 \]
@@ -406,7 +465,7 @@ Y_T - Y_0 & = \sum_{j=1}^n u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) \\
 & \qquad + \sum_{j=1}^n \int_{X_{t_{j-1}}}^{X_{t_j}} (u''(x) - u''(X_{t_{j-1}}))(X_{t_j} - x) \;\mathrm{d}x.
 \end{align*}
 \]
-<p>No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de \(\{X_t\}_{t \geq 0}\), com respeito a si mesmo. O último termo converge para zero, graças à continuidade da segunda derivada de \(u = u(x)\). Em relação ao segundo termo, temos</p>
+<p>No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de \(\{u'(X_t)\}_{t \geq 0}\) com respeito \(\{X_t\}_{t \geq 0}.\) O último termo converge para zero, graças à continuidade da segunda derivada de \(u = u(x)\). Em relação ao segundo termo, temos</p>
 \[
 \begin{align*}
 (X_{t_j} - X_{t_{j-1}})^2 & \approx \left(A_{t_{j-1}}(t_j - t_{j-1}) + B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}) \right)^2 \\
@@ -528,7 +587,7 @@ Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \
         </div>
     
 
-    Last modified: May 03, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

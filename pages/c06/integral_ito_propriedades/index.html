@@ -387,6 +387,10 @@
 & = \lambda \int_0^T H_t \;\mathrm{d}W_t.
 \end{align*}
 \]
+<p>Essa relação ainda é válidade no caso de uma variável aleatória \(\Lambda=\Lambda(\omega)\) independente do processo de Wiener. Só precisa ser constante em \(t.\) Nesse caso,</p>
+\[
+\int_0^T \Lambda H_t \;\mathrm{d}W_t = \Lambda \int_0^T H_t \;\mathrm{d}W_t.
+\]
 <p>Da mesma forma, a integral de Itô é <em>aditiva,</em> i.e.se \(\{G_t\}_{t\geq 0}\) e \(\{H_t\}_{t\geq 0}\) são dois processos não antecipativos, então</p>
 \[
 \int_0^T \left(G_t + H_t\right)\;\mathrm{d}W_t = \int_0^T G_t \;\mathrm{d}W_t + \int_0^T H_t \;\mathrm{d}W_t.
@@ -509,7 +513,7 @@ S_t = \int_0^t H_s \;\mathrm{d}W_s,
         </div>
     
 
-    Last modified: May 03, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
