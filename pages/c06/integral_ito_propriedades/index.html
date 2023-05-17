@@ -432,6 +432,36 @@
 \[
 \mathbb{E}\left[ \left( \int_0^T G_t \;\mathrm{d}W_t\right)\left( \int_0^T H_t \;\mathrm{d}W_t\right)\right] = \mathbb{E}\left[ \int_0^T G_t H_t \;\mathrm{d}t\right].
 \]
+<h2 id="relação_com_a_definição_via_dualidade"><a href="#relação_com_a_definição_via_dualidade" class="header-anchor">Relação com a definição via dualidade</a></h2>
+<p>Na Seção <a href="/notas_sde/pages/c05/integral_dualidade">pages/c05/integral_dualidade.md</a>, definimos a integral de uma função determinística \(g=g(t)\) continuamente diferenciável em relação a um processo estocástico como um processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade</p>
+\[
+\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+\]
+<p>Por outro lado, podemos considerar \(g(t)\) como um processo estocástico \(H_t = g(t)\) e interpretar a integral como uma integral de Itô. Sendo \(H_t = g(t)\) determinístico, segue que \(\{H_t\}_{t\geq 0}\) é não antecipativo. Assim, como integral de Itô, temos</p>
+\[
+\int_0^T g(t)\;\mathrm{d}W_t = \lim_{\max_j\{t_j - t_{j-1}\} \rightarrow 0} \sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}).
+\]
+<p>Agora, observe que, para cada malha,</p>
+\[
+\begin{align*}
+\sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}) & = \sum_{j=1}^n g(t_{j-1}) W_{t_j} - \sum_{j=0}^{n-1} g(t_j) W_{t_j} \\
+& = g(t_{n-1})W_{t_n} - g(0)W_0 - \sum_{j=1}^{n-1} W_{t_j} (g(t_j) - g(t_{j-1})) \\
+& = g(T)W_T - g(0)W_0 - (g(t_n)- g(t_{n-1}))W_{T} - \sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})).
+\end{align*}
+\]
+<p>No limite do refinamento da malha, temos</p>
+\[
+(g(t_n)- g(t_{n-1}))W_{T} \rightarrow 0
+\]
+<p>e</p>
+\[
+\sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})) \rightarrow \int_0^T W_t \;\mathrm{d}g = \int_0^T g'(t) W_t \;\mathrm{d}t
+\]
+<p>Portanto, obtemos também para a integral de Itô que</p>
+\[
+\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+\]
+<p>Isso mostra que a integral de Itô, definida para processos mais gerais, coincide com a integral definida via dualidade.</p>
 <h2 id="propriedade_de_martingale"><a href="#propriedade_de_martingale" class="header-anchor">Propriedade de Martingale</a></h2>
 <p>Considerando o processo \(\{S_t\}_{t\geq 0}\) definido por</p>
 \[
@@ -513,7 +543,7 @@ S_t = \int_0^t H_s \;\mathrm{d}W_s,
         </div>
     
 
-    Last modified: May 16, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 17, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
