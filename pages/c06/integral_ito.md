@@ -193,7 +193,7 @@ $$
 $$
 de modo que
 $$
-H_{t + \tau}(\omega) \rightarrow H_t(\omega), \quad \tau \rightarrow 0,
+H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
 $$
 mostrando a continuidade quase certamente das aproximações $\{H_t^m\}_{t \geq 0}$.
 
@@ -205,11 +205,10 @@ $$
 $$
 para $n\in \mathbb{N}.$ Em cada malha, consideramos o processo escada $\{H_t^n\}_t$ dado por
 $$
-    H_t^n = H_{t_{j-1}^n}, \quad t_{j-1}^n \leq t < t_j^n, \; j = 1, \ldots, 2^n,
-$$
-com
-$$
-    H_t^n = H_{T}, \quad t \geq T.
+    H_t^n = \begin{cases}
+        H_{t_{j-1}^n}, & t_{j-1}^n \leq t < t_j^n, \; j = 1, \ldots, 2^n, \\
+        H_{T}, & t \geq T.
+    \end{cases} 
 $$
 Para quase todo $\omega\in\Omega$, como $t\mapsto H_t(\omega)$ é um caminho contínuo, portanto uniformemente contínuo em $[0, T],$ temos
 $$
@@ -219,40 +218,65 @@ uniformemente em $t \in [0, T].$ Pelo Teorema da Convergência Dominada de Lebes
 $$
     H_t^n \rightarrow H_t
 $$
-em $L^2((0, T)\times \Omega),$ ou seja, $\{H_t^n\}_{0 \leq t \leq T}$ é uma aproximação, em média quadrática, do processo $\{H_t\}_{0 \leq t \leq T},$ por processos do tipo escada.
+em $L^2((0, T)\times \Omega),$ ou seja, $\{H_t^n\}_{0 \leq t \leq T}$ é uma aproximação, em média quadrática, por processos do tipo escada, do processo $\{H_t\}_{0 \leq t \leq T}.$ 
 
-## Relação com a definição via dualidade
+### Aproximação no caso de processos com caminhos contínuos
 
-Na Seção {{link_section pages/c05/integral_dualidade}}, definimos a integral de uma função determinística $g=g(t)$ continuamente diferenciável em relação a um processo estocástico como um processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade
+Obtivemos, acima, a convergência das integrais de Itô das aproximações $\{H_t^n\}_t$ de uma função progressivamente mensurável de quadrado integrável. Mas se os caminhos não forem contínuous, não podemos garantir que $H_t^n = H_{t_j^n}^n$ em pontos arbitrários $t_j^n$ das malhas das aproximações-escada do processo. Então, em geral, não podemos dizer que a integral de Itô de $\{H_t\}_t$ é o limite de somatórios
 $$
-\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+    \sum_{j=1}^n H_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
 $$
+nem no sentido de média quadrática.
 
-Por outro lado, podemos considerar $g(t)$ como um processo estocástico $H_t = g(t)$ e interpretar a integral como uma integral de Itô. Sendo $H_t = g(t)$ determinístico, segue que $\{H_t\}_{t\geq 0}$ é não antecipativo. Assim, como integral de Itô, temos
+Mas se os caminhos forem contínuous, ou quase certamente contínuous, então podemos aproximar, em média quadrática, o processo $\{H_t\}_t$ por $H_t^n$ obtido através de
 $$
-\int_0^T g(t)\;\mathrm{d}W_t = \lim_{\max_j\{t_j - t_{j-1}\} \rightarrow 0} \sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}).
+    H_t^n = \begin{cases}
+        H_{t_{j-1}^n}, & t_{j-1}^n \leq t < t_j^n, \; j = 1, \ldots, 2^n, \\
+        H_{T}, & t \geq T.
+    \end{cases} 
 $$
-
-Agora, observe que, para cada malha,
+Nesse caso, $H_{t_{j-1}^n}^n = H_{t_{j-1}^n}$, ou seja, nos pontos da malha, os valores do processo aproximado são os valores do próprio processo. Assim, vale a convergência
 $$
-\begin{align*}
-\sum_{j=1}^n g(t_{j-1}) (W_{t_j} - W_{t_{j-1}}) & = \sum_{j=1}^n g(t_{j-1}) W_{t_j} - \sum_{j=0}^{n-1} g(t_j) W_{t_j} \\
-& = g(t_{n-1})W_{t_n} - g(0)W_0 - \sum_{j=1}^{n-1} W_{t_j} (g(t_j) - g(t_{j-1})) \\
-& = g(T)W_T - g(0)W_0 - (g(t_n)- g(t_{n-1}))W_{T} - \sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})).
-\end{align*}
+    \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
 $$
-No limite do refinamento da malha, temos
+no sentido de média quadrática. Isso para quaisquer sequências de malhas $\{t_j^n\}_{j}$ com
 $$
-(g(t_n)- g(t_{n-1}))W_{T} \rightarrow 0
-$$
-e
-$$
-\sum_{j=1}^{n} W_{t_j} (g(t_j) - g(t_{j-1})) \rightarrow \int_0^T W_t \;\mathrm{d}g = \int_0^T g'(t) W_t \;\mathrm{d}t
+    \max_{j=1, \ldots, n} (t_j^n - t_{j-1}^n) \rightarrow 0.
 $$
 
-Portanto, obtemos também para a integral de Itô que
+Além disso, extraindo uma subsequência $n_k\rightarrow \infty$ tal que
 $$
-\int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
+    \int_0^T\mathbb{E}\left[ H_t - H_t^{n_k} \right] < \epsilon_k^2,
 $$
+com
+$$
+    \sum_k \epsilon_k < \infty,
+$$
+então esse limite vale quase certamente. De fato, nesse caso, temos
+$$
+    \mathbb{P}\left( \left|\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right| \geq \sqrt{\epsilon_k} \right) \leq \frac{1}{\epsilon_k}\mathbb{E}\left[ \left(\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right)^2\right] = \frac{1}{\epsilon_k}\int_0^T\mathbb{E}\left[ (H_t - H_t^{n_k})^2 \right]\;\mathrm{dt} \leq \epsilon_k.
+$$
+Logo,
+$$
+    \sum_{k\in\mathbb{N}} \mathbb{P}\left( \left|\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right| \geq \sqrt{\epsilon_k} \right) \leq \sum_{k\in\mathbb{N}} \epsilon_k < \infty.
+$$
+Pelo Lema de Borel-Cantelli, isso implica em
+$$
+    \mathbb{P}\left( \limsup_{k\rightarrow \infty} \left|\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right| \geq \sqrt{\epsilon_k} \right) = 0,
+$$
+ou seja
+$$
+    \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^{n_k} H_{t_{j-1}^{n_k}} (W_{t_j^{n_k}} - W_{t_{j-1}}^{n_k}),
+$$
+quase certamente.
 
-Isso mostra que a integral de Itô, definida para processos mais gerais, coincide com a integral definida via dualidade.
+### Integral de Itô do processo de Wiener
+
+Como o processo de Wiener tem caminhos quase certamente contínuos, vale o limite
+$$
+    \int_0^T W_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n W_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
+$$
+em média quadrática. Por outro lado, já calculamos que o limite do lado direito acima é $W_T/2 - T/2.$ Portanto, vale, de fato, para a integral de Itô, que
+$$
+    \int_0^T W_t \;\mathrm{d}W_t = \frac{W_T}{2} - \frac{T}{2}.
+$$
