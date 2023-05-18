@@ -364,11 +364,13 @@ Y_t = u(X_t).
 \[
     \int_a^b g(t) \;\mathrm{d}Y_t = \int_a^b u'(X_t)\;\mathrm{d}X_t.
 \]
-<p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Se supusermos que ele seja um <em>processo de Itô,</em> ou seja, que satisfaça uma equação da forma</p>
+<p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Por exemplo, se quiseremos calcular \(X_t = \sin(W_t),\) para o processo de Wiener, ou qualquer outra \(X_t = u(W_t)\)? Podemos começar por aí e calcular \(dX_t\) para funções de processos de Wiener. Mas e se quiseremos, em cima disso, consider \(Y_t = v(X_t)\) e ainda \(Z_t = w(Y_t)\), etc.</p>
+<p>Por conta disso, consideramos uma classe de processos que é, em um certo sentido, fechada para composições. E então calcular a diferencial para processos nessa classe. Essa classe é a de <em>processos de Itô,</em> ou seja, processos \(\{X_t\}_t\) satisfazendo uma equação da forma</p>
 \[
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 \]
-<p>então teremos uma correção na fórmula de mudança de variáveis, nos levando à <em>fórmula de Itô</em>, que, nesse caso autônomo, tem a forma:</p>
+<p>para outros dados processos \(\{A_t\}_t\) e \(\{B_t\}_t\) adaptados a \(\{W_t\}_t\).</p>
+<p>Para esses processos, teremos uma correção na fórmula de mudança de variáveis, nos levando à <em>fórmula de Itô</em>, que, nesse caso autônomo, tem a forma:</p>
 \[
 \mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 \]
@@ -420,11 +422,12 @@ Y_T - Y_0 & = \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
 \[
     \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \rightarrow \int_0^T u'(W_t)\;\mathrm{d}W_t.
 \]
-<p>No segundo termo, usamos que \(\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})\), de maneira que</p>
+<p>No segundo termo, usamos que \(\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})\). É possível mostrar que</p>
 \[
-\frac{1}{2}\sum_{j=1}^n u''(W_{t_{j-1}}) (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(W_t)  \;\mathrm{d}t.
+\frac{1}{2}\sum_{j=1}^n u''(W_{t_{j-1}}) (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(W_t) \;\mathrm{d}t,
 \]
-<p>O último termo converge para zero, graças à continuidade da segunda derivada de \(u = u(x),\)</p>
+<p>em média quadrática.</p>
+<p>O último termo converge para zero em média quadrática, graças à continuidade da segunda derivada de \(u = u(x),\)</p>
 \[
     \sum_{j=1}^n \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi \rightarrow 0.
 \]
@@ -437,6 +440,82 @@ Y_T - Y_0 & = \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
     \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(X_t)\;\mathrm{d}t,
 \]
 <p>que é um caso particular da fórmula de Itô mencionada acima. Veremos agora a fórmula de Itô para processos de Itô.</p>
+<p>Vamos ver as convergências acima em mais detalhes.</p>
+<h3 id="convergência_do_segundo_termo"><a href="#convergência_do_segundo_termo" class="header-anchor">Convergência do segundo termo</a></h3>
+<p>Nesse caso, não há nada de especial em ser a segunda derivada. Basta mostrar que</p>
+\[
+\sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T H_t \;\mathrm{d}t,
+\]
+<p>para um processo qualquer \(\{H_t\}_t\) progessivamente mensurável e de quadrado integrável &#40;como o é \(u''(W_t)\) quando \(u\) é suave e \(\{W_t\}_t\) é o processo de Wiener&#41;.</p>
+<p>O primeiro passo é aproximar, no sentido de média quadrática, o processo \(\{H_t\}_t\) por processos escada \(\{H_t^m\}_t\) adaptados a \(\{W_t\}_t\), conforme feito na parte de existência de integral de Itô. Cada \(H_t^m\) é constante em uma partição \(0 = a_0 < a_1 < \ldots < a_m = T\). Em cada subintervalo \(A_k = [a_{k-1}, a_k)\), temos índices</p>
+\[
+    J_k = \{t_j \in A_k\}
+\]
+<p>da partição \(\{t_j\}_j\) usada no cálculo da integral. Assim, basta mostrar que</p>
+\[
+    \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow a_k - a_{k-1}.
+\]
+<p>Uma vez mostrado isso,</p>
+\[
+    \sum_{j=1}^n H_{t_{j-1}}^m (W_{t_j} - W_{t_{j-1}})^2 = \sum_{k=1}^n H_{a_{k-1}} \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \sum_{k=1}^n H_{a_{k-1}}^m (a_k - a_{k-1}) = \int_0^T H_t^m \;\mathrm{d}t.
+\]
+<p>Agora, passando ao limite em \(m\rightarrow \infty,\) obtemos</p>
+\[
+\sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \int_0^T H_t \;\mathrm{d}t.
+\]
+<p>Falta mostrar, então, que </p>
+\[
+    \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow a_k - a_{k-1}.
+\]
+<p>em média quadrática. Isso é feito diretamente. Defina \(\tau = a_k - a_{k-1}\) para facilitar a notação. Então</p>
+\[
+    \mathbb{E}\left[ \left( \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2 - \tau \right)^2 \right] = \mathbb{E}\left[ \left( \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2\right)^2 \right]
+    + 2\tau \mathbb{E}\left[ \left( \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})\right) \right] + \tau^2
+\]
+<p>Temos</p>
+\[
+  \begin{align*}
+\mathbb{E}\left[ \left( \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2\right)^2 \right] & = \sum_{i, j} \mathbb{E}\left[(W_{t_i} - W_{t_{i-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right] \\
+  & = \sum_{i \neq j}\mathbb{E}\left[(W_{t_i} - W_{t_{i-1}})^2\right] \mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] + \sum_j \mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^4\right] \\
+  & = \sum_{i \neq j}\mathbb{E}\left[(W_{t_i} - W_{t_{i-1}})^2\right] \mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] + 3\sum_j \mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right]^2 \\
+  & = \sum_{i \neq j} (t_i - t_{i-1})(t_j - t_{j-1}) + 3\sum_j (t_j - t_{j-1})^2 \\
+  & = \sum_{i, j} (t_i - t_{i-1})(t_j - t_{j-1}) + 2\sum_j (t_j - t_{j-1})^2 \\
+  & = \left(\sum_i (t_i - t_{i-1})\right)\left(\sum_j (t_j - t_{j-1})\right) + 2\sum_j (t_j - t_{j-1})^2 \\
+  & = \tau^2 + 2\sum_j (t_j - t_{j-1})^2.
+  \end{align*}
+\]
+<p>Também temos</p>
+\[
+2\tau \mathbb{E}\left[ \left( \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})\right) \right] = 2\tau \sum_{j\in J_k}\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2 \right] = 2\tau \sum_{j\in J_k} (t_j - t_{j-1}) = 2\tau^2.
+\]
+<p>Assim, os termos com \(\tau^2\) se cancelam e sobra</p>
+\[
+\mathbb{E}\left[ \left( \sum_{j\in J_k} (W_{t_j} - W_{t_{j-1}})^2 - \tau \right)^2 \right] = 2\sum_j (t_j - t_{j-1})^2 \leq 2\max_{j\in J_k}(t_j - t_{j-1})\sum_j(t_j - t_{j-1}) = 2\tau \max_{j\in J_k}(t_j - t_{j-1}) \rightarrow 0.
+\]
+<p>Isso completa a demonstração da convergência em média quadrática do segundo termo.</p>
+<h3 id="convergência_do_terceiro_termo"><a href="#convergência_do_terceiro_termo" class="header-anchor">Convergência do terceiro termo</a></h3>
+<p>Por densidade, basta mostrar no caso em que \(u\) é três vezes continuamente diferenciável. Vamos assumir isso.</p>
+<p>Quase todo caminho amostral de \(\{W_t\}_t\) é H\&quot;older contínou com expoente \(\theta < 1/2\) e é limitado em \([0, T]\). Assim, fixado um caminho amostral, existe \(C>0\) tal que</p>
+\[
+|W_{t+\tau}(\omega) - W_t(\omega)| \leq C\tau ^\theta
+\]
+<p>Em particular, como \(W_0 = 0,\)</p>
+\[
+  |W_{t}(\omega)| \leq CT^\theta,
+\]
+<p>para todo \(t\in [0, T]\). Além disso, assumindo \(u''\) continuamente diferenciável, dado \(\epsilon > 0,\) existe \(K > 0\) tal que</p>
+\[
+  w_1, w_2 \leq CT^\theta \Rightarrow |u(w_2) - u(w_1)| \leq K|w_2 - w_1|.
+\]
+<p>Assim, </p>
+\[
+\left|\int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi\right| \leq K |W_{t_j} - W_{t_{j-1}}|^3 \leq C^2K |t_j - t_{j-1}|^{3\theta}.
+\]
+<p>Escolhendo \(\theta < 1/2\) com \(3\theta > 1,\) obtemos</p>
+\[
+    \sum_{j=1}^n \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi \leq C^2 K T \max_j |t_j - t_{j-1}|^{3\theta - 1} \rightarrow 0,
+\]
+<p>quando a malha é refinada. Ou seja, obtemos a convergência quase certamente, que implica na convergência em média quadrática.</p>
 <h2 id="processo_de_itô"><a href="#processo_de_itô" class="header-anchor">Processo de Itô</a></h2>
 <p>Como dito acima, um <strong>processo de Itô</strong> é um processo \(\{X_t\}_{t \geq 0}\) satisfazendo uma equação estocástica da forma</p>
 \[
@@ -587,7 +666,7 @@ Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \
         </div>
     
 
-    Last modified: May 17, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 18, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
