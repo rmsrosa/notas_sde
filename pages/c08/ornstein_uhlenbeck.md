@@ -71,25 +71,73 @@ Da fórmula
 $$
 O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s,
 $$
-deduzimos que
+como a esperança da integral de Itô é nula, deduzimos que
 $$
-\mathbb{E}[O_t] = e^{-\nu t}\mathbb{E}[O_0]
+\mathbb{E}[O_t] = e^{-\nu t}\mathbb{E}[O_0].
 $$
-e que
+Calculando o quadrado, temos
 $$
-\mathbb{E}[O_t^2] = e^{-2\nu t}\mathbb{E}[O_0] + \sigma^2 \int_0^t e^{-2\nu(t - s)}\;\mathrm{d}s = e^{-2\nu t}\mathbb{E}[O_0] + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right),
+O_t^2 = e^{-2\nu t}O_0^2 + 2\sigma e^{-\nu t}O_0\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s + \sigma^2\left( \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s\right).
+$$
+Usando que $O_0$ é independente do processo de Wiener, o termo misto também se anula. Assim, usando a isometria de Itô no último termo, obtemos
+$$
+\mathbb{E}[O_t^2] = e^{-2\nu t}\mathbb{E}[O_0^2] + \sigma^2 \int_0^t e^{-2\nu(t - s)}\;\mathrm{d}s = e^{-2\nu t}\mathbb{E}[O_0^2] + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right).
+$$
+Com isso,
+$$
+\mathrm{Var}(O_t) = \mathbb{E}[O_t^2] - \mathbb{E}[O_t]^2 = e^{-2\nu t}\left(\mathbb{E}[O_0^2]-\mathbb{E}[O_0]^2\right) + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right),
 $$
 de modo que
 $$
-\mathrm{Var}(O_t) = \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right).
+\mathrm{Var}(O_t) = e^{-2\nu t}\mathrm{Var}(O_0) + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right).
 $$
 
-Além disso, para $s < t$,
+Observe que
 $$
-\mathbb{E}[O_t O_s] = e^{-\nu (t+s)}\mathbb{E}[O_0^2] + \ldots
+\mathbb{E}[O_t] \rightarrow 0, \quad \mathrm{Var}(O_t) \rightarrow \frac{\sigma^2}{2\nu}, \qquad \textrm{quando } t \rightarrow \infty.
 $$
 
+Além disso, para $0 \leq t_1 < t_2$,
+$$
+O_{t_1}O_{t_2} = e^{-\nu (t_1 + t_2)}O_0^2 + \sigma e^{-\nu t_1}O_0\int_0^{t_2} e^{-\nu (t_2 - s)}\;\mathrm{d}W_s + \sigma e^{-\nu t_2}O_0\int_0^{t_1} e^{-\nu (t_1 - s)}\;\mathrm{d}W_s \\
++ \sigma^2 \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)
+$$
+Novamente, a esperança dos termos mistos se anula, nos dando
+$$
+\mathbb{E}[O_{t_1} O_{t_2}] = e^{-\nu (t_1+t_2)}\mathbb{E}[O_0^2] + \sigma^2\mathbb{E}[\left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)].
+$$
+Como $t_2 > t_1$, separamos a segundo integral em duas partes,
+$$
+\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s = \int_0^{t_1} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s + \int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s.
+$$
+Pela propriedade dos processos de Wiener, a segundo termo é independente da outra integral, ou seja,
+$$
+\mathbb{E}\left[ \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)\right] = \mathbb{E}\left[ \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\right]\mathbb{E}\left[\left(\int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)\right] = 0.
+$$
+Sobram, então,
+$$
+\mathbb{E}[O_{t_1} O_{t_2}] = e^{-\nu (t_1+t_2)}\mathbb{E}[O_0^2] + \sigma^2\mathbb{E}[\left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_1} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)].
+$$
+A isometria de Itô na versão de dois integrandos diferentes nos dá
+$$
+\mathbb{E}[O_{t_1} O_{t_2}] = e^{-\nu (t_1+t_2)}\mathbb{E}[O_0^2] + \sigma^2\int_0^{t_1} e^{-\nu(t_1 - s)} e^{-\nu(t_2 - s)}\;\mathrm{d}s = e^{-\nu (t_1 + t_2)} \mathbb{E}[O_0^2] + \sigma^2e^{-\nu (t_1 + t_2)}\int_0^{t_1} e^{2\nu s} \;\mathrm{d}s \\
+  = e^{-\nu (t_1 + t_2)}\mathbb{E}[O_0^2] + \frac{\sigma^2}{2\nu}e^{-\nu (t_1 + t_2)}\left(e^{2\nu t_1} - 1\right)  = e^{-\nu (t_1 + t_2)}\mathbb{E}[O_0^2] + \frac{\sigma^2}{2\nu}\left( e^{-\nu (t_2 - t_1)} - e^{-\nu (t_1 + t_2)}\right).
+$$
+Para $t_1, t_2 \geq 0$ arbitrários, isso nos dá, por simetria,
+$$
+\mathrm{Cov}(O_{t_1}, O_{t_2}) = e^{-\nu (t_1 + t_2)}\mathrm{Var}(O_0) + \frac{\sigma^2}{2\nu}\left( e^{-\nu |t_2 - t_1|} - e^{-\nu (t_1 + t_2)}\right).
+$$
+Para $t_1 = t$ e $t_2 = t + \tau$,
+$$
+\mathrm{Cov}(O_{t}, O_{t+\tau}) = e^{-\nu (2t + \tau)}\mathrm{Var}(O_0) + \frac{\sigma^2}{2\nu}e^{-\nu \tau}\left( 1 - e^{-2\nu t}\right).
+$$
+Assintoticamente em $t\rightarrow \infty,$ temos
+$$
+\mathrm{Cov}(O_{t}, O_{t+\tau}) \sim \frac{\sigma^2}{2\nu}e^{-\nu \tau},
+$$
+ou seja, para $\tau \gg 1/\nu$, os processos estão essencialmente descorrelacionados. O parâmetro $1/\nu$ funciona como uma escala de tempo para o correlacionamento.
 
+Veremos, abaixo, como isso pode ser usado para se obter uma aproximação de um ruído branco.
 
 ## Posição e velocidade na forma de sistema
 
@@ -185,32 +233,51 @@ $$
 
 Como $\mathbb{E}[O_t] \rightarrow 0$, quando $t \rightarrow 0$, então $\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu$, ou seja, a esperança de $\{\hat O_t\}_{t \geq 0}$ converge para a média $\mu$. Assim, o processo de Orstein-Uhlenbeck é um exemplo de *mean-reverting process,* ou "processo que reverte à média".
 
-## Ornstein-Uhlenbeck colored noise approximation of white noise
+## Ornstein-Uhlenbeck como aproximação de ruído branco
 
 O "ruído branco", como modelado pela "derivada" de um processo de Wiener, em um sentido apropriado de distribuições, é um processo comumente encontrado em diversos modelos. Em várias situações, no entanto, o ruído é "colorido", com algum decaimento característico do espectro de amplitudes.
 
 Aqui, exploramos o processo de Ornstein-Uhlenbeck (OU) como aproximação de um ruído branco. Isso é obtido controlando-se uma *escala temporal* $\tau$. Mais precisamente, consideramos um processo $\{O_t\}_t$ satisfazendo a equação diferencial estocástica
 
 $$
-    \tau \mathrm{d}O_t = - \mathrm{d}t + \varsigma \mathrm{d}W_t,
+    \tau \mathrm{d}O_t = - \mathrm{d}t + \zeta \mathrm{d}W_t,
 $$
-onde $\{W_t\}_t$. Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva $\nu = 1/\tau$ e difusão $\sigma = \varsigma/\tau.$ Esse processo tem média, variância e covariância dadas por
+onde $\{W_t\}_t$. Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva $\nu = 1/\tau$ e difusão $\sigma = \zeta/\tau.$ Esse processo tem média e covariância dadas por
+$$
+\mathbb{E}[O_t] = 
+\mathbb{E}[O_0] e^{-t/\tau}, \quad
+\mathrm{Cov}(O_{t}, O_{t+s}) = e^{-(2t + s)/\tau}\mathrm{Var}(O_0) + \frac{\zeta^2}{2\tau}e^{- s/\tau}\left( 1 - e^{-2\nu t}\right)
+$$
+Assintoticamente em $t\rightarrow \infty,$ temos
+$$
+\mathbb{E}[O_t] \rightarrow 0  \quad
+\mathrm{Cov}(O_{t}, O_{t+s}) \rightarrow \frac{\zeta^2}{2\tau}e^{- s/\tau}.
+$$
 
+Pensando como uma família de processo $O_t = O_t^{\tau, \zeta},$ temos, no limite
 $$
-   \mathbb{E}[O_t] = O_0 e^{-\frac{\displaystyle t}{\displaystyle\tau}}, \quad \mathrm{Var}(O_t) = \frac{\varsigma^2}{2\tau}, \quad \mathrm{Cov}(O_t,O_s) = \frac{\varsigma^2}{2\tau} e^{-\frac{\displaystyle |t - s|}{\displaystyle \tau}}.
+\tau \rightarrow 0, \quad \textrm{com} \quad \frac{\zeta^2}{2\tau} \rightarrow 1,
 $$
-
-Portanto, ``O_t`` e ``O_s`` estão significativamente correlacionados apenas dentro da escala de tempo $|t - s| \lesssim \tau.$
-
-Além disso, quando
-$$
-\tau \rightarrow 0, \quad \textrm{with} \quad \frac{\varsigma^2}{2\tau} \rightarrow 1,
-$$
-esse processo se aproxima de um ruído branco. Isso é equivalente a
+que esses processos se aproximam de um ruído branco. Isso é equivalente a
 $$
 \nu \rightarrow \infty, \quad \frac{\sigma^2}{2\nu} \rightarrow 1,
 $$
 em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck.
+
+## Cor do processo de Ornstein-Uhlenbeck
+
+Considerando a correlação (assintótica)
+$$
+\mathrm{Cov}(O_{t}, O_{t+s}) \rightarrow f(s) = \frac{\sigma^2}{2\nu}e^{-\nu |s|},
+$$
+vemos que
+$$
+\hat f(\omega) = \frac{1}{2\pi}\int_{-\infty}^\infty f(s) e^{-i\omega s} \;\mathrm{d}s = \frac{\sigma^2}{2\nu}\frac{1}{2\pi}\int_{-\infty}^\infty e^{-\nu |s|} e^{-i\omega s} \;\mathrm{d}s = \frac{\sigma^2}{2\nu}\frac{1}{2\pi}\left( \frac{1}{\nu - i\omega} - \frac{1}{\nu + i\omega}\right) = \frac{\sigma^2}{2\nu}\frac{1}{\pi}\frac{\nu}{\nu^2 + \omega^2}.
+$$
+Portanto, 
+$$
+\hat f(\omega) \sim \frac{1}{\omega^2}, \quad \omega \rightarrow \pm \infty.
+$$
 
 ## Exercícios
 
