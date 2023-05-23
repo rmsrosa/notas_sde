@@ -65,6 +65,32 @@ $$
 \end{align*}
 $$
 
+## Propriedades estatísticas
+
+Da fórmula
+$$
+O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s,
+$$
+deduzimos que
+$$
+\mathbb{E}[O_t] = e^{-\nu t}\mathbb{E}[O_0]
+$$
+e que
+$$
+\mathbb{E}[O_t^2] = e^{-2\nu t}\mathbb{E}[O_0] + \sigma^2 \int_0^t e^{-2\nu(t - s)}\;\mathrm{d}s = e^{-2\nu t}\mathbb{E}[O_0] + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right),
+$$
+de modo que
+$$
+\mathrm{Var}(O_t) = \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right).
+$$
+
+Além disso, para $s < t$,
+$$
+\mathbb{E}[O_t O_s] = e^{-\nu (t+s)}\mathbb{E}[O_0^2] + \ldots
+$$
+
+
+
 ## Posição e velocidade na forma de sistema
 
 Interpretando um processo de Ornstein-Uhlenbeck como representando a evolução da velocidade de uma partícula, podemos obter a posição integrando esse processo. Nesse caso, é comum denotarmos o processo de Ornstein-Uhlenbeck, modelando a equação de Langevin, como $\{Y_t\}_{t \geq 0}$, de modo que a posição fica sendo dada por
@@ -147,7 +173,7 @@ savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_pos.svg"))
 
 ## Propriedade de reversão à média
 
-O processo de Orstein-Uhlenbeck $\{O_t\}_{t \geq 0}$, conforme definido acima, tem a propriedade $\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0$, quando $t \rightarrow 0$ (veja os Exercícios). Nesse caso, podemos dizer que a média assintótica é nula e que o processo "reverte", assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra $\nu\mu\;\mathrm{d}t$ de *drift* aditivo, nos levando à equação
+O processo de Orstein-Uhlenbeck $\{O_t\}_{t \geq 0}$, conforme definido acima, tem a propriedade $\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0$, quando $t \rightarrow \infty$ (veja os Exercícios). Nesse caso, podemos dizer que a média assintótica é nula e que o processo "reverte", assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra $\nu\mu\;\mathrm{d}t$ de *drift* aditivo, nos levando à equação
 $$
 \mathbb{d}\hat O_t = - \nu (\hat O_t - \mu)\;\mathrm{d}t + \sigma \mathrm{d}W_t.
 $$
@@ -158,6 +184,33 @@ $$
 $$
 
 Como $\mathbb{E}[O_t] \rightarrow 0$, quando $t \rightarrow 0$, então $\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu$, ou seja, a esperança de $\{\hat O_t\}_{t \geq 0}$ converge para a média $\mu$. Assim, o processo de Orstein-Uhlenbeck é um exemplo de *mean-reverting process,* ou "processo que reverte à média".
+
+## Ornstein-Uhlenbeck colored noise approximation of white noise
+
+O "ruído branco", como modelado pela "derivada" de um processo de Wiener, em um sentido apropriado de distribuições, é um processo comumente encontrado em diversos modelos. Em várias situações, no entanto, o ruído é "colorido", com algum decaimento característico do espectro de amplitudes.
+
+Aqui, exploramos o processo de Ornstein-Uhlenbeck (OU) como aproximação de um ruído branco. Isso é obtido controlando-se uma *escala temporal* $\tau$. Mais precisamente, consideramos um processo $\{O_t\}_t$ satisfazendo a equação diferencial estocástica
+
+$$
+    \tau \mathrm{d}O_t = - \mathrm{d}t + \varsigma \mathrm{d}W_t,
+$$
+onde $\{W_t\}_t$. Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva $\nu = 1/\tau$ e difusão $\sigma = \varsigma/\tau.$ Esse processo tem média, variância e covariância dadas por
+
+$$
+   \mathbb{E}[O_t] = O_0 e^{-\frac{\displaystyle t}{\displaystyle\tau}}, \quad \mathrm{Var}(O_t) = \frac{\varsigma^2}{2\tau}, \quad \mathrm{Cov}(O_t,O_s) = \frac{\varsigma^2}{2\tau} e^{-\frac{\displaystyle |t - s|}{\displaystyle \tau}}.
+$$
+
+Portanto, ``O_t`` e ``O_s`` estão significativamente correlacionados apenas dentro da escala de tempo $|t - s| \lesssim \tau.$
+
+Além disso, quando
+$$
+\tau \rightarrow 0, \quad \textrm{with} \quad \frac{\varsigma^2}{2\tau} \rightarrow 1,
+$$
+esse processo se aproxima de um ruído branco. Isso é equivalente a
+$$
+\nu \rightarrow \infty, \quad \frac{\sigma^2}{2\nu} \rightarrow 1,
+$$
+em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck.
 
 ## Exercícios
 
