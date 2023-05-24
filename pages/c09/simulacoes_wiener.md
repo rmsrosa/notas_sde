@@ -16,7 +16,7 @@ W_0^n = 0,
 $$
 que é exato, pois $W_0 = 0$. No próximo ponto, temos
 $$
-W_{t_1} = W_{t_1} - W_0 \sim \mathbb{N}(0, t_1) = \sqrt{t_1} \mathbb{N}(0, 1).
+W_{t_1} = W_{t_1} - W_0 \sim \mathcal{N}(0, t_1) = \sqrt{t_1} \mathcal{N}(0, 1).
 $$
 Considerando uma variável aleatória normal padrão $Z_{t_1} \sim \mathcal{N}(0, 1)$, podemos escrever
 $$
@@ -70,4 +70,12 @@ $$
 Mais precisamente, se $\{W_{t_j}(\omega)\}_j$ é uma amostra discreta de um determinado caminho amostral do processo de Wiener, então sorteando uma condição inicial $X_0(\omega)$, obtemos uma amostra discreta de um caminho amostral do movimento browniano geométrico, através de
 $$
 X_{t_j}^n(\omega) = X_0(\omega) e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}(\omega)}.
+$$
+Isso pode, também, ser feito recursivamente, na forma
+$$
+X_{t_j}^n(\omega) = X_{t_{j-1}}^n(\omega) e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)(t_j-t_{j-1}) + \sigma \Delta W_j(\omega)},
+$$
+onde
+$$
+\Delta W_j = W_{t_j} - W_{t_{j-1}}.
 $$
