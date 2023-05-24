@@ -206,12 +206,12 @@ for n in 2:N
     Xt[n, :] .= Xt[n-1, :] .+ Yt[n-1, :] * dt
 end
 
-plot(tt, Yt, xaxis = "tempo", yaxis = "posição", title = "Velocidade \$\\{Y_t\\}_t\$ de acordo com\nOrnstein-Uhlenbeck \$\\mathrm{d}Y_t = -\\nu Y_t \\;\\mathrm{d}t + \\sigma Y_t \\;\\mathrm{d}W_t\$,\ncom ν = $ν, σ = $σ, \$Y_0 = \$ $y0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topright)
+plot(tt, Yt, xaxis = "\$t\$", yaxis = "\$Y_t\$", title = "Velocidade \$\\{Y_t\\}_t\$ de acordo com\nOrnstein-Uhlenbeck \$\\mathrm{d}Y_t = -\\nu Y_t \\;\\mathrm{d}t + \\sigma Y_t \\;\\mathrm{d}W_t\$,\ncom ν = $ν, σ = $σ, \$Y_0 = \$ $y0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topright)
 plot!(tt, Yt[:, 1], color = 2, label = "um caminho amostral")
 plot!(tt, y, color = 3, label = "valor esperado")
 savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_vel.svg"))
 
-plot(tt, Xt, xaxis = "tempo", yaxis = "posição", title = "Posição \$\\{X_t\\}_t\$ de acordo com o sistema\n\$\\mathrm{d}X_t = Y_t\\;\\mathrm{d}t\$ e \$\\mathrm{d}Y_t = -\\nu Y_t \\;\\mathrm{d}t + \\sigma Y_t \\;\\mathrm{d}W_t\$,\ncom ν = $ν, σ = $σ, \$X_0 = \$ $x0, \$Y_0 = \$ $y0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topleft)
+plot(tt, Xt, xaxis = "\$t\$", yaxis = "\$X_t\$", title = "Posição \$\\{X_t\\}_t\$ de acordo com o sistema\n\$\\mathrm{d}X_t = Y_t\\;\\mathrm{d}t\$ e \$\\mathrm{d}Y_t = -\\nu Y_t \\;\\mathrm{d}t + \\sigma Y_t \\;\\mathrm{d}W_t\$,\ncom ν = $ν, σ = $σ, \$X_0 = \$ $x0, \$Y_0 = \$ $y0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topleft)
 plot!(tt, Xt[:, 1], color = 2, label = "um caminho amostral")
 plot!(tt, x, color = 3, label = "valor esperado")
 savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_pos.svg"))
@@ -263,6 +263,32 @@ $$
 \nu \rightarrow \infty, \quad \frac{\sigma^2}{2\nu} \rightarrow 1,
 $$
 em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck.
+
+```julia:ornstein_uhlenbeck
+#hideall
+
+N = 600
+tt = range(t0, tf, length = N)
+dt = Float64(tt.step)
+νs = (0.1, 1.0, 10.0, 100.0)
+Yt = Matrix{Float64}(undef, N, length(νs))
+Yt[1, :] .= 1.0
+for (j, ν) in enumerate(νs)
+    σ = sqrt(2ν)
+    for n in 2:N
+        dWt = √dt * randn(rng)
+        Yt[n, j] = (
+            Yt[n-1, j]
+            - ν * Yt[n-1, j] * dt
+            + σ * dWt
+        )
+    end
+end
+
+plot(tt, Yt, xaxis = "\$t\$", yaxis = "\$O_t\$", title = "Ornstein-Uhlenbeck aproximando ruído branco", titlefont = 10, label = permutedims(["ν = $ν" for ν in νs]), legend = :topright, alpha=permutedims([1.0 - j/7 for j in 1:length(νs)]))
+savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_approx_white_noise.svg"))
+```
+\fig{ornstein_uhlenbeck_approx_white_noise}
 
 ## Cor do processo de Ornstein-Uhlenbeck
 
