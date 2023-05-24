@@ -22,6 +22,8 @@
 
 1. [E. T. Jaynes (2003), "Probability Theory: The Logic of Science." Cambridge Univerity Press, Cambridge. DOI: 10.1017/CBO9780511790423](https://doi.org/10.1017/CBO9780511790423)
 
+1. [Y. Komori, Y. Saito, T. Mitsui (1994), Some issues in discrete approximate solution for stochastic differential equations, Computers & Mathematics with Applications, Volume 28, Issues 10–12, 269-278](https://doi.org/10.1016/0898-1221(94)00197-9)
+
 1. [P. E. Kloeden & E. Platen (1992), "Numerical Solution of Stochastic Differential Equations", Springer-Verlag. DOI: 10.1007/978-3-662-12616-5](https://doi.org/10.1007/978-3-662-12616-5)
 
 1. [D. E. Knuth (1997), "The Art of Computer Programming II: Seminumerical Algorithms", Addison-Wesley Longman Publishing Co., Inc.](https://dl.acm.org/doi/10.5555/270146)
