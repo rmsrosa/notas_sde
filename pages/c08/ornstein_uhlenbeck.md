@@ -274,13 +274,13 @@ dt = Float64(tt.step)
 Yt = Matrix{Float64}(undef, N, length(νs))
 Yt[1, :] .= 1.0
 for (j, ν) in enumerate(νs)
-    σ = sqrt(2ν)
+    σj = sqrt(2ν)
     for n in 2:N
-        dWt = √dt * randn(rng)
+        local dW = √dt * randn(rng)
         Yt[n, j] = (
             Yt[n-1, j]
             - ν * Yt[n-1, j] * dt
-            + σ * dWt
+            + σj * dW
         )
     end
 end
