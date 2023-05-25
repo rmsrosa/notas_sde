@@ -37,11 +37,6 @@ $$
 \mathbb{E}[X_0^2] < \infty.
 $$
 
-Também assumimos que a condição inicial tem média quadrática finita:
-$$
-\mathbb{E}[X_0^2] < \infty.
-$$
-
 Essa condição global é fundamental, aqui. Por conta da perturbação causada pelo ruído proveniente de um processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. 
 
 Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
