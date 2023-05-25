@@ -27,9 +27,9 @@ $$
 
 Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas.
 
-## Existência local no caso de equações com difusão determinística
+## Existência local no caso de equações com ruído aditivo
 
-Vamos começar com um caso particular, com difusão constante $g(t, X_t) = g(t) \in \mathbb{R}$, ou seja
+Vamos começar com um caso particular, com ruído aditivo, onde o termo de difusão é da forma $g(t, X_t) = g(t) \in \mathbb{R}$, ou seja
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
 $$
@@ -114,74 +114,80 @@ $$
 X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s, \quad 0 \leq t \leq t_1.
 $$
 
-## Existência local no caso autônomo com condição inicial determinística e drift positivo
+## Existência local no caso autônomo com difusão positiva
 
-Consideramos, agora, uma equação com termo de difusão não determinístico, mas com difusão e *drift* autônomos, condição inicial determinística e *drift* positivo, i.e.
+Consideramos, agora, uma equação com termo de difusão não determinístico, mas com difusão e *drift* autônomos e difusão positiva, i.e.
 $$
 \mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
 $$
 com
 $$
-\left.X_t\right|_{t = 0} = x_0,
+\left.X_t\right|_{t = 0} = X_0,
 $$
 e
 $$
-f(x) > 0, \qquad \forall x.
+g(x) > 0, \qquad \forall x.
 $$
 
-Assumimos que $f$ e $g$ são, também, globalmente Lipschitz contínuos.
+Assumimos, ainda, que $f$ seja localmente Lipschitz contínua e que $g$ seja continuamente diferenciável com $g'$ localmente Lipscthiz.
 
-A ideia é transformar essa equação em uma equação diferencial estocástica com difusão determinística. Para isso, considere $u:\mathbb{R} \rightarrow \mathbb{R}$ duas vezes continuamente diferenciável. Vamos procurar uma solução $\{X_t\}_{t \geq 0}$ da forma
+A ideia é transformar essa equação em uma equação diferencial estocástica com ruído aditivo. Isso é obtido com a transformação
 $$
-X_t = u(Y_t),
+Y_t = h(X_t)
 $$
-onde $\{Y_t\}_{t \geq 0}$ é solução de
+onde $h$ é uma primitiva de $1/g$, e.g.
 $$
-\mathrm{d}Y_t = h(Y_t)\mathrm{d}t + \mathrm{d}W_t, \qquad t \geq 0,
+h(x) = \int_0^x \frac{1}{g(\xi)} \;\mathrm{d}\xi,
 $$
-com
-$$
-Y_t|_{t = 0} = y_0.
-$$
-Ou seja, desejamos encontrar uma mudança de variáveis $y \mapsto x = u(y)$ que transforme a equação em $Y_t$ na equação em $X_t$.
+o que é possível graças a hipótese de $g$ ser positiva. Além disso, como $h'(x) = 1/g(x) > 0,$ temos que $h$ é invertível e podemos, uma vez obtida a solução para $Y_t$ dada por $Y_t = h(X_t),$ recuperarmos $X_t = h^{-1}(Y_t).$
 
-Pela a fórmula de Itô, temos
+Como fica a equação para $Y_t?$ Para ver isso, usamos a fórmula de Itô. Observe que
 $$
-\mathrm{d}X_t = u'(Y_t)\;\mathrm{d}Y_t + \frac{1}{2}u''(Y_t)\;\mathrm{d}W_t.
+h'(x) = \frac{1}{g(x)} \quad h''(x) = - \frac{g'(x)}{g(x)^2}.
 $$
-Usando a equação diferencial em $Y_t$, obtemos
+Temos
 $$
-\begin{align*}
-\mathrm{d}X_t & = u'(Y_t)\left(h(Y_t)\mathrm{d}t + \mathrm{d}W_t\right) + \frac{1}{2}u''(Y_t)\;\mathrm{d}t \\
-& = \left(u'(Y_t)h(Y_t) + \frac{1}{2}u''(Y_t)\right)\mathrm{d}t + u'(Y_t)\mathrm{d}W_t.
-\end{align*}
+\mathrm{d}Y_t = h'(X_t)\;\mathrm{d}X_t + \frac{1}{2}h''(X_t)g(X_t)^2\;\mathrm{d}t,
+$$
+ou seja
+$$
+\mathrm{d}Y_t = \left(h'(X_t)f(X_t) + \frac{1}{2}h''(X_t)g(X_t)^2\right)\;\mathrm{d}t + h'(X_t)g(X_t)\;\mathrm{d}W_t.
+$$
+Note que $h'(x)g(x) = 1$ e $h''(x)g(x)^2 = -g'(x),$ de modo que
+$$
+\mathrm{d}Y_t = \left(\frac{f(X_t)}{g(X_t)} - \frac{1}{2}g'(X_t)\right)\mathrm{d}t + \mathrm{d}W_t,
+$$
+com condição inicial $Y_0 = h(X_0).$ Como essa é uma equação com ruído aditivo e com termos localmente Lipschitz, o resultado anterior se aplica e obtemos uma solução local $\{Y_t\}_{0\leq t \leq t_1},$ para algum $0\leq t_1 \leq T.$ Conforme mencionado acima, como $h$ é suave e invertível, podemos verificar que $X_t = h^{-1}(Y_t)$ resolve, de fato, a equação original, no intervalo $[0, t_1].$
+
+Vale notar que a forma da transformação $h(x)$ definida acima pode ser obtida buscando-se uma equação para $Y_t = h(X_t)$ que tenha ruído aditivo, ou seja, tal que o termo de difusão
+$$
+h'(X_t)g(X_t)
+$$
+seja independente de $X_t,$ ou seja, que o produto seja constante, por exemplo
+$$
+h'(x)g(x) = 1.
+$$
+Isso nos dá a relação acima.
+
+## Existência local no caso não autônomo com difusão positiva
+
+Com um pouco mais de trabalho, é possível encontrar condições para que a transformação $Y_t = h(t, X_t)$ com
+$$
+h(t, x) = \int_0^x \frac{1}{g(t, \xi)} \;\mathrm{d}\xi
+$$
+transforme a equação
+$$
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
+$$
+em uma equação com ruído aditivo e com termos localmente Lipschitz contínuos, da forma
+$$
+\mathrm{d}Y_t = \left(\partial_t h(t, X_t) + \frac{f(t, X_t)}{g(t, X_t)} - \frac{1}{2}\partial_{x}g(t, X_t)\right)\;\mathrm{d}t + \;\mathrm{d}W_t,
+$$
+onde
+$$
+\partial_t h(t, x) = - \int_0^x \frac{\partial_t g(t, \xi)}{g(t, \xi)^2} \;\mathrm{d}\xi.
 $$
 
-Para que $\{X_t\}_{t \geq 0}$ definido através de $X_t = u(Y_t)$ seja solução da equação diferencial estocástica desejada, devemos ter
-$$
-\begin{cases}
-u'(Y_t)h(Y_t) + \frac{1}{2}u''(Y_t) = f(u(Y_t)), \\
-u'(Y_t) = g(u(Y_t)),
-\end{cases}
-$$
-com
-$$
-u(y_0) = x_0.
-$$
+## Exercícios
 
-Para isso, primeiro resolvemos a equação diferencial ordinária
-$$
-\begin{cases}
-\frac{\mathrm{d}u}{\mathrm{d}y} = f(u(y)), \\
-u(y_0) = x_0.
-\end{cases}
-$$
-Sendo $f$ globalmente Lipschitz contínuo, podemos escolher $y_0\in\mathbb{R}$ arbitrário que obtemos uma solução global única da equação acima (i.e. para todo $y\in \mathbb{R}$).
-
-Uma vez encontrada essa função $u$, definimos $h$ por
-$$
-h(y) = \frac{1}{f(u(y))}\left( u'(y)h(y) + \frac{1}{2}u''(y)\right), \qquad y\in \mathbb{R}.
-$$
-Sendo $f(u(y)) > 0$ para todo $y$, a função acima está bem definida e é contínua.
-
-Assim, a equação em $Y_t$ tem solução global e a transformação $u$ nos dá uma solução global para a equação em $X_t$.
+1. Considere o caso não autônomo com difusão positiva mencionado acima e verifique que, sob condições apropriadas em $f=f(t, x)$ e $g=g(t, x),$ a função $h=h(t, x)$ tal que $\partial_t h = 1/g$ transforma a equação diferencial estocástica em uma outra equação diferencial estocástica com ruído multiplicativo e com termos localmente Lipschitz contínuos.
