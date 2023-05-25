@@ -361,7 +361,7 @@
 \]
 <p>No momento, vamos considerar alguns casos particulares, com funções \(f\) e \(g\) de formas especiais e obter um resultado local de existência, ou seja, em um intervalo de tempo suficientemente pequeno. Em seguida, trataremos do caso mais geral.</p>
 <h2 id="hipóteses_iniciais"><a href="#hipóteses_iniciais" class="header-anchor">Hipóteses iniciais</a></h2>
-<p>Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que \(f = f(t, x)\), \(g = g(t, x)\) são funções contínuas \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) com a propriedade de serem localmente Lipschitz contínuas na variável \(x.\)</p>
+<p>Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que \(f = f(t, x)\), \(g = g(t, x)\) sejam funções contínuas \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) com a propriedade de serem localmente Lipschitz contínuas na variável \(x.\)</p>
 <p>Mais precisamente, assumimos que existem funções contínuas não-decrescentes \(L_f=L_f(R), L_g=L_g(R) > 0\) tais que</p>
 \[
 \begin{align*}
@@ -370,53 +370,53 @@
 \end{align*}
 \]
 <p>Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas.</p>
-<h2 id="existência_local_no_caso_de_equações_com_difusão_constante_e_condição_inicial_determinística"><a href="#existência_local_no_caso_de_equações_com_difusão_constante_e_condição_inicial_determinística" class="header-anchor">Existência local no caso de equações com difusão constante e condição inicial determinística</a></h2>
-<p>Vamos começar com um caso particular, com difusão constante \(g(t, X_t) = \sigma \in \mathbb{R}\), ou seja</p>
+<h2 id="existência_de_caminhos_amostrais_locais_no_caso_de_equações_com_ruído_aditivo"><a href="#existência_de_caminhos_amostrais_locais_no_caso_de_equações_com_ruído_aditivo" class="header-anchor">Existência de caminhos amostrais locais no caso de equações com ruído aditivo</a></h2>
+<p>Vamos começar com um caso particular, com ruído aditivo, onde o termo de difusão é da forma \(g(t, X_t) = g(t) \in \mathbb{R}\), ou seja</p>
 \[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
 \]
 <p>A forma integral equivalente é</p>
 \[
-X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
+X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(t)\mathrm{d}W_s.
 \]
-<p>A segunda integral é, simplesmente, o próprio \(W_t\), ou seja, chegamos na equação mais simples</p>
-\[
-X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
-\]
-<p>Essa equação não envolve a integral de Itô, o que nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.</p>
-<p>Assumimos, então, que \(f=f(t, x)\) seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada \(x\), conforme explicitado acima.</p>
+<p>A segunda integral não envolve a incógnita \(X_t\) e pode ser estimada independentemente, para cada caminho amostral. Isso nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.</p>
+<p>Assumimos, então, que \(f=f(t, x)\) seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada \(x\), conforme explicitado acima, e que \(g=g(t)\) seja contínua.</p>
 <p>A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo \(t \geq 0\),</p>
 \[
 \begin{align*}
 X_t^0 & = X_0, \\
-X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
+X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \int_0^t g(s)\mathrm{d}W_s, \quad m\in \mathbb{N}.
 \end{align*}
 \]
-<p>Vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge, em probabilidade, para um processo que é solução da equação integral.</p>
+<p>Vamos mostrar que os caminhos amostrais da família \(\{X_t^m\}_{0 \leq t \leq T}\) converge para um caminho amostral solução da equação integral.</p>
 <p>Considere, para isso, os processos estocásticos</p>
 \[
 D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
 \]
-<p>Para cada \(\omega\in \Omega\), temos que \(W_t(\omega)\) é limitado em \([0, T]\) e \(X_0(\omega)\in \mathbb{R}\). Considere, então, a variável aleatória \(R=R(\omega) \geq 0 \) dada por</p>
+<p>Para quase todo \(\omega\in \Omega\), temos que a integral</p>
 \[
-R(\omega) = 2(|X_0(\omega)| + |\sigma|\max_{t\in [0, T]}|W_t(\omega)|).
+\int_0^t g(t)\mathrm{d}W_s
+\]
+<p>existe e é contínua em \(t\) e, portanto, limitada em \([0, T]\) e que \(X_0(\omega)\in \mathbb{R}\). Considere, então, a variável aleatória \(R=R(\omega) \geq 0 \) dada por</p>
+\[
+R(\omega) = 2(|X_0(\omega)| + \max_{t\in [0, T]}|\int_0^t g(s) \;\mathrm{d}W_s(\omega)|).
 \]
 <p>Além disso, \(f(t, X_0(\omega))\) é limitado em \([0, T]\), já que \(f\) é contínua. Assim, podemos, também, definir a variável aleatória</p>
 \[
 C(\omega) = \max_{0 \leq t \leq T} |f(t, X_0(\omega))|.
 \]
-<p>A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para \(0 < t_1 \leq T\) suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro dessa bola maior de raio \(R(\omega)\), no intervalo \([0, t_1]\), e na qual podemos estimar a constante de Lipschitz de maneira uniforme nessa bola.</p>
+<p>A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para \(0 < t_1(\omega) \leq T\) suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro dessa bola maior de raio \(R(\omega)\), no intervalo \([0, t_1]\), e na qual podemos estimar a constante de Lipschitz de maneira uniforme nessa bola.</p>
 <p>Temos</p>
 \[
 D_t^0(\omega) \leq \left| \int_0^t f(s, X_0(\omega))\mathrm{d}s + \sigma  W_t(\omega) \right| \leq C(\omega)t + \frac{R(\omega)}{2}, \quad \forall 0 \leq t \leq T.
 \]
-<p>Escolhemos \(t_1 > 0\) tal que </p>
+<p>Escolhemos \(t_1(\omega) > 0\) tal que </p>
 \[
-C(\omega)t_1 \leq R(\omega)/2, \qquad L(R(\omega))t_1 \leq 1,
+C(\omega)t_1(\omega) \leq R(\omega)/2, \qquad L(R(\omega))t_1(\omega) \leq 1,
 \]
 <p>de modo que</p>
 \[
-D_t^0(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq T.
+D_t^0(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq t_1(\omega).
 \]
 <p>Como no método de Picard clássico, vamos mostrar que</p>
 \[
@@ -440,85 +440,81 @@ D_t^m(\omega) & = \max_{0 \leq s \leq t} |X_s^{m+1}(\omega) - X_s^m(\omega)| \\
 \[
 \max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
 \]
-<p>Como o somatório é o &quot;rabo&quot; da série de Taylor da função exponencial \(Ce^{Lt}\), o lado direito converge para zero, quando \(j \rightarrow \infty\). Ou seja, quase certamente, temos \(X_t^m\) convergindo uniformemente em um intervalo \([0, t_1].\) No limite, temos um processo \(\{X_t\}_{0 \leq t \leq t_1}\) satisfazendo, quase certamente, a equação integral desejada:</p>
+<p>Como o somatório é o &quot;rabo&quot; da série de Taylor da função exponencial \(Ce^{Lt}\), o lado direito converge para zero, quando \(j \rightarrow \infty\). Ou seja, para quase toda amostra \(\omega,\) temos \(X_t^m(\omega)\) convergindo uniformemente em um intervalo \([0, t_1(\omega)].\) No limite, temos um caminho \(X_t(\omega)\) satisfazendo a equação integral desejada:</p>
 \[
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s, \quad 0 \leq t \leq t_1.
+X_t(\omega) = X_0(\omega) + \int_0^t f(s, X_s(\omega))\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s(\omega), \quad 0 \leq t \leq t_1(\omega).
 \]
-<h2 id="existência_local_no_caso_de_equações_com_difusão_determinística"><a href="#existência_local_no_caso_de_equações_com_difusão_determinística" class="header-anchor">Existência local no caso de equações com difusão determinística</a></h2>
-<p>Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial &#40;exceto que seja finita quase certamente&#41;.</p>
-<p>Nesse caso, temos uma equação da forma</p>
-\[
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
-\]
-<p>com condição inicial</p>
-\[
-\left.X_t\right|_{t = 0} = X_0.
-\]
-<p>Assumimos \(f=f(t,x)\) contínua em \((t, x)\in [0, \infty]\times \mathbb{R}\) e localmente Lipschitz contínua na variável \(x\), em cada intervalo limitado \([0, T]\). Quanto a \(X_0\), assumimos, apenas, que seja finita quase certamente.</p>
-<p>Deixamos os detalhes da demonstração como exercício.</p>
-<h2 id="existência_local_no_caso_autônomo_com_condição_inicial_determinística_e_drift_positivo"><a href="#existência_local_no_caso_autônomo_com_condição_inicial_determinística_e_drift_positivo" class="header-anchor">Existência local no caso autônomo com condição inicial determinística e drift positivo</a></h2>
-<p>Consideramos, agora, uma equação com termo de difusão não determinístico, mas com difusão e <em>drift</em> autônomos, condição inicial determinística e <em>drift</em> positivo, i.e.</p>
+<h2 id="existência_de_caminhos_amostrais_locais_no_caso_autônomo_com_difusão_positiva"><a href="#existência_de_caminhos_amostrais_locais_no_caso_autônomo_com_difusão_positiva" class="header-anchor">Existência de caminhos amostrais locais no caso autônomo com difusão positiva</a></h2>
+<p>Consideramos, agora, uma equação com termo de difusão não determinístico, mas com difusão e <em>drift</em> autônomos e difusão positiva, i.e.</p>
 \[
 \mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
 \]
 <p>com</p>
 \[
-\left.X_t\right|_{t = 0} = x_0,
+\left.X_t\right|_{t = 0} = X_0,
 \]
 <p>e</p>
 \[
-f(x) > 0, \qquad \forall x.
+g(x) > 0, \qquad \forall x.
 \]
-<p>Assumimos que \(f\) e \(g\) são, também, globalmente Lipschitz contínuos.</p>
-<p>A ideia é transformar essa equação em uma equação diferencial estocástica com difusão determinística. Para isso, considere \(u:\mathbb{R} \rightarrow \mathbb{R}\) duas vezes continuamente diferenciável. Vamos procurar uma solução \(\{X_t\}_{t \geq 0}\) da forma</p>
+<p>Assumimos, ainda, que \(f\) seja localmente Lipschitz contínua e que \(g\) seja continuamente diferenciável com \(g'\) localmente Lipscthiz.</p>
+<p>A ideia é transformar essa equação em uma equação diferencial estocástica com ruído aditivo. Isso é obtido com a transformação</p>
 \[
-X_t = u(Y_t),
+Y_t = h(X_t)
 \]
-<p>onde \(\{Y_t\}_{t \geq 0}\) é solução de</p>
+<p>onde \(h\) é uma primitiva de \(1/g\), e.g.</p>
 \[
-\mathrm{d}Y_t = h(Y_t)\mathrm{d}t + \mathrm{d}W_t, \qquad t \geq 0,
+h(x) = \int_0^x \frac{1}{g(\xi)} \;\mathrm{d}\xi,
 \]
-<p>com</p>
+<p>o que é possível graças a hipótese de \(g\) ser positiva. Além disso, como \(h'(x) = 1/g(x) > 0,\) temos que \(h\) é invertível e podemos, uma vez obtida a solução para \(Y_t\) dada por \(Y_t = h(X_t),\) recuperarmos \(X_t = h^{-1}(Y_t).\)</p>
+<p>Como fica a equação para \(Y_t?\) Para ver isso, usamos a fórmula de Itô. Observe que</p>
 \[
-Y_t|_{t = 0} = y_0.
+h'(x) = \frac{1}{g(x)} \quad h''(x) = - \frac{g'(x)}{g(x)^2}.
 \]
-<p>Ou seja, desejamos encontrar uma mudança de variáveis \(y \mapsto x = u(y)\) que transforme a equação em \(Y_t\) na equação em \(X_t\).</p>
-<p>Pela a fórmula de Itô, temos</p>
+<p>Temos</p>
 \[
-\mathrm{d}X_t = u'(Y_t)\;\mathrm{d}Y_t + \frac{1}{2}u''(Y_t)\;\mathrm{d}W_t.
+\mathrm{d}Y_t = h'(X_t)\;\mathrm{d}X_t + \frac{1}{2}h''(X_t)g(X_t)^2\;\mathrm{d}t,
 \]
-<p>Usando a equação diferencial em \(Y_t\), obtemos</p>
+<p>ou seja</p>
 \[
-\begin{align*}
-\mathrm{d}X_t & = u'(Y_t)\left(h(Y_t)\mathrm{d}t + \mathrm{d}W_t\right) + \frac{1}{2}u''(Y_t)\;\mathrm{d}t \\
-& = \left(u'(Y_t)h(Y_t) + \frac{1}{2}u''(Y_t)\right)\mathrm{d}t + u'(Y_t)\mathrm{d}W_t.
-\end{align*}
+\mathrm{d}Y_t = \left(h'(X_t)f(X_t) + \frac{1}{2}h''(X_t)g(X_t)^2\right)\;\mathrm{d}t + h'(X_t)g(X_t)\;\mathrm{d}W_t.
 \]
-<p>Para que \(\{X_t\}_{t \geq 0}\) definido através de \(X_t = u(Y_t)\) seja solução da equação diferencial estocástica desejada, devemos ter</p>
+<p>Note que \(h'(x)g(x) = 1\) e \(h''(x)g(x)^2 = -g'(x),\) de modo que</p>
 \[
-\begin{cases}
-u'(Y_t)h(Y_t) + \frac{1}{2}u''(Y_t) = f(u(Y_t)), \\
-u'(Y_t) = g(u(Y_t)),
-\end{cases}
+\mathrm{d}Y_t = \left(\frac{f(X_t)}{g(X_t)} - \frac{1}{2}g'(X_t)\right)\mathrm{d}t + \mathrm{d}W_t,
 \]
-<p>com</p>
+<p>com condição inicial \(Y_0 = h(X_0).\) Como essa é uma equação com ruído aditivo e com termos localmente Lipschitz, o resultado anterior se aplica e obtemos uma soluções locais para cada caminho amostral. Se for possível, explorando alguma estrutura extra da equação, mostrar que os caminhos amostrais estão definidos em um intervalo comum mínimo, então obtemos uma solução local \(\{Y_t\}_{0\leq t \leq t_1},\) para algum \(0\leq t_1 \leq T.\) Nesse caso, conforme mencionado acima, como \(h\) é suave e invertível, podemos verificar que \(X_t = h^{-1}(Y_t)\) resolve, de fato, a equação original, no intervalo \([0, t_1].\)</p>
+<p>Vale notar que a forma da transformação \(h(x)\) definida acima pode ser obtida buscando-se uma equação para \(Y_t = h(X_t)\) que tenha ruído aditivo, ou seja, tal que o termo de difusão</p>
 \[
-u(y_0) = x_0.
+h'(X_t)g(X_t)
 \]
-<p>Para isso, primeiro resolvemos a equação diferencial ordinária</p>
+<p>seja independente de \(X_t,\) ou seja, que o produto seja constante, por exemplo</p>
 \[
-\begin{cases}
-\frac{\mathrm{d}u}{\mathrm{d}y} = f(u(y)), \\
-u(y_0) = x_0.
-\end{cases}
+h'(x)g(x) = 1.
 \]
-<p>Sendo \(f\) globalmente Lipschitz contínuo, podemos escolher \(y_0\in\mathbb{R}\) arbitrário que obtemos uma solução global única da equação acima &#40;i.e. para todo \(y\in \mathbb{R}\)&#41;.</p>
-<p>Uma vez encontrada essa função \(u\), definimos \(h\) por</p>
+<p>Isso nos dá a relação acima.</p>
+<h2 id="existência_de_caminhos_amostrais_locais_no_caso_não_autônomo_com_difusão_positiva"><a href="#existência_de_caminhos_amostrais_locais_no_caso_não_autônomo_com_difusão_positiva" class="header-anchor">Existência de caminhos amostrais locais no caso não autônomo com difusão positiva</a></h2>
+<p>Com um pouco mais de trabalho, é possível encontrar condições para que a transformação \(Y_t = h(t, X_t)\) com</p>
 \[
-h(y) = \frac{1}{f(u(y))}\left( u'(y)h(y) + \frac{1}{2}u''(y)\right), \qquad y\in \mathbb{R}.
+h(t, x) = \int_0^x \frac{1}{g(t, \xi)} \;\mathrm{d}\xi
 \]
-<p>Sendo \(f(u(y)) > 0\) para todo \(y\), a função acima está bem definida e é contínua.</p>
-<p>Assim, a equação em \(Y_t\) tem solução global e a transformação \(u\) nos dá uma solução global para a equação em \(X_t\).</p>
+<p>transforme a equação</p>
+\[
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\]
+<p>em uma equação com ruído aditivo e com termos localmente Lipschitz contínuos, da forma</p>
+\[
+\mathrm{d}Y_t = \left(\partial_t h(t, X_t) + \frac{f(t, X_t)}{g(t, X_t)} - \frac{1}{2}\partial_{x}g(t, X_t)\right)\;\mathrm{d}t + \;\mathrm{d}W_t,
+\]
+<p>onde</p>
+\[
+\partial_t h(t, x) = - \int_0^x \frac{\partial_t g(t, \xi)}{g(t, \xi)^2} \;\mathrm{d}\xi.
+\]
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Considere o caso não autônomo com difusão positiva mencionado acima e verifique que, sob condições apropriadas em \(f=f(t, x)\) e \(g=g(t, x),\) a função \(h=h(t, x)\) tal que \(\partial_t h = 1/g\) transforma a equação diferencial estocástica em uma outra equação diferencial estocástica com ruído multiplicativo e com termos localmente Lipschitz contínuos.</p>
+</li>
+</ol>
 
     <div class="navbar">
     <p id="nav">

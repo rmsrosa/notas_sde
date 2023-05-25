@@ -376,6 +376,10 @@
 \[
 |g(t, x)| = |g(t, x) - g(t, 0) + g(t, 0)| \leq |g(t, 0)| + L_g|x| \leq C_g + L_g|x|.
 \]
+<p>Também assumimos que a condição inicial tem média quadrática finita:</p>
+\[
+\mathbb{E}[X_0^2] < \infty.
+\]
 <p>Essa condição global é fundamental, aqui. Por conta da perturbação causada pelo ruído proveniente de um processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. </p>
 <p>Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.</p>
 <h2 id="existência_de_solução"><a href="#existência_de_solução" class="header-anchor">Existência de solução</a></h2>
@@ -390,7 +394,7 @@ X_t^0 & = X_0, \\
 X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\;\mathrm{d}s + \int_0^t g(s, X_s^{m-1}) \;\mathrm{d}W_t, \quad m\in \mathbb{N}.
 \end{align*}
 \]
-<p>A diferença, agora, é que vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge em média quadrática, não mais em probabilidade, para um processo que é solução da equação integral.</p>
+<p>A diferença, agora, é que vamos mostrar que a família \(\{X_t^m\}_{0 \leq t \leq T}\) de processos converge em média quadrática, não apenas em probabilidade, para um processo que é solução da equação integral, ao preço de exigir mais da condição inicial &#40;ter média quadrática finita, ao invés de apenas ser finito quase certamente&#41;.</p>
 <p>Considere, para isso, as funções determinísticas</p>
 \[
 d^m(t) = \mathbb{E}\left[\left|X_t^{m+1} - X_t^m\right|^2\right], \quad m = 0, 1, 2, \ldots, \; 0 \leq t \leq T.
@@ -408,7 +412,7 @@ d^0(t) & = \mathbb{E}\left[ \left|X_t^1 - X_t^0\right|^2\right] \\
   & \leq 2\mathbb{E}\left[ \left| \int_0^t f(s, X_s^0)\;\mathrm{d}s \right|^2\right] + 2\mathbb{E}\left[\left|\int_0^t g(s, X_s^0) \;\mathrm{d}W_t \right|^2 \right]
 \end{align*}
 \]
-<p>Estimando a primeira integral de maneira usual e usando a isometria de Itô na segunda integra, obtemos</p>
+<p>Estimando a primeira integral de maneira usual e usando a isometria de Itô na segunda integral, obtemos</p>
 \[
 d^0(t) \leq 2\int_0^t\mathbb{E}\left[ f(s, X_s^0)^2 \right]\;\mathrm{d}s + 2\int_0^t\mathbb{E}\left[ g(s, X_s^0)^2 \right]\;\mathrm{d}t.
 \]

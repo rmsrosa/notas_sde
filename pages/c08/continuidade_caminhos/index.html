@@ -351,7 +351,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">8.5. Continuidade dos caminhos amostrais</a></h1>
-<p>Acabamos de ver condições que garantam a existência de solução de uma equação diferencial estocástica</p>
+<p>Acabamos de ver condições que garantem a existência e a unicade de solução de uma equação diferencial estocástica</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 \]
@@ -363,7 +363,7 @@
 \[
 X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 \]
-<p>Sob as mesmas condições &#40;continuidade em \(t\) e \(x\) e continuidade Lipschitz global em \(x\), uniformemente em \(t\)&#41;, vamos mostrar que cada caminho amostral é limitado em intervalos finitos \([0, T]\) e contínuos no tempo.</p>
+<p>Sob as mesmas condições &#40;continuidade em \(t\) e \(x\) e continuidade Lipschitz global em \(x\), uniformemente em \(t\)&#41;, vamos mostrar que cada caminho amostral é limitado em intervalos finitos \([0, T]\) e contínuo no tempo.</p>
 <h2 id="limitação_dos_caminhos"><a href="#limitação_dos_caminhos" class="header-anchor">Limitação dos caminhos</a></h2>
 <p>Primeiramente, lembremos das estimativas</p>
 \[
@@ -379,6 +379,10 @@ X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 <p>Agora, escrevemos</p>
 \[
 X_{t + \Delta t} - X_t = \int_t^{t+\Delta t} f(s, X_s)\;\mathrm{d}s + \int_t^{t+\Delta t} g(s, X_s)\;\mathrm{d}W_s.
+\]
+<p>Usando a isometria de Itô,</p>
+\[
+\mathbb{E}\left[\left|X_{t + \Delta t} - X_t\right|\right] \leq \int_t^{t+\Delta t} |f(s, X_s)|\;\mathrm{d}s + \left(\int_t^{t+\Delta t} g(s, X_s)^2\;\mathrm{d}s\right)^{1/2}.
 \]
 
     <div class="navbar">
