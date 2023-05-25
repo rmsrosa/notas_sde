@@ -11,54 +11,46 @@ $$
 \left.X_t\right|_{t = 0} = X_0.
 $$
 
-No momento, vamos considerar alguns casos particulares, com funções $f$ e $g$ de formas especiais. Em seguida, trataremos do caso mais geral.
+No momento, vamos considerar alguns casos particulares, com funções $f$ e $g$ de formas especiais e obter um resultado local de existência, ou seja, em um intervalo de tempo suficientemente pequeno. Em seguida, trataremos do caso mais geral.
 
 ## Hipóteses iniciais
 
-Para os resultados de existência e unicidade, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem globalmente Lipschitz contínuas na variável $x$.
+Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem localmente Lipschitz contínuas na variável $x.$
 
-Mais precisamente, existem $L_f, L_g > 0$ tais que
+Mais precisamente, assumimos que existem funções contínuas não-decrescentes $L_f=L_f(R), L_g=L_g(R) > 0$ tais que
 $$
 \begin{align*}
-|f(t, x) - f(t, y)| \leq L_f|x - y|, \qquad \forall x, y \in \mathbb{R}, \\
-|g(t, x) - g(t, y)| \leq L_g|x - y|, \qquad \forall x, y \in \mathbb{R}.
+|f(t, x) - f(t, y)| \leq L_f(R)|x - y|, \qquad \forall x, y \in \mathbb{R}, |x|, |y| \leq R, \\
+|g(t, x) - g(t, y)| \leq L_g(R)|x - y|, \qquad \forall x, y \in \mathbb{R}, |x|, |y| \leq R.
 \end{align*}
 $$
 
-Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular na teoria de equações diferenciais determinísticas. A diferença é que a continuidade Lipschitz assumida é apenas local, ou seja, para $x, y$ numa vizinhança da condição inicial.
+Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas.
 
-No entanto, aqui, por conta da perturbação causada pelo ruído proveniente de um processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. 
-
-Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
-
-## Existência no caso de equações com difusão constante e condição inicial determinística
+## Existência local no caso de equações com difusão constante e condição inicial determinística
 
 Vamos começar com um caso particular, com difusão constante $g(t, X_t) = \sigma \in \mathbb{R}$, ou seja
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
 $$
-Também assumimos uma condição inicial determinística, digamos $X_0 = x_0 \in \mathbb{R}$.
 
 A forma integral equivalente é
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
+X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
 $$
 A segunda integral é, simplesmente, o próprio $W_t$, ou seja, chegamos na equação mais simples
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
+X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
 $$
-Essa equação não envolve a integral de Itô.
+Essa equação não envolve a integral de Itô, o que nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.
 
-Assumimos que $f=f(t, x)$ seja contínua nas duas variáveis e globalmente Lipschitz contínua na coordenada $x$, uniformemente em cada intervalo limitado em $t$, i.e. para todo $T > 0$, existe $L_T > 0$ tal que
-$$
-|f(t, x) - f(t, y)| \leq L_T |x - y|, \qquad \forall \;0 \leq t \leq T, \;\forall x, y \in \mathbb{R}.
-$$
+Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x$, conforme explicitado acima.
 
 A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0$,
 $$
 \begin{align*}
-X_t^0 & = x_0, \\
-X_t^m & = x_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
+X_t^0 & = X_0, \\
+X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
 \end{align*}
 $$
 
@@ -68,40 +60,61 @@ Considere, para isso, os processos estocásticos
 $$
 D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
 $$
-Para cada $\omega\in \Omega$, temos que $W_t(\omega)$ é limitado em $[0, T]$. Além disso, $f(t, x_0)$ é limitado em $[0, T]$, já que $f$ é contínua. Assim,
+Para cada $\omega\in \Omega$, temos que $W_t(\omega)$ é limitado em $[0, T]$ e $X_0(\omega)\in \mathbb{R}$. Considere, então, a variável aleatória $R=R(\omega) \geq 0 $ dada por
 $$
-D_t^0(\omega) \leq \left| \int_0^t f(s, x_0)\mathrm{d}s + \sigma  W_t \right| \leq C(\omega), \quad \forall 0 \leq t \leq T,
+R(\omega) = 2(|X_0(\omega)| + |\sigma|\max_{t\in [0, T]}|W_t(\omega)|).
 $$
-para algum $C(\omega) \geq 0.$
+
+Além disso, $f(t, X_0(\omega))$ é limitado em $[0, T]$, já que $f$ é contínua. Assim, podemos, também, definir a variável aleatória
+$$
+C(\omega) = \max_{0 \leq t \leq T} |f(t, X_0(\omega))|.
+$$
+
+A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para $0 < t_1 \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro dessa bola maior de raio $R(\omega)$, no intervalo $[0, t_1]$, e na qual podemos estimar a constante de Lipschitz de maneira uniforme nessa bola.
+
+Temos
+$$
+D_t^0(\omega) \leq \left| \int_0^t f(s, X_0(\omega))\mathrm{d}s + \sigma  W_t(\omega) \right| \leq C(\omega)t + \frac{R(\omega)}{2}, \quad \forall 0 \leq t \leq T.
+$$
+
+Escolhemos $t_1 > 0$ tal que 
+$$
+C(\omega)t_1 \leq R(\omega)/2, \qquad L(R(\omega))t_1 \leq 1,
+$$
+de modo que
+$$
+D_t^0(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq T.
+$$
 
 Como no método de Picard clássico, vamos mostrar que
 $$
-D_t^m \leq C \frac{L^m}{m!} t^m.
+D_t^m \leq R \frac{L(R)^m}{m!} t^m \leq R,
 $$
-A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$ Temos,
+para $0\leq t \leq t_1$. A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$. Temos,
 $$
 \begin{align*}
-D_t^m & = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m| \\
+D_t^m(\omega) & = \max_{0 \leq s \leq t} |X_s^{m+1}(\omega) - X_s^m(\omega)| \\
 & = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
-& \leq \max_{0 \leq s \leq t} \int_0^t L |X_s^m - X_s^{m-1}|\mathrm{d}s \\
-& \leq L\max_{0 \leq s \leq t} \int_0^t D_s^{m-1} \;\mathrm{d}s \\
-& \leq L \int_0^t D_s^{m-1} \;\mathrm{d}s \\
-& \leq L \int_0^t C \frac{L^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
-& \leq C \frac{L^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
-& = C \frac{L^m}{m!} t^{m}.
+& \leq \max_{0 \leq s \leq t} \int_0^t L(R(\omega)) |X_s^m(\omega) - X_s^{m-1}(\omega)|\mathrm{d}s \\
+& \leq L(R(\omega))\max_{0 \leq s \leq t} \int_0^t D_s^{m-1}(\omega) \;\mathrm{d}s \\
+& \leq L(R(\omega)) \int_0^t D_s^{m-1}(\omega) \;\mathrm{d}s \\
+& \leq L(R(\omega)) \int_0^t R(\omega) \frac{L(R(\omega))^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
+& \leq R(\omega) \frac{L(R(\omega))^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
+& = R(\omega) \frac{L(R(\omega))^m}{m!} t^{m}.
 \end{align*}
 $$
+Isso completa a demonstração por indução da estimativa para $D_t^m(\omega).$
 
 Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1$,
 $$
 \max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
 $$
-Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em $[0, T]$. No limite, temos um processo $\{X_t\}_{t \geq 0}$ satisfazendo, quase certamente, a equação integral desejada:
+Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em um intervalo $[0, t_1].$ No limite, temos um processo $\{X_t\}_{0 \leq t \leq t_1}$ satisfazendo, quase certamente, a equação integral desejada:
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s.
+X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s, \quad 0 \leq t \leq t_1.
 $$
 
-## Existência no caso de equações com difusão determinística
+## Existência local no caso de equações com difusão determinística
 
 Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial (exceto que seja finita quase certamente).
 
@@ -114,11 +127,11 @@ $$
 \left.X_t\right|_{t = 0} = X_0.
 $$
 
-Assumimos $f=f(t,x)$ contínua em $(t, x)\in [0, \infty]\times \mathbb{R}$ e globalmente Lipschitz contínua na variável $x$, em cada intervalo limitado $[0, T]$. Quando a $X_0$, assumimos, apenas, que seja finita quase certamente.
+Assumimos $f=f(t,x)$ contínua em $(t, x)\in [0, \infty]\times \mathbb{R}$ e localmente Lipschitz contínua na variável $x$, em cada intervalo limitado $[0, T]$. Quanto a $X_0$, assumimos, apenas, que seja finita quase certamente.
 
 Deixamos os detalhes da demonstração como exercício.
 
-## Existência no caso autônomo com condição inicial determinística e drift positivo
+## Existência local no caso autônomo com condição inicial determinística e drift positivo
 
 Consideramos, agora, uma equação com termo de difusão não determinístico, mas com difusão e *drift* autônomos, condição inicial determinística e *drift* positivo, i.e.
 $$
