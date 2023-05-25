@@ -13,7 +13,7 @@ $$
 \left.X_t\right|_{t = 0} = X_0.
 $$
 
-Assim como no caso de equações diferenciais ordinárias determinísticas, uma condição do tipo continuidade Lipschitz nos garante essa continuidade. No caso, vamos pedir a continuidade Lipschitz uniforme em $t$ e global em $x$ dos termos $f = f(t, x)$ e $g = g(t, x)$.
+Assim como no caso de equações diferenciais ordinárias determinísticas, uma condição do tipo continuidade Lipschitz nos garante essa continuidade. No caso, a continuidade Lipschitz uniforme em $t$ e global em $x$ dos termos $f = f(t, x)$ e $g = g(t, x)$ que utilizamos para a demonstração de existência é, também, suficiente para a unicidade e para a dependência contínua nos dados iniciais.
 
 A ideia é estimar a evolução temporal da média quadrática entre duas possíveis soluções no instante $t$ e aplicar o Lema de Gronwall para relacionar essa evolução com a média quadrática inicial.
 
@@ -102,3 +102,20 @@ Em outras palavras,
 $$
 \mathbb{P}\left(X_t = \tilde X_t, t \geq 0\right) = 1.
 $$
+
+## Exemplo de não unicidade
+
+De maneira semelhante ao caso de equações diferenciais ordinárias, equações que envolvem potências de ordem $p$ com $0< p < 1$ são fortes candidatos a não unicidade. Mas por conta da fórmula de Itô, a equação pode ser um pouco mais complicada. Vamos, então, ver o caminho contrário. Considere $X_t = W_t^3$ e vamos ver que equação $\{X_t\}_t$ deve satisfazer. Pela fórmula de Itô com $X_t = h(W_t)$ e $h(w) = w^3$, temos
+$$
+\mathrm{d}X_t = \frac{1}{2}h''(W_t)\;\mathrm{d}t + h'(W_t)\;\mathrm{d}W_t
+$$
+Usando que $h'(w) = 3w^2$ e $h''(w) = 6w$ e que $W_t = X_t^{1/3},$ obtemos
+$$
+\mathrm{d}X_t = 3X_t^{1/3}\;\mathrm{d}t + 2X_t^{2/3}\;\mathrm{d}W_t.
+$$
+Observe que
+$$
+X_0 = W_0^3 = 0.
+$$
+
+Por outro lado, definindo $\tilde X_t = 0,$ para todo $t \geq 0,$ vemos que $\{X_t\}_t$ satisfaz trivialmente a mesma equação e com a mesma condição inicial $\tilde X_0 = 0.$ Isso mostra a não unicidade de solução da equação acima.
