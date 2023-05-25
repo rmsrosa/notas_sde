@@ -15,7 +15,7 @@ No momento, vamos considerar alguns casos particulares, com funções $f$ e $g$ 
 
 ## Hipóteses iniciais
 
-Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem localmente Lipschitz contínuas na variável $x.$
+Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ sejam funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem localmente Lipschitz contínuas na variável $x.$
 
 Mais precisamente, assumimos que existem funções contínuas não-decrescentes $L_f=L_f(R), L_g=L_g(R) > 0$ tais que
 $$
@@ -27,7 +27,7 @@ $$
 
 Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas.
 
-## Existência local no caso de equações com ruído aditivo
+## Existência de caminhos amostrais locais no caso de equações com ruído aditivo
 
 Vamos começar com um caso particular, com ruído aditivo, onde o termo de difusão é da forma $g(t, X_t) = g(t) \in \mathbb{R}$, ou seja
 $$
@@ -50,7 +50,7 @@ X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \int_0^t g(s)\mathrm{d}W_s
 \end{align*}
 $$
 
-Vamos mostrar que a família $\{X_t^m\}_{0 \leq t \leq T}$ de processos converge, em probabilidade, para um processo que é solução da equação integral.
+Vamos mostrar que os caminhos amostrais da família $\{X_t^m\}_{0 \leq t \leq T}$ converge para um caminho amostral solução da equação integral.
 
 Considere, para isso, os processos estocásticos
 $$
@@ -70,20 +70,20 @@ $$
 C(\omega) = \max_{0 \leq t \leq T} |f(t, X_0(\omega))|.
 $$
 
-A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para $0 < t_1 \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro dessa bola maior de raio $R(\omega)$, no intervalo $[0, t_1]$, e na qual podemos estimar a constante de Lipschitz de maneira uniforme nessa bola.
+A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para $0 < t_1(\omega) \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro dessa bola maior de raio $R(\omega)$, no intervalo $[0, t_1]$, e na qual podemos estimar a constante de Lipschitz de maneira uniforme nessa bola.
 
 Temos
 $$
 D_t^0(\omega) \leq \left| \int_0^t f(s, X_0(\omega))\mathrm{d}s + \sigma  W_t(\omega) \right| \leq C(\omega)t + \frac{R(\omega)}{2}, \quad \forall 0 \leq t \leq T.
 $$
 
-Escolhemos $t_1 > 0$ tal que 
+Escolhemos $t_1(\omega) > 0$ tal que 
 $$
-C(\omega)t_1 \leq R(\omega)/2, \qquad L(R(\omega))t_1 \leq 1,
+C(\omega)t_1(\omega) \leq R(\omega)/2, \qquad L(R(\omega))t_1(\omega) \leq 1,
 $$
 de modo que
 $$
-D_t^0(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq T.
+D_t^0(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq t_1(\omega).
 $$
 
 Como no método de Picard clássico, vamos mostrar que
@@ -109,12 +109,12 @@ Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisqu
 $$
 \max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
 $$
-Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em um intervalo $[0, t_1].$ No limite, temos um processo $\{X_t\}_{0 \leq t \leq t_1}$ satisfazendo, quase certamente, a equação integral desejada:
+Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, para quase toda amostra $\omega,$ temos $X_t^m(\omega)$ convergindo uniformemente em um intervalo $[0, t_1(\omega)].$ No limite, temos um caminho $X_t(\omega)$ satisfazendo a equação integral desejada:
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s, \quad 0 \leq t \leq t_1.
+X_t(\omega) = X_0(\omega) + \int_0^t f(s, X_s(\omega))\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s(\omega), \quad 0 \leq t \leq t_1(\omega).
 $$
 
-## Existência local no caso autônomo com difusão positiva
+## Existência de caminhos amostrais locais no caso autônomo com difusão positiva
 
 Consideramos, agora, uma equação com termo de difusão não determinístico, mas com difusão e *drift* autônomos e difusão positiva, i.e.
 $$
@@ -157,7 +157,7 @@ Note que $h'(x)g(x) = 1$ e $h''(x)g(x)^2 = -g'(x),$ de modo que
 $$
 \mathrm{d}Y_t = \left(\frac{f(X_t)}{g(X_t)} - \frac{1}{2}g'(X_t)\right)\mathrm{d}t + \mathrm{d}W_t,
 $$
-com condição inicial $Y_0 = h(X_0).$ Como essa é uma equação com ruído aditivo e com termos localmente Lipschitz, o resultado anterior se aplica e obtemos uma solução local $\{Y_t\}_{0\leq t \leq t_1},$ para algum $0\leq t_1 \leq T.$ Conforme mencionado acima, como $h$ é suave e invertível, podemos verificar que $X_t = h^{-1}(Y_t)$ resolve, de fato, a equação original, no intervalo $[0, t_1].$
+com condição inicial $Y_0 = h(X_0).$ Como essa é uma equação com ruído aditivo e com termos localmente Lipschitz, o resultado anterior se aplica e obtemos uma soluções locais para cada caminho amostral. Se for possível, explorando alguma estrutura extra da equação, mostrar que os caminhos amostrais estão definidos em um intervalo comum mínimo, então obtemos uma solução local $\{Y_t\}_{0\leq t \leq t_1},$ para algum $0\leq t_1 \leq T.$ Nesse caso, conforme mencionado acima, como $h$ é suave e invertível, podemos verificar que $X_t = h^{-1}(Y_t)$ resolve, de fato, a equação original, no intervalo $[0, t_1].$
 
 Vale notar que a forma da transformação $h(x)$ definida acima pode ser obtida buscando-se uma equação para $Y_t = h(X_t)$ que tenha ruído aditivo, ou seja, tal que o termo de difusão
 $$
@@ -169,7 +169,7 @@ h'(x)g(x) = 1.
 $$
 Isso nos dá a relação acima.
 
-## Existência local no caso não autônomo com difusão positiva
+## Existência de caminhos amostrais locais no caso não autônomo com difusão positiva
 
 Com um pouco mais de trabalho, é possível encontrar condições para que a transformação $Y_t = h(t, X_t)$ com
 $$
@@ -191,3 +191,4 @@ $$
 ## Exercícios
 
 1. Considere o caso não autônomo com difusão positiva mencionado acima e verifique que, sob condições apropriadas em $f=f(t, x)$ e $g=g(t, x),$ a função $h=h(t, x)$ tal que $\partial_t h = 1/g$ transforma a equação diferencial estocástica em uma outra equação diferencial estocástica com ruído multiplicativo e com termos localmente Lipschitz contínuos.
+
