@@ -27,30 +27,26 @@ $$
 
 Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas.
 
-## Existência local no caso de equações com difusão constante e condição inicial determinística
+## Existência local no caso de equações com difusão determinística
 
-Vamos começar com um caso particular, com difusão constante $g(t, X_t) = \sigma \in \mathbb{R}$, ou seja
+Vamos começar com um caso particular, com difusão constante $g(t, X_t) = g(t) \in \mathbb{R}$, ou seja
 $$
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma\mathrm{d}W_t, \qquad t \geq 0.
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
 $$
 
 A forma integral equivalente é
 $$
-X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma\mathrm{d}W_s.
+X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(t)\mathrm{d}W_s.
 $$
-A segunda integral é, simplesmente, o próprio $W_t$, ou seja, chegamos na equação mais simples
-$$
-X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \sigma W_t.
-$$
-Essa equação não envolve a integral de Itô, o que nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.
+A segunda integral não envolve a incógnita $X_t$ e pode ser estimada independentemente, para cada caminho amostral. Isso nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.
 
-Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x$, conforme explicitado acima.
+Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x$, conforme explicitado acima, e que $g=g(t)$ seja contínua.
 
 A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0$,
 $$
 \begin{align*}
 X_t^0 & = X_0, \\
-X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \sigma W_t, \quad m\in \mathbb{N}.
+X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \int_0^t g(s)\mathrm{d}W_s, \quad m\in \mathbb{N}.
 \end{align*}
 $$
 
@@ -60,9 +56,13 @@ Considere, para isso, os processos estocásticos
 $$
 D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
 $$
-Para cada $\omega\in \Omega$, temos que $W_t(\omega)$ é limitado em $[0, T]$ e $X_0(\omega)\in \mathbb{R}$. Considere, então, a variável aleatória $R=R(\omega) \geq 0 $ dada por
+Para quase todo $\omega\in \Omega$, temos que a integral
 $$
-R(\omega) = 2(|X_0(\omega)| + |\sigma|\max_{t\in [0, T]}|W_t(\omega)|).
+\int_0^t g(t)\mathrm{d}W_s
+$$
+existe e é contínua em $t$ e, portanto, limitada em $[0, T]$ e que $X_0(\omega)\in \mathbb{R}$. Considere, então, a variável aleatória $R=R(\omega) \geq 0 $ dada por
+$$
+R(\omega) = 2(|X_0(\omega)| + \max_{t\in [0, T]}|\int_0^t g(s) \;\mathrm{d}W_s(\omega)|).
 $$
 
 Além disso, $f(t, X_0(\omega))$ é limitado em $[0, T]$, já que $f$ é contínua. Assim, podemos, também, definir a variável aleatória
@@ -111,25 +111,8 @@ $$
 $$
 Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, quase certamente, temos $X_t^m$ convergindo uniformemente em um intervalo $[0, t_1].$ No limite, temos um processo $\{X_t\}_{0 \leq t \leq t_1}$ satisfazendo, quase certamente, a equação integral desejada:
 $$
-X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t \sigma \mathrm{d}W_s, \quad 0 \leq t \leq t_1.
+X_t = x_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s, \quad 0 \leq t \leq t_1.
 $$
-
-## Existência local no caso de equações com difusão determinística
-
-Com poucas modificações na demonstração acima, podemos mostrar a existência e unicidade globais da equação com difusão determinística e sem restrição na condição inicial (exceto que seja finita quase certamente).
-
-Nesse caso, temos uma equação da forma
-$$
-\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
-$$
-com condição inicial
-$$
-\left.X_t\right|_{t = 0} = X_0.
-$$
-
-Assumimos $f=f(t,x)$ contínua em $(t, x)\in [0, \infty]\times \mathbb{R}$ e localmente Lipschitz contínua na variável $x$, em cada intervalo limitado $[0, T]$. Quanto a $X_0$, assumimos, apenas, que seja finita quase certamente.
-
-Deixamos os detalhes da demonstração como exercício.
 
 ## Existência local no caso autônomo com condição inicial determinística e drift positivo
 
