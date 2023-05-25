@@ -85,7 +85,7 @@ $$
 
 ## Unicidade
 
-A unicidade, agora, é consequência da estimativa acima, com $X_0 = \tilde X_0$ quase sempre, de maneira que 
+A unicidade, agora, é consequência da estimativa acima, assumindo $X_0 = \tilde X_0$ quase sempre, de maneira que 
 $$
 \mathbb{E}[|X_0 - \tilde X_0|^2] = 0
 $$

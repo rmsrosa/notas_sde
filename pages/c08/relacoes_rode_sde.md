@@ -10,11 +10,11 @@ Considere uma equação diferencial aleatória da forma
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t, \Lambda_t),
 $$
-e suponha que o processo $\{\Lambda_t\}_t$ seja solução de uma equação diferencial estocástica
+e suponha que o processo $\{\Lambda_t\}_t$ seja um processo de Itô satisfazendo uma equação diferencial estocástica
 $$
 \mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
 $$
-para um dado processo de Wiener $\{W_t\}_t$ (ou algum outro Martingale).
+para um dado processo de Wiener $\{W_t\}_t$.
 
 Formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,
 $$

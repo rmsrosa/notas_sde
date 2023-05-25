@@ -32,6 +32,11 @@ $$
 |g(t, x)| = |g(t, x) - g(t, 0) + g(t, 0)| \leq |g(t, 0)| + L_g|x| \leq C_g + L_g|x|.
 $$
 
+Também assumimos que a condição inicial tem média quadrática finita:
+$$
+\mathbb{E}[X_0^2] < \infty.
+$$
+
 ## Existência de solução
 
 A forma integral equivalente é
@@ -47,7 +52,7 @@ X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\;\mathrm{d}s + \int_0^t g(s, X_s^{m-1})
 \end{align*}
 $$
 
-A diferença, agora, é que vamos mostrar que a família $\{X_t^m\}_{0 \leq t \leq T}$ de processos converge em média quadrática, não mais em probabilidade, para um processo que é solução da equação integral.
+A diferença, agora, é que vamos mostrar que a família $\{X_t^m\}_{0 \leq t \leq T}$ de processos converge em média quadrática, não apenas em probabilidade, para um processo que é solução da equação integral, ao preço de exigir mais da condição inicial (ter média quadrática finita, ao invés de apenas ser finito quase certamente).
 
 Considere, para isso, as funções determinísticas
 $$
@@ -68,7 +73,7 @@ d^0(t) & = \mathbb{E}\left[ \left|X_t^1 - X_t^0\right|^2\right] \\
   & \leq 2\mathbb{E}\left[ \left| \int_0^t f(s, X_s^0)\;\mathrm{d}s \right|^2\right] + 2\mathbb{E}\left[\left|\int_0^t g(s, X_s^0) \;\mathrm{d}W_t \right|^2 \right]
 \end{align*}
 $$
-Estimando a primeira integral de maneira usual e usando a isometria de Itô na segunda integra, obtemos
+Estimando a primeira integral de maneira usual e usando a isometria de Itô na segunda integral, obtemos
 $$
 d^0(t) \leq 2\int_0^t\mathbb{E}\left[ f(s, X_s^0)^2 \right]\;\mathrm{d}s + 2\int_0^t\mathbb{E}\left[ g(s, X_s^0)^2 \right]\;\mathrm{d}t.
 $$
