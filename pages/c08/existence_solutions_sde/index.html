@@ -360,7 +360,7 @@
 \left.X_t\right|_{t = 0} = X_0.
 \]
 <h2 id="hipóteses_iniciais"><a href="#hipóteses_iniciais" class="header-anchor">Hipóteses iniciais</a></h2>
-<p>Como antes, vamos assumir que \(f = f(t, x)\), \(g = g(t, x)\) são funções contínuas \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) com a propriedade de serem uniformemente globalmente Lipschitz contínuas na variável \(x\).</p>
+<p>Como antes, vamos assumir que \(f = f(t, x)\), \(g = g(t, x)\) são funções contínuas \(f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) e \(g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}\) com a propriedade de serem Lipschitz contínuas na variável \(x\), mas com a diferença que pedimos agora que essa continuidade Lipschitz seja <em>global.</em></p>
 <p>Mais precisamente, existem \(L_f, L_g > 0\) tais que</p>
 \[
 \begin{align*}
@@ -376,6 +376,8 @@
 \[
 |g(t, x)| = |g(t, x) - g(t, 0) + g(t, 0)| \leq |g(t, 0)| + L_g|x| \leq C_g + L_g|x|.
 \]
+<p>Essa condição global é fundamental, aqui. Por conta da perturbação causada pelo ruído proveniente de um processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. </p>
+<p>Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.</p>
 <h2 id="existência_de_solução"><a href="#existência_de_solução" class="header-anchor">Existência de solução</a></h2>
 <p>A forma integral equivalente é</p>
 \[
@@ -470,7 +472,7 @@ d^m(t) \leq K\int_0^T \frac{MK^{m-1}s^m}{m!}\;\mathrm{d}s \leq \frac{MK^mt^{m+1}
         </div>
     
 
-    Last modified: May 23, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 25, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
