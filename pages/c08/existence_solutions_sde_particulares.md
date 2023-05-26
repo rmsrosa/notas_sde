@@ -25,7 +25,13 @@ $$
 \end{align*}
 $$
 
-Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas.
+Lembremos que uma hipótese semelhante é usualmente feita para o resultado de existência de solução particular local na teoria de equações diferenciais determinísticas. Aqui, no entanto, ela não é suficiente.
+
+Veremos que em certos casos particulares (ruído aditivo ou estritamente positivo) ela só nos garante a existência de soluções locais de caminhos amostrais em intervalos que dependem da amostra $\omega$ e que podem ser arbitrariamente curtos.
+
+Veremos, no entanto, que sob condições extras de invariância, aí sim isso pode ser elevado a um resultado de existência local do processo todo, com um pequeno intervalo independente da amostra.
+
+Em seguida, consideraremos, finalmente, a hipótese de continuidade Lipschitz global no espaço para garantir, de maneira mais geral, a existência de soluções globais no tempo.
 
 ## Existência de caminhos amostrais locais no caso de equações com ruído aditivo
 
@@ -136,7 +142,7 @@ $$
 $$
 Como o somatório é o "rabo" da série de Taylor da função exponencial $Re^{L_f(R)t}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, para quase toda amostra $\omega,$ temos $X_t^m(\omega)$ convergindo uniformemente no intervalo $[0, \tilde(R(\omega))].$ No limite, temos um caminho $X_t(\omega)$ satisfazendo a equação integral desejada:
 $$
-X_t(\omega) = X_0(\omega) + \int_0^t f(s, X_s(\omega))\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s(\omega), \quad 0 \leq t \leq t_1(\omega).
+X_t(\omega) = X_0(\omega) + \int_0^t f(s, X_s(\omega))\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s(\omega), \quad 0 \leq t \leq \tilde t(R(\omega)).
 $$
 
 ## Existência global no caso de ruído aditivo e região positivamente invariante
@@ -173,7 +179,13 @@ $$
 $$
 para todo $m,$ todo $\omega$ e todo $0\leq t \leq \tilde t.$
 
-Uma vez estabelecido um limite superior para $X_t^m(\omega)| em um intervalo $[0, \tilde t]$ independente de $\omega,$ prosseguimos como antes para mostrar que as aproximações de Picard formam uma sequência de Cauchy na norma uniforme e, portanto, convergem uniformemente, no intervalo $[0, \tilde t],$ para uma solução $X_t(\omega)$ da equação integral. Finalmente, isso nos dá um processo $\{X_t\}_{0\leq t \leq \tilde t}$ que é solução, para quase todo $\omega,$ da equação diferencial estocástica no intervalo $[0, \tilde t].$ 
+Uma vez estabelecido um limite superior para $X_t^m(\omega)|$ em um intervalo $[0, \tilde t]$ independente de $\omega,$ prosseguimos como antes para mostrar que as aproximações de Picard formam uma sequência de Cauchy na norma uniforme e, portanto, convergem uniformemente, no intervalo $[0, \tilde t],$ para uma solução $X_t(\omega)$ da equação integral. Finalmente, isso nos dá um processo $\{X_t\}_{0\leq t \leq \tilde t}$ que é solução, para quase todo $\omega,$ da equação diferencial estocástica no intervalo $[0, \tilde t].$ 
+
+Por exemplo, isso nos garante a existência local de solução da equação
+$$
+\mathrm{d}X_t = (\alpha X_t - \beta X_t^3)\;\mathrm{d}t + \sigma \;\mathrm{d}W_t.
+$$
+Observe que truncar a função $f(x) = \alpha x - \beta x^3$ em uma região de interesse e modificá-la para uma função globalmente Lipscthiz não é satisfatório, pois o termo de difusão pode nos levar arbitrariamente longe da origem (observe que $R=R(\omega)$ acima ainda depende da amostra $\omega;$ apenas $\tilde t$ é independente).
 
 ## Existência de caminhos amostrais locais no caso autônomo com difusão positiva
 
@@ -218,7 +230,7 @@ Note que $h'(x)g(x) = 1$ e $h''(x)g(x)^2 = -g'(x),$ de modo que
 $$
 \mathrm{d}Y_t = \left(\frac{f(X_t)}{g(X_t)} - \frac{1}{2}g'(X_t)\right)\mathrm{d}t + \mathrm{d}W_t,
 $$
-com condição inicial $Y_0 = h(X_0).$ Como essa é uma equação com ruído aditivo e com termos localmente Lipschitz, o resultado anterior se aplica e obtemos uma soluções locais para cada caminho amostral. Se for possível, explorando alguma estrutura extra da equação, mostrar que os caminhos amostrais estão definidos em um intervalo comum mínimo, então obtemos uma solução local $\{Y_t\}_{0\leq t \leq t_1},$ para algum $0\leq t_1 \leq T.$ Nesse caso, conforme mencionado acima, como $h$ é suave e invertível, podemos verificar que $X_t = h^{-1}(Y_t)$ resolve, de fato, a equação original, no intervalo $[0, t_1].$
+com condição inicial $Y_0 = h(X_0).$ Como essa é uma equação com ruído aditivo e com termos localmente Lipschitz, o resultado anterior se aplica e obtemos soluções locais para cada caminho amostral. Se for possível, explorando alguma estrutura extra da equação, mostrar que os caminhos amostrais estão definidos em um intervalo comum mínimo, então obtemos uma solução local $\{Y_t\}_{0\leq t \leq \tilde t},$ para algum $0\leq \tilde t \leq T.$ Nesse caso, conforme mencionado acima, como $h$ é suave e invertível, podemos verificar que $X_t = h^{-1}(Y_t)$ resolve, de fato, a equação original, no intervalo $[0, \tilde t].$
 
 Vale notar que a forma da transformação $h(x)$ definida acima pode ser obtida buscando-se uma equação para $Y_t = h(X_t)$ que tenha ruído aditivo, ou seja, tal que o termo de difusão
 $$
@@ -232,7 +244,7 @@ Isso nos dá a relação acima.
 
 ## Existência de caminhos amostrais locais no caso não autônomo com difusão positiva
 
-Com um pouco mais de trabalho, é possível encontrar condições para que a transformação $Y_t = h(t, X_t)$ com
+Com um pouco mais de trabalho, é possível considerar o caso não autônomo e encontrar condições para que a transformação $Y_t = h(t, X_t)$ com
 $$
 h(t, x) = \int_0^x \frac{1}{g(t, \xi)} \;\mathrm{d}\xi
 $$
