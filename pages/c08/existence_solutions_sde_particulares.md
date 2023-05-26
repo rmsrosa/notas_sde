@@ -17,7 +17,7 @@ No momento, vamos considerar alguns casos particulares, com funções $f$ e $g$ 
 
 Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ sejam funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem localmente Lipschitz contínuas na variável $x.$
 
-Mais precisamente, assumimos que existem funções contínuas não-decrescentes $L_f=L_f(R), L_g=L_g(R) > 0$ tais que
+Mais precisamente, assumimos que existem funções contínuas não decrescentes $L_f=L_f(R), L_g=L_g(R) > 0$ tais que
 $$
 \begin{align*}
 |f(t, x) - f(t, y)| \leq L_f(R)|x - y|, \qquad \forall x, y \in \mathbb{R}, |x|, |y| \leq R, \\
@@ -38,9 +38,24 @@ A forma integral equivalente é
 $$
 X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(t)\mathrm{d}W_s.
 $$
-A segunda integral não envolve a incógnita $X_t$ e pode ser estimada independentemente, para cada caminho amostral. Isso nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.
+A segunda integral não envolve a incógnita $X_t$ e pode ser estimada de maneira independente da solução, para cada caminho amostral. Isso nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.
 
-Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x$, conforme explicitado acima, e que $g=g(t)$ seja contínua.
+Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x$, conforme explicitado acima, e que $g=g(t)$ seja contínua. Com essa hipótese em $f,$ temos, ainda, que
+$$
+|f(t, x)| \leq |f(t, 0)| + |f(t, x) - f(t, 0)| \leq \max_{0\leq s \leq T}|f(s, 0)| + L_f(|x|)|x|.
+$$
+Assim, para todo $|x|\leq R,$ temos
+$$
+|f(t, x)| \leq |f(t, 0)| + |f(t, x) - f(t, 0)| \leq C_0 + L_f(R)R,
+$$
+onde
+$$
+C_0 = \max_{0\leq s \leq T}|f(s, 0)|.
+$$
+Seja, também,
+$$
+C_W(\omega) = \max_{0\leq t \leq T}\left|\int_0^t g(s)\mathrm{d}W_s(\omega)\right|.
+$$
 
 A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0$,
 $$
@@ -50,69 +65,115 @@ X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \int_0^t g(s)\mathrm{d}W_s
 \end{align*}
 $$
 
-Vamos mostrar que os caminhos amostrais da família $\{X_t^m\}_{0 \leq t \leq T}$ converge para um caminho amostral solução da equação integral.
+A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para uma determinada variável aleatória $R(w)> 0$ e para uma função determinística $\tilde t=\tilde t(R)$ com $0 < \tilde t(R) \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro da bola de raio $R(\omega)$, no intervalo $[0, \tilde t(R(\omega))]$, na qual podemos estimar a constante de Lipschitz de maneira uniforme e mostrar que a aproximação é uma sequência de Cauchy na norma uniforme, de modo que os caminhos amostrais da família $\{X_t^m(\omega)\}_{0 \leq t \leq \tilde(\omega)}$ convergem uniformemente para um caminho amostral que é solução da equação integral.
 
-Considere, para isso, os processos estocásticos
+Observe, inicialmente, que
 $$
-D_t^m = \max_{0 \leq s \leq t} |X_s^{m+1} - X_s^m|, \quad m = 0, 1, 2, \ldots.
-$$
-Para quase todo $\omega\in \Omega$, temos que a integral
-$$
-\int_0^t g(t)\mathrm{d}W_s
-$$
-existe e é contínua em $t$ e, portanto, limitada em $[0, T]$ e que $X_0(\omega)\in \mathbb{R}$. Considere, então, a variável aleatória $R=R(\omega) \geq 0 $ dada por
-$$
-R(\omega) = 2(|X_0(\omega)| + \max_{t\in [0, T]}|\int_0^t g(s) \;\mathrm{d}W_s(\omega)|).
+\begin{align*}
+|X_t^m(\omega)| & \leq |X_0(\omega)| + t \max_{0\leq \tau \leq t} |f(\tau, X_\tau^{m-1}(\omega))| + \max_{0\leq \tau \leq t}\left|\int_0^\tau g(s)\mathrm{d}W_s(\omega)\right| \\
+& \leq |X_0(\omega)| + t(C_0 + L_f(\max_{0\leq \tau \leq t}|X_\tau^{m-1}(\omega)))|\max_{0\leq \tau \leq t}|X_\tau^{m-1}(\omega)| + C_W(\omega).
+\end{align*}
 $$
 
-Além disso, $f(t, X_0(\omega))$ é limitado em $[0, T]$, já que $f$ é contínua. Assim, podemos, também, definir a variável aleatória
+Sejam, então,
 $$
-C(\omega) = \max_{0 \leq t \leq T} |f(t, X_0(\omega))|.
+\tilde t(R) = \frac{TC_0}{L_f(R)R},
+$$
+e
+$$
+R(\omega) = |X_0(\omega)| + 2TC_0 + C_W(\omega).
 $$
 
-A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para $0 < t_1(\omega) \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro dessa bola maior de raio $R(\omega)$, no intervalo $[0, t_1]$, e na qual podemos estimar a constante de Lipschitz de maneira uniforme nessa bola.
+Com isso,
+$$
+|X_t^0(\omega)| = |X_0(\omega)| \leq R(\omega),
+$$
+para todo $0\leq t \leq T.$ Assumindo, por indução, que
+$$
+|X_t^{m-1}(\omega)| \leq R(\omega), \quad 0\leq t \leq \tilde t(R(\omega)),
+$$
+então
+$$
+|X_t^m(\omega)| \leq |X_0(\omega)| + TC_0 + \tilde t(R(\omega))L_f(R(\omega))R(\omega) + C_W(\omega) \leq R(\omega),
+$$
+para todo $0\leq t \leq \tilde t.$ Isso mostra, então, que
+$$
+|X_t^m(\omega)| \leq R(\omega), \quad 0\leq t \leq \tilde t(R(\omega)), \;m = 0, 1, \ldots.
+$$
+
+Considere, agora, os processos estocásticos
+$$
+D_t^m = \max_{0 \leq \tau \leq t} |X_\tau^{m+1} - X_\tau^m|, \quad m = 0, 1, 2, \ldots.
+$$
 
 Temos
 $$
-D_t^0(\omega) \leq \left| \int_0^t f(s, X_0(\omega))\mathrm{d}s + \sigma  W_t(\omega) \right| \leq C(\omega)t + \frac{R(\omega)}{2}, \quad \forall 0 \leq t \leq T.
-$$
-
-Escolhemos $t_1(\omega) > 0$ tal que 
-$$
-C(\omega)t_1(\omega) \leq R(\omega)/2, \qquad L(R(\omega))t_1(\omega) \leq 1,
-$$
-de modo que
-$$
-D_t^0(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq t_1(\omega).
+D_t^0(\omega) \leq \max_{0 \leq \tau \leq t} \left| \int_0^\tau f(s, X_0(\omega))\mathrm{d}s + \int_0^\tau g(s)\;\mathrm{d}W_s \right| \leq C_0 t + t L_f(|X_0(\omega)|)|X_0(\omega)| + C_W(\omega) \leq R(\omega), \quad \forall 0 \leq t \leq \tilde t(R(\omega)).
 $$
 
 Como no método de Picard clássico, vamos mostrar que
 $$
-D_t^m \leq R \frac{L(R)^m}{m!} t^m \leq R,
+D_t^m \leq R \frac{L_f(R)^m}{m!} t^m \leq R,
 $$
-para $0\leq t \leq t_1$. A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$. Temos,
+para $0\leq t \leq t(R)$. A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$. Temos,
 $$
 \begin{align*}
-D_t^m(\omega) & = \max_{0 \leq s \leq t} |X_s^{m+1}(\omega) - X_s^m(\omega)| \\
-& = \max_{0 \leq s \leq t} \left| \int_0^t f(s, X_s^m)\mathrm{d}s - \int_0^t f(s, X_s^{m-1})\mathrm{d}s\right| \\
-& \leq \max_{0 \leq s \leq t} \int_0^t L(R(\omega)) |X_s^m(\omega) - X_s^{m-1}(\omega)|\mathrm{d}s \\
-& \leq L(R(\omega))\max_{0 \leq s \leq t} \int_0^t D_s^{m-1}(\omega) \;\mathrm{d}s \\
-& \leq L(R(\omega)) \int_0^t D_s^{m-1}(\omega) \;\mathrm{d}s \\
-& \leq L(R(\omega)) \int_0^t R(\omega) \frac{L(R(\omega))^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
-& \leq R(\omega) \frac{L(R(\omega))^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
-& = R(\omega) \frac{L(R(\omega))^m}{m!} t^{m}.
+D_t^m(\omega) & = \max_{0 \leq \tau \leq t} |X_\tau^{m+1}(\omega) - X_\tau^m(\omega)| \\
+& = \max_{0 \leq \tau \leq t} \left| \int_0^\tau f(s, X_s^m)\mathrm{d}s - \int_0^\tau f(s, X_s^{m-1})\mathrm{d}s\right| \\
+& \leq \max_{0 \leq \tau \leq t} \int_0^\tau L_f(R(\omega)) |X_s^m(\omega) - X_s^{m-1}(\omega)|\mathrm{d}s \\
+& \leq L_f(R(\omega))\max_{0 \leq \tau \leq t} \int_0^\tau D_s^{m-1}(\omega) \;\mathrm{d}s \\
+& \leq L_f(R(\omega)) \max_{0 \leq \tau \leq t}\int_0^\tau D_s^{m-1}(\omega) \;\mathrm{d}s \\
+& \leq L_f(R(\omega)) \int_0^t R(\omega) \frac{L_f(R(\omega))^{m-1}}{(m-1)!} s^{m-1} \;\mathrm{d}s \\
+& \leq R(\omega) \frac{L_f(R(\omega))^m}{(m-1)!}\int_0^t s^{m-1} \;\mathrm{d}s \\
+& = R(\omega) \frac{L_f(R(\omega))^m}{m!} t^{m}.
 \end{align*}
 $$
 Isso completa a demonstração por indução da estimativa para $D_t^m(\omega).$
 
-Agora, para termos não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1$,
+Agora, para termos da sequência não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1$,
 $$
-\max_{0 \leq s \leq t} |X_s^k - X_s^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty C \frac{L^m}{m!} t^m.
+\max_{0 \leq \tau \leq t} |X_\tau^k - X_\tau^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty R(\omega) \frac{L_f(R(\omega))^m}{m!} t^m.
 $$
-Como o somatório é o "rabo" da série de Taylor da função exponencial $Ce^{Lt}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, para quase toda amostra $\omega,$ temos $X_t^m(\omega)$ convergindo uniformemente em um intervalo $[0, t_1(\omega)].$ No limite, temos um caminho $X_t(\omega)$ satisfazendo a equação integral desejada:
+Como o somatório é o "rabo" da série de Taylor da função exponencial $Re^{L_f(R)t}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, para quase toda amostra $\omega,$ temos $X_t^m(\omega)$ convergindo uniformemente no intervalo $[0, \tilde(R(\omega))].$ No limite, temos um caminho $X_t(\omega)$ satisfazendo a equação integral desejada:
 $$
 X_t(\omega) = X_0(\omega) + \int_0^t f(s, X_s(\omega))\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s(\omega), \quad 0 \leq t \leq t_1(\omega).
 $$
+
+## Existência global no caso de ruído aditivo e região positivamente invariante
+
+Agora, além das condições do ruído ser aditivo e do termo de *drift* ser localmente Lipschitz em $x,$ suponhamos que exista $R_f>0$ tal que
+$$
+f(t, x) \leq 0, \qquad x \geq R_f \quad \textrm{e} f(t, x) \geq 0, \qquad x \leq -R_f.
+$$
+
+Observe que
+$$
+\begin{align*}
+X_t^m(\omega) & = X_0(\omega) + \int_0^t f(s, X_s^{m-1}(\omega))\;\mathrm{d}s + \int_0^t g(s)\;\mathrm{d}W_s \\
+& \leq X_0(\omega) + t \max_{0\leq \tau \leq T, |x|\leq R_f} |f(\tau, x)| + \max_{0\leq \tau \leq t}\left|\int_0^\tau g(s)\mathrm{d}W_s(\omega)\right| \\
+& \leq X_0(\omega) + t(C_0 + L_f(R_f)R_f) + C_W(\omega).
+\end{align*}
+$$
+Analogamente,
+$$
+X_t^m(\omega) \geq X_0(\omega) - t(C_0 + L_f(R_f)R_f) - C_W(\omega),
+$$
+de modo que
+$$
+|X_t^m(\omega)| \geq |X_0(\omega)| + t(C_0 + L_f(R_f)R_f)+ C_W(\omega).
+$$
+
+Como, agora, o termo proveniente da integral determinística não depende do caminho amostral, podemos definir um $\tilde t$ uniforme, dado por
+$$
+\tilde t = \frac{TC_0}{L_f(R_f)R_f}.
+$$
+Assim, obtemos a estimativa
+$$
+|X_t^m(\omega)| \geq R(\omega) + 2TC_0 + C_W(\omega),
+$$
+para todo $m,$ todo $\omega$ e todo $0\leq t \leq \tilde t.$
+
+Uma vez estabelecido um limite superior para $X_t^m(\omega)| em um intervalo $[0, \tilde t]$ independente de $\omega,$ prosseguimos como antes para mostrar que as aproximações de Picard formam uma sequência de Cauchy na norma uniforme e, portanto, convergem uniformemente, no intervalo $[0, \tilde t],$ para uma solução $X_t(\omega)$ da equação integral. Finalmente, isso nos dá um processo $\{X_t\}_{0\leq t \leq \tilde t}$ que é solução, para quase todo $\omega,$ da equação diferencial estocástica no intervalo $[0, \tilde t].$ 
 
 ## Existência de caminhos amostrais locais no caso autônomo com difusão positiva
 
