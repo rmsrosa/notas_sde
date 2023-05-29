@@ -1,4 +1,4 @@
-@def title = "Existência de soluções em casos particulares"
+@def title = "Existência de soluções locais em casos particulares"
 
 # {{ get_title }}
 

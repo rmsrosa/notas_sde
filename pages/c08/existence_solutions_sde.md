@@ -1,4 +1,4 @@
-@def title = "Existência de soluções no caso geral"
+@def title = "Existência de soluções globais"
 
 # {{ get_title }}
 
