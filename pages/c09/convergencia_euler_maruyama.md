@@ -4,11 +4,11 @@
 
 No caso determinístico, de uma equação diferencial
 $$
-\frac{\mathrm{d}x}{\mathrm{d}t} = f(x),
+\frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x),
 $$
 com condição inicial $x(0) = x_0$, o método de Euler
 $$
-x_{j} = x_{j-1} + \Delta t f(x_j), \qquad x_j|_{j = 0} = x_0,
+x_{j}^n = x_{j-1}^n + \Delta t f(t_{j-1} x_{j-1}^n), \qquad x_j^n|_{j = 0} = x_0,
 $$
 em uma malha temporal uniforme $t_j = jT/n$, $j = 0, \ldots, n$, com $\Delta t = T/n$, converge uniformemente, no intervalo $[0, T]$, para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existe $C > 0$ e $\delta > 0$ tais que
 $$
@@ -16,15 +16,15 @@ $$
 $$
 Isso sob a hipótese de $f$ ser localmente Lipschitz contínua.
 
-Por outro lado, no caso estocástico, com um ruído multiplicativo $g = g(X_t),$
+Por outro lado, no caso estocástico, com um ruído multiplicativo $g = g(t, X_t),$
 $$
-\mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 $$
 com uma condição inicial
 $$
 \left.X_t\right|_{t = 0} = X_0,
 $$
-a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g(X_t) = \sigma$ (ou, mais geralmente, $g(t, X_t) = g(t)$), então ainda temos a convergência forte de ordem $1$.
+a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g = g(t, X_t) = g(t)$, então ainda temos a convergência forte de ordem $1$.
 
 A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
 
@@ -42,52 +42,85 @@ x(t_j) = x(t_{j-1}) + \int_{t_{j-1}}^{t_j} x'(s)\;\mathrm{d}s = x(t_{j-1}) + \De
 $$
 De acordo com a equação diferencial,
 $$
-x(t_j) = x(t_{j-1}) + \Delta t f(x(t_{j-1})) + \int_{t_{j-1}}^{t_j} (f(x(s)) - f(x(t_{j-1})))\;\mathrm{d}s.
+x(t_j) = x(t_{j-1}) + \Delta t f(t_{j-1}, x(t_{j-1})) + \int_{t_{j-1}}^{t_j} (f(s, x(s)) - f(t_{j-1}, x(t_{j-1})))\;\mathrm{d}s.
 $$
 
 Assim, nos pontos $j = 1, \ldots, n$ da malha,
 $$
-|x(t_j) - x_j| \leq | x(t_{j-1}) - x_{j-1} | + \Delta t |f(x(t_{j-1})) - f(x_{j-1})| + \int_{t_{j-1}}^{t_j} |f(x(s)) - f(x(t_{j-1}))|\;\mathrm{d}s.
+\begin{align*}
+|x(t_j) - x_j| & \leq | x(t_{j-1}) - x_{j-1} | + \Delta t |f(t_{j-1}, x(t_{j-1})) - f(t_{j-1}, x_{j-1})| \\
+  & \quad + \int_{t_{j-1}}^{t_j} |f(s, x(s)) - f(t_{j-1}, x(t_{j-1}))|\;\mathrm{d}s.
+\end{align*}
 $$
-Usando que $f$ é localmente Lipschitz contínua e denotando por $L$ a constante de Lipschitz em uma região limitada mas suficientemente grande para conter as soluções da equação diferencial original e de sua aproximação numérica, obtemos
+Como a solução é contínua, ela é limitada no intervalo $[0, T]$, i.e.
 $$
-|x(t_j) - x_j| \leq |x(t_{j-1}) - x_{j-1}| + L \Delta t |x(t_{j-1}) - x_{j-1}| + L \int_{t_{j-1}}^{t_j} |x(s) - x(t_{j-1})|\;\mathrm{d}s.
+R_0 = \max_{0\leq t \leq T}|x(t)| < \infty.
+$$
+Seja $R > R_0$ e considere as constantes de Lipschitz $L_1 = L_1(R)$ e $L_2 = L_2(R)$ tais que
+$$
+  |f(t, x) - f(s, y)| \leq L_1(R)|t - s| + L_2(R)|x - y|, \quad \forall 0 \leq t, s \leq T, \;\forall x, y, \; |x|, |y| \leq R.
+$$
+
+Assuma, por indução, que $|x_{j-1}| \leq R$. Com isso,
+$$
+\begin{align*}
+|x(t_j) - x_j| & \leq |x(t_{j-1}) - x_{j-1}| + L_2 \Delta t |x(t_{j-1}) - x_{j-1}| \\
+  & \quad +\int_{t_{j-1}}^{t_j} \left( L_1 |s - t_{j-1}| + L_2 |x(s) - x(t_{j-1})|\right)\;\mathrm{d}s \\
+  & \leq |x(t_{j-1}) - x_{j-1}| + L_2 \Delta t |x(t_{j-1}) - x_{j-1}| \\
+  & \quad + \frac{L_1}{2}|t_j - t_{j-1}|^2 + L_2 \int_{t_{j-1}}^{t_j}|x(s) - x(t_{j-1})|\;\mathrm{d}s.
+\end{align*}
 $$
 
 O integrando do último termo pode ser estimado por
 $$
 \begin{align*}
 \int_{t_{j-1}}^{t_j} |x(s) - x(t_{j-1})|\;\mathrm{d}s & \leq \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s |x'(\tau)|\;\mathrm{d}\tau\;\mathrm{d}s \\
-& \leq \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s |f(x(\tau))|\;\mathrm{d}\tau\;\mathrm{d}s \\
-& \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(|f(x(\tau)) - f(0)| + |f(0)|\right)\;\mathrm{d}\tau\;\mathrm{d}s \\
-& L \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(|x(\tau)| + |f(0)|\right) \;\mathrm{d}\tau\;\mathrm{d}s \\
-& \leq L M \Delta t^2,
+& \leq \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s |f(\tau, x(\tau))|\;\mathrm{d}\tau\;\mathrm{d}s \\
+& \quad + \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(|f(\tau, x(\tau)) - f(\tau, 0)| + |f(\tau, 0)|\right)\;\mathrm{d}\tau\;\mathrm{d}s \\
+& \quad + \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(L_2|x(\tau)| + |f(\tau, 0)|\right) \;\mathrm{d}\tau\;\mathrm{d}s \\
+& \leq (L_1 R_0 + C_0) \Delta t^2,
 \end{align*}
 $$
 onde
 $$
-M = |f(0)| + \max_{0 \leq t \leq T} |x(t)|.
+C_0 = \max_{0 \leq t \leq T} |f(\tau, 0)|.
 $$
 Assim,
 $$
-|x(t_j) - x_j| \leq (1 + L\Delta t)|x(t_{j-1}) - x_{j-1}| + M \Delta t^2.
+|x(t_j) - x_j| \leq (1 + L_2\Delta t)|x(t_{j-1}) - x_{j-1}| + M \Delta t^2,
+$$
+onde
+$$
+M = \frac{L_1}{2} + L_1 R_0 + C_0.
 $$
 
 Iterando essa estimativa, chegamos a
 $$
 \begin{align*}
-|x(t_j) - x_j| & \leq (1 + L\Delta t)^2|x(t_{j-2}) - x_{j-2}| + M \Delta t^2(1 + (1 + L\Delta t)) \\
+|x(t_j) - x_j| & \leq (1 + L_2\Delta t)^2|x(t_{j-2}) - x_{j-2}| + M \Delta t^2(1 + (1 + L\Delta t)) \\
 & \leq \ldots \\
-& \leq (1 + L\Delta t)^j|x(t_0) - x_0| + M \Delta t^2(1 + (1 + L\Delta t) + \ldots + (1 + L\Delta t)^{j-1}) \\
-& \leq e^{LT}|x(t_0) - x_0| + \frac{M}{L}e^{LT}\Delta t.
+& \leq (1 + L_2\Delta t)^j|x(t_0) - x_0| + M \Delta t^2(1 + (1 + L_2\Delta t) + \ldots + (1 + L_2\Delta t)^{j-1}) \\
+& \leq e^{L_2T}|x(t_0) - x_0| + \frac{M}{L_2}e^{L_2T}\Delta t.
 \end{align*}
 $$
 
 Considerando que $x_0 = x(t_0)$, obtemos
 $$
-\max_j |x(t_j) - x_j| \leq \frac{M}{L}e^{LT}\Delta t,
+|x(t_j) - x_j| \leq \frac{M}{L_2}e^{L_2T}\Delta t.
 $$
-mostrando que é o método de Euler é de primeira ordem.
+Lembrando que $L_2=L_2(R)$, para $\Delta t$ suficientemente pequeno tal que
+$$
+\frac{M}{L_2(R)}e^{L_2(R)T}\Delta t \leq R - R_0,
+$$
+podemos garantir que
+$$
+|x_j| \leq R,
+$$
+obtendo, por indução, que
+$$
+\max_{j=0, \ldots, n}|x_j^n| \leq R, \qquad \max_{j=0, \ldots, n} |x(t_j) - x_j| \leq \frac{M}{L_2}e^{L_2T}\Delta t,
+$$
+mostrando que o método de Euler é de primeira ordem.
 
 ## Convergência no caso aleatório
 
