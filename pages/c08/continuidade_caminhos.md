@@ -1,4 +1,4 @@
-@def title = "Continuidade dos caminhos amostrais"
+@def title = "Limitação e continuidade das soluções"
 
 # {{ get_title }}
 
@@ -31,14 +31,49 @@ $$
 onde $C_g = \max_{t\in [0, T]}|g(t, 0)|$.
 
 Com isso,
+$$
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3\mathbb{E}\left[ \left(\int_0^t f(s, X_s)\;\mathrm{d}s\right)^2\right] + 3\mathbb{E}\left[ \left(\int_0^t g(s, X_s)\;\mathrm{d}W_s\right)^2 \right].
+$$
+Usando a desigualdade de Cauchy-Schwartz na segunda integral e a isometria de Itô na terceira, obtemos
+$$
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3t \int_0^t \mathbb{E}\left[f(s, X_s)^2 \right]\;\mathrm{d}s + 3\int_0^t \mathbb{E}\left[ g(s, X_s)^2 \right]\;\mathrm{d}s.
+$$
+Usando as estimativas acima, temos
+$$
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3t \int_0^t \mathbb{E}\left[2C_f^2 + 2L_f^2 X_s^2 \right]\;\mathrm{d}s + 3\int_0^t \mathbb{E}\left[ 2C_g^2 + 2L_g^2 X_s^2 \right]\;\mathrm{d}s.
+$$
+Isso nos dá
+$$
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 6(tC_f^2 + C_g^2) + 6(tL_f^2 + L_g^2) \int_0^t \mathbb{E}\left[X_s^2 \right]\;\mathrm{d}s.
+$$
+Pela desigualdade de Gronwall, obtemos, finalmente, a limitação da média quadrática da solução:
+$$
+\mathbb{E}\left[X_t^2\right] \leq \left(3\mathbb{E}\left[X_0^2\right] + 6(tC_f^2 + C_g^2) \right)e^{3(t^2L_f^2 + 2tL_g^2)},
+$$
+para $0\leq t \leq T.$
+
+## Continuidade temporal em média quadrática
+
+De maneira semelhante, como, para $0\leq t \leq t + \tau \leq T,$
+$$
+X_{t+\tau} - X_t = \int_t^{t+\tau} f(s, X_s)\;\mathrm{d}s + \int_t^{t+\tau} g(s, X_s)\;\mathrm{d}W_s,
+$$
+temos
+$$
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq 2\tau\int_t^{t+\tau}\mathbb{E}\left[f(s, X_s)^2\right]\;\mathrm{d}s + 2\int_t^{t+\tau}\mathbb{E}\left[g(s, X_s)^2\right]\;\mathrm{d}s,
+$$
+o que nos dá
+$$
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq 2\tau\int_t^{t+\tau}\mathbb{E}\left[2C_f^2 + 2L_f^2 X_s^2\right]\;\mathrm{d}s + 2\int_t^{t+\tau}\mathbb{E}\left[2C_g^2 + 2L_g^2 X_s^2\right]\;\mathrm{d}s.
+$$
+Portanto, sabendo que a média quadrática é limitada, podemos escrever,
+$$
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq 4\tau^2\left(C_f^2 + 2L_f^2 \max_{t\leq s \leq t+\tau}\mathbb{E}\left[X_s^2\right]\right) + 4\tau\left(C_g^2 + 2L_g^2 \max_{t\leq s \leq t+\tau}\mathbb{E}\left[X_s^2\right]\right).
+$$
+Com isso, vemos que $\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right]$ é Lipschitz contínuo. Mas observe que essa é a média quadrática. Considerando a norma forte, temos
+$$
+\mathbb{E}\left[ |X_{t+\tau} - X_t|\right] \leq \mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right]^{1/2} \leq C_T\tau^{1/2},
+$$
+para $0\leq t \leq t + \tau \leq T,$ para uma constante $C_T > 0$ apropriada.
 
 ## Continuidade temporal dos caminhos
-
-Agora, escrevemos
-$$
-X_{t + \Delta t} - X_t = \int_t^{t+\Delta t} f(s, X_s)\;\mathrm{d}s + \int_t^{t+\Delta t} g(s, X_s)\;\mathrm{d}W_s.
-$$
-Usando a isometria de Itô,
-$$
-\mathbb{E}\left[\left|X_{t + \Delta t} - X_t\right|\right] \leq \int_t^{t+\Delta t} |f(s, X_s)|\;\mathrm{d}s + \left(\int_t^{t+\Delta t} g(s, X_s)^2\;\mathrm{d}s\right)^{1/2}.
-$$
