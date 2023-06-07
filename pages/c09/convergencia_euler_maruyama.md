@@ -139,7 +139,7 @@ mostrando que o método de Euler é de primeira ordem.
 
 Considere, agora, a equação estocástica
 $$
-\mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 $$
 com uma condição inicial
 $$
@@ -148,104 +148,125 @@ $$
 
 Nesse caso, temos
 $$
-X_t = X_0 + \int_0^t f(X_s)\;\mathrm{d}s + \int_0^t g(X_s)\;\mathrm{d}W_s.
+X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 $$
 Já a aproximação pelo método de Euler-Maruyama é dada por
 $$
-X_j^n = X_{j-1}^n + f(X_{j-1}^n) \Delta t + g(X_{j-1}^n) \Delta W_j,
+X_j^n = X_{j-1}^n + f(t_{j-1}, X_{j-1}^n) \Delta t + g(t_{j-1}, X_{j-1}^n) \Delta W_j,
 $$
 onde $X_0^n = X_0$ e $\Delta W_j$.
 
-Assumimos $f$ e $g$ globalmente Lipschitz contínuas, com constantes de Lipschitz $L_f$ e $L_g$, respectivamente.
+Assumimos $f$ e $g$ globalmente Lipschitz contínuas, ou seja,
+$$
+|f(t, x) - f(s, y)| \leq L_{f, 1}|t - s| + L_{f, 2}|x - y|,
+$$
+e
+$$
+|g(t, x) - g(s, y)| \leq L_{g, 1}|t - s| + L_{g, 2}|x - y|,
+$$
+para todo $0 \leq t, s \leq T$ e todo $x, y$.
 
-Para fazermos uso da isometria de Itô, vamos estimar a média quadrática do erro. Mais precisamente, vamos estimar
+Para uma estimativa adequada do termo estocástico, precisamos da isometria de Itô, e para isso precisamos trabalhar com a média quadrática.  Mais precisamente, vamos estimar
 $$
-D_j = \max_{i = 0, \ldots, j} \mathbb{E}\left[ |X_{t_i} - X_i^n|^2\right]
-$$
-
-Para efeito de comparação, temos
-$$
-X_{t_j} = X_{t_{j-1}} + \int_{t_{j-1}}^{t_j} f(X_s)\;\mathrm{d}s + \int_0^t g(X_s)\;\mathrm{d}W_s.
+d_j = \max_{i = 0, \ldots, j} \mathbb{E}\left[ |X_{t_i} - X_i^n|^2\right].
 $$
 
-Assim,
+Em relação à média quadrática, lembremos das estimativas
+$$
+\mathbb{E}\left[X_t^2\right] \leq M_T,
+$$
+e
+$$
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq C_T^2\tau,
+$$
+para $0\leq t \leq t + \tau \leq T,$ para constantes apropriadas $C_T, M_T > 0.$
+
+Agora, por conta também da necessidade de trabalharmos com a média quadrática, devemos considerar uma expressão global para o erro, escrevendo
+$$
+X_{t_j} = X_0 + \int_0^{t_j} f(s, X_s)\;\mathrm{d}s + \int_0^{t_j} g(s, X_s)\;\mathrm{d}W_s
+$$
+e
+$$
+X_j^n = X_0 + \sum_{i=1}^j f(t_{i-1}, X_{i-1}^n)\Delta t_{i-1} + \sum_{i=1}^j g(t_{i-1}, X_{i-1}^n)\Delta W_{i-1}.
+$$
+
+Não funciona estimarmos de maneira recursiva, pois, por conta da desigualdade $(a_1 + \cdots + a_k)^2 \leq k(a_1^2 + \cdots + a_k^2),$ teríamos algo do tipo $d_j \leq C_1d_{j-1} + C_0$, com $C>1$, de forma que as iterações nos dariam um termo acumulado $C^j$, que explode à medida que a malha é refinada, pois não está acompanhado do passo de tempo $\Delta t$.
+
+Assim, escrevendo o erro de $t=0$ a $t=t_j,$ temos
+$$
+X_{t_j} - X_j^n = \int_0^{t_j} f(s, X_s)\;\mathrm{d}s + \int_0^{t_j} g(s, X_s)\;\mathrm{d}W_s - \sum_{i=1}^j f(t_{i-1}, X_{i-1}^n) \Delta t_{i-1} - \sum_{i=1}^j g(t_{i-1}, X_{i-1}^n) \Delta W_{i-1}.
+$$
+Podemos escrever isso na forma
 $$
 \begin{align*}
-X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
-& \qquad + \int_{t_{j-1}}^{t_j} f(X_s) \;\mathrm{d}s - f(X_{j-1}^n) \Delta t \\
-& \qquad + \int_{t_{j-1}}^{t_j} g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) \Delta W_j \\
-& = X_{t_{j-1}} - X_{j-1}^n \\
-& \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{j-1}^n))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s \\
-& = X_{t_{j-1}} - X_{j-1}^n \\
-& \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}s + \int_0^{t_j} (g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1} + \sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}.
 \end{align*}
 $$
 
-Elevando ao quadrado e usando que $(a_1 + \ldots + a_5)^2 \leq 5(a_1^2 + \ldots + a_5^2)$, 
+Elevando ao quadrado e usando que $(a_1 + \ldots + a_4)^2 \leq 4(a_1^2 + \ldots + a_4^2)$,
 $$
 \begin{align*}
-\left| X_{t_j} - X_j^n \right|^2 & \leq 5\left| X_{t_{j-1}} - X_{j-1}^n \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s \right|^2 
+\left(X_{t_j} - X_j^n\right)^2 & = 4\left(\int_0^{t_j} (f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}s\right)^2 + 4\left(\int_0^{t_j} (g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}W_s\right)^2 \\
+& \quad + 4\left(\sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1}\right) + 4\left(\sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}\right)^2.
+\end{align*}
+$$
+Usando a desigualdade de Cauchy-Schwartz na primeira integral e no primeiro somatório, obtemos
+$$
+\begin{align*}
+\left(X_{t_j} - X_j^n\right)^2 & \leq 4t_j\int_0^{t_j} (f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))^2\;\mathrm{d}s + 4\left(\int_0^{t_j} (g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}W_s\right)^2 \\
+& \quad + 4t_j\sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2 \Delta t_{i-1} + 4\left(\sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}\right)^2.
+\end{align*}
+$$
+
+Tomando o valor esperado e usando a isometria de Itô na integral e no somatório (que é a isometria de Itô numa função escada e que também pode ser deduzido diretamente pelas independências dos saltos em intervalos distintos e pale condição de não antecipação),
+$$
+\begin{align*}
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] & \leq 4t_j\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s + 4\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s \\
+& \quad + 4t_j\sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} + 4\sum_{i=1}^j \mathbb{E}\left[(g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1}.
 \end{align*}
 $$
 
 Os dois primeiros termos integrais podem ser estimados por
 $$
 \begin{align*}
-\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2 & \leq (t_j - t_{j-1})\int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))^2\;\mathrm{d}s \\
-& \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} |X_s - X_{t_{j-1}}|^2\;\mathrm{d}s
+\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s & \leq \sum_{i=1}^j\int_{t_{i-1}}^{t_i} \left(2L_{f,1}^2|s - t_{i-1}|^2 + 2L_{f, 2}^2\mathbb{E}\left[|X_s - X_{t_{i-1}}|^2\right]\right)\;\mathrm{d}s \\
+& \leq \left(2L_{f,1}^2 + 2L_{f, 2}^2C_T\right)\sum_{i=1}^j\int_{t_{i-1}}^{t_i} |s - t_{i-1}|^2 \;\mathrm{d}s \\
+& \leq \left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\sum_{i=1}^j(t_i - t_{i-1})^2 \\
+& \leq \left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\max_i (t_i - t_{i-1}) \\
+& \leq \left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\Delta t.
 \end{align*}
+$$
+e, analogamente,
+$$
+\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s \leq \left(L_{g,1}^2 + L_{g, 2}^2C_T\right)\Delta t.
+$$
+
+Já os somatórios nos dão
+$$
+\sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}
 $$
 e
 $$
-\begin{align*}
-\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2 & \leq (t_j - t_{j-1})\int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))^2\;\mathrm{d}s \\
-& \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} |X_{t_{j-1}} - X_{j-1}^n|^2\;\mathrm{d}s \\
-& \leq L_f^2(t_j - t_{j-1})^2|X_{t_{j-1}} - X_{j-1}^n|^2
-\end{align*}
+\sum_{i=1}^j \mathbb{E}\left[(g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{g, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
 $$
 
-O nosso objetivo é estimar a média quadrática. Com isso em mente, vemos que
-$$
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2\right] \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} \mathbb{E}\left[|X_s - X_{t_{j-1}}|^2\right]\;\mathrm{d}s
-$$
-e
-$$
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2\right] \leq L_f^2(t_j - t_{j-1})^2\mathbb{E}\left[|X_{t_{j-1}} - X_{j-1}^n|^2\right].
-$$
-
-Nas integrais estocásticas, usamos a isometria de Itô:
-$$
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \right|^2\right] = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(g(X_s) - g(X_{t_{j-1}}))^2\right]\;\mathrm{d}s \leq L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_s - X_{t_{j-1}})^2\right]\;\mathrm{d}s
-$$
-e
+Juntando as estimativas,
 $$
 \begin{align*}
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s \right|^2\right] & = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(g(X_{t_{j-1}}) - g(X_{j-1}^n))^2\right]\;\mathrm{d}s \\
-& \leq L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right]\;\mathrm{d}s \\
-& \leq L_g^2 (t_j - t_{j-1})\mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right].
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] & \leq 4t_j\left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\Delta t + 4\left(L_{g,1}^2 + L_{g, 2}^2C_T\right)\Delta t \\
+& \quad + 4t_jL_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1} + 4L_{g, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
 \end{align*}
 $$
-
-Juntando as estimativas, obtemos
+Ou seja,
 $$
-\begin{align*}
-\mathbb{E}\left[\left| X_{t_j} - X_j^n \right|^2\right] & \leq 5\mathbb{E}\left[\left| X_{t_{j-1}} - X_{j-1}^n \right|^2\right] \\
-& \qquad + 5L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} \mathbb{E}\left[|X_s - X_{t_{j-1}}|^2\right]\;\mathrm{d}s \\
-& \qquad + 5L_f^2(t_j - t_{j-1})^2\mathbb{E}\left[|X_{t_{j-1}} - X_{j-1}^n|^2\right] \\
-& \qquad + 5L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_s - X_{t_{j-1}})^2\right]\;\mathrm{d}s \\
-& \qquad + 5L_g^2 (t_j - t_{j-1}) \mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right].
-\end{align*}
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C \Delta t + L \sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1},
 $$
-
-Agora, usamos a continuidade da solução $\{X_t\}_{t \geq 0}$ em média quadrática para estimar as integrais restantes.
+para $C$ e $L$ apropriados. Pela desigualdade de Gronwall discreta, isso nos dá
+$$
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq Ce^{Lt_j}\Delta t,
+$$
+mostrando que o método de Euler-Maruyama é de ordem forte $1.$
 
 ## Convergência no caso estocástico com ruído constante
 
