@@ -326,7 +326,7 @@ $$
 \begin{align*}
 X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s + \int_{\tau^n(t)}^t g(s, X_s)\;\mathrm{d}W_s \\
 & \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
-& \quad + \int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(t), X_s)) \;\mathrm{d}W_s \\
+& \quad + \int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(s), X_s)) \;\mathrm{d}W_s \\
 & \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s \\
 & \quad + \int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s.
 \end{align*}
@@ -337,7 +337,7 @@ $$
 \begin{align*}
 \mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] & \leq 6\mathbb{E}\left[\left(\int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s\right)^2\right] + 6\mathbb{E}\left[\left(\int_{\tau^n(t)}^t g(s, X_s)\;\mathrm{d}W_s\right)^2\right] \\
 & \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s\right)^2\right] \\
-& \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(t), X_s)) \;\mathrm{d}W_s\right)^2\right] \\
+& \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(s), X_s)) \;\mathrm{d}W_s\right)^2\right] \\
 & \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s\right)^2\right] \\
 & \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s\right)^2\right].
 \end{align*}
@@ -354,7 +354,7 @@ $$
 e
 $$
 \begin{align*}
-\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s\right)^2\right] & \leq \int_0^{\tau^n(t)} \mathbb{E}\left[\left(g(\tau^n(s), X_s) - g(\tau^n(t), \tilde X_s^n)\right)^2\right]\;\mathrm{d}s \\
+\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s\right)^2\right] & \leq \int_0^{\tau^n(t)} \mathbb{E}\left[\left(g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_s^n)\right)^2\right]\;\mathrm{d}s \\
 & \leq L_{g, 2}^2\int_0^{\tau^n(t)} \mathbb{E}\left[\left(X_s - \tilde X_{s}^n\right)^2\right]\;\mathrm{d}s \\
 & \leq t L_{f, 2}^2\int_0^{t} \mathbb{E}\left[\left(X_s - \tilde X_{s}^n\right)^2\right]\;\mathrm{d}s.
 \end{align*}
@@ -412,13 +412,19 @@ para uma outra constante apropriada $C_4>0.$
 
 Jutando as estimativas,
 $$
-\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C\Delta t + L \int_0^t \mathbb{E}\left[\left(X_s - \tilde X_s^n\right)^2\right]\;\mathrm{d}s,
+\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C^2\Delta t + 2L \int_0^t \mathbb{E}\left[\left(X_s - \tilde X_s^n\right)^2\right]\;\mathrm{d}s,
 $$
-para constantes apropriadas $C, L > 0.$ Pela desigualdade de Grownall, obtemos
+para constantes apropriadas $C, L > 0,$ e onde usamos $C^2$ e $2L$ ao invés de $C$ e $L$ apenas por conveniência, já que estamos tratando da média quadrática.
+
+Pela desigualdade de Grownall, obtemos
 $$
-\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C\Delta t e^{Lt},
+\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C^2\Delta t e^{2Lt}.
 $$
-o que nos dá a convergência forte de ordem 1.
+Para o erro forte, segue da desigualdade de Lyapunov que
+$$
+\mathbb{E}\left[\left|X_t - \tilde X_t^n\right|\right] \leq \mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right]^{1/2} \leq C\Delta t^{1/2} e^{Lt}.
+$$
+o que nos dá a convergência forte de ordem $1/2.$
 
 
 ## Convergência no caso estocástico com ruído aditivo
@@ -437,35 +443,49 @@ $$
 $$
 para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$
 
-Nesse caso, obtemos
+Nesse caso, com a interpolação acima, obtemos
 $$
 \begin{align*}
 X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s + \int_{\tau^n(t)}^t g(s)\;\mathrm{d}W_s \\
 & \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
-& \quad + \int_0^{\tau^n(t)} (g(s) - g(\tau^n(t))) \;\mathrm{d}W_s \\
+& \quad + \int_0^{\tau^n(t)} (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s \\
 & \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s.
 \end{align*}
 $$
-Observe que o último termo do caso anterior, envolvendo $g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n) = g(\tau^n(s)) - g(\tau^n(s)) = 0$ desaparece, no caso de $g$ só depender de $t$.
+Observe que o último termo do caso anterior, envolvendo $g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n) = g(\tau^n(s)) - g(\tau^n(s)) = 0$ desaparece, no caso de $g$ só depender de $t$, mas na verdade esse termo não era problemático. Os termos com ordem mais baixa eram os equivalentes ao segundo e ao quarto, acima. O quarto termo, agora, passa a ser de ordem 1, como veremos a seguir. Mas o segundo ainda é de ordem 1/2.
 
-Vale ressaltar que a hipótese, no caso anterior, da dependência Hölder no tempo, não é uma restrição séria à ordem de convergência. Ela foi imposta porque não adiantaria pedir dependência Lipschitz por conta da influência do termo $x.$
-
-
-
-## Convergência no caso estocástico com ruído constante
-
-Observe, no entanto, que quando $g(X_t) = \sigma$ é constante, os termos de ruído se cancelam, quando subtraímos $X_j^n$ de $X_{t_j}$. Sobram, então, apenas os termos que nos dão ordem $1$ de convergência forte.
-
-Mesmo no caso autônomo, assumindo $g(t, X_t) = g(t)$, também se obtém ordem $1$ de convergência forte. Nesse caso, o termo de ruído contribui com um erro da forma
+Para evitar o segundo termo, consideramos uma interpolação um pouco diferente, integrando o termo estocástico até $t$, aproveitando o fato de $g$ não depender de $x$, ou seja
 $$
-\int_{t_{j-1}}^{t_j} (g(s) - g(t_{j-1}))\;\mathrm{d}W_s = \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^{s} g'(\tau)\;\mathrm{d}\tau\;\mathrm{d}W_s.
+\tilde X_t^n =  X_0 + \int_0^{\tau^n(t)} f(\tau^n(s), \tilde X_s^n)\;\mathrm{d}s + \int_0^{t} g(\tau^n(s))\;\mathrm{d}W_s.
 $$
-Nesse caso, usando a isometria de Itô,
+A diferença entre a solução exata e a interpolação, agora, passa a ser
 $$
-\mathbb{E}\left[ \left| \int_{t_{j-1}}^{t_j} (g(s) - g(t_{j-1}))\;\mathrm{d}W_s\right|^2\right] = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[ \left| \int_{t_{j-1}}^{s} g'(\tau)\;\mathrm{d}\tau \right|^2\right] \mathrm{d}s \leq \int_{t_{j-1}}^{t_j} (s - t_{j-1})\int_{t_{j-1}}^{s} |g'(\tau)|^2\;\mathrm{d}\tau \mathrm{d}s \leq M_g \Delta t^3,
+\begin{align*}
+X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s  \\
+& \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
+& \quad + \int_0^t (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s \\
+& \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s.
+\end{align*}
 $$
-onde $M_g = \max |g'|^2 /3$.
+Isso nos livrou do segundo termo da diferença anterior. O outro termo estocástico pode ser tratado da seguinte forma. Começamos usando a isometria de Itô,
+$$
+\mathbb{E}\left[\left(\int_0^t (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s\right)^2\right] = \int_0^t \left(g(s) - g(\tau^n(s))\right)^2 \;\mathrm{d}s.
+$$
+Agora, usamos que $g$ é Lipschitz em $t$,
+$$
+\mathbb{E}\left[\left(\int_0^t (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s\right)^2\right] \leq \int_0^t L_g^2(s - \tau^n(s))^2 \;\mathrm{d}s \leq tL_g^2\Delta t^2.
+$$
 
-Ao somarmos em $j$, um $\Delta t$ é aproveitando, restando $\Delta t^2$. Ao usarmos a desigualdade de Lyapunov, isso nos dá um termos também da ordem $\Delta t$, garantindo a ordem $1$ de convergência forte.
+Graças à continuidade Lipschitz de $f$ em relação a $t$, os dois primeiros termos envolvendo $f$ também nos dão $\Delta t^2.$ Assim,
+$$
+\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C^2\Delta t^2 e^{2Lt},
+$$
+para constantes apropriadas $C^2$ e $2L$. Para o erro forte, segue da desigualdade de Lyapunov que
+$$
+\mathbb{E}\left[\left|X_t - \tilde X_t^n\right|\right] \leq \mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right]^{1/2} \leq C\Delta t e^{Lt}.
+$$
+o que nos dá a convergência forte de ordem 1.
+
+Vale ressaltar que a hipótese, no caso anterior, da dependência Hölder no tempo, não é uma restrição séria à ordem de convergência. Ela foi pedida porque não adiantaria pedir dependência Lipschitz por conta da influência do termo $x.$ É o mínimo necessário para a convergência de ordem 1/2, no caso geral.
 
 ## Não-convergência no caso estocástico sem condição Lipschitz global
