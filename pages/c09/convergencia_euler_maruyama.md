@@ -296,13 +296,21 @@ $$
 $$
 e
 $$
-|f(t, x) - f(s, x)| \leq C_f(1 + |x|)|t - s|^{1/2}, \quad |g(t, x) - g(s, x)| \leq C_g(1 + |x|)|t - s|^{1/2},
+|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|^{1/2}, \quad |g(t, x) - g(s, x)| \leq H_g(1 + |x|)|t - s|^{1/2},
 $$
 para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$ Naturalmente,
 $$
-|f(t, x)| \leq |f(t, x) - f(t, 0)| + |f(t, 0) - f(0, 0)| + |f(0, 0)| \leq L_f|x| + C_ft^{1/2} + C_0,
+|f(t, x)| \leq |f(t, x) - f(t, 0)| + |f(t, 0)| \leq L_f|x| + C_f,
 $$
-onde $C_0 = |f(0, 0)|.$
+onde 
+$$
+C_f = \max_{0\leq t \leq T}|f(t, 0)|.
+$$
+Usaremos, também, a estimativa
+$$
+\mathbb{E}\left[X_t^2\right] \leq M_T e^{L_T t},
+$$
+para $0\leq t \leq T.$
 
 Para um instante qualquer $0\leq t \leq T,$ podemos escrever
 $$
@@ -356,25 +364,93 @@ O primeiro termos estimamos usando a desigualdade de Cauchy-Schwartz e as estima
 $$
 \begin{align*}
 \mathbb{E}\left[\left(\int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s\right)^2\right] & \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \mathbb{E}\left[f(s, X_s)^2\right]\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \mathbb{E}\left[2C_f^2 + 2X_s^2\right]\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \left(2C_f^2 + 2M_T\right)\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))^2\left(2C_f^2 + 2M_T\right).
+& \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \mathbb{E}\left[2C_f^2 + 2L_f^2X_s^2\right]\;\mathrm{d}s \\
+& \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \left(2C_f^2 + 2L_f^2M_T\right)\;\mathrm{d}s \\
+& \leq (t - \tau^n(t))^2\left(2C_f^2 + 2L_f^2M_T\right) \\
+& \leq \Delta t^2 \left(2C_f^2 + 2L_f^2M_T\right) \\
+& \leq C_1\Delta t^2,
 \end{align*}
 $$
+para uma constante apropriada $C_1>0.$
 
 Usando a isometria de Itô no lugar da estimativa de Cauchy-Schwartz, estimamos o segundo termo,
 $$
 \begin{align*}
 \mathbb{E}\left[\left(\int_{\tau^n(t)}^t g(s, X_s)\;\mathrm{d}W_s\right)^2\right] & \leq \int_{\tau^n(t)}^t \mathbb{E}\left[g(s, X_s)^2\right]\;\mathrm{d}s \\
-& \leq \int_{\tau^n(t)}^t \mathbb{E}\left[2C_g^2 + 2X_s^2\right]\;\mathrm{d}s \\
-& \leq \int_{\tau^n(t)}^t \left(2C_g^2 + 2M_T\right)\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))\left(2C_g^2 + 2M_T\right).
+& \leq \int_{\tau^n(t)}^t \mathbb{E}\left[2C_g^2 + 2L_g^2X_s^2\right]\;\mathrm{d}s \\
+& \leq \int_{\tau^n(t)}^t \left(2C_g^2 + 2L_g^2M_T\right)\;\mathrm{d}s \\
+& \leq (t - \tau^n(t))\left(2C_g^2 + 2L_g^2M_T\right) \\
+& \leq \Delta t \left(2C_g^2 + 2L_g^2M_T\right) \\
+& \leq C_2\Delta t,
 \end{align*}
 $$
+para uma outra constante $C_2>0.$
+
+Finalmente, para o terceiro e o quarto termos, utilizamos a dependência Hölder no tempo dos termos $f$ e $g$. No terceiro termo, obtemos
+$$
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s\right)^2\right] & \leq \tau^n(t) \int_0^{\tau^n(t)} \mathbb{E}\left[\left(f(s, X_s) - f(\tau^n(s), X_s)\right)^2\right]\;\mathrm{d}s \\
+& \leq \tau^n(t) \int_0^{\tau^n(t)} \mathbb{E}\left[2H_f^2(1 + |X_s|)^2|s - \tau^n(s)|\right]\;\mathrm{d}s \\
+& \leq 4H_f^2\tau^n(t)\Delta t \int_0^{\tau^n(t)} \left(1 + \mathbb{E}\left[X_s^2\right]\right)\;\mathrm{d}s \\
+& \leq 4H_f^2\tau^n(t)\Delta t \int_0^{\tau^n(t)} \left(1 + M_Te^{L_T s} \right)\;\mathrm{d}s \\
+& \leq 4H_f^2\tau^n(t)\Delta t \left(\tau^n(t) + \frac{M_T}{L_T}e^{L_T \tau^n(t)} \right) \\
+& \leq C_1\Delta t,
+\end{align*}
+$$
+para uma constante apropriada $C_3>0.$ No quarto termo,
+$$
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(s), X_s))\;\mathrm{d}s\right)^2\right] & \leq \int_0^{\tau^n(t)} \mathbb{E}\left[\left(g(s, X_s) - g(\tau^n(s), X_s)\right)^2\right]\;\mathrm{d}s \\
+& \leq \int_0^{\tau^n(t)} \mathbb{E}\left[2H_g^2(1 + |X_s|)^2|s - \tau^n(s)|\right]\;\mathrm{d}s \\
+& \leq 4H_g^2\Delta t \int_0^{\tau^n(t)} \left(1 + \mathbb{E}\left[X_s^2\right]\right)\;\mathrm{d}s \\
+& \leq 4H_g^2\Delta t \int_0^{\tau^n(t)} \left(1 + M_Te^{L_T s} \right)\;\mathrm{d}s \\
+& \leq 4H_g^2\Delta t \left(\tau^n(t) + \frac{M_T}{L_T}e^{L_T \tau^n(t)} \right) \\
+& \leq C_2\Delta t,
+\end{align*}
+$$
+para uma outra constante apropriada $C_4>0.$
+
+Jutando as estimativas,
+$$
+\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C\Delta t + L \int_0^t \mathbb{E}\left[\left(X_s - \tilde X_s^n\right)^2\right]\;\mathrm{d}s,
+$$
+para constantes apropriadas $C, L > 0.$ Pela desigualdade de Grownall, obtemos
+$$
+\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C\Delta t e^{Lt},
+$$
+o que nos dá a convergência forte de ordem 1.
+
 
 ## Convergência no caso estocástico com ruído aditivo
 
-Quando $g=g(t),$ podemos mostrar que a convergência forte é, na verdade, de order 1.
+Quando $g=g(t)$ não depende de $x$ e quando a dependência de $f=f(t, x)$ e $g=g(t)$ também é Lipschitz, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, consideramos
+$$
+\mathrm{d}X_t = f(t, X_s)\;\mathrm{d}t + g(t)\;\mathrm{d}W_t
+$$
+e assumimos
+$$
+|f(t, x) - f(t, y)| \leq L_f|x - y|
+$$
+e
+$$
+|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|, \quad |g(t) - g(s)| \leq H_g(1 + |x|)|t - s|,
+$$
+para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$
+
+Nesse caso, obtemos
+$$
+\begin{align*}
+X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s + \int_{\tau^n(t)}^t g(s)\;\mathrm{d}W_s \\
+& \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
+& \quad + \int_0^{\tau^n(t)} (g(s) - g(\tau^n(t))) \;\mathrm{d}W_s \\
+& \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s.
+\end{align*}
+$$
+Observe que o último termo do caso anterior, envolvendo $g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n) = g(\tau^n(s)) - g(\tau^n(s)) = 0$ desaparece, no caso de $g$ só depender de $t$.
+
+Vale ressaltar que a hipótese, no caso anterior, da dependência Hölder no tempo, não é uma restrição séria à ordem de convergência. Ela foi imposta porque não adiantaria pedir dependência Lipschitz por conta da influência do termo $x.$
+
+
 
 ## Convergência no caso estocástico com ruído constante
 
