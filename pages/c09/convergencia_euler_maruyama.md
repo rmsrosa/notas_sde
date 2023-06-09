@@ -30,7 +30,7 @@ A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na eq
 
 Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos.
 
-Por último, um detalhe um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença $|x(t_j) - x_j^n|$, no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para $\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]$.
+Por último, um ponto um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença $|x(t_j) - x_j^n|$, no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para $\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]$.
 
 Vejamos os detalhes.
 
@@ -156,19 +156,19 @@ X_j^n = X_{j-1}^n + f(t_{j-1}, X_{j-1}^n) \Delta t + g(t_{j-1}, X_{j-1}^n) \Delt
 $$
 onde $X_0^n = X_0$ e $\Delta W_j$.
 
-Assumimos $f$ e $g$ globalmente Lipschitz contínuas, ou seja,
+Assumimos $f$ e $g$ globalmente Lipschitz contínuas em $x$ e globalmente Hölder contínuas em $t.$ Mais precisamente, assumimos que
 $$
-|f(t, x) - f(s, y)| \leq L_{f, 1}|t - s| + L_{f, 2}|x - y|,
+|f(t, x) - f(t, y)| \leq L_f|x - y|
 $$
 e
 $$
-|g(t, x) - g(s, y)| \leq L_{g, 1}|t - s| + L_{g, 2}|x - y|,
+|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|^{1/2}, \quad |g(t) - g(s)| \leq H_g(1 + |x|)|t - s|^{1/2},
 $$
-para todo $0 \leq t, s \leq T$ e todo $x, y$.
+para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T,$ onde $H_f,$ $L_f,$ $H_g,$ $L_g > 0$ são constantes apropriadas.
 
 Para uma estimativa adequada do termo estocástico, precisamos da isometria de Itô, e para isso precisamos trabalhar com a média quadrática.  Mais precisamente, vamos estimar
 $$
-d_j = \max_{i = 0, \ldots, j} \mathbb{E}\left[ |X_{t_i} - X_i^n|^2\right].
+\max_{i = 0, \ldots, n} \mathbb{E}\left[ |X_{t_i} - X_i^n|^2\right].
 $$
 
 Em relação à média quadrática, lembremos das estimativas
@@ -199,22 +199,31 @@ $$
 Podemos escrever isso na forma
 $$
 \begin{align*}
-X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}s + \int_0^{t_j} (g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}W_s \\
-& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1} + \sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}.
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s + \int_0^{t_j} (g(s, X_s) - g(t_{i^n(s)}, X_{t^n(s)}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1} + \sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1},
 \end{align*}
 $$
+onde $t^n$ e $i^n$ são as funções de malha
+$$
+i^n(t) = \max_{j=0, \ldots, n}\{j; \;t_j \leq t\},
+$$
+e
+$$
+t^n(t) = t_{i^n(t)} = \max\{t_i \leq t; \; i = 0, \ldots, n\},
+$$
+que nos dão o índice $i^n(t)$ do ponto da malha que está mais próximo e à esquerda de um instante $t$ e o ponto correspondente $t^n(t) = t_{i^n(t)}$ da malha.
 
 Elevando ao quadrado e usando que $(a_1 + \ldots + a_4)^2 \leq 4(a_1^2 + \ldots + a_4^2)$,
 $$
 \begin{align*}
-\left(X_{t_j} - X_j^n\right)^2 & = 4\left(\int_0^{t_j} (f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}s\right)^2 + 4\left(\int_0^{t_j} (g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}W_s\right)^2 \\
+\left(X_{t_j} - X_j^n\right)^2 & = 4\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2 + 4\left(\int_0^{t_j} (g(s, X_s) - g(t^n(s), X_{t^n(s)}))\;\mathrm{d}W_s\right)^2 \\
 & \quad + 4\left(\sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1}\right) + 4\left(\sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}\right)^2.
 \end{align*}
 $$
 Usando a desigualdade de Cauchy-Schwartz na primeira integral e no primeiro somatório, obtemos
 $$
 \begin{align*}
-\left(X_{t_j} - X_j^n\right)^2 & \leq 4t_j\int_0^{t_j} (f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))^2\;\mathrm{d}s + 4\left(\int_0^{t_j} (g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))\;\mathrm{d}W_s\right)^2 \\
+\left(X_{t_j} - X_j^n\right)^2 & \leq 4t_j\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))^2\;\mathrm{d}s + 4\left(\int_0^{t_j} (g(s, X_s) - g(t^n(s), X_{t^n(s)}))\;\mathrm{d}W_s\right)^2 \\
 & \quad + 4t_j\sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2 \Delta t_{i-1} + 4\left(\sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}\right)^2.
 \end{align*}
 $$
@@ -222,24 +231,24 @@ $$
 Tomando o valor esperado e usando a isometria de Itô na integral e no somatório (que é a isometria de Itô numa função escada e que também pode ser deduzido diretamente pelas independências dos saltos em intervalos distintos e pale condição de não antecipação),
 $$
 \begin{align*}
-\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] & \leq 4t_j\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s + 4\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s \\
-& \quad + 4t_j\sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} + 4\sum_{i=1}^j \mathbb{E}\left[(g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1}.
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] & \leq 4t_j\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s + 4\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s \\
+& \quad + 4t_j\sum_{i=1}^j \mathbb{E}\left[(f(t^n(s), X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} + 4\sum_{i=1}^j \mathbb{E}\left[(g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1}.
 \end{align*}
 $$
 
 Os dois primeiros termos integrais podem ser estimados por
 $$
 \begin{align*}
-\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s & \leq \sum_{i=1}^j\int_{t_{i-1}}^{t_i} \left(2L_{f,1}^2|s - t_{i-1}|^2 + 2L_{f, 2}^2\mathbb{E}\left[|X_s - X_{t_{i-1}}|^2\right]\right)\;\mathrm{d}s \\
-& \leq \left(2L_{f,1}^2 + 2L_{f, 2}^2C_T\right)\sum_{i=1}^j\int_{t_{i-1}}^{t_i} |s - t_{i-1}|^2 \;\mathrm{d}s \\
-& \leq \left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\sum_{i=1}^j(t_i - t_{i-1})^2 \\
-& \leq \left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\max_i (t_i - t_{i-1}) \\
-& \leq \left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\Delta t.
+\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s & \leq \sum_{i=1}^j\int_{t_{i-1}}^{t_i} \left(2H_f^2|s - t_{i-1}|(1 + \mathbb{E}\left[X_s^2\right]) + 2L_f^2\mathbb{E}\left[|X_s - X_{t_{i-1}}|^2\right]\right)\;\mathrm{d}s \\
+& \leq \left(2H_f^2(1 + M_T) + 2L_f^2C_T\right)\sum_{i=1}^j\int_{t_{i-1}}^{t_i} (s - t_{i-1}) \;\mathrm{d}s \\
+& \leq \left(H_f^2(1 + M_T) + L_f^2C_T\right)\sum_{i=1}^j(t_i - t_{i-1}) \\
+& \leq t_j\left(H_f^2(1 + M_T) + L_f^2C_T\right)\max_i (t_i - t_{i-1}) \\
+& \leq T\left(H_f^2(1 + M_T) + L_f^2C_T\right)\Delta t.
 \end{align*}
 $$
 e, analogamente,
 $$
-\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t_{i-1}, X_{t_{i-1}}))^2\right]\;\mathrm{d}s \leq \left(L_{g,1}^2 + L_{g, 2}^2C_T\right)\Delta t.
+\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s \leq T\left(H_g^2(1 + M_T) + L_g^2C_T\right)\Delta t.
 $$
 
 Já os somatórios nos dão
@@ -268,165 +277,6 @@ $$
 $$
 mostrando que o método de Euler-Maruyama é de ordem forte $1.$
 
-## Estimativa via interpolação
-
-Observe que a ordem $1/2$ aparece nas estimativas dos dois primeiros termos da expressão global do erro, que envolvem tanto $f$ como $g$ e que acabam dependendo de $\mathbb{E}[(X_{t+\Delta t} -X_t)^2],$ que é da ordem de $\Delta t$, nos dando $\Delta t^{1/2}$ para a norma forte. No entanto, é possível estimar o erro de maneira diferente e não apenas melhorar a estimativa mas também caracterizar melhor os termos que afetam, de fato, o erro.
-
-A ideia é estimar a diferença entre a solução $X_t$ em um instante qualquer $t$ e uma interpolação da aproximação. Para essa interpolação, primeiro definimos as funções de malha
-$$
-j^n(t) = \max_{j=0, \ldots, n}\{j; \;t_j \leq t\},
-$$
-e
-$$
-\tau^n(t) = t_{j^n(t)} = \max\{t_i \leq t; \; i = 0, \ldots, n\},
-$$
-que nos dão o índice do ponto da malha que está mais próximo e à esquerda de um instante $t$ e o ponto correspondente da malha. Com base nisso, definimos a interpolação constante por partes
-$$
-\tilde X_t^n = \tilde X_{\tau^n(t)}^n = X_{j^n(s)}^n.
-$$
-
-Agora, a ideia é estimar o erro
-$$
-\tilde e_t = \mathbb{E}\left[ |X_t - \tilde X_t^n|^2\right].
-$$
-
-Para essa estimativa, vamos assumir que $f$ e $g$ são globalmente Liptschiz contínuas em $x$, uniformemente em $t$, e que são Hölder contínuas no tempo, de tal forma que
-$$
-|f(t, x) - f(t, y)| \leq L_f|x - y|, \quad |g(t, x) - g(t, y)| \leq L_g|x - y|,
-$$
-e
-$$
-|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|^{1/2}, \quad |g(t, x) - g(s, x)| \leq H_g(1 + |x|)|t - s|^{1/2},
-$$
-para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$ Naturalmente,
-$$
-|f(t, x)| \leq |f(t, x) - f(t, 0)| + |f(t, 0)| \leq L_f|x| + C_f,
-$$
-onde 
-$$
-C_f = \max_{0\leq t \leq T}|f(t, 0)|.
-$$
-Usaremos, também, a estimativa
-$$
-\mathbb{E}\left[X_t^2\right] \leq M_T e^{L_T t},
-$$
-para $0\leq t \leq T.$
-
-Para um instante qualquer $0\leq t \leq T,$ podemos escrever
-$$
-\tilde X_t^n =  X_0 + \int_0^{\tau^n(t)} f(\tau^n(s), \tilde X_s^n)\;\mathrm{d}s + \int_0^{\tau^n(t)} g(\tau^n(s), \tilde X_s^n)\;\mathrm{d}W_s.
-$$
-A diferença entre a solução exata e a interpolação é
-$$
-X_t - \tilde X_t^n = \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s - \int_0^{\tau^n(t)} f(\tau^n(s), \tilde X_{s}^n)\;\mathrm{d}s - \int_0^{\tau^n(t)} g(\tau^n(s), \tilde X_{s}^n)\;\mathrm{d}W_s.
-$$
-
-Somando e subtraindo $f(\tau^n(s), X_s)$ e $g(\tau^n(s), X_s)$ e observando a diferença nos limites de integração, obtemos
-$$
-\begin{align*}
-X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s + \int_{\tau^n(t)}^t g(s, X_s)\;\mathrm{d}W_s \\
-& \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
-& \quad + \int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(s), X_s)) \;\mathrm{d}W_s \\
-& \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s \\
-& \quad + \int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s.
-\end{align*}
-$$
-
-Elevando ao quadrado e tomando a esperança, obtemos
-$$
-\begin{align*}
-\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] & \leq 6\mathbb{E}\left[\left(\int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s\right)^2\right] + 6\mathbb{E}\left[\left(\int_{\tau^n(t)}^t g(s, X_s)\;\mathrm{d}W_s\right)^2\right] \\
-& \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s\right)^2\right] \\
-& \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(s), X_s)) \;\mathrm{d}W_s\right)^2\right] \\
-& \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s\right)^2\right] \\
-& \quad + 6\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s\right)^2\right].
-\end{align*}
-$$
-
-Os dois últimos termos são estimados de maneira análoga à anterior, usando a continuidade Lipschitz de $f$ e $g$ na variável $x$, junto com a desigualdade de Cauchy-Schwartz e a isometria de Itô, respectivamente, ou seja
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s\right)^2\right] & \leq \tau^n(t) \int_0^{\tau^n(t)} \mathbb{E}\left[\left(f(\tau^n(s), X_s) - f(\tau^n(t), \tilde X_s^n)\right)^2\right]\;\mathrm{d}s \\
-& \leq \tau^n(t) L_{f, 2}^2\int_0^{\tau^n(t)} \mathbb{E}\left[\left(X_s - \tilde X_{s}^n\right)^2\right]\;\mathrm{d}s \\
-& \leq t L_{f, 2}^2\int_0^{t} \mathbb{E}\left[\left(X_s - \tilde X_{s}^n\right)^2\right]\;\mathrm{d}s.
-\end{align*}
-$$
-e
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}W_s\right)^2\right] & \leq \int_0^{\tau^n(t)} \mathbb{E}\left[\left(g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_s^n)\right)^2\right]\;\mathrm{d}s \\
-& \leq L_{g, 2}^2\int_0^{\tau^n(t)} \mathbb{E}\left[\left(X_s - \tilde X_{s}^n\right)^2\right]\;\mathrm{d}s \\
-& \leq t L_{f, 2}^2\int_0^{t} \mathbb{E}\left[\left(X_s - \tilde X_{s}^n\right)^2\right]\;\mathrm{d}s.
-\end{align*}
-$$
-
-O primeiro termos estimamos usando a desigualdade de Cauchy-Schwartz e as estimativas para $f$ e $\mathbb{E}[X_t^2],$
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s\right)^2\right] & \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \mathbb{E}\left[f(s, X_s)^2\right]\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \mathbb{E}\left[2C_f^2 + 2L_f^2X_s^2\right]\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))\int_{\tau^n(t)}^t \left(2C_f^2 + 2L_f^2M_T\right)\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))^2\left(2C_f^2 + 2L_f^2M_T\right) \\
-& \leq \Delta t^2 \left(2C_f^2 + 2L_f^2M_T\right) \\
-& \leq C_1\Delta t^2,
-\end{align*}
-$$
-para uma constante apropriada $C_1>0.$
-
-Usando a isometria de Itô no lugar da estimativa de Cauchy-Schwartz, estimamos o segundo termo,
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\int_{\tau^n(t)}^t g(s, X_s)\;\mathrm{d}W_s\right)^2\right] & \leq \int_{\tau^n(t)}^t \mathbb{E}\left[g(s, X_s)^2\right]\;\mathrm{d}s \\
-& \leq \int_{\tau^n(t)}^t \mathbb{E}\left[2C_g^2 + 2L_g^2X_s^2\right]\;\mathrm{d}s \\
-& \leq \int_{\tau^n(t)}^t \left(2C_g^2 + 2L_g^2M_T\right)\;\mathrm{d}s \\
-& \leq (t - \tau^n(t))\left(2C_g^2 + 2L_g^2M_T\right) \\
-& \leq \Delta t \left(2C_g^2 + 2L_g^2M_T\right) \\
-& \leq C_2\Delta t,
-\end{align*}
-$$
-para uma outra constante $C_2>0.$
-
-Finalmente, para o terceiro e o quarto termos, utilizamos a dependência Hölder no tempo dos termos $f$ e $g$. No terceiro termo, obtemos
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s\right)^2\right] & \leq \tau^n(t) \int_0^{\tau^n(t)} \mathbb{E}\left[\left(f(s, X_s) - f(\tau^n(s), X_s)\right)^2\right]\;\mathrm{d}s \\
-& \leq \tau^n(t) \int_0^{\tau^n(t)} \mathbb{E}\left[2H_f^2(1 + |X_s|)^2|s - \tau^n(s)|\right]\;\mathrm{d}s \\
-& \leq 4H_f^2\tau^n(t)\Delta t \int_0^{\tau^n(t)} \left(1 + \mathbb{E}\left[X_s^2\right]\right)\;\mathrm{d}s \\
-& \leq 4H_f^2\tau^n(t)\Delta t \int_0^{\tau^n(t)} \left(1 + M_Te^{L_T s} \right)\;\mathrm{d}s \\
-& \leq 4H_f^2\tau^n(t)\Delta t \left(\tau^n(t) + \frac{M_T}{L_T}e^{L_T \tau^n(t)} \right) \\
-& \leq C_1\Delta t,
-\end{align*}
-$$
-para uma constante apropriada $C_3>0.$ No quarto termo,
-$$
-\begin{align*}
-\mathbb{E}\left[\left(\int_0^{\tau^n(t)} (g(s, X_s) - g(\tau^n(s), X_s))\;\mathrm{d}s\right)^2\right] & \leq \int_0^{\tau^n(t)} \mathbb{E}\left[\left(g(s, X_s) - g(\tau^n(s), X_s)\right)^2\right]\;\mathrm{d}s \\
-& \leq \int_0^{\tau^n(t)} \mathbb{E}\left[2H_g^2(1 + |X_s|)^2|s - \tau^n(s)|\right]\;\mathrm{d}s \\
-& \leq 4H_g^2\Delta t \int_0^{\tau^n(t)} \left(1 + \mathbb{E}\left[X_s^2\right]\right)\;\mathrm{d}s \\
-& \leq 4H_g^2\Delta t \int_0^{\tau^n(t)} \left(1 + M_Te^{L_T s} \right)\;\mathrm{d}s \\
-& \leq 4H_g^2\Delta t \left(\tau^n(t) + \frac{M_T}{L_T}e^{L_T \tau^n(t)} \right) \\
-& \leq C_2\Delta t,
-\end{align*}
-$$
-para uma outra constante apropriada $C_4>0.$
-
-Jutando as estimativas,
-$$
-\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C^2\Delta t + 2L \int_0^t \mathbb{E}\left[\left(X_s - \tilde X_s^n\right)^2\right]\;\mathrm{d}s,
-$$
-para constantes apropriadas $C, L > 0,$ e onde usamos $C^2$ e $2L$ ao invés de $C$ e $L$ apenas por conveniência, já que estamos tratando da média quadrática.
-
-Pela desigualdade de Grownall, obtemos
-$$
-\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C^2\Delta t e^{2Lt}.
-$$
-Para o erro forte, segue da desigualdade de Lyapunov que
-$$
-\mathbb{E}\left[\left|X_t - \tilde X_t^n\right|\right] \leq \mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right]^{1/2} \leq C\Delta t^{1/2} e^{Lt}.
-$$
-o que nos dá a convergência forte de ordem $1/2.$
-
-
 ## Convergência no caso estocástico com ruído aditivo
 
 Quando $g=g(t)$ não depende de $x$ e quando a dependência de $f=f(t, x)$ e $g=g(t)$ também é Lipschitz, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, consideramos
@@ -443,49 +293,48 @@ $$
 $$
 para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$
 
-Nesse caso, com a interpolação acima, obtemos
+Escrevemos a diferença entre a solução e a aproximação na forma
 $$
 \begin{align*}
-X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s + \int_{\tau^n(t)}^t g(s)\;\mathrm{d}W_s \\
-& \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
-& \quad + \int_0^{\tau^n(t)} (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s \\
-& \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s.
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s + \int_0^{t_j} (g(s, X_s) - g(t_{i^n(s)}, X_{t^n(s)}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1} + \sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1},
 \end{align*}
 $$
-Observe que o último termo do caso anterior, envolvendo $g(\tau^n(s), X_s) - g(\tau^n(s), \tilde X_{s}^n) = g(\tau^n(s)) - g(\tau^n(s)) = 0$ desaparece, no caso de $g$ só depender de $t$, mas na verdade esse termo não era problemático. Os termos com ordem mais baixa eram os equivalentes ao segundo e ao quarto, acima. O quarto termo, agora, passa a ser de ordem 1, como veremos a seguir. Mas o segundo ainda é de ordem 1/2.
-
-Para evitar o segundo termo, consideramos uma interpolação um pouco diferente, integrando o termo estocástico até $t$, aproveitando o fato de $g$ não depender de $x$, ou seja
-$$
-\tilde X_t^n =  X_0 + \int_0^{\tau^n(t)} f(\tau^n(s), \tilde X_s^n)\;\mathrm{d}s + \int_0^{t} g(\tau^n(s))\;\mathrm{d}W_s.
-$$
-A diferença entre a solução exata e a interpolação, agora, passa a ser
+No caso em que $g=g(t),$ o último termo desaparece (mas que não é um termo problemático) e o segundo termo simplifica (esse sim é problemático),
 $$
 \begin{align*}
-X_t - \tilde X_t^n & = \int_{\tau^n(t)}^t f(s, X_s)\;\mathrm{d}s  \\
-& \quad + \int_0^{\tau^n(t)} (f(s, X_s) - f(\tau^n(s), X_s))\;\mathrm{d}s \\
-& \quad + \int_0^t (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s \\
-& \quad + \int_0^{\tau^n(t)} (f(\tau^n(s), X_s) - f(\tau^n(s), \tilde X_{s}^n))\;\mathrm{d}s.
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s + \int_0^{t_j} (g(s) - g(t_{i^n(s)}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1}.
 \end{align*}
 $$
-Isso nos livrou do segundo termo da diferença anterior. O outro termo estocástico pode ser tratado da seguinte forma. Começamos usando a isometria de Itô,
+
+O último termo é como antes e nos dá
 $$
-\mathbb{E}\left[\left(\int_0^t (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s\right)^2\right] = \int_0^t \left(g(s) - g(\tau^n(s))\right)^2 \;\mathrm{d}s.
-$$
-Agora, usamos que $g$ é Lipschitz em $t$,
-$$
-\mathbb{E}\left[\left(\int_0^t (g(s) - g(\tau^n(s))) \;\mathrm{d}W_s\right)^2\right] \leq \int_0^t L_g^2(s - \tau^n(s))^2 \;\mathrm{d}s \leq tL_g^2\Delta t^2.
+\sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
 $$
 
-Graças à continuidade Lipschitz de $f$ em relação a $t$, os dois primeiros termos envolvendo $f$ também nos dão $\Delta t^2.$ Assim,
+O segundo termo, agora sem a dependência em $x$ e com continuidade Lipschitz em $t$, nos dá
 $$
-\mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right] \leq C^2\Delta t^2 e^{2Lt},
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{t_j} (g(s) - g(t_{i^n(s)}))\;\mathrm{d}W_s\right)^2\right] & = \int_0^{t_j} \mathbb{E}\left[\left(g(s) - g(t_{i^n(s)})\right)^2\right]\;\mathrm{d}s \\
+& \leq H_g^2 \int_0^{t_j} \left(s - t_{i^n(s)}\right)^2\;\mathrm{d}s \\
+& \leq H_g^2 t_j \Delta t^2.
+\end{align*}
 $$
-para constantes apropriadas $C^2$ e $2L$. Para o erro forte, segue da desigualdade de Lyapunov que
-$$
-\mathbb{E}\left[\left|X_t - \tilde X_t^n\right|\right] \leq \mathbb{E}\left[\left(X_t - \tilde X_t^n\right)^2\right]^{1/2} \leq C\Delta t e^{Lt}.
-$$
-o que nos dá a convergência forte de ordem 1.
 
-Vale ressaltar que a hipótese, no caso anterior, da dependência Hölder no tempo, não é uma restrição séria à ordem de convergência. Ela foi pedida porque não adiantaria pedir dependência Lipschitz por conta da influência do termo $x.$ É o mínimo necessário para a convergência de ordem 1/2, no caso geral.
+O primeiro termo é mais delicado e requer o uso da fórmula de Itô. Com ela, temos
+$$
+\begin{align*}
+f(s, X_s) - f(t^n(s), X_{t^n(s)}) & = \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi \\
+& \quad + \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi.
+\end{align*}
+$$
+O ponto chave é trocar a ordem de integração, usando uma versão estocástica do Teorema de Fubini na segunda integral. Assim,
+$$
+\begin{align*}
+\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s & = \int_0^{t_j} \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi\;\mathrm{d}s \\
+& \quad + \int_0^{t_j} \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi\;\mathrm{d}s
+\end{align*}
+$$
 
 ## Não-convergência no caso estocástico sem condição Lipschitz global
