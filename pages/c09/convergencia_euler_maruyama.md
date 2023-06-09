@@ -269,13 +269,17 @@ $$
 $$
 Ou seja,
 $$
-\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C \Delta t + L \sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1},
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2 \Delta t + 2L \sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1},
 $$
-para $C$ e $L$ apropriados. Pela desigualdade de Gronwall discreta, isso nos dá
+para $C, L > 0$ apropriadas. Pela desigualdade de Gronwall discreta, isso nos dá
 $$
-\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq Ce^{Lt_j}\Delta t,
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2e^{2Lt_j}\Delta t.
 $$
-mostrando que o método de Euler-Maruyama é de ordem forte $1.$
+Considerando a norma forte, obtemos
+$$
+\mathbb{E}\left[\left|X_{t_j} - X_j^n\right|\right] \leq \mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right]^{1/2} \leq Ce^{Lt_j}\Delta t^{1/2}.
+$$
+mostrando que o método de Euler-Maruyama é de ordem forte $1/2.$
 
 ## Convergência no caso estocástico com ruído aditivo
 
@@ -291,7 +295,22 @@ e
 $$
 |f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|, \quad |g(t) - g(s)| \leq H_g(1 + |x|)|t - s|,
 $$
-para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$
+para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$ Na verdade, pedimos ainda mais. Pedimos que $f$ e $g$ sejam continuamente diferenciáveis em $t$ e duas vezes continuamente diferenciáveis em $x$, com limitações uniformes,
+$$
+|(\partial_t f)(t, x)| \leq H_f, \quad |(\partial_t g)(t, x)| \leq H_g,
+$$
+$$
+|(\partial_x f)(t, x)| \leq L_f, \quad |(\partial_x g)(t, x)| \leq L_g,
+$$
+e
+$$
+|(\partial_{xx} f)(t, x)| \leq L_{ff}, \quad |(\partial_{xx} g)(t, x)| \leq L_{gg}.
+$$
+Para simplificar, assumimos, ainda, que $f$ e $g$ sejam limitadas, i.e.
+$$
+|f(t, x)| \leq M_f, \quad |g(t, x)| \leq M_g.
+$$
+Isso tudo em $0\leq t \leq T$, $x\in \mathbb{R}.$
 
 Escrevemos a diferença entre a solução e a aproximação na forma
 $$
@@ -322,7 +341,7 @@ $$
 \end{align*}
 $$
 
-O primeiro termo é mais delicado e requer o uso da fórmula de Itô. Com ela, temos
+O primeiro termo é o mais delicado e requer o uso da fórmula de Itô. Com ela, temos
 $$
 \begin{align*}
 f(s, X_s) - f(t^n(s), X_{t^n(s)}) & = \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi \\
@@ -333,8 +352,43 @@ O ponto chave é trocar a ordem de integração, usando uma versão estocástica
 $$
 \begin{align*}
 \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s & = \int_0^{t_j} \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi\;\mathrm{d}s \\
-& \quad + \int_0^{t_j} \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi\;\mathrm{d}s
+& \quad + \int_0^{t_j} \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi\;\mathrm{d}s \\
+& = \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}s\;\mathrm{d}W_\xi,
 \end{align*}
 $$
+onde
+$$
+\tilde t^{n}(t) = \min\{t_i \geq t; \; i = 0, \ldots, n\}
+$$
+é o ponto da malha que está mais próximo e à direita do instante $t.$ Usando Cauchy-Schwartz e a isometria de Itô, obtemos a seguinte estimativa para a média quadrática desse termo.
+$$
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] & \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi.
+\end{align*}
+$$
+Usando as estimativas para $f$, $g$ e suas derivadas, obtemos
+$$
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] & \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} C_1\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} C_2\;\mathrm{d}s\;\mathrm{d}\xi \\
+& = (t_jC_1 + C_2)\int_0^{t_j} (t^{n}(\xi) - \xi)^2 \;\mathrm{d}\xi \\
+& \leq (TC_1 + C_2)\Delta t^2.
+\end{align*}
+$$
+para constantes apropriadas $C_1, C_2 > 0.$ Juntando as estimativas, obtemos
+$$
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2 \Delta t^2 + 2L \sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1},
+$$
+para constante $C, L > 0$ apropriadas. Pela desigualdade de Gronwall discreta, isso nos dá
+$$
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2e^{2Lt_j}\Delta t^2.
+$$
+Considerando a norma forte, obtemos
+$$
+\mathbb{E}\left[\left|X_{t_j} - X_j^n\right|\right] \leq \mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right]^{1/2} \leq Ce^{Lt_j}\Delta t.
+$$
+mostrando que o método de Euler-Maruyama é de ordem forte $1.$
 
 ## Não-convergência no caso estocástico sem condição Lipschitz global
