@@ -522,8 +522,62 @@ mostrando que os momentos de $X_N$ não podem convergir para os momentos da solu
 
 ### Não convergência no caso estocástico
 
-Consideramos, agora, a perturbação estocástica da equação acima, a saber
+Consideramos, agora, a perturbação estocástica da equação acima por um ruído aditivo, a saber
 $$
-\mathrm{d}X_t = - \alpha X_t^3\;\mathrm{d}t + \sigma\;\mathrm{d}W_t,
+\mathrm{d}X_t = - \alpha X_t^3\;\mathrm{d}t + \;\mathrm{d}W_t.
 $$
-para $\sigma > 0$ constante.
+Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral.
+
+Dados $T > 0$ e $N\in\mathbb{N}$, consideramos o passo de tempo $\Delta t = \Delta t^N = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
+$$
+\frac{T}{N} \leq 1.
+$$
+A aproximação de Euler $X_j$ nos instantes $t_j = j\Delta t,$ $j=0, \ldots, N,$ se escreve
+$$
+X_j = X_{j-1} - X_{j-1}^3\Delta t + \Delta W_{j-1}, \quad j = 1, \ldots, N,
+$$
+onde
+$$
+\Delta W_{j-1} = W_{t_j} - W_{t_{j-1}}.
+$$
+
+Seja
+$$
+r_N = \frac{N}{T} = \frac{1}{\Delta t} \geq 1.
+$$
+Considere o conjunto amostral
+$$
+A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2, \;|\Delta W_j(\omega)| \geq \Delta t^N = \frac{1}{r_N}, \;j = 1, \ldots, N \right\}.
+$$
+No que se segue, $\omega\in A_N.$ No primeiro passo, como $X_0 = 0,$ temos
+$$
+|X_1| = |\Delta W_0| \geq r_N^2.
+$$
+Agora, vamos assumir, por indução, que $|X_j| \geq r_N^{2^j},$ até um certo $j\in\mathbb{N}.$ Vamos mostrar que o mesmo vale para $j+1.$ Temos
+$$
+|X_{j+1}| = |X_j (1 - X_j^2\Delta t) + \Delta W_j| \geq |\Delta W_j| - |X_j|( 1  - |X_j|^2\Delta t).
+$$
+Como $|\Delta W_j| \geq 1/r_N$ e usando a hipótese de indução, obtemos
+$$
+|X_{j+1}| \geq \frac{1}{r_N} - r_N^{2^{j}}(1 - r_N^{2^{j+1}}\Delta t) = \frac{1}{r_N} - r_N^{2^j} + r_N^{2^{2j + 1}}\Delta t.
+$$
+Como $r_N \geq 1$, temos
+$$
+\frac{1}{r_N} - r_N^{2^j} = \frac{1}{r_N}(1 - r_N^{2^j - 1}) \geq 0,
+$$
+logo
+$$
+|X_{j+1}| \geq r_N^{2^{2j + 1}}\Delta t.
+$$
+Além disso, $r_N \Delta t \geq 1$ e $j\geq 1,$ de modo que
+$$
+|X_{j+1}| \geq r_N^{2^{2j}} \geq r_N^{2^{j+1}}.
+$$
+Isso completa a indução. Agora precisamos estimar a medidade de $A_N$.
+
+Esse resultado vale mais geralmente, para uma equação estocástica
+$$
+\mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
+$$
+sob condições apropriadas em $f$ e $g$, conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Isso inclui equações como ...
+
