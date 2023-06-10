@@ -10,11 +10,11 @@ com condição inicial $x(0) = x_0$, o método de Euler
 $$
 x_{j}^n = x_{j-1}^n + \Delta t f(t_{j-1} x_{j-1}^n), \qquad x_j^n|_{j = 0} = x_0,
 $$
-em uma malha temporal uniforme $t_j = jT/n$, $j = 0, \ldots, n$, com $\Delta t = T/n$, converge uniformemente, no intervalo $[0, T]$, para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existe $C > 0$ e $\delta > 0$ tais que
+em uma malha temporal uniforme $t_j = jT/n$, $j = 0, \ldots, n$, com $\Delta t = T/n$, converge uniformemente, no intervalo $[0, T]$, para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existem $C > 0$ e $\delta > 0$ tais que
 $$
 \max_{j}|x(t_j) - x_j| \leq C \Delta t, \qquad 0 < \Delta t \leq \delta.
 $$
-Isso sob a hipótese de $f$ ser localmente Lipschitz contínua.
+Isso sob a hipótese de $f$ ser localmente Lipschitz contínuas.
 
 Por outro lado, no caso estocástico, com um ruído multiplicativo $g = g(t, X_t),$
 $$
@@ -24,15 +24,15 @@ com uma condição inicial
 $$
 \left.X_t\right|_{t = 0} = X_0,
 $$
-a convergência *forte* é apenas de ordem $1/2$ e isso sob as hipóteses de $f$ e $g$ serem *globalmente* Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g = g(t, X_t) = g(t)$, então ainda temos a convergência forte de ordem $1$.
+a convergência *forte* é apenas de ordem $1/2$ e isso sob a hipótese mais exigente de $f$ e $g$ serem *globalmente* Lipschitz contínuas. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g = g(t, X_t) = g(t)$, então ainda temos a convergência forte de ordem $1$.
 
 A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
 
-Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos.
+Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos. Esse problema aparece mesmo no caso de ruído aditivo e apenas $f$ não globalmente Lipschitz.
 
 Por último, um ponto um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença $|x(t_j) - x_j^n|$, no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para $\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]$.
 
-Vejamos os detalhes.
+Em resumo, a hipótese de continuidade Lipschitz global é para garantir que o método convirja. E a presença de $\mathrm{d}W_t \sim \sqrt{\mathrm{d}t}$ nos dá uma convergência forte apenas de ordem $1/2,$ no caso multiplicativo. Vejamos os detalhes.
 
 ## Convergência no caso determinístico
 
@@ -392,3 +392,79 @@ $$
 mostrando que o método de Euler-Maruyama é de ordem forte $1.$
 
 ## Não-convergência no caso estocástico sem condição Lipschitz global
+
+Vejamos, agora, um exemplo de não convergência do método de Euler, mesmo no caso aditivo, quando o termo de *drift* é apenas localmente Lipschitz. Esse exemplo aparece na Seção 10.5 de Higham & Kloeden (2021).
+
+### Interlúdio no caso determinístico
+
+Considere, inicialmente, a equação diferencial ordinária
+$$
+\frac{\mathrm{d}x}{\mathrm{d}t} = - x^3,
+$$
+com condição inicial $x(0) = x_0 > 0.$ O método de Euler com passo constante tem a forma
+$$
+x_j = x_{j-1} - x_{j-1}^3 \Delta t  = x_{j-1}(1 - x_{j-1}^2 \Delta t).
+$$
+Seja $T > 0$ arbitrário e fixe um passo de tempo qualquer $\Delta t = T/N \leq 2,$ para algum $N\in\mathbb{N}$. Suponha que a condição inicial seja tal que
+$$
+x_0 \geq \frac{2}{\Delta t} \geq 1.
+$$
+Nesse caso,
+$$
+1 - x_0^2 \Delta t \leq 1 - 2x_0 \leq x_0 - 2x_0 = -x_0.
+$$
+Assim, o primeiro passo de Euler nos dá
+$$
+x_1  =  x_0 - \Delta t x_0^3 =  x_0(1 - \Delta t x_0^2) \leq -x_0^2.
+$$
+Por indução, vamos supor que $|x_j| \geq x_{j-1}^2$, com sinais alternados, $\mathrm{sgn}(x_j) = (-1)^j$. Vamos separar em dois casos, dependendo da paridade de $j,$ ou seja, do sinal de $x_j.$
+
+Quando $j$ é par, $x_j$ tem sinal positivo e
+$$
+x_j = |x_j| \geq x_0 \geq \frac{2}{\Delta t} \geq 1,
+$$
+de modo que
+$$
+1 - x_j^2 \Delta t \leq x_j - x_j^2 \Delta t = x_j (1 - x_j\Delta t) \leq x_j (1 - 2) = - x_j.
+$$
+Portanto,
+$$
+x_{j+1} = x_j (1 - x_j^2 \Delta t) \leq - x_j^2,
+$$
+ou seja $x_{j+1}$ é negativo e $|x_{j+1}| \geq x_j^2.$
+
+Quando $j$ é impar, $x_j$ tem sinal negativo e
+$$
+x_j = - |x_j| \leq - x_0 \leq - \frac{2}{\Delta t} \geq 1 \leq -1,
+$$
+de modo que
+$$
+1 - x_j^2 \Delta t \leq - x_j - x_j^2 \Delta t = -x_j (1 + x_j\Delta t) \leq -x_j (1 - 2) = x_j.
+$$
+Portanto, como $x_j$ é negativo,
+$$
+x_{j+1} = x_j (1 - x_j^2 \Delta t) \geq x_j^2,
+$$
+ou seja $x_{j+1}$ é positivo e $|x_{j+1}| \geq x_j^2.$
+
+Assim, em qualquer caso, temos $x_{j+1}$ de sinal contrário ao de $x_j$ e com
+$$
+|x_{j+1}| \geq x_j^2,
+$$
+completando a indução.
+
+Iterando essa relação, obtemos que a aproximação de Euler alterna de sinal e diverge de maneira duplamente exponencial, com
+$$
+|x_j| \geq |x_{j-1}|^2 \geq (|x_{j-2}|^2)^2 \geq \cdots \geq |x_0|^{2^j},
+$$
+ao invés de convergir para zero, como a solução exata da equação.
+
+Mas observe que fixando $x_0$ e diminuindo o passo de tempo esse problema desaparece. Isso é compatível com o fato de que o método de Euler converge e é de ordem 1 no caso determinístico. Vamos ver agora como o problema acima pode ser explorado para nos dar que, no caso estocásticom o método de Euler-Maruyama não converge.
+
+### Não convergência no caso estocástico
+
+Consideramos, agora, a perturbação estocástica da equação acima, a saber
+$$
+\mathrm{d}X_t = - \alpha X_t^3\;\mathrm{d}t + \sigma\;\mathrm{d}W_t,
+$$
+para $\sigma > 0$ constante.
