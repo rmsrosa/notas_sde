@@ -510,7 +510,15 @@ Assim,
 $$
 \mathbb{E}\left[|X_N|\right] \geq r^{2^{T/\Delta t}} \mathbb{P}(A_\omega) \rightarrow \infty,
 $$
-quando $\Delta t \rightarrow 0,$ mostrando que $X_N$ não pode convergir, fortemente, para a solução exata no instante $T$. Portanto, a aproximação de Euler não converge fortemente nesse caso.
+quando $\Delta t \rightarrow 0.$ Da mesma forma,
+$$
+|X_N(\omega)|^k \geq |X_0(\omega)|^{k2^N} \geq r^{k2^{T/\Delta t}},
+$$
+para $k\in\mathbb{N}$ qualquer, de modo que
+$$
+\mathbb{E}\left[|X_N|^k\right] \geq r^{k2^{T/\Delta t}} \mathbb{P}(A_\omega) \rightarrow \infty,
+$$
+mostrando que os momentos de $X_N$ não podem convergir para os momentos da solução exata no instante $T$. Ou seja, não temos nem a convergência fraca, que dirá a forte. Portanto, a aproximação de Euler não converge fortemente nem fracamente nesse caso.
 
 ### Não convergência no caso estocástico
 
