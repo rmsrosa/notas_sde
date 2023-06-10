@@ -455,11 +455,62 @@ completando a indução.
 
 Iterando essa relação, obtemos que a aproximação de Euler alterna de sinal e diverge de maneira duplamente exponencial, com
 $$
-|x_j| \geq |x_{j-1}|^2 \geq (|x_{j-2}|^2)^2 \geq \cdots \geq |x_0|^{2^j},
+|x_j| \geq |x_{j-1}|^2 \geq (|x_{j-2}|^2)^2 \geq \cdots \geq x_0^{2^j},
 $$
 ao invés de convergir para zero, como a solução exata da equação.
 
-Mas observe que fixando $x_0$ e diminuindo o passo de tempo esse problema desaparece. Isso é compatível com o fato de que o método de Euler converge e é de ordem 1 no caso determinístico. Vamos ver agora como o problema acima pode ser explorado para nos dar que, no caso estocásticom o método de Euler-Maruyama não converge.
+No argumento acima, começamos com $x_0$ positivo, mas a mesma ideia se aplica quando $x_0$ é negativo com $x_0 \leq -2/\Delta t.$ Ou seja, mais geralmente, se
+$$
+|x_0| \geq \frac{2}{\Delta t} \geq 1,
+$$
+então vale que o sinal de $x_j$ alterna a cada iteração e
+$$
+|x_j| \geq |x_{j-1}|^2 \geq (|x_{j-2}|^2)^2 \geq \cdots \geq |x_0|^{2^j},
+$$
+
+Finalmente, observe que fixando $x_0$ e diminuindo o passo de tempo esse problema desaparece. Isso é compatível com o fato de que o método de Euler converge e é de ordem 1 no caso determinístico. Vamos ver agora como o problema acima pode ser explorado para nos dar que, no caso estocásticom o método de Euler-Maruyama não converge.
+
+### Não convergência no caso aleatório
+
+Considere, agora, a equação acima mas com uma condição inicial aleatória, i.e.
+$$
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = - X_t^3,
+$$
+com $X_0 = X_0(\omega)$ variável aleatória. Caso $X_0$ tenha suporte compacto, digamos
+$$
+|X_0| \leq r,
+$$
+quase certamente, então basta tormarmos um passo $\Delta t$ suficientemente pequeno tal que
+$$
+\Delta t < \frac{2}{r},
+$$
+para evitar as oscilações das aproximações de Euler para um $\omega$ qualquer. Porém caso $X_0$ não tenha suporte limitado, então não teremos controle global do erro. De fato, suponha, então, que, para todo $r > 0,$
+$$
+\mathbb{P}\left(|X_0| \geq r\right) > 0.
+$$
+Dado um $\Delta t > 0,$ considere $r$ tal que
+$$
+r \geq \frac{2}{\Delta t}
+$$
+e defina
+$$
+A_r = \{\omega; |X_0(\omega)| \geq r\},
+$$
+que, pela hipótese acima, tem probabilidade positiva.
+
+Pelas estimativas acima, temos, para as aproximações de Euler $X_j(\omega),$ $j=0, \ldots, N$, onde $\Delta t = T/N,$ que
+$$
+|X_j(\omega)| \geq |X_0(\omega)|^{2^j},
+$$
+para todo $\omega\in A_r.$ Em particular, usando que $N=T/\Delta t,$ temos
+$$
+|X_N(\omega)| \geq |X_0(\omega)|^{2^N} \geq r^{2^{T/\Delta t}}.
+$$
+Assim,
+$$
+\mathbb{E}\left[|X_N|\right] \geq r^{2^{T/\Delta t}} \mathbb{P}(A_\omega) \rightarrow \infty,
+$$
+quando $\Delta t \rightarrow 0,$ mostrando que $X_N$ não pode convergir, fortemente, para a solução exata no instante $T$. Portanto, a aproximação de Euler não converge fortemente nesse caso.
 
 ### Não convergência no caso estocástico
 
