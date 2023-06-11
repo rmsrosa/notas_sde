@@ -528,7 +528,7 @@ $$
 $$
 Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral.
 
-Dados $T > 0$ e $N\in\mathbb{N}$, consideramos o passo de tempo $\Delta t = \Delta t^N = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
+Dados $T > 0$ e $N\in\mathbb{N}$, consideramos o passo de tempo $\Delta t = \Delta t^{(N)} = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
 $$
 \frac{T}{N} \leq 1.
 $$
@@ -547,7 +547,7 @@ r_N = \frac{N}{T} = \frac{1}{\Delta t} \geq 1.
 $$
 Considere o conjunto amostral
 $$
-A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2, \;|\Delta W_j(\omega)| \geq \Delta t^N = \frac{1}{r_N}, \;j = 1, \ldots, N \right\}.
+A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2, \;|\Delta W_j(\omega)| \geq \Delta t = \frac{1}{r_N}, \;j = 1, \ldots, N \right\}.
 $$
 No que se segue, $\omega\in A_N.$ No primeiro passo, como $X_0 = 0,$ temos
 $$
@@ -573,9 +573,32 @@ Além disso, $r_N \Delta t \geq 1$ e $j\geq 1,$ de modo que
 $$
 |X_{j+1}| \geq r_N^{2^{2j}} \geq r_N^{2^{j+1}}.
 $$
-Isso completa a indução. Agora precisamos estimar a medidade de $A_N$.
+Isso completa a indução. Agora precisamos estimar a medidade de $A_N$. Como os passos de um processo de Wiener são independentes, temos
+$$
+\mathcal{P}(A_N) =  \mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathcal{P}\left(|\Delta W_j(\omega)| \geq \frac{1}{r_N}\right)
+$$
+Como os passos são normais, vamos usar a seguinte estimativa para uma variável normal $Z \sim \mathcal{N}(0, \sigma^2):$
+$$
+\mathcal{P}(|Z| \geq \alpha) \geq \frac{1}{\alpha^2}\mathbb{E}\left[Z^2\right] \geq \alpha \frac{e^{-\alpha^2}}{4}.
+$$
+No nosso caso, $\Delta W_j \sim \mathcal{N}(0, \Delta t)$, com $\Delta t = 1/r_N$, logo
+$$
+\mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right) \geq r_N^2\frac{e^{-r_N^4}}{4}
+$$
+e
+$$
+\mathcal{P}\left(|\Delta W_j(\omega)| \geq \frac{1}{r_N}\right) \geq \frac{1}{r_N}\frac{e^{-\frac{1}{r_N^2}}}{4}.
+$$
+Assim,
+$$
+\mathcal{P}(A_N) \geq r_N^2\frac{e^{-r_N^4}}{4}\frac{1}{r_N^N}\frac{e^{-\frac{N}{r_N^2}}}{4^N} = \frac{1}{r_N^{N-2}}\frac{e^{-\frac{N}{r_N^2}-r_N^4}}{4^{N+1}}.
+$$
+Portanto,
+$$
+\mathbb{E}\left[ |X_N| \right] \geq \mathbb{E}\left[ |X_N| | A_N \right] \geq r_N^{2^N}\mathcal{P}\left(A_N\right) \geq r_N^{2^N}\frac{1}{r_N^{N-2}}\frac{e^{-\frac{N}{r_N^2}-r_N^4}}{4^{N+1}}.
+$$
 
-Esse resultado vale mais geralmente, para uma equação estocástica
+Esse resultado vale para equações estocásticas mais gerais, da forma
 $$
 \mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
 $$
