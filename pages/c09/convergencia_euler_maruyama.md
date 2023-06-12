@@ -511,7 +511,7 @@ $$
 $$
 Em particular,
 $$
-\mathcal{P}(A_N) = 2\mathcal{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{1}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
+\mathcal{P}(A_N) = 2\mathcal{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{4}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
 $$
 
 Pelas estimativas acima, temos, para as aproximações de Euler $X_j(\omega),$ $j=0, \ldots, N$, onde $\Delta t = T/N,$ que
@@ -524,7 +524,7 @@ $$
 $$
 Assim, estimamos a norma forte por
 $$
-\mathbb{E}\left[|X_N|\right] \geq \left(\frac{2N}{T}\right)^{2^N} \mathcal{P}(A_N) \geq \left(\frac{2N}{T}\right)^{2^N}\frac{1}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}} \rightarrow \infty,
+\mathbb{E}\left[|X_N|\right] \geq \left(\frac{2N}{T}\right)^{2^N} \mathcal{P}(A_N) \geq \left(\frac{2N}{T}\right)^{2^N}\frac{1}{\sqrt{2\pi \sigma^2}}\frac{4N}{T} e^{-\frac{8N^2}{\sigma^2T^2}} \rightarrow \infty,
 $$
 quando $N \rightarrow \infty.$ Da mesma forma,
 $$
@@ -540,15 +540,13 @@ quando $N\rightarrow \infty,$ também. Isso mostra que os momentos de $X_N$ não
 
 Consideramos, agora, a perturbação estocástica da equação acima por um ruído aditivo, a saber
 $$
-\mathrm{d}X_t = - \alpha X_t^3\;\mathrm{d}t + \;\mathrm{d}W_t.
+\mathrm{d}X_t = -X_t^3\;\mathrm{d}t + \;\mathrm{d}W_t.
 $$
-Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral.
-
-Dados $T > 0$ e $N\in\mathbb{N}$, consideramos o passo de tempo $\Delta t = \Delta t^{(N)} = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
+Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral. Dados $T > 0$ e $N\in\mathbb{N}$, temos o passo de tempo $\Delta t = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
 $$
-\frac{T}{N} \leq 1.
+\Delta t = \frac{T}{N} \leq 2.
 $$
-A aproximação de Euler $X_j$ nos instantes $t_j = j\Delta t,$ $j=0, \ldots, N,$ se escreve
+A aproximação de Euler $X_j$, nos instantes $t_j = j\Delta t,$ $j=0, \ldots, N,$ é dada por
 $$
 X_j = X_{j-1} - X_{j-1}^3\Delta t + \Delta W_{j-1}, \quad j = 1, \ldots, N,
 $$
@@ -559,82 +557,96 @@ $$
 
 Seja
 $$
-r_N = \frac{N}{T} = \frac{1}{\Delta t} \geq 1.
+r_N = \frac{N}{T} = \frac{1}{\Delta t} \geq 2.
 $$
 Considere o conjunto amostral
 $$
-A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2, \;|\Delta W_j(\omega)| \geq \Delta t = \frac{1}{r_N}, \;j = 1, \ldots, N \right\}.
+A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2 \textrm{ e } \frac{1}{r_N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}, \;j = 1, \ldots, N \right\}.
 $$
-No que se segue, $\omega\in A_N.$ No primeiro passo, como $X_0 = 0,$ temos
+A ideia é que o primeiro passo leva a aproximação para a região de "explosão" e os passos seguintes não são suficientes para tirá-la de lá. Há, na verdade, muita folga nessa construção. A explosão acontece em uma região muito maior. Mas o conjunto acima facilita as contas e é suficiente para mostrar a não convergência do método, nesse caso.
+
+No que se segue, assumimo, então, que $\omega\in A_N.$ No primeiro passo, como $X_0 = 0,$ temos
 $$
 |X_1| = |\Delta W_0| \geq r_N^2.
 $$
-Agora, vamos assumir, por indução, que $|X_j| \geq r_N^{2^j},$ até um certo $j\in\mathbb{N}.$ Vamos mostrar que o mesmo vale para $j+1.$ Temos
+Agora, vamos assumir, por indução, que $|X_j| \geq |X_{j-1}|^2,$ para $j\in\mathbb{N}.$ Para $j=1,$ como $X_0 = 0$, então isso vale trivialmente. Vamos, então, assumir que $|X_j| \geq |X_{j-1}|^2,$ até um certo $j\in\mathbb{N}$, e mostrar para $j+1$. Observe que acabamos de ver que $|X_1| \geq r_N^2.$ Como $r_N\geq 2$, então $|X_1|\geq 4.$ Até $j$, também temos $|X_j|\geq |X_{j-1}|^2 \geq \ldots \geq |X_1|^{2^{j-1}} \geq r_N^{2^j} \geq 4.$
+
+Agora, para $j+1,$ temos
 $$
-|X_{j+1}| = |X_j (1 - X_j^2\Delta t) + \Delta W_j| \geq |\Delta W_j| - |X_j|( 1  - |X_j|^2\Delta t).
+|X_{j+1}| = |X_j (1 - X_j^2\Delta t) + \Delta W_j| \geq |\Delta W_j - X_j^3\Delta t| - |X_j| \geq \max\{|\Delta W_j|, |X_j^3\Delta t|\} - \min\{|\Delta W_j|, |X_j^3\Delta t|\} - |X_j|.
 $$
-Como $|\Delta W_j| \geq 1/r_N$ e usando a hipótese de indução, obtemos
+
+Como $\Delta t = 1/r_N$ e
 $$
-|X_{j+1}| \geq \frac{1}{r_N} - r_N^{2^{j}}(1 - r_N^{2^{j+1}}\Delta t) = \frac{1}{r_N} - r_N^{2^j} + r_N^{2^{2j + 1}}\Delta t.
+\frac{1}{r_N} \leq |\Delta W_j| \leq \frac{2}{r_N},
 $$
-Como $r_N \geq 1$, temos
+então
 $$
-\frac{1}{r_N} - r_N^{2^j} = \frac{1}{r_N}(1 - r_N^{2^j - 1}) \geq 0,
+|X_{j+1}| \geq \max\{1, |X_j^3|\}\frac{1}{r_N} - \min\{2, |X_j^3|\}\frac{1}{r_N} - |X_j|.
 $$
-logo
+Pela a hipótese de indução, temos $|X_j| \geq 4 \geq 2,$ de modo que
 $$
-|X_{j+1}| \geq r_N^{2^{2j + 1}}\Delta t.
+|X_{j+1}| \geq |X_j^3|\frac{1}{r_N} - \frac{2}{r_N} - |X_j|.
 $$
-Além disso, $r_N \Delta t \geq 1$ e $j\geq 1,$ de modo que
+Como $|X_j| \geq r_N \geq 2,$ então
 $$
-|X_{j+1}| \geq r_N^{2^{2j}} \geq r_N^{2^{j+1}}.
-$$
-Isso completa a indução. Agora precisamos estimar a medidade de $A_N$. Como os passos de um processo de Wiener são independentes, temos
-$$
-\mathcal{P}(A_N) =  \mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathcal{P}\left(|\Delta W_j(\omega)| \geq \frac{1}{r_N}\right)
-$$
-Como os passos são normais, vamos usar a seguinte estimativa para uma variável normal $Z \sim \mathcal{N}(0, \sigma^2):$
-$$
-\mathcal{P}(|Z| \geq \alpha) \geq \frac{1}{\alpha^2}\mathbb{E}\left[Z^2\right] \geq \alpha \frac{e^{-\alpha^2}}{4}.
-$$
-No nosso caso, $\Delta W_j \sim \mathcal{N}(0, \Delta t)$, com $\Delta t = 1/r_N$, logo
-$$
-\mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right) \geq r_N^2\frac{e^{-r_N^4}}{4}
+\frac{2}{r_N} \leq \frac{|X_j|}{r_N} \leq \frac{|X_j|^2}{r_N}
 $$
 e
 $$
-\mathcal{P}\left(|\Delta W_j(\omega)| \geq \frac{1}{r_N}\right) \geq \frac{1}{r_N}\frac{e^{-\frac{1}{r_N^2}}}{4}.
+|X_j| \leq |X_j|\frac{|X_j|}{r_N}
 $$
-Assim,
+de modo que
 $$
-\mathcal{P}(A_N) \geq r_N^2\frac{e^{-r_N^4}}{4}\frac{1}{r_N^N}\frac{e^{-\frac{N}{r_N^2}}}{4^N} = \frac{1}{r_N^{N-2}}\frac{e^{-\frac{N}{r_N^2}-r_N^4}}{4^{N+1}}.
+\frac{2}{r_N} + |X_j| \leq \frac{2|X_j|^2}{r_N}.
 $$
-Portanto,
+Com isso,
 $$
-\mathbb{E}\left[ |X_N| \right] \geq \mathbb{E}\left[ |X_N| | A_N \right] \geq r_N^{2^N}\mathcal{P}\left(A_N\right) \geq r_N^{2^N}\frac{1}{r_N^{N-2}}\frac{e^{-\frac{N}{r_N^2}-r_N^4}}{4^{N+1}}.
+|X_{j+1}| \geq |X_j^3|\frac{1}{r_N} - \frac{2|X_j|^2}{r_N} = |X_j|^2\left(|X_j| - 2\right)\frac{1}{r_N}.
 $$
+Como $|X_j| \geq 4$ e $r_N \geq 2,$ então
+$$
+|X_{j+1}| \geq |X_j^3|\frac{1}{r_N} - \frac{2|X_j|^2}{r_N} = |X_j|^2\frac{2}{r_N} \geq |X_j|^2.
+$$
+Isso completa a indução.
+
+Agora, precisamos estimar a medidade de $A_N$. Como os passos de um processo de Wiener são independentes, temos
+$$
+\mathcal{P}(A_N) =  \mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathcal{P}\left(\frac{1}{N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right).
+$$
+Como os passos são normais, $\Delta W_j \sim \mathcal{N}(0, \Delta t),$ com $\Delta = 1/r_N,$ usamos a estimativa acima, que nos diz que para $Z\sim \mathcal{N}(0, \sigma^2)$, vale
+$$
+\mathcal{P}(X_0 \geq r) \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
+$$
+Assim, com $\sigma^2 = 1/r_N,$
+$$
+\mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right) \geq \sqrt{\frac{2r_N}{\pi}}r_N^2 e^{-2r_N^3} = \sqrt{\frac{2r_N^5}{\pi}} e^{-2r_N^3}
+$$
+e
+$$
+\mathcal{P}\left(\frac{1}{N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right) \geq \sqrt{\frac{2r_N}{\pi}}\frac{1}{r_N} e^{-\frac{2}{r_N^3}} = \sqrt{\frac{2}{\pi r_N}} e^{-\frac{2}{r_N^3}}.
+$$
+Deste modo,
+$$
+\mathcal{P}(A_N) \geq \sqrt{\frac{2r_N^5}{\pi}} e^{-2r_N^3} \left( \sqrt{\frac{2}{\pi r_N}} e^{-\frac{2}{r_N^3}}\right)^N = \left(\frac{2}{\pi}\right)^{(N-1)/2}\frac{1}{r_N^{(N-5)/2}}e^{-2(r_N^3 - N/r_N^3)}.
+$$
+Observe que essa medida vai rapidamente para zero, mas o crescimento de $|X_N|$ nessa região cresce extremamente mais rápido, de forma que
+$$
+\mathbb{E}\left[ |X_N| \right] \geq \mathbb{E}\left[ |X_N| \chi_{A_N} \right] \geq r_N^{2^N}\mathcal{P}\left(A_N\right) \geq r_N^{2^N}\left(\frac{2}{\pi}\right)^{(N-1)/2}\frac{1}{r_N^{(N-5)/2}}e^{-2(r_N^3 - N/r_N^3)} \rightarrow \infty,
+$$
+quando $N\rightarrow \infty.$ Da mesma forma,
+$$
+\mathbb{E}\left[ |X_N|^k \right] \rightarrow \infty,
+$$
+para todo $k\in \mathbb{N}.$ Ou seja, o método de Euler não converge nem fortemente, nem fracamente.
 
 Esse resultado vale para equações estocásticas mais gerais, da forma
 $$
 \mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
 $$
-sob condições apropriadas em $f$ e $g$, conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Isso inclui equações como ...
-
-### rascunho
-
-Agora, vamos assumir, por indução, que $|X_j| \geq r_N^{2^j},$ até um certo $j\in\mathbb{N}.$ Vamos mostrar que o mesmo vale para $j+1.$ Temos
+sob condições apropriadas de crescimento em $f$ e $g$, conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Mais precisamente, devemos ter
 $$
-|X_{j+1}| = |X_j (1 - X_j^2\Delta t) + \Delta W_j| \geq |\Delta W_j - X_j^3\Delta t| - |X_j| \geq \max\{|\Delta W_j|, |X_j^3\Delta t|\} - \min\{|\Delta W_j|, |X_j^3\Delta t|\} - |X_j|.
+\max\{|f(x)|, |g(x)|\} \geq \frac{|x|^\beta}{R}, \quad \min\{|f(x)|, |g(x)|\} \leq R|x|^\alpha, \quad \mathcal{P}\left(g(X_0) \neq 0\right) > 0,
 $$
-Como
-$$
-\Delta t \leq |\Delta W_j| \geq 2\Delta t,
-$$
-então
-$$
-|X_{j+1}| \geq \max\{1, |X_j^3|\}\Delta t - \min\{1, |X_j^3|\}\Delta t - |X_j|.
-$$
-Pela a hipótese de indução, temos $|X_j^3| \geq (r_N^{2^j})^3 \geq r_N^{2^{j+1}} \geq 1,$ de modo que
-$$
-|X_{j+1}| \geq |X_j^3|\Delta t - \Delta t - |X_j|.
-$$
+para $|x| \geq R$, com $R \geq 1$, $\beta > \alpha > 1,$
+Isso inclui equações como a equação de Ginzburg-Landau estocástica, a equação de Verhulst estocástica, a equação de difusão de Feller com crescimento logístico, equações cinéticas e outras tantas.
