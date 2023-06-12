@@ -484,9 +484,14 @@ quase certamente, então basta tormarmos um passo $\Delta t$ suficientemente peq
 $$
 \Delta t < \frac{2}{r},
 $$
-para evitar as oscilações das aproximações de Euler para um $\omega$ qualquer. Porém caso $X_0$ não tenha suporte limitado, então não teremos controle global do erro. De fato, suponha, então, que, para todo $r > 0,$
+para evitar as oscilações das aproximações de Euler para um $\omega$ qualquer. Porém caso $X_0$ não tenha suporte limitado, podemos não ter esse controle global sobre erro. De fato, suponha que
 $$
-\mathbb{P}\left(|X_0| \geq r\right) > 0.
+X_0 \sim \mathcal{N}(0, \sigma^2),
+$$
+para algum $\sigma > 0$ e que $T > 0.$ Dado $N\in\mathbb{N}$, seja $\Delta = T/N$. Considere o conjunto amostral
+
+$$
+\mathcal{P}\left(|X_0| \geq r\right) > 0.
 $$
 Dado um $\Delta t > 0,$ considere $r$ tal que
 $$
@@ -494,31 +499,42 @@ r \geq \frac{2}{\Delta t}
 $$
 e defina
 $$
-A_r = \{\omega; |X_0(\omega)| \geq r\},
+A_N = \left\{\omega; \;|X_0(\omega)| \geq \frac{2N}{T} \right\}.
 $$
-que, pela hipótese acima, tem probabilidade positiva.
+Como $X_0$ é normal, vale a estimativa
+$$
+\begin{align*}
+\mathcal{P}(X_0 \geq r) & \geq \mathcal{P}(r \leq X_0 \leq 2r) \\
+& = \frac{1}{\sqrt{2\pi \sigma^2}}\int_r^{2r} e^{-\frac{x^2}{2\sigma^2}}\;\mathrm{d}x \\
+& \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
+\end{align*}
+$$
+Em particular,
+$$
+\mathcal{P}(A_N) = 2\mathcal{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{1}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
+$$
 
 Pelas estimativas acima, temos, para as aproximações de Euler $X_j(\omega),$ $j=0, \ldots, N$, onde $\Delta t = T/N,$ que
 $$
 |X_j(\omega)| \geq |X_0(\omega)|^{2^j},
 $$
-para todo $\omega\in A_r.$ Em particular, usando que $N=T/\Delta t,$ temos
+para todo $\omega\in A_N.$ Em particular, para $j=N,$ temos
 $$
-|X_N(\omega)| \geq |X_0(\omega)|^{2^N} \geq r^{2^{T/\Delta t}}.
+|X_N(\omega)| \geq |X_0(\omega)|^{2^N} \geq \left(\frac{2N}{T}\right)^{2^N}.
 $$
-Assim,
+Assim, estimamos a norma forte por
 $$
-\mathbb{E}\left[|X_N|\right] \geq r^{2^{T/\Delta t}} \mathbb{P}(A_\omega) \rightarrow \infty,
+\mathbb{E}\left[|X_N|\right] \geq \left(\frac{2N}{T}\right)^{2^N} \mathcal{P}(A_N) \geq \left(\frac{2N}{T}\right)^{2^N}\frac{1}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}} \rightarrow \infty,
 $$
-quando $\Delta t \rightarrow 0.$ Da mesma forma,
+quando $N \rightarrow \infty.$ Da mesma forma,
 $$
-|X_N(\omega)|^k \geq |X_0(\omega)|^{k2^N} \geq r^{k2^{T/\Delta t}},
+|X_N(\omega)|^k \geq |X_0(\omega)|^{k2^N} \geq \left(\frac{2N}{T}\right)^{k2^N},
 $$
 para $k\in\mathbb{N}$ qualquer, de modo que
 $$
-\mathbb{E}\left[|X_N|^k\right] \geq r^{k2^{T/\Delta t}} \mathbb{P}(A_\omega) \rightarrow \infty,
+\mathbb{E}\left[|X_N|^k\right] \rightarrow \infty,
 $$
-mostrando que os momentos de $X_N$ não podem convergir para os momentos da solução exata no instante $T$. Ou seja, não temos nem a convergência fraca, que dirá a forte. Portanto, a aproximação de Euler não converge fortemente nem fracamente nesse caso.
+quando $N\rightarrow \infty,$ também. Isso mostra que os momentos de $X_N$ não convergem para os momentos da solução exata $X_T$ no instante $t=T.$ Em outras palavras, a aproximação de Euler não converge fortemente nem fracamente para a solução exata, nesse caso.
 
 ### Não convergência no caso estocástico
 
@@ -604,3 +620,21 @@ $$
 $$
 sob condições apropriadas em $f$ e $g$, conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Isso inclui equações como ...
 
+### rascunho
+
+Agora, vamos assumir, por indução, que $|X_j| \geq r_N^{2^j},$ até um certo $j\in\mathbb{N}.$ Vamos mostrar que o mesmo vale para $j+1.$ Temos
+$$
+|X_{j+1}| = |X_j (1 - X_j^2\Delta t) + \Delta W_j| \geq |\Delta W_j - X_j^3\Delta t| - |X_j| \geq \max\{|\Delta W_j|, |X_j^3\Delta t|\} - \min\{|\Delta W_j|, |X_j^3\Delta t|\} - |X_j|.
+$$
+Como
+$$
+\Delta t \leq |\Delta W_j| \geq 2\Delta t,
+$$
+então
+$$
+|X_{j+1}| \geq \max\{1, |X_j^3|\}\Delta t - \min\{1, |X_j^3|\}\Delta t - |X_j|.
+$$
+Pela a hipótese de indução, temos $|X_j^3| \geq (r_N^{2^j})^3 \geq r_N^{2^{j+1}} \geq 1,$ de modo que
+$$
+|X_{j+1}| \geq |X_j^3|\Delta t - \Delta t - |X_j|.
+$$
