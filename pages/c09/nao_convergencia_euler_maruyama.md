@@ -44,7 +44,7 @@ ou seja $x_{j+1}$ é negativo e $|x_{j+1}| \geq x_j^2.$
 
 Quando $j$ é impar, $x_j$ tem sinal negativo e
 $$
-x_j = - |x_j| \leq - x_0 \leq - \frac{2}{\Delta t} \geq 1 \leq -1,
+x_j = - |x_j| \leq - x_0 \leq - \frac{2}{\Delta t} \leq -1,
 $$
 de modo que
 $$
@@ -97,30 +97,21 @@ para evitar as oscilações das aproximações de Euler para um $\omega$ qualque
 $$
 X_0 \sim \mathcal{N}(0, \sigma^2),
 $$
-para algum $\sigma > 0$ e que $T > 0.$ Dado $N\in\mathbb{N}$, seja $\Delta = T/N$. Considere o conjunto amostral
-
-$$
-\mathcal{P}\left(|X_0| \geq r\right) > 0.
-$$
-Dado um $\Delta t > 0,$ considere $r$ tal que
-$$
-r \geq \frac{2}{\Delta t}
-$$
-e defina
+para algum $\sigma > 0$ e que $T > 0.$ Dado $N\in\mathbb{N}$, seja $\Delta t = T/N$ e defina
 $$
 A_N = \left\{\omega; \;|X_0(\omega)| \geq \frac{2N}{T} \right\}.
 $$
 Como $X_0$ é normal, vale a estimativa
 $$
 \begin{align*}
-\mathcal{P}(X_0 \geq r) & \geq \mathcal{P}(r \leq X_0 \leq 2r) \\
+\mathbb{P}(X_0 \geq r) & \geq \mathbb{P}(r \leq X_0 \leq 2r) \\
 & = \frac{1}{\sqrt{2\pi \sigma^2}}\int_r^{2r} e^{-\frac{x^2}{2\sigma^2}}\;\mathrm{d}x \\
 & \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
 \end{align*}
 $$
 Em particular,
 $$
-\mathcal{P}(A_N) = 2\mathcal{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{4}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
+\mathbb{P}(A_N) = 2\mathbb{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{4}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
 $$
 
 Pelas estimativas acima, temos, para as aproximações de Euler $X_j(\omega),$ $j=0, \ldots, N$, onde $\Delta t = T/N,$ que
@@ -133,7 +124,7 @@ $$
 $$
 Assim, estimamos a norma forte por
 $$
-\mathbb{E}\left[|X_N|\right] \geq \left(\frac{2N}{T}\right)^{2^N} \mathcal{P}(A_N) \geq \left(\frac{2N}{T}\right)^{2^N}\frac{1}{\sqrt{2\pi \sigma^2}}\frac{4N}{T} e^{-\frac{8N^2}{\sigma^2T^2}} \rightarrow \infty,
+\mathbb{E}\left[|X_N|\right] \geq \left(\frac{2N}{T}\right)^{2^N} \mathbb{P}(A_N) \geq \left(\frac{2N}{T}\right)^{2^N}\frac{1}{\sqrt{2\pi \sigma^2}}\frac{4N}{T} e^{-\frac{8N^2}{\sigma^2T^2}} \rightarrow \infty,
 $$
 quando $N \rightarrow \infty.$ Da mesma forma,
 $$
@@ -153,7 +144,7 @@ $$
 $$
 Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral. Dados $T > 0$ e $N\in\mathbb{N}$, temos o passo de tempo $\Delta t = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
 $$
-\Delta t = \frac{T}{N} \leq 2.
+\Delta t = \frac{T}{N} \leq \frac{1}{2}.
 $$
 A aproximação de Euler $X_j$, nos instantes $t_j = j\Delta t,$ $j=0, \ldots, N,$ é dada por
 $$
@@ -221,27 +212,27 @@ Isso completa a indução.
 
 Agora, precisamos estimar a medidade de $A_N$. Como os passos de um processo de Wiener são independentes, temos
 $$
-\mathcal{P}(A_N) =  \mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathcal{P}\left(\frac{1}{N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right).
+\mathbb{P}(A_N) =  \mathbb{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathbb{P}\left(\frac{1}{r_N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right).
 $$
-Como os passos são normais, $\Delta W_j \sim \mathcal{N}(0, \Delta t),$ com $\Delta = 1/r_N,$ usamos a estimativa acima, que nos diz que para $Z\sim \mathcal{N}(0, \sigma^2)$, vale
+Como os passos são normais, $\Delta W_j \sim \mathcal{N}(0, \Delta t),$ com $\Delta t = 1/r_N,$ usamos a estimativa acima, que nos diz que para $Z\sim \mathcal{N}(0, \sigma^2)$, vale
 $$
-\mathcal{P}(X_0 \geq r) \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
+\mathbb{P}(Z \geq r) \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
 $$
 Assim, com $\sigma^2 = 1/r_N,$
 $$
-\mathcal{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right) \geq \sqrt{\frac{2r_N}{\pi}}r_N^2 e^{-2r_N^3} = \sqrt{\frac{2r_N^5}{\pi}} e^{-2r_N^3}
+\mathbb{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right) \geq \sqrt{\frac{2r_N}{\pi}}r_N^2 e^{-2r_N^3} = \sqrt{\frac{2r_N^5}{\pi}} e^{-2r_N^3}
 $$
 e
 $$
-\mathcal{P}\left(\frac{1}{N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right) \geq \sqrt{\frac{2r_N}{\pi}}\frac{1}{r_N} e^{-\frac{2}{r_N^3}} = \sqrt{\frac{2}{\pi r_N}} e^{-\frac{2}{r_N^3}}.
+\mathbb{P}\left(\frac{1}{N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right) \geq \sqrt{\frac{2r_N}{\pi}}\frac{1}{r_N} e^{-\frac{2}{r_N^3}} = \sqrt{\frac{2}{\pi r_N}} e^{-\frac{2}{r_N^3}}.
 $$
 Deste modo,
 $$
-\mathcal{P}(A_N) \geq \sqrt{\frac{2r_N^5}{\pi}} e^{-2r_N^3} \left( \sqrt{\frac{2}{\pi r_N}} e^{-\frac{2}{r_N^3}}\right)^N = \left(\frac{2}{\pi}\right)^{(N-1)/2}\frac{1}{r_N^{(N-5)/2}}e^{-2(r_N^3 - N/r_N^3)}.
+\mathbb{P}(A_N) \geq \sqrt{\frac{2r_N^5}{\pi}} e^{-2r_N^3} \left( \sqrt{\frac{2}{\pi r_N}} e^{-\frac{2}{r_N^3}}\right)^N = \left(\frac{2}{\pi}\right)^{(N-1)/2}\frac{1}{r_N^{(N-5)/2}}e^{-2(r_N^3 - N/r_N^3)}.
 $$
 Observe que essa medida vai rapidamente para zero, mas o crescimento de $|X_N|$ nessa região cresce extremamente mais rápido, de forma que
 $$
-\mathbb{E}\left[ |X_N| \right] \geq \mathbb{E}\left[ |X_N| \chi_{A_N} \right] \geq r_N^{2^N}\mathcal{P}\left(A_N\right) \geq r_N^{2^N}\left(\frac{2}{\pi}\right)^{(N-1)/2}\frac{1}{r_N^{(N-5)/2}}e^{-2(r_N^3 - N/r_N^3)} \rightarrow \infty,
+\mathbb{E}\left[ |X_N| \right] \geq \mathbb{E}\left[ |X_N| \chi_{A_N} \right] \geq r_N^{2^N}\mathbb{P}\left(A_N\right) \geq r_N^{2^N}\left(\frac{2}{\pi}\right)^{(N-1)/2}\frac{1}{r_N^{(N-5)/2}}e^{-2(r_N^3 - N/r_N^3)} \rightarrow \infty,
 $$
 quando $N\rightarrow \infty.$ Da mesma forma,
 $$
@@ -257,7 +248,7 @@ $$
 $$
 sob condições apropriadas de crescimento em $f$ e $g$, conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Mais precisamente, devemos ter
 $$
-\max\{|f(x)|, |g(x)|\} \geq \frac{|x|^\beta}{R}, \quad \min\{|f(x)|, |g(x)|\} \leq R|x|^\alpha, \quad \mathcal{P}\left(g(X_0) \neq 0\right) > 0,
+\max\{|f(x)|, |g(x)|\} \geq \frac{|x|^\beta}{R}, \quad \min\{|f(x)|, |g(x)|\} \leq R|x|^\alpha, \quad \mathbb{P}\left(g(X_0) \neq 0\right) > 0,
 $$
 para $|x| \geq R$, com $R \geq 1$, $\beta > \alpha > 1,$
 Isso inclui equações como a equação de Ginzburg-Landau estocástica, a equação de Verhulst estocástica, a equação de difusão de Feller com crescimento logístico, equações cinéticas e outras tantas.
