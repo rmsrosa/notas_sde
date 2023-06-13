@@ -283,34 +283,15 @@ mostrando que o método de Euler-Maruyama é de ordem forte $1/2.$
 
 ## Convergência no caso estocástico com ruído aditivo
 
-Quando $g=g(t)$ não depende de $x$ e quando a dependência de $f=f(t, x)$ e $g=g(t)$ também é Lipschitz, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, consideramos
+Quando $g=g(t)$ não depende de $x$ e quando $f=f(t, x)$ e $g=g(t)$ são mais suaves, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, pedimos que $f$ e $g$ sejam continuamente diferenciáveis em $t$ e que $f$ seja duas vezes continuamente diferenciáveis em $x$, com limitações uniformes,
 $$
-\mathrm{d}X_t = f(t, X_s)\;\mathrm{d}t + g(t)\;\mathrm{d}W_t
+|(\partial_t f)(t, x)| \leq H_f, \quad |(\partial_x f)(t, x)| \leq L_f, \quad |(\partial_{xx} f)(t, x)| \leq L_{ff}.
 $$
-e assumimos
+Isso tudo em $0\leq t \leq T$, $x\in \mathbb{R}.$ Como $g=g(t)$ só depende de $t$ e o intevalo $[0, T]$ é limitado, temos, pela suavidade de $g$, que
 $$
-|f(t, x) - f(t, y)| \leq L_f|x - y|
+|g(t)| \leq M_g, \quad |(\partial_t g)(t)| \leq H_g.
 $$
-e
-$$
-|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|, \quad |g(t) - g(s)| \leq H_g(1 + |x|)|t - s|,
-$$
-para $x, y\in\mathbb{R}$ e $0\leq t, s \leq T.$ Na verdade, pedimos ainda mais. Pedimos que $f$ e $g$ sejam continuamente diferenciáveis em $t$ e duas vezes continuamente diferenciáveis em $x$, com limitações uniformes,
-$$
-|(\partial_t f)(t, x)| \leq H_f, \quad |(\partial_t g)(t, x)| \leq H_g,
-$$
-$$
-|(\partial_x f)(t, x)| \leq L_f, \quad |(\partial_x g)(t, x)| \leq L_g,
-$$
-e
-$$
-|(\partial_{xx} f)(t, x)| \leq L_{ff}, \quad |(\partial_{xx} g)(t, x)| \leq L_{gg}.
-$$
-Para simplificar, assumimos, ainda, que $f$ e $g$ sejam limitadas, i.e.
-$$
-|f(t, x)| \leq M_f, \quad |g(t, x)| \leq M_g.
-$$
-Isso tudo em $0\leq t \leq T$, $x\in \mathbb{R}.$
+em $0\leq t \leq T.$
 
 Escrevemos a diferença entre a solução e a aproximação na forma
 $$
@@ -344,28 +325,31 @@ $$
 O primeiro termo é o mais delicado e requer o uso da fórmula de Itô. Com ela, temos
 $$
 \begin{align*}
-f(s, X_s) - f(t^n(s), X_{t^n(s)}) & = \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi \\
-& \quad + \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi.
+f(s, X_s) - f(t^n(s), X_{t^n(s)}) & = \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi)^2 \right)\;\mathrm{d}\xi \\
+& \quad + \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi)\;\mathrm{d}W_\xi.
 \end{align*}
 $$
 O ponto chave é trocar a ordem de integração, usando uma versão estocástica do Teorema de Fubini na segunda integral. Assim,
 $$
 \begin{align*}
-\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s & = \int_0^{t_j} \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi\;\mathrm{d}s \\
-& \quad + \int_0^{t_j} \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi\;\mathrm{d}s \\
-& = \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}s\;\mathrm{d}\xi \\
-& \quad + \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}s\;\mathrm{d}W_\xi,
+\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s & = \int_0^{t_j} \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi)^2 \right)\;\mathrm{d}\xi\;\mathrm{d}s \\
+& \quad + \int_0^{t_j} \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi)\;\mathrm{d}W_\xi\;\mathrm{d}s \\
+& = \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi)^2 \right)\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} (\partial_x f)(\xi, X_{\xi})g(\xi)\;\mathrm{d}s\;\mathrm{d}W_\xi,
 \end{align*}
 $$
 onde
 $$
 \tilde t^{n}(t) = \min\{t_i \geq t; \; i = 0, \ldots, n\}
 $$
-é o ponto da malha que está mais próximo e à direita do instante $t.$ Usando Cauchy-Schwartz e a isometria de Itô, obtemos a seguinte estimativa para a média quadrática desse termo.
+é o ponto da malha que está mais próximo e à direita do instante $t.$ Observe que o integrando não depende de $s,$ de modo que o fato da integral em $s$ ser no intervalo $[\xi, \tilde t^n(\xi)]$, ou seja, posterior a $\xi,$ viola nenhuma condição de não antecipação do integrando.
+
+Usando Cauchy-Schwartz e a isometria de Itô, obtemos a seguinte estimativa para a média quadrática desse termo.
 $$
 \begin{align*}
-\mathbb{E}\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] & \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi \\
-& \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi.
+\mathbb{E}&\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] \\
+& \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi)^2 \right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_x f)(\xi, X_{\xi})g(\xi)\right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi.
 \end{align*}
 $$
 Usando as estimativas para $f$, $g$ e suas derivadas, obtemos
