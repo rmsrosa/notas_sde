@@ -209,16 +209,16 @@
     <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções locais em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções globais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Limitação e continuidade das soluções</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
@@ -251,22 +251,25 @@
     <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c09/heun">9.6. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.8. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -339,7 +342,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_convergencia_em"><kbd>→</kbd> 9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama"><kbd>→</kbd> 9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a>
 </span>
     </p>
 </div>
@@ -353,30 +356,30 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">9.3. Convergência do método de Euler-Maruyama</a></h1>
 <p>No caso determinístico, de uma equação diferencial</p>
 \[
-\frac{\mathrm{d}x}{\mathrm{d}t} = f(x),
+\frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x),
 \]
 <p>com condição inicial \(x(0) = x_0\), o método de Euler</p>
 \[
-x_{j} = x_{j-1} + \Delta t f(x_j), \qquad x_j|_{j = 0} = x_0,
+x_{j}^n = x_{j-1}^n + \Delta t f(t_{j-1} x_{j-1}^n), \qquad x_j^n|_{j = 0} = x_0,
 \]
-<p>em uma malha temporal uniforme \(t_j = jT/n\), \(j = 0, \ldots, n\), com \(\Delta t = T/n\), converge uniformemente, no intervalo \([0, T]\), para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existe \(C > 0\) e \(\delta > 0\) tais que</p>
+<p>em uma malha temporal uniforme \(t_j = jT/n\), \(j = 0, \ldots, n\), com \(\Delta t = T/n\), converge uniformemente, no intervalo \([0, T]\), para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existem \(C > 0\) e \(\delta > 0\) tais que</p>
 \[
 \max_{j}|x(t_j) - x_j| \leq C \Delta t, \qquad 0 < \Delta t \leq \delta.
 \]
-<p>Isso sob a hipótese de \(f\) ser localmente Lipschitz contínua.</p>
-<p>Por outro lado, no caso estocástico, com um ruído multiplicativo \(g = g(X_t),\)</p>
+<p>Isso sob a hipótese de \(f\) ser localmente Lipschitz contínuas.</p>
+<p>Por outro lado, no caso estocástico, com um ruído multiplicativo \(g = g(t, X_t),\)</p>
 \[
-\mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 \]
 <p>com uma condição inicial</p>
 \[
 \left.X_t\right|_{t = 0} = X_0,
 \]
-<p>a convergência <em>forte</em> é apenas de ordem \(1/2\) e isso sob as hipóteses de \(f\) e \(g\) serem <em>globalmente</em> Lipschitz contínua. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, \(g(X_t) = \sigma\) &#40;ou, mais geralmente, \(g(t, X_t) = g(t)\)&#41;, então ainda temos a convergência forte de ordem \(1\).</p>
+<p>a convergência <em>forte</em> é apenas de ordem \(1/2\) e isso sob a hipótese mais exigente de \(f\) e \(g\) serem <em>globalmente</em> Lipschitz contínuas. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, \(g = g(t, X_t) = g(t)\), então ainda temos a convergência forte de ordem \(1\).</p>
 <p>A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de \(\Delta t\), há termos da ordem de \(\Delta W\). Em um sentido apropriado, vale \((\Delta W)^2 \sim \Delta t\), o que nos dá um erro da ordem de \((\Delta t)^{1/2}\).</p>
-<p>Outro ponto importante é que, no caso discreto, a constante \(C\) que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais \(X_0(\omega)\) e não temos esse controle, por isso a necessidade de se assumir que os termos \(f\) e \(g\) sejam globalmente Lipschitz contínuos.</p>
-<p>Por último, um detalhe um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença \(|x(t_j) - x_j^n|\), no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para \(\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]\).</p>
-<p>Vejamos os detalhes.</p>
+<p>Outro ponto importante é que, no caso discreto, a constante \(C\) que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais \(X_0(\omega)\) e não temos esse controle, por isso a necessidade de se assumir que os termos \(f\) e \(g\) sejam globalmente Lipschitz contínuos. Esse problema aparece mesmo no caso de ruído aditivo e apenas \(f\) não globalmente Lipschitz.</p>
+<p>Por último, um ponto um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença \(|x(t_j) - x_j^n|\), no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para \(\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]\).</p>
+<p>Em resumo, a hipótese de continuidade Lipschitz global é para garantir que o método convirja. E a presença de \(\mathrm{d}W_t \sim \sqrt{\mathrm{d}t}\) nos dá uma convergência forte apenas de ordem \(1/2,\) no caso multiplicativo. Vejamos os detalhes.</p>
 <h2 id="convergência_no_caso_determinístico"><a href="#convergência_no_caso_determinístico" class="header-anchor">Convergência no caso determinístico</a></h2>
 <p>Primeiramente, temos que</p>
 \[
@@ -384,53 +387,96 @@ x(t_j) = x(t_{j-1}) + \int_{t_{j-1}}^{t_j} x'(s)\;\mathrm{d}s = x(t_{j-1}) + \De
 \]
 <p>De acordo com a equação diferencial,</p>
 \[
-x(t_j) = x(t_{j-1}) + \Delta t f(x(t_{j-1})) + \int_{t_{j-1}}^{t_j} (f(x(s)) - f(x(t_{j-1})))\;\mathrm{d}s.
+x(t_j) = x(t_{j-1}) + \Delta t f(t_{j-1}, x(t_{j-1})) + \int_{t_{j-1}}^{t_j} (f(s, x(s)) - f(t_{j-1}, x(t_{j-1})))\;\mathrm{d}s.
 \]
 <p>Assim, nos pontos \(j = 1, \ldots, n\) da malha,</p>
 \[
-|x(t_j) - x_j| \leq | x(t_{j-1}) - x_{j-1} | + \Delta t |f(x(t_{j-1})) - f(x_{j-1})| + \int_{t_{j-1}}^{t_j} |f(x(s)) - f(x(t_{j-1}))|\;\mathrm{d}s.
+\begin{align*}
+|x(t_j) - x_j| & \leq | x(t_{j-1}) - x_{j-1} | + \Delta t |f(t_{j-1}, x(t_{j-1})) - f(t_{j-1}, x_{j-1})| \\
+  & \quad + \int_{t_{j-1}}^{t_j} |f(s, x(s)) - f(t_{j-1}, x(t_{j-1}))|\;\mathrm{d}s.
+\end{align*}
 \]
-<p>Usando que \(f\) é localmente Lipschitz contínua e denotando por \(L\) a constante de Lipschitz em uma região limitada mas suficientemente grande para conter as soluções da equação diferencial original e de sua aproximação numérica, obtemos</p>
+<p>Como a solução é contínua, ela é limitada no intervalo \([0, T]\), i.e.</p>
 \[
-|x(t_j) - x_j| \leq |x(t_{j-1}) - x_{j-1}| + L \Delta t |x(t_{j-1}) - x_{j-1}| + L \int_{t_{j-1}}^{t_j} |x(s) - x(t_{j-1})|\;\mathrm{d}s.
+R_0 = \max_{0\leq t \leq T}|x(t)| < \infty.
+\]
+<p>Seja \(R > R_0\) e considere as constantes de Lipschitz \(L_1 = L_1(R)\) e \(L_2 = L_2(R)\) tais que</p>
+\[
+  |f(t, x) - f(s, y)| \leq L_1(R)|t - s| + L_2(R)|x - y|, \quad \forall 0 \leq t, s \leq T, \;\forall x, y, \; |x|, |y| \leq R.
+\]
+<p>Assuma, por indução, que \(|x_{j-1}| \leq R\). Com isso,</p>
+\[
+\begin{align*}
+|x(t_j) - x_j| & \leq |x(t_{j-1}) - x_{j-1}| + L_2 \Delta t |x(t_{j-1}) - x_{j-1}| \\
+  & \quad +\int_{t_{j-1}}^{t_j} \left( L_1 |s - t_{j-1}| + L_2 |x(s) - x(t_{j-1})|\right)\;\mathrm{d}s \\
+  & \leq |x(t_{j-1}) - x_{j-1}| + L_2 \Delta t |x(t_{j-1}) - x_{j-1}| \\
+  & \quad + \frac{L_1}{2}|t_j - t_{j-1}|^2 + L_2 \int_{t_{j-1}}^{t_j}|x(s) - x(t_{j-1})|\;\mathrm{d}s.
+\end{align*}
 \]
 <p>O integrando do último termo pode ser estimado por</p>
 \[
 \begin{align*}
 \int_{t_{j-1}}^{t_j} |x(s) - x(t_{j-1})|\;\mathrm{d}s & \leq \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s |x'(\tau)|\;\mathrm{d}\tau\;\mathrm{d}s \\
-& \leq \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s |f(x(\tau))|\;\mathrm{d}\tau\;\mathrm{d}s \\
-& \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(|f(x(\tau)) - f(0)| + |f(0)|\right)\;\mathrm{d}\tau\;\mathrm{d}s \\
-& L \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(|x(\tau)| + |f(0)|\right) \;\mathrm{d}\tau\;\mathrm{d}s \\
-& \leq L M \Delta t^2,
+& \leq \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s |f(\tau, x(\tau))|\;\mathrm{d}\tau\;\mathrm{d}s \\
+& \quad + \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(|f(\tau, x(\tau)) - f(\tau, 0)| + |f(\tau, 0)|\right)\;\mathrm{d}\tau\;\mathrm{d}s \\
+& \quad + \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^s \left(L_2|x(\tau)| + |f(\tau, 0)|\right) \;\mathrm{d}\tau\;\mathrm{d}s \\
+& \leq (L_1 R_0 + C_0) \Delta t^2,
 \end{align*}
 \]
 <p>onde</p>
 \[
-M = |f(0)| + \max_{0 \leq t \leq T} |x(t)|.
+C_0 = \max_{0 \leq t \leq T} |f(\tau, 0)|.
 \]
 <p>Assim,</p>
 \[
-|x(t_j) - x_j| \leq (1 + L\Delta t)|x(t_{j-1}) - x_{j-1}| + M \Delta t^2.
+|x(t_j) - x_j| \leq (1 + L_2\Delta t)|x(t_{j-1}) - x_{j-1}| + M \Delta t^2,
+\]
+<p>onde</p>
+\[
+M = \frac{L_1}{2} + L_1 R_0 + C_0.
 \]
 <p>Iterando essa estimativa, chegamos a</p>
 \[
 \begin{align*}
-|x(t_j) - x_j| & \leq (1 + L\Delta t)^2|x(t_{j-2}) - x_{j-2}| + M \Delta t^2(1 + (1 + L\Delta t)) \\
+|x(t_j) - x_j| & \leq (1 + L_2\Delta t)^2|x(t_{j-2}) - x_{j-2}| + M \Delta t^2(1 + (1 + L\Delta t)) \\
 & \leq \ldots \\
-& \leq (1 + L\Delta t)^j|x(t_0) - x_0| + M \Delta t^2(1 + (1 + L\Delta t) + \ldots + (1 + L\Delta t)^{j-1}) \\
-& \leq e^{LT}|x(t_0) - x_0| + \frac{M}{L}e^{LT}\Delta t.
+& \leq (1 + L_2\Delta t)^j|x(t_0) - x_0| + M \Delta t^2(1 + (1 + L_2\Delta t) + \ldots + (1 + L_2\Delta t)^{j-1}).
 \end{align*}
+\]
+<p>Usando que \(1 + a \leq e^a\), para todo \(a \geq 0\), temos</p>
+\[
+(1 + L_2\Delta t)^j \leq e^{L_2j\Delta t} = e^{L_2 t_j}.
+\]
+<p>Além disso,</p>
+\[
+1 + (1 + L_2\Delta t) + \ldots + (1 + L_2\Delta t)^{j-1} = \frac{(1 + L_2\Delta t)^j - 1}{(1 + L_2\Delta t) - 1} = \frac{1}{L_2\Delta t}(1 + L_2\Delta t)^j \leq \frac{1}{L_2\Delta t}e^{L_2 t_j}.
+\]
+<p>Portanto,</p>
+\[
+|x(t_j) - x_j| \leq e^{L_2T}|x(t_0) - x_0| + \frac{M}{L_2}e^{L_2T}\Delta t.
 \]
 <p>Considerando que \(x_0 = x(t_0)\), obtemos</p>
 \[
-\max_j |x(t_j) - x_j| \leq \frac{M}{L}e^{LT}\Delta t,
+|x(t_j) - x_j| \leq \frac{M}{L_2}e^{L_2T}\Delta t.
 \]
-<p>mostrando que é o método de Euler é de primeira ordem.</p>
+<p>Lembrando que \(L_2=L_2(R)\), para \(\Delta t\) suficientemente pequeno tal que</p>
+\[
+\frac{M}{L_2(R)}e^{L_2(R)T}\Delta t \leq R - R_0,
+\]
+<p>podemos garantir que</p>
+\[
+|x_j| \leq R,
+\]
+<p>obtendo, por indução, que</p>
+\[
+\max_{j=0, \ldots, n}|x_j^n| \leq R, \qquad \max_{j=0, \ldots, n} |x(t_j) - x_j| \leq \frac{M}{L_2}e^{L_2T}\Delta t,
+\]
+<p>mostrando que o método de Euler é de primeira ordem.</p>
 <h2 id="convergência_no_caso_aleatório"><a href="#convergência_no_caso_aleatório" class="header-anchor">Convergência no caso aleatório</a></h2>
 <h2 id="convergência_no_caso_estocástico_multiplicativo"><a href="#convergência_no_caso_estocástico_multiplicativo" class="header-anchor">Convergência no caso estocástico multiplicativo</a></h2>
 <p>Considere, agora, a equação estocástica</p>
 \[
-\mathrm{d}X_t = f(X_t)\mathrm{d}t + g(X_t)\mathrm{d}W_t, \qquad t \geq 0,
+\mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 \]
 <p>com uma condição inicial</p>
 \[
@@ -438,107 +484,231 @@ M = |f(0)| + \max_{0 \leq t \leq T} |x(t)|.
 \]
 <p>Nesse caso, temos</p>
 \[
-X_t = X_0 + \int_0^t f(X_s)\;\mathrm{d}s + \int_0^t g(X_s)\;\mathrm{d}W_s.
+X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 \]
 <p>Já a aproximação pelo método de Euler-Maruyama é dada por</p>
 \[
-X_j^n = X_{j-1}^n + f(X_{j-1}^n) \Delta t + g(X_{j-1}^n) \Delta W_j,
+X_j^n = X_{j-1}^n + f(t_{j-1}, X_{j-1}^n) \Delta t + g(t_{j-1}, X_{j-1}^n) \Delta W_j,
 \]
 <p>onde \(X_0^n = X_0\) e \(\Delta W_j\).</p>
-<p>Assumimos \(f\) e \(g\) globalmente Lipschitz contínuas, com constantes de Lipschitz \(L_f\) e \(L_g\), respectivamente.</p>
-<p>Para fazermos uso da isometria de Itô, vamos estimar a média quadrática do erro. Mais precisamente, vamos estimar</p>
+<p>Assumimos \(f\) e \(g\) globalmente Lipschitz contínuas em \(x\) e globalmente Hölder contínuas em \(t.\) Mais precisamente, assumimos que</p>
 \[
-D_j = \max_{i = 0, \ldots, j} \mathbb{E}\left[ |X_{t_i} - X_i^n|^2\right]
+|f(t, x) - f(t, y)| \leq L_f|x - y|
 \]
-<p>Para efeito de comparação, temos</p>
+<p>e</p>
 \[
-X_{t_j} = X_{t_{j-1}} + \int_{t_{j-1}}^{t_j} f(X_s)\;\mathrm{d}s + \int_0^t g(X_s)\;\mathrm{d}W_s.
+|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|^{1/2}, \quad |g(t) - g(s)| \leq H_g(1 + |x|)|t - s|^{1/2},
 \]
-<p>Assim,</p>
+<p>para \(x, y\in\mathbb{R}\) e \(0\leq t, s \leq T,\) onde \(H_f,\) \(L_f,\) \(H_g,\) \(L_g > 0\) são constantes apropriadas.</p>
+<p>Para uma estimativa adequada do termo estocástico, precisamos da isometria de Itô, e para isso precisamos trabalhar com a média quadrática.  Mais precisamente, vamos estimar</p>
+\[
+\max_{i = 0, \ldots, n} \mathbb{E}\left[ |X_{t_i} - X_i^n|^2\right].
+\]
+<p>Em relação à média quadrática, lembremos das estimativas</p>
+\[
+\mathbb{E}\left[X_t^2\right] \leq M_T,
+\]
+<p>e</p>
+\[
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq C_T^2\tau,
+\]
+<p>para \(0\leq t \leq t + \tau \leq T,\) para constantes apropriadas \(C_T, M_T > 0.\)</p>
+<p>Agora, por conta também da necessidade de trabalharmos com a média quadrática, devemos considerar uma expressão global para o erro, escrevendo</p>
+\[
+X_{t_j} = X_0 + \int_0^{t_j} f(s, X_s)\;\mathrm{d}s + \int_0^{t_j} g(s, X_s)\;\mathrm{d}W_s
+\]
+<p>e</p>
+\[
+X_j^n = X_0 + \sum_{i=1}^j f(t_{i-1}, X_{i-1}^n)\Delta t_{i-1} + \sum_{i=1}^j g(t_{i-1}, X_{i-1}^n)\Delta W_{i-1}.
+\]
+<p>Não funciona estimarmos de maneira recursiva, pois, por conta da desigualdade \((a_1 + \cdots + a_k)^2 \leq k(a_1^2 + \cdots + a_k^2),\) teríamos algo do tipo \(d_j \leq C_1d_{j-1} + C_0\), com \(C>1\), de forma que as iterações nos dariam um termo acumulado \(C^j\), que explode à medida que a malha é refinada, pois não está acompanhado do passo de tempo \(\Delta t\).</p>
+<p>Assim, escrevendo o erro de \(t=0\) a \(t=t_j,\) temos</p>
+\[
+X_{t_j} - X_j^n = \int_0^{t_j} f(s, X_s)\;\mathrm{d}s + \int_0^{t_j} g(s, X_s)\;\mathrm{d}W_s - \sum_{i=1}^j f(t_{i-1}, X_{i-1}^n) \Delta t_{i-1} - \sum_{i=1}^j g(t_{i-1}, X_{i-1}^n) \Delta W_{i-1}.
+\]
+<p>Podemos escrever isso na forma</p>
 \[
 \begin{align*}
-X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
-& \qquad + \int_{t_{j-1}}^{t_j} f(X_s) \;\mathrm{d}s - f(X_{j-1}^n) \Delta t \\
-& \qquad + \int_{t_{j-1}}^{t_j} g(X_s)\;\mathrm{d}W_s - g(X_{j-1}^n) \Delta W_j \\
-& = X_{t_{j-1}} - X_{j-1}^n \\
-& \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{j-1}^n))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{j-1}^n))\;\mathrm{d}W_s \\
-& = X_{t_{j-1}} - X_{j-1}^n \\
-& \qquad + \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \\
-& \qquad + \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s + \int_0^{t_j} (g(s, X_s) - g(t_{i^n(s)}, X_{t^n(s)}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1} + \sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1},
 \end{align*}
 \]
-<p>Elevando ao quadrado e usando que \((a_1 + \ldots + a_5)^2 \leq 5(a_1^2 + \ldots + a_5^2)\), </p>
+<p>onde \(t^n\) e \(i^n\) são as funções de malha</p>
+\[
+i^n(t) = \max_{j=0, \ldots, n}\{j; \;t_j \leq t\},
+\]
+<p>e</p>
+\[
+t^n(t) = t_{i^n(t)} = \max\{t_i \leq t; \; i = 0, \ldots, n\},
+\]
+<p>que nos dão o índice \(i^n(t)\) do ponto da malha que está mais próximo e à esquerda de um instante \(t\) e o ponto correspondente \(t^n(t) = t_{i^n(t)}\) da malha.</p>
+<p>Elevando ao quadrado e usando que \((a_1 + \ldots + a_4)^2 \leq 4(a_1^2 + \ldots + a_4^2)\),</p>
 \[
 \begin{align*}
-\left| X_{t_j} - X_j^n \right|^2 & \leq 5\left| X_{t_{j-1}} - X_{j-1}^n \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \right|^2 \\
-& \qquad + 5\left| \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s \right|^2 
+\left(X_{t_j} - X_j^n\right)^2 & = 4\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2 + 4\left(\int_0^{t_j} (g(s, X_s) - g(t^n(s), X_{t^n(s)}))\;\mathrm{d}W_s\right)^2 \\
+& \quad + 4\left(\sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1}\right) + 4\left(\sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}\right)^2.
+\end{align*}
+\]
+<p>Usando a desigualdade de Cauchy-Schwartz na primeira integral e no primeiro somatório, obtemos</p>
+\[
+\begin{align*}
+\left(X_{t_j} - X_j^n\right)^2 & \leq 4t_j\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))^2\;\mathrm{d}s + 4\left(\int_0^{t_j} (g(s, X_s) - g(t^n(s), X_{t^n(s)}))\;\mathrm{d}W_s\right)^2 \\
+& \quad + 4t_j\sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2 \Delta t_{i-1} + 4\left(\sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1}\right)^2.
+\end{align*}
+\]
+<p>Tomando o valor esperado e usando a isometria de Itô na integral e no somatório &#40;que é a isometria de Itô numa função escada e que também pode ser deduzido diretamente pelas independências dos saltos em intervalos distintos e pale condição de não antecipação&#41;,</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] & \leq 4t_j\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s + 4\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s \\
+& \quad + 4t_j\sum_{i=1}^j \mathbb{E}\left[(f(t^n(s), X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} + 4\sum_{i=1}^j \mathbb{E}\left[(g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1}.
 \end{align*}
 \]
 <p>Os dois primeiros termos integrais podem ser estimados por</p>
 \[
 \begin{align*}
-\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2 & \leq (t_j - t_{j-1})\int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))^2\;\mathrm{d}s \\
-& \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} |X_s - X_{t_{j-1}}|^2\;\mathrm{d}s
+\int_0^{t_j} \mathbb{E}\left[(f(s, X_s) - f(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s & \leq \sum_{i=1}^j\int_{t_{i-1}}^{t_i} \left(2H_f^2|s - t_{i-1}|(1 + \mathbb{E}\left[X_s^2\right]) + 2L_f^2\mathbb{E}\left[|X_s - X_{t_{i-1}}|^2\right]\right)\;\mathrm{d}s \\
+& \leq \left(2H_f^2(1 + M_T) + 2L_f^2C_T\right)\sum_{i=1}^j\int_{t_{i-1}}^{t_i} (s - t_{i-1}) \;\mathrm{d}s \\
+& \leq \left(H_f^2(1 + M_T) + L_f^2C_T\right)\sum_{i=1}^j(t_i - t_{i-1}) \\
+& \leq t_j\left(H_f^2(1 + M_T) + L_f^2C_T\right)\max_i (t_i - t_{i-1}) \\
+& \leq T\left(H_f^2(1 + M_T) + L_f^2C_T\right)\Delta t.
 \end{align*}
+\]
+<p>e, analogamente,</p>
+\[
+\int_0^{t_j} \mathbb{E}\left[(g(s, X_s) - g(t^n(s), X_{t^n(s)}))^2\right]\;\mathrm{d}s \leq T\left(H_g^2(1 + M_T) + L_g^2C_T\right)\Delta t.
+\]
+<p>Já os somatórios nos dão</p>
+\[
+\sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}
 \]
 <p>e</p>
 \[
+\sum_{i=1}^j \mathbb{E}\left[(g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{g, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
+\]
+<p>Juntando as estimativas,</p>
+\[
 \begin{align*}
-\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2 & \leq (t_j - t_{j-1})\int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))^2\;\mathrm{d}s \\
-& \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} |X_{t_{j-1}} - X_{j-1}^n|^2\;\mathrm{d}s \\
-& \leq L_f^2(t_j - t_{j-1})^2|X_{t_{j-1}} - X_{j-1}^n|^2
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] & \leq 4t_j\left(L_{f,1}^2 + L_{f, 2}^2C_T\right)\Delta t + 4\left(L_{g,1}^2 + L_{g, 2}^2C_T\right)\Delta t \\
+& \quad + 4t_jL_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1} + 4L_{g, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
 \end{align*}
 \]
-<p>O nosso objetivo é estimar a média quadrática. Com isso em mente, vemos que</p>
+<p>Ou seja,</p>
 \[
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (f(X_s) - f(X_{t_{j-1}}))\;\mathrm{d}s \right|^2\right] \leq L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} \mathbb{E}\left[|X_s - X_{t_{j-1}}|^2\right]\;\mathrm{d}s
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2 \Delta t + 2L \sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1},
+\]
+<p>para \(C, L > 0\) apropriadas. Pela desigualdade de Gronwall discreta, isso nos dá</p>
+\[
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2e^{2Lt_j}\Delta t.
+\]
+<p>Considerando a norma forte, obtemos</p>
+\[
+\mathbb{E}\left[\left|X_{t_j} - X_j^n\right|\right] \leq \mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right]^{1/2} \leq Ce^{Lt_j}\Delta t^{1/2}.
+\]
+<p>mostrando que o método de Euler-Maruyama é de ordem forte \(1/2.\)</p>
+<h2 id="convergência_no_caso_estocástico_com_ruído_aditivo"><a href="#convergência_no_caso_estocástico_com_ruído_aditivo" class="header-anchor">Convergência no caso estocástico com ruído aditivo</a></h2>
+<p>Quando \(g=g(t)\) não depende de \(x\) e quando a dependência de \(f=f(t, x)\) e \(g=g(t)\) também é Lipschitz, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, consideramos</p>
+\[
+\mathrm{d}X_t = f(t, X_s)\;\mathrm{d}t + g(t)\;\mathrm{d}W_t
+\]
+<p>e assumimos</p>
+\[
+|f(t, x) - f(t, y)| \leq L_f|x - y|
 \]
 <p>e</p>
 \[
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (f(X_{t_{j-1}}) - f(X_{j-1}^n))\;\mathrm{d}s \right|^2\right] \leq L_f^2(t_j - t_{j-1})^2\mathbb{E}\left[|X_{t_{j-1}} - X_{j-1}^n|^2\right].
+|f(t, x) - f(s, x)| \leq H_f(1 + |x|)|t - s|, \quad |g(t) - g(s)| \leq H_g(1 + |x|)|t - s|,
 \]
-<p>Nas integrais estocásticas, usamos a isometria de Itô:</p>
+<p>para \(x, y\in\mathbb{R}\) e \(0\leq t, s \leq T.\) Na verdade, pedimos ainda mais. Pedimos que \(f\) e \(g\) sejam continuamente diferenciáveis em \(t\) e duas vezes continuamente diferenciáveis em \(x\), com limitações uniformes,</p>
 \[
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (g(X_s) - g(X_{t_{j-1}}))\;\mathrm{d}W_s \right|^2\right] = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(g(X_s) - g(X_{t_{j-1}}))^2\right]\;\mathrm{d}s \leq L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_s - X_{t_{j-1}})^2\right]\;\mathrm{d}s
+|(\partial_t f)(t, x)| \leq H_f, \quad |(\partial_t g)(t, x)| \leq H_g,
+\]
+\[
+|(\partial_x f)(t, x)| \leq L_f, \quad |(\partial_x g)(t, x)| \leq L_g,
 \]
 <p>e</p>
 \[
-\begin{align*}
-\mathbb{E}\left[\left| \int_{t_{j-1}}^{t_j} (g(X_{t_{j-1}}) - g(X_{j-1}^n))\;\mathrm{d}W_s \right|^2\right] & = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(g(X_{t_{j-1}}) - g(X_{j-1}^n))^2\right]\;\mathrm{d}s \\
-& \leq L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right]\;\mathrm{d}s \\
-& \leq L_g^2 (t_j - t_{j-1})\mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right].
-\end{align*}
+|(\partial_{xx} f)(t, x)| \leq L_{ff}, \quad |(\partial_{xx} g)(t, x)| \leq L_{gg}.
 \]
-<p>Juntando as estimativas, obtemos</p>
+<p>Para simplificar, assumimos, ainda, que \(f\) e \(g\) sejam limitadas, i.e.</p>
+\[
+|f(t, x)| \leq M_f, \quad |g(t, x)| \leq M_g.
+\]
+<p>Isso tudo em \(0\leq t \leq T\), \(x\in \mathbb{R}.\)</p>
+<p>Escrevemos a diferença entre a solução e a aproximação na forma</p>
 \[
 \begin{align*}
-\mathbb{E}\left[\left| X_{t_j} - X_j^n \right|^2\right] & \leq 5\mathbb{E}\left[\left| X_{t_{j-1}} - X_{j-1}^n \right|^2\right] \\
-& \qquad + 5L_f^2(t_j - t_{j-1})\int_{t_{j-1}}^{t_j} \mathbb{E}\left[|X_s - X_{t_{j-1}}|^2\right]\;\mathrm{d}s \\
-& \qquad + 5L_f^2(t_j - t_{j-1})^2\mathbb{E}\left[|X_{t_{j-1}} - X_{j-1}^n|^2\right] \\
-& \qquad + 5L_g^2 \int_{t_{j-1}}^{t_j} \mathbb{E}\left[(X_s - X_{t_{j-1}})^2\right]\;\mathrm{d}s \\
-& \qquad + 5L_g^2 (t_j - t_{j-1}) \mathbb{E}\left[(X_{t_{j-1}} - X_{j-1}^n)^2\right].
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s + \int_0^{t_j} (g(s, X_s) - g(t_{i^n(s)}, X_{t^n(s)}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1} + \sum_{i=1}^j (g(t_{i-1}, X_{t_{i-1}}) - g(t_{i-1}, X_{i-1}^n)) \Delta W_{i-1},
 \end{align*}
 \]
-<p>Agora, usamos a continuidade da solução \(\{X_t\}_{t \geq 0}\) em média quadrática para estimar as integrais restantes.</p>
-<h2 id="convergência_no_caso_estocástico_com_ruído_constante"><a href="#convergência_no_caso_estocástico_com_ruído_constante" class="header-anchor">Convergência no caso estocástico com ruído constante</a></h2>
-<p>Observe, no entanto, que quando \(g(X_t) = \sigma\) é constante, os termos de ruído se cancelam, quando subtraímos \(X_j^n\) de \(X_{t_j}\). Sobram, então, apenas os termos que nos dão ordem \(1\) de convergência forte.</p>
-<p>Mesmo no caso autônomo, assumindo \(g(t, X_t) = g(t)\), também se obtém ordem \(1\) de convergência forte. Nesse caso, o termo de ruído contribui com um erro da forma</p>
+<p>No caso em que \(g=g(t),\) o último termo desaparece &#40;mas que não é um termo problemático&#41; e o segundo termo simplifica &#40;esse sim é problemático&#41;,</p>
 \[
-\int_{t_{j-1}}^{t_j} (g(s) - g(t_{j-1}))\;\mathrm{d}W_s = \int_{t_{j-1}}^{t_j} \int_{t_{j-1}}^{s} g'(\tau)\;\mathrm{d}\tau\;\mathrm{d}W_s.
+\begin{align*}
+X_{t_j} - X_j^n & = \int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s + \int_0^{t_j} (g(s) - g(t_{i^n(s)}))\;\mathrm{d}W_s \\
+& \quad + \sum_{i=1}^j (f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n)) \Delta t_{i-1}.
+\end{align*}
 \]
-<p>Nesse caso, usando a isometria de Itô,</p>
+<p>O último termo é como antes e nos dá</p>
 \[
-\mathbb{E}\left[ \left| \int_{t_{j-1}}^{t_j} (g(s) - g(t_{j-1}))\;\mathrm{d}W_s\right|^2\right] = \int_{t_{j-1}}^{t_j} \mathbb{E}\left[ \left| \int_{t_{j-1}}^{s} g'(\tau)\;\mathrm{d}\tau \right|^2\right] \mathrm{d}s \leq \int_{t_{j-1}}^{t_j} (s - t_{j-1})\int_{t_{j-1}}^{s} |g'(\tau)|^2\;\mathrm{d}\tau \mathrm{d}s \leq M_g \Delta t^3,
+\sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
 \]
-<p>onde \(M_g = \max |g'|^2 /3\).</p>
-<p>Ao somarmos em \(j\), um \(\Delta t\) é aproveitando, restando \(\Delta t^2\). Ao usarmos a desigualdade de Lyapunov, isso nos dá um termos também da ordem \(\Delta t\), garantindo a ordem \(1\) de convergência forte.</p>
-<h2 id="não-convergência_no_caso_estocástico_sem_condição_lipschitz_global"><a href="#não-convergência_no_caso_estocástico_sem_condição_lipschitz_global" class="header-anchor">Não-convergência no caso estocástico sem condição Lipschitz global</a></h2>
+<p>O segundo termo, agora sem a dependência em \(x\) e com continuidade Lipschitz em \(t\), nos dá</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{t_j} (g(s) - g(t_{i^n(s)}))\;\mathrm{d}W_s\right)^2\right] & = \int_0^{t_j} \mathbb{E}\left[\left(g(s) - g(t_{i^n(s)})\right)^2\right]\;\mathrm{d}s \\
+& \leq H_g^2 \int_0^{t_j} \left(s - t_{i^n(s)}\right)^2\;\mathrm{d}s \\
+& \leq H_g^2 t_j \Delta t^2.
+\end{align*}
+\]
+<p>O primeiro termo é o mais delicado e requer o uso da fórmula de Itô. Com ela, temos</p>
+\[
+\begin{align*}
+f(s, X_s) - f(t^n(s), X_{t^n(s)}) & = \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi \\
+& \quad + \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi.
+\end{align*}
+\]
+<p>O ponto chave é trocar a ordem de integração, usando uma versão estocástica do Teorema de Fubini na segunda integral. Assim,</p>
+\[
+\begin{align*}
+\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s & = \int_0^{t_j} \int_{t^n(s)}^s \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}\xi\;\mathrm{d}s \\
+& \quad + \int_0^{t_j} \int_{t^n(s)}^s (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}W_\xi\;\mathrm{d}s \\
+& = \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} \left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} \int_{\xi}^{\tilde t^{n}(\xi)} (\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\;\mathrm{d}s\;\mathrm{d}W_\xi,
+\end{align*}
+\]
+<p>onde</p>
+\[
+\tilde t^{n}(t) = \min\{t_i \geq t; \; i = 0, \ldots, n\}
+\]
+<p>é o ponto da malha que está mais próximo e à direita do instante \(t.\) Usando Cauchy-Schwartz e a isometria de Itô, obtemos a seguinte estimativa para a média quadrática desse termo.</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] & \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_t f)(\xi, X_{\xi})f(\xi, X_{\xi}) + \frac{1}{2}(\partial_{xx} f)(\xi, X_{\xi})g(\xi, X_{\xi})^2 \right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_x f)(\xi, X_{\xi})g(\xi, X_{\xi})\right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi.
+\end{align*}
+\]
+<p>Usando as estimativas para \(f\), \(g\) e suas derivadas, obtemos</p>
+\[
+\begin{align*}
+\mathbb{E}\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] & \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} C_1\;\mathrm{d}s\;\mathrm{d}\xi \\
+& \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} C_2\;\mathrm{d}s\;\mathrm{d}\xi \\
+& = (t_jC_1 + C_2)\int_0^{t_j} (t^{n}(\xi) - \xi)^2 \;\mathrm{d}\xi \\
+& \leq (TC_1 + C_2)\Delta t^2.
+\end{align*}
+\]
+<p>para constantes apropriadas \(C_1, C_2 > 0.\) Juntando as estimativas, obtemos</p>
+\[
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2 \Delta t^2 + 2L \sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1},
+\]
+<p>para constante \(C, L > 0\) apropriadas. Pela desigualdade de Gronwall discreta, isso nos dá</p>
+\[
+\mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right] \leq C^2e^{2Lt_j}\Delta t^2.
+\]
+<p>Considerando a norma forte, obtemos</p>
+\[
+\mathbb{E}\left[\left|X_{t_j} - X_j^n\right|\right] \leq \mathbb{E}\left[\left(X_{t_j} - X_j^n\right)^2\right]^{1/2} \leq Ce^{Lt_j}\Delta t.
+\]
+<p>mostrando que o método de Euler-Maruyama é de ordem forte \(1.\)</p>
 
     <div class="navbar">
     <p id="nav">
@@ -546,7 +716,7 @@ X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
 <a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_convergencia_em"><kbd>→</kbd> 9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama"><kbd>→</kbd> 9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a>
 </span>
     </p>
 </div>
@@ -562,7 +732,7 @@ X_{t_j} - X_j^n & = X_{t_{j-1}} - X_{j-1}^n \\
         </div>
     
 
-    Last modified: May 26, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

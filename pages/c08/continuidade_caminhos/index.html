@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Continuidade dos caminhos amostrais</title>  
+   <title>Limitação e continuidade das soluções</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -209,16 +209,16 @@
     <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções locais em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções globais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Limitação e continuidade das soluções</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
@@ -251,22 +251,25 @@
     <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c09/heun">9.6. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.8. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -350,7 +353,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">8.5. Continuidade dos caminhos amostrais</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">8.5. Limitação e continuidade das soluções</a></h1>
 <p>Acabamos de ver condições que garantem a existência e a unicade de solução de uma equação diferencial estocástica</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
@@ -375,15 +378,49 @@ X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 \]
 <p>onde \(C_g = \max_{t\in [0, T]}|g(t, 0)|\).</p>
 <p>Com isso,</p>
+\[
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3\mathbb{E}\left[ \left(\int_0^t f(s, X_s)\;\mathrm{d}s\right)^2\right] + 3\mathbb{E}\left[ \left(\int_0^t g(s, X_s)\;\mathrm{d}W_s\right)^2 \right].
+\]
+<p>Usando a desigualdade de Cauchy-Schwartz na segunda integral e a isometria de Itô na terceira, obtemos</p>
+\[
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3t \int_0^t \mathbb{E}\left[f(s, X_s)^2 \right]\;\mathrm{d}s + 3\int_0^t \mathbb{E}\left[ g(s, X_s)^2 \right]\;\mathrm{d}s.
+\]
+<p>Usando as estimativas acima, temos</p>
+\[
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3t \int_0^t \mathbb{E}\left[2C_f^2 + 2L_f^2 X_s^2 \right]\;\mathrm{d}s + 3\int_0^t \mathbb{E}\left[ 2C_g^2 + 2L_g^2 X_s^2 \right]\;\mathrm{d}s.
+\]
+<p>Isso nos dá</p>
+\[
+\mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 6(tC_f^2 + C_g^2) + 6(tL_f^2 + L_g^2) \int_0^t \mathbb{E}\left[X_s^2 \right]\;\mathrm{d}s.
+\]
+<p>Pela desigualdade de Gronwall, obtemos, finalmente, a limitação da média quadrática da solução:</p>
+\[
+\mathbb{E}\left[X_t^2\right] \leq \left(3\mathbb{E}\left[X_0^2\right] + 6(tC_f^2 + C_g^2) \right)e^{3(t^2L_f^2 + 2tL_g^2)},
+\]
+<p>para \(0\leq t \leq T.\)</p>
+<h2 id="continuidade_temporal_em_média_quadrática"><a href="#continuidade_temporal_em_média_quadrática" class="header-anchor">Continuidade temporal em média quadrática</a></h2>
+<p>De maneira semelhante, como, para \(0\leq t \leq t + \tau \leq T,\)</p>
+\[
+X_{t+\tau} - X_t = \int_t^{t+\tau} f(s, X_s)\;\mathrm{d}s + \int_t^{t+\tau} g(s, X_s)\;\mathrm{d}W_s,
+\]
+<p>temos</p>
+\[
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq 2\tau\int_t^{t+\tau}\mathbb{E}\left[f(s, X_s)^2\right]\;\mathrm{d}s + 2\int_t^{t+\tau}\mathbb{E}\left[g(s, X_s)^2\right]\;\mathrm{d}s,
+\]
+<p>o que nos dá</p>
+\[
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq 2\tau\int_t^{t+\tau}\mathbb{E}\left[2C_f^2 + 2L_f^2 X_s^2\right]\;\mathrm{d}s + 2\int_t^{t+\tau}\mathbb{E}\left[2C_g^2 + 2L_g^2 X_s^2\right]\;\mathrm{d}s.
+\]
+<p>Portanto, sabendo que a média quadrática é limitada, podemos escrever,</p>
+\[
+\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right] \leq 4\tau^2\left(C_f^2 + 2L_f^2 \max_{t\leq s \leq t+\tau}\mathbb{E}\left[X_s^2\right]\right) + 4\tau\left(C_g^2 + 2L_g^2 \max_{t\leq s \leq t+\tau}\mathbb{E}\left[X_s^2\right]\right).
+\]
+<p>Com isso, vemos que \(\mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right]\) é Lipschitz contínuo. Mas observe que essa é a média quadrática. Considerando a norma forte, temos</p>
+\[
+\mathbb{E}\left[ |X_{t+\tau} - X_t|\right] \leq \mathbb{E}\left[ |X_{t+\tau} - X_t|^2\right]^{1/2} \leq C_T\tau^{1/2},
+\]
+<p>para \(0\leq t \leq t + \tau \leq T,\) para uma constante \(C_T > 0\) apropriada.</p>
 <h2 id="continuidade_temporal_dos_caminhos"><a href="#continuidade_temporal_dos_caminhos" class="header-anchor">Continuidade temporal dos caminhos</a></h2>
-<p>Agora, escrevemos</p>
-\[
-X_{t + \Delta t} - X_t = \int_t^{t+\Delta t} f(s, X_s)\;\mathrm{d}s + \int_t^{t+\Delta t} g(s, X_s)\;\mathrm{d}W_s.
-\]
-<p>Usando a isometria de Itô,</p>
-\[
-\mathbb{E}\left[\left|X_{t + \Delta t} - X_t\right|\right] \leq \int_t^{t+\Delta t} |f(s, X_s)|\;\mathrm{d}s + \left(\int_t^{t+\Delta t} g(s, X_s)^2\;\mathrm{d}s\right)^{1/2}.
-\]
 
     <div class="navbar">
     <p id="nav">
@@ -407,7 +444,7 @@ X_{t + \Delta t} - X_t = \int_t^{t+\Delta t} f(s, X_s)\;\mathrm{d}s + \int_t^{t+
         </div>
     
 
-    Last modified: May 26, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Existência de soluções em casos particulares</title>  
+   <title>Existência de soluções locais em casos particulares</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -209,16 +209,16 @@
     <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções em casos particulares</a></li>
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções locais em casos particulares</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções no caso geral</a></li>
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções globais</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Continuidade dos caminhos amostrais</a></li>
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Limitação e continuidade das soluções</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
@@ -251,22 +251,25 @@
     <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.4. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/heun">9.5. Método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_em">9.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.6. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c09/heun">9.6. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/milstein">9.7. O método de Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_convergencia_randomheun">9.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.8. Simulações Milstein</a></li>
+    <li><a href="/notas_sde/pages/c09/milstein">9.8. O método de Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.9. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -339,7 +342,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c08/existence_solutions_sde"><kbd>→</kbd> 8.3. Existência de soluções no caso geral</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c08/existence_solutions_sde"><kbd>→</kbd> 8.3. Existência de soluções globais</a>
 </span>
     </p>
 </div>
@@ -350,7 +353,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">8.2. Existência de soluções em casos particulares</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">8.2. Existência de soluções locais em casos particulares</a></h1>
 <p>Estamos considerando equações diferenciais estocásticas da forma</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
@@ -586,7 +589,7 @@ h(t, x) = \int_0^x \frac{1}{g(t, \xi)} \;\mathrm{d}\xi
 <a class="menu-level-1" href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c08/existence_solutions_sde"><kbd>→</kbd> 8.3. Existência de soluções no caso geral</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c08/existence_solutions_sde"><kbd>→</kbd> 8.3. Existência de soluções globais</a>
 </span>
     </p>
 </div>
@@ -602,7 +605,7 @@ h(t, x) = \int_0^x \frac{1}{g(t, \xi)} \;\mathrm{d}\xi
         </div>
     
 
-    Last modified: May 26, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
