@@ -15,7 +15,7 @@ $$
 
 ## Expansão de Taylor estocástica
 
-A equação diferencial estocástica é interpretada como sendo
+A equação diferencial estocástica é interpretada como significando
 $$
 X_t = X_0 + \int_0^t f(X_s)\;\mathrm{d}s + \int_0^t g(X_s)\;\mathrm{d}W_s.
 $$
@@ -66,6 +66,15 @@ $$
 $$
 Assim, podemos, de acordo com o objetivo, expandir $F(X_\tau)$ apenas em alguns termos, de ordem mais baixa, começando pela integral estocástica dupla.
 
+Observe que o método de Euler-Maruyama desconsidera o resto por completo, sobrando apenas os termos
+$$
+\begin{align*}
+& \int_{t_0}^t f(X_{t_0})\;\mathrm{d}s  = f(X_{t_0}) (t - t_0) \sim \Delta t \\
+& \int_{t_0}^t g(X_{t_0})\;\mathrm{d}W_s = g(X_{t_0})\Delta W \sim \Delta t^{1/2},
+\end{align*}
+$$
+nos dando a ordem $1/2.$
+
 ## Expansão nos pontos da malha
 
 Em pontos $t_j = jT/n$, $j = 0, 1, \ldots, n$, podemos escrever
@@ -89,13 +98,13 @@ $$
 
 Observe que a aproximação para o método de Euler-Maruyama é obtida ao descartarmos completamente o resto $R_j$, ficando, apenas
 $$
-X_{t_j} \approx X_{t_{j-1}} + \int_{t_{j-1}}^{t_j} f(X_{t_{j-1}})\;\mathrm{d}s + \int_{t_{j-1}}^{t_j} g(X_{t_{j-1}})\;\mathrm{d}W_s = X_{t_{j-1}} + f(X_{t_{j-1}})\Delta t + g(X_{t_{j-1}}) \Delta W_j,
+X_{t_j} \approx X_{t_{j-1}} + \int_{t_{j-1}}^{t_j} f(X_{t_{j-1}})\;\mathrm{d}s + \int_{t_{j-1}}^{t_j} g(X_{t_{j-1}})\;\mathrm{d}W_s = X_{t_{j-1}} + f(X_{t_{j-1}})\Delta t + g(X_{t_{j-1}}) \Delta W_{j-1},
 $$
-onde $\Delta W_j = W_{t_j} - W_{t_{j-1}}$.
+onde $\Delta W_{j-1} = W_{t_j} - W_{t_{j-1}}$.
 
 Isso nos leva ao **método de Euler-Maruyama**
 $$
-X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})\Delta W_j, \qquad j = 1, \ldots, n,
+X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})\Delta W_{j-1}, \qquad j = 1, \ldots, n,
 $$
 com $X_0$ dado.
 
@@ -135,7 +144,7 @@ X_{t_j} & \approx X_{t_{j-1}} + \int_{t_{j-1}}^{t_j} f(X_{j-1})\;\mathrm{d}s + \
 \end{align*}
 $$
 
-Nesse caso em particula, a integral estocástica dupla pode ser calculada mais explicitamente. De fato, a integral interior é simplesmente
+Nesse caso em particular, a integral estocástica dupla pode ser calculada mais explicitamente. De fato, a integral interior é simplesmente
 $$
 \int_{t_{j-1}}^s \;\mathrm{d}W_\tau = W_s - W_{t_{j-1}}.
 $$
@@ -160,17 +169,21 @@ $$
 $$
 De um jeito ou de outro, podemos escrever
 $$
-\int_{t_{j-1}}^{t_j} (W_s - W_{t_{j-1}})\;\mathrm{d}W_s = \frac{\Delta W_j^2}{2} - \frac{\Delta t}{2},
+\int_{t_{j-1}}^{t_j} (W_s - W_{t_{j-1}})\;\mathrm{d}W_s = \frac{\Delta W_{j-1}^2}{2} - \frac{\Delta t}{2},
 $$
-onde $\Delta W_j = W_{t_j} - W_{t_{j-1}}$. Dessa forma, obtemos aproximação
+onde $\Delta W_{j-1} = W_{t_j} - W_{t_{j-1}}$. Dessa forma, obtemos aproximação
 $$
-X_{t_j} \approx X_{t_{j-1}} + f(X_{j-1})\Delta t + g(X_{j-1}) \Delta W_j + \frac{1}{2}g'(X_{t_{j-1}})g(X_{t_{j-1}})\left(\Delta W_j^2 - \Delta t\right),
+X_{t_j} \approx X_{t_{j-1}} + f(X_{j-1})\Delta t + g(X_{j-1}) \Delta W_{j-1} + \frac{1}{2}g'(X_{t_{j-1}})g(X_{t_{j-1}})\left(\Delta W_{j-1}^2 - \Delta t\right),
 $$
 Isso nos leva ao **método de Milstein**
 $$
-X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})\Delta W_j + \frac{1}{2}g'(X_{j-1})g(X_{j-1})\left(\Delta W_j^2 - \Delta t\right), \qquad j = 1, \ldots, n,
+X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})\Delta W_{j-1} + \frac{1}{2}g'(X_{j-1})g(X_{j-1})\left(\Delta W_{j-1}^2 - \Delta t\right), \qquad j = 1, \ldots, n,
 $$
-com $X_0$ dado.
+com $X_0$ dado. Mais explicitamente, como $\Delta W_{j-1} \sim \sqrt{\Delta t} \mathcal{N}(0, 1)$, escrevemos
+$$
+X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})Z_{j-1}\sqrt{\Delta t} + \frac{1}{2}g'(X_{j-1})g(X_{j-1})\left(Z_{j-1}^2 - 1 \right)\Delta t, \qquad j = 1, \ldots, n,
+$$
+onde $Z_i \sim \mathcal{N}(0, 1)$ são independentes.
 
 ## Ordem de convergência do método de Milstein
 
