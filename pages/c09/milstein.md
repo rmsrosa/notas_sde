@@ -50,13 +50,27 @@ X_t = X_{t_0} + \int_{t_0}^t f(X_{t_0})\;\mathrm{d}s + \int_{t_0}^t g(X_{t_0})\;
 $$
 onde o resto $R_{t_0, t}$ é dado por
 $$
-\begin{align*}
-R_{t_0, t} & = \int_{t_0}^{t} \left(\int_{t_0}^s \left(f'(X_\tau)f(X_\tau) + \frac{1}{2}f''(X_\tau)g(X_\tau)^2\right)\;\mathrm{d}\tau + \int_{t_0}^\tau f'(X_\tau)g(X_\tau)\;\mathrm{d}W_\tau\right)\;\mathrm{d}s \\
-& \qquad + \int_{t_0}^{t} \left(\int_{t_0}^s \left(g'(X_\tau)f(X_\tau) + \frac{1}{2}g''(X_\tau)g(X_\tau)^2\right)\;\mathrm{d}\tau + \int_{t_0}^s g'(X_\tau)g(X_\tau)\;\mathrm{d}W_\tau\right)\;\mathrm{d}W_s.
-\end{align*}
+R_{t_0, t} = R_{t_0, t}^f + R_{t_0, t}^g,
+$$
+com
+$$
+R_{t_0, t}^f = \int_{t_0}^{t} \left(\int_{t_0}^s \left(f'(X_\tau)f(X_\tau) + \frac{1}{2}f''(X_\tau)g(X_\tau)^2\right)\;\mathrm{d}\tau + \int_{t_0}^\tau f'(X_\tau)g(X_\tau)\;\mathrm{d}W_\tau\right)\;\mathrm{d}s
+$$
+e
+$$
+R_{t_0, t}^g = \int_{t_0}^{t} \left(\int_{t_0}^s \left(g'(X_\tau)f(X_\tau) + \frac{1}{2}g''(X_\tau)g(X_\tau)^2\right)\;\mathrm{d}\tau + \int_{t_0}^s g'(X_\tau)g(X_\tau)\;\mathrm{d}W_\tau\right)\;\mathrm{d}W_s.
 $$
 
-Expansões de ordem mais alta podem ser obtidas aplicando o mesmo procedimento aos integrandos no termo de resto $R_{t_0, t}$. Mas observe que, como $\mathrm{d}W_t \sim \sqrt{\mathrm{d}t}$, as diferentes integrais duplas presentes no termo de resto não têm a mesma ordem. Podemos dizer que, em uma aproximação com passo $\Delta t = t - t_0$, 
+Cada termo tem uma determinada ordem de grandeza em termos de $\mathrm{d}t$ e $\mathrm{d}W_t$. Como $\mathrm{d}W_t \sim \sqrt{\mathrm{d}t}$, as diferentes integrais presentes na expansão não têm a mesma ordem. Podemos dizer que, em uma aproximação com passo $\Delta t = t - t_0$, as integrais simples tem ordem
+$$
+\int_{t_0}^t f(X_s)\;\mathrm{d}s \sim \Delta t
+$$
+e
+$$
+\int_{t_0}^t g(X_s)\;\mathrm{d}W_s \sim \Delta t^{1/2}.
+$$
+
+Por sua vez, as integrais duplas presentes na expansão desses dois termos têm ordem
 $$
 \begin{align*}
 & \int_{t_0}^t \int_{t_0}^s F(X_\tau) \;\mathrm{d}\tau \;\mathrm{d}s \sim \Delta t^2. \\
@@ -65,15 +79,6 @@ $$
 \end{align*}
 $$
 Assim, podemos, de acordo com o objetivo, expandir $F(X_\tau)$ apenas em alguns termos, de ordem mais baixa, começando pela integral estocástica dupla.
-
-Observe que o método de Euler-Maruyama desconsidera o resto por completo, sobrando apenas os termos
-$$
-\begin{align*}
-& \int_{t_0}^t f(X_{t_0})\;\mathrm{d}s  = f(X_{t_0}) (t - t_0) \sim \Delta t \\
-& \int_{t_0}^t g(X_{t_0})\;\mathrm{d}W_s = g(X_{t_0})\Delta W \sim \Delta t^{1/2},
-\end{align*}
-$$
-nos dando a ordem $1/2.$
 
 ## Expansão nos pontos da malha
 
@@ -107,6 +112,17 @@ $$
 X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})\Delta W_{j-1}, \qquad j = 1, \ldots, n,
 $$
 com $X_0$ dado.
+
+Em termos da aproximação, podemos escrever
+$$
+\int_{t_0}^t f(X_s)\;\mathrm{d}s = f(X_{t_0})\Delta t + \mathcal{O}(\Delta t^{3/2})
+$$
+e
+$$
+\int_{t_0}^t g(X_s)\;\mathrm{d}W_s = g(X_{t_0})\Delta t^{1/2} + \mathcal{O}(\Delta t)
+$$
+
+A integral em $f$ tem uma ordem mais alta do que a em $g$, mas não podemos descartá-la por completo, pois aproximação em $f$ cairia para ordem zero, na verdade (Pense em aproximar a função $f(t) = t = \int_0^t \;\mathrm{d}s$ por zero, $\tilde f(t) = 0$, em que cada passo $\int_t^{\Delta t} \;\mathrm{d}s = \Delta t$ mas, após a integração em um intervalo $0\leq t \leq 1,$ o erro é $f(1) - \tilde f(1) = 1 - 0 = 1$). Temos que aproximar os dois termos até uma ordem mínima desejada.
 
 ## O método de Milstein
 
