@@ -1,4 +1,4 @@
-@def title = "Convergência do método de Euler-Maruyama"
+@def title = "Convergência forte do método de Euler-Maruyama"
 
 # {{ get_title }}
 
