@@ -117,6 +117,7 @@ menu = [
         "pages/c09/simulacoes_convergencia_randomheun"
         "pages/c09/milstein"
         "pages/c09/simulacoes_milstein"
+        "pages/c09/convergencia_fraca_em"
         "pages/c09/sciml"
     ]
     "Evolução da função densidade de probabilidade" => [
