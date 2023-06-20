@@ -12,34 +12,34 @@ Associadas a essas convergências, uma outra questão importante é sobre a *tax
 
 ## Convergência forte
 
-Dado um processo contínuo $\{X_t\}_{t \in [0, T]}$ e uma aproximação discreta $\{X_n^{\mathrm{\Delta t}}\}_n$ em instantes $t_j = j \Delta t$, $\Delta t = T/n$, o **erro forte**, ou **erro médio,** é dado por
+Dado um processo contínuo $\{X_t\}_{t \in [0, T]}$ e uma aproximação discreta $\{X_j^{\mathrm{\Delta t}}\}_j$ em instantes $t_j = j \Delta t$, $\Delta t = T/n$, o **erro forte**, ou **erro médio,** é dado por
 $$
-e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|].
+e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|].
 $$
 
 Dizemos que o método numérico **converge fortemente** quando
 $$
-e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \rightarrow 0, \qquad \Delta t \rightarrow 0.
+e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|] \rightarrow 0, \qquad \Delta t \rightarrow 0.
 $$
 
 Um aspecto fundamental em análise numérica é medir essa taxa de convergência, ou seja, quão rápida é a convergência, em função de $\Delta t$. Nesse sentido, um método numérico, ou uma aproximação, é dita de **ordem** $p > 0$, ou **ordem forte** $p > 0$, quando existe uma constante $C > 0$ e um limiar $\delta > 0$ tais que
 $$
-e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|] \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 $$
 
 ## Erro ao longo dos caminhos amostrais
 
 A convergência forte é um resultado amostral mas tem consequências, também, nos caminhos individuais, ou em uma boa parcela deles. De fato, considerando um método numérico de ordem forte $p$, temos, pela desigualdade de Markov, que
 $$
-\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > r) \leq \frac{\mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|]}{r} \leq C\frac{\Delta t^p}{r}.
+\mathbb{P}(\left|X_{t_j} - X_j^{\mathrm{\Delta t}}\right| > r) \leq \frac{\mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|]}{r} \leq C\frac{\Delta t^p}{r}.
 $$
 Escolhendo $r = \Delta t^{p - \varepsilon}$, com $0 < \varepsilon < p$, obtemos
 $$
-\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p - \varepsilon}) \leq C\frac{\Delta t^p}{\Delta t^{p - \varepsilon}} = C \Delta t^\varepsilon.
+\mathbb{P}(\left|X_{t_j} - X_j^{\mathrm{\Delta t}}\right| > \Delta t^{p - \varepsilon}) \leq C\frac{\Delta t^p}{\Delta t^{p - \varepsilon}} = C \Delta t^\varepsilon.
 $$
 Em particular, escolhendo $r = p/2$, temos
 $$
-\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p/2}) \leq C \Delta t^{p/2}.
+\mathbb{P}(\left|X_{t_j} - X_j^{\mathrm{\Delta t}}\right| > \Delta t^{p/2}) \leq C \Delta t^{p/2}.
 $$
 
 Ou seja, tomando-se $\Delta t$ pequeno, temos, com probabilidade perto de um, que o erro ao longo de um caminho amostral é pequeno.
@@ -48,24 +48,24 @@ Ou seja, tomando-se $\Delta t$ pequeno, temos, com probabilidade perto de um, qu
 
 Em muitos casos, temos um interesse particular no valor esperado de um processo. É claro que se um método numérico converge fortemente, então ele o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência do valor esperado, que é esta chamada de convergência fraca.
 
-Nesse sentido, novamente, dado um processo contínuo $\{X_t\}_{t \in [0, T]}$ e uma aproximação discreta $\{X_n^{\mathrm{\Delta t}}\}_n$ em instantes $t_j = j \Delta t$, $\Delta t = T/n$, o **erro fraco** é dado por
+Nesse sentido, novamente, dado um processo contínuo $\{X_t\}_{t \in [0, T]}$ e uma aproximação discreta $\{X_j^{\mathrm{\Delta t}}\}_j$ em instantes $t_j = j \Delta t$, $\Delta t = T/n$, o **erro fraco** é dado por
 $$
-e_{\Delta t}^{\mathrm{fraco}} = \max_{n} |\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]|.
+e_{\Delta t}^{\mathrm{fraco}} = \max_{j} |\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]|.
 $$
 
 Dizemos que o método numérico **converge fracamente** quando
 $$
-e_{\Delta t}^{\mathrm{fraco}} = \max_{n} \left|\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
+e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
 $$
 
 Um método numérico, ou uma aproximação, é dita de **ordem fraca** $p > 0$, quando existe uma constante $C > 0$ e um limiar $\delta > 0$ tais que
 $$
-e_{\Delta t}^{\mathrm{fraco}} = \max_{n} \left|\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 $$
 
 Observe que, para cada $n$,
 $$
-\left| \mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_n} - X_n^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_n} - X_n^{\mathrm{\Delta t}}\right| \right],
+\left| \mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_j} - X_j^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_j} - X_j^{\mathrm{\Delta t}}\right| \right],
 $$
 de modo que
 $$
