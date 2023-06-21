@@ -141,12 +141,9 @@ $$
 
 Pela fórmula de Itô,
 $$
-u(T, \hat X_T) = u(0, \hat X_0) + \int_0^T \left( \right)
-$$
-$$
 \begin{align*}
-u(T, \hat X_T) & = u(0, \hat X_0) + \int_\tau^T \left(u_t(t, \hat X_t) + u_x(t, \hat X_t)f(\bar X_t) + \frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2\right)\;\mathrm{d}t \\
-& \qquad + \int_\tau^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
+u(T, \hat X_T) & = u(0, \hat X_0) + \int_0^T \left(u_t(t, \hat X_t) + u_x(t, \hat X_t)f(\bar X_t) + \frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
 \end{align*}
 $$
 
@@ -157,17 +154,17 @@ $$
 Substituindo o primeiro termo do integrando por essa expressão do lado direito, obtemos
 $$
 \begin{align*}
-u(T, \hat X_T) & = u(0, \hat X_0) + \int_\tau^T \left(u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right)\;\mathrm{d}t \\
-& \qquad + \int_\tau^T \left(\frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2 - \frac{1}{2}u_{xx}(t, \hat X_t)g(\hat X_t)^2\right)\;\mathrm{d}t \\
-& \qquad + \int_\tau^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
+u(T, \hat X_T) & = u(0, \hat X_0) + \int_0^T \left(u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T \left(\frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2 - \frac{1}{2}u_{xx}(t, \hat X_t)g(\hat X_t)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
 \end{align*}
 $$
 
 Tomando a valor esperado,
 $$
 \begin{align*}
-\mathbb{E}[u(T, \hat X_T)] & = \mathbb{E}[u(0, \hat X_0)] + \int_\tau^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
-& \qquad + \frac{1}{2}\int_\tau^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t
+\mathbb{E}[u(T, \hat X_T)] & = \mathbb{E}[u(0, \hat X_0)] + \int_0^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t
 \end{align*}
 $$
 
@@ -183,8 +180,8 @@ $$
 Assim,
 $$
 \begin{align*}
-\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)] & = \int_\tau^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
-& \qquad + \frac{1}{2}\int_\tau^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t.
+\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)] & = \int_0^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t.
 \end{align*}
 $$
 
