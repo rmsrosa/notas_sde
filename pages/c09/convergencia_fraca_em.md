@@ -19,6 +19,32 @@ $$
 X_0 = x_0.
 $$
 
+## Convergência forte implica em convergência fraca
+
+Suponha que tenhamos a convergência forte, em média quadrática, de ordem $p$, de alguma aproximação $\{X_j^n\}_j$ da solução $\{X_t\}_t$. Nesse caso,
+$$
+\max_{j=0, \ldots, n} \mathbb{E}[|X_{t_j} - X_j^n|^2] \leq C^2\Delta t^{2p},
+$$
+para $C, p \geq 0$ apropriados. Suponha ainda que $\Phi$ (ou uma classe de tais funções) satisfaça
+$$
+|\Phi(x) - \Phi(y)| \leq L(1 + |x|^k + |y|^k)|x - y|,
+$$
+para certos $L, k\geq 0$. Nesse caso, podemos estimar o erro fraco da seguinte forma.
+$$
+\begin{align*}
+\left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| & \leq \mathbb{E}\left[|\Phi(X_{t_j}) -\Phi(X_j^n)|\right] \\
+& \leq L\mathbb{E}\left[ (1 + |X_{t_j}|^k + |X_j^n|^k)|X_{t_j} - X_j^n|\right] \\
+& \leq L\mathbb{E}\left[ (1 + |X_{t_j}|^k + |X_j^n|^k)^2\right]^{1/2}\mathbb{E}\left[|X_{t_j} - X_j^n|^2\right]^{1/2}
+\end{align*}
+$$
+Supondo que os momentos de ordem $k$ da solução e da aproximação sejam limitados, obtemos um $K>0$ tal que
+$$
+\left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| \leq LK\mathbb{E}\left[|X_{t_j} - X_j^n|^2\right]^{1/2} \leq LKC \Delta t^p,
+$$
+mostrando a convergência fraca também de ordem $p$.
+
+No entanto, é possível estimar a ordem fraca de maneira diferente e, em muitos casos, conseguir a convergência fraca com uma ordem de convergência melhor ou mesmo obter convergência fraca sem que haja convergência forte.
+
 ## Fórmula de Feynman-Kac
 
 Em muitos casos práticos, conhecemos o valor atual de um $X_\tau = \xi$ de um processo estocástico e queremos estimar o valor esperado $\mathbb{E}[X_T]$ em um tempo futuro $T > \tau,$ ou, mais geralmente, $\mathbb{E}[\Phi(X_T)],$ para algum momento $\Phi.$ O objetivo é fazer isso através de uma função $u=u(t, x)$ que seja solução de uma equação a derivadas parciais (EDP) apropriada.
