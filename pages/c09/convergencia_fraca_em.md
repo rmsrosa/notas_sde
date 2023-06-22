@@ -186,3 +186,43 @@ $$
 $$
 
 Agora precisamos estimar os erros do lado direito.
+
+A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}\[|\hat X_t - \bar X_t|^2]$. Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
+
+Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos
+$$
+u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)) \quad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
+$$
+Em cada subintervalo $[t_{j-1}, t_j]$, temos $\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n$ constante, de modo que podemos olhar para
+$$
+e_{j-1}(t, x) = u_x(t, x)(f(x) - f(X_{j-1}^n))
+$$
+e analogamente para o termo envolvendo $g$. Observe que
+$$
+e_{j-1}(t_{j-1}, \hat X_{t_{j-1}}) = u_x(t_{j-1}, \hat X_{t_{j-1}})(f(\hat X_{t_{j-1}}) - f(\bar X_{t_{j-1}})) = 0,
+$$
+já que $\hat X_{t_{j-1}} = \bar X_{t_{j-1}} = X_{j-1}^n$ coincidem. Assim, pela fórmula de Itô,
+$$
+e_{j-1}(t, \hat X_t) = \int_0^t L_0(s) e_{j-1}(s, \hat X_s) \;\mathrm{d}s + \int_0^t L_1(s) e_{j-1}(s, \hat X_s)\;\mathrm{d}W_s,
+$$
+onde $L_0(t)$ e $L_1(t)$ são operadores diferenciais definidos por
+$$
+L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_{xx}, \qquad L_1(t) = g(\hat X_t)^2\partial_x.
+$$
+
+Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem $\Delta t^{1/2}$, desaparece e ficamos apenas com
+$$
+\mathbb{E}[e_{j-1}(t, \hat X_t)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, \hat X_s)\right] \;\mathrm{d}s.
+$$
+
+Assumindo-se que o integrando seja limitado no intervalo $[0, T]$ por uma constante $K_{\Phi, T}$, obtemos a estimativa de ordem 1
+$$
+\left| \mathbb{E}[e_{j-1}(t, \hat X_t)] \right| \leq K_{\Phi, T} \Delta t.
+$$
+Idem para o termo em $g$, para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre $0$ e $t$, que
+$$
+\left|\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
+$$
+Isso nos dá a convergência fraca do método de Euler-Maruyama.
+
+A limitação uniforme passa por (i) mostrarmos que as normas $L^p$ solução da equação parabólica são controladas pela norma $L^p$ da "condição final" $\Phi$; (ii) por assumirmos que $\Phi$ tem um crescimento polinomial (apropriado para qualquer momento que queiramos estimar); (iii) por mostrarmos que, sob a hipótese de continuidade Lipschitz global de $f$ e $g$, os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial $X_0$; e, por fim, (iv) por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.
