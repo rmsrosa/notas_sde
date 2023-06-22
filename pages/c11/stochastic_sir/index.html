@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -373,7 +376,8 @@
 using StochasticDiffEq
 
 using Plots</code></pre>
-
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_BgsPST.
+</code></pre>
 <h2 id="modelo_sir_compartimental_clássico"><a href="#modelo_sir_compartimental_clássico" class="header-anchor">Modelo SIR compartimental clássico</a></h2>
 <p>Esse é o modelo clássico, com a população toda dividida em três compartimentos: suscetíveis, infectados e recuperados. A população em cada compartimento, em cada instante de tempo \(t\), é dada por \(S(t)\), \(I(t)\), \(R(t)\), respectivamente. A evolução dessas quantidades é dada pelo sistema</p>
 \[
@@ -429,9 +433,10 @@ plot&#40;
     SIR_sol, vars &#61; 2, c &#61; :red,
     xlabel &#61; &quot;time &#40;days&#41;&quot;, ylabel &#61; &quot;population&quot;, label &#61; &quot;Infected&quot;
 &#41;</code></pre>
-
-<p>Podemos visualizar a evolução dos dois compartimentos nos gráficos a seguir. <img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/solve_sir_1.svg" alt=""></p>
-<img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/solve_sir_2.svg" alt="">
+<pre><code class="plaintext code-output">UndefVarError: plot not defined
+</code></pre>
+<p>Podemos visualizar a evolução dos dois compartimentos nos gráficos a seguir. <p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/solve_sir_1' not found. //</span></p></p>
+<p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/solve_sir_2' not found. //</span></p>
 <h2 id="modelo_sir_compartimental_estocástico"><a href="#modelo_sir_compartimental_estocástico" class="header-anchor">Modelo SIR compartimental estocástico</a></h2>
 <p>Aqui, consideramos a versão estocástica do modelo SIR clássico. Assumimos que cada parâmetro epidemiológico é dado de maneira estocástica, como uma perturbação de um valor base por um ruído branco:</p>
 \[
@@ -491,14 +496,14 @@ plot&#40;
     xlabel &#61; &quot;time &#40;days&#41;&quot;, ylabel &#61; &quot;population&quot;, label &#61; &quot;Infected&quot;
 &#41;</code></pre>
 <p><span style="color:red;">// `\output{solve_sir_noise}`: could not find the relevant output file. //</span></p>
-<p><img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/solve_sir_noise_1.svg" alt=""> <img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/solve_sir_noise_2.svg" alt=""></p>
+<p><p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/solve_sir_noise_1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/solve_sir_noise_2' not found. //</span></p></p>
 <pre><code class="language-julia">num_trajectories &#61; 100
 SIR_stochastic_ensemble_prob &#61; EnsembleProblem&#40;SIR_stochastic_prob&#41;
 SIR_stochastic_ensemble_sol &#61; solve&#40;SIR_stochastic_ensemble_prob, EM&#40;&#41;, dt&#61;0.1, EnsembleThreads&#40;&#41;, trajectories&#61;num_trajectories&#41;
 
 plot&#40;SIR_stochastic_ensemble_sol, color &#61;  repeat&#40;1:2, 200&#41;&#39;, alpha &#61; 0.2&#41;
 # plot&#33;&#40;SIR_stochastic_ensemble_sol&#91;2&#93;, color &#61; 2, alpha &#61; 0.2&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/solve_SIR_noise_ensemble.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/solve_SIR_noise_ensemble' not found. //</span></p>
 <pre><code class="language-julia">summ95 &#61; EnsembleSummary&#40;SIR_stochastic_ensemble_sol, 0:1:360&#41;
 summ50 &#61; EnsembleSummary&#40;SIR_stochastic_ensemble_sol, 0:1:360; quantiles&#61;&#91;0.25,0.75&#93;&#41;
 summ3 &#61; EnsembleSummary&#40;SIR_stochastic_ensemble_sol, 0:1:360; quantiles&#61;&#91;0.49,0.51&#93;&#41;
@@ -506,11 +511,11 @@ summ3 &#61; EnsembleSummary&#40;SIR_stochastic_ensemble_sol, 0:1:360; quantiles&
 plot&#40;summ95, labels&#61;&#91;&quot;&quot; &quot;Middle 95&#37;&quot;&#93;&#41;
 plot&#33;&#40;summ50, labels&#61;&#91;&quot;&quot; &quot;Middle 50&#37;&quot;&#93;, legend&#61;true&#41;
 plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legend&#61;true&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/SIR_noise_ensemble_summ.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/SIR_noise_ensemble_summ' not found. //</span></p>
 <pre><code class="language-julia">plot&#40;summ95, labels&#61;&#91;&quot;&quot; &quot;Middle 95&#37;&quot;&#93;, ylims &#61; &#40;0.0, 5000.0&#41;&#41;
 plot&#33;&#40;summ50, labels&#61;&#91;&quot;&quot; &quot;Middle 50&#37;&quot;&#93;, legend&#61;true&#41;
 plot&#33;&#40;summ3, labels&#61;&#91;&quot;&quot; &quot;Median&quot;&#93;, legend&#61;true&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c11/stochastic_sir/code/output/SIR_noise_ensemble_summ_closeup.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir/code/SIR_noise_ensemble_summ_closeup' not found. //</span></p>
 <h2 id="performance_das_funções"><a href="#performance_das_funções" class="header-anchor">Performance das funções</a></h2>
 <p>Aqui, vamos apenas conferir que as funções <code>SIR&#33;&#40;du, u, p, t&#41;</code> e <code>SIR_noise&#33;&#40;du, u, p, t&#41;</code> estão bem construídas e não alocam memória. Fazemos isso com a macro <code>BenchmarkTools.@btime</code>.</p>
 <pre><code class="language-julia">using BenchmarkTools
@@ -522,11 +527,11 @@ let u &#61; &#91;800.0, 200.0&#93;; p &#61; &#40;1000.0, 0.2, 0.15, 0.15, 0.1&#4
     println&#40;@btime SIR_noise&#33;&#40;&#36;du_noise, &#36;u, &#36;p, &#36;t&#41;&#41;
 end</code></pre>
 <pre><code class="plaintext code-output">Benchmark SIR!
-  5.300 ns (0 allocations: 0 bytes)
+  3.999 ns (0 allocations: 0 bytes)
 2.0
 
 Benchmark SIR_noise!
-  5.000 ns (0 allocations: 0 bytes)
+  3.999 ns (0 allocations: 0 bytes)
 -20.0
 </code></pre>
 <p>Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro <code>InteractiveUtils.@code_warntype</code> para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável <code>u</code> e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável &#40;verifique isso usando <code>@btime</code> com os parâmetros abaixo&#33;&#41;.</p>
@@ -658,7 +663,7 @@ nothing
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

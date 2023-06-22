@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -411,7 +414,7 @@ end</code></pre>
 plot&#33;&#40;t, t -&gt; x₀ * exp&#40;μ * t&#41;, label&#61;&quot;sol. exata&quot;&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_exata.svg&quot;&#41;&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_exata.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_sol_exata' not found. //</span></p>
 <p>Refinando a malha, obtemos uma solução mais próxima, onde quase não vemos diferença:</p>
 <pre><code class="language-julia">Δt &#61; 0.02
 t &#61; t0:Δt:T
@@ -426,7 +429,7 @@ end
 plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_approx.svg&quot;&#41;&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_approx.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_sol_approx' not found. //</span></p>
 <h2 id="modelo_com_parâmetros_aleatórios"><a href="#modelo_com_parâmetros_aleatórios" class="header-anchor">Modelo com parâmetros aleatórios</a></h2>
 <p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2)\).</p>
 <p>Façamos uma amostragem de um certo número \(M\) de valores.</p>
@@ -451,7 +454,7 @@ plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Conjunto de soluções &#40;x₀
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_edorv.svg&quot;&#41;&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_edorv.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_edorv' not found. //</span></p>
 <h2 id="modelo_de_equação_diferencial_aleatória"><a href="#modelo_de_equação_diferencial_aleatória" class="header-anchor">Modelo de equação diferencial aleatória</a></h2>
 <p>Consideramos, agora, a equação aleatória</p>
 \[
@@ -473,7 +476,7 @@ plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções RODE &#40;x₀ &#61; 
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_rode.svg&quot;&#41;&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_rode.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_rode' not found. //</span></p>
 <h2 id="modelo_de_equação_diferencial_estocástica"><a href="#modelo_de_equação_diferencial_estocástica" class="header-anchor">Modelo de equação diferencial estocástica</a></h2>
 <p>Finalmente, vamos considerar a equação estocástica</p>
 \[
@@ -495,7 +498,7 @@ plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções SDE &#40;x₀ &#61; &
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_sde.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_sde' not found. //</span></p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Resolva, via método de Euler, a equação diferencial</p>
@@ -556,7 +559,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

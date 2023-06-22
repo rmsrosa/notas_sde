@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -468,7 +471,7 @@ D = \frac{RT}{N}\frac{1}{6k\pi P},
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2D\Delta t).
 \]
 
-<img src="/notas_sde/assets/pages/c01/modelo_einstein/code/output/pathWn.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/modelo_einstein/code/pathWn' not found. //</span></p>
 <p>Em um certo sentido, que veremos mais adiante de forma mais rigorosa, através da <em>isometria de Itô</em>, é como se \(\Delta X \sim \sqrt{\Delta t}\), ou \(\Delta X^2 \sim \Delta t\), com passos independentes. Assim, após \(n\) passos \(\Delta X_i,\) \(i=1, \ldots, n,\) até um ponto \(t_n = n\Delta t\), temos a posição \(x = x_n\) dada por</p>
 \[
 \mathbb{E}[x^2] = \mathbb{E}\left[\left(\sum_{i=1}^n \Delta X_i\right)^2\right] = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[\Delta X_i \Delta X_j \right] = \sum_{i=1}^n \mathbb{E}\left[\Delta X_i^2\right] \sim \sum_{i=1}^n \Delta t = t.
@@ -548,7 +551,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

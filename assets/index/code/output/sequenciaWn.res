@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/index/code/output/sequenciaWn.svg"
+nothing

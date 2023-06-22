@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -510,7 +513,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 \ddot x_t = - \nu \dot x_t + \sigma \eta_t.
 \]
 
-<p><img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_vel.svg" alt=""> <img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_pos.svg" alt=""></p>
+<p><p><span style="color:red;">// Image matching '/assets/pages/c08/ornstein_uhlenbeck/code/ornstein_uhlenbeck_vel' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c08/ornstein_uhlenbeck/code/ornstein_uhlenbeck_pos' not found. //</span></p></p>
 <h2 id="propriedade_de_reversão_à_média"><a href="#propriedade_de_reversão_à_média" class="header-anchor">Propriedade de reversão à média</a></h2>
 <p>O processo de Orstein-Uhlenbeck \(\{O_t\}_{t \geq 0}\), conforme definido acima, tem a propriedade \(\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0\), quando \(t \rightarrow \infty\) &#40;veja os Exercícios&#41;. Nesse caso, podemos dizer que a média assintótica é nula e que o processo &quot;reverte&quot;, assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra \(\nu\mu\;\mathrm{d}t\) de <em>drift</em> aditivo, nos levando à equação</p>
 \[
@@ -548,7 +551,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 \]
 <p>em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck.</p>
 
-<img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_approx_white_noise.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c08/ornstein_uhlenbeck/code/ornstein_uhlenbeck_approx_white_noise' not found. //</span></p>
 <h2 id="cor_do_processo_de_ornstein-uhlenbeck"><a href="#cor_do_processo_de_ornstein-uhlenbeck" class="header-anchor">Cor do processo de Ornstein-Uhlenbeck</a></h2>
 <p>Considerando a correlação &#40;assintótica&#41;</p>
 \[
@@ -613,7 +616,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

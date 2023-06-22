@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c03/monte_carlo/code/output/esperancauniformsquare.svg"
+nothing

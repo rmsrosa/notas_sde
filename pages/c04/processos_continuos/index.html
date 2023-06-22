@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -374,7 +377,7 @@ X_t = Y, \quad \forall t\in I,
 \]
 <p>onde \(I\subset \mathbb{R}\) é um intervalo real qualquer. Uma vez sorteado \(Y(\omega)\), temos o caminho amostral constante \(X_t(\omega) = Y(\omega)\), \(t\in I\).</p>
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/processo_constante.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/processo_constante' not found. //</span></p>
 <h2 id="transporte_de_uma_variável_aleatória"><a href="#transporte_de_uma_variável_aleatória" class="header-anchor">Transporte de uma variável aleatória</a></h2>
 <p>Mais geralmente, dada uma variável aleatória \(Y\) e uma função <em>mensurável</em> \(f:I\times \Sigma \rightarrow \Sigma\), podemos definir o processo</p>
 \[
@@ -387,13 +390,13 @@ X_t = f(t, Y), \quad \forall t\in I.
 X_t = \sin(t + U).
 \]
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/processo_sintplusU.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/processo_sintplusU' not found. //</span></p>
 <p>Como o seno é periódico com período \(2\pi\), os processos \(X_t\) tem sempre a mesma distribuição:</p>
 \[
 X_t \sim \sin(\mathrm{Unif}([0, 2\pi))).
 \]
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/cosuniform.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/cosuniform' not found. //</span></p>
 <p>O processo \(\{X_t\}_{t\in \mathbb{R}}\) assume valores em \(\mathbb{R}\), mas apenas valores entre \(-1 \leq x \leq 1\) são realizáveis. A lei de cada \(X_t\) não é uniforme; há mais chances dos valores estarem próximos de \(\pm 1\) do que de zero. De fato, \(X_t\) segue uma distribuição arcoseno:</p>
 \[
 X_t \sim \mathrm{Arcsin}(-1, 1).
@@ -408,7 +411,7 @@ F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = 2\mathbb{P}_{\m
 \]
 <p>A figura abaixo ilustra essas identidades, com a caixa em laranja exibindo a distribuição uniforme considerada e as partes preenchidas ilustrando a região abaixo de um determinado valor \(x\), indicando a probabilidade correspondente.</p>
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/processo_sintUcdf.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/processo_sintUcdf' not found. //</span></p>
 <p>Agora, podemos calcular explicitamente</p>
 \[
 F_{X_t}(x) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)) = \frac{1}{\pi} \int_{-\pi/2}^{\arcsin(x)} \;\mathrm{d}s = \frac{1}{2} + \frac{1}{\pi}\arcsin(x).
@@ -425,7 +428,7 @@ X_t \sim \sin(Ut),
 <p>onde, novamente, \(U \sim \mathrm{Unif}([0, 2\pi))\). Cada caminho amostral é um simples cosseno, \(t \mapsto X_t(\omega) = \sin(U(\omega)t)\).</p>
 <p>A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo que esse processo não é independente mas ainda é um processo identicamente distribuído. O mais significativo, no entanto, é que, como a frequência de cada seno é dada aleatoriamente, o conjunto de trajetórias dispersa, a ponto das estatísticas conjuntas serem não triviais. Veremos que esse é, surpreendentemente, um exemplo de um <em>ruído branco</em>.</p>
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/processo_sinttimesU.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/processo_sinttimesU' not found. //</span></p>
 <h2 id="gaussiana_senoidal"><a href="#gaussiana_senoidal" class="header-anchor">Gaussiana senoidal</a></h2>
 <p>Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, \(Y_1\) e \(Y_2\), em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere \(a\in \mathbb{R}\) e defina</p>
 \[
@@ -437,7 +440,7 @@ X_t = \cos(at)Y_1 + \sin(at)Y_2, \quad t\in \mathbb{R}.
 \]
 <p>Veremos, em outro momento, que \(\{X_t\}_{t\in \mathbb{R}}\) é um exemplo de <em>processo Gaussiano.</em></p>
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/gaussian_dance.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/gaussian_dance' not found. //</span></p>
 <h2 id="processo_de_renovação"><a href="#processo_de_renovação" class="header-anchor">Processo de renovação</a></h2>
 <p>Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos de tempo para &quot;saltos&quot; de estado. Mais precisamente, sejam \(\{S_j\}_{j\in \mathbb{N}}\) variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, \(\mathbb{E}(S_j) < \infty\). Para cada \(n\), definimos os instantes de salto</p>
 \[
@@ -450,7 +453,7 @@ X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 \]
 <p>onde \(\chi_{\{T_n \leq t\}}\) é a função característica do conjunto \(\{T_n \leq t\}\).</p>
 
-<img src="/notas_sde/assets/pages/c04/processos_continuos/code/output/renewal_uniform.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c04/processos_continuos/code/renewal_uniform' not found. //</span></p>
 <p>Processos de renovação são usados para modelar sequências sucessivas de falhas de equipamentos &#40;e.g. máquinas, velas, cabos, lâmpadas, etc.&#41;. Por exemplo, imagine um motor que precise de um cabo para movimentar uma polia. Sempre que um cabo arrebenta, a produção é interrompida, até que a troca seja feita. A vida útil de cada cabo é uma variável aleatória e as sucessivas quebras são assumidas independentes. Cada intervalo de tempo \(Y_j\) representa a vida útil de um cabo. Cada \(Z_n\) representa o momento da \(n\)-ésima quebra. A variável \(X_t\) modela o número de quebras, ou trocas de cabo, até o instante \(t\).</p>
 <h2 id="processo_de_renovação_e_recompensa"><a href="#processo_de_renovação_e_recompensa" class="header-anchor">Processo de renovação e recompensa</a></h2>
 <p>Junto com um processo de renovação \(\{X_t\}_{t \geq 0}\) como acima, obtido a partir de variáveis aleatórias positivas independentes \(\{Y_j\}_{j\in \mathbb{N}}\), podemos ter, a cada evento \(Z_n = \sum_{j=1}^n Y_j\), uma &quot;recompensa&quot; \(\{W_n\}_{n\in \mathbb{N}}\), que é uma variável aleatória real &#40;ganhos e perdas&#41;. O total de recompensa após um tempo \(t\) é dado por &#40;lembrando que \(X_t\) assume valores inteiros não negativos&#41;</p>
@@ -480,7 +483,7 @@ Y_t = \sum_{i = 1}^{X_t} W_i.
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

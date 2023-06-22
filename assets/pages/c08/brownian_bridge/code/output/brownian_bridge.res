@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c08/brownian_bridge/code/output/brownian_bridge.svg"
+nothing

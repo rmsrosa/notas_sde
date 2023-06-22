@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c03/gerando_num_aleatorios/code/output/randomlcg2.svg"
+nothing

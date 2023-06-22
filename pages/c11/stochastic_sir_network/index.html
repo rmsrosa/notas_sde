@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -378,7 +381,8 @@
 using StochasticDiffEq
 
 using Plots</code></pre>
-
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_Ab2uSI.
+</code></pre>
 <h2 id="modelo_sir_determinístico_em_rede"><a href="#modelo_sir_determinístico_em_rede" class="header-anchor">Modelo SIR determinístico em rede</a></h2>
 <p>Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por \(A\), \(B\) e \(C\).</p>
 <h2 id="modelo_sir_em_rede_de_sítios"><a href="#modelo_sir_em_rede_de_sítios" class="header-anchor">Modelo SIR em rede de sítios</a></h2>
@@ -554,7 +558,7 @@ for &#40;j, s&#41; in zip&#40;1:3, &#39;A&#39;:&#39;C&#39;&#41;
     plot&#33;&#40;getindex.&#40;SIR_network_sol.u, 2, j&#41;/pop&#91;j&#93;, label &#61; &quot;Site &#36;s&quot;&#41;
 end
 plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&quot;, titlefont &#61; 10&#41;</code></pre>
-<p><img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_1.svg" alt=""> <img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_2.svg" alt=""></p>
+<p><p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_2' not found. //</span></p></p>
 <h2 id="modelos_sir_estocástico_em_rede"><a href="#modelos_sir_estocástico_em_rede" class="header-anchor">Modelos SIR estocástico em rede</a></h2>
 
     <div class="navbar">
@@ -579,7 +583,7 @@ plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&qu
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

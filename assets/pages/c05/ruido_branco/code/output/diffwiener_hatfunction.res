@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c05/ruido_branco/code/output/diffwiener_hatfunction.svg"
+nothing

@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c05/existencia_processo_wiener/code/output/sequenciaWn.svg"
+nothing

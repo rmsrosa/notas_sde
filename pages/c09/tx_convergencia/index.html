@@ -248,7 +248,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -269,7 +269,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -361,49 +364,49 @@
 <p>Uma outra noção de convergência que não nos dá, exatamente, uma convergência de variáveis aleatórias é a chamada <em>convergência fraca</em>, que diz respeito apenas à convergência do valor esperado. A distribuição de probabilidades, em si, pode não convergir.</p>
 <p>Associadas a essas convergências, uma outra questão importante é sobre a <em>taxa</em> de convergência, ou seja, quão rápida se dá a convergência. Vejamos, aqui, mais detalhes sobre essas noções.</p>
 <h2 id="convergência_forte"><a href="#convergência_forte" class="header-anchor">Convergência forte</a></h2>
-<p>Dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_n^{\mathrm{\Delta t}}\}_n\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro forte</strong>, ou <strong>erro médio,</strong> é dado por</p>
+<p>Dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_j^{\mathrm{\Delta t}}\}_j\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro forte</strong>, ou <strong>erro médio,</strong> é dado por</p>
 \[
-e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|].
+e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|].
 \]
 <p>Dizemos que o método numérico <strong>converge fortemente</strong> quando</p>
 \[
-e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \rightarrow 0, \qquad \Delta t \rightarrow 0.
+e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|] \rightarrow 0, \qquad \Delta t \rightarrow 0.
 \]
 <p>Um aspecto fundamental em análise numérica é medir essa taxa de convergência, ou seja, quão rápida é a convergência, em função de \(\Delta t\). Nesse sentido, um método numérico, ou uma aproximação, é dita de <strong>ordem</strong> \(p > 0\), ou <strong>ordem forte</strong> \(p > 0\), quando existe uma constante \(C > 0\) e um limiar \(\delta > 0\) tais que</p>
 \[
-e_{\Delta t}^{\mathrm{forte}} = \max_{n} \mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|] \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|] \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 \]
 <h2 id="erro_ao_longo_dos_caminhos_amostrais"><a href="#erro_ao_longo_dos_caminhos_amostrais" class="header-anchor">Erro ao longo dos caminhos amostrais</a></h2>
 <p>A convergência forte é um resultado amostral mas tem consequências, também, nos caminhos individuais, ou em uma boa parcela deles. De fato, considerando um método numérico de ordem forte \(p\), temos, pela desigualdade de Markov, que</p>
 \[
-\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > r) \leq \frac{\mathbb{E}[|X_{t_n} - X_n^{\mathrm{\Delta t}}|]}{r} \leq C\frac{\Delta t^p}{r}.
+\mathbb{P}(\left|X_{t_j} - X_j^{\mathrm{\Delta t}}\right| > r) \leq \frac{\mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Delta t}}|]}{r} \leq C\frac{\Delta t^p}{r}.
 \]
 <p>Escolhendo \(r = \Delta t^{p - \varepsilon}\), com \(0 < \varepsilon < p\), obtemos</p>
 \[
-\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p - \varepsilon}) \leq C\frac{\Delta t^p}{\Delta t^{p - \varepsilon}} = C \Delta t^\varepsilon.
+\mathbb{P}(\left|X_{t_j} - X_j^{\mathrm{\Delta t}}\right| > \Delta t^{p - \varepsilon}) \leq C\frac{\Delta t^p}{\Delta t^{p - \varepsilon}} = C \Delta t^\varepsilon.
 \]
 <p>Em particular, escolhendo \(r = p/2\), temos</p>
 \[
-\mathbb{P}(\left|X_{t_n} - X_n^{\mathrm{\Delta t}}\right| > \Delta t^{p/2}) \leq C \Delta t^{p/2}.
+\mathbb{P}(\left|X_{t_j} - X_j^{\mathrm{\Delta t}}\right| > \Delta t^{p/2}) \leq C \Delta t^{p/2}.
 \]
 <p>Ou seja, tomando-se \(\Delta t\) pequeno, temos, com probabilidade perto de um, que o erro ao longo de um caminho amostral é pequeno.</p>
 <h2 id="convergência_fraca"><a href="#convergência_fraca" class="header-anchor">Convergência fraca</a></h2>
 <p>Em muitos casos, temos um interesse particular no valor esperado de um processo. É claro que se um método numérico converge fortemente, então ele o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência do valor esperado, que é esta chamada de convergência fraca.</p>
-<p>Nesse sentido, novamente, dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_n^{\mathrm{\Delta t}}\}_n\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro fraco</strong> é dado por</p>
+<p>Nesse sentido, novamente, dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_j^{\mathrm{\Delta t}}\}_j\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro fraco</strong> é dado por</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} = \max_{n} |\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]|.
+e_{\Delta t}^{\mathrm{fraco}} = \max_{j} |\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]|.
 \]
 <p>Dizemos que o método numérico <strong>converge fracamente</strong> quando</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} = \max_{n} \left|\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
+e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
 \]
 <p>Um método numérico, ou uma aproximação, é dita de <strong>ordem fraca</strong> \(p > 0\), quando existe uma constante \(C > 0\) e um limiar \(\delta > 0\) tais que</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} = \max_{n} \left|\mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 \]
 <p>Observe que, para cada \(n\),</p>
 \[
-\left| \mathbb{E}[X_{t_n}] - \mathbb{E}[X_n^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_n} - X_n^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_n} - X_n^{\mathrm{\Delta t}}\right| \right],
+\left| \mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_j} - X_j^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_j} - X_j^{\mathrm{\Delta t}}\right| \right],
 \]
 <p>de modo que</p>
 \[
@@ -446,7 +449,7 @@ e_{\Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall 
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

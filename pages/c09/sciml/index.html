@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -350,7 +353,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c10/deterministic"><kbd>→</kbd> 10.1. Evolução no caso de equações determinísticas</a>
@@ -364,7 +367,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">9.10. O ambiente SciML da linguagem Julia</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.11. O ambiente SciML da linguagem Julia</a></h1>
 <p>Estivemos, até agora, implementando diretamente os métodos numéricos, por motivos didáticos. Nas aplicações, porém, podemos utilizar pacotes numéricos que já têm esses e outros métodos implementados. Nos basta formular o problema de acordo com a interface de cada pacote &#40;chamada de <em>api</em>, acrônimo de <em>application programming interface</em>&#41;.</p>
 <p>Com isso em mente, vamos usar o ambiente <a href="https://docs.sciml.ai/dev/">SciML - The SciML Open Source Software Ecosystem</a>, que é, de fato, um dos carros chefes da linguagem <a href="The SciML Open Source Software Ecosystem">Julia</a>, com uma ampla gama de métodos implementados e otimizados. Há não apenas métodos para aproximar os caminhos amostrais de soluções de equações estocásticas e aleatórias, mas também para serem usados em conjunto com métodos de determinação de parâmetros, quantificação de incertezas, redes neurais e modelagem simbólica.</p>
 <p>Vamos ilustrar aqui como usar esse ambiente para resolver as equações tratadas até agora. Nos capítulos seguintes, exploraremos esse ambiente na resolução de problemas mais complexos, envolvendo sistemas de equações.</p>
@@ -440,8 +443,9 @@ let
     plot&#40;sol, title &#61; &quot;solução da equação logística determinística&quot;, titlefont &#61; 10, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, label &#61; false, size &#61; &#40;800, 600&#41;&#41;
 
 end</code></pre>
-
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/ode_via_sciml_pop.svg" alt="">
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_G34zhJ.
+</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/ode_via_sciml_pop' not found. //</span></p>
 <h2 id="resolvendo_um_conjunto_de_equações_com_parâmetros_variados"><a href="#resolvendo_um_conjunto_de_equações_com_parâmetros_variados" class="header-anchor">Resolvendo um conjunto de equações com parâmetros variados</a></h2>
 <p>Na análise de quantificação de incertezas e no estudo da sensibilidade do modelo nos parâmetros é útil considerar parâmetros com uma determinada incerteza, ou seja, com parâmetros como variáveis aleatórias.</p>
 <p>Para isso, podemos usar o método de Monte-Carlo e inferir as estatísticas do processo estocástico através de um conjunto de soluções. Podemos fazer isso resolvendo uma série de problemas de valor inicial como acima. Para facilitar esse processo e, inclusive, a análise do conjunto de soluções, os pacotes do SciML disponibilizam um <code>EnsembleProblem&#40;&#41;</code>, a ser montado a partir de um problema de valor inicial, como o <code>ODEProblem&#40;&#41;</code>. Em seguida, podemos acessar um resumo do resultado do conjunto de simulações através de <code>EnsembleSummary&#40;&#41;</code>. Mais informações na página <a href="https://diffeq.sciml.ai/stable/features/ensemble/">Parallel Ensemble Simulations</a>.</p>
@@ -489,9 +493,10 @@ let
     plot&#33;&#40;summ68, label &#61; &quot;68&#37;&quot;, legend &#61; :bottomright&#41;
 
 end</code></pre>
-
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/ode_via_sciml_pop_ensemb_trajectories.svg" alt="">
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/ode_via_sciml_pop_ensemb.svg" alt="">
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_DPo1iF.
+</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/ode_via_sciml_pop_ensemb_trajectories' not found. //</span></p>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/ode_via_sciml_pop_ensemb' not found. //</span></p>
 <h2 id="resolvendo_equações_aleatórias_via_sciml"><a href="#resolvendo_equações_aleatórias_via_sciml" class="header-anchor">Resolvendo equações aleatórias via SciML</a></h2>
 <p>Vamos ver, agora, como usar <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/rode_types/">a interface para equações aleatórias</a>. Desta vez, usamos o pacote <a href="https://github.com/SciML/StochasticDiffEq.jl">SciML/StochasticDiffEq.jl</a>. Começamos carregando os pacotes.</p>
 <pre><code class="language-julia">using StochasticDiffEq
@@ -553,8 +558,9 @@ let
     plot&#40;sol, title &#61; &quot;solução da equação diferencial aleatória &#96;u&#39; &#61; sin&#40;W&#41;u&#96; com &#96;u&#40;0&#41; &#61; 1.0&#96;&quot;, titlefont &#61; 10, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, label &#61; false, size &#61; &#40;800, 600&#41;&#41;
 
 end</code></pre>
-
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/rode_via_sciml.svg" alt="">
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_2WG30g.
+</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/rode_via_sciml' not found. //</span></p>
 <h3 id="resolvendo_a_equação_logística_aleatória"><a href="#resolvendo_a_equação_logística_aleatória" class="header-anchor">Resolvendo a equação logística aleatória</a></h3>
 <p>Vejamos, agora, como implementar a equação logística aleatória discutida anteriormente. A equação tem a forma</p>
 \[
@@ -611,8 +617,9 @@ let
     plot&#40;sol, title &#61; &quot;solução da equação logística aleatória&quot;, titlefont &#61; 10, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, label &#61; false, size &#61; &#40;800, 600&#41;&#41;
 
 end</code></pre>
-
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/rode_via_sciml_pop.svg" alt="">
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_75WCcf.
+</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/rode_via_sciml_pop' not found. //</span></p>
 <p>Agora, na prática, queremos inferir a evolução do processo estocástico. Essa análise é facilitada pela função <code>EnsembleProblem&#40;&#41;</code>. Isso é ilustrado a seguir.</p>
 <pre><code class="language-julia">using StochasticDiffEq
 using Plots
@@ -649,9 +656,10 @@ let
     plot&#33;&#40;summ68, label &#61; &quot;68&#37; das amostras&quot;, legend &#61; :bottomright&#41;
 
 end</code></pre>
-
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/rode_via_sciml_pop_ensemb_trajectories.svg" alt="">
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/rode_via_sciml_pop_ensemb.svg" alt="">
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_TZkmzK.
+</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/rode_via_sciml_pop_ensemb_trajectories' not found. //</span></p>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/rode_via_sciml_pop_ensemb' not found. //</span></p>
 <h2 id="resolvendo_equações_estocásticas_via_sciml"><a href="#resolvendo_equações_estocásticas_via_sciml" class="header-anchor">Resolvendo equações estocásticas via SciML</a></h2>
 <p><a href="https://diffeq.sciml.ai/stable/types/sde_types/">A interface para a resolução de equações estocásticas</a> é acessível pelo pacote <a href="https://github.com/SciML/StochasticDiffEq.jl">SciML/StochasticDiffEq.jl</a>. Nesse caso, precisamos informar a função de <em>drift</em> <code>f&#40;u, p, t&#41;</code> e a função de difusão <code>g&#40;u, p, t&#41;</code>. Veja os exemplos no <a href="https://diffeq.sciml.ai/stable/tutorials/sde_example/">tutorial de SDE</a>. A equação estocástica em questão tem a forma</p>
 \[
@@ -702,9 +710,10 @@ let T &#61; 1.0
     plot&#33;&#40;range&#40;tspan..., length &#61; 200&#41;, &#91;t -&gt; sqrt&#40;t * &#40;1 - t&#41;&#41;, t -&gt; - sqrt&#40;t * &#40;1 - t&#41;&#41;&#93;, color &#61; 3, label &#61; &#91;&quot;desvio padrão&quot; nothing&#93;, legend &#61; :topright&#41;
 
 end</code></pre>
-
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/sde_via_sciml_pop_ensemb_trajectories.svg" alt="">
-<img src="/notas_sde/assets/pages/c09/sciml/code/output/sde_via_sciml_pop_ensemb.svg" alt="">
+<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_LCFIz1.
+</code></pre>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/sde_via_sciml_pop_ensemb_trajectories' not found. //</span></p>
+<p><span style="color:red;">// Image matching '/assets/pages/c09/sciml/code/sde_via_sciml_pop_ensemb' not found. //</span></p>
 <h2 id="sobre_reproducibilidade"><a href="#sobre_reproducibilidade" class="header-anchor">Sobre reproducibilidade</a></h2>
 <p>Naturalmente, é da natureza estocástica desses problemas que cada simulação nos dê um resultado diferente. No entanto, para efeitos de testes &#40;<em>unit testing</em> de um pacote ou de um método específico&#41; ou por motivos de apresentação de um problema, é interessante reproduzir os resultados de uma simulação estocástica. Fazemos isso comumente em outras situações, defindo uma semente, tal como <code>rng &#61; Random.Xoshiro&#40;123&#41;</code>, e passando essa semente para os algoritmos de geração de números pseudo aleatórios &#40;e.g. <code>randn&#40;rng&#41;</code>&#41;. Isso pode ser feito, em particular, no exemplo de quantificação de incertezas, usando a semente <code>rng</code> na função <code>prob_func&#40;prob, i, repeat&#41;</code> de reformulação do problema, e.g.</p>
 <pre><code class="language-julia">prob_func&#40;prob, i, repeat&#41; &#61; remake&#40;prob, u0 &#61; 0.2 &#43; 0.1 * rand&#40;Random.Xoshiro&#40;123&#41;&#41;&#41;</code></pre>
@@ -898,7 +907,7 @@ UndefVarError: fsir not defined
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c10/deterministic"><kbd>→</kbd> 10.1. Evolução no caso de equações determinísticas</a>
@@ -917,7 +926,7 @@ UndefVarError: fsir not defined
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

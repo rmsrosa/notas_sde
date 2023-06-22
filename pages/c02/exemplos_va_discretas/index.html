@@ -259,7 +259,7 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_wiener">9.2. Simulações de processos de Wiener e browniano geométrico</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência do método de Euler-Maruyama</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_euler_maruyama">9.3. Convergência forte do método de Euler-Maruyama</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/nao_convergencia_euler_maruyama">9.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
@@ -280,7 +280,10 @@
     <li><a href="/notas_sde/pages/c09/simulacoes_milstein">9.9. Simulações Milstein</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/sciml">9.10. O ambiente SciML da linguagem Julia</a></li>
+    <li><a href="/notas_sde/pages/c09/convergencia_fraca_em">9.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia</a></li>
     </div>
     <div class="menu-level-1">
     <li>10. Evolução da função densidade de probabilidade</li>
@@ -396,9 +399,9 @@ X \sim \textrm{Uniforme}(1, 2, \ldots, N),
 X \sim \mathrm{Bernoulli}(p).
 \]
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoulli.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_discretas/code/pmfbernoulli' not found. //</span></p>
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbernoullicum.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_discretas/code/pmfbernoullicum' not found. //</span></p>
 <h2 id="número_de_sucessos_e_a_distribuição_binomial"><a href="#número_de_sucessos_e_a_distribuição_binomial" class="header-anchor">Número de sucessos e a distribuição binomial</a></h2>
 <p>Podemos, também, jogar uma moeda \(n\) vezes e contarmos o número de vezes em que o resultado é &quot;cara&quot;, por exemplo. A probabilidade de não termos nenhuma cara é \(1/2^n\), pois devemos ter exatamente \(n\) coroas lançadas, sendo que cada uma tem probabilidade 1/2 de ocorrer. A probabilidade de termos exatamente uma cara é \(n/2^n\), pois a cara pode vir em qualquer um dos \(n\) lançamentos. Mais geralmente, temos um número</p>
 \[
@@ -417,9 +420,9 @@ X \sim \mathrm{Bernoulli}(p).
 X \sim B(n, p).
 \]
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomial.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_discretas/code/pmfbinomial' not found. //</span></p>
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfbinomialcum.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_discretas/code/pmfbinomialcum' not found. //</span></p>
 <h2 id="tempo_de_espera_e_a_distribuição_geométrica"><a href="#tempo_de_espera_e_a_distribuição_geométrica" class="header-anchor">Tempo de espera e a distribuição geométrica</a></h2>
 <p>Baseado no teste de Bernoulli, podemos considerar a variável aleatória que nos dá as chances de termos sucesso após \(n\) tentativas frustradas. Ou seja, em \(n\) tentativas, temos insucesso nos primeiros \(n-1\) testes e sucesso apenas no último teste. Se a chance de sucesso é \(p\) e a de fracasso é \(1-p\), com \(0 < p \leq 1\), então temos probabilidade \((1-p)^{n-1}\) de insucessos nos \(n\) primeiros testes e \(p\) de sucesso no último teste, ou seja,</p>
 \[
@@ -432,9 +435,9 @@ X \sim B(n, p).
 <p>Observe que há uma questão de interpretação, aqui. A probabilidade \((1-p)^{n-1}p\) de termos sucesso <em>apenas</em> no \(n\)-ésimo é a mesma que a de termos apenas um sucesso em \(n\) testes, independentemente de ser no último teste ou não.</p>
 <p>Observe, ainda, que no caso da distribuição binomial discutida acima, fixamos o número \(n\) de testes e analisamos a quantidade de sucessos nesses \(n\) testes. Já na distribuição geométrica, podemos ter um número arbitrário de testes.</p>
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfgeometrica.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_discretas/code/pmfgeometrica' not found. //</span></p>
 
-<img src="/notas_sde/assets/pages/c02/exemplos_va_discretas/code/output/pmfgeometricacum.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_discretas/code/pmfgeometricacum' not found. //</span></p>
 <p>A distribuição geométrica é a única distribuição enumerável &quot;sem memória&quot;. Ou seja, se \(\mathbb{P}\) é uma probabilidade cujo espaço de eventos é \(\Sigma = \mathbb{N}\) e é tal que</p>
 \[
 \mathbb{P}(X \geq m + n | X \geq m) = \mathbb{P}(X \geq n), \qquad \forall m, n \in \mathbb{N},
@@ -510,7 +513,7 @@ p = \mathbb{P}(X = 1).
         </div>
     
 
-    Last modified: June 13, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
