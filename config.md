@@ -123,7 +123,7 @@ menu = [
     "Evolução da função densidade de probabilidade" => [
         "pages/c10/deterministic"
         "pages/c10/stochastic"
-        "Soluções estacionárias"
+        "pages/c10/stationaryOU"
         "Métodos numéricos"
     ]
     "Sistemas de equações aleatórias"
