@@ -122,10 +122,7 @@ menu = [
     ]
     "Evolução da função densidade de probabilidade" => [
         "pages/c10/deterministic"
-        "Evolução no caso de equações aleatórias"
-        "Kolmogorov backward equation"
-        "Kolmogorov forward equation"
-        "Evolução no caso de equações estocásticas"
+        "pages/c10/stochastic"
         "Soluções estacionárias"
         "Métodos numéricos"
     ]
