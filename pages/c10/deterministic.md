@@ -1,4 +1,4 @@
-@def title = "Evolução no caso de equações determinísticas"
+@def title = "Equação do transporte no caso de equações diferenciais ordinárias"
 
 # {{ get_title }}
 

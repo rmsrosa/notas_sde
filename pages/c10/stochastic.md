@@ -1,4 +1,4 @@
-@def title = "Evolução no caso de equações estocásticas"
+@def title = "Equação de Fokker-Planck no caso de equações estocásticas"
 
 # {{ get_title }}
 
