@@ -187,11 +187,11 @@ $$
 
 Agora precisamos estimar os erros do lado direito.
 
-A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}\[|\hat X_t - \bar X_t|^2]$. Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
+A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}[|\hat X_t - \bar X_t|^2]$. Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
 
 Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos
 $$
-u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)) \quad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
+u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)), \qquad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
 $$
 Em cada subintervalo $[t_{j-1}, t_j]$, temos $\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n$ constante, de modo que podemos olhar para
 $$
