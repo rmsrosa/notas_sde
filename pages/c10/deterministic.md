@@ -19,12 +19,12 @@ Suponhamos, para todos os efeitos, que essas soluções estejam definidas pelo m
 
 Suponhamos, mais ainda, que cada $X_t$ tenha uma função densidade de probabilidade $p(t, x)$ bem definida. A questão que queremos investigar é sobre a evolução dessa função. Temos, para uma "função teste" $\Phi$ qualquer,
 $$
-\mathrm{E}[\Phi] = \int_\mathbb{R} \Phi(X_t(\omega))\;\mathrm{d}\mathbb{P}(\omega) = \int_\mathbb{R} \Phi(x)p(t, x) \;\mathrm{d}x.
+\mathbb{E}[\Phi] = \int_\mathbb{R} \Phi(X_t(\omega))\;\mathrm{d}\mathbb{P}(\omega) = \int_\mathbb{R} \Phi(x)p(t, x) \;\mathrm{d}x.
 $$
 
 Derivando em relação ao tempo, obtemos
 $$
-\frac{\mathrm{d}}{\mathrm{d}t}  \mathrm{E}[\Phi] = \frac{\mathrm{d}}{\mathrm{d}t}  \int_\mathbb{R} \Phi(x)p(t, x) \;\mathrm{d}x = \int_\mathbb{R} \Phi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x.
+\frac{\mathrm{d}}{\mathrm{d}t}  \mathbb{E}[\Phi] = \frac{\mathrm{d}}{\mathrm{d}t}  \int_\mathbb{R} \Phi(x)p(t, x) \;\mathrm{d}x = \int_\mathbb{R} \Phi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x.
 $$
 
 Por outro lado, também temos
