@@ -16,7 +16,7 @@ $$
 $$
 e
 $$
-\mathcal{Var}(X_t) \rightarrow e^{-2\nu t}\;\mathcal{Var}(X_0) + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}) \rightarrow \frac{\sigma^2}{2\nu},
+\mathrm{Var}(X_t) \rightarrow e^{-2\nu t}\;\mathrm{Var}(X_0) + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right) \rightarrow \frac{\sigma^2}{2\nu},
 $$
 quando $t \rightarrow \infty.$ Como $X_t$ é um processo Gaussiano, vemos que, no limite $t\rightarrow \infty,$
 $$
@@ -25,20 +25,29 @@ $$
 
 Isso pode ser obtido, também, através da equação de Fokker-Planck. De acordo com essa equação, a função densidade de probabilidade $p=p(x)$ de uma distribuição estacionária desse processo é dada por
 $$
--\nu \frac{\mathrm{d}}{\mathrm{d}x}(x p(x)) + \frac{\sigma^2}{2}\frac{\mathrm{d}^2 p}{\mathrm{d}x^2}(x) = 0.
+\nu \frac{\mathrm{d}}{\mathrm{d}x}(x p(x)) + \frac{\sigma^2}{2}\frac{\mathrm{d}^2 p}{\mathrm{d}x^2}(x) = 0.
 $$
 Integrando,
 $$
--\nu (x p(x)) + \frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C,
+\nu x p(x) + \frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C,
 $$
-para uma constante apropriada $C.$ Essa equação diferencial é linear e é possível observar que as suas soluções são da forma
+para uma constante apropriada $C.$ É natural procurarmos uma solução simétrica em relação à origem, já que a equação o é. Nesse caso, $p'(0) = 0,$ o que nos dá
 $$
-p(x) = K e^{- \nu x^2/\sigma^2}.
+C = 0.
 $$
+Portanto, procuramos uma solução de
+$$
+\frac{\mathrm{d} p}{\mathrm{d}x}(x) = - \frac{2 \nu x}{\sigma^2} p(x).
+$$
+Essa equação é linear e também é separável. De qualquer forma, obtemos a solução
+$$
+p(x) = C_0 e^{-\frac{\nu x^2}{\sigma^2}},
+$$
+para alguma constante $C_0.$
 
-Lembramos que $p=p(x)$ deve ser uma função densidade de probabilidade, i.e.
+Lembramos, agora, que $p=p(x)$ deve ser uma função densidade de probabilidade, i.e.
 $$
-p(x) \geq 0, \qquad \int_{-\infty}^\infty p(x) \;\mathrm{d}x = 1.
+\int_{-\infty}^\infty p(x) \;\mathrm{d}x = 1.
 $$
 Sob essas condições, devemos ter
 $$
