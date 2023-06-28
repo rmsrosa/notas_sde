@@ -59,7 +59,7 @@ $$
 
 Como a função teste é arbitrária, chegamos na **equação de Fokker-Planck** para a evolução da distribuição de probabilidades
 $$
-\frac{\partial p}{\partial t}(t, x) \frac{\partial}{\partial x}(f(t, x)p(t, x)) - \frac{1}{2}\frac{\partial^2}{\partial x^2}(g(t, x)^2 p(t, x)) = 0.
+\frac{\partial p}{\partial t}(t, x) + \frac{\partial}{\partial x}(f(t, x)p(t, x)) - \frac{1}{2}\frac{\partial^2}{\partial x^2}(g(t, x)^2 p(t, x)) = 0.
 $$
 
 Essa também é conhecida como **equações progressivas de Kolmogorov para equações diferenciais estocásticas,** ou **forward Kolmogorov diffusion equation.** As equações de Kolmogorov (progressivas ou regressivas - *forward* or *backward*) são definidas em contextos mais gerais de processos de Markov com tempo contínuo e espaço discreto ou contínuo.
