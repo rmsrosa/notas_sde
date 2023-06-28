@@ -31,11 +31,21 @@ Integrando,
 $$
 \nu x p(x) + \frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C,
 $$
-para uma constante apropriada $C.$ É natural procurarmos uma solução simétrica em relação à origem, já que a equação o é. Nesse caso, $p'(0) = 0,$ o que nos dá
+para uma constante apropriada $C.$ É natural procurarmos uma solução simétrica em relação à origem, já que a equação assim o é. Nesse caso, $p'(0) = 0,$ o que nos dá
 $$
 C = 0.
 $$
-Portanto, procuramos uma solução de
+Observe que, caso $C > 0,$ então
+$$
+\frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C - \nu x p(x) \geq C > 0,
+$$
+para $x < 0$, visto que $p \geq 0.$ Mas isso nos leva a uma contradição, pois teríamos $p\rightarrow -\infty,$ quando $x \rightarrow -\infty,$ contradizendo o fato de que $p \geq 0.$ Da mesma forma, se $C < 0,$ então
+$$
+\frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C - \nu x p(x) \leq C < 0,
+$$
+para $x > 0.$ Novamente, $p\rightarrow -\infty,$ quando $x \rightarrow \infty,$ contradizendo o fato de que $p\geq 0$.
+
+Portanto, a única solução possível deve satisfazer
 $$
 \frac{\mathrm{d} p}{\mathrm{d}x}(x) = - \frac{2 \nu x}{\sigma^2} p(x).
 $$
