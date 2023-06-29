@@ -105,6 +105,7 @@ menu = [
         "pages/c08/brownian_bridge"
         "pages/c08/ornstein_uhlenbeck"
         "pages/c08/feynmann_kac"
+        "pages/c08/asymptotic_stability"
         "pages/c08/relacoes_rode_sde"
     ]
     "Métodos numéricos" => [
