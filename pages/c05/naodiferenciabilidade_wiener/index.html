@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -466,7 +460,7 @@ E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
 \]
 <p>O motivo de usarmos \(2^{-n+2}\) acima, ao invés de \(2^{-n}\), é que vamos usar, abaixo, a partição diádica de tal forma que quatro intervalos sucessivos da malha com espaçamento \(2^{-n}\) cabem em um único intervalo da malha com espaçamento \(2^{-n+2}\). A importância disso será vista em seguida.</p>
 
-<p><span style="color:red;">// Image matching '/assets/pages/c05/naodiferenciabilidade_wiener/code/dyadic_points' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c05/naodiferenciabilidade_wiener/code/output/dyadic_points.svg" alt="">
 <p>Com a caracterização acima, podemos escrever</p>
 \[
 \left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} = \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} \left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
@@ -481,7 +475,7 @@ t_0 < \frac{k}{2^n} < \frac{k+j}{2^n} = \frac{k-1}{2^n} + \frac{j+1}{2^n} \leq \
 \]
 <p>Assim, todos os pontos \(k/2^n\) e \((k+j)/2^n\), para \(j=1, 2, 3\), são da forma \(t_0 + \tau\), para \(\tau\) no intervalo \((0, 2^{-n+2}]\). </p>
 
-<p><span style="color:red;">// Image matching '/assets/pages/c05/naodiferenciabilidade_wiener/code/dyadic_points_increments' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c05/naodiferenciabilidade_wiener/code/output/dyadic_points_increments.svg" alt="">
 <p>Dessa forma, podemos usar a estimativa acima, em conjunto com a desigualdade triangular, para obter</p>
 \[
 \begin{align*}
@@ -578,7 +572,7 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -414,7 +408,7 @@ end</code></pre>
 plot&#33;&#40;t, t -&gt; x₀ * exp&#40;μ * t&#41;, label&#61;&quot;sol. exata&quot;&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_exata.svg&quot;&#41;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_sol_exata' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_exata.svg" alt="">
 <p>Refinando a malha, obtemos uma solução mais próxima, onde quase não vemos diferença:</p>
 <pre><code class="language-julia">Δt &#61; 0.02
 t &#61; t0:Δt:T
@@ -429,7 +423,7 @@ end
 plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_approx.svg&quot;&#41;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_sol_approx' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_approx.svg" alt="">
 <h2 id="modelo_com_parâmetros_aleatórios"><a href="#modelo_com_parâmetros_aleatórios" class="header-anchor">Modelo com parâmetros aleatórios</a></h2>
 <p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2)\).</p>
 <p>Façamos uma amostragem de um certo número \(M\) de valores.</p>
@@ -454,7 +448,7 @@ plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Conjunto de soluções &#40;x₀
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_edorv.svg&quot;&#41;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_edorv' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_edorv.svg" alt="">
 <h2 id="modelo_de_equação_diferencial_aleatória"><a href="#modelo_de_equação_diferencial_aleatória" class="header-anchor">Modelo de equação diferencial aleatória</a></h2>
 <p>Consideramos, agora, a equação aleatória</p>
 \[
@@ -476,7 +470,7 @@ plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções RODE &#40;x₀ &#61; 
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_rode.svg&quot;&#41;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_rode' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_rode.svg" alt="">
 <h2 id="modelo_de_equação_diferencial_estocástica"><a href="#modelo_de_equação_diferencial_estocástica" class="header-anchor">Modelo de equação diferencial estocástica</a></h2>
 <p>Finalmente, vamos considerar a equação estocástica</p>
 \[
@@ -498,7 +492,7 @@ plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções SDE &#40;x₀ &#61; &
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
 
 savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&#41;</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_sde' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_sde.svg" alt="">
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Resolva, via método de Euler, a equação diferencial</p>
@@ -559,7 +553,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

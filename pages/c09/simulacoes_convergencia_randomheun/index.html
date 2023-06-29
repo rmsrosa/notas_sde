@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -450,11 +444,11 @@ e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 <p>Como os caminhos amostrais são relativamente bem comportados, não é necessário tomarmos um número grande amostras para visualizarmos a taxa correta de convergência.</p>
 
 <p>Primeiramente, observe que, nesse caso, a regularidade não afeta a ordem de convergência do método de Euler, que é sempre um. Isso segue do fato dos caminhos amostrais da solução serem continuamente diferenciáveis.</p>
-<p><p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_EMconvfig1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_EMconvfig2' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_EMconvfig3' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_EMconvfig4' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_EMconvfig1.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_EMconvfig2.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_EMconvfig3.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_EMconvfig4.svg" alt=""></p>
 <p>Já o método de Euler precisa de regularidade suficiente da solução para apresentar o sua maior taxa de convergência, que é dois. Nos dois casos \(\theta = 1\) e \(\theta = 2\), há regularidade suficiente da solução &#40;duas vezes continuamente diferenciável&#41;, de modo que a ordem de convergência é dois</p>
-<p><p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_Heunconvfig1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_Heunconvfig2' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_Heunconvfig1.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_Heunconvfig2.svg" alt=""></p>
 <p>Agora, para \(\theta = 2/3\) e \(\theta = 1/3\), a ordem de convergência é menor, sendo respectivamente \(5/3\) e \(4/3\). Em geral, se \(t \mapsto f(t, x, Y_t)\) é Hölder contínua em \(t\), para \(x\) fixo, com expoente \(0 < \theta < 1\), então os caminhos amostrais da solução são de classe \(\mathcal{C}^{1 + \theta}\), ou seja, continuamente diferenciáveis, com derivada Hölder contínua com expoente \(\theta\). Nesse caso, a ordem de convergência do método é \(1 + \theta\).</p>
-<p><p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_Heunconvfig3' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_randomheun/code/rode_Heunconvfig4' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_Heunconvfig3.svg" alt=""> <img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_randomheun/code/output/rode_Heunconvfig4.svg" alt=""></p>
 
     <div class="navbar">
     <p id="nav">
@@ -478,7 +472,7 @@ e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

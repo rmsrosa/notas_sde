@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -381,8 +375,7 @@
 using StochasticDiffEq
 
 using Plots</code></pre>
-<pre><code class="plaintext code-output">Failed to precompile Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] to /home/runner/.julia/compiled/v1.8/Plots/jl_Ab2uSI.
-</code></pre>
+
 <h2 id="modelo_sir_determinístico_em_rede"><a href="#modelo_sir_determinístico_em_rede" class="header-anchor">Modelo SIR determinístico em rede</a></h2>
 <p>Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por \(A\), \(B\) e \(C\).</p>
 <h2 id="modelo_sir_em_rede_de_sítios"><a href="#modelo_sir_em_rede_de_sítios" class="header-anchor">Modelo SIR em rede de sítios</a></h2>
@@ -558,7 +551,7 @@ for &#40;j, s&#41; in zip&#40;1:3, &#39;A&#39;:&#39;C&#39;&#41;
     plot&#33;&#40;getindex.&#40;SIR_network_sol.u, 2, j&#41;/pop&#91;j&#93;, label &#61; &quot;Site &#36;s&quot;&#41;
 end
 plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&quot;, titlefont &#61; 10&#41;</code></pre>
-<p><p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_2' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_1.svg" alt=""> <img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_2.svg" alt=""></p>
 <h2 id="modelos_sir_estocástico_em_rede"><a href="#modelos_sir_estocástico_em_rede" class="header-anchor">Modelos SIR estocástico em rede</a></h2>
 
     <div class="navbar">
@@ -583,7 +576,7 @@ plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&qu
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

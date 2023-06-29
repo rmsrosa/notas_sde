@@ -236,7 +236,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -278,25 +281,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -395,36 +389,8 @@ X_0 = x_0.
 <p>mostrando a convergência fraca também de ordem \(p\).</p>
 <p>No entanto, é possível estimar a ordem fraca de maneira diferente e, em muitos casos, conseguir a convergência fraca com uma ordem de convergência melhor ou mesmo obter convergência fraca sem que haja convergência forte.</p>
 <h2 id="fórmula_de_feynman-kac"><a href="#fórmula_de_feynman-kac" class="header-anchor">Fórmula de Feynman-Kac</a></h2>
-<p>Em muitos casos práticos, conhecemos o valor atual de um \(X_\tau = \xi\) de um processo estocástico e queremos estimar o valor esperado \(\mathbb{E}[X_T]\) em um tempo futuro \(T > \tau,\) ou, mais geralmente, \(\mathbb{E}[\Phi(X_T)],\) para algum momento \(\Phi.\) O objetivo é fazer isso através de uma função \(u=u(t, x)\) que seja solução de uma equação a derivadas parciais &#40;EDP&#41; apropriada.</p>
-<p>Observe que, pela fórmula de Itô,</p>
-\[
-\begin{align*}
-u(T, X_T) & = u(\tau, X_\tau) + \int_\tau^T \left(u_t(t, X_t) + u_x(t, X_t)f(X_t) + \frac{1}{2}u_{xx}(t, X_t)g(X_t)^2\right)\;\mathrm{d}t \\
-& \qquad + \int_\tau^T u_x(t, X_t)g(X_t)\;\mathrm{d}W_t.
-\end{align*}
-\]
-<p>Ao tomarmos o valor esperado, usando que \(X_\tau = \xi\) e que a integral estocástica tem esperança zero, obtemos</p>
-\[
-\mathbb{E}[u(T, X_T)] = u(\tau, \xi) + \int_\tau^T \mathbb{E}\left[ u_t(t, X_t) + u_x(t, X_t)f(X_t) + \frac{1}{2}u_{xx}(t, X_t)g(X_t)^2\right]\;\mathrm{d}t.
-\]
-<p>A esperança no integrando acima é, em geral, de difícil cálculo. A ideia é considerar uma EDP em que esse termo se anule, ou seja, considerar \(u(t, x)\) tal que</p>
-\[
-u_t(t, x) + u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0.
-\]
-<p>Para essa \(u=u(t, x),\) obtemos</p>
-\[
-\mathbb{E}[u(T, X_T)] = u(\tau, \xi).
-\]
-<p>Observe que a equação para \(u\) parece uma equação do calor mas está com o sinal &quot;trocado&quot;. Isso implica em ela ser mal posta. Mas isso no modo clássico de resolvê-la para a frente. Ela está bem posta ao buscarmos resolvê-la para trâs no tempo. Mais precisamente, ao fazermos a mudança de variável \(t \mapsto -t,\) a equação se torna uma equação parabólica clássica. Esse tipo de equação com sinal &quot;trocado&quot; aparece comumente em problemas de otimização. É o problema dual ao de evolução para frente.</p>
-<p>Bom, mas o que isso significa no nosso caso? A ideia é que podemos impor uma <em>condição final</em></p>
-\[
-u(T, x) = \Phi(x),
-\]
-<p>para o momento desejado \(\Phi\), em seguida resolver &quot;para trás no tempo&quot; para obter \(u(\tau, \xi)\) e encontrar o desejado valor esperado</p>
-\[
-\mathbb{E}[\Phi(X_T)] = \mathbb{E}[u(T, X_T)] = u(\tau, \xi).
-\]
-<p>Em resumo, considerando a equação diferencial estocástica</p>
+<p>Em muitos casos práticos, conhecemos o valor atual \(X_\tau = \xi\) de um de um processo estocástico e queremos estimar o valor esperado \(\mathbb{E}[X_T; X_\tau = \xi]\) em um tempo futuro \(T > \tau,\) ou, mais geralmente, \(\mathbb{E}[\Phi(X_T); X_\tau = \xi],\) para algum momento \(\Phi.\) Lembremos que isso pode ser feito através da fórmula de Feynman-Kac.</p>
+<p>Considerando a equação diferencial estocástica</p>
 \[
 \mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
 \]
@@ -434,7 +400,7 @@ X_\tau = \xi
 \]
 <p>dada em um instante \(\tau\in\mathbb{R}\), podemos encontrar o momento</p>
 \[
-\mathbb{E}[\Phi(X_T)]
+\mathbb{E}[\Phi(X_T); X_\tau = \xi]
 \]
 <p>em um instante futuro \(T > \tau\), para alguma \(\Phi\) dada, resolvendo a EDP</p>
 \[
@@ -446,10 +412,9 @@ u(T, x) = \Phi(x),
 \]
 <p>em \(x\in\mathbb{R},\) e encontrando</p>
 \[
-\mathbb{E}[\Phi(X_T)] = u(\tau, \xi).
+\mathbb{E}[\Phi(X_T); X_\tau = \xi] = u(\tau, \xi).
 \]
 <p>Essa é a <strong>fórmula de Feynman-Kac.</strong></p>
-<p>Esta foi a visão de Mark Kac, um probabilista americano. Feynman, por sua vez, buscava o caminho contrário, ou seja, resolver equações da mecânica quântica, através de caminhos, com suas integrais de caminhos <em>&#40;path integrals&#41;,</em> com o agravante dessas equações serem complexas. A formulação acima, de Feynman-Kac, é feita rigorosa no contexto real.</p>
 <h2 id="erro_fraco"><a href="#erro_fraco" class="header-anchor">Erro fraco</a></h2>
 <p>O que a fórmula de Feynman-Kac tem a ver com o erro fraco? No erro fraco, queremos estimar</p>
 \[
@@ -517,6 +482,41 @@ u(0, X_0) = \mathbb{E}[\Phi(X_T)].
 \end{align*}
 \]
 <p>Agora precisamos estimar os erros do lado direito.</p>
+<p>A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de \(f\) e \(g\) e estimar esses termos em função de \(\mathbb{E}[|\hat X_t - \bar X_t|^2]\). Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.</p>
+<p>Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos</p>
+\[
+u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)), \qquad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
+\]
+<p>Em cada subintervalo \([t_{j-1}, t_j]\), temos \(\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n\) constante, de modo que podemos olhar para</p>
+\[
+e_{j-1}(t, x) = u_x(t, x)(f(x) - f(X_{j-1}^n))
+\]
+<p>e analogamente para o termo envolvendo \(g\). Observe que</p>
+\[
+e_{j-1}(t_{j-1}, \hat X_{t_{j-1}}) = u_x(t_{j-1}, \hat X_{t_{j-1}})(f(\hat X_{t_{j-1}}) - f(\bar X_{t_{j-1}})) = 0,
+\]
+<p>já que \(\hat X_{t_{j-1}} = \bar X_{t_{j-1}} = X_{j-1}^n\) coincidem. Assim, pela fórmula de Itô,</p>
+\[
+e_{j-1}(t, \hat X_t) = \int_0^t L_0(s) e_{j-1}(s, \hat X_s) \;\mathrm{d}s + \int_0^t L_1(s) e_{j-1}(s, \hat X_s)\;\mathrm{d}W_s,
+\]
+<p>onde \(L_0(t)\) e \(L_1(t)\) são operadores diferenciais definidos por</p>
+\[
+L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_{xx}, \qquad L_1(t) = g(\hat X_t)^2\partial_x.
+\]
+<p>Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem \(\Delta t^{1/2}\), desaparece e ficamos apenas com</p>
+\[
+\mathbb{E}[e_{j-1}(t, \hat X_t)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, \hat X_s)\right] \;\mathrm{d}s.
+\]
+<p>Assumindo-se que o integrando seja limitado no intervalo \([0, T]\) por uma constante \(K_{\Phi, T}\), obtemos a estimativa de ordem 1</p>
+\[
+\left| \mathbb{E}[e_{j-1}(t, \hat X_t)] \right| \leq K_{\Phi, T} \Delta t.
+\]
+<p>Idem para o termo em \(g\), para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre \(0\) e \(t\), que</p>
+\[
+\left|\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
+\]
+<p>Isso nos dá a convergência fraca do método de Euler-Maruyama.</p>
+<p>A limitação uniforme passa por &#40;i&#41; mostrarmos que as normas \(L^p\) solução da equação parabólica são controladas pela norma \(L^p\) da &quot;condição final&quot; \(\Phi\); &#40;ii&#41; por assumirmos que \(\Phi\) tem um crescimento polinomial &#40;apropriado para qualquer momento que queiramos estimar&#41;; &#40;iii&#41; por mostrarmos que, sob a hipótese de continuidade Lipschitz global de \(f\) e \(g\), os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial \(X_0\); e, por fim, &#40;iv&#41; por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -540,7 +540,7 @@ u(0, X_0) = \mathbb{E}[\Phi(X_T)].
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

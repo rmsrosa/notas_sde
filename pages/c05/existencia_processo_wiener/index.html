@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -387,7 +381,7 @@ D_n = \left\{\frac{k}{2^{n-1}}; \; k = 0, 1, \ldots, 2^{n-1}\right\}, \qquad n\i
 D = \cup_{n\in \mathbb{N}} D_n.
 \]
 
-<p><span style="color:red;">// Image matching '/assets/pages/c05/existencia_processo_wiener/code/dyadic_points' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c05/existencia_processo_wiener/code/output/dyadic_points.svg" alt="">
 <h2 id="processo_discreto_iid_e_espaço_amostral"><a href="#processo_discreto_iid_e_espaço_amostral" class="header-anchor">Processo discreto i.i.d. e espaço amostral</a></h2>
 <p>Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em \(D\).</p>
 <p>Com esse fim, considere um processo discreto <em>i.i.d.</em> \(\{Z_d\}_{d\in D\setminus \{0\}}\), onde as variáveis \(Z_d\) são mutuamente independentes e dadas por \(Z_d \sim \mathcal{N}(0, 1)\). Como \(D\) é enumerável, podemos considerar o conjunto</p>
@@ -417,7 +411,7 @@ X_d^{(n+1)} = \frac{X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)}}{2} + \frac{Z_d}{2
 <p>Observe que, com \(n = 1\), esta fórmula coincide com a fórmula acima dada explicitamente para \(\{X_d^{(2)}\}_{d\in D_2}\).</p>
 <p>A escolha da fração \(1/2^{(n+1)/2}\) no termo \(Z_d\) é para que esta fração tenha a variância adequada, como veremos a seguir.</p>
 
-<p><span style="color:red;">// Image matching '/assets/pages/c05/existencia_processo_wiener/code/sequenciaWn' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c05/existencia_processo_wiener/code/output/sequenciaWn.svg" alt="">
 <h3 id="processos_discretos_e_incrementos_são_gaussianos"><a href="#processos_discretos_e_incrementos_são_gaussianos" class="header-anchor">Processos discretos e incrementos são Gaussianos</a></h3>
 <p>Observe que os processos são construídos como combinações lineares de variáveis normais independentes. Sendo assim, os processos \(\{X_d^{(n)}\}_{d\in D_n}\) são processos Gaussianos, i.e. a sua distribuição conjunta é uma normal multivariada &#40;note que cada \(D_n\) é finito, então esses processos são <em>vetores</em> aleatórios&#41;.</p>
 <p>É importante ressaltar, no entanto, que cada \(\{X_d^{(n)}\}_{d\in D_n}\) não é formado por variáveis aleatórias independentes.</p>
@@ -532,7 +526,7 @@ W_t^{(3)} = W_t^{(2)} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4} = s_0(t) Z_0 + s_1
 s_{1/4}(t) = 2^{1/2}\max\{0, \min\{t, 1/2 - t\}\}, \quad s_{3/4}(t) = 2^{1/2}\max\{0, \min\{t - 1/2, 1 - t\}.\}
 \]
 
-<p><span style="color:red;">// Image matching '/assets/pages/c05/existencia_processo_wiener/code/faberschauder' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c05/existencia_processo_wiener/code/output/faberschauder.svg" alt="">
 <p>Mais geralmente, definimos, para \(d \in D_{n+1} \setminus D_n\), \(n \in \mathbb{N}\),</p>
 \[
 s_d(t) = 2^{(n-1)/2} \max\{0, \min\{t - d + 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2} \times \begin{cases}
@@ -816,7 +810,7 @@ W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\i
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

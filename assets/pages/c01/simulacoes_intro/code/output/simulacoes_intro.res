@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_sde.svg"

@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -471,7 +465,7 @@ D = \frac{RT}{N}\frac{1}{6k\pi P},
 \Delta X = X_{t + \Delta t} - X_t \sim \mathcal{N}(0, 2D\Delta t).
 \]
 
-<p><span style="color:red;">// Image matching '/assets/pages/c01/modelo_einstein/code/pathWn' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c01/modelo_einstein/code/output/pathWn.svg" alt="">
 <p>Em um certo sentido, que veremos mais adiante de forma mais rigorosa, através da <em>isometria de Itô</em>, é como se \(\Delta X \sim \sqrt{\Delta t}\), ou \(\Delta X^2 \sim \Delta t\), com passos independentes. Assim, após \(n\) passos \(\Delta X_i,\) \(i=1, \ldots, n,\) até um ponto \(t_n = n\Delta t\), temos a posição \(x = x_n\) dada por</p>
 \[
 \mathbb{E}[x^2] = \mathbb{E}\left[\left(\sum_{i=1}^n \Delta X_i\right)^2\right] = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[\Delta X_i \Delta X_j \right] = \sum_{i=1}^n \mathbb{E}\left[\Delta X_i^2\right] \sim \sum_{i=1}^n \Delta t = t.
@@ -551,7 +545,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

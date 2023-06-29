@@ -14,6 +14,8 @@
   
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
 </head>
 
 <body>
@@ -234,7 +236,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -276,25 +281,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -343,7 +339,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c08/relacoes_rode_sde"><kbd>→</kbd> 8.11. Relações entre equações estocásticas e equações aleatórias</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c08/asymptotic_stability"><kbd>→</kbd> 8.11. Estabilidade assintótica</a>
 </span>
     </p>
 </div>
@@ -356,6 +352,92 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">8.10. Fórmula de Feynman-Kac</a></h1>
 <p>Esta é uma fórmula útil para se calcular, por exemplo, esperanças de processos estocásticos. Veremos, em particular, como utilizar essa fórmula para estimar a convergência &#40;fraca&#41; de métodos numéricos para equações estocásticas.</p>
+<h2 id="fórmula"><a href="#fórmula" class="header-anchor">Fórmula</a></h2>
+<p>Em muitos casos práticos, conhecemos o valor atual \(X_\tau = \xi\) de um de um processo estocástico e queremos estimar o valor esperado \(\mathbb{E}[X_T; X_\tau = \xi]\) em um tempo futuro \(T > \tau,\) ou, mais geralmente, \(\mathbb{E}[\Phi(X_T); X_\tau = \xi],\) para algum momento \(\Phi.\) O objetivo é fazer isso através de uma função \(u=u(t, x)\) que seja solução de uma equação a derivadas parciais &#40;EDP&#41; apropriada.</p>
+<p>Observe que, pela fórmula de Itô,</p>
+\[
+\begin{align*}
+u(T, X_T) & = u(\tau, X_\tau) + \int_\tau^T \left(u_t(t, X_t) + u_x(t, X_t)f(X_t) + \frac{1}{2}u_{xx}(t, X_t)g(X_t)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_\tau^T u_x(t, X_t)g(X_t)\;\mathrm{d}W_t.
+\end{align*}
+\]
+<p>Ao tomarmos o valor esperado, condicionada a \(X_\tau = \xi\), e considerando que a integral estocástica tem esperança zero, obtemos</p>
+\[
+\mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi) + \int_\tau^T \mathbb{E}\left[ u_t(t, X_t) + u_x(t, X_t)f(X_t) + \frac{1}{2}u_{xx}(t, X_t)g(X_t)^2; X_\tau = \xi\right]\;\mathrm{d}t.
+\]
+<p>A esperança no integrando acima é, em geral, de difícil cálculo. A ideia é considerar uma EDP em que esse termo se anule, ou seja, considerar \(u(t, x)\) tal que</p>
+\[
+u_t(t, x) + u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0.
+\]
+<p>Para essa \(u=u(t, x),\) obtemos</p>
+\[
+\mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi).
+\]
+<p>Observe que a equação para \(u\) parece uma equação do calor mas está com o sinal &quot;trocado&quot;. Isso implica em ela ser mal posta. Mas isso no modo clássico de resolvê-la para a frente. Ela está bem posta ao buscarmos resolvê-la para trâs no tempo. Mais precisamente, ao fazermos a mudança de variável \(t \mapsto -t,\) a equação se torna uma equação parabólica clássica. Esse tipo de equação com sinal &quot;trocado&quot; aparece comumente em problemas de otimização. É o problema dual ao de evolução para frente.</p>
+<p>Bom, mas o que isso significa no nosso caso? A ideia é que podemos impor uma <em>condição final</em></p>
+\[
+u(T, x) = \Phi(x),
+\]
+<p>para o momento desejado \(\Phi\), em seguida resolver &quot;para trás no tempo&quot; para obter \(u(\tau, \xi)\) e encontrar o desejado valor esperado</p>
+\[
+\mathbb{E}[\Phi(X_T); X_\tau = \xi] = \mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi).
+\]
+<p>Em resumo, considerando a equação diferencial estocástica</p>
+\[
+\mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
+\]
+<p>com condição inicial</p>
+\[
+X_\tau = \xi
+\]
+<p>dada em um instante \(\tau\in\mathbb{R}\), podemos encontrar o momento</p>
+\[
+\mathbb{E}[\Phi(X_T); X_\tau = \xi]
+\]
+<p>em um instante futuro \(T > \tau\), para alguma \(\Phi\) dada, resolvendo a EDP</p>
+\[
+u_t(t, x) + u_x(t, x)f(x) = - \frac{1}{2}u_{xx}(t, x)g(x)^2,
+\]
+<p>no intervalo \(\tau \leq t \leq T\), em \(x\in \mathbb{R}\), dada a condição <em>final</em></p>
+\[
+u(T, x) = \Phi(x),
+\]
+<p>em \(x\in\mathbb{R},\) e encontrando</p>
+\[
+\mathbb{E}[\Phi(X_T); X_\tau = \xi] = u(\tau, \xi).
+\]
+<p>Essa é a <strong>fórmula de Feynman-Kac.</strong></p>
+<p>Esta foi a visão de Mark Kac, um probabilista americano. Feynman, por sua vez, buscava o caminho contrário, ou seja, resolver equações da mecânica quântica, através de caminhos, com suas integrais de caminho <em>&#40;path integrals&#41;,</em> com o agravante dessas equações serem complexas. A formulação acima, de Feynman-Kac, é feita rigorosa no contexto real.</p>
+<h2 id="equação_retrógrada_de_kolmogorov"><a href="#equação_retrógrada_de_kolmogorov" class="header-anchor">Equação retrógrada de Kolmogorov</a></h2>
+<p>A fórmula de Feynman-Kac é baseada na equação</p>
+\[
+u_t(t, x) + u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0.
+\]
+<p>Essa equação está diretamente relacionada à equação retrógrada de Kolmogorov, dada por</p>
+\[
+v_t(t, x) = u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0,
+\]
+<p>com</p>
+\[
+v(0, x) = \Phi(x).
+\]
+<p>Essa equação foi obtida por Kolmogorov &#40;posteriormente e de maneira independente&#41; para a função \(v=v(t,x)\) definida por &#40;considerando \(\tau = 0\)&#41;</p>
+\[
+v(t, x) = \mathbb{E}\left[ \Phi(X_t); X_0 = x\right]
+\]
+<p>Observe que</p>
+\[
+v(0, x) = \mathbb{E}\left[\Phi(X_0); X_0 = x\right] = \Phi(x) = u(T, x).
+\]
+<p>e que</p>
+\[
+v(T, x) = \mathbb{E}\left[ \Phi(X_T); X_0 = x\right] = u(0, x).
+\]
+<p>Pela EDP, vemos que</p>
+\[
+v(t, x) = u(T - t, x).
+\]
+<p>Ou seja, \(v=v(t, x),\) em si, evolui para frente no tempo, mas representa uma evolução retrógrada. &#40;Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para \(u\), mas a maioria a considera como sendo a equação para \(v\).&#41;</p>
 
     <div class="navbar">
     <p id="nav">
@@ -363,7 +445,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c08/relacoes_rode_sde"><kbd>→</kbd> 8.11. Relações entre equações estocásticas e equações aleatórias</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c08/asymptotic_stability"><kbd>→</kbd> 8.11. Estabilidade assintótica</a>
 </span>
     </p>
 </div>
@@ -379,12 +461,16 @@
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
     </div> <!-- .books-container -->
 
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
     
 
     

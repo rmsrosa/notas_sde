@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Evolução no caso de equações determinísticas</title>  
+   <title>Equação do transporte no caso de equações diferenciais ordinárias</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -236,7 +236,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -278,25 +281,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -345,7 +339,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c11/nuclear_reactions"><kbd>→</kbd> 12.1. Reações nucleares</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c10/stochastic"><kbd>→</kbd> 10.2. Equação de Fokker-Planck no caso de equações estocásticas</a>
 </span>
     </p>
 </div>
@@ -356,37 +350,112 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">10.1. Evolução no caso de equações determinísticas</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></h1>
 <p>Considere uma equação diferencial determinística</p>
 \[
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x).
 \]
-<p>Suponha que haja uma incerteza em relação à condição inicial e que saibamos, apenas, a distribuição de probabilidades da mesma. Isso nos dá a condição inicial como uma variável aleatória \(X_0\). Nesse caso, para cada amostra realização \(X_0(\omega)\), temos uma solução \(t \mapsto X_t(\omega)\) da equação diferencial ordinária. Suponhamos, para todos os efeitos, que essas soluções estejam definidas pelo menos em um intervalo de tempo \([0, T]\). Isso nos leva a um processo \(\{X_t\}_{t\in [0, T]}\).</p>
-<p>Suponhamos, mais ainda, que cada \(X_t\) tenha uma função densidade de probabilidade \(p(t, x)\) bem definida. A questão que queremos investigar é sobre a evolução dessa função.</p>
+<p>Suponha que haja uma incerteza em relação à condição inicial. Isso nos dá a condição inicial como uma variável aleatória \(X_0\). Nesse caso, para cada realização \(X_0(\omega)\), temos uma solução \(t \mapsto X_t(\omega)\) da equação diferencial ordinária aleatória</p>
 \[
-\mathrm{E}[\varphi] = \int_\mathbb{R} \varphi(X_t(\omega))\;\mathrm{d}\mathbb{P}(\omega) = \int_\mathbb{R} \varphi(x)p(t, x) \;\mathrm{d}x.
+\begin{cases}
+\displaystyle \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t), \\
+\left. X \right|_{t = 0} = X_0.
+\end{cases}
+\]
+<p>Suponhamos, para todos os efeitos, que essas soluções estejam definidas pelo menos em um intervalo de tempo \([0, T]\). Isso nos leva a um processo \(\{X_t\}_{t\in [0, T]}\).</p>
+<p>Suponhamos, mais ainda, que cada \(X_t\) tenha uma função densidade de probabilidade \(p(t, x)\) bem definida. A questão que queremos investigar é sobre a evolução dessa função. Temos, para uma &quot;função teste&quot; \(\Phi\) qualquer,</p>
+\[
+\mathbb{E}[\Phi] = \int_\mathbb{R} \Phi(X_t(\omega))\;\mathrm{d}\mathbb{P}(\omega) = \int_\mathbb{R} \Phi(x)p(t, x) \;\mathrm{d}x.
 \]
 <p>Derivando em relação ao tempo, obtemos</p>
 \[
-\frac{\mathrm{d}}{\mathrm{d}t}  \mathrm{E}[\varphi] = \frac{\mathrm{d}}{\mathrm{d}t}  \int_\mathbb{R} \varphi(x)p(t, x) \;\mathrm{d}x = \int_\mathbb{R} \varphi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x.
+\frac{\mathrm{d}}{\mathrm{d}t}  \mathbb{E}[\Phi] = \frac{\mathrm{d}}{\mathrm{d}t}  \int_\mathbb{R} \Phi(x)p(t, x) \;\mathrm{d}x = \int_\mathbb{R} \Phi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x.
 \]
 <p>Por outro lado, também temos</p>
 \[
-\frac{\mathrm{d}}{\mathrm{d}t} \mathbb{E}[\varphi] = \int_\mathbb{R} \varphi'(X_t(\omega))\frac{\mathrm{d}}{\mathrm{d}t}X_t(\omega)\;\mathrm{d}\omega = \int_\mathbb{R} \varphi'(X_t(\omega))f(t, X_t(\omega))\;\mathrm{d}\omega = \int_\mathbb{R} \varphi'(x)f(t, x) p(t, x)\;\mathrm{d}x.
+\frac{\mathrm{d}}{\mathrm{d}t} \mathbb{E}[\Phi] = \int_\mathbb{R} \Phi'(X_t(\omega))\frac{\mathrm{d}}{\mathrm{d}t}X_t(\omega)\;\mathrm{d}\omega = \int_\mathbb{R} \Phi'(X_t(\omega))f(t, X_t(\omega))\;\mathrm{d}\omega = \int_\mathbb{R} \Phi'(x)f(t, x) p(t, x)\;\mathrm{d}x.
 \]
 <p>Integrando por partes,</p>
 \[
-\frac{\mathrm{d}}{\mathrm{d}t} \mathbb{E}[\varphi] = - \int_\mathbb{R} \varphi(x)\frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right)\;\mathrm{d}x.
+\frac{\mathrm{d}}{\mathrm{d}t} \mathbb{E}[\Phi] = - \int_\mathbb{R} \Phi(x)\frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right)\;\mathrm{d}x.
 \]
 <p>Igualando as duas identidades, temos</p>
 \[
-\int_\mathbb{R} \varphi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x = - \int_\mathbb{R} \varphi(x)\frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right)\;\mathrm{d}x.
+\int_\mathbb{R} \Phi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x = - \int_\mathbb{R} \Phi(x)\frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right)\;\mathrm{d}x.
 \]
-<p>Como isso é válido para qualquer \(\varphi\), obtemos a equação</p>
+<p>Como isso é válido para qualquer \(\Phi\), obtemos a equação</p>
 \[
 \frac{\partial p}{\partial t}(t, x) + \frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right) = 0,
 \]
 <p>para a evolução da função densidade de probabilidade \(p(t, x)\).</p>
+<p>No caso de uma equação autônoma</p>
+\[
+\frac{\mathrm{d}x}{\mathrm{d}t} = f(x),
+\]
+<p>obtemos</p>
+\[
+\frac{\partial p}{\partial t}(t, x) + \frac{\partial}{\partial x}\left(f(x) p(t, x)\right) = 0.
+\]
+<p>Densidades estacionárias, i.e. \(p(t, x) = p(x),\) podem ser obtidas através da equação</p>
+\[
+\frac{\partial}{\partial x}\left(f(x) p(x)\right) = 0,
+\]
+<p>ou seja</p>
+\[
+f(x)p(x) = \textrm{constante},
+\]
+<p>lembrando que \(p\) deve ser uma função densidade de probabilidade, ou seja,</p>
+\[
+p(x) \geq 0, \quad \int_{-\infty}^\infty p(x);\mathrm{d}x = 1.
+\]
+<p>Por exemplo, para a equação</p>
+\[
+\frac{\mathrm{d}x}{\mathrm{d}t} = - x,
+\]
+<p>a única solução possível é a delta de Dirac com suporte na origem. Tecnicamente, isso não nos dá uma densidade de probabilidade. Mas isso pode ser obtido, de maneira mais rigorosa, como limite, quando \(t \mapsto \infty,\) das soluções de</p>
+\[
+\frac{\partial p}{\partial t}(t, x) - \frac{\partial}{\partial x}\left(x p(t, x)\right) = 0,
+\]
+<p>com uma dada condição inicial \(p(0, x) = p_0(x).\) Procurando uma solução auto-similar</p>
+\[
+p(t, x) = a(t) p_0(b(t)x),
+\]
+<p>vemos que \(a(t) = b(t) = e^{t},\) ou seja,</p>
+\[
+p(t, x) = e^{t}p_0(e^{t}x).
+\]
+<p>Observe que</p>
+\[
+\int_{-\infty}^\infty p(t, x) \;\mathrm{d}x = \int_{-\infty}^\infty e^{t}p_0(e^{t}x) \;\mathrm{d}x = \int_{-\infty}^\infty p_0(x) \;\mathrm{d}x = 1.
+\]
+<p>Além disso, para um função \(g=g(x)\) contínua e limitada, temos</p>
+\[
+\begin{align*}
+\int_{-\infty}^\infty p(t, x) g(x) \;\mathrm{d}x & = \int_{-\infty}^\infty p(t, x) g(0) \;\mathrm{d}x + \int_{-\infty}^\infty p(t, x) (g(x) - g(0)) \;\mathrm{d}x \\
+& = g(0) + \int_{-\infty}^\infty p(t, x) (g(x)-g(0)) \;\mathrm{d}x.
+\end{align*}
+\]
+<p>Pela continuidade da função \(g=g(x)\), dado \(\varepsilon > 0\), existe \(\delta > 0\) tal que \(|g(x) - g(0)| \leq \varepsilon\), para \(|x|\leq \delta\). Além disso, \(g=g(x)\) é limitada, digamos \(|g(x)| \leq C.\) Assim,</p>
+\[
+\begin{align*}
+\left|\int_{-\infty}^\infty p(t, x) (g(x)-g(0)) \;\mathrm{d}x\right| & \leq \int_{|x| \leq \delta} p(t, x) |g(x)-g(0)| \;\mathrm{d}x + \int_{|x| \geq \delta} p(t, x) |g(x)-g(0)| \;\mathrm{d}x \\
+& \leq \varepsilon \int_{|x| \leq \delta} p(t, x) \;\mathrm{d}x + 2C \int_{|x| \geq \delta} p(t, x) \;\mathrm{d}x \\
+& \leq \varepsilon + 2C\int_{|x| \geq \delta} e^{t}p_0(e^{t}x) \;\mathrm{d}x \\
+& = \varepsilon + 2C\int_{|x| \geq e^t\delta} p_0(x) \;\mathrm{d}x.
+\end{align*}
+\]
+<p>Quando \(t\rightarrow 0,\) a integral acima vai para zero. Além disso, \(\varepsilon > 0\) é arbitrário. Logo,</p>
+\[
+\lim_{t\rightarrow \infty} \int_{-\infty}^\infty p(t, x) (g(x)-g(0)) \;\mathrm{d}x = 0.
+\]
+<p>Portanto,</p>
+\[
+\int_{-\infty}^\infty p(t, x) g(x) \;\mathrm{d}x \rightarrow g(0),
+\]
+<p>mostrando que a solução convergence para a delta de Dirac no sentido das distribuições, i.e.</p>
+\[
+p(t, x) \stackrel{w}{\rightharpoonup} \delta_0.
+\]
 
     <div class="navbar">
     <p id="nav">
@@ -394,7 +463,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c09/sciml">9.11. O ambiente SciML da linguagem Julia <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c11/nuclear_reactions"><kbd>→</kbd> 12.1. Reações nucleares</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c10/stochastic"><kbd>→</kbd> 10.2. Equação de Fokker-Planck no caso de equações estocásticas</a>
 </span>
     </p>
 </div>
@@ -410,7 +479,7 @@
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

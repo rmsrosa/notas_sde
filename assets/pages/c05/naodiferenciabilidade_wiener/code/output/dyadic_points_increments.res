@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c05/naodiferenciabilidade_wiener/code/output/dyadic_points_increments.svg"

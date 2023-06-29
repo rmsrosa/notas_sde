@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -427,7 +421,7 @@ X \sim \mathcal{U}_I.
 f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \beta, \\ 0, & x < \alpha \text{ ou } x \geq \beta. \end{cases}
 \]
 
-<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_continuas/code/cdfuniform' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c02/exemplos_va_continuas/code/output/cdfuniform.svg" alt="">
 <h2 id="distribuição_normal"><a href="#distribuição_normal" class="header-anchor">Distribuição normal</a></h2>
 <p>A distribuição normal com média \(\mu\) e desvio padrão \(\sigma\), ou seja, variância \(\sigma^2\), é denotada por \(\mathcal{N}(\mu, \sigma^2)\). Sua função densidade de probabilidades é</p>
 \[
@@ -442,7 +436,7 @@ f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \
   X_t \sim \mathcal{N}(0, 2Dt), \quad t > 0.
 \]
 
-<p><span style="color:red;">// Image matching '/assets/pages/c02/exemplos_va_continuas/code/cdfnormal' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c02/exemplos_va_continuas/code/output/cdfnormal.svg" alt="">
 <h2 id="delta_de_dirac"><a href="#delta_de_dirac" class="header-anchor">Delta de Dirac</a></h2>
 <p>Um exemplo fundamental e que não possui função densidade de probabilidades é a distribuição <strong>delta de Dirac</strong>. Em termos de variáveis aleatórias, ela aparece quando o valor é dado com probabilidade 1, e.g. \(X = x_0\) com probabilidade 1. Nesse caso, temos</p>
 \[
@@ -489,7 +483,7 @@ X_0 \sim \delta_0.
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

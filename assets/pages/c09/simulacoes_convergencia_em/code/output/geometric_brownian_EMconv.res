@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfraca.svg"

@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -513,7 +507,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 \ddot x_t = - \nu \dot x_t + \sigma \eta_t.
 \]
 
-<p><p><span style="color:red;">// Image matching '/assets/pages/c08/ornstein_uhlenbeck/code/ornstein_uhlenbeck_vel' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c08/ornstein_uhlenbeck/code/ornstein_uhlenbeck_pos' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_vel.svg" alt=""> <img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_pos.svg" alt=""></p>
 <h2 id="propriedade_de_reversão_à_média"><a href="#propriedade_de_reversão_à_média" class="header-anchor">Propriedade de reversão à média</a></h2>
 <p>O processo de Orstein-Uhlenbeck \(\{O_t\}_{t \geq 0}\), conforme definido acima, tem a propriedade \(\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0\), quando \(t \rightarrow \infty\) &#40;veja os Exercícios&#41;. Nesse caso, podemos dizer que a média assintótica é nula e que o processo &quot;reverte&quot;, assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra \(\nu\mu\;\mathrm{d}t\) de <em>drift</em> aditivo, nos levando à equação</p>
 \[
@@ -551,7 +545,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 \]
 <p>em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck.</p>
 
-<p><span style="color:red;">// Image matching '/assets/pages/c08/ornstein_uhlenbeck/code/ornstein_uhlenbeck_approx_white_noise' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_approx_white_noise.svg" alt="">
 <h2 id="cor_do_processo_de_ornstein-uhlenbeck"><a href="#cor_do_processo_de_ornstein-uhlenbeck" class="header-anchor">Cor do processo de Ornstein-Uhlenbeck</a></h2>
 <p>Considerando a correlação &#40;assintótica&#41;</p>
 \[
@@ -616,7 +610,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

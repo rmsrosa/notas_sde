@@ -247,7 +247,10 @@
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.11. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias</a></li>
     </div>
     <div class="menu-level-1">
     <li>9. Métodos numéricos</li>
@@ -289,25 +292,16 @@
     <li>10. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Evolução no caso de equações determinísticas</a></li>
+    <li><a href="/notas_sde/pages/c10/deterministic">10.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.2. Evolução no caso de equações aleatórias</li>
+    <li><a href="/notas_sde/pages/c10/stochastic">10.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.3. Kolmogorov backward equation</li>
+    <li><a href="/notas_sde/pages/c10/stationaryOU">10.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
-    <li>10.4. Kolmogorov forward equation</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.5. Evolução no caso de equações estocásticas</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.6. Soluções estacionárias</li>
-    </div>
-    <div class="menu-level-2">
-    <li>10.7. Métodos numéricos</li>
+    <li>10.4. Métodos numéricos</li>
     </div>
     <div class="menu-level-1">
     <li>11. Sistemas de equações aleatórias</li>
@@ -416,19 +410,19 @@ e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 <p>As amostras do processo de Wiener são calculadas na malha mais fina. Os passos correspondentes são dados a partir dessas amostras, seja na malha mais fina ou nas mais grossas.</p>
 
 <p>Se o ruído for relativamente pequeno, o erro pode não sofrer tanto e acabar sendo de ordem um pouco melhor:</p>
-<p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_em/code/geometric_brownian_EMconvfig1' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig1.svg" alt="">
 <p>Nesse caso, não é questão de falta de amostras. A ordem permanece mais alta, se aumentarmos o número de amostras:</p>
-<p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_em/code/geometric_brownian_EMconvfig2' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig2.svg" alt="">
 <p>Mas se dermos mais tempo ao processo, para o ruído ter um efeito mais significativo, obtemos a ordem forte \(1/2\):</p>
-<p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_em/code/geometric_brownian_EMconvfig3' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig3.svg" alt="">
 <p>Ou, podemos manter um tempo mais curto mas aumentarmos a difusão, observando novamente a ordem forte \(1/2\):</p>
-<p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_em/code/geometric_brownian_EMconvfig4' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig4.svg" alt="">
 <p>Se por outro lado, diminuirmos a amostragem, enxergamos uma ordem forte diferente, mas isso é por conta do erro amostral, mascarando a taxa real de convergência:</p>
-<p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_em/code/geometric_brownian_EMconvfig5' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig5.svg" alt="">
 <h2 id="convergência_fraca_de_ordem_1_no_movimento_browniano_geométrico"><a href="#convergência_fraca_de_ordem_1_no_movimento_browniano_geométrico" class="header-anchor">Convergência fraca de ordem 1 no movimento Browniano geométrico</a></h2>
 <p>A ordem da convergência fraca também sofre influências do número de amostras e da intensidade de ruído. Mas não vamos ilustrar isso aqui. Exibimos apenas uma simulação, com uma ordem de convergência próxima de \(1\). Observe, também, que, além da ordem mais alta de convergência, o erro em si tem uma magnitude bem menor.</p>
 
-<p><span style="color:red;">// Image matching '/assets/pages/c09/simulacoes_convergencia_em/code/geometric_brownian_EMconvfraca' not found. //</span></p>
+<img src="/notas_sde/assets/pages/c09/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfraca.svg" alt="">
 <h2 id="convergência_forte_de_ordem_1_no_processo_de_orstein-uhlenbeck"><a href="#convergência_forte_de_ordem_1_no_processo_de_orstein-uhlenbeck" class="header-anchor">Convergência forte de ordem 1 no processo de Orstein-Uhlenbeck</a></h2>
 <p>A equação, nesse caso, é</p>
 \[
@@ -462,7 +456,7 @@ O_t = e^{-\nu t} O_0 + \int_0^t e^{-\nu (t - s)} \;\mathrm{d}W_s.
         </div>
     
 
-    Last modified: June 22, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 29, 2023. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

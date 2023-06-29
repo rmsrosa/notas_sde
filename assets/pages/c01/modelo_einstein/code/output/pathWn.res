@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c01/modelo_einstein/code/output/pathWn.svg"
