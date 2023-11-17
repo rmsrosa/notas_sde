@@ -51,7 +51,7 @@ $$
 $$
 Com isso, podemos obter a probabilidade de alguém adoecer fazendo o tratamento:
 $$
-\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{B}} = \frac{\displaystyle \frac{5}{1000}}{\displaystyle \frac{500}{1000}} = \frac{5}{500} = 1\%.
+\mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} = \frac{\displaystyle \frac{5}{1000}}{\displaystyle \frac{500}{1000}} = \frac{5}{500} = 1\%.
 $$
 
 Também podemos visualizar isso completando a tabela com os totais:
@@ -104,7 +104,7 @@ $$
 $$
 Juntando com a lei da probabilidade condicionada, podemos escrever
 $$
-\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_k)\mathbb{B_k}.
+\mathbb{P}(A) = \mathbb{P}(A | B_1)\mathbb{P}(B_1) + \ldots + \mathbb{P}(A | B_k)\mathbb{P}(B_k).
 $$
 
 Considerando, novamente, a variável aleatória uniformemente distribuída nos dígitos $\{1, 2, \ldots, 9\}$, temos
