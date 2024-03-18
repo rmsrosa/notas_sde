@@ -4,6 +4,8 @@
 
 Afinal, o que são equações diferenciais estocásticas e equações diferenciais aleatórias? Ok, elas combinam equações diferenciais com fatores aleatórios. Mas como? E em que sentido elas se diferenciam?
 
+![Types of differential equations](/assets/images/sims.png)
+
 ## Equações diferenciais ordinárias
 
 Para tentarmos esclarecer como a aleatoriedade entra nas equações diferenciais, vamos considerar uma equação simples, da forma

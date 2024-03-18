@@ -6,13 +6,13 @@
 
 ## Motivação
 
-A lei da gravitação de Newton é impiedosa. Se uma maçã cair do pé, é bom você não estar dormindo embaixo dela. Mas se a macieira estiver  na encosta de um morro e você estiver descansando lá embaixo no vale, há boas chances da maçã rolar e não lhe atingir. E quais seriam as chances dela parar, apetitosamente, bem ao seu lado?
-
 ![Falling Apple](/assets/images/falling_apple.svg)
+
+A lei da gravitação de Newton é impiedosa. Se uma maçã cair do pé, é bom você não estar dormindo embaixo dela. Mas se a macieira estiver  na encosta de um morro e você estiver descansando lá embaixo no vale, há boas chances da maçã rolar e não lhe atingir. E quais seriam as chances dela parar, apetitosamente, bem ao seu lado?
 
 Modelar a queda da maçã até o chão não é difícil. Por outro lado, modelar a maçã rolando da encosta é bem mais delicado. É extremamente difícil, pra não dizer impossível, levar em consideração todos os detalhes que afetam o rolar da maçã, como as imperfeições no terreno (grama, terra, pedras) e outros obstáculos ainda mais intangíveis (pequenos e grandes animais, chuvas, umidade no terreno, etc.).
 
-Nesses e em diversos outros fenômenos é fundamental levar em consideração fatores aleatórios. Sejam fenômenos quânticos ou não; sejam microscópicos ou macroscópicos; seja em fenômenos biológicos complexos, em problemas dependendo de fatores sociais, ou mesmo em problemas essencialmente mecânicos como esse.
+Nesses e em diversos outros fenômenos é fundamental levar em consideração fatores aleatórios. Sejam fenômenos quânticos ou não; sejam microscópicos ou macroscópicos; sejam em fenômenos biológicos complexos, em problemas dependendo de fatores sociais, ou mesmo em problemas essencialmente mecânicos como esse.
 
 Ao levarmos em conta fatores aleatórios nas equações de movimento, chegamos a equações diferencias que podem ser estocásticas ou aleatórias, por exemplo. Essas equações têm sido usadas com sucesso em uma ampla gama de fenômenos naturais e sociais e em diversas áreas, incluindo mecânica, química, biologia, epidemiologia, eletrônica, economia e finanças.
 
@@ -34,6 +34,10 @@ Sendo assim, o objetivo, aqui, ao estudarmos métodos numéricos para essas equa
 
 ## Bibliografia
 
-Quanto às referências bibliográficas, não vamos seguir nenhum referência específica, mas vamos nos inspirar, essencialmente, no livro de Han & Kloeden (2017), em conjunto com o de Higham & Kloeden (2021), complementando com alguns pontos de outras referências. O livro de Han & Kloeden (2017) trata tando de RODEs quanto de SDEs. Já o de Higham & Kloeden (2021) trata apenas de SDEs. Ambos são acessíveis em nível de graduação, para quem já viu Equações Diferencias e Probabilidades.
+Quanto às referências bibliográficas, não vamos seguir nenhum referência específica, mas vamos nos inspirar, essencialmente, no livro de Higham & Kloeden (2021), em conjunto com o livro de Han & Kloeden (2017), complementando com alguns pontos de outras referências, especialmente o do Evans (2013) e o do Øksendal (2011).
 
-Um outro bom livro sobre RODEs é o de Neckel & Rupp (2013), que tem a vantagem de estar disponível on-line. Mas ele é um pouco mais avançado. Allen (2007) também é um outro bom livro de SDE, tendo vários modelos interessantes que podemos aproveitar. A tese de Yusuke Asai (2016), disponível online, é, também, uma excelente referência tanto para SDEs quanto para RODEs, tratando tanto da parte teórica quanto numérica, e com vários exemplos interessantes. Há diversos outros livros um pouco mais avançados, mais apropriados para cursos de pós-graduação, como Zhang & Karniadakis (2017) e Evans (2013), mas com abordagens que também buscaremos aproveitar aqui, quando necessário esclarecer algum ponto mais delicado.
+O livro de Han & Kloeden (2017) trata tando de RODEs quanto de SDEs. Já o de Higham & Kloeden (2021) trata apenas de SDEs. Ambos são acessíveis em nível de graduação, para quem já viu Equações Diferencias e Probabilidades. O do Higham & Kloeden tem um estilo bastante inspirador.
+
+Os livros do Evans (2013) e o Øksendal (2011) são mais avançados e rigorosos e nos serão úteis para algumas demonstrações que iremos detalhar.
+
+Um outro bom livro sobre RODEs é o de Neckel & Rupp (2013), que tem a vantagem de estar disponível on-line. Mas ele é um pouco mais avançado. Allen (2007) também é um outro bom livro de SDE, tendo vários modelos interessantes que podemos aproveitar. A tese de Yusuke Asai (2016), disponível online, é, também, uma boa referência tanto para SDEs quanto para RODEs, tratando tanto da parte teórica quanto numérica, e com vários exemplos interessantes. Há diversos outros livros um pouco mais avançados, como Zhang & Karniadakis (2017), Mörters & Peres (2010), entre outros listados nas referências.

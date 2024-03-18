@@ -32,7 +32,9 @@
 
 1. [D. Mumford (2000), The Dawning of the Age of Stochasticity, *Atti della Accademia Nazionale dei Lincei*. Classe di Scienze Fisiche, Matematiche e Naturali. Rendiconti Lincei. Matematica e Applicazioni, Volume: 11, Issue: S1, page 107-125](https://eudml.org/doc/289648)
 
-1. [T. Neckel & F. Rupp (2013), "Random Differential Equations in Scientific Computing", De Gruyter Open Poland. https://doi.org/10.2478/9788376560267](https://doi.org/10.2478/9788376560267)
+1. [T. Neckel & F. Rupp (2013), "Random Differential Equations in Scientific Computing", De Gruyter Open Poland. DOI: 10.2478/9788376560267](https://doi.org/10.2478/9788376560267)
+
+1. [B. Øksendal (2011), "Stochastic Differential Equations. An Introduction with Applications", Universitext Series, Springer-Verlag Berlin Heidelberg. DOI: 10.1007/978-3-642-14394-6](https://doi.org/10.1007/978-3-642-14394-6)
 
 1. [M. A. Pinsky & S. Karlin (2011), "An Introduction to Stochastic Modeling", Fourth Edition, Elsevier Inc.](https://doi.org/10.1016/C2009-1-61171-0)
 
