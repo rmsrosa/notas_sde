@@ -201,14 +201,14 @@ $$
   \mathbb{P}\left(|\Delta X_t| \geq C\Delta t^\theta\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
 $$
 
-Com base nisso, usando um resultado conhecido como **Teorema de Borel-Cantelli**, podemos tirar
+Com base nisso, usando a **propriedade de continuidade por cima** de uma probabilidade (i.e. se $E_n$ são decrescentes, então $\mathbb{P}(\cap_n E_n) = \lim_n \mathbb{P}(E_n)$), podemos tirar
 $$
   \mathbb{P}\left(\frac{|\Delta X_t|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcup_{C > 0} \frac{|\Delta X_t|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta X_t|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta X_t|}{\Delta t^\theta} \geq C\right) = 1.
 $$
 
 Ou seja, quase sempre, teremos ${|\Delta X_t|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t, \omega) - x(t, \omega)| = |\Delta x(t, \omega)| \leq C \Delta t^\theta $.
 
-O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$ e para $\Delta t$ arbitrariamente pequeno (essa última condição é que força que $0<\theta < 1/2$). Além disso, a probabilidade $\mathbb{P}$ age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante $t$. De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *quase todo* $t$ e para $\Delta t$ arbitrariamente pequeno (essa última condição é que força que $0<\theta \leq 1/2$, para termos $\Delta t^{1-2\theta} \leq h^{1-2\theta}$, para todo $\Delta t$ menor que um certo $h>0$ fixo). De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Exercícios
 
