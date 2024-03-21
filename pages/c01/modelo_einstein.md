@@ -18,7 +18,7 @@
 >
 > \- Myles Billard ("Dust", from ["Stochastic Reflections – Poems from the Mind"](https://sites.psu.edu/mylesbillard/stochastic-reflections-poems-from-the-mind/))
 
-O trabalho de Einstein sobre movimento Browniano ([Einstein, A. (1905) Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen [On the movement of small particles suspended in stationary liquids required by the molecular-kinetic theory of heat]. Annals of Physics, 322, 549560](http://dx.doi.org/10.1002/andp.19053220806); veja tradução em [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)) não é relevante apenas pelo fato de dar uma fundamentação sólida para o movimento Browniano, mas também por ter levado a uma das primeiras provas concretas sobre a existência dos átomos. Os átomos, como partículas elementares constituintes da matéria, aparecem lá atrás com os filósofos gregos. Modelos mais concretos foram propostos a partir do século XIX, começando pelo modelo da bola de bilhar de Dalton, em 1808, seguido do modelo do pudim de passas de Thompson, em 1897, baseado em experimentos do próprio Thompson com descargas elétricas. Pouco antes dos trabalhos de Einstein e Thompson, já no final do século XIX, a teoria cinética dos gases nascia com Clausius, Maxwell e Boltzmann, com os átomos tendo um papel fundamental. Mas a existência dos átomos ainda não era amplamente aceita, possuindo muitos críticos renomados. A teoria de Einstein, conectando a teoria cinética dos gases ao movimento Browniano, criou um cenário plausível para se testar a existência dos átomos.
+O trabalho de Einstein sobre movimento Browniano ([Einstein, A. (1905) Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen [On the movement of small particles suspended in stationary liquids required by the molecular-kinetic theory of heat]. Annals of Physics, 322, 549560](http://dx.doi.org/10.1002/andp.19053220806); veja tradução em [Einstein, A. (1956). Investigations on the Theory of Brownian Movement. New York: Dover](https://archive.org/details/investigationson00eins)) não é relevante apenas pelo fato de dar uma fundamentação física sólida para o movimento Browniano, mas também por ter levado a uma das primeiras provas concretas sobre a existência dos átomos. Os átomos, como partículas elementares constituintes da matéria, aparecem lá atrás com os filósofos gregos. Modelos mais concretos foram propostos a partir do século XIX, começando pelo modelo da bola de bilhar de Dalton, em 1808, seguido do modelo do pudim de passas de Thompson, em 1897, baseado em experimentos do próprio Thompson com descargas elétricas. Pouco antes dos trabalhos de Einstein e Thompson, já no final do século XIX, a teoria cinética dos gases nascia com Clausius, Maxwell e Boltzmann, com os átomos tendo um papel fundamental. Mas a existência dos átomos ainda não era amplamente aceita, possuindo muitos críticos renomados. A teoria de Einstein, conectando a teoria cinética dos gases ao movimento Browniano, criou um cenário plausível para se testar a existência dos átomos.
 
 Em suas palavras:
 > "In this paper it will be shown that, according to the molecular-kinetic theory of heat, bodies of a microscopically visible size suspended in liquids must, as a result of thermal molecular motions, perform motions of such magnitudes that they can be easily observed with a microscope. It is possible that the motions to be discussed here are identical with so-called Brownian molecular motion; however, the data available to me on the latter are so imprecise that I could not form a judgment on the question...." - A. Einstein, On the movement of small particles suspended in stationary liquids required by the molecular-kinetic theory of heat, Annals of Physics, 322.
@@ -49,11 +49,11 @@ Ou seja, a probabilidade da partícula estar em torno de $x$ no instante $t + \t
 
 Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que
 $$
-\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial t}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x)\ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial t^3}(t, x)\ell^3 + \mathcal{O}(\ell^4).
+\rho(t, x - \ell) = \rho(t, x) - \frac{\partial \rho}{\partial x}(t, x)\ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial x^2}(t, x)\ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial x^3}(t, x)\ell^3 + \mathcal{O}(\ell^4).
 $$
 Logo,
 $$
-\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial t}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial t^3}(t, x)\ell^3 + \mathcal{O}(\ell^4) \right)g(\ell) \;\mathrm{d}\ell.
+\rho(t + \tau, x) = \int_{\mathbb{R}} \left(\rho(t, x) - \frac{\partial \rho}{\partial x}(t, x) \ell + \frac{1}{2}\frac{\partial^2 \rho}{\partial x^2}(t, x) \ell^2 + \frac{1}{6}\frac{\partial^3 \rho}{\partial x^3}(t, x)\ell^3 + \mathcal{O}(\ell^4) \right)g(\ell) \;\mathrm{d}\ell.
 $$
 
 Usando que $g$ é uma densidade de probabilidades e que é simétrica em relação a origem, temos
@@ -62,11 +62,11 @@ $$
 $$
 Com isso, chegamos a
 $$
-\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial t^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^4]).
+\rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2) = \rho(t, x)  + \frac{1}{2}\frac{\partial^2 \rho}{\partial x^2}(t, x) \int_{\mathbb{R}} \ell^2 g(\ell) \;\mathrm{d}\ell + \mathcal{O}(\mathbb{E}[\ell^4]).
 $$
 Ou seja,
 $$
-\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial t^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^4]}{\tau}\right),
+\frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial x^2}(t, x) + \mathcal{O}(\tau) + \mathcal{O}\left(\frac{\mathbb{E}[\ell^4]}{\tau}\right),
 $$
 onde
 $$
@@ -92,7 +92,7 @@ então, em qualquer instante $t$, a posição da partícula é dada de acordo co
 
 Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2Dt$, a **distância quadrática média** percorrida pelas partículas, após um instante $t$, é exatamente esse desvio padrão:
 $$
-\sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
+\sqrt{\mathbb{E}[X_t^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
 $$
 
 Se, por outro lado, observarmos $\mathbb{E}[|x|]$, obtemos uma distância da mesma ordem: $\mathbb{E}[|x|] = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
@@ -122,7 +122,7 @@ $$
 
 Para concluir, Einstein argumenta que se tormarmos $N = 6 \times 10^{23}$ de acordo com a teoria cinética dos gases; em um meio aquoso a uma temperatura de $T = 17\deg C$, com viscosidade $k = 1.35 \times 10^2$ e o diâmetro das partículas de $0.001\;\texttt{mm}$, então o caminho quadrático médio percorrido é da ordem de $0.8\;\mu$, um pouco abaixo de um micron. O deslocamento médio em um minuto seria da ordem de seis microns.
 
-Por outro lado, Einstein conclui que pode-se usar o cálculo desse descolamento para se deduzir quanto seria $N$ no caso desse meio aquoso, ou de qualquer outro fluido, ao invés de se considerar o valor emprestado da teoria dos gases.
+Por outro lado, Einstein conclui que pode-se usar o cálculo desse deslocamento para se deduzir quanto seria $N$ no caso desse meio aquoso, ou de qualquer outro fluido, ao invés de se considerar o valor emprestado da teoria dos gases.
 
 ## Incrementos
 
@@ -160,12 +160,12 @@ savefig(joinpath(@OUTPUT, "pathWn.svg"))
 
 Em um certo sentido, que veremos mais adiante de forma mais rigorosa, através da *isometria de Itô*, é como se $\Delta X \sim \sqrt{\Delta t}$, ou $\Delta X^2 \sim \Delta t$, com passos independentes. Assim, após $n$ passos $\Delta X_i,$ $i=1, \ldots, n,$ até um ponto $t_n = n\Delta t$, temos a posição $x = x_n$ dada por
 $$
-\mathbb{E}[x^2] = \mathbb{E}\left[\left(\sum_{i=1}^n \Delta X_i\right)^2\right] = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[\Delta X_i \Delta X_j \right] = \sum_{i=1}^n \mathbb{E}\left[\Delta X_i^2\right] \sim \sum_{i=1}^n \Delta t = t.
+\mathbb{E}[X_t^2] = \mathbb{E}\left[\left(\sum_{i=1}^n \Delta X_i\right)^2\right] = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[\Delta X_i \Delta X_j \right] = \sum_{i=1}^n \mathbb{E}\left[\Delta X_i^2\right] \sim \sum_{i=1}^n \Delta t = t.
 $$
 
 ## Paradoxo da velocidade infinita de deslocamento
 
-Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente grandes, levando as partículas a distâncias sem limite. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam arbitrariamente rápido. Algo contra-intuitivo.
+Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente grandes, levando a partícula a distâncias sem limite. Vimos acima, um resultado a respeito da distância quadrática *média* percorrida por uma partícula, mas nada impede que existam algumas partículas que se movam arbitrariamente rápido. Algo contra-intuitivo.
 
 ## Regularidade dos caminhos amostrais
 
@@ -179,36 +179,36 @@ para todo $s, t \in I$. O conjunto de caminhos Hölder-contínuos com expoente $
 
 Vamos considerar $I=[0, T]$, $T > 0$, e estimar a probabilidade de termos uma relação como a acima, em um dado instante fixo $0 \leq t < T$ para qualquer passo $\Delta t > 0$, com $0 \leq t < t + \Delta t \leq T$:
 $$
-  |\Delta x| = |x(t + \Delta t, \omega) - x(t, \omega)| \leq C\Delta t^\theta.
+  |\Delta x(t, \omega)| = |x(t + \Delta t, \omega) - x(t, \omega)| \leq C\Delta t^\theta.
 $$
 Mais precisamente, queremos estimar a probabilidade de termos um caminho com algum passo não satisfazendo essa desigualdade:
 $$
-  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta\right).
+  \mathbb{P}\left(|\Delta X_t| \geq C\Delta t^\theta\right).
 $$
 
 Temos,
 $$
-  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
+  \mathbb{P}\left(|\Delta X_t| \geq C\Delta t^\theta)\right) = \int_{|\Delta x| \geq C\Delta t^\theta} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
   \leq \int_{|\Delta x| \geq C\Delta t^\theta} \frac{|\Delta x|^2}{C^2\Delta t^{2\theta}} p(\Delta t, \Delta x) \;\mathrm{d}\Delta x \\
   \leq \frac{1}{C^2\Delta t^{2\theta}}\int_{|\Delta x| \geq C\Delta t^\theta} |\Delta x|^2 p(\Delta t, \Delta x) \;\mathrm{d}\Delta x
-  \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta x^2]
+  \leq \frac{1}{C^2\Delta t^{2\theta}} \mathbb{E}[\Delta X_t^2]
   \leq \frac{2D\Delta t}{C^2\Delta t^{2\theta}}.
 $$
 Usamos, acima, uma desigualdade chamada de **desigualdade de Chebyshev**, explorando a condição $|\Delta x| \geq C\Delta t^\theta$ para escrever $1 \leq |\Delta x| / C\Delta t^\theta \leq |\Delta x|^2 / C^2\Delta t^{2\theta}$ e, em seguida, a finitude da distância quadrática média.
 
 Assim,
 $$
-  \mathbb{P}\left(|\Delta x| \geq C\Delta t^\theta)\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
+  \mathbb{P}\left(|\Delta X_t| \geq C\Delta t^\theta\right) \leq \frac{2D\Delta t^{1-2\theta}}{C^2} \rightarrow 0, \quad C \rightarrow \infty.
 $$
 
 Com base nisso, usando um resultado conhecido como **Teorema de Borel-Cantelli**, podemos tirar
 $$
-  \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcup_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta x|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta x|}{\Delta t^\theta} \geq C\right) = 1.
+  \mathbb{P}\left(\frac{|\Delta X_t|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcup_{C > 0} \frac{|\Delta X_t|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta X_t|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta X_t|}{\Delta t^\theta} \geq C\right) = 1.
 $$
 
-Ou seja, quase sempre, teremos ${|\Delta x|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t) - x(t)| = |\Delta x| \leq C \Delta t^\theta $.
+Ou seja, quase sempre, teremos ${|\Delta X_t|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t, \omega) - x(t, \omega)| = |\Delta x(t, \omega)| \leq C \Delta t^\theta $.
 
-O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$. Além disso, a probabilidade $\mathbb{P}$ age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante $t$. De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *todo* $t$ e para $\Delta t$ arbitrariamente pequeno (essa última condição é que força que $0<\theta < 1/2$). Além disso, a probabilidade $\mathbb{P}$ age nas trajetórias e o passo temporal envolve um intervalo de instantes, enquanto que acima escrevemos o passo em termos da distribuição de probabilidades no instante $t$. De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Exercícios
 
