@@ -124,6 +124,25 @@ Para concluir, Einstein argumenta que se tormarmos $N = 6 \times 10^{23}$ de aco
 
 Por outro lado, Einstein conclui que pode-se usar o cálculo desse deslocamento para se deduzir quanto seria $N$ no caso desse meio aquoso, ou de qualquer outro fluido, ao invés de se considerar o valor emprestado da teoria dos gases.
 
+## Conexão com o modelo de Bachelier
+
+Cinco anos antes de Einstein, [L. Bachelier, Théorie de la spéculation, Annales scientifiques de l'École Normale Supérieure, Serie 3, Volume 17 (1900), pp. 21-86](https://doi.org/10.24033/asens.476) obteve o mesmo modelo probabilístico, ou seja, a mesma densidade de probabilidade, na modelagem de mercados de ações, sujeito, também, a variações aleatórias independentes. Bachelier apresentou duas modelagens diferentes, uma semelhante à de Einstein e outra como um caminho aleatório, semelhante ao que veremos a seguir.
+
+Uma diferença no primeiro modelo do Bachelier é que ele não diferencia a densidade de probabilidade $g=g(\ell)$ da probabilidade $\rho(t, x).$ De fato, observe que, graças as hipóteses de estacionaridade e de homogeneidade, vale
+$$
+    g(\ell) = \rho(\tau, \ell),
+$$
+ou seja, a (densidade de) probabilidade $(\rho(\tau, \ell))$ da partícula, que começou na origem, estar em $\ell$ após o tempo característico $\tau$ é a (densidede de) probabilidade $(g(\ell))$ da partícula dar o passo $\ell$, no tempo característico $\tau$. Assim, Bachelier escreve direto
+$$
+    \rho(t + \tau, x) = \int_{-\infty}^\infty \rho(\tau, \ell)\rho(t, x - \ell)\;\mathrm{d}\ell.
+$$
+
+Em seguida, ele procura direto uma solução dessa equação integral na forma de um processo Gaussiano e, assim, chega em uma solução da mesma forma, exceto com parâmetros diferentes, i.e.
+$$
+    \rho(t, x) = \frac{1}{2\pi k \sqrt{t}} e^{- \frac{x^2}{4\pi k^2 t}},
+$$
+para uma determinada constante $k$. Vale ressaltar que essa não é a única solução da equação integral acima. De fato, essa equação vale de forma geral, para qualquer processo Markoviano, e é, no fundo, uma versão da equação conhecida atualmente como equação de Chapman-Kolmogorov. Veja mais detalhes na seção sobre o modelo de Bachelier.
+
 ## Incrementos
 
 Em um instante $t$, a distribuição normal $\mathcal{N}(0, 2Dt)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t$, a posição dessa partícula em um instante $t + \Delta t$, com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2D(t+\Delta t))$ pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se $X_t = x$, temos que a posição futura da partícula será dada por
