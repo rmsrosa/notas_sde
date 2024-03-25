@@ -41,7 +41,11 @@ $$
 p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}.
 $$
 
-Podemos reconhecer isso como a distribuição binomial, nos dando a probabilidade de $(n+m)/2$ sucessos em $n$ sorteios de Bernoulli, com probabilidade $1/2$ de cada realização, com as realizações sendo os passos $\ell$ e $-\ell$.
+Podemos reconhecer isso como a distribuição binomial
+$$
+p_n(m) = \left(\begin{matrix} n \\ k \end{matrix}\right) p^k (1-p)^{n-k}, \qquad k = k(n, m) = \frac{n + m}{2},
+$$
+nos dando a probabilidade de $(n+m)/2$ sucessos em $n$ sorteios de Bernoulli, com probabilidade $p = 1 - p = 1/2$ de cada realização, com as realizações sendo os passos $\ell$ e $-\ell$.
 
 Denotando por $X_n$ a posição da partícula no passo $n \in \mathbb{Z}^* = \{0, 1, 2, \ldots\}$, temos que $\{X_n\}_{n \in \mathbb{N}}$ é um processo estocástico discreto, com cada passo $\Delta X = X_{n + 1} - X_n \sim \mathrm{Bernoulli}(\pm \ell, 1/2)$, representando o teste de Bernoulli com valores possíveis $\pm \ell$. Temos, ainda, que cada $X_n$ é uma distribuição binomial com possíveis valores $-n\ell, \ldots, n\ell$, que podemos denotar por
 $$
@@ -151,7 +155,7 @@ $$
 
 Como no modelo de Einstein, podemos ter, no limite, caminhos se deslocando cada vez mais rápido. De fato, ao longo de $n$ passos de tempo $\tau$ até um instante $t$, podemos ter exatos $n$ passos $\ell$ no mesmo sentido, digamos até $x = n\ell$, de modo que a velocidade é $x/t = \ell/\tau$. Fazemos $\ell, \tau \rightarrow 0$, com $a = \ell^2/2\tau$ constante, enquanto aumentamos $n$ e $m$ para chegarmos ao ponto mais longe possível $x$, no mesmo instante $t$. Assim, temos a velocidade $v = x/t = \ell/\tau = \sqrt{2a\tau}/\tau = \sqrt{2a/\tau} \rightarrow \infty$. Ou seja, não há como limitar a velocidade dos caminhos.
 
-Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximos de um.
+Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximo de 1/2.
 
 ## Diferenças finitas
 
