@@ -351,8 +351,8 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">1.5. Do passeio aleatório ao movimento Browniano</a></h1>
-<p>Uma outra maneira de modelar o movimento Browniano é através de um processo conhecido como <em>passeio aleatório</em>, no caso em que consideramos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada.</p>
-<p>Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto \(\ell \mathbb{Z}\), onde \(\ell > 0\) é uma escala de comprimento. Usamos, também, uma escala de tempo \(\tau > 0\). Assumimos que, a cada passo de tempo \(\tau\), uma partícula pode se movimentar de uma distância \(\ell\), para a direita ou para a esquerda, com probabilidade \(1/2\) em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não se leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.</p>
+<p>Uma outra maneira de modelar o movimento Browniano é através de um processo conhecido como <em>passeio aleatório</em>, no caso em que consideramos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada. Louis Bachelier, cinco anos antes do ano miraculoso de Einstein, utilizou o passeio aleatório, em sua tese <a href="https://doi.org/10.24033/asens.476">L. Bachelier, Théorie de la spéculation, Annales scientifiques de l&#39;École Normale Supérieure, Serie 3, Volume 17 &#40;1900&#41;, pp. 21-86</a>, para justificar a forma da densidade de probabilidades de ações no mercado financeiro.</p>
+<p>Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto \(\ell \mathbb{Z}\), onde \(\ell > 0\) é uma escala de comprimento. Usamos, também, uma escala de tempo \(\tau > 0\). Assumimos que, a cada passo de tempo \(\tau\), uma partícula pode se movimentar de uma distância exatamente \(\ell\), para a direita ou para a esquerda, com probabilidade \(1/2\) em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.</p>
 <p>Denotamos, então, por \(p_n(m)\) a probabilidade da partícula estar na posição \(x = m\ell\), no instante \(t = n\tau\). Naturalmente, \(0 \leq p_n(m) \leq 1\), com \(\sum_{m\in \mathbb{Z}} p_n(m) = 1\), para todo \(n = 0, 1, \ldots\).</p>
 <p>Inicialmente, em \(t = 0\), consideramos que a partícula está na <em>origem</em>, de modo que \(p_0(0) = 1\) e \(p_0(m) = 0\), para \(m\ne 0.\) Vamos escrever isso, simetricamente, na forma</p>
 \[
@@ -383,7 +383,11 @@ p_5 = (\ldots, 0, 1/16, 0, 5/16, 0, 3/8, 0, 5/16, 0, 1/16, 0, \ldots),
 \[
 p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}.
 \]
-<p>Podemos reconhecer isso como a distribuição binomial, nos dando a probabilidade de \((n+m)/2\) sucessos em \(n\) sorteios de Bernoulli, com probabilidade \(1/2\) de cada realização, com as realizações sendo os passos \(\ell\) e \(-\ell\).</p>
+<p>Podemos reconhecer isso como a distribuição binomial</p>
+\[
+p_n(m) = \left(\begin{matrix} n \\ k \end{matrix}\right) p^k (1-p)^{n-k}, \qquad k = k(n, m) = \frac{n + m}{2},
+\]
+<p>nos dando a probabilidade de \((n+m)/2\) sucessos em \(n\) sorteios de Bernoulli, com probabilidade \(p = 1 - p = 1/2\) de cada realização, com as realizações sendo os passos \(\ell\) e \(-\ell\).</p>
 <p>Denotando por \(X_n\) a posição da partícula no passo \(n \in \mathbb{Z}^* = \{0, 1, 2, \ldots\}\), temos que \(\{X_n\}_{n \in \mathbb{N}}\) é um processo estocástico discreto, com cada passo \(\Delta X = X_{n + 1} - X_n \sim \mathrm{Bernoulli}(\pm \ell, 1/2)\), representando o teste de Bernoulli com valores possíveis \(\pm \ell\). Temos, ainda, que cada \(X_n\) é uma distribuição binomial com possíveis valores \(-n\ell, \ldots, n\ell\), que podemos denotar por</p>
 \[
 X_n \sim B(\{-n\ell, \ldots, n\ell\}, 1/2),
@@ -470,7 +474,7 @@ X_{t + \Delta t} \sim \mathcal{N}(X_t, 2a\Delta t) = X_t + \mathcal{N}(0, 2a\Del
 \]
 <h2 id="caminhos"><a href="#caminhos" class="header-anchor">Caminhos</a></h2>
 <p>Como no modelo de Einstein, podemos ter, no limite, caminhos se deslocando cada vez mais rápido. De fato, ao longo de \(n\) passos de tempo \(\tau\) até um instante \(t\), podemos ter exatos \(n\) passos \(\ell\) no mesmo sentido, digamos até \(x = n\ell\), de modo que a velocidade é \(x/t = \ell/\tau\). Fazemos \(\ell, \tau \rightarrow 0\), com \(a = \ell^2/2\tau\) constante, enquanto aumentamos \(n\) e \(m\) para chegarmos ao ponto mais longe possível \(x\), no mesmo instante \(t\). Assim, temos a velocidade \(v = x/t = \ell/\tau = \sqrt{2a\tau}/\tau = \sqrt{2a/\tau} \rightarrow \infty\). Ou seja, não há como limitar a velocidade dos caminhos.</p>
-<p>Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximos de um.</p>
+<p>Porém, como feito no modelo de Einstein, é possível mostrar que, com probabilidade um, os caminhos são Hölder contínuos, com expoente arbitrariamente próximo de 1/2.</p>
 <h2 id="diferenças_finitas"><a href="#diferenças_finitas" class="header-anchor">Diferenças finitas</a></h2>
 <p>Uma outra maneira de se trabalhar o limíte contínuo do passeio aleatório é via diferenças finitas. Pense em \(p(t, x) \sim p_n(m)\) como uma função densidade de partículas, como se cada \(m\in \mathbb{N}\) representasse um sítio, com um certo número \(u_n(m)\) de partículas, cuja densidade é \(p_n(m) = u_n(m) / U\), onde \(U\) é o número total de partículas. A cada passo de tempo, em média metade das partículas em um sítio \(m\) se encaminha para o sítio \(m-1\) e a outra metade, para o sítio \(m+1\). Por um outro ponto de vista, todas as partículas de um determinado sítio vão para os sítios vizinhos e metade das partículas de cada um dos sítios vizinhos se encaminha para aquele sítio. Ou seja, o total \(u_{n+1}(m)\) de partículas no sítio \(m\), no passo \(n+1\), é inteiramente constituído pelas partículas advindas dos sítios vizinhos, de forma que</p>
 \[
@@ -532,7 +536,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         </div>
     
 
-    Last modified: March 21, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: March 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
