@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Uma outra maneira de modelar o movimento Browniano é através de um processo conhecido como *passeio aleatório*, no caso em que consideramos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada. Louis Bachelier, cinco anos antes do ano miraculoso de Einstein, utilizou o passeio aleatório, em sua tese [L. Bachelier, Théorie de la spéculation, Annales scientifiques de l'École Normale Supérieure, Serie 3, Volume 17 (1900), pp. 21-86](https://doi.org/10.24033/asens.476), para justificar a forma da densidade de probabilidades de ações no mercado financeiro.
+Uma outra maneira de modelar o movimento Browniano é através de um processo conhecido como *passeio aleatório*, no caso em que consideramos escalas de tempo e de comprimento para os passos temporais e espaciais e quando tomamos os limites quando essas escalas vão para zero de forma apropriada. Louis Bachelier, cinco anos antes do ano miraculoso de Einstein, utilizou um processo que é essencialmente um passeio aleatório, em sua tese [L. Bachelier, Théorie de la spéculation, Annales scientifiques de l'École Normale Supérieure, Serie 3, Volume 17 (1900), pp. 21-86](https://doi.org/10.24033/asens.476), para justificar a forma da densidade de probabilidades de ações no mercado financeiro.
 
 Vamos pensar em um passeio aleatório unidimensional, em um conjunto discreto $\ell \mathbb{Z}$, onde $\ell > 0$ é uma escala de comprimento. Usamos, também, uma escala de tempo $\tau > 0$. Assumimos que, a cada passo de tempo $\tau$, uma partícula pode se movimentar de uma distância exatamente $\ell$, para a direita ou para a esquerda, com probabilidade $1/2$ em cada sentido. A motivação é que, a cada passo de tempo, a partícula será bombardeada mais de um lado do que de outro, de maneira aleatória e independente. É uma situação bastante idealizada, porque não leva em consideração possíveis variações relativas nas quantidades de bombardeamentos e no tamanho do passo, nem do momento adquirido pela partícula.
 
@@ -62,46 +62,62 @@ Assintoticamente, temos, pela fórmula de Stirling, $k! \simeq \sqrt{2\pi k} (k 
 $$
 \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k+1}} < k! < \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k}}, \quad \forall k\in\mathbb{N}.
 $$
-Assim, para $k = 10$, temos $e^{1/12k} \approx 1.00829$, de modo que o erro relativo já é da ordem de 0,823%.
+Assim, para $k = 8$, temos $e^{1/12k} \approx 1.01047$, de modo que o erro relativo já é da ordem de 1%.
 
-Assumindo, então, $n \gg 1$ e $|m| \ll n$, de modo que $(n\pm m)/2 \gg 1$ também, obtemos
+A ideia, então, é tomar o limite quando $n, |m| \rightarrow \infty$, mas vamos tomar $n$ crescendo muito mais rapidamente, por razões que ficarão aparentes em seguida. Assumindo, então, $n \gg |m| \gg 1$, de modo que $(n\pm m)/2 \gg 1$ (essa é uma das razões), obtemos
 $$
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
 $$
-Simplificando, obtemos
+Lembrando que isso é quando $n + m$ é par, caso contrário $p_n(m) = 0$. Simplificando, obtemos
 $$
 p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}}\frac{n^n}{(n + m)^{(n + m)/2}(n - m)^{(n - m)/2}}.
 $$
-Separando a potência do numerador, obtemos
+Decompondo a potência do numerador em $n^n = n^{(n+m)/2}n^{(n-m)/2},$ obtemos
 $$
 p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}}\left(\frac{n}{n+m}\right)^{(n + m)/2}\left(\frac{n}{n-m}\right)^{(n - m)/2}.
 $$
+Invertendo a fração, temos
+$$
+p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}}\left(\frac{n+m}{n}\right)^{-(n + m)/2}\left(\frac{n-m}{n}\right)^{-(n - m)/2}.
+$$
 
-Temos
-$$ \ln\left(\left(\frac{n}{n+m}\right)^{(n + m)/2}\left(\frac{n}{n-m}\right)^{(n - m)/2}\right) = \frac{n + m}{2}\ln\left(\frac{n}{n+m}\right) + \frac{n - m}{2}\ln\left(\frac{n}{n-m}\right) \\ = -\frac{n + m}{2}\ln\left(1 + \frac{m}{n}\right) - \frac{n - m}{2}\ln\left(1 - \frac{m}{n}\right).
+Observe que
+$$ \left(\frac{n+m}{n}\right)^{-(n + m)/2}\left(\frac{n-m}{n}\right) = e^{\displaystyle -\frac{n + m}{2}\ln\left(1 + \frac{m}{n}\right) - \frac{n - m}{2}\ln\left(1 - \frac{m}{n}\right)}.
 $$
 
 Sendo $|m| \ll n$, obtemos, pela expansão $\ln(1 + x) = 0 + x - x^2/2 + \mathcal{O}(x^3) \approx x - x^2/2$,
-$$ \ln\left(\left(\frac{n}{n+m}\right)^{(n + m)/2}\left(\frac{n}{n-m}\right)^{(n - m)/2}\right) \approx -\frac{n + m}{2}\left(\frac{m}{n} + \frac{1}{2}\frac{m^2}{n^2}\right) - \frac{n - m}{2}\left(-\frac{m}{n} + \frac{1}{2}\frac{m^2}{n^2}\right) = -\frac{m^2}{2n}.
+$$ \left(\frac{n+m}{n}\right)^{-(n + m)/2}\left(\frac{n-m}{n}\right) \approx e^{\displaystyle -\frac{n + m}{2}\left(\frac{m}{n} + \frac{1}{2}\frac{m^2}{n^2}\right) - \frac{n - m}{2}\left(-\frac{m}{n} + \frac{1}{2}\frac{m^2}{n^2}\right)} = e^{\displaystyle -\frac{m^2}{2n}}.
 $$
 Portanto,
 $$
-\left(\frac{n}{n+m}\right)^{(n + m)/2}\left(\frac{n}{n-m}\right)^{(n - m)/2} \approx e^{-\frac{m^2}{2n}}.
+p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}} e^{\displaystyle -\frac{m^2}{2n}}.
 $$
-Por outro lado, usando novamente que $|m| \ll n$, temos $n^2 - m^2 \approx n^2$, de maneira que
+Por outro lado, usando novamente que $|m| \ll n$, temos $|m|/n \ll 1$, de modo que
+$$
+n^2 - m^2 = n^2\left(1 - \frac{m^2}{n^2}\right) \approx n^2.
+$$
+Assim,
 $$
 \sqrt{\frac{2n}{\pi(n^2 - m^2)}} \approx \sqrt{\frac{2}{\pi n}}.
 $$
 
-Portanto, para $n \gg 1$ e $|m| \ll n$, obtemos
+Portanto, para $n \gg 1$ e $|m| \ll n$, com $n+m$ par, obtemos
 $$
-p_n(m) \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}}.
+p_n(m) \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}.
 $$
 
-Passando para o contínuo, com $t = n \tau$ e $x = m \ell$ e interpretando $p_n(m)$ como a probabilidade da partícula estar no intervalo $(m-1)\ell \leq x \leq (m+1)\ell$, no instante $t$ e sendo $p(t, x)$ a densidade de probabilidades no instante $t$, temos
-$$ 2\ell p(t, x) \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}}.
+Passando para o contínuo, com $t \approx n \tau$ e $x \approx m \ell$ e interpretando $p_n(m)$ como a probabilidade da partícula estar no intervalo $(m-1/2)\ell \leq x \leq (m+1/2)\ell$, no instante $t$ e sendo $p(t, x)$ a densidade de probabilidades no instante $t$, temos
 $$
-Logo,
+\int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m).
+$$
+Mas $p_n(m)$ pode ser nulo quando $n+m$ é ímpar. Assim, para garantir que obtemos a probabilidade estimada acima, devemo integrar em todo $(m-1)\ell \leq x \leq (m+1)\ell$. Assim, obtemos, aproximadamente,
+$$ 2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
+$$
+pelo menos para $1 \ll |m| \ll n$, ou seja, para
+$$
+1 \ll \frac{|x|}{\ell} \ll \frac{t}{\tau}.
+$$
+Logo, nessa região,
 $$
 p(t, x) \approx \sqrt{\frac{\tau}{2\ell^2 \pi t}} e^{-\frac{\tau x^2}{2t\ell^2}} = \frac{1}{\sqrt{4\pi a t}} e^{-\frac{x^2}{4a t}},
 $$
@@ -110,9 +126,9 @@ $$
 a = \frac{\ell^2}{2\tau}.
 $$
 
-Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é uma Gaussiana com variância $\sigma^2 = 2at$.
+Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é aproximadamente uma Gaussiana com variância $\sigma^2 = 2at$.
 
-Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty$ (exceto quando $t$ e/ou $x$ são nulos), com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
+Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty$ (exceto quando $t$ e/ou $x$ são nulos, ou seja, em um conjunto de medida nula), com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
 
 Observe, ainda, a semelhança entre a definição de $a$ acima e de $D$ no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:
 $$
