@@ -12,25 +12,79 @@ Inicialmente, em $t = 0$, consideramos que a partícula está na *origem*, de mo
 $$
 p_0 = (\ldots, 0, 0, 1, 0, 0, \ldots).
 $$
-Após o primeiro passo, temos $p_1(\pm 1) = 1/2$ e o $p_1(m) = 0$ para $m \neq \pm 1$. De outra forma, temos
+Após o primeiro passo, temos $p_1(\pm 1) = 1/2$ e o $p_1(m) = 0$ para $m \neq \pm 1$. Ou seja,
 $$
 p_1 = (\ldots, 0, 1/2, 0, 1/2, 0, \ldots).
 $$
 No instante seguinte,
 $$
-p_2 = (\ldots, 0, 1/4, 0, 1/2, 0, 1/4, 0, \ldots),
+p_2 = \left(\ldots, 0, \frac{1}{4}, 0, \frac{1}{2}, 0, \frac{1}{4}, 0, \ldots \right),
 $$
 e assim por diante:
 $$
-p_3 = (\ldots, 0, 1/4, 0, 1/2, 0, 1/4, 0, \ldots),
+p_3 = \left(\ldots, 0, \frac{1}{8}, 0, \frac{3}{8}, 0, \frac{3}{8}, 0, \frac{1}{8}, 0, \ldots\right),
 $$
 $$
-p_4 = (\ldots, 0, 1/8, 0, 3/8, 0, 3/8, 0, 1/8, 0, \ldots),
+p_4 = \left(\ldots, 0, \frac{1}{16}, 0, \frac{5}{16}, 0, \frac{3}{16}, 0, \frac{5}{16}, 0, \frac{1}{16}, 0, \ldots\right),
 $$
 $$
-p_5 = (\ldots, 0, 1/16, 0, 5/16, 0, 3/8, 0, 5/16, 0, 1/16, 0, \ldots),
+\vdots
 $$
-etc. Podemos continuar e buscar um padrão para a sequência, mas podemos deduzir os valores de uma forma mais simples.
+
+```julia:gifplot
+using Plots
+
+@userplot CirclePlot
+@recipe function f(cp::CirclePlot)
+    x, y, i = cp.args
+    n = length(x)
+    inds = circshift(1:n, 1 - i)
+    linewidth --> range(0, 10, length = n)
+    seriesalpha --> range(0, 1, length = n)
+    aspect_ratio --> 1
+    label --> false
+    x[inds], y[inds]
+end
+
+n = 400
+t = range(0, 2π, length = n)
+x = 16sin.(t).^3
+y = 13cos.(t) .- 5cos.(2t) .- 2cos.(3t) .- cos.(4t)
+anim = @animate for i ∈ 1:n
+    circleplot(x, y, i, line_z = 1:n, cbar = false, c = :reds, framestyle = :none)
+end when i > 40 && mod1(i, 10) == 5
+
+gif(anim, joinpath(@OUTPUT, "heart.gif")) #hide
+```
+
+\fig{heart}
+
+```julia:randomwalkdistrib
+#hideall
+using Plots
+using Random
+theme(:ggplot2)
+rng = Xoshiro(123)
+
+nmax = 8
+
+plts = []
+anim = @animate for n in 1:nmax
+    factn = factorial(n)
+    pwr2n = 2^n
+    plt = plot(titlefont = 10, xaxis = "\$m\$", yaxis = "\$p_n(m)\$", xlims = (-nmax-1, nmax+1), ylims = (-0.1, 1.1), legend = false, size = (800, 500))
+
+    bar!(plt, -nmax:nmax, m -> ( iseven(m) && abs(m) ≤ n ) ? factn / factorial(div(n+m, 2)) / factorial(div(n- m, 2)) / pwr2n : 0, title="Distribuição \$p_n(m)\$ no passo \$n=$n\$")
+
+    push!(plts, plt)
+end
+
+plot(plts...)
+##gif(anim, joinpath(@OUTPUT, "randomwalkdistrib.gif"))
+```
+\fig{randomwalkdistrib}
+
+Podemos continuar e buscar um padrão para a sequência, mas podemos deduzir os valores de uma forma mais simples.
 
 Para uma partícula chegar na posição $x = \ell m$, ela deve dar $i$ passos para a direita e $j$ passos para a esquerda, com $i - j = m$. Para isso acontecer no passo $n$, devemos ter $i + j = n$. Logo, devemos ter $i = (n + m)/2$ passos para a direita e $j = (n - m)/2$ passos para a esquerda. Cada passo ocorre com probabilidade $1/2$. Assim, após $n$ passos, cada caminho ocorre com probabilidade $1/2^n$. Resta saber quantos caminhos existem até um determinado ponto $x = \ell m$.
 
@@ -43,7 +97,7 @@ $$
 
 Podemos reconhecer isso como a distribuição binomial
 $$
-p_n(m) = \left(\begin{matrix} n \\ k \end{matrix}\right) p^k (1-p)^{n-k}, \qquad k = k(n, m) = \frac{n + m}{2},
+p_n(m) = \left(\begin{matrix} n \\ k \end{matrix}\right) p^k (1-p)^{n-k}, \qquad k = k(n, m) = \frac{n + m}{2}, \quad p = \frac{1}{2},
 $$
 nos dando a probabilidade de $(n+m)/2$ sucessos em $n$ sorteios de Bernoulli, com probabilidade $p = 1 - p = 1/2$ de cada realização, com as realizações sendo os passos $\ell$ e $-\ell$.
 
@@ -58,11 +112,11 @@ $$
 
 ## Limite contínuo
 
-Assintoticamente, temos, pela fórmula de Stirling, $k! \simeq \sqrt{2\pi k} (k / e)^k$, quando $k \rightarrow \infty$. Mais precisamente, vale a desigualdade
+Assintoticamente, temos, pela fórmula de Stirling, que $k! \simeq \sqrt{2\pi k} (k / e)^k$, quando $k \rightarrow \infty$. Mais precisamente, vale a desigualdade
 $$
 \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k+1}} < k! < \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k}}, \quad \forall k\in\mathbb{N}.
 $$
-Assim, para $k = 8$, temos $e^{1/12k} \approx 1.01047$, de modo que o erro relativo já é da ordem de 1%.
+Por exemplo, para $k = 8$, temos $e^{1/12k} \approx 1.01047$, de modo que o erro relativo já é da ordem de 1%, diminuindo rapidamente conforme $k$ aumenta.
 
 A ideia, então, é tomar o limite quando $n, |m| \rightarrow \infty$, mas vamos tomar $n$ crescendo muito mais rapidamente, por razões que ficarão aparentes em seguida. Assumindo, então, $n \gg |m| \gg 1$, de modo que $(n\pm m)/2 \gg 1$ (essa é uma das razões), obtemos
 $$
@@ -110,7 +164,12 @@ Passando para o contínuo, com $t \approx n \tau$ e $x \approx m \ell$ e interpr
 $$
 \int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m).
 $$
-Mas $p_n(m)$ pode ser nulo quando $n+m$ é ímpar. Assim, para garantir que obtemos a probabilidade estimada acima, devemo integrar em todo $(m-1)\ell \leq x \leq (m+1)\ell$. Assim, obtemos, aproximadamente,
+Mas $p_n(m)$ pode ser nulo quando $n+m$ é ímpar, ou seja,
+$$
+\int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m) \begin{cases} = 0, & n + m \textrm{ ímpar,} \\ \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}, & n + m \textrm{ par.} \end{cases}
+$$
+
+Para garantir que obtemos a probabilidade estimada acima, podemos integrar em todo $(m-1)\ell \leq x \leq (m+1)\ell$. Assim, obtemos, aproximadamente,
 $$ 2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
 $$
 pelo menos para $1 \ll |m| \ll n$, ou seja, para
@@ -130,7 +189,13 @@ Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é aproxima
 
 Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty$ (exceto quando $t$ e/ou $x$ são nulos, ou seja, em um conjunto de medida nula), com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
 
-Observe, ainda, a semelhança entre a definição de $a$ acima e de $D$ no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:
+A condição em $t, x$ pode ser escrita como
+$$
+\ell \ll |x| \ll \frac{\ell}{\tau} t = \frac{a}{2\ell} t.
+$$
+À medida em que $\ell, \tau \rightarrow 0$ com $a$ fixo, temos também $a/2\ell \rightarrow \infty$, de modo que, no limite, a aproximação vale para todo $x \neq 0$ e para $t > 0$ arbitrário. Como $\{x = 0\}$ é de medida nula, deduzimos que a aproximação normal acima vale em todo $(t, x) \in (0, \infty) \times \mathbb{R}.$
+
+Finalmente, observe a semelhança entre a definição de $a$ acima e de $D$ no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:
 $$
 a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 $$
