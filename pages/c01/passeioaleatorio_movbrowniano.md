@@ -31,34 +31,6 @@ $$
 \vdots
 $$
 
-```julia:gifplot
-using Plots
-
-@userplot CirclePlot
-@recipe function f(cp::CirclePlot)
-    x, y, i = cp.args
-    n = length(x)
-    inds = circshift(1:n, 1 - i)
-    linewidth --> range(0, 10, length = n)
-    seriesalpha --> range(0, 1, length = n)
-    aspect_ratio --> 1
-    label --> false
-    x[inds], y[inds]
-end
-
-n = 400
-t = range(0, 2π, length = n)
-x = 16sin.(t).^3
-y = 13cos.(t) .- 5cos.(2t) .- 2cos.(3t) .- cos.(4t)
-anim = @animate for i ∈ 1:n
-    circleplot(x, y, i, line_z = 1:n, cbar = false, c = :reds, framestyle = :none)
-end when i > 40 && mod1(i, 10) == 5
-
-gif(anim, joinpath(@OUTPUT, "heart.gif")) #hide
-```
-
-\fig{heart}
-
 ```julia:randomwalkdistrib
 #hideall
 using Plots
@@ -66,21 +38,17 @@ using Random
 theme(:ggplot2)
 rng = Xoshiro(123)
 
-nmax = 8
+nmax = 10
 
-plts = []
-anim = @animate for n in 1:nmax
+anim = @animate for n in 0:nmax
     factn = factorial(n)
     pwr2n = 2^n
     plt = plot(titlefont = 10, xaxis = "\$m\$", yaxis = "\$p_n(m)\$", xlims = (-nmax-1, nmax+1), ylims = (-0.1, 1.1), legend = false, size = (800, 500))
 
-    bar!(plt, -nmax:nmax, m -> ( iseven(m) && abs(m) ≤ n ) ? factn / factorial(div(n+m, 2)) / factorial(div(n- m, 2)) / pwr2n : 0, title="Distribuição \$p_n(m)\$ no passo \$n=$n\$")
-
-    push!(plts, plt)
+    bar!(plt, -nmax:nmax, m -> ( iseven(n+m) && abs(m) ≤ n ) ? factn / factorial(div(n+m, 2)) / factorial(div(n - m, 2)) / pwr2n : 0, title="Distribuição \$p_n(m)\$ no passo \$n=$n\$")
 end
 
-plot(plts...)
-##gif(anim, joinpath(@OUTPUT, "randomwalkdistrib.gif"))
+gif(anim, fps=2, joinpath(@OUTPUT, "randomwalkdistrib.gif"))
 ```
 \fig{randomwalkdistrib}
 
