@@ -415,7 +415,11 @@ X_0 \sim \delta_0.
 \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k+1}} < k! < \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k}}, \quad \forall k\in\mathbb{N}.
 \]
 <p>Por exemplo, para \(k = 8\), temos \(e^{1/12k} \approx 1.01047\), de modo que o erro relativo já é da ordem de 1&#37;, diminuindo rapidamente conforme \(k\) aumenta.</p>
-<p>A ideia, então, é tomar o limite quando \(n, |m| \rightarrow \infty\), mas vamos tomar \(n\) crescendo muito mais rapidamente, por razões que ficarão aparentes em seguida. Assumindo, então, \(n \gg |m| \gg 1\), de modo que \((n\pm m)/2 \gg 1\) &#40;essa é uma das razões&#41;, obtemos</p>
+<p>A ideia, então, é tomar o limite quando \(n \rightarrow \infty.\) Por sua vez, \(m\) pode ou não ir para infinito também, mas vamos manter sempre \(|m \ll n.\) Isso porque, assumindo, \(n \gg 1\) e \(|m| \ll n,\) temos também</p>
+\[
+    n \pm m \gg 1.
+\]
+<p>Com isso,</p>
 \[
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
 \]
@@ -441,11 +445,11 @@ p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}}\left(\frac{n+m}{n}\right)^{-(n + 
 \[
 p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}} e^{\displaystyle -\frac{m^2}{2n}}.
 \]
-<p>Por outro lado, usando novamente que \(|m| \ll n\), temos \(|m|/n \ll 1\), de modo que</p>
+<p>Por outro lado, usando novamente que \(n \gg |m|,\) temos \(|m|/n \ll 1\), de modo que</p>
 \[
 n^2 - m^2 = n^2\left(1 - \frac{m^2}{n^2}\right) \approx n^2.
 \]
-<p>Assim,</p>
+<p>Logo,</p>
 \[
 \sqrt{\frac{2n}{\pi(n^2 - m^2)}} \approx \sqrt{\frac{2}{\pi n}}.
 \]
@@ -461,12 +465,13 @@ p_n(m) \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}.
 \[
 \int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m) \begin{cases} = 0, & n + m \textrm{ ímpar,} \\ \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}, & n + m \textrm{ par.} \end{cases}
 \]
-<p>Para garantir que obtemos a probabilidade estimada acima, podemos integrar em todo \((m-1)\ell \leq x \leq (m+1)\ell\). Assim, obtemos, aproximadamente,</p>
-\[ 2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
-\]
-<p>pelo menos para \(1 \ll |m| \ll n\), ou seja, para</p>
+<p>Para garantir que obtemos a probabilidade estimada acima, podemos integrar a densidade no intervalo &quot;dobrado&quot; \((m-1)\ell \leq x \leq (m+1)\ell\). Assim, obtemos, aproximadamente,</p>
 \[
-1 \ll \frac{|x|}{\ell} \ll \frac{t}{\tau}.
+2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x = p_n(m) \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
+\]
+<p>pelo menos para \(n \gg 1,\) \(|m| \ll n\), ou seja, em particular, para</p>
+\[
+\frac{|x|}{\ell} \ll \frac{t}{\tau}.
 \]
 <p>Logo, nessa região,</p>
 \[
@@ -477,17 +482,29 @@ p(t, x) \approx \sqrt{\frac{\tau}{2\ell^2 \pi t}} e^{-\frac{\tau x^2}{2t\ell^2}}
 a = \frac{\ell^2}{2\tau}.
 \]
 <p>Obtivemos, assim, que, para cada \(t\), a função \(x \mapsto p(t, x)\) é aproximadamente uma Gaussiana com variância \(\sigma^2 = 2at\).</p>
-<p>Observe que podemos pensar esse processo limite como tomando \(\ell, \tau \rightarrow 0\) mas mantendo a relação \(a = \ell^2/2\tau\) fixa. Ou seja, \(\tau\) converge para zero muito mais rápido do que \(\ell\). Em particular, fixados \(x \approx m\ell\) e \(t \approx n\tau\), e fazendo \(\ell, \tau\) irem para zero, com \(a = \ell^2/2\tau\) fixo, vemos que \(m, n\rightarrow \infty\) &#40;exceto quando \(t\) e/ou \(x\) são nulos, ou seja, em um conjunto de medida nula&#41;, com \(n\) crescendo muito mais rápido que \(m\), garantindo a condição de que \(|m| \ll n\). Assim, a aproximação acima para \(p_n(m)/2\ell\) converge, de fato, para \(p(t, x)\).</p>
+<p>Observe que podemos pensar esse processo limite como tomando \(\ell, \tau \rightarrow 0\) mas mantendo a relação \(a = \ell^2/2\tau\) fixa. Ou seja, \(\tau\) converge para zero muito mais rápido do que \(\ell\). Em particular, fixados \(x \approx m\ell\) e \(t \approx n\tau\), e fazendo \(\ell, \tau\) irem para zero, com \(a = \ell^2/2\tau\) fixo, vemos que \(m, n\rightarrow \infty,\) com \(n\) crescendo muito mais rápido que \(m\), garantindo a condição de que \(|m| \ll n\). Assim, a aproximação acima para \(p_n(m)/2\ell\) converge, de fato, para \(p(t, x)\).</p>
 <p>A condição em \(t, x\) pode ser escrita como</p>
 \[
 \ell \ll |x| \ll \frac{\ell}{\tau} t = \frac{a}{2\ell} t.
 \]
-<p>À medida em que \(\ell, \tau \rightarrow 0\) com \(a\) fixo, temos também \(a/2\ell \rightarrow \infty\), de modo que, no limite, a aproximação vale para todo \(x \neq 0\) e para \(t > 0\) arbitrário. Como \(\{x = 0\}\) é de medida nula, deduzimos que a aproximação normal acima vale em todo \((t, x) \in (0, \infty) \times \mathbb{R}.\)</p>
+<p>À medida em que \(\ell, \tau \rightarrow 0\) com \(a\) fixo, temos também \(a/2\ell \rightarrow \infty\), de modo que, no limite, a aproximação vale para todo \(x\in\mathbb{R}\) e para \(t > 0\) arbitrário. Ou seja, obtemos uma convergência em quase toda a parte e deduzimos que a aproximação normal acima vale em todo \((t, x) \in (0, \infty) \times \mathbb{R}.\)</p>
 <p>Finalmente, observe a semelhança entre a definição de \(a\) acima e de \(D\) no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:</p>
 \[
 a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 \]
-<p>Pensando nesse limite contínuo, e abusando da notação, já que já definimos \(X_n\), podemos escrever \(X_t\) como a variável aleatória indicando a posição da partícula no instante \(t \sim n\tau\).</p>
+<p>De uma forma mais rigorosa, podemos definir, para cada \(\tau, \ell > 0,\) as distribuições</p>
+\[
+    p_{\tau, \ell}(t, x) = \frac{p_m(n)}{2\ell} = \frac{1}{2\ell}\frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}, \quad (m-1)\ell \leq x < (m+1)x, \;n\tau \leq t < (n+1)\tau, \;n\in \mathbb{Z}^*, \;m\in 2\mathbb{Z}.
+\]
+<p>Assim, podemos mostrar que</p>
+\[
+    \lim_{\tau, \ell \rightarrow 0, \tau/2\ell^2 = a} p_{\tau, \ell}(t, x) = p(t, x),
+\]
+<p>uniformemente em subconjuntos compactos de \((0, \infty) \times \mathbb{R}.\)</p>
+
+<img src="/notas_sde/assets/pages/c01/passeioaleatorio_movbrowniano/code/output/randomwalklimit.gif" alt="">
+<h2 id="processo_limite_do_passeio_aleatório"><a href="#processo_limite_do_passeio_aleatório" class="header-anchor">Processo limite do passeio aleatório</a></h2>
+<p>Pensando nesse limite contínuo, e abusando da notação, já que já definimos \(X_n\), podemos escrever \(X_t\) como a variável aleatória indicando a posição da partícula no instante \(t \sim n\tau\), associado à distribuição limite \(p(t, x).\)</p>
 <h2 id="equação_de_difusão"><a href="#equação_de_difusão" class="header-anchor">Equação de difusão</a></h2>
 <p>Podemos reconhecer, pela fórmula acima, que a evolução, no tempo, da distribuição de probabilidades \(p(t, x)\) para a posição da partícula satisfaz a equação de difusão &#40;e.g. equação do calor&#41;</p>
 \[
@@ -497,9 +514,9 @@ a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 <h2 id="distância_média_percorrida"><a href="#distância_média_percorrida" class="header-anchor">Distância média percorrida</a></h2>
 <p>Como no modelo de Einstein, sendo \(x \mapsto p(t, x)\) uma Gaussiana com variância \(\sigma^2 = 2at\), a <strong>distância quadrática média</strong> percorrida pelas partículas, após um instante \(t\), é exatamente esse desvio padrão:</p>
 \[
-\sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
+\sqrt{\mathbb{E}[X_t^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
 \]
-<p>Se, por outro lado, observarmos \(\mathbb{E}(|x|)\), obtemos uma distância da mesma ordem: \(\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}\).</p>
+<p>Se, por outro lado, observarmos \(\mathbb{E}(|X_t|)\), obtemos uma distância da mesma ordem: \(\mathbb{E}(|X_t|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}\).</p>
 <h2 id="incrementos"><a href="#incrementos" class="header-anchor">Incrementos</a></h2>
 <p>Em um instante \(t\), a distribuição normal \(\mathcal{N}(0, 2at)\) nos dá a probabilidade de encontrarmos a partícula em uma determinada posição &#40;tendo ela partido de \(x = 0\) em \(t = 0\)&#41;. Mas dada a posição da partícula no instante \(t\), a posição dessa partícula em um instante \(t + \Delta t\), com \(\Delta t > 0\) não é dada por \(\mathcal{N}(0, 2a(t+\Delta t))\) pura e simplesmente.  Temos, na verdade, uma probabilidade condicionada.</p>
 <p>Pensando, novamente, no passeio aleatório, podemos imaginar um novo processo iniciando-se em \(x = X_t\) e caminhando para \(x \pm \ell\) no instante \(t + \tau\) e para algum ponto entre \(x - n\ell \leq x + m\ell \leq x + n\ell\), em instantes \(t + n\tau\). Assim, o incremento \(\Delta X = X_{t + \Delta t} - X_t\) é dado, novamente, por um passeio aleatório, só que começando de \(X_t\) e durando um intervalo de tempo \(\Delta t\). Ou seja, a lei de probabilidades para a posição \(X_{t + \Delta t}\) da partícula dado \(X_t\) é</p>

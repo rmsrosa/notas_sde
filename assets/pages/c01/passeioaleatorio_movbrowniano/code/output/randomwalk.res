@@ -1,0 +1,1 @@
+Plots.AnimatedGif("/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c01/passeioaleatorio_movbrowniano/code/output/randomwalklimit.gif")
