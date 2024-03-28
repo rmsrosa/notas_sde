@@ -31,7 +31,7 @@ $$
 \vdots
 $$
 
-```julia:randomwalkdistrib
+```julia:randomwalk
 #hideall
 using Plots
 using Random
@@ -86,7 +86,11 @@ $$
 $$
 Por exemplo, para $k = 8$, temos $e^{1/12k} \approx 1.01047$, de modo que o erro relativo já é da ordem de 1%, diminuindo rapidamente conforme $k$ aumenta.
 
-A ideia, então, é tomar o limite quando $n, |m| \rightarrow \infty$, mas vamos tomar $n$ crescendo muito mais rapidamente, por razões que ficarão aparentes em seguida. Assumindo, então, $n \gg |m| \gg 1$, de modo que $(n\pm m)/2 \gg 1$ (essa é uma das razões), obtemos
+A ideia, então, é tomar o limite quando $n \rightarrow \infty.$ Por sua vez, $m$ pode ou não ir para infinito também, mas vamos manter sempre $|m \ll n.$ Isso porque, assumindo, $n \gg 1$ e $|m| \ll n,$ temos também
+$$
+    n \pm m \gg 1.
+$$
+Com isso,
 $$
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
 $$
@@ -114,11 +118,11 @@ Portanto,
 $$
 p_n(m) \simeq \sqrt{\frac{2n}{\pi(n^2 - m^2)}} e^{\displaystyle -\frac{m^2}{2n}}.
 $$
-Por outro lado, usando novamente que $|m| \ll n$, temos $|m|/n \ll 1$, de modo que
+Por outro lado, usando novamente que $n \gg |m|,$ temos $|m|/n \ll 1$, de modo que
 $$
 n^2 - m^2 = n^2\left(1 - \frac{m^2}{n^2}\right) \approx n^2.
 $$
-Assim,
+Logo,
 $$
 \sqrt{\frac{2n}{\pi(n^2 - m^2)}} \approx \sqrt{\frac{2}{\pi n}}.
 $$
@@ -137,12 +141,13 @@ $$
 \int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m) \begin{cases} = 0, & n + m \textrm{ ímpar,} \\ \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}, & n + m \textrm{ par.} \end{cases}
 $$
 
-Para garantir que obtemos a probabilidade estimada acima, podemos integrar em todo $(m-1)\ell \leq x \leq (m+1)\ell$. Assim, obtemos, aproximadamente,
-$$ 2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
+Para garantir que obtemos a probabilidade estimada acima, podemos integrar a densidade no intervalo "dobrado" $(m-1)\ell \leq x \leq (m+1)\ell$. Assim, obtemos, aproximadamente,
 $$
-pelo menos para $1 \ll |m| \ll n$, ou seja, para
+2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x = p_n(m) \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
 $$
-1 \ll \frac{|x|}{\ell} \ll \frac{t}{\tau}.
+pelo menos para $n \gg 1,$  $|m| \ll n$, ou seja, em particular, para
+$$
+\frac{|x|}{\ell} \ll \frac{t}{\tau}.
 $$
 Logo, nessa região,
 $$
@@ -155,20 +160,57 @@ $$
 
 Obtivemos, assim, que, para cada $t$, a função $x \mapsto p(t, x)$ é aproximadamente uma Gaussiana com variância $\sigma^2 = 2at$.
 
-Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty$ (exceto quando $t$ e/ou $x$ são nulos, ou seja, em um conjunto de medida nula), com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
+Observe que podemos pensar esse processo limite como tomando $\ell, \tau \rightarrow 0$ mas mantendo a relação $a = \ell^2/2\tau$ fixa. Ou seja, $\tau$ converge para zero muito mais rápido do que $\ell$. Em particular, fixados $x \approx m\ell$ e $t \approx n\tau$, e fazendo $\ell, \tau$ irem para zero, com $a = \ell^2/2\tau$ fixo, vemos que $m, n\rightarrow \infty,$ com $n$ crescendo muito mais rápido que $m$, garantindo a condição de que $|m| \ll n$. Assim, a aproximação acima para $p_n(m)/2\ell$ converge, de fato, para $p(t, x)$.
 
 A condição em $t, x$ pode ser escrita como
 $$
 \ell \ll |x| \ll \frac{\ell}{\tau} t = \frac{a}{2\ell} t.
 $$
-À medida em que $\ell, \tau \rightarrow 0$ com $a$ fixo, temos também $a/2\ell \rightarrow \infty$, de modo que, no limite, a aproximação vale para todo $x \neq 0$ e para $t > 0$ arbitrário. Como $\{x = 0\}$ é de medida nula, deduzimos que a aproximação normal acima vale em todo $(t, x) \in (0, \infty) \times \mathbb{R}.$
+À medida em que $\ell, \tau \rightarrow 0$ com $a$ fixo, temos também $a/2\ell \rightarrow \infty$, de modo que, no limite, a aproximação vale para todo $x\in\mathbb{R}$ e para $t > 0$ arbitrário. Ou seja, obtemos uma convergência em quase toda a parte e deduzimos que a aproximação normal acima vale em todo $(t, x) \in (0, \infty) \times \mathbb{R}.$
 
 Finalmente, observe a semelhança entre a definição de $a$ acima e de $D$ no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:
 $$
 a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 $$
 
-Pensando nesse limite contínuo, e abusando da notação, já que já definimos $X_n$, podemos escrever $X_t$ como a variável aleatória indicando a posição da partícula no instante $t \sim n\tau$.
+De uma forma mais rigorosa, podemos definir, para cada $\tau, \ell > 0,$ as distribuições
+$$
+    p_{\tau, \ell}(t, x) = \frac{p_m(n)}{2\ell} = \frac{1}{2\ell}\frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}\right)!}, \quad (m-1)\ell \leq x < (m+1)x, \;n\tau \leq t < (n+1)\tau, \;n\in \mathbb{Z}^*, \;m\in 2\mathbb{Z}.
+$$
+Assim, podemos mostrar que
+$$
+    \lim_{\tau, \ell \rightarrow 0, \tau/2\ell^2 = a} p_{\tau, \ell}(t, x) = p(t, x),
+$$
+uniformemente em subconjuntos compactos de $(0, \infty) \times \mathbb{R}.$
+
+```julia:randomwalk
+#hideall
+
+t = 1.0
+nmax = 16
+a = 1.0
+xmax = sqrt(2 * a * t * nmax)
+mm = -2*div(nmax,2):2:2*div(nmax,2)
+
+anim = @animate for n in 2:2:nmax
+    factn = factorial(n)
+    tau = t / n
+    ell = sqrt(2 * a * tau)
+
+    plot(titlefont = 10, xaxis = "\$x\$", yaxis = "\$p\$", xlims = (-xmax, xmax), ylims = (-0.1, 0.6), legend = false, size = (800, 500))
+
+    plot!([m * ell for m in mm], [( abs(m) ≤ n ) ? factn / ( 2 * ell * 2^n * factorial(div(n+m, 2)) * factorial(div(n-m, 2)) ) : 0 for m in mm], linetype = :stepmid, title="Distribuição \$p_n(t,x)\$ para \$a=$a,\$ \$t=$t\$ e \$n=$n\$")
+    plot!(range(-xmax, xmax, length=100), x -> exp(-x^2 / (2 * a * t)) / sqrt( 4 * pi * a * t))
+end
+
+gif(anim, fps=1, joinpath(@OUTPUT, "randomwalklimit.gif"))
+```
+\fig{randomwalklimit}
+
+
+## Processo limite do passeio aleatório
+
+Pensando nesse limite contínuo, e abusando da notação, já que já definimos $X_n$, podemos escrever $X_t$ como a variável aleatória indicando a posição da partícula no instante $t \sim n\tau$, associado à distribuição limite $p(t, x).$
 
 ## Equação de difusão
 
@@ -182,10 +224,10 @@ onde $a$ representa o coeficiente de difusão (térmica, no caso do calor).
 
 Como no modelo de Einstein, sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2at$, a **distância quadrática média** percorrida pelas partículas, após um instante $t$, é exatamente esse desvio padrão:
 $$
-\sqrt{\mathbb{E}[x^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
+\sqrt{\mathbb{E}[X_t^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 a t}.
 $$
 
-Se, por outro lado, observarmos $\mathbb{E}(|x|)$, obtemos uma distância da mesma ordem: $\mathbb{E}(|x|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
+Se, por outro lado, observarmos $\mathbb{E}(|X_t|)$, obtemos uma distância da mesma ordem: $\mathbb{E}(|X_t|) = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
 
 ## Incrementos
 
