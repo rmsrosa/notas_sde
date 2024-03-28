@@ -12,6 +12,17 @@
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
   
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
 
   
     <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
@@ -358,25 +369,27 @@
 \[
 p_0 = (\ldots, 0, 0, 1, 0, 0, \ldots).
 \]
-<p>Após o primeiro passo, temos \(p_1(\pm 1) = 1/2\) e o \(p_1(m) = 0\) para \(m \neq \pm 1\). De outra forma, temos</p>
+<p>Após o primeiro passo, temos \(p_1(\pm 1) = 1/2\) e o \(p_1(m) = 0\) para \(m \neq \pm 1\). Ou seja,</p>
 \[
 p_1 = (\ldots, 0, 1/2, 0, 1/2, 0, \ldots).
 \]
 <p>No instante seguinte,</p>
 \[
-p_2 = (\ldots, 0, 1/4, 0, 1/2, 0, 1/4, 0, \ldots),
+p_2 = \left(\ldots, 0, \frac{1}{4}, 0, \frac{1}{2}, 0, \frac{1}{4}, 0, \ldots \right),
 \]
 <p>e assim por diante:</p>
 \[
-p_3 = (\ldots, 0, 1/4, 0, 1/2, 0, 1/4, 0, \ldots),
+p_3 = \left(\ldots, 0, \frac{1}{8}, 0, \frac{3}{8}, 0, \frac{3}{8}, 0, \frac{1}{8}, 0, \ldots\right),
 \]
 \[
-p_4 = (\ldots, 0, 1/8, 0, 3/8, 0, 3/8, 0, 1/8, 0, \ldots),
+p_4 = \left(\ldots, 0, \frac{1}{16}, 0, \frac{5}{16}, 0, \frac{3}{16}, 0, \frac{5}{16}, 0, \frac{1}{16}, 0, \ldots\right),
 \]
 \[
-p_5 = (\ldots, 0, 1/16, 0, 5/16, 0, 3/8, 0, 5/16, 0, 1/16, 0, \ldots),
+\vdots
 \]
-<p>etc. Podemos continuar e buscar um padrão para a sequência, mas podemos deduzir os valores de uma forma mais simples.</p>
+
+<img src="/notas_sde/assets/pages/c01/passeioaleatorio_movbrowniano/code/output/randomwalkdistrib.gif" alt="">
+<p>Podemos continuar e buscar um padrão para a sequência, mas podemos deduzir os valores de uma forma mais simples.</p>
 <p>Para uma partícula chegar na posição \(x = \ell m\), ela deve dar \(i\) passos para a direita e \(j\) passos para a esquerda, com \(i - j = m\). Para isso acontecer no passo \(n\), devemos ter \(i + j = n\). Logo, devemos ter \(i = (n + m)/2\) passos para a direita e \(j = (n - m)/2\) passos para a esquerda. Cada passo ocorre com probabilidade \(1/2\). Assim, após \(n\) passos, cada caminho ocorre com probabilidade \(1/2^n\). Resta saber quantos caminhos existem até um determinado ponto \(x = \ell m\).</p>
 <p>Naturalmente, não há caminho caso \(m < -n\) ou \(m > n\). E há apenas um caminho para \(m = -n\) e \(m = n\). Mas pode haver vários caminhos ligando a outros pontos. Ou nenhum. De fato, se \(n\) e \(m\) tiverem paridades diferentes, então \(n + m\) é ímpar e não tem como darmos \(i = (n + m)/2\) passos para a direita, nem \(j = (n - m)/2\) para a esquerda. Resta, agora, saber o número de caminhos possíveis quando \(n\) e \(m\) têm a mesma paridade e \(|m| < n\).</p>
 <p>Para ver isso, vamos focar no fato de que, para chegarmos em \(x = m\ell\) após \(n\) passos, devemos dar \((n + m)/2\) passos para a direita. Se, por exemplo, \(n = 6\) e \(m = 2\), devemos dar \((n + m)/2 = 4\) passos para a direita, mas eles podem acontecer em quaisquer quatro dos seis momentos entre \(\tau\) e \(n\tau\). Isso nos dá \(\left(\begin{matrix} n \\ (n + m)/2 \end{matrix}\right) = \left(\begin{matrix} 6 \\ 4 \end{matrix}\right) = 15\) possibilidades de caminhos, de um total de \(2^6\). Ou seja, \(p_6(2) = 15 / 64\). Mais geralmente, temos</p>
@@ -385,7 +398,7 @@ p_n(m) = \frac{1}{2^n}\frac{n!}{\left(\frac{n + m}{2}\right)!\left(\frac{n-m}{2}
 \]
 <p>Podemos reconhecer isso como a distribuição binomial</p>
 \[
-p_n(m) = \left(\begin{matrix} n \\ k \end{matrix}\right) p^k (1-p)^{n-k}, \qquad k = k(n, m) = \frac{n + m}{2},
+p_n(m) = \left(\begin{matrix} n \\ k \end{matrix}\right) p^k (1-p)^{n-k}, \qquad k = k(n, m) = \frac{n + m}{2}, \quad p = \frac{1}{2},
 \]
 <p>nos dando a probabilidade de \((n+m)/2\) sucessos em \(n\) sorteios de Bernoulli, com probabilidade \(p = 1 - p = 1/2\) de cada realização, com as realizações sendo os passos \(\ell\) e \(-\ell\).</p>
 <p>Denotando por \(X_n\) a posição da partícula no passo \(n \in \mathbb{Z}^* = \{0, 1, 2, \ldots\}\), temos que \(\{X_n\}_{n \in \mathbb{N}}\) é um processo estocástico discreto, com cada passo \(\Delta X = X_{n + 1} - X_n \sim \mathrm{Bernoulli}(\pm \ell, 1/2)\), representando o teste de Bernoulli com valores possíveis \(\pm \ell\). Temos, ainda, que cada \(X_n\) é uma distribuição binomial com possíveis valores \(-n\ell, \ldots, n\ell\), que podemos denotar por</p>
@@ -397,11 +410,11 @@ X_n \sim B(\{-n\ell, \ldots, n\ell\}, 1/2),
 X_0 \sim \delta_0.
 \]
 <h2 id="limite_contínuo"><a href="#limite_contínuo" class="header-anchor">Limite contínuo</a></h2>
-<p>Assintoticamente, temos, pela fórmula de Stirling, \(k! \simeq \sqrt{2\pi k} (k / e)^k\), quando \(k \rightarrow \infty\). Mais precisamente, vale a desigualdade</p>
+<p>Assintoticamente, temos, pela fórmula de Stirling, que \(k! \simeq \sqrt{2\pi k} (k / e)^k\), quando \(k \rightarrow \infty\). Mais precisamente, vale a desigualdade</p>
 \[
 \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k+1}} < k! < \sqrt{2\pi k} \left( \frac{k}{e} \right)^k e^{\frac{1}{12k}}, \quad \forall k\in\mathbb{N}.
 \]
-<p>Assim, para \(k = 8\), temos \(e^{1/12k} \approx 1.01047\), de modo que o erro relativo já é da ordem de 1&#37;.</p>
+<p>Por exemplo, para \(k = 8\), temos \(e^{1/12k} \approx 1.01047\), de modo que o erro relativo já é da ordem de 1&#37;, diminuindo rapidamente conforme \(k\) aumenta.</p>
 <p>A ideia, então, é tomar o limite quando \(n, |m| \rightarrow \infty\), mas vamos tomar \(n\) crescendo muito mais rapidamente, por razões que ficarão aparentes em seguida. Assumindo, então, \(n \gg |m| \gg 1\), de modo que \((n\pm m)/2 \gg 1\) &#40;essa é uma das razões&#41;, obtemos</p>
 \[
 p_n(m) \simeq \frac{1}{2^n}\frac{\sqrt{2\pi n} (n / e)^n}{\sqrt{\pi (n + m)} ((n + m) / 2e)^{(n + m)/2}\sqrt{\pi (n - m)} ((n - m) / 2e)^{(n - m)/2}}.
@@ -444,7 +457,11 @@ p_n(m) \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}.
 \[
 \int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m).
 \]
-<p>Mas \(p_n(m)\) pode ser nulo quando \(n+m\) é ímpar. Assim, para garantir que obtemos a probabilidade estimada acima, devemo integrar em todo \((m-1)\ell \leq x \leq (m+1)\ell\). Assim, obtemos, aproximadamente,</p>
+<p>Mas \(p_n(m)\) pode ser nulo quando \(n+m\) é ímpar, ou seja,</p>
+\[
+\int_{(m-1/2)\ell}^{(m+1/2)\ell} p(t, x)\;\mathrm{d}x = p_n(m) \begin{cases} = 0, & n + m \textrm{ ímpar,} \\ \approx \sqrt{\frac{2}{\pi n}}e^{\displaystyle -\frac{m^2}{2n}}, & n + m \textrm{ par.} \end{cases}
+\]
+<p>Para garantir que obtemos a probabilidade estimada acima, podemos integrar em todo \((m-1)\ell \leq x \leq (m+1)\ell\). Assim, obtemos, aproximadamente,</p>
 \[ 2\ell p(t, x) \approx \int_{(m-1)\ell}^{(m+1)\ell} p(t, x)\;\mathrm{d}x \approx \sqrt{\frac{2}{\pi n}}e^{-\frac{m^2}{2n}} = \sqrt{\frac{2\tau}{\pi t}}e^{-\frac{\tau x^2}{2t\ell^2}},
 \]
 <p>pelo menos para \(1 \ll |m| \ll n\), ou seja, para</p>
@@ -461,7 +478,12 @@ a = \frac{\ell^2}{2\tau}.
 \]
 <p>Obtivemos, assim, que, para cada \(t\), a função \(x \mapsto p(t, x)\) é aproximadamente uma Gaussiana com variância \(\sigma^2 = 2at\).</p>
 <p>Observe que podemos pensar esse processo limite como tomando \(\ell, \tau \rightarrow 0\) mas mantendo a relação \(a = \ell^2/2\tau\) fixa. Ou seja, \(\tau\) converge para zero muito mais rápido do que \(\ell\). Em particular, fixados \(x \approx m\ell\) e \(t \approx n\tau\), e fazendo \(\ell, \tau\) irem para zero, com \(a = \ell^2/2\tau\) fixo, vemos que \(m, n\rightarrow \infty\) &#40;exceto quando \(t\) e/ou \(x\) são nulos, ou seja, em um conjunto de medida nula&#41;, com \(n\) crescendo muito mais rápido que \(m\), garantindo a condição de que \(|m| \ll n\). Assim, a aproximação acima para \(p_n(m)/2\ell\) converge, de fato, para \(p(t, x)\).</p>
-<p>Observe, ainda, a semelhança entre a definição de \(a\) acima e de \(D\) no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:</p>
+<p>A condição em \(t, x\) pode ser escrita como</p>
+\[
+\ell \ll |x| \ll \frac{\ell}{\tau} t = \frac{a}{2\ell} t.
+\]
+<p>À medida em que \(\ell, \tau \rightarrow 0\) com \(a\) fixo, temos também \(a/2\ell \rightarrow \infty\), de modo que, no limite, a aproximação vale para todo \(x \neq 0\) e para \(t > 0\) arbitrário. Como \(\{x = 0\}\) é de medida nula, deduzimos que a aproximação normal acima vale em todo \((t, x) \in (0, \infty) \times \mathbb{R}.\)</p>
+<p>Finalmente, observe a semelhança entre a definição de \(a\) acima e de \(D\) no modelo de Einstein, onde, no primeiro caso, o passo é fixo, enquanto que, no segundo caso, o passo é uma variável aleatória:</p>
 \[
 a = \frac{\ell^2}{2\tau}, \qquad D = \frac{\mathbb{E}(\ell^2)}{2\tau}.
 \]
@@ -552,7 +574,7 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         </div>
     
 
-    Last modified: March 27, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: March 28, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -564,6 +586,9 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi a t)^{3/2}} e^{-\frac{|\mathbf{x}|^2}{4Dt}}.
         <script>renderMathInElement(document.body)</script>
     
 
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>
