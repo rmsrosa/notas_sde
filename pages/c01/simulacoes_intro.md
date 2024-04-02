@@ -76,7 +76,7 @@ end
 De posse da solução podemos visualizar o crescimento exponencial e compará-lo com a solução exata
 
 ```julia:simulacoes_intro
-plot(t, x, title="Crescimento exponencial (x₀ = $x₀, μ = $μ, T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação")
+plot(t, x, title="Crescimento exponencial \$(x_0 = $x₀, \\mu = $μ, T = $T, \\Delta t = $Δt)\$", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação")
 
 plot!(t, t -> x₀ * exp(μ * t), label="sol. exata")
 
@@ -97,7 +97,7 @@ for n in 2:N+1
     x[n] = (1.0 + μ * Δt)x[n-1]
 end
 
-plot(t, x, title="Crescimento exponencial (x₀ = $x₀, μ = $μ, T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação", color=1)
+plot(t, x, title="Crescimento exponencial \$(x_0 = $x₀, \\mu = $μ, T = $T, \\Delta t = $Δt)\$", titlefont = 10, xlabel = "t", ylabel="x", label="aproximação", color=1)
 
 savefig(joinpath(@OUTPUT, "intro_sol_approx.svg")) # hide
 ```
@@ -116,7 +116,7 @@ M = 100
 σ = 0.02
 μ = μ̄ .+ σ * randn(rng, M)
 
-histogram(μ, bins = 20, xlims=(0.0, 0.2))
+histogram(μ, bins = 20, xlims=(0.0, 0.2), title="Histogram das realizações de \$\\mu \\sim \\mathcal{N}(\\bar\\mu, \\sigma^2); \\bar\\mu = $μ̄, \\sigma=$σ \$", xlabel="\$\\mu\$", titlefont=10, label=false)
 ```
 
 Agora, vamos resolver a equação para cada valor sorteado.
@@ -132,7 +132,7 @@ for n in 2:N+1
     x[n, :] .= (1.0 .+ μ * Δt) .* x[n-1, :]
 end
 
-plot(t, x, alpha = 0.2, title="Conjunto de soluções (x₀ = $x₀, μ_t = N($μ̄, $σ), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
+plot(t, x, alpha = 0.2, title="Conjunto de soluções \$(x_0 = $x₀, \\mu \\sim \\mathcal{N}($μ̄, {$σ}^2), T = $T, \\Delta t = $Δt)\$", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
 plot!(t, x[:, 1], label="uma realização", color=2)
 
 savefig(joinpath(@OUTPUT, "intro_uma_realizacao_edorv.svg")) # hide
@@ -149,17 +149,19 @@ onde $\{\mu_t\}_t$ é um processo aleatório dado por $\mu_t = \bar\mu + \sigma 
 
 ```julia:simulacoes_intro
 μ̄ = 0.1
-σ = 0.1
+σ = 0.05
+wt = 0
 
 for m in 1:M
     x[1, m] = x₀
     for n in 2:N+1
-        μt = μ̄ + σ * randn(rng) * √Δt
+        wt += randn(rng) * √Δt
+        μt = μ̄ + σ * sin(wt)
         x[n, m] = (1.0 + μt * Δt) .* x[n-1, m]
     end
 end
 
-plot(t, x, alpha = 0.2, title="Soluções RODE (x₀ = $x₀, μ_t = $μ̄ + $σ W_t), T = $T, Δt = $Δt)", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
+plot(t, x, alpha = 0.2, title="Soluções RODE \$(x_0 = $x₀, \\mu_t = $μ̄ + $σ\\sin(W_t), T = $T, \\Delta t = $Δt)\$", titlefont = 10, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
 plot!(t, x[:, 1], label="uma realização", color=2)
 
 savefig(joinpath(@OUTPUT, "intro_uma_realizacao_rode.svg")) # hide
@@ -181,12 +183,12 @@ onde $\{W_t\}_t$ é um processo aleatório. Mais especificamente, vamos assumir 
 for m in 1:M
     x[1, m] = x₀
     for n in 2:N+1
-        dw = randn(rng) * Δt^0.5
+        dw = randn(rng) * √Δt
         x[n, m] = (1.0 + μ̄ * Δt) * x[n-1, m] + σ * x[n-1, m] * dw
     end
 end
 
-plot(t, x, alpha = 0.2, title="Soluções SDE (x₀ = $x₀, μ̄ = $μ̄, σ = $σ, dW_t = N(0, Δt), T = $T, Δt = $Δt)", titlefont = 9, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
+plot(t, x, alpha = 0.2, title="Soluções SDE \$(x_0 = $x₀, \\bar\\mu = $μ̄, \\sigma = $σ, dW_t \\sim \\mathcal{N}(0, \\Delta t), T = $T, Δt = $Δt)\$", titlefont = 9, xlabel = "t", ylabel="x", label=permutedims(["soluções"; fill(nothing, M-1)]), color=1)
 plot!(t, x[:, 1], label="uma realização", color=2)
 
 savefig(joinpath(@OUTPUT, "intro_uma_realizacao_sde.svg")) # hide
