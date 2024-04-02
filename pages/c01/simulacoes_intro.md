@@ -150,12 +150,12 @@ onde $\{\mu_t\}_t$ é um processo aleatório dado por $\mu_t = \bar\mu + \sigma 
 ```julia:simulacoes_intro
 μ̄ = 0.1
 σ = 0.05
-wt = 0
+wt = 0.0
 
 for m in 1:M
     x[1, m] = x₀
     for n in 2:N+1
-        wt += randn(rng) * √Δt
+        global wt += randn(rng) * √Δt
         μt = μ̄ + σ * sin(wt)
         x[n, m] = (1.0 + μt * Δt) .* x[n-1, m]
     end
