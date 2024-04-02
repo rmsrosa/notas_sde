@@ -231,7 +231,7 @@ O argumento acima, na verdade, não é uma demonstração completa, pois a desig
 
 ## Exercícios
 
-1. Considere a versão tridimensional do modelo de Einstein, onde $\mathbf{x} = (x, y, z) \in \mathbb{R}^3$ e os passos $\boldsymbol{\ell} = (\ell_x, \ell_y, \ell_z) \in \mathbb{R}^3$ são dados de acordo com uma distribuição de probabilidades $g = g(\boldsymbol\ell)$ que é estacionária, homogênea e isotrópica, com passos independentes. Mostre que a densidade de probabilidades $p(t, \mathbf{x}) = p(t, x, y, z)$ da posição da partícula satisfaz a equação de difusão
+1. Considere a versão tridimensional do modelo de Einstein, onde $\mathbf{x} = (x, y, z) \in \mathbb{R}^3$ e os passos $\boldsymbol{\ell} = (\ell_x, \ell_y, \ell_z) \in \mathbb{R}^3$ são dados de acordo com uma distribuição de probabilidades $g = g(\boldsymbol\ell)$ que é estacionária, homogênea e isotrópica, com passos independentes. Mostre que a densidade de probabilidades $p(t, \mathbf{x}) = p(t, x, y, z)$ da posição da partícula satisfaz, aproximadamente, a equação de difusão
 $$
 \frac{\partial p}{\partial t} = D \Delta p,
 $$
@@ -239,7 +239,7 @@ onde $\Delta = \partial_x^2 + \partial_y^2 + \partial_z^2$ é o operador Laplaci
 $$
 p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x}|^2}{4Dt}}.
 $$
-Mostre, ainda, que a distância média percorrida satisfaz
+Mostre, ainda, que, segundo essa aproximação, a distância média percorrida satisfaz
 $$
 \sqrt{\mathbb{E}[|X_t|^2]} = 6Dt.
 $$
