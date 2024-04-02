@@ -403,7 +403,7 @@ for n in 2:N&#43;1
     x&#91;n&#93; &#61; &#40;1.0 &#43; μ * Δt&#41;x&#91;n-1&#93;
 end</code></pre>
 <p>De posse da solução podemos visualizar o crescimento exponencial e compará-lo com a solução exata</p>
-<pre><code class="language-julia">plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;&#41;
+<pre><code class="language-julia">plot&#40;t, x, title&#61;&quot;Crescimento exponencial \&#36;&#40;x_0 &#61; &#36;x₀, \\mu &#61; &#36;μ, T &#61; &#36;T, \\Delta t &#61; &#36;Δt&#41;\&#36;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;&#41;
 
 plot&#33;&#40;t, t -&gt; x₀ * exp&#40;μ * t&#41;, label&#61;&quot;sol. exata&quot;&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_exata.svg" alt="">
@@ -418,7 +418,7 @@ for n in 2:N&#43;1
     x&#91;n&#93; &#61; &#40;1.0 &#43; μ * Δt&#41;x&#91;n-1&#93;
 end
 
-plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;</code></pre>
+plot&#40;t, x, title&#61;&quot;Crescimento exponencial \&#36;&#40;x_0 &#61; &#36;x₀, \\mu &#61; &#36;μ, T &#61; &#36;T, \\Delta t &#61; &#36;Δt&#41;\&#36;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_approx.svg" alt="">
 <h2 id="modelo_com_parâmetros_aleatórios"><a href="#modelo_com_parâmetros_aleatórios" class="header-anchor">Modelo com parâmetros aleatórios</a></h2>
 <p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2)\).</p>
@@ -428,7 +428,7 @@ plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀
 σ &#61; 0.02
 μ &#61; μ̄ .&#43; σ * randn&#40;rng, M&#41;
 
-histogram&#40;μ, bins &#61; 20, xlims&#61;&#40;0.0, 0.2&#41;&#41;</code></pre>
+histogram&#40;μ, bins &#61; 20, xlims&#61;&#40;0.0, 0.2&#41;, title&#61;&quot;Histogram das realizações de \&#36;\\mu \\sim \\mathcal&#123;N&#125;&#40;\\bar\\mu, \\sigma^2&#41;; \\bar\\mu &#61; &#36;μ̄, \\sigma&#61;&#36;σ \&#36;&quot;, xlabel&#61;&quot;\&#36;\\mu\&#36;&quot;, titlefont&#61;10, label&#61;false&#41;</code></pre>
 <p>Agora, vamos resolver a equação para cada valor sorteado.</p>
 <pre><code class="language-julia">Δt &#61; 0.2
 t &#61; t0:Δt:T
@@ -440,7 +440,7 @@ for n in 2:N&#43;1
     x&#91;n, :&#93; .&#61; &#40;1.0 .&#43; μ * Δt&#41; .* x&#91;n-1, :&#93;
 end
 
-plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Conjunto de soluções &#40;x₀ &#61; &#36;x₀, μ_t &#61; N&#40;&#36;μ̄, &#36;σ&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
+plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Conjunto de soluções \&#36;&#40;x_0 &#61; &#36;x₀, \\mu \\sim \\mathcal&#123;N&#125;&#40;&#36;μ̄, &#123;&#36;σ&#125;^2&#41;, T &#61; &#36;T, \\Delta t &#61; &#36;Δt&#41;\&#36;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_edorv.svg" alt="">
 <h2 id="modelo_de_equação_diferencial_aleatória"><a href="#modelo_de_equação_diferencial_aleatória" class="header-anchor">Modelo de equação diferencial aleatória</a></h2>
@@ -450,19 +450,21 @@ plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&
 \]
 <p>onde \(\{\mu_t\}_t\) é um processo aleatório dado por \(\mu_t = \bar\mu + \sigma \sin(W_t)\), onde \(\bar\mu, \sigma > 0\) e \(\{W_t\}_{t\geq 0}\) é tal que \(W_0 = 0\), e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\) independentes.</p>
 <pre><code class="language-julia">μ̄ &#61; 0.1
-σ &#61; 0.1
+σ &#61; 0.05
+wt &#61; 0
 
 for m in 1:M
     x&#91;1, m&#93; &#61; x₀
     for n in 2:N&#43;1
-        μt &#61; μ̄ &#43; σ * randn&#40;rng&#41; * √Δt
+        wt &#43;&#61; randn&#40;rng&#41; * √Δt
+        μt &#61; μ̄ &#43; σ * sin&#40;wt&#41;
         x&#91;n, m&#93; &#61; &#40;1.0 &#43; μt * Δt&#41; .* x&#91;n-1, m&#93;
     end
 end
 
-plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções RODE &#40;x₀ &#61; &#36;x₀, μ_t &#61; &#36;μ̄ &#43; &#36;σ W_t&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
+plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções RODE \&#36;&#40;x_0 &#61; &#36;x₀, \\mu_t &#61; &#36;μ̄ &#43; &#36;σ\\sin&#40;W_t&#41;, T &#61; &#36;T, \\Delta t &#61; &#36;Δt&#41;\&#36;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;</code></pre>
-<img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_rode.svg" alt="">
+<p><span style="color:red;">// Image matching '/assets/pages/c01/simulacoes_intro/code/intro_uma_realizacao_rode' not found. //</span></p>
 <h2 id="modelo_de_equação_diferencial_estocástica"><a href="#modelo_de_equação_diferencial_estocástica" class="header-anchor">Modelo de equação diferencial estocástica</a></h2>
 <p>Finalmente, vamos considerar a equação estocástica</p>
 \[
@@ -475,12 +477,12 @@ plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&
 for m in 1:M
     x&#91;1, m&#93; &#61; x₀
     for n in 2:N&#43;1
-        dw &#61; randn&#40;rng&#41; * Δt^0.5
+        dw &#61; randn&#40;rng&#41; * √Δt
         x&#91;n, m&#93; &#61; &#40;1.0 &#43; μ̄ * Δt&#41; * x&#91;n-1, m&#93; &#43; σ * x&#91;n-1, m&#93; * dw
     end
 end
 
-plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções SDE &#40;x₀ &#61; &#36;x₀, μ̄ &#61; &#36;μ̄, σ &#61; &#36;σ, dW_t &#61; N&#40;0, Δt&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 9, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
+plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções SDE \&#36;&#40;x_0 &#61; &#36;x₀, \\bar\\mu &#61; &#36;μ̄, \\sigma &#61; &#36;σ, dW_t \\sim \\mathcal&#123;N&#125;&#40;0, \\Delta t&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;\&#36;&quot;, titlefont &#61; 9, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
 plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_sde.svg" alt="">
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
