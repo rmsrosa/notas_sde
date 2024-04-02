@@ -405,9 +405,7 @@ end</code></pre>
 <p>De posse da solução podemos visualizar o crescimento exponencial e compará-lo com a solução exata</p>
 <pre><code class="language-julia">plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;&#41;
 
-plot&#33;&#40;t, t -&gt; x₀ * exp&#40;μ * t&#41;, label&#61;&quot;sol. exata&quot;&#41;
-
-savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_exata.svg&quot;&#41;&#41;</code></pre>
+plot&#33;&#40;t, t -&gt; x₀ * exp&#40;μ * t&#41;, label&#61;&quot;sol. exata&quot;&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_exata.svg" alt="">
 <p>Refinando a malha, obtemos uma solução mais próxima, onde quase não vemos diferença:</p>
 <pre><code class="language-julia">Δt &#61; 0.02
@@ -420,9 +418,7 @@ for n in 2:N&#43;1
     x&#91;n&#93; &#61; &#40;1.0 &#43; μ * Δt&#41;x&#91;n-1&#93;
 end
 
-plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;
-
-savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_sol_approx.svg&quot;&#41;&#41;</code></pre>
+plot&#40;t, x, title&#61;&quot;Crescimento exponencial &#40;x₀ &#61; &#36;x₀, μ &#61; &#36;μ, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_approx.svg" alt="">
 <h2 id="modelo_com_parâmetros_aleatórios"><a href="#modelo_com_parâmetros_aleatórios" class="header-anchor">Modelo com parâmetros aleatórios</a></h2>
 <p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2)\).</p>
@@ -445,9 +441,7 @@ for n in 2:N&#43;1
 end
 
 plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Conjunto de soluções &#40;x₀ &#61; &#36;x₀, μ_t &#61; N&#40;&#36;μ̄, &#36;σ&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
-plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
-
-savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_edorv.svg&quot;&#41;&#41;</code></pre>
+plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_edorv.svg" alt="">
 <h2 id="modelo_de_equação_diferencial_aleatória"><a href="#modelo_de_equação_diferencial_aleatória" class="header-anchor">Modelo de equação diferencial aleatória</a></h2>
 <p>Consideramos, agora, a equação aleatória</p>
@@ -467,16 +461,14 @@ for m in 1:M
 end
 
 plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções RODE &#40;x₀ &#61; &#36;x₀, μ_t &#61; &#36;μ̄ &#43; &#36;σ W_t&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
-plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
-
-savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_rode.svg&quot;&#41;&#41;</code></pre>
+plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_rode.svg" alt="">
 <h2 id="modelo_de_equação_diferencial_estocástica"><a href="#modelo_de_equação_diferencial_estocástica" class="header-anchor">Modelo de equação diferencial estocástica</a></h2>
 <p>Finalmente, vamos considerar a equação estocástica</p>
 \[
 \mathrm{d}X_t = \bar\mu X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t,
 \]
-<p>onde \(\{W_t\}_t\) é um processo aleatório. Mais especificamente, vamos assumir que \(\{W_t\}_t\) é um <strong>processo de Lévy</strong>, tendo incrementos independentes e estacionários, com \(\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)\).</p>
+<p>onde \(\{W_t\}_t\) é um processo aleatório. Mais especificamente, vamos assumir que \(\{W_t\}_t\) modela um <strong>movimento Browniano,</strong> tendo incrementos independentes e estacionários, dados por \(\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)\).</p>
 <pre><code class="language-julia">μ̄ &#61; 0.1
 σ &#61; 0.05
 
@@ -489,9 +481,7 @@ for m in 1:M
 end
 
 plot&#40;t, x, alpha &#61; 0.2, title&#61;&quot;Soluções SDE &#40;x₀ &#61; &#36;x₀, μ̄ &#61; &#36;μ̄, σ &#61; &#36;σ, dW_t &#61; N&#40;0, Δt&#41;, T &#61; &#36;T, Δt &#61; &#36;Δt&#41;&quot;, titlefont &#61; 9, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;permutedims&#40;&#91;&quot;soluções&quot;; fill&#40;nothing, M-1&#41;&#93;&#41;, color&#61;1&#41;
-plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;
-
-savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&#41;</code></pre>
+plot&#33;&#40;t, x&#91;:, 1&#93;, label&#61;&quot;uma realização&quot;, color&#61;2&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_uma_realizacao_sde.svg" alt="">
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
@@ -501,7 +491,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
 \[
 \frac{\mathrm{d}x}{\mathrm{d}t} = (\alpha - \beta x) x, \quad x(0) = x_0,
 \]
-<p>com \(\alpha, \beta > 0, 0 < x_0 < \alpha / \beta, t_0 = 0, T > 0, 0 < \Delta t \ll T \) de sua escolha. Trace o gráfico da solução.</p>
+<p>com \(\alpha, \beta > 0, 0 < x_0 < \alpha / \beta, t_0 = 0, T > 0, 0 < \Delta t \ll T \) de sua escolha. Trace o gráfico da solução. Escolha parâmetros apropriados para que a mudança de concavidade, da solução, seja visível.</p>
 <ol start="2">
 <li><p>Resolva, via método de Euler, a equação diferencial</p>
 </li>
@@ -513,7 +503,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
 \[
 \alpha \sim \mathcal{N}(\bar\alpha, \sigma_\alpha^2), \beta \sim \mathcal{N}(\bar\beta, \sigma_\beta^2),
 \]
-<p>com \(\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta, \bar{x}_0, \sigma_{x_0} > 0, t_0 = 0, T > 0, 0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros</p>
+<p>com \(\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta, \bar{x}_0, \sigma_{x_0} > 0, t_0 = 0, T > 0, 0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Escolha parâmetros apropriados para que boa parte das realizações exiba a mudança de concavidade.</p>
 <ol start="3">
 <li><p>Resolva, via método de Euler, a equação diferencial aleatória</p>
 </li>
@@ -521,7 +511,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
 \[
 \mathrm{d}X_t/\mathrm{d}t = (A_t - b X_t) X_t, \quad X_0 = x_0,
 \]
-<p>onde \(A_t = a + \sigma\sin(W_t)\) e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(a, b, \sigma > 0\), \(0 < x_0 < a / b\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.</p>
+<p>onde \(A_t = a + \sigma\sin(W_t)\) e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(a, b, \sigma > 0\), \(0 < x_0 < a / b\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Escolha parâmetros apropriados para que a <em>média</em> das realizações exiba a mudança de concavidade.</p>
 <ol start="4">
 <li><p>Resolva, via método de Euler, a equação diferencial estocástica</p>
 </li>
@@ -529,7 +519,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
 \[
 \mathrm{d}X_t = (\alpha - \beta X_t) X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t, \quad X_0 = x_0,
 \]
-<p>onde \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(\alpha, \beta > 0\), \(0 < x_0 < \alpha / \beta\), \(\sigma > 0\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros.</p>
+<p>onde \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(\alpha, \beta > 0\), \(0 < x_0 < \alpha / \beta\), \(\sigma > 0\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Novamente, escolha parâmetros apropriados para que a média das realizações exiba a mudança de concavidade.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -553,7 +543,7 @@ savefig&#40;joinpath&#40;@OUTPUT, &quot;intro_uma_realizacao_sde.svg&quot;&#41;&
         </div>
     
 
-    Last modified: March 28, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 02, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
