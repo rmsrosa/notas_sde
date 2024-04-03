@@ -52,7 +52,7 @@ Fazendo $\eta = b + a\xi$, de modo que $(\eta - b)/a = \xi$ e $\mathrm{d}\xi = \
 $$
 F_Y(y) = \frac{1}{\sqrt{2\pi a^2\sigma^2}}\int_{-\infty}^y e^{- \frac{(\eta - b - a\mu)^2}{2a^2\sigma^2}}\;\mathrm{d}\eta.
 $$
-Isso prova que $Y \sim \mathbb{N}(b + a\mu, a^2\sigma^2)$.
+Isso prova que $Y \sim \mathcal{N}(b + a\mu, a^2\sigma^2)$.
 
 ## Transformação de várias variáveis aleatórias
 
