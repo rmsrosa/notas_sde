@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Processos discretos</title>  
+   <title>Processos em tempos discretos</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -136,10 +136,10 @@
     <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos em tempos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos em tempos contínuos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
@@ -350,7 +350,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/processos_continuos"><kbd>→</kbd> 4.3. Processos contínuos</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/processos_continuos"><kbd>→</kbd> 4.3. Processos em tempos contínuos</a>
 </span>
     </p>
 </div>
@@ -361,7 +361,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">4.2. Processos discretos</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.2. Processos em tempos discretos</a></h1>
 <p>A nossa intenção principal é trabalhar com processos contínuos, já que equações diferenciais estocásticas e aleatórias envolvem variáveis independentes contínuas, gerando, portanto, processos contínuos. Mas é ilustrativo iniciar os estudos de processos estocásticos com processos discretos. Além disso, alguns processos estocásticos contínuos aparecem naturalmente como limites de processos discretos.</p>
 <h2 id="processo_de_bernoulli_em_tempo_finito"><a href="#processo_de_bernoulli_em_tempo_finito" class="header-anchor">Processo de Bernoulli em tempo finito</a></h2>
 <p>Vamos começar com um processo de Bernoulli em um tempo discreto e finito \(I = \{1, 2, \ldots, N\}\), onde \(N \in \mathbb{N}\). Há dois estados possíveis, digamos \(\Sigma = \{0, 1\}\), indicando, por exemplo, o resultado do lançamento de uma moeda &#40;&quot;coroa&quot; ou &quot;cara&quot;&#41; ou de um teste de laboratório &#40;&quot;negativo&quot;, &quot;positivo&quot;&#41;.</p>
@@ -370,7 +370,7 @@
 \[
 \mathbb{P}(X = x) = p^i(1-p)^{n-i}, \qquad i = \#\{n; \; x_n = 1\}.
 \]
-<p>Podemos interpretar o resultado do teste de Bernoulli em cada passo \(n\) como uma variável aleatória \(X_n\) nesse espaço \((\Sigma, \mathcal{A}, \mathbb{P})\). A sequência \(\{X_n\}_{n = 1, \ldots, N}\) é um processo aleatório discreto. Um determinado resultado no instante \(n\) tem probabilidades</p>
+<p>Podemos interpretar o resultado do teste de Bernoulli em cada passo \(n\) como uma variável aleatória \(X_n\) nesse espaço \((\Omega, \mathcal{F}, \mathbb{P})\). A sequência \(\{X_n\}_{n = 1, \ldots, N}\) é um processo aleatório discreto. Um determinado resultado no instante \(n\) tem probabilidades</p>
 \[
 \mathbb{P}(X_n = 1) = \mathbb{P}(\{x \in \Omega; x_n = 1\}) = p,
 \]
@@ -403,7 +403,7 @@ X_n \sim \mathrm{Bernoulli}(p).
 \]
 <p>onde \(i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}\).</p>
 <h2 id="passeio_aleatório"><a href="#passeio_aleatório" class="header-anchor">Passeio aleatório</a></h2>
-<p>Nesse caso, \(I = \mathbb{Z}^* = \{0, 1, 2, \ldots\}\), o conjunto de estados possíveis é \(\Sigma = \mathbb{Z}\) e o espaço amostral pode ser tomado como \(\Omega = \Sigma^{\mathbb{Z}^*} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}\). Novamente, \(\Omega\) é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição \(m\), em um determinado instante \(n\):</p>
+<p>Nesse caso, \(I = \mathbb{Z}^+ = \mathbb{N}_0 = \{0, 1, 2, \ldots\}\), o conjunto de estados possíveis é \(\Sigma = \mathbb{Z}\) e o espaço amostral pode ser tomado como \(\Omega = \Sigma^I = \mathbb{Z}^{\mathbb{Z}^+} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}\). Novamente, \(\Omega\) é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição \(m\), em um determinado instante \(n\):</p>
 \[
 \mathbb{P}(X_n = m) = \begin{cases}
   \displaystyle \frac{1}{2^n} \left(\begin{matrix} n \\ \frac{n + m}{2} \end{matrix}\right), & |m| \leq n \text{ e $m$ e $n$ com a mesma paridade} \\
@@ -418,7 +418,7 @@ X_n \sim \mathrm{Bernoulli}(p).
 <img src="/notas_sde/assets/pages/c04/processos_discretos/code/output/passeio_aleatorio.svg" alt="">
 <h2 id="processos_decididos_na_partida"><a href="#processos_decididos_na_partida" class="header-anchor">Processos decididos na partida</a></h2>
 <p>Esses processos aparecem naturalmente em sistemas determinísticos onde há uma incerteza na condição inicial. Escolhendo-se aleatoriamente o dado inicial, determina-se os estados futuros. Os estados futuros estão unicamente condicionados pelo dado inicial.</p>
-<p>Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória \(Y\), em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\), com estados em \((\Sigma, \mathcal{E})\), podemos definir o <strong>processo constante</strong> \(X_n == Y\) também em \((\Omega, \mathcal{A}, \mathbb{P})\), ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes \(n \mapsto X_n(\omega) = Y(\omega)\), para \(\omega\in \Omega\). Sorteamos \(Y(\omega)\) inicialmente, de acordo com \(\mathbb{P}\), e fazemos \(X_n(\omega) = Y(\omega)\) constante ao longo de \(n\). Não custa ressaltar que isso não quer dizer apenas que cada \(X_n\) tem lei igual a \(Y\); isso define \(X_n\) para todo \(n\) de maneira determinada.</p>
+<p>Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória \(Y\), em um espaço de probabilidades \((\Omega, \mathcal{F}, \mathbb{P})\), com estados em \((\Sigma, \mathcal{E})\), podemos definir o <strong>processo constante</strong> \(X_n == Y\) também em \((\Omega, \mathcal{F}, \mathbb{P})\), ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes \(n \mapsto X_n(\omega) = Y(\omega)\), para \(\omega\in \Omega\). Sorteamos \(Y(\omega)\) inicialmente, de acordo com \(\mathbb{P}\), e fazemos \(X_n(\omega) = Y(\omega)\) constante ao longo de \(n\). Não custa ressaltar que isso não quer dizer apenas que cada \(X_n\) tem lei igual a \(Y\); isso define \(X_n\) para todo \(n\) de maneira determinada.</p>
 <p>A lei de \(\{X_n\}_n\) é denotada, também, por \(\mathbb{P}\), com o entendimento de que</p>
 \[
 \mathbb{P}(X_1 \in E_1, \ldots X_n \in E_n) = \mathbb{P}(Y \in E_1, \ldots, Y \in E_n) = \mathbb{P}(Y \in E_1 \cap \cdots \cap E_n).
@@ -493,34 +493,34 @@ X_n(\omega) = \frac{1}{n} Y(\omega), \quad n\in \mathbb{N}.
 \mathbb{P}(X_3 = 1) = \frac{1}{2}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1) = \frac{4}{9}, \quad \mathbb{P}(X_3 = 1 | X_2 = 1, X_1 = 1) = \frac{3}{8}.
 \]
 <h2 id="contagem_binomial"><a href="#contagem_binomial" class="header-anchor">Contagem binomial</a></h2>
-<p>O processo aleatório de <strong>contagem binomial</strong> é obtido &quot;contando-se&quot; o número de sucessos de um processo de Bernoulli. Se \(\{X_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli com probabilidade de sucesso \(p\), \(0 < p \leq 1\), então o processo \(\{W_n\}_{n\in \mathbb{N}}\) de contagem binomial pode ser escrito por</p>
+<p>O processo aleatório de <strong>contagem binomial</strong> é obtido &quot;contando-se&quot; o número de sucessos de um processo de Bernoulli. Se \(\{X_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli com probabilidade de sucesso \(p\), \(0 < p \leq 1\), então o processo \(\{S_n\}_{n\in \mathbb{N}}\) de contagem binomial pode ser escrito por</p>
 \[
-W_n = \sum_{j=1}^n X_n.
+S_n = \sum_{j=1}^n X_n.
 \]
 <p>O número de sucesso em \(n\) tentativas binárias é dado pela distribuição binomial,</p>
 \[
-W_n \sim B(n, p),
+S_n \sim B(n, p),
 \]
 <p>ou seja,</p>
 \[
-\mathbb{P}(W_n = k) = p^k(1 - p)^{n-k}\left(\begin{matrix} n \\ k \end{matrix}\right).
+\mathbb{P}(S_n = k) = p^k(1 - p)^{n-k}\left(\begin{matrix} n \\ k \end{matrix}\right).
 \]
 <p>O processo de Bernoulli pode ser obtido da contagem binomial através de</p>
 \[
-X_n = W_n - W_{n-1}, \quad n \in \mathbb{N},
+X_n = S_n - S_{n-1}, \quad n \in \mathbb{N},
 \]
 <p>com</p>
 \[
-W_0 = 0
+S_0 = 0
 \]
-<p>O espaço de eventos da contagem binomial é, naturalmente, \(\Sigma = \mathbb{Z}^* = \{0, 1, 2, \ldots\}\) e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não negativos, \(\Omega = {\mathbb{Z}^*}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}\).</p>
+<p>O espaço de eventos da contagem binomial é, naturalmente, \(\Sigma = \mathbb{Z}^+ = \{0, 1, 2, \ldots\}\) e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não negativos, \(\Omega = {\mathbb{Z}^+}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}\).</p>
 
 <img src="/notas_sde/assets/pages/c04/processos_discretos/code/output/contagem_binomial_caminhos.svg" alt="">
-<p>O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação. Digamos que, em uma determinada rede, em um determinado período, as chances de um pacote de dados chegar em um intervalo arbitrário de um milisegundo é de \(\%10\). Os pacotes chegam de fontes distintas e com frequência suficiente, de modo que é razoável assumir que as chegadas são independentes entre si. Assim, podemos assumir que a chegada de dados a cada milisegundo é um processo de Bernoulli com probabilidade de sucesso \(p = 0.1\). O número de pacotes recebidos em um intervalo de \(n\) milisegundos é dado pela contagem binomial \(W_n = X_1 + \ldots + X_n\).</p>
+<p>O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação. Digamos que, em uma determinada rede, em um determinado período, as chances de um pacote de dados chegar em um intervalo arbitrário de um milisegundo é de \(\%10\). Os pacotes chegam de fontes distintas e com frequência suficiente, de modo que é razoável assumir que as chegadas são independentes entre si. Assim, podemos assumir que a chegada de dados a cada milisegundo é um processo de Bernoulli com probabilidade de sucesso \(p = 0.1\). O número de pacotes recebidos em um intervalo de \(n\) milisegundos é dado pela contagem binomial \(S_n = X_1 + \ldots + X_n\).</p>
 <p>O servidor tem uma capacidade limitada de resolver os pacotes. Digamos, então, que o servidor perca pacotes caso recebe mais de 120 pacotes por segundo. Quais as chances do servidor perder algum pacote nesse período?</p>
-<p>Um intervalo de um segundo abrange iterações entre \(n + 1\) e \(n + 1000\), já que cada passo de tempo considerado é de um milisegundo. Ou seja, \(W_{n + 1000} - W_n = X_{n + 1} + \cdots + X_{n + 1000}\). Como os incrementos são independentes, temos</p>
+<p>Um intervalo de um segundo abrange iterações entre \(n + 1\) e \(n + 1000\), já que cada passo de tempo considerado é de um milisegundo. Ou seja, \(S_{n + 1000} - S_n = X_{n + 1} + \cdots + X_{n + 1000}\). Como os incrementos são independentes, temos</p>
 \[
-\mathbb{P}(W_{n + 1000} - W_n > 120) = \mathbb{P}(W_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(W_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
+\mathbb{P}(S_{n + 1000} - S_n > 120) = \mathbb{P}(S_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(S_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
 \]
 <p>Podemos estimar esse número usando o Teorema Central do Limite, mas também podemos, nesse caso, calculá-lo diretamente no computador:</p>
 <pre><code class="language-julia">p &#61; 0.1
@@ -546,7 +546,7 @@ x = \sum_{n = 1}^\infty b_n 2^{-n}.
 <a class="menu-level-1" href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c04/processos_continuos"><kbd>→</kbd> 4.3. Processos contínuos</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c04/processos_continuos"><kbd>→</kbd> 4.3. Processos em tempos contínuos</a>
 </span>
     </p>
 </div>
@@ -562,7 +562,7 @@ x = \sum_{n = 1}^\infty b_n 2^{-n}.
         </div>
     
 
-    Last modified: April 03, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 04, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

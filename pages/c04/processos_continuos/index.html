@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Processos contínuos</title>  
+   <title>Processos em tempos contínuos</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -136,10 +136,10 @@
     <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos</a></li>
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos em tempos discretos</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos contínuos</a></li>
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos em tempos contínuos</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
@@ -347,7 +347,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/processos_discretos">4.2. Processos em tempos discretos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c04/tipos_processos"><kbd>→</kbd> 4.4. Classes de processos</a>
@@ -361,7 +361,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Processos contínuos</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">4.3. Processos em tempos contínuos</a></h1>
 <p>Vimos vários processos discretos que foram definidos por indução nos passos. Naturalmente, o mesmo não pode ser feito com tanta facilidade para processos contínuos. Vários processos contínuos aparecem naturalmente como soluções de equações aleatórios e de equações estocásticas. Mas podemos exemplificar com alguns processos definidos mais diretamente, como veremos a seguir.</p>
 <p>Vamos começar vendo alguns exemplos em que o processo pode ser construído explicitamente a partir de uma ou duas variáveis aleatórias. Em seguida veremos o exemplo de processo de renovação, construído a partir de uma quantidade enumerável de variáveis aleatórias.</p>
 <h2 id="processos_constantes"><a href="#processos_constantes" class="header-anchor">Processos constantes</a></h2>
@@ -417,7 +417,7 @@ F_{X_t}(x) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)) = \f
 <h3 id="transporte_sinut"><a href="#transporte_sinut" class="header-anchor">Transporte sin&#40;Ut&#41;</a></h3>
 <p>Um outro exemplo importante é dado por</p>
 \[
-X_t \sim \sin(Ut),
+X_t = \sin(Ut),
 \]
 <p>onde, novamente, \(U \sim \mathrm{Unif}([0, 2\pi))\). Cada caminho amostral é um simples cosseno, \(t \mapsto X_t(\omega) = \sin(U(\omega)t)\).</p>
 <p>A lei continua sendo dada pela distribuição arcoseno, em cada tempo, de modo que esse processo não é independente mas ainda é um processo identicamente distribuído. O mais significativo, no entanto, é que, como a frequência de cada seno é dada aleatoriamente, o conjunto de trajetórias dispersa, a ponto das estatísticas conjuntas serem não triviais. Veremos que esse é, surpreendentemente, um exemplo de um <em>ruído branco</em>.</p>
@@ -458,7 +458,7 @@ Y_t = \sum_{i = 1}^{X_t} W_i.
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c04/processos_discretos">4.2. Processos discretos <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c04/processos_discretos">4.2. Processos em tempos discretos <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c04/tipos_processos"><kbd>→</kbd> 4.4. Classes de processos</a>
@@ -477,7 +477,7 @@ Y_t = \sum_{i = 1}^{X_t} W_i.
         </div>
     
 
-    Last modified: April 03, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 04, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
