@@ -1,4 +1,4 @@
-@def title = "Processos discretos"
+@def title = "Processos em tempos discretos"
 
 # {{ get_title }}
 
@@ -15,7 +15,7 @@ $$
 \mathbb{P}(X = x) = p^i(1-p)^{n-i}, \qquad i = \#\{n; \; x_n = 1\}.
 $$
 
-Podemos interpretar o resultado do teste de Bernoulli em cada passo $n$ como uma variável aleatória $X_n$ nesse espaço $(\Sigma, \mathcal{A}, \mathbb{P})$. A sequência $\{X_n\}_{n = 1, \ldots, N}$ é um processo aleatório discreto. Um determinado resultado no instante $n$ tem probabilidades
+Podemos interpretar o resultado do teste de Bernoulli em cada passo $n$ como uma variável aleatória $X_n$ nesse espaço $(\Omega, \mathcal{F}, \mathbb{P})$. A sequência $\{X_n\}_{n = 1, \ldots, N}$ é um processo aleatório discreto. Um determinado resultado no instante $n$ tem probabilidades
 $$
 \mathbb{P}(X_n = 1) = \mathbb{P}(\{x \in \Omega; x_n = 1\}) = p,
 $$
@@ -56,7 +56,7 @@ onde $i = \#\{n \in \{n_1, \ldots, n_N\}; \; x_n = 1\}$.
 
 ## Passeio aleatório
 
-Nesse caso, $I = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$, o conjunto de estados possíveis é $\Sigma = \mathbb{Z}$ e o espaço amostral pode ser tomado como $\Omega = \Sigma^{\mathbb{Z}^*} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}$. Novamente, $\Omega$ é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição $m$, em um determinado instante $n$:
+Nesse caso, $I = \mathbb{Z}^+ = \mathbb{N}_0 = \{0, 1, 2, \ldots\}$, o conjunto de estados possíveis é $\Sigma = \mathbb{Z}$ e o espaço amostral pode ser tomado como $\Omega = \Sigma^I = \mathbb{Z}^{\mathbb{Z}^+} = \{x = (x_0, x_1, x_2, \ldots); \; x_n \in \mathbb{Z}, n = 0, 1, 2, \ldots\}$. Novamente, $\Omega$ é incontável e a probabilidade da realização de cada trajetória específica é nula. Mas podemos deduzir a probabilidade do caminho passar pela posição $m$, em um determinado instante $n$:
 $$
 \mathbb{P}(X_n = m) = \begin{cases}
   \displaystyle \frac{1}{2^n} \left(\begin{matrix} n \\ \frac{n + m}{2} \end{matrix}\right), & |m| \leq n \text{ e $m$ e $n$ com a mesma paridade} \\
@@ -93,7 +93,7 @@ savefig(joinpath(@OUTPUT, "passeio_aleatorio.svg"))
 
 Esses processos aparecem naturalmente em sistemas determinísticos onde há uma incerteza na condição inicial. Escolhendo-se aleatoriamente o dado inicial, determina-se os estados futuros. Os estados futuros estão unicamente condicionados pelo dado inicial.
 
-Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória $Y$, em um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$, com estados em $(\Sigma, \mathcal{E})$, podemos definir o **processo constante** $X_n == Y$ também em $(\Omega, \mathcal{A}, \mathbb{P})$, ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes $n \mapsto X_n(\omega) = Y(\omega)$, para $\omega\in \Omega$. Sorteamos $Y(\omega)$ inicialmente, de acordo com $\mathbb{P}$, e fazemos $X_n(\omega) = Y(\omega)$ constante ao longo de $n$. Não custa ressaltar que isso não quer dizer apenas que cada $X_n$ tem lei igual a $Y$; isso define $X_n$ para todo $n$ de maneira determinada.
+Isso aparece em particular em equações diferenciais determinísticas, mas podemos exemplificar a partir de regras explícitas. Por exemplo, dada uma variável aleatória $Y$, em um espaço de probabilidades $(\Omega, \mathcal{F}, \mathbb{P})$, com estados em $(\Sigma, \mathcal{E})$, podemos definir o **processo constante** $X_n == Y$ também em $(\Omega, \mathcal{F}, \mathbb{P})$, ou seja, onde os únicos caminhos amostrais observáveis possíveis são os caminhos constantes $n \mapsto X_n(\omega) = Y(\omega)$, para $\omega\in \Omega$. Sorteamos $Y(\omega)$ inicialmente, de acordo com $\mathbb{P}$, e fazemos $X_n(\omega) = Y(\omega)$ constante ao longo de $n$. Não custa ressaltar que isso não quer dizer apenas que cada $X_n$ tem lei igual a $Y$; isso define $X_n$ para todo $n$ de maneira determinada.
 
 A lei de $\{X_n\}_n$ é denotada, também, por $\mathbb{P}$, com o entendimento de que
 $$
@@ -198,27 +198,27 @@ $$
 
 ## Contagem binomial
 
-O processo aleatório de **contagem binomial** é obtido "contando-se" o número de sucessos de um processo de Bernoulli. Se $\{X_n\}_{n\in \mathbb{N}}$ é um processo de Bernoulli com probabilidade de sucesso $p$, $0 < p \leq 1$, então o processo $\{W_n\}_{n\in \mathbb{N}}$ de contagem binomial pode ser escrito por
+O processo aleatório de **contagem binomial** é obtido "contando-se" o número de sucessos de um processo de Bernoulli. Se $\{X_n\}_{n\in \mathbb{N}}$ é um processo de Bernoulli com probabilidade de sucesso $p$, $0 < p \leq 1$, então o processo $\{S_n\}_{n\in \mathbb{N}}$ de contagem binomial pode ser escrito por
 $$
-W_n = \sum_{j=1}^n X_n.
+S_n = \sum_{j=1}^n X_n.
 $$
 O número de sucesso em $n$ tentativas binárias é dado pela distribuição binomial,
 $$
-W_n \sim B(n, p),
+S_n \sim B(n, p),
 $$
 ou seja,
 $$
-\mathbb{P}(W_n = k) = p^k(1 - p)^{n-k}\left(\begin{matrix} n \\ k \end{matrix}\right).
+\mathbb{P}(S_n = k) = p^k(1 - p)^{n-k}\left(\begin{matrix} n \\ k \end{matrix}\right).
 $$
 O processo de Bernoulli pode ser obtido da contagem binomial através de
 $$
-X_n = W_n - W_{n-1}, \quad n \in \mathbb{N},
+X_n = S_n - S_{n-1}, \quad n \in \mathbb{N},
 $$
 com
 $$
-W_0 = 0
+S_0 = 0
 $$
-O espaço de eventos da contagem binomial é, naturalmente, $\Sigma = \mathbb{Z}^* = \{0, 1, 2, \ldots\}$ e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não negativos, $\Omega = {\mathbb{Z}^*}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}$.
+O espaço de eventos da contagem binomial é, naturalmente, $\Sigma = \mathbb{Z}^+ = \{0, 1, 2, \ldots\}$ e o espaço amostral pode ser tomado com sendo o das sequências de inteiros não negativos, $\Omega = {\mathbb{Z}^+}^\mathbb{N} = \{x = (x_1, x_2, \dots); \; x_n \in \mathbb{Z}, \;x_n \geq 0\}$.
 
 ```julia:contagem_binomial
 #hideall
@@ -240,13 +240,13 @@ savefig(joinpath(@OUTPUT, "contagem_binomial_caminhos.svg"))
 ```
 \fig{contagem_binomial_caminhos}
 
-O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação. Digamos que, em uma determinada rede, em um determinado período, as chances de um pacote de dados chegar em um intervalo arbitrário de um milisegundo é de $\%10$. Os pacotes chegam de fontes distintas e com frequência suficiente, de modo que é razoável assumir que as chegadas são independentes entre si. Assim, podemos assumir que a chegada de dados a cada milisegundo é um processo de Bernoulli com probabilidade de sucesso $p = 0.1$. O número de pacotes recebidos em um intervalo de $n$ milisegundos é dado pela contagem binomial $W_n = X_1 + \ldots + X_n$.
+O processo de contagem binomial pode ser usado para modelar a contagem de chegadas de pacotes em uma rede de comunicação. Digamos que, em uma determinada rede, em um determinado período, as chances de um pacote de dados chegar em um intervalo arbitrário de um milisegundo é de $\%10$. Os pacotes chegam de fontes distintas e com frequência suficiente, de modo que é razoável assumir que as chegadas são independentes entre si. Assim, podemos assumir que a chegada de dados a cada milisegundo é um processo de Bernoulli com probabilidade de sucesso $p = 0.1$. O número de pacotes recebidos em um intervalo de $n$ milisegundos é dado pela contagem binomial $S_n = X_1 + \ldots + X_n$.
 
 O servidor tem uma capacidade limitada de resolver os pacotes. Digamos, então, que o servidor perca pacotes caso recebe mais de 120 pacotes por segundo. Quais as chances do servidor perder algum pacote nesse período?
 
-Um intervalo de um segundo abrange iterações entre $n + 1$ e $n + 1000$, já que cada passo de tempo considerado é de um milisegundo. Ou seja, $W_{n + 1000} - W_n = X_{n + 1} + \cdots + X_{n + 1000}$. Como os incrementos são independentes, temos
+Um intervalo de um segundo abrange iterações entre $n + 1$ e $n + 1000$, já que cada passo de tempo considerado é de um milisegundo. Ou seja, $S_{n + 1000} - S_n = X_{n + 1} + \cdots + X_{n + 1000}$. Como os incrementos são independentes, temos
 $$
-\mathbb{P}(W_{n + 1000} - W_n > 120) = \mathbb{P}(W_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(W_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
+\mathbb{P}(S_{n + 1000} - S_n > 120) = \mathbb{P}(S_{1000} > 120) = \sum_{k = 121}^{1000} \mathbb{P}(S_{1000} = k) \\ = \sum_{k = 121}^{1000} p^k (1-p)^{1000 - k}\left(\begin{matrix} 1000 \\ k \end{matrix}\right)
 $$
 
 Podemos estimar esse número usando o Teorema Central do Limite, mas também podemos, nesse caso, calculá-lo diretamente no computador:

@@ -1,4 +1,4 @@
-@def title = "Processos contínuos"
+@def title = "Processos em tempos contínuos"
 
 # {{ get_title }}
 
@@ -156,7 +156,7 @@ $$
 
 Um outro exemplo importante é dado por
 $$
-X_t \sim \sin(Ut),
+X_t = \sin(Ut),
 $$
 onde, novamente, $U \sim \mathrm{Unif}([0, 2\pi))$. Cada caminho amostral é um simples cosseno, $t \mapsto X_t(\omega) = \sin(U(\omega)t)$.
 
