@@ -2,9 +2,9 @@
 
 # {{ get_title }}
 
-Vimos vários processos discretos que foram definidos por indução nos passos. Naturalmente, o mesmo não pode ser feito com tanta facilidade para processos contínuos. Vários processos contínuos aparecem naturalmente como soluções de equações aleatórios e de equações estocásticas. Mas podemos exemplificar com alguns processos definidos mais diretamente, como veremos a seguir.
+Vimos vários processos discretos que foram definidos por indução nos passos. Naturalmente, o mesmo não pode ser feito com tanta facilidade para processos contínuos. Vários processos contínuos aparecem naturalmente como soluções de equações diferenciais aleatórias ou de equações diferenciais estocásticas. Mas podemos exemplificar com alguns processos definidos mais diretamente, como veremos a seguir.
 
-Vamos começar vendo alguns exemplos em que o processo pode ser construído explicitamente a partir de uma ou duas variáveis aleatórias. Em seguida veremos o exemplo de processo de renovação, construído a partir de uma quantidade enumerável de variáveis aleatórias.
+Vamos começar vendo alguns exemplos em que o processo pode ser construído explicitamente a partir de uma ou duas variáveis aleatórias. Em seguida veremos exemplo de processos de ponto, como o processo de renovação, de contagem de Poisson, de Poisson composto, construídos a partir de uma quantidade enumerável de variáveis aleatórias.
 
 ## Processos constantes
 
