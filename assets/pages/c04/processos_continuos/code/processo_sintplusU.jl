@@ -8,7 +8,7 @@ theme(:ggplot2)
 N = 50
 M = 10
 tt = range(0.0, 10.0, length = N+1)
-X = permutedims(sin.(tt' .+ 2π * rand(rng, M)))
+X = permutedims(sin.(2π * rand(rng, M) .+ tt'))
 
-plot(tt, X, title = "Caminhos amostrais do processo X_t = sin(t + U), U ∼ Unif(0,2π)", titlefont = 10, label = false)
+plot(tt, X, title = "Caminhos amostrais do processo \$X_t = \\sin(U + t), \\,U \\sim \\operatorname{Unif}(0,2\\pi)\$", titlefont = 10, label = false)
 savefig(joinpath(@OUTPUT, "processo_sintplusU.svg"))

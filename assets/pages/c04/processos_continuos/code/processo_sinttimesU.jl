@@ -8,5 +8,5 @@ N = 200
 M = 5
 tt = range(0.0, π, length = N+1)
 X = permutedims(sin.(tt' .* 2π .* rand(rng, M)))
-plot(tt, X, title = "Caminhos amostrais do processo X_t = sin(Ut), U ∼ Unif(0,2π)", titlefont = 10, label = false)
+plot(tt, X, title = "Caminhos amostrais do processo \$X_t = \\sin(Ut),\\, U \\sim \\operatorname{Unif}(0,2\\pi)\$", titlefont = 10, label = false)
 savefig(joinpath(@OUTPUT, "processo_sinttimesU.svg"))

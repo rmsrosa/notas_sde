@@ -8,11 +8,11 @@ theme(:ggplot2)
 t = 10.0
 M = 100_000
 U = 2π * rand(rng, M)
-X_t = cos.(t .+ U)
+X_t = sin.(U .+ t)
 
 nbins = 100
 
-histogram(X_t, label = "histograma", xaxis = "X_T", yaxis = "contagem", title = "Histograma e PDF normalizada de X_t = cos(t + U), U ∼ Unif([0, 2π))\ncom $M realizações", titlefont = 8, bins = nbins, legend = :top)
+histogram(X_t, label = "histograma", xaxis = "X_T", yaxis = "contagem", title = "Histograma e PDF normalizada de \$X_t = \\sin(U + t), \\, U \\sim \\operatorname{Unif}([0, 2\\pi))\$\ncom $M realizações", titlefont = 8, bins = nbins, legend = :top)
 
 avg_per_bin = 2 * M / nbins
 

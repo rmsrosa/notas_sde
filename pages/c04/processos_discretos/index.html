@@ -362,7 +362,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">4.2. Processos em tempos discretos</a></h1>
-<p>A nossa intenção principal é trabalhar com processos contínuos, já que equações diferenciais estocásticas e aleatórias envolvem variáveis independentes contínuas, gerando, portanto, processos contínuos. Mas é ilustrativo iniciar os estudos de processos estocásticos com processos discretos. Além disso, alguns processos estocásticos contínuos aparecem naturalmente como limites de processos discretos.</p>
+<p>A nossa intenção principal é trabalhar com processos contínuous e em tempos contínuos, já que equações diferenciais estocásticas e aleatórias envolvem variáveis independentes contínuas, gerando, portanto, processos contínuos. Mas é ilustrativo iniciar os estudos de processos estocásticos com processos discretos. Além disso, alguns processos estocásticos contínuos aparecem naturalmente como limites de processos discretos.</p>
 <h2 id="processo_de_bernoulli_em_tempo_finito"><a href="#processo_de_bernoulli_em_tempo_finito" class="header-anchor">Processo de Bernoulli em tempo finito</a></h2>
 <p>Vamos começar com um processo de Bernoulli em um tempo discreto e finito \(I = \{1, 2, \ldots, N\}\), onde \(N \in \mathbb{N}\). Há dois estados possíveis, digamos \(\Sigma = \{0, 1\}\), indicando, por exemplo, o resultado do lançamento de uma moeda &#40;&quot;coroa&quot; ou &quot;cara&quot;&#41; ou de um teste de laboratório &#40;&quot;negativo&quot;, &quot;positivo&quot;&#41;.</p>
 <p>A cada passo, um <em>teste de Bernoulli</em> é feito, dando um resultado \(1\), com probabilidade \(p\), ou \(0\), com probabilidade \(1 - p\), onde \(0 < p \leq 1\). Assumimos que os testes sejam independentes, ou seja, o resultado do teste em um passo \(n_1\) independe do resultado do teste no instante \(n_2\).</p>
@@ -388,6 +388,7 @@ X_n \sim \mathrm{Bernoulli}(p),
 \mathbb{P}(X_{n_1} = e_1, X_{n_2} = e_2) = \mathbb{P}(\{x \in \Omega; x_{n_1} = e_1, \;x_{n_2} = e_2\}) = p_1p_2,
 \]
 <p>onde \(p_n = p\), se \(e_n = 1\), ou \(p_n = 1 - p\), se \(e_n = 0\).</p>
+<p>Como \(I=\{1, \ldots, n\}\) é finito, podemos, na verdade, considerar \(\{X_t\}_{t=1, \ldots, n}\) como um <strong>vetor aleatório.</strong> O interesse maior está no caso em que o conjunto de índices é infinito &#40;enumerável ou não&#41;.</p>
 <h2 id="processo_de_bernoulli_em_tempo_infinito"><a href="#processo_de_bernoulli_em_tempo_infinito" class="header-anchor">Processo de Bernoulli em tempo infinito</a></h2>
 <p>Podemos, também, fazer um número infinito de testes de Bernoulli. Nesse caso, \(I = \mathbb{N}\) e obtemos um processo \(\{X_n\}_{n\in \mathbb{N}}\), onde, a cada \(n\), \(X_n\) indica o resultado de um teste de Bernoulli. Como antes, \(\{X_n\}_{n\in \mathbb{N}}\) é um processo estacionário e independente, com</p>
 \[
@@ -413,6 +414,25 @@ X_n \sim \mathrm{Bernoulli}(p).
 <p>Saber a posição da partícula no instante \(n\) nos dá a distribuição de probabilidades para a posição em \(n+1\), o que podemos escrever na forma</p>
 \[
 \mathbb{P}(X_{n+1} = k | X_n = m) = \begin{cases} \displaystyle \frac{1}{2}, & k = m \pm 1, \\ 0, & k \neq m \pm 1. \end{cases}
+\]
+<p>Um passeio aleatório pode ser definido de maneira mais explícita como</p>
+\[
+X_n = \sum_{j=1}^n Y_j, \quad n = 0, 1, 2, \ldots,
+\]
+<p>onde \(\{Y_j\}_{j\in\mathbb{N}}\) é como um processo de Bernoulli com probabilidade \(1/2,\) exceto que os valores possíveis são \(-1\) e \(1\), ao invés de \(0\) e \(1\). De outra forma, podemos escrever</p>
+\[
+X_n = \sum_{j=1}^n Y_j, \qquad n = 0, 1, 2, \ldots, \quad Y_j = 2Z_j -1, \quad Z_j \sim \operatorname{Bernoulli}(1/2), \textrm{ independentes.}
+\]
+<p>Com essa representação, podemos deduzir</p>
+\[
+\mathbb{E}[X_n] = \sum_{j=1}^n \mathbb{E}[Y_j] = 0,
+\]
+<p>visto que cada \(Y_j\) tem média zero. Além disso, \(Y_j^2 = (\pm 1)^2 = 1\) certamente, de modo que \(\mathbb{E}[Y_j^2] = 1.\) Assim, usando a independência,</p>
+\[
+\begin{align*}
+    \mathbb{E}[X_n^2] & = \mathbb{E}\left[ \left(\sum_{j=1}^n Y_j\right)^2\right] = \mathbb{E}\left[ \left(\sum_{j=1}^n Y_j\right)\left(\sum_{i=1}^n Y_i\right)\right] = \mathbb{E}\left[\sum_{j, i=1}^n Y_j Y_i\right] \\
+    & = \mathbb{E}\left[\sum_{i\neq j} Y_j Y_i\right] + \mathbb{E}\left[\sum_{i=j} Y_j Y_i\right]  = \mathbb{E}\left[\sum_{j=1}^n Y_j^2\right] = \sum_{j=1}^n\mathbb{E}\left[ Y_j^2\right] = \sum_{j=1}^n 1 = n.
+\end{align*}
 \]
 
 <img src="/notas_sde/assets/pages/c04/processos_discretos/code/output/passeio_aleatorio.svg" alt="">
@@ -532,13 +552,13 @@ println&#40;&quot;Há &#36;&#40;100 * round&#40;s, digits &#61; 4&#41;&#41;&#37;
 </code></pre>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
-<li><p>Seja \(U \sim Unif(0, 1)\) uma variável aleatória distribuída uniformemente no intervalo \([0, 1]\). Considere a decomposição binária de um número \(x\in [0, 1]\):</p>
+<li><p>Seja \(U \sim \operatorname{Uniform}(0, 1)\) uma variável aleatória distribuída uniformemente no intervalo \([0, 1]\). Considere a decomposição binária de um número \(x\in [0, 1]\):</p>
 </li>
 </ol>
 \[
 x = \sum_{n = 1}^\infty b_n 2^{-n}.
 \]
-<p>Essa decomposição não é, necessariamente, única, já que cada número com expansão finita \(x = \sum_{n = 1}^N b_n 2^{-n}\) também pode ser representado pela expansão infinita \(x = \sum_{n = 1}^\infty \tilde b_n 2^{-n}\), desde que \(\tilde b_n = b_n\) para \(n < N\), \(b_N = 0\) e \(b_n = 1\), para \(n > N\). Mas ela é única se impusermos que apenas \(x = 0\) pode ser representado por uma sequência terminando em zeros. Assumindo essa representação única, podemos escrever a variável aleatória na forma \(U = \sum_{n=1}^\infty B_n 2^{-n}\), para variáveis aleatórias \(B_n\), \(n\in \mathbb{N}\). Mostre que \(\{B_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli, com \(B_n \sim Bernoulli(1/2)\).</p>
+<p>Essa decomposição não é, necessariamente, única, já que cada número com expansão finita \(x = \sum_{n = 1}^N b_n 2^{-n}\) também pode ser representado pela expansão infinita \(x = \sum_{n = 1}^\infty \tilde b_n 2^{-n}\), desde que \(\tilde b_n = b_n\) para \(n < N\), \(b_N = 0\) e \(b_n = 1\), para \(n > N\). Mas ela é única se impusermos que apenas \(x = 0\) pode ser representado por uma sequência terminando em zeros. Assumindo essa representação única, podemos escrever a variável aleatória na forma \(U = \sum_{n=1}^\infty B_n 2^{-n}\), para variáveis aleatórias \(B_n\), \(n\in \mathbb{N}\). Mostre que \(\{B_n\}_{n\in \mathbb{N}}\) é um processo de Bernoulli, com \(B_n \sim \operatorname{Bernoulli}(1/2)\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -562,7 +582,7 @@ x = \sum_{n = 1}^\infty b_n 2^{-n}.
         </div>
     
 
-    Last modified: April 04, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 05, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

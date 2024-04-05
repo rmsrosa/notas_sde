@@ -1,0 +1,21 @@
+# This file was generated, do not modify it. # hide
+#hideall
+using Random
+using Plots
+rng = Xoshiro(123)
+theme(:ggplot2)
+
+t = 10.0
+M = 100_000
+U = 2π * rand(rng, M)
+X_t = sin.(t .* U)
+
+nbins = 100
+
+histogram(X_t, label = "histograma", xaxis = "X_T", yaxis = "contagem", title = "Histograma e PDF normalizada de \$X_t = \\sin(Ut), \\,U \\sim \\operatorname{Unif}([0, 2\\pi))\$\ncom $M realizações", titlefont = 8, bins = nbins, legend = :top)
+
+avg_per_bin = 2 * M / nbins
+
+plot!(-0.99:0.01:0.99, x -> avg_per_bin / sqrt(1 - x^2) / π, label = "PDF = (2/π)1/√(1-x^2)")
+
+savefig(joinpath(@OUTPUT, "sinuniformt.svg"))
