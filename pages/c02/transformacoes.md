@@ -93,9 +93,24 @@ Mais geralmente,
 $$
 X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2), \; X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2) \quad \Longrightarrow \quad a_1 X_1 + a_2 X_2 \sim \mathcal{N}(a_1\mu_1 + a_2\mu_2, a_1^2\sigma_1^2 + a_2^2\sigma_2^2).
 $$
+
 Naturalmente, isso pode ser generalizado para uma combinação linear de um número arbitrário de normais.
 
-Há várias demonstrações desse fato, através de cálculo explícito da função acumulada de probabilidade ou da função característica, por exemplo. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las. Vamos seguir, aqui, a demonstração como feita em Eisenberg & Sullivan (2008). Veja esse mesmo artigo para comentários sobre outras demonstrações.
+O fato da combinação linear ser normal requer um pouco mais de trabalho, como veremos a seguir, mas as médias e variâncias podem ser obtidas facilmente. De fato, pela linearidade da esperança,
+$$
+\mathbb{E}[a_1X_1 + a_2X_2] = a_1\mathbb{E}[X_1] + a_2\mathbb{E}[X_2] = a_1\mu_1 + a_2\mu_2,
+$$
+ao passo que
+$$
+\begin{align*}
+    \mathbb{E}[(a_1X_1 + a_2X_2 - a_1\mu_1 + a_2\mu_2)^2] & = \mathbb{E}[(a_1(X_1 - \mu_1) + a_2(X_2 - \mu_2))^2] \\
+    & = a_1^2\mathbb{E}[(X_1 - \mu_1)^2] + 2a_1a_2\mathbb{E}[(X_1 - \mu_1)(X_2 - \mu_2)] + a_2^2\mathbb{E}[(X_2 - \mu_2)^2] \\
+    & = a_1^2\sigma_1^2 + 2a_1a_2\mathbb{E}[X_1 - \mu_1]\mathbb{E}[X_2-\mu_2] + a_2^2\sigma_2^2 \\
+    & = a_1^2\sigma_1^2 + a_2^2\sigma_2^2.
+\end{align*}
+$$
+
+Quanto ao fato da combinação linear ser uma normal, há várias demonstrações disso, por exemplo através de cálculo explícito da função acumulada de probabilidade ou da função característica. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las. Vamos seguir, aqui, a demonstração como feita em Eisenberg & Sullivan (2008). Veja esse mesmo artigo para comentários sobre outras demonstrações.
 
 Se $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ e $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)$, então podemos escrever $X_1 = \mu_1 + \sigma_1 Y_1$ e $X_2 = \mu_2 + \sigma_2 Y_2$, com $Y_1, Y_2 \sim \mathcal{N}(0, 1)$. Assim,
 $$
@@ -192,7 +207,11 @@ $$
 Z, W \sim \mathcal{N}(0, 2\sigma^2).
 $$
 
-Agora, para ver a independência entre $Z$ e $W$, ...
+Agora, para ver a independência entre $Z$ e $W$, sabendo que a média de cada uma das variáveis é zero, calculamos
+$$
+    \mathbb{E}[ZW] = \mathbb{E}[(X+Y)(X-Y)] = \mathbb{E}[X^2 - Y^2] = \mathbb{E}[X^2] - \mathbb{E}[Y^2] = \sigma^2 - \sigma^2 = 0,
+$$
+nos dando que a correlação entre as duas variáveis é nulo e portanto elas são independentes.
 
 ## Exercícios
 
