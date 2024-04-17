@@ -23,7 +23,7 @@ Outra demonstração possível é via limite de passeios aleatórios devidamente
 $$
     W_t^{(n)} = \frac{1}{\sqrt{n}}\sum_{1 \leq k \leq nt} Z_k, \qquad 0\leq t \leq 1.
 $$
-O intervalo $[0, 1]$ é dividido em $n$ subintervalos de tamanho $1/n$ e passos $Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)$ são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada $t$, as variáveis aleatórias $W_t^{(n)}$ convergem para $\mathcal{N}(0, t),$ mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais. Esse é um resultado devido a Monroe Donsker (1951, 1952).
+O intervalo $[0, 1]$ é dividido em $n$ subintervalos de tamanho $1/n$ e passos $Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)$ são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada $t$, as variáveis aleatórias $W_t^{(n)}$ convergem para $\mathcal{N}(0, t),$ mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais em um espaço adequado. Esse resultado de que, de fato, esses processos $\{W_t^{(n)}\}_t,$ $n\in\mathbb{N},$ convergem para um processo de Wiener é devido a Monroe Donsker (1951, 1952).
 
 Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013). A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
@@ -185,6 +185,40 @@ Provamos que quaisquer dois incrementos consecutivos de $\{X_d^{(n+1)}\}_{d\in D
 Disso segue, também, que incrementos disjuntos a "passos largos" $X_{d_2}^{n+1} - X_{d_1}^{n+1}$, $X_{d_3}^{n+1} - X_{d_2}^{n+1}$, ..., com $d_1 < d_2 < d_3 < \ldots < d_n$ em $D_{n+1}$, também são independentes, pois cada incremento desses é combinação linear de passos "curtos" independentes distintos.
 
 Finalmente, como eles só envolvem $\{Z_d\}_{d\in D \setminus D_{n+1}}$, então os incrementos de $\{X_d^{(n+1)}\}_{d\in D_{n+1}}$ e os processos restantes $\{Z_d\}_{d\in D \setminus D_{n+1}}$ também são mutuamente independentes.
+
+### Comentário sobre a definição da distribuição no ponto médio
+
+A definição de $X_d^{(n+1)}$ em $d\in D_{n+1}\setminus D_n$ como a média entre $X_{d - 1/2^n}^{(n)}$ e $X_{d + 1/2^n}^{(n)}$ mais uma normal independente está ligada a distribuição *ponte* do processo de Wiener em um instante $t'$ dados os valores em outros dois pontos em torno de $t'.$ Mais precisamente, tomemos, por exemplo, $t'= 1/2,$ como ponto médio entre $0$ e $1.$ Então
+$$
+    \begin{cases}
+        W_1 - W_{1/2} = S_0 \sim \mathcal{N}(0, 1/2), \\
+        W_{1/2} - W_0 = S_1 \sim \mathcal{N}(0, 1/2),
+    \end{cases}
+$$
+com os passos $S_0$ e $S_1$ independentes.
+Subtraindo, obtemos
+$$
+    W_1 + W_0 - 2W_{1/2} = S_1 - S_0.
+$$
+Com isso,
+$$
+    W_{1/2} = \frac{W_0 + W_1}{2} + \frac{S^-}{2}, \qquad S^- = S_1 - S_0 \sim \mathcal{N}(0, 1).
+$$
+Além disso,
+$$
+    W_0 + W_1 = W_0 + W_0 + W_1 - W_0 = 2W_0 + S_1 + S_0 = 2W_0 + S^+,
+$$
+onde
+$$
+    S^+ = S_1 + S_0 \sim \mathcal{N}(0, 1),
+$$
+com $S^+$ e $S^-$ independentes, de modo que
+$$
+    \frac{W_0 + W_1}{2} \quad \textrm{e} \quad \frac{S^-}{2}
+$$
+são independentes.
+
+Observe que, nesse exemplo específico, $W_0 = 0,$ mas em outros pontos, de forma mais geral, teríamos um $W_{t_0}$ não necessariamente nulo mas, de qualquer forma, independente dos passos futuros e dos $S_1, S_2, S^+, S^-$ correspondentes.
 
 ## Interpolação e representação em termos de wavelets
 
@@ -568,7 +602,7 @@ são interpolações dos processos discretos $\{X_d^{(n)}\}_{d\in D_n}$, i.e. $W
 
 3. Na construção, definimos $X_{d}^{n+1}$, para $d \in D_{n+1}\setminus D_n$, pela fórmula $(X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)})/2 + Z_d/2^{(n + 1)/2}$, com os $Z_d$'s sendo mutamente independentes. Essa construção não é arbitrária. Mostre que se $\{W_t\}_{t\geq 0}$ é um processo de Wiener e $0 \leq s < t,$ então
 $$
-\frac{W_s + W_t}{2} + W_{(t + s)/2}
+W_{(t + s)/2} - \frac{W_s + W_t}{2}
 $$
-é independente de $W_\tau,$ para $\tau \leq s$ e $\tau \geq t$.
+é independente de $W_\tau,$ para $\tau \leq s$ e para $\tau \geq t$.
 
