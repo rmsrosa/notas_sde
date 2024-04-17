@@ -8,7 +8,22 @@ $$
 $$
 onde $\{Z_n\}_{n\in\mathbb{N}}$ são normais $\mathcal{N}(0, 1)$ independentes e identicamente distribuídas. É possível mostrar que essa série converge para um processo de Wiener.
 
+A motivação para a expansão acima vem da derivada ser, pelo menos formalmente, um *ruído branco,* com os coeficientes da série de mesma amplitude, em um sentido probabilístico. De fato, derivando formalmente a série acima, temos
+$$
+    \frac{\mathrm{d} W_t}{\mathrm{d}t} = \frac{1}{\sqrt{2\pi}} Z_0 + \frac{1}{\sqrt{2\pi}}\sum_{n=1}^\infty \sin(\frac{1}{2}nt)Z_n, \qquad 0 \leq t \leq 2\pi,
+$$
+de modo que os coeficientes são normais independentes identicamente distribuídas,
+$$
+    \frac{1}{\sqrt{2\pi}}Z_n \sim \mathcal{N}\left(0, \frac{1}{2\pi}\right).
+$$
+
 Da mesma forma que séries de Fourier de funções determinísticas, expansões em séries senoidas podem ser feitas para outros processos estocásticos, a partir dos trabalhos seguintes de Wiener, em conjunto com Zygmund e Paley e levam, atualmente, o nome de representação de Paley-Wiener.
+
+Outra demonstração possível é via limite de passeios aleatórios devidamente reescalados,
+$$
+    W_t^{(n)} = \frac{1}{\sqrt{n}}\sum_{1 \leq k \leq nt} Z_k, \qquad 0\leq t \leq 1.
+$$
+O intervalo $[0, 1]$ é dividido em $n$ subintervalos de tamanho $1/n$ e passos $Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)$ são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada $t$, as variáveis aleatórias $W_t^{(n)}$ convergem para $\mathcal{N}(0, t),$ mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais. Esse é um resultado devido a Monroe Donsker (1951, 1952).
 
 Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013). A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
