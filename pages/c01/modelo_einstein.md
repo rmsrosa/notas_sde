@@ -241,5 +241,5 @@ p(t, \mathbf{x}) = \frac{1}{(4\pi D t)^{3/2}} e^{\displaystyle -\frac{|\mathbf{x
 $$
 Mostre, ainda, que, segundo essa aproximação, a distância média percorrida satisfaz
 $$
-\sqrt{\mathbb{E}[|X_t|^2]} = 6Dt.
+\mathbb{E}[|X_t|^2] = 6Dt.
 $$
