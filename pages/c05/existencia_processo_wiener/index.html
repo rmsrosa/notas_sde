@@ -367,7 +367,20 @@
     W_t = \frac{t}{\sqrt{2\pi}} Z_0 + \frac{2}{\sqrt{2\pi}}\sum_{n=1}^\infty \frac{\sin(\frac{1}{2}nt)}{n}Z_n, \qquad 0 \leq t \leq 2\pi,
 \]
 <p>onde \(\{Z_n\}_{n\in\mathbb{N}}\) são normais \(\mathcal{N}(0, 1)\) independentes e identicamente distribuídas. É possível mostrar que essa série converge para um processo de Wiener.</p>
+<p>A motivação para a expansão acima vem da derivada ser, pelo menos formalmente, um <em>ruído branco,</em> com os coeficientes da série de mesma amplitude, em um sentido probabilístico. De fato, derivando formalmente a série acima, temos</p>
+\[
+    \frac{\mathrm{d} W_t}{\mathrm{d}t} = \frac{1}{\sqrt{2\pi}} Z_0 + \frac{1}{\sqrt{2\pi}}\sum_{n=1}^\infty \sin(\frac{1}{2}nt)Z_n, \qquad 0 \leq t \leq 2\pi,
+\]
+<p>de modo que os coeficientes são normais independentes identicamente distribuídas,</p>
+\[
+    \frac{1}{\sqrt{2\pi}}Z_n \sim \mathcal{N}\left(0, \frac{1}{2\pi}\right).
+\]
 <p>Da mesma forma que séries de Fourier de funções determinísticas, expansões em séries senoidas podem ser feitas para outros processos estocásticos, a partir dos trabalhos seguintes de Wiener, em conjunto com Zygmund e Paley e levam, atualmente, o nome de representação de Paley-Wiener.</p>
+<p>Outra demonstração possível é via limite de passeios aleatórios devidamente reescalados,</p>
+\[
+    W_t^{(n)} = \frac{1}{\sqrt{n}}\sum_{1 \leq k \leq nt} Z_k, \qquad 0\leq t \leq 1.
+\]
+<p>O intervalo \([0, 1]\) é dividido em \(n\) subintervalos de tamanho \(1/n\) e passos \(Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)\) são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada \(t\), as variáveis aleatórias \(W_t^{(n)}\) convergem para \(\mathcal{N}(0, t),\) mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais em um espaço adequado. Esse resultado de que, de fato, esses processos \(\{W_t^{(n)}\}_t,\) \(n\in\mathbb{N},\) convergem para um processo de Wiener é devido a Monroe Donsker &#40;1951, 1952&#41;.</p>
 <p>Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters &amp; Peres &#40;2010&#41; e Evans &#40;2013&#41;. A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo \(I = [0, 1]\). A partir daí, podemos transladar e concatenar processos independentes em \([0, 1]\) para obter um processo de Wiener em \([0, \infty)\).</p>
 <p>Veremos duas formas de escrever essa sequência aproximante de processos no intervalo \([0, 1]\). Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.</p>
 <p>Vale ressaltar que um processo de Wiener não é único, assim como não há uma única variável aleatória normal. Podemos, naturalmente, ter várias normais, independentes umas das outras. No caso do processo de Wiener, podemos, por exemplo, contruir um processo através do limite de interpolações de diferentes sequências de variáveis normais, obtendo diferentes processos de Wiener.</p>
@@ -462,6 +475,36 @@ X_{d + 1/2^n}^{(n+1)} - X_d^{(n+1)} = \frac{X_{d + 1/2^{n-1}}^{(n)} - X_d^{(n)}}
 <p>Provamos que quaisquer dois incrementos consecutivos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) são independentes dois a dois. Como a distribuição conjunta é normal, segue, da independência dois a dois, que todos os incrementos consecutivos são mutuamente independentes.</p>
 <p>Disso segue, também, que incrementos disjuntos a &quot;passos largos&quot; \(X_{d_2}^{n+1} - X_{d_1}^{n+1}\), \(X_{d_3}^{n+1} - X_{d_2}^{n+1}\), ..., com \(d_1 < d_2 < d_3 < \ldots < d_n\) em \(D_{n+1}\), também são independentes, pois cada incremento desses é combinação linear de passos &quot;curtos&quot; independentes distintos.</p>
 <p>Finalmente, como eles só envolvem \(\{Z_d\}_{d\in D \setminus D_{n+1}}\), então os incrementos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) e os processos restantes \(\{Z_d\}_{d\in D \setminus D_{n+1}}\) também são mutuamente independentes.</p>
+<h3 id="comentário_sobre_a_definição_da_distribuição_no_ponto_médio"><a href="#comentário_sobre_a_definição_da_distribuição_no_ponto_médio" class="header-anchor">Comentário sobre a definição da distribuição no ponto médio</a></h3>
+<p>A definição de \(X_d^{(n+1)}\) em \(d\in D_{n+1}\setminus D_n\) como a média entre \(X_{d - 1/2^n}^{(n)}\) e \(X_{d + 1/2^n}^{(n)}\) mais uma normal independente está ligada a distribuição <em>ponte</em> do processo de Wiener em um instante \(t'\) dados os valores em outros dois pontos em torno de \(t'.\) Mais precisamente, tomemos, por exemplo, \(t'= 1/2,\) como ponto médio entre \(0\) e \(1.\) Então</p>
+\[
+    \begin{cases}
+        W_1 - W_{1/2} = S_0 \sim \mathcal{N}(0, 1/2), \\
+        W_{1/2} - W_0 = S_1 \sim \mathcal{N}(0, 1/2),
+    \end{cases}
+\]
+<p>com os passos \(S_0\) e \(S_1\) independentes. Subtraindo, obtemos</p>
+\[
+    W_1 + W_0 - 2W_{1/2} = S_1 - S_0.
+\]
+<p>Com isso,</p>
+\[
+    W_{1/2} = \frac{W_0 + W_1}{2} + \frac{S^-}{2}, \qquad S^- = S_1 - S_0 \sim \mathcal{N}(0, 1).
+\]
+<p>Além disso,</p>
+\[
+    W_0 + W_1 = W_0 + W_0 + W_1 - W_0 = 2W_0 + S_1 + S_0 = 2W_0 + S^+,
+\]
+<p>onde</p>
+\[
+    S^+ = S_1 + S_0 \sim \mathcal{N}(0, 1),
+\]
+<p>com \(S^+\) e \(S^-\) independentes, de modo que</p>
+\[
+    \frac{W_0 + W_1}{2} \quad \textrm{e} \quad \frac{S^-}{2}
+\]
+<p>são independentes.</p>
+<p>Observe que, nesse exemplo específico, \(W_0 = 0,\) mas em outros pontos, de forma mais geral, teríamos um \(W_{t_0}\) não necessariamente nulo mas, de qualquer forma, independente dos passos futuros e dos \(S_1, S_2, S^+, S^-\) correspondentes.</p>
 <h2 id="interpolação_e_representação_em_termos_de_wavelets"><a href="#interpolação_e_representação_em_termos_de_wavelets" class="header-anchor">Interpolação e representação em termos de wavelets</a></h2>
 <p>A sequência de processos \(\{X_d^{(n)}\}_{d\in D_n}\) construída acima pode ser expressa de outra forma e que nos será útil na demonstração da convergência dessa sequência. Vejamos os dois primeiros termos \(\{X_d^{(1)}\}_{d\in D_1}\) e \(\{X_d^{(2)}\}_{d\in D_2}\):</p>
 \[
@@ -784,9 +827,9 @@ W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\i
 </li>
 </ol>
 \[
-\frac{W_s + W_t}{2} + W_{(t + s)/2}
+W_{(t + s)/2} - \frac{W_s + W_t}{2}
 \]
-<p>é independente de \(W_\tau,\) para \(\tau \leq s\) e \(\tau \geq t\).</p>
+<p>é independente de \(W_\tau,\) para \(\tau \leq s\) e para \(\tau \geq t\).</p>
 
     <div class="navbar">
     <p id="nav">
@@ -810,7 +853,7 @@ W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\i
         </div>
     
 
-    Last modified: April 05, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 17, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
