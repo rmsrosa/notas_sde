@@ -240,7 +240,7 @@ W_t^{(1)} = tZ_1, \qquad 0 \leq t \leq 1.
 $$
 Visando a generalização que queremos obter, escrevemos isso na forma
 $$
-W_t^{(1)} = s_0 Z_0 + s_1(t)Z_1 = \sum_{d \in D_1} s_d(t)Z_d, \qquad 0\leq t \leq 1.
+W_t^{(1)} = s_0(t) Z_0 + s_1(t)Z_1 = \sum_{d \in D_1} s_d(t)Z_d, \qquad 0\leq t \leq 1.
 $$
 onde $Z_0 = 0$ e
 $$
