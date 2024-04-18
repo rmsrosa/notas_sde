@@ -606,3 +606,4 @@ W_{(t + s)/2} - \frac{W_s + W_t}{2}
 $$
 é independente de $W_\tau,$ para $\tau \leq s$ e para $\tau \geq t$.
 
+4. Além de pontos médios, mostre, usando a independência de incrementos disjuntos, que $W_t - tW_1$ e $W_1$ são mutuamente independentes, para $0 < t < 1.$
