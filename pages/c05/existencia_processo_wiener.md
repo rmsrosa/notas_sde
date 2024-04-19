@@ -25,7 +25,7 @@ $$
 $$
 O intervalo $[0, 1]$ é dividido em $n$ subintervalos de tamanho $1/n$ e passos $Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)$ são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada $t$, as variáveis aleatórias $W_t^{(n)}$ convergem para $\mathcal{N}(0, t),$ mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais em um espaço adequado. Esse resultado de que, de fato, esses processos $\{W_t^{(n)}\}_t,$ $n\in\mathbb{N},$ convergem para um processo de Wiener é devido a Monroe Donsker (1951, 1952).
 
-Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, conforme apresentada em Morters & Peres (2010) e Evans (2013). A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
+Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, e inspirada nas demonstrações apresentadas em Morters & Peres (2010) e Evans (2013). A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo $I = [0, 1]$. A partir daí, podemos transladar e concatenar processos independentes em $[0, 1]$ para obter um processo de Wiener em $[0, \infty)$.
 
 Veremos duas formas de escrever essa sequência aproximante de processos no intervalo $[0, 1]$. Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.
 
@@ -33,11 +33,11 @@ Vale ressaltar que um processo de Wiener não é único, assim como não há uma
 
 ## Partição diádica do intervalo unitário
 
-A interpolação é feita a partir de malhas formadas por números *diádicos* (números racionais cujo denominador é uma potência de 2) entre zero e um. Mais precisamente, considere os conjuntos
+A aproximação é feita a partir de malhas formadas por números *diádicos* (números racionais cujo denominador é uma potência de 2) entre zero e um. Mais precisamente, considere os conjuntos
 $$
 D_n = \left\{\frac{k}{2^{n-1}}; \; k = 0, 1, \ldots, 2^{n-1}\right\}, \qquad n\in \mathbb{N}.
 $$
-A união de todos esses pontos é denotada por
+A união de todos esses pontos é um conjunto enumerável denso no intervalo $[0, 1]$ e é denotada por
 $$
 D = \cup_{n\in \mathbb{N}} D_n.
 $$
@@ -58,19 +58,19 @@ savefig(joinpath(@OUTPUT, "dyadic_points.svg"))
 
 ## Processo discreto i.i.d. e espaço amostral
 
-Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de partes finitas de um processo discreto i.i.d., que vamos definir em $D$.
+Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de um processo discreto i.i.d., que vamos definir em $D$.
 
-Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto
+Com esse fim, considere um processo discreto *i.i.d.* $\{Z_d\}_{d\in D\setminus \{0\}}$, onde as variáveis $Z_d$ são mutuamente independentes e dadas por normais $Z_d \sim \mathcal{N}(0, 1)$. Como $D$ é enumerável, podemos considerar o conjunto
 $$
 \Omega = \mathbb{R}^D
 $$
-como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{E})$, onde $E$ é mensurável e $\pi_d : \Omega \rightarrow \mathbb{R}$ leva um caminho $x\in \Omega$ no elemento $\pi_d x = x(d)$, em $d\in D$. Denotamos a medida de probabilidade por $\mathbb{P}$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos que o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
+como espaço amostral, e por $\mathcal{A}$ a $\sigma$-álgebra gerada por $\pi_d^{-1}(\mathcal{B})$, onde $\mathcal{B}$ são os conjuntos borelianos em $\mathbb{R}$ e $\pi_d : \Omega \rightarrow \mathbb{R}$ são as projeções levam um caminho $\omega\in \Omega$ no elemento $\pi_d \omega = \omega(d)$, em $d\in D$. Denotamos a medida de probabilidade do processo $\{Z_d\}_{d\in D\setminus \{0\}}$ por $\mathbb{P}$. Para simplificar, escrevemos $Z_0 = 0$, já que queremos que o processo de Wiener limite satisfaça $W_0 = Z_0 = 0$.
 
 ## Sequência aproximante de processos discretos
 
-Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}$. Estes processos serão interpolados para processos em $[0, 1]$. Por motivo de clareza, vamos denotar os processos discretos por $\{X_d^{(n)}\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^{(n)}\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = W_d^{(n)} = X_d^{(n)}$, nos pontos diádicos $d\in D_n$.
+Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em $D_n$, $n\in\mathbb{N}.$ Estes processos serão interpolados para processos em $[0, 1]$. Por motivo de clareza, vamos denotar esses processos discretos por $\{X_d^{(n)}\}_{d\in D_n}$. As interpolações contínuas serão denotadas por $\{W_t^{(n)}\}_{t\in [0, 1]}$. E, no limite, teremos o processo contínuo $\{W_t\}_{t\in [0, 1]}$. Por serem extensões, teremos $W_d = W_d^{(n)} = X_d^{(n)}$, nos pontos diádicos $d\in D_n$. Observe que os processos $\{X_d^{(n)}\}_{d\in D_n}$ são, na verdade, vetores aleatórios, já que cada $D_n$ é finito.
 
-Para cada $d\in D_n$, esperamos ter $X_d^{(n)} = W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $X_d^{(n)}$ como $Z_d / \sqrt{d}$, já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$, e interpolar, de alguma forma, para $t\in I \setminus D_n$. Apesar disso convergir para um processo, este não terá a distribuição correta dos passos. Mas uma variação disso funciona. Essa variação se baseia no fato de que se $A$ e $B$ são duas variáveis normais independentes com mesma variância, então $A+B$ e $A-B$ também são independentes e com o dobro da variância de $A$ e $B$.
+Para cada $d\in D_n$, esperamos ter $X_d^{(n)} = W_d = W_d - W_0 \sim \mathcal{N}(0, d)$. Então seria natural pensarmos em definir $X_d^{(n)}$ como $Z_d / \sqrt{d}$, já que $Z_d \sim \mathcal{N}(0, 1)$, de modo que $Z_d/\sqrt{d} \sim \mathcal{N}(0, d)$, e interpolar, de alguma forma, para $t\in I \setminus D_n$. Apesar disso convergir para um processo, este não terá a distribuição correta dos passos. E nem os seus passos serão independentes. Mas uma variação disso funciona. Essa variação se baseia no fato de que se $A$ e $B$ são duas variáveis normais independentes com mesma variância, então $A+B$ e $A-B$ também são independentes e com o dobro da variância de $A$ e $B$.
 
 Mais precisamente, definimos, para cada $n\in \mathbb{N}$, o processo discreto $\{X_d^{(n)}\}_{d\in D_n}$, na malha finita $D_n$, da seguinte forma. Primeiramente, sendo $D_1 = \{0, 1\}$, definimos
 $$
@@ -220,9 +220,23 @@ são independentes.
 
 Observe que, nesse exemplo específico, $W_0 = 0,$ mas em outros pontos, de forma mais geral, teríamos um $W_{t_0}$ não necessariamente nulo mas, de qualquer forma, independente dos passos futuros e dos $S_1, S_2, S^+, S^-$ correspondentes.
 
-## Interpolação e representação em termos de wavelets
+## Interpolação e representação
 
-A sequência de processos $\{X_d^{(n)}\}_{d\in D_n}$ construída acima pode ser expressa de outra forma e que nos será útil na demonstração da convergência dessa sequência. Vejamos os dois primeiros termos $\{X_d^{(1)}\}_{d\in D_1}$ e $\{X_d^{(2)}\}_{d\in D_2}$:
+Definimos $\{W_t^{(n)}\}_{0\leq t \leq 1}$ como sendo a interpolação linear por partes do processo (digo, vetor aleatório) $\{X_d^{(n)}\}_{d\in D_n}.$ Tal interpolação pode ser representada por
+$$
+    W_t^{(n)} = \sum_{d\in D_n} \varphi_d(t) X_d^{(n)},
+$$
+onde cada $\varphi_d=\varphi(t)$ é a função "chapéu"
+$$
+    \varphi_d(t) = \max\{0, 1 - 2^{n-1}|t - d|\} = \begin{cases}
+      0, & |t - d| \geq 1/2^{n-1}, \\
+      1 - 2^{n-1}(d - t), & d - 1/2^{n-1} \leq t \leq d, \\
+      1 - 2^{n-1}(t - d), & d \leq t \leq d + 1/2^{n-1},
+    \end{cases},
+$$
+que se anula para $|t - d| \geq 1/2^{n-1},$ vale $1$ em $t = d$ e é linear nos intervalos da malha diádica $D_n.$
+
+Mas essa representação não nos será tão útil. Vamos usar uma outra representação, diretamente em termos de $\{Z_d\}_{d\in D},$ que pode ser obtida por indução. Vejamos os dois primeiros termos $\{X_d^{(1)}\}_{d\in D_1}$ e $\{X_d^{(2)}\}_{d\in D_2}$:
 $$
 X_0^{(1)} = Z_0 = 0, \quad X_1^{(1)} = Z_1,
 $$
@@ -371,7 +385,17 @@ $$
 
 ### Plano para a demonstração
 
-Dado um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-negativos e com $A_n \rightarrow 0$ quase sempre, definido no mesmo espaço amostral $\Omega$, temos que
+A ideia é obter uma estimativa para a sequência de Cauchy em termos de um processo discreto $(A_n)_{n\in\mathbb{N}}$ com valores não-negativos e com $A_n \rightarrow 0$ quase sempre, definido no mesmo espaço amostral $\Omega$, i.e.
+$$
+\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \quad \forall m \geq n,
+$$
+com
+$$
+A_n \rightarrow 0,
+$$
+quase certamente.
+
+de tal forma que
 $$
 \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \;\forall m \geq n \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0,
 $$
