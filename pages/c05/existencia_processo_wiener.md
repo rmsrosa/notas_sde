@@ -220,15 +220,15 @@ são independentes.
 
 Observe que, nesse exemplo específico, $W_0 = 0,$ mas em outros pontos, de forma mais geral, teríamos um $W_{t_0}$ não necessariamente nulo mas, de qualquer forma, independente dos passos futuros e dos $S_1, S_2, S^+, S^-$ correspondentes.
 
-## Interpolação e representação
+## Interpolação
 
 Definimos $\{W_t^{(n)}\}_{0\leq t \leq 1}$ como sendo a interpolação linear por partes do processo (digo, vetor aleatório) $\{X_d^{(n)}\}_{d\in D_n}.$ Tal interpolação pode ser representada por
 $$
-    W_t^{(n)} = \sum_{d\in D_n} \varphi_d(t) X_d^{(n)},
+    W_t^{(n)} = \sum_{d\in D_n} \varphi_{n,d}(t) X_d^{(n)},
 $$
-onde cada $\varphi_d=\varphi(t)$ é a função "chapéu"
+onde cada $\varphi_{n,d}=\varphi_{n,d}(t)$ é a função "tenda"
 $$
-    \varphi_d(t) = \max\{0, 1 - 2^{n-1}|t - d|\} = \begin{cases}
+    \varphi_{n,d}(t) = \max\{0, 1 - 2^{n-1}|t - d|\} = \begin{cases}
       0, & |t - d| \geq 1/2^{n-1}, \\
       1 - 2^{n-1}(d - t), & d - 1/2^{n-1} \leq t \leq d, \\
       1 - 2^{n-1}(t - d), & d \leq t \leq d + 1/2^{n-1},
@@ -236,70 +236,83 @@ $$
 $$
 que se anula para $|t - d| \geq 1/2^{n-1},$ vale $1$ em $t = d$ e é linear nos intervalos da malha diádica $D_n.$
 
-Mas essa representação não nos será tão útil. Vamos usar uma outra representação, diretamente em termos de $\{Z_d\}_{d\in D},$ que pode ser obtida por indução. Vejamos os dois primeiros termos $\{X_d^{(1)}\}_{d\in D_1}$ e $\{X_d^{(2)}\}_{d\in D_2}$:
+Mas essa representação não nos será tão útil. Vamos usar uma outra representação, diretamente em termos de $\{Z_d\}_{d\in D},$ que pode ser obtida por indução. Como todos os $X_d^{(n)}$ são definidos em termos das variáveis $Z_d,$ $d\in D_n,$ então, substituindo recursivamente o processo discreto chegamos a
 $$
-X_0^{(1)} = Z_0 = 0, \quad X_1^{(1)} = Z_1,
+    W_t^{(n)} = \sum_{d\in D_n} s_d(t) Z_d,
 $$
-e
+para funções de interpolação apropriadas $s_d=s_d(t).$ A questão é como obter essas funções de maneira mais explícita. Vejamos o primeiro processo $\{W_t^{(1)}\}_{0\leq t \leq 1}.$ Este é um interpolação linear entre
 $$
-\begin{cases}
-    X_0^{(2)} = Z_0 = 0, \\
-    X_{1/2}^{(2)} = \displaystyle \frac{X_0^{(1)} + X_1^{(1)}}{2} + \frac{1}{2}Z_{1/2} = \frac{1}{2}Z_0 + \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \\
-    X_1^{(2)} = Z_1.
-\end{cases}
+    X_0^{(1)} = Z_0 = 0, \quad X_1^{(1)} = Z_1.
 $$
-Começamos interpolando o primeiro termo de forma linear, para obter o processo contínuo
+A interpolação linear entre esses pontos toma a forma
 $$
-W_t^{(1)} = tZ_1, \qquad 0 \leq t \leq 1.
-$$
-Visando a generalização que queremos obter, escrevemos isso na forma
-$$
-W_t^{(1)} = s_0(t) Z_0 + s_1(t)Z_1 = \sum_{d \in D_1} s_d(t)Z_d, \qquad 0\leq t \leq 1.
-$$
-onde $Z_0 = 0$ e
-$$
-s_0(t) = 1 - t, \quad s_1(t) = t, \qquad 0 \leq t \leq 1.
+    W_t^{(1)} = (1 - t)Z_0 + tZ_1, \quad 0 \leq t \leq 1.
 $$
 
-Para $W_t^{(2)},$ observe que, além de
+De outra maneira, podemos escrever
 $$
-W_0^{(2)} = X_0^{(1)}, \qquad W_1^{(2)} = X_1^{(1)},
+    W_t^{(1)} = s_0(t)Z_0 + s_1(t)Z_1,
 $$
-podemos escrever o ponto médio como
+com as funções estendidas à toda a reta e escrita em termos das funções-tenda anteriores,
 $$
-W_{1/2}^{(2)} = \frac{1}{2}Z_0 + \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2} = s_0(1/2)Z_0 + s_1(1/2)Z_1 + \frac{1}{2} Z_{1/2} = X_{1/2}^{(2)} + \frac{1}{2} Z_{1/2}.
+    s_0(t) = \varphi_{1,0}(t) = \max\{0, 1 - |t|\}, \quad s_1(t) = \varphi_{1,1}(t) = \max\{0, 1 - |t - 1|\}.
 $$
-Assim, podemos escrever a interpolação de $\{X_d^{(2)}\}_{d\in D_2}$ na forma
+Podemos juntar as duas expressões na fórmula
 $$
-W_t^{(2)} = W_t^{(1)} + s_{1/2}(t)Z_{1/2} = s_0(t) Z_0 + s_1(t)Z_1 + s_{1/2}(t)Z_{1/2} = \sum_{d\in D_2} s_d(t) Z_d,
-$$
-onde $s_{1/2}(\cdot)$ é uma função linear por partes que se anula em $t = 0$ e $t = 1$ e vale $1/2$ em $t = 1/2$. Ou seja, $s_{1/2}(\cdot)$ é a função "cabana"
-$$
-s_{1/2}(t) = \min\{t, 1 - t\}, \qquad 0 \leq t \leq 1,
-$$
-que pode ser escrita, para $n=1$ e $d=1/2\in D_{n+1}\setminus D_n$, na forma
-$$
-s_d(t) = 2^{(n-1)/2}\min\{t - d + 1/2^n, d + 1/2^n - t\}, \qquad 0 \leq t \leq 1.
+    s_d(t) = \max\{0, 1 - |t - d|\}, \quad d = 0, 1.
 $$
 
-Agora, vejamos os termo de $X_d^{(3)}$:
+Para $\{W_t^{(2)}\}_{0\leq t \leq 1},$ observamos que $\{X_d^{(2)}\}_{d\in D_2}$ é obtido a partir de $\{X_d^{(1)}\}_{d\in D_1}$ acresentando $Z_{1/2}/2$ à média entre os valores em $t=0$ e $t=1,$ de modo que
 $$
-\begin{cases}
-    X_0^{(3)} = 0, \\
-    X_{1/4}^{(3)} = \frac{1}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{1/4}, \\
-    X_{1/2}^{(3)} = \frac{1}{2}Z_1 + \frac{1}{2}Z_{1/2}, \\
-    X_{3/4}^{(3)} = \frac{3}{4}Z_1 + \frac{1}{4}Z_{1/2} + \frac{1}{2^{3/2}}Z_{3/4}, \\
-    X_1^{(3)} = Z_1;
-\end{cases}
+    W_t^{(2)} = W_t^{(1)} + s_{1/2}(t)Z_{1/2}.
 $$
-Observe que esse processo pode ser visto como os valores, em $D_3$, do processo contínuo obtido por interpolação linear por partes dado por
+Isso, de fato, vale em geral e segue direto da própria expansão que queremos explicitar,
 $$
-W_t^{(3)} = W_t^{(2)} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4} = s_0(t) Z_0 + s_1(t)Z_1 + s_{1/2}(t)Z_{1/2} + s_{1/4}(t)Z_{1/4} + s_{3/4}(t)Z_{3/4},
+    W_t^{(n+1)} = \sum_{d\in D_{n+1}} s_d(t) Z_d = \sum_{d\in D_{n}} s_d(t) Z_d + \sum_{d\in D_{n+1}\setminus D_{n}} s_d(t) Z_d = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_{n}} s_d(t) Z_d.
 $$
-onde $s_{1/4}(\cdot)$ e $s_{3/4}(\cdot)$ são, também, funções do tipo cabana, com suporte em $[0, 1/2]$ e $[1/2, 1]$ e valor máximo $1/2^{3/2}$:
+
+O termo que estamos somando,
 $$
-s_{1/4}(t) = 2^{1/2}\max\{0, \min\{t, 1/2 - t\}\}, \quad s_{3/4}(t) = 2^{1/2}\max\{0, \min\{t - 1/2, 1 - t\}.\}
+    s_{1/2}(t)Z_{1/2},
 $$
+é uma interpolação entre $Z_{1/2}/2$ no ponto médio $t=1/2$ e o valor nulo nos extremos $t=0$ e $t=1.$ Assim, $s_{1/2}(t)$ é um interpolação linear por partes entre $s_{1/2}(0) = s_{1/2}(1) = 0$ e $s_{1/2}(1/2) = 1/2.$ Tal função pode ser escrita na forma
+$$
+    s_{1/2}(t) = \frac{1}{2}\max\{0, 1 - 2|t - 1/2|\} = \min\{0, t, 1 - t\}.
+$$
+Assim,
+$$
+    W_t^{(2)} = s_0(t)Z_0 + s_1(t)Z_1 + s_{1/2}Z_{1/2},
+$$
+com as funções $s_0, s_1, s_{1/2}$ definidas por
+$$
+    s_d(t) = \max\{0, 1 - |t - d|\}, \; d = 0, 1, \qquad s_{1/2}(t) = \frac{1}{2}\max\{0, 1 - 2|t - 1/2|\}.
+$$
+
+Agora, assumindo, em um argumento de indução, que tenhamos, para um dado $n,$ as fórmulas para $s_d(t),$ $d\in D_n,$ e a expansão
+$$
+    W_t^{(n)} = \sum_{d\in D_n} s_d(t) Z_d,
+$$
+vamos usar que
+$$
+    W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_{n}} s_d(t) Z_d
+$$
+para encontrar as funções no nível $D_{n+1}\setminus D_{n}.$ Em tal nível, cada $s_d(t)$ em $d\in D_{n+1}\setminus D_{n}$ é um interpolação que se anula em todos os subintervalos da partição diádica exceto no intervalo $(d - 1/2^n, d + 1/2^n),$ no qual ele tem uma forma de tenda, se anulando nos extremos desse intervalo e valendo
+$$
+    s_d(d) = \frac{1}{2^{(n+1)/2}},
+$$
+no centro do subintervalo. Uma tal função linear por partes pode ser escrita como um múltiplo $1/2^{(n+1)/2}$ de uma função "tenda" que vale $1$ no centro, portanto com inclinações $2^n$ e $-2^n,$ nos subintervalos $(d - 1/2^n, d)$ e $(d, d + 1/2^n),$ respectivamente. Isso pode ser escrito na forma sucinta
+$$
+    s_d(t) = \frac{1}{2^{(n+1)/2}}\max\{0, 1 - 2^n|t - d|\}, \quad d\in D_{n+1}\setminus D_n.
+$$
+Observe que essa fórmula inclui as fórmulas para $s_0(t),$ $s_1(t)$ e $s_{1/2}(t)$ explicitadas acima. Dessa maneira, obtemos a expansão desejada
+$$
+    W_t^{(n)} = \sum_{d\in D_n} s_d(t) Z_d,
+$$
+com
+$$
+    s_d(t) = \frac{1}{2^{(n+1)/2}}\max\{0, 1 - 2^n|t - d|\}, \quad d\in D_{n+1}\setminus D_n,
+$$
+para $n\in \mathbb{N}$ arbitrário.
 
 ```julia:faberschauder
 #hideall
@@ -317,30 +330,22 @@ savefig(joinpath(@OUTPUT, "faberschauder.svg"))
 ```
 \fig{faberschauder}
 
+A razão de explicitarmos essas funções é que precisaremos fazer estimativas para mostrar a convergência dessas aproximações. Com isso, precisamos de estimativas para essas funções de interpolação.
 
-Mais geralmente, definimos, para $d \in D_{n+1} \setminus D_n$, $n \in \mathbb{N}$,
+Com isso em mente, observe que cada $s_d(t)$ é não negativa e com ponto máximo em $t=d.$ Para $d\in D_{n+1}\setminus D_n,$ o valor máximo, obtido em $t=d,$ é 
 $$
-s_d(t) = 2^{(n-1)/2} \max\{0, \min\{t - d + 1/2^n, d + 1/2^n - t\}\} = 2^{(n-1)/2} \times \begin{cases}
-  0, & t \leq d - \frac{1}{2^n}, \\
-  t - d + \frac{1}{2^n}, & d - \frac{1}{2^n} \leq t \leq d, \\
-  d + \frac{1}{2^n} - t, & d \leq t \leq d + \frac{1}{2^n}, \\
-  0, & t \geq d + \frac{1}{2^n}
-\end{cases}
+  s_d(d) = \frac{1}{2^{(n+1)/2}}.
 $$
-Note que essa fórmula não inclui $s_d(t)$ para $d\in D_1$. Para incluir esses pontos, podemos permitir $n=0$ e modificar o fator multiplicativo para $2^{\max\{0, n-1\}/2}.$
-
-Observe, ainda, que o ponto máximo de $s_d(t)$, para $d\in D_{n+1}\setminus D_n,$ é $t=d,$ com 
+Assim,
 $$
-  s_d(d) = 2^{(n-1)/2} \times \frac{1}{2^n} = \frac{1}{2^{(n+1)/2}}.
+    0 \leq s_d(t) \leq \frac{1}{2^{(n+1)/2}}, \qquad t\in\mathbb{R}.
+$$
+Além disso, as funções de interpolação em um mesmo nível $D_{n+1}\setminus D_n$ têm suportes que não se sobrepõe (não encaixantes ou *non overlapping*). Com isso, podemos somar as funções de interpolação em cada nível sem aumentar essa cota, i.e.
+$$
+    0 \leq \sum_{d\in D_{n+1}\setminus D_n} s_d(t) \leq \frac{1}{2^{(n+1)/2}}, \quad \forall n\in\mathbb{N}.
 $$
 
-O que fizemos acima foi mostrar os primeiros passos do processo de indução para provar que os processos contínuos definidos por
-$$
-W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_{n+1}} s_d(t)Z_d
-$$
-são interpolações dos processos discretos $\{X_d^{(n)}\}_{d\in D_n}$, i.e. $W_d^{(n)} = X_d^{(n)}$, para todo $d\in D_n$ e todo $n\in\mathbb{N}$. Deixamos a prova completa como exercício. Apenas ressaltamos que os pontos cruciais são (i) observar que cada $s_d(\cdot)$ com $d\in D_{n+1}\setminus D_n$ se anula em todos os pontos $d'\in D_n$ e, também, em $d'\in D_n$ tal que $d' \neq d$, i.e. $s_d(d') = 0$, para todo $d, d'\in D_{n+1}$, $d' \neq d$; (ii) vale $s_d(d) = 1/2^{(n+1)/2}$, para $d\in D_{n+1}\setminus D_n$; e (iii) cada $s_d(\cdot)$ é linear em $[d-1/2^n, d]$ e $[d, d+1/2^n]$, para $d\in D_{n+1}\setminus D_n$.
-
-Cada $s_d$ pode ser visto como uma primitiva de outra base de wavelets, a **base de Haar**, formada por funções constantes por partes,
+Cada $s_d$ pode ser visto como uma primitiva de uma base de wavelets, a **base de Haar**, formada por funções constantes por partes,
 $$
 \psi_1(t) = 1, \quad 
 \psi_d(t) = \frac{\mathrm{d}s_d}{\mathrm{d}t} = \begin{cases}
@@ -355,7 +360,7 @@ $$
 \int_0^1 \psi_d(t)^2 \;\mathrm{d}t = 2 \times (2^{(n-1)/2})^2 \frac{1}{2^n} = 1.
 $$
 
-### Representação em série de wavelets
+### Representação em série
 
 Obtivemos, acima, então, que
 $$
@@ -395,31 +400,13 @@ A_n \rightarrow 0,
 $$
 quase certamente.
 
-de tal forma que
-$$
-\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \;\forall m \geq n \;\Longrightarrow \;  \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0,
-$$
-Ou seja,
-$$
-\left\{\omega; \;\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \; \forall m \geq n \right\} \;\textrm{\Large $\subset$ }  \left\{\omega; \;\lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0\right\},
-$$
-Então basta mostrar que
-$$
-\mathbb{P}\left( \bigcap_{m \geq n} \left\{\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n\right\}\right) = 1,
-$$
-para alguma tal sequência $A_n\rightarrow 0$, ou, de outra forma, que
-$$
-\max_{m \geq n}\max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n \rightarrow 0,
-$$
-quase sempre.
-
 ### Processo $A_n$
 
-Para obter a estimativa acima, usamos a representacão em wavelets de $\{W_t^{(n)}\}_n$ para estimar, para $m\geq n$,
+Para obter a estimativa acima, usamos a representacão em série de $\{W_t^{(n)}\}_n$ para estimar, para $m\geq n$,
 $$
 |W_t^{(m)} - W_t^{(n)}| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
 $$
-para todo $0\leq t \leq 1$. Em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes disjuntos e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
+para todo $0\leq t \leq 1$. Como visto acima, em cada nível $D_{k+1}\setminus D_k$, as funções $s_d=s_d(t)$ têm suportes não encaixantes e o somatório é limitado pelo máximo dessas funções, que é exatamente $1/2^{(k+1)/2}$, ou seja,
 $$
 0 \leq \sum_{d\in D_{k+1}\setminus D_k} s_d(t) \leq \frac{1}{2^{(k+1)/2}}.
 $$
@@ -531,6 +518,60 @@ W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 $$
 Além disso, para quase todo $\omega$, o caminho amostral $W_t(\omega)$ é o limite uniforme dos caminhos contínuos $W_t^{(n)}(\omega)$, sendo, também, contínuo.
 
+### Mais explicitamente
+
+Podemos ser um pouco mais explícitos e considerar o conjunto "bom"
+$$
+    G = \bigcup_{n\in\mathbb{N}}\bigcap_{m \geq n} \bigcap_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| \leq r_k\}.
+$$
+Nesse conjunto, i.e. para todo $\omega\in G$, temos que existe $N=N(\omega)$ tal que
+$$
+    \bigcap_{m \geq N(\omega)} \bigcap_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| \leq r_k\}.
+$$
+Como esses conjuntos são não crescentes em $n$, temos, de fato, que
+$$
+    \bigcap_{m \geq n} \bigcap_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| \leq r_k\}, \qquad \forall n \geq N(\omega).
+$$
+Assim,
+$$
+    \max_{m \geq n}\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(N(\omega))}(\omega)| \leq A_{n}(\omega) = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d(\omega)| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}} r_k,
+$$
+Como a série é convergente para $r_k = 2\sqrt{k},$ temos que o rabo da série decai para zero, i.e. 
+$$
+    \max_{m \geq n}\max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(N(\omega))}(\omega)| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}} r_k \rightarrow 0, \quad n\rightarrow \infty.
+$$
+Ou seja,
+$$
+    \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0, \quad \forall \omega \in G.
+$$
+
+Falta mostrar que $G$ tem probabilidade total, $\mathbb{P}(G) = 1,$ ou seja, $\mathbb{P}(\Omega \setminus G) = 0.$ Para tal, observe que
+$$
+    \Omega \setminus G = \bigcap_{n\in\mathbb{N}}\bigcup_{m \geq n} \bigcup_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| > r_k\} = \limsup_{k\rightarrow \infty} \left(\bigcup_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| > r_k\}\right).
+$$
+Assim, estamos no contexto do Lema de Borel-Cantelli. Basta provar que
+$$
+    \sum_{k\in \mathbb{N}} \mathbb{P}\left( \bigcup_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| > r_k\} \right) < \infty
+$$
+para deduzir que
+$$
+    \mathbb{P}\left(\Omega \setminus G\right) = \mathbb{P}\left(\limsup_{k\rightarrow \infty} \left(\bigcup_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| > r_k\}\right)\right) = 0.
+$$
+Para ver que o somatório é finita, observamos que
+$$
+    \begin{align*}
+        \sum_{k\in \mathbb{N}} \mathbb{P}\left( \bigcup_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| > r_k\} \right) & \leq \sum_{k\in \mathbb{N}} \sum_{d\in D_{k+1}\setminus D_k} \mathbb{P}\left(\{\omega; \;|Z_d(\omega)| > r_k\} \right) \\
+        & \leq \sum_{k\in \mathbb{N}} \sum_{d\in D_{k+1}\setminus D_k} \sqrt{2}e^{-r_k^2/4} \\
+        & \leq \sqrt{2}\sum_{k\in \mathbb{N}} 2^k e^{-r_k^2/4} \\
+        & = \sqrt{2}\sum_{k\in \mathbb{N}} e^{k\ln(2)} e^{-k} \\
+        & = \sqrt{2}\sum_{k\in\mathbb{N}} e^{-k(1 - \ln(2))} \\
+        & < \infty,
+    \end{align*}
+$$
+dada a escolha $r_k = 2\sqrt{k}.$
+
+Assim, mostramos que, com probabilidade $1,$ a sequência converge uniformemente.
+
 ## Processo de Wiener no intervalo unitário
 
 Resta mostrar que $\{W_t\}_{t\in [0, 1]}$ tem todas as propriedades desejadas para que seja um processo de Wiener no intervalo $[0, 1]$. Para mostrarmos isso, vamos explorar a convergência obtida acima, que implica em convergência em distribuição, para passar ao limite as propriedades já estabelecidas para os processos discretos $\{X_d^{(n)}\}_{d\in D_n}$, usando, também, que $D$ é denso em $I=[0,1]$.
@@ -544,7 +585,7 @@ $$
 
 ### Continuidade dos caminhos amostrais
 
-Construímos $\{W_t^{(n)}\}_{t\in [0,1]}$ de tal forma que, para todo $\omega\in \Omega$, o caminho amostral $t \mapsto W_t^{(n)}(\omega)$ seja contínuo. Obtivemos, ainda, que cada caminho amostral $t \mapsto W_t(\omega)$ é limite uniforme de $t \mapsto W_t^{(n)}(\omega)$. Portanto, para todo $\omega\in\Omega$, o caminho amostral $t \mapsto W_t(\omega)$ também contínuo. Em particular,
+Construímos $\{W_t^{(n)}\}_{t\in [0,1]}$ de tal forma que, para todo $\omega\in \Omega$, o caminho amostral $t \mapsto W_t^{(n)}(\omega)$ é contínuo. Obtivemos, ainda, que cada caminho amostral $t \mapsto W_t(\omega)$ é limite uniforme de $t \mapsto W_t^{(n)}(\omega)$. Portanto, para todo $\omega\in\Omega$, o caminho amostral $t \mapsto W_t(\omega)$ também contínuo. Em particular,
 $$
 \mathbb{P}(\{\omega; \;t \mapsto W_t(\omega) \textrm{ é contínuo}\}) = 1.
 $$
