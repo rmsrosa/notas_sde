@@ -220,6 +220,26 @@ $$
 
 Se $t > 0$, então
 $$
+    \mathbb{E}[V_{t + \tau} - V_t] = 0
+$$
+e
+$$
+    \begin{aligned*}
+        \mathbb{E}\left[(V_{t+\tau} - V_t)^2\right] & = \mathbb{E}\left[\left((t + \tau)W_{1/(t+\tau)} - tW_{1/t}\right)^2\right] \\
+        & = \mathbb{E}\left[(t + \tau)^2W_{1/(t+\tau)}^2 -2(t+\tau)tW_{1/(t+\tau)}W_{1/t} + t^2W_{1/t}^2\right] \\
+        & = (t+\tau)^2\frac{1}{t + \tau} - 2(t+\tau)t\min\left\{\frac{1}{t + \tau}, \frac{1}{t}\right\} + t^2\frac{1}{t} \\
+        & = (t + \tau) - 2(t + \tau)t \frac{1}{t+\tau} + t \\
+        & = (t + \tau) - 2t + t \\
+        & = \tau.
+    \end{aligned*}
+$$
+Como o passo é uma normal, tendo média zero e variância $\tau,$ temos
+$$
+    V_{t + \tau} - V_t \sim \mathcal{N}(0, \tau).
+$$
+
+De outra forma, podemos escrever
+$$
 V_{t + \tau} - V_t = (t + \tau)W_{1/(t + \tau)} - tW_{1/t}.
 $$
 Somando e subtraindo $t W_{1/(t + \tau)}$, obtemos
@@ -242,8 +262,6 @@ Ou seja,
 $$
 V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 0.
 $$
-
-Isso completa a demonstração dessa simetria.
 
 ## Invariância por translações
 
