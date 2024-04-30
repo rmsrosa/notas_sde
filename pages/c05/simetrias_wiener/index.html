@@ -530,6 +530,25 @@ V_{t + \tau} - V_t = V_\tau = \tau W_{1/\tau} = \tau (W_{1/\tau} - W_0) \sim \ta
 \]
 <p>Se \(t > 0\), então</p>
 \[
+    \mathbb{E}[V_{t + \tau} - V_t] = 0
+\]
+<p>e</p>
+\[
+    \begin{aligned*}
+        \mathbb{E}\left[(V_{t+\tau} - V_t)^2\right] & = \mathbb{E}\left[\left((t + \tau)W_{1/(t+\tau)} - tW_{1/t}\right)^2\right] \\
+        & = \mathbb{E}\left[(t + \tau)^2W_{1/(t+\tau)}^2 -2(t+\tau)tW_{1/(t+\tau)}W_{1/t} + t^2W_{1/t}^2\right] \\
+        & = (t+\tau)^2\frac{1}{t + \tau} - 2(t+\tau)t\min\left\{\frac{1}{t + \tau}, \frac{1}{t}\right\} + t^2\frac{1}{t} \\
+        & = (t + \tau) - 2(t + \tau)t \frac{1}{t+\tau} + t \\
+        & = (t + \tau) - 2t + t \\
+        & = \tau.
+    \end{aligned*}
+\]
+<p>Como o passo é uma normal, tendo média zero e variância \(\tau,\) temos</p>
+\[
+    V_{t + \tau} - V_t \sim \mathcal{N}(0, \tau).
+\]
+<p>De outra forma, podemos escrever</p>
+\[
 V_{t + \tau} - V_t = (t + \tau)W_{1/(t + \tau)} - tW_{1/t}.
 \]
 <p>Somando e subtraindo \(t W_{1/(t + \tau)}\), obtemos</p>
@@ -552,7 +571,6 @@ W_{1/(t + \tau)} - W_0 \sim \mathcal{N}(0, 1/(t + \tau)), \quad W_{1/t} - W_{1/(
 \[
 V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 0.
 \]
-<p>Isso completa a demonstração dessa simetria.</p>
 <h2 id="invariância_por_translações"><a href="#invariância_por_translações" class="header-anchor">Invariância por translações</a></h2>
 <p>Considere, novamente, um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Seja \(s > 0\) e defina o processo \(\{V_t^s\}_{t\geq 0}\) por</p>
 \[
@@ -609,7 +627,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
         </div>
     
 
-    Last modified: April 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: April 30, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
