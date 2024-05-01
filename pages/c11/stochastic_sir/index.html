@@ -523,7 +523,7 @@ end</code></pre>
 2.0
 
 Benchmark SIR_noise!
-  3.716 ns (0 allocations: 0 bytes)
+  3.707 ns (0 allocations: 0 bytes)
 -20.0
 </code></pre>
 <p>Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro <code>InteractiveUtils.@code_warntype</code> para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável <code>u</code> e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável &#40;verifique isso usando <code>@btime</code> com os parâmetros abaixo&#33;&#41;.</p>
@@ -655,7 +655,7 @@ nothing
         </div>
     
 
-    Last modified: April 30, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -366,6 +366,19 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} \leq x_n) = \mathbb{P}(W_{t_1} \leq x_1, \ldots, W_{t_n} - W_{t_{n-1}} \leq x_n - \cdots - x_1) = F(x_1, \ldots, x_n - \cdots - x_1),
 \]
 <p>onde \(F\) é a função de distribuição acumulada da normal multivariada associada às normais independentes \(W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}\). Portanto, \(\{W_t\}_{t\geq 0}\) é um processo Gaussiano.</p>
+<p>Observe que não basta que cada marginal \(W_{t_j}\) seja uma normal para que a vetor aleatório \((W_{t_1}, \ldots, W_{t_n})\) seja uma normal multivariada em \(\mathbb{R}^n.\) Mas no caso acima, temos que os passos \(W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}\) são normais independentes, portanto o vetor aleatório</p>
+\[
+    (W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}})
+\]
+<p>é uma normal multivariada. Além disso, o vetor aleatório</p>
+\[
+    (W_{t_1}, \ldots, W_{t_n})
+\]
+<p>é uma transformação linear dessa normal multivariada,</p>
+\[
+    \left( \begin{array}{c} W_{t_1} \\ \vdots \\ W_{t_n} \end{array} \right) = \left[ \begin{array}{cccc} 1 & 0 & \dots & 0 \\ 1 & 1 & \ddots & \vdots \\ \vdots & \ddots & \ddots & 0 \\ 1 & \dots & 1 & 1 \end{array} \right] \left( \begin{array}{c} W_{t_1} - W_{t_0} \\ \vdots \\ W_{t_n} - W_{t_{n-1}} \end{array} \right).
+\]
+<p>Portanto, esse vetor aleatório também é uma normal multivariada.</p>
 <h2 id="esperança_e_variância"><a href="#esperança_e_variância" class="header-anchor">Esperança e variância</a></h2>
 <p>Como \(W_0 = 0\) e \(W_t - W_0 \sim \mathcal{N}(0, t)\), então</p>
 \[
@@ -427,17 +440,17 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 \[
     W_0 = 0.
 \]
-<p>Para \(t, \Delta t \geq 0,\), temos o incremento \(W_{t+\Delta t} - W_t\) como sendo uma normal com esperança e variância dadas por</p>
+<p>Para \(t, \tau \geq 0,\), temos o incremento \(W_{t+\tau} - W_t\) como sendo uma normal com esperança e variância dadas por</p>
 \[
-    \mathbb{E}[W_{t+\Delta t} - W_t] = \mathbb{E}[W_{t+\Delta t}] - \mathbb{E}[W_t] = 0 - 0 = 0
+    \mathbb{E}[W_{t+\tau} - W_t] = \mathbb{E}[W_{t+\tau}] - \mathbb{E}[W_t] = 0 - 0 = 0
 \]
 <p>e </p>
 \[
-    \mathbb{E}[(W_{t+\Delta t} - W_t)^2] = \mathbb{E}[W_{t+\Delta t}^2] - 2\mathbb{E}[W_{t+\Delta t}W_2] + \mathbb{E}[W_t^2] = t + \Delta t - 2t + t = \Delta t,
+    \mathbb{E}[(W_{t+\tau} - W_t)^2] = \mathbb{E}[W_{t+\tau}^2] - 2\mathbb{E}[W_{t+\tau}W_2] + \mathbb{E}[W_t^2] = t + \tau - 2t + t = \tau,
 \]
 <p>portanto</p>
 \[
-    W_{t+\Delta t} - W_t \sim \mathcal{N}(0, \Delta t).
+    W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau).
 \]
 <p>Por hipótese, os caminhos são quase certamente contínuos. Por fim, para a independência dos incrementos, como os incrementos são normais, basta mostrar a independência dois a dois. Assim, temos, para \(0 \leq t_0 \leq t_1 \leq t_2 \leq t_3\),</p>
 \[
@@ -471,7 +484,7 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
         </div>
     
 
-    Last modified: April 30, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

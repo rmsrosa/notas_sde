@@ -500,7 +500,21 @@ Z, W \sim \mathcal{N}(0, 2\sigma^2).
 \[
     \mathbb{E}[ZW] = \mathbb{E}[(X+Y)(X-Y)] = \mathbb{E}[X^2 - Y^2] = \mathbb{E}[X^2] - \mathbb{E}[Y^2] = \sigma^2 - \sigma^2 = 0,
 \]
-<p>nos dando que a correlação entre as duas variáveis é nulo e portanto elas são independentes.</p>
+<p>nos dando que a correlação entre as duas variáveis é nula e portanto elas são independentes.</p>
+<h2 id="marginais_normais_sem_vetor_ser_normal"><a href="#marginais_normais_sem_vetor_ser_normal" class="header-anchor">Marginais normais sem vetor ser normal</a></h2>
+<p>Um vetor aleatório pode ter marginais normais sem ele ser uma normal multivariada. Considere, por exemplo, \(X \sim \mathcal{N}(0, 1)\) e \(Y = \pm X = (2B - 1)X,\) onde \(B \sim \operatorname{Bernoulli}(1/2)\). Temos</p>
+\[
+    \mathbb{P}(Y \leq y) = \frac{1}{2}\mathbb{P}(Y \leq y | B = 0) + \frac{1}{2}\mathbb{P}(Y \leq y | B = 1) = \frac{1}{2}\mathbb{P}(X \leq y) + \frac{1}{2}\mathbb{P}(-X \leq y).
+\]
+<p>Pela simetria da distribuição de \(X \sim \mathcal{N}(0, 1),\) temos</p>
+\[
+    \mathbb{P}(-X \leq y) = \mathbb{P}(X \geq -y) = \mathbb{P}(X \leq y),
+\]
+<p>de modo que</p>
+\[
+    \mathbb{P}(Y \leq y) = \frac{1}{2}\mathbb{P}(X \leq y) + \frac{1}{2}\mathbb{P}(X \leq y) = \mathbb{P}(X \leq y),
+\]
+<p>mostrando que a distribuição de \(Y\) é normal. Mas a distribuição do vetor aleatório \((X, Y)\) não é uma normal bivariada.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Seja \(Y\) uma variável aleatória real e defina \(X = \sin(Y)\). Suponha que \(\mathbb{E}[Y] = 0\). Mostre que \(\mathbb{E}[X] = 0\) e \(\mathrm{Var}(X) \leq \mathrm{Var}(Y)\).</p>
@@ -529,7 +543,7 @@ Z, W \sim \mathcal{N}(0, 2\sigma^2).
         </div>
     
 
-    Last modified: April 30, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
