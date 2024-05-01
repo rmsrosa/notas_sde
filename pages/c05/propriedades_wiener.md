@@ -20,6 +20,20 @@ $$
 $$
 onde $F$ é a função de distribuição acumulada da normal multivariada associada às normais independentes $W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}$. Portanto, $\{W_t\}_{t\geq 0}$ é um processo Gaussiano.
 
+Observe que não basta que cada marginal $W_{t_j}$ seja uma normal para que a vetor aleatório $(W_{t_1}, \ldots, W_{t_n})$ seja uma normal multivariada em $\mathbb{R}^n.$ Mas no caso acima, temos que os passos $W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}}$ são normais independentes, portanto o vetor aleatório
+$$
+    (W_{t_1} - W_{t_0}, \ldots, W_{t_n} - W_{t_{n-1}})
+$$
+é uma normal multivariada. Além disso, o vetor aleatório
+$$
+    (W_{t_1}, \ldots, W_{t_n})
+$$
+é uma transformação linear dessa normal multivariada,
+$$
+    \left( \begin{array}{c} W_{t_1} \\ \vdots \\ W_{t_n} \end{array} \right) = \left[ \begin{array}{cccc} 1 & 0 & \dots & 0 \\ 1 & 1 & \ddots & \vdots \\ \vdots & \ddots & \ddots & 0 \\ 1 & \dots & 1 & 1 \end{array} \right] \left( \begin{array}{c} W_{t_1} - W_{t_0} \\ \vdots \\ W_{t_n} - W_{t_{n-1}} \end{array} \right).
+$$
+Portanto, esse vetor aleatório também é uma normal multivariada.
+
 ## Esperança e variância
 
 Como $W_0 = 0$ e $W_t - W_0 \sim \mathcal{N}(0, t)$, então
@@ -98,17 +112,17 @@ $$
     W_0 = 0.
 $$
 
-Para $t, \Delta t \geq 0,$, temos o incremento $W_{t+\Delta t} - W_t$ como sendo uma normal com esperança e variância dadas por
+Para $t, \tau \geq 0,$, temos o incremento $W_{t+\tau} - W_t$ como sendo uma normal com esperança e variância dadas por
 $$
-    \mathbb{E}[W_{t+\Delta t} - W_t] = \mathbb{E}[W_{t+\Delta t}] - \mathbb{E}[W_t] = 0 - 0 = 0
+    \mathbb{E}[W_{t+\tau} - W_t] = \mathbb{E}[W_{t+\tau}] - \mathbb{E}[W_t] = 0 - 0 = 0
 $$
 e 
 $$
-    \mathbb{E}[(W_{t+\Delta t} - W_t)^2] = \mathbb{E}[W_{t+\Delta t}^2] - 2\mathbb{E}[W_{t+\Delta t}W_2] + \mathbb{E}[W_t^2] = t + \Delta t - 2t + t = \Delta t,
+    \mathbb{E}[(W_{t+\tau} - W_t)^2] = \mathbb{E}[W_{t+\tau}^2] - 2\mathbb{E}[W_{t+\tau}W_2] + \mathbb{E}[W_t^2] = t + \tau - 2t + t = \tau,
 $$
 portanto
 $$
-    W_{t+\Delta t} - W_t \sim \mathcal{N}(0, \Delta t).
+    W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau).
 $$
 
 Por hipótese, os caminhos são quase certamente contínuos. Por fim, para a independência dos incrementos, como os incrementos são normais, basta mostrar a independência dois a dois. Assim, temos, para $0 \leq t_0 \leq t_1 \leq t_2 \leq t_3$,

@@ -211,7 +211,23 @@ Agora, para ver a independência entre $Z$ e $W$, sabendo que a média de cada u
 $$
     \mathbb{E}[ZW] = \mathbb{E}[(X+Y)(X-Y)] = \mathbb{E}[X^2 - Y^2] = \mathbb{E}[X^2] - \mathbb{E}[Y^2] = \sigma^2 - \sigma^2 = 0,
 $$
-nos dando que a correlação entre as duas variáveis é nulo e portanto elas são independentes.
+nos dando que a correlação entre as duas variáveis é nula e portanto elas são independentes.
+
+## Marginais normais sem vetor ser normal
+
+Um vetor aleatório pode ter marginais normais sem ele ser uma normal multivariada. Considere, por exemplo, $X \sim \mathcal{N}(0, 1)$ e $Y = \pm X = (2B - 1)X,$ onde $B \sim \operatorname{Bernoulli}(1/2)$. Temos
+$$
+    \mathbb{P}(Y \leq y) = \frac{1}{2}\mathbb{P}(Y \leq y | B = 0) + \frac{1}{2}\mathbb{P}(Y \leq y | B = 1) = \frac{1}{2}\mathbb{P}(X \leq y) + \frac{1}{2}\mathbb{P}(-X \leq y).
+$$
+Pela simetria da distribuição de $X \sim \mathcal{N}(0, 1),$ temos
+$$
+    \mathbb{P}(-X \leq y) = \mathbb{P}(X \geq -y) = \mathbb{P}(X \leq y),
+$$
+de modo que
+$$
+    \mathbb{P}(Y \leq y) = \frac{1}{2}\mathbb{P}(X \leq y) + \frac{1}{2}\mathbb{P}(X \leq y) = \mathbb{P}(X \leq y),
+$$
+mostrando que a distribuição de $Y$ é normal. Mas a distribuição do vetor aleatório $(X, Y)$ não é uma normal bivariada.
 
 ## Exercícios
 
