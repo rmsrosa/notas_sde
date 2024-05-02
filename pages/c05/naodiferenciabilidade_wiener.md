@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Caso os caminhos amostrais de um processo de Wiener $\{W_t\}_{t\geq 0}$ fossem diferenciáveis em um instante $t$, teríamos a existência, quase sempre, do limite
+Caso os caminhos amostrais de um processo de Wiener $\{W_t\}_{t\geq 0}$ fossem diferenciáveis em um instante $t$, teríamos a existência, quase certamente, do limite
 $$
 \lim_{\tau \rightarrow 0} \frac{W_{t+\tau} - W_t}{\tau}.
 $$
@@ -10,91 +10,92 @@ Em particular, teríamos
 $$
 \limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty.
 $$
-quase sempre. Porém, isso não é verdade. Mais do que isso. Esse limite superior é infinito com probabilidade um. Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.
+quase certamente. Porém, isso não é verdade. Mais do que isso. Esse limite superior é infinito em todos os pontos, com probabilidade um. Ou seja, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.
+
+Esse é um resultado importante, mas mais no sentido de fechar uma possível porta (de explorar a regularidade dos caminhos amostrais) do que de abrir outras. De qualquer forma, é um resultado fundamental. E as técnicas usadas podem, sim, ser eventualmente úteis em outras questões.
+
+A ideia fundamental vem do fato de que $W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau),$ de forma que, tipicamente,
+$$
+    \frac{W_{t+\tau} - W_t}{\tau} \sim \frac{\sqrt{t}}{\tau} = \frac{1}{\sqrt{\tau}} \rightarrow \infty,
+$$
+quando $\tau \rightarrow 0.$ A questão é mostrar que isso ocorre quase certamente e em todos os instantes $t.$
 
 ## Não diferenciabilidade na origem
 
-Vamos começar ilustrando isso no instante $t = 0$. Temos
+Vamos começar ilustrando isso no instante $t = 0$. Nesse caso, temos
 $$
 \lim_{\tau\rightarrow 0} \frac{W_\tau - W_0}{\tau} = \lim_{\tau\rightarrow 0} \frac{W_\tau}{\tau}.
 $$
-
-Lembrando da propriedade de simetria por rescalonamento, considere os processos de Wiener definidos por
+Vamos mostrar que
 $$
-V_t^a = \frac{1}{a}W_{a^2t}, \qquad t \geq 0,
+\limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty,
 $$
-para $a > 0$.
-
-Ambos $\{W_t\}_{t \geq 0}$ e $\{V_t^a\}_{t\geq 0}$ são processos de Wiener padrão, com mesma lei de probabilidades $W_t, V_t^a \sim \mathcal{N}(0, t)$. Portanto,
+quase certamente. Ou seja, vamos mostrar que
 $$
-\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r), \qquad \forall r \geq 0.
-$$
-Assim,
-$$
-\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r) = \mathbb{P}\left(\frac{|W_{a^2\tau}|}{a} \leq r\right).
+    \mathbb{P}\left(\limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty\right) = 1.
 $$
 
-Escolhendo $a = 1/\sqrt{\tau}$, temos
+As sequências envolvidas no limite inferior acima podem variar com o caminho amostral. Mas podemos mostrar, na verdade, que esse limite superior é infinito mesmo fixando uma mesma sequência para os caminhos, desde que essa sequência decresça suficientemente rápido. Na verdade, podemos mostrar que, para essas sequências, até o limite inferior é infinito. Ou seja, vamos mostrar que existe uma sequência positiva $\tau_n \rightarrow 0$ tal que
 $$
-\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}\left(\sqrt{\tau}|W_{1}| \leq r\right).
+    \mathbb{P}\left(\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right) = 1.
 $$
-Podemos escrever isso na forma
+Observe que, de fato,
 $$
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{r}{\tau}\right) = \mathbb{P}\left(|W_{1}| \leq \frac{r}{\sqrt{\tau}}\right).
-$$
-
-Escolhendo, agora, $r = \tau^{3/4}$, obtemos
-$$
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right) = \mathbb{P}\left(|W_{1}| \leq \tau^{1/4}\right).
+    \left\{\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right\} \subset \left\{\limsup_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right\} \subset \left\{ \limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty \right\}.
 $$
 
-Como $W_1 \sim \mathcal{N}(0, 1)$, temos que
+Mostrar que o conjunto à esquerda tem probabilidade $1$ é equivalente a mostrar que
 $$
-\mathbb{P}(|W_1| \leq \tau^{1/4}) \rightarrow 0, \qquad \tau \rightarrow 0.
-$$
-Portanto, para qualquer $\varepsilon > 0$, existe $\tau > 0$ tal que
-$$
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right)\leq \varepsilon.
-$$
-Escolhemos uma sequência $\{\varepsilon_n\}_{n\in\mathbb{N}}$ tal que $\varepsilon_n > 0$ e $\sum_n \varepsilon_n < \infty.$ (Por exemplo, $\varepsilon_n = 2^{-n}$.) Agora, dado $M > 0$, escolhemos, para cada $n$, instantes $\tau_n$ tais que $0 < \tau_n \leq 1/M^4$ e
-$$
-\mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \varepsilon_n.
-$$
-Assim,
-$$
-\sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \sum_n \varepsilon_n < \infty
+    \mathbb{P}\left(\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} < \infty\right) = 0.
 $$
 
-Segue, então, pelo Lema de Borel-Cantelli, que
+Observe, ainda, que
 $$
-\mathbb{P}\left(\limsup_{n\rightarrow \infty} E_n^M\right) = 0,
-$$
-onde
-$$
-E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
-$$
-Temos
-$$
-\limsup_{n\rightarrow \infty} E_n^M = \bigcap_{n\in\mathbb{N}}\bigcup_{j\geq n} E_j^M = \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\}
-$$
-Observe que
-$$
-\left\{\omega; \; \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < M \right\} \subset \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\} = \limsup_{n\rightarrow \infty} E_n^M.
-$$
-Portanto,
-$$
-\mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M\right) = 0.
-$$
-Nesse momento, essa estimativa é válida para qualquer $M>0$. Como
-$$
-\left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right\} = \bigcup_{M\in \mathbb{N}} \left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M \right\},
-$$
-deduzimos que
-$$
-\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right) = 0.
+  \left\{\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} < \infty\right\} = \bigcup_{M\in\mathbb{N}} \left\{\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} = \bigcup_{M\in\mathbb{N}} \left\{\forall k \in \mathbb{N}, \;\exists n \geq k, \; \frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} = \bigcup_{M\in\mathbb{N}} \bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}.
 $$
 
-Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em $t = 0$.
+Como a união em $M\in\mathbb{N}$ é enumerável, basta mostrar, então, que, para cada $M > 0,$
+$$
+    \mathbb{P}\left(\bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}\right) = 0.
+$$
+Observe, para tanto, que
+$$
+    \bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} = \limsup_{n\rightarrow \infty} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}.
+$$
+Usando o Lema de Borel-Cantelli para deduzir que o limite superior tem probabilidade nula, basta mostrar que
+$$
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) < \infty.
+$$
+Para isso, vamos usar que
+$$
+    \frac{W_\tau}{\sqrt{\tau}} \sim \mathcal{N}(0, 1),
+$$
+de modo que
+$$
+    \mathbb{P}\left( \frac{|W_{\tau_n}|}{\tau_n} \leq M \right) = \mathbb{P}\left( \frac{|W_{\tau_n}|}{\sqrt{\tau_n}} \leq \sqrt{\tau_n}M \right) \leq \sqrt{\frac{2}{\pi}} \sqrt{\tau_n} M.
+$$
+(Aqui, usamos que, para uma normal $Z\sim \mathcal{N}(0, 1),$ vale $\mathbb{P}(|Z| \leq r) \leq \sqrt{2/\pi} r.$) Assim,
+$$
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sqrt{\frac{2}{\pi}} M\sum_{n\in\mathbb{N}} \sqrt{\tau_n}.
+$$
+Basta, então, pegar qualquer sequência indo suficientemente rápido para que o somatório seja finito, por exemplo,
+$$
+    \tau_n = \frac{1}{2^{2n}},
+$$
+de maneira que
+$$
+    \sum_{n\in\mathbb{N}} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} \leq \sqrt{\frac{2}{\pi}} M\sum_{n\in\mathbb{N}} \frac{1}{2^n} = \sqrt{\frac{2}{\pi}} M < \infty.
+$$
+Assim, segue do Lema de Borel-Cantelli que
+$$
+    \mathbb{P}\left(\bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}\right) = \mathbb{P}\left( \limsup_{n\rightarrow \infty} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} \right) = 0
+$$
+e, portanto, 
+$$
+    \mathbb{P}\left(\limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty\right) \geq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right) = 1.
+$$
+
+Isso conclui a demonstração de que, com probabilidade um, os caminhos amostrais não são diferenciáveis em $t = 0$.
 
 ## Não diferenciabilidade em nenhum ponto
 
