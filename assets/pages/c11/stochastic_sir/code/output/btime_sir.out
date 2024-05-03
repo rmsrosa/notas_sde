@@ -3,5 +3,5 @@ Benchmark SIR!
 2.0
 
 Benchmark SIR_noise!
-  3.707 ns (0 allocations: 0 bytes)
+  3.716 ns (0 allocations: 0 bytes)
 -20.0

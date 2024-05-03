@@ -362,7 +362,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></h1>
-<p>Caso os caminhos amostrais de um processo de Wiener \(\{W_t\}_{t\geq 0}\) fossem diferenciáveis em um instante \(t\), teríamos a existência, quase sempre, do limite</p>
+<p>Caso os caminhos amostrais de um processo de Wiener \(\{W_t\}_{t\geq 0}\) fossem diferenciáveis em um instante \(t\), teríamos a existência, quase certamente, do limite</p>
 \[
 \lim_{\tau \rightarrow 0} \frac{W_{t+\tau} - W_t}{\tau}.
 \]
@@ -370,106 +370,132 @@
 \[
 \limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty.
 \]
-<p>quase sempre. Porém, isso não é verdade. Mais do que isso. Esse limite superior é infinito com probabilidade um. Em particular, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.</p>
+<p>quase certamente. Porém, isso não é verdade. Mais do que isso. Esse limite superior é infinito em todos os pontos, com probabilidade um. Ou seja, com probabilidade um, os caminhos amostrais não são diferenciáveis em instante algum.</p>
+<p>Esse é um resultado importante, mas mais no sentido de fechar uma possível porta &#40;de explorar a regularidade dos caminhos amostrais&#41; do que de abrir outras. De qualquer forma, é um resultado fundamental. E as técnicas usadas podem, também, ser eventualmente úteis em outras questões.</p>
+<p>A ideia fundamental vem do fato de que \(W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau),\) de forma que, tipicamente,</p>
+\[
+    \frac{|W_{t+\tau} - W_t|}{\tau} \sim \frac{\sqrt{t}}{\tau} = \frac{1}{\sqrt{\tau}} \rightarrow \infty,
+\]
+<p>quando \(\tau \rightarrow 0.\) A questão é mostrar que isso ocorre quase certamente e em todos os instantes \(t.\)</p>
 <h2 id="não_diferenciabilidade_na_origem"><a href="#não_diferenciabilidade_na_origem" class="header-anchor">Não diferenciabilidade na origem</a></h2>
-<p>Vamos começar ilustrando isso no instante \(t = 0\). Temos</p>
+<p>Vamos começar ilustrando isso no instante \(t = 0\). Nesse caso, temos</p>
 \[
 \lim_{\tau\rightarrow 0} \frac{W_\tau - W_0}{\tau} = \lim_{\tau\rightarrow 0} \frac{W_\tau}{\tau}.
 \]
-<p>Lembrando da propriedade de simetria por rescalonamento, considere os processos de Wiener definidos por</p>
+<p>Vamos mostrar que</p>
 \[
-V_t^a = \frac{1}{a}W_{a^2t}, \qquad t \geq 0,
+\limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty,
 \]
-<p>para \(a > 0\).</p>
-<p>Ambos \(\{W_t\}_{t \geq 0}\) e \(\{V_t^a\}_{t\geq 0}\) são processos de Wiener padrão, com mesma lei de probabilidades \(W_t, V_t^a \sim \mathcal{N}(0, t)\). Portanto,</p>
+<p>quase certamente, ou seja,</p>
 \[
-\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r), \qquad \forall r \geq 0.
+    \mathbb{P}\left(\limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty\right) = 1.
+\]
+<p>As sequências envolvidas no limite inferior acima podem variar com o caminho amostral. Mas podemos mostrar, na verdade, que esse limite superior é infinito mesmo fixando uma mesma sequência para os caminhos, desde que essa sequência decresça suficientemente rápido. Na verdade, podemos mostrar que, para essas sequências, até o limite inferior é infinito. Ou seja, vamos mostrar que existe uma sequência positiva \(\tau_n \rightarrow 0\) tal que</p>
+\[
+    \mathbb{P}\left(\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right) = 1.
+\]
+<p>Observe que, de fato,</p>
+\[
+    \left\{\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right\} \subset \left\{\limsup_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right\} \subset \left\{ \limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty \right\}.
+\]
+<p>Mostrar que o conjunto à esquerda tem probabilidade \(1\) é equivalente a mostrar que</p>
+\[
+    \mathbb{P}\left(\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} < \infty\right) = 0.
+\]
+<p>Observe, ainda, que</p>
+\[
+  \begin{align*}
+    \left\{\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} < \infty\right\} & = \bigcup_{M\in\mathbb{N}} \left\{\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} \\
+    & = \bigcup_{M\in\mathbb{N}} \left\{\forall k \in \mathbb{N}, \;\exists n \geq k, \; \frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} \\
+    & = \bigcup_{M\in\mathbb{N}} \bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}.
+  \end{align*}
+\]
+<p>Como a união em \(M\in\mathbb{N}\) é enumerável, basta mostrar, então, que, para cada \(M > 0,\)</p>
+\[
+    \mathbb{P}\left(\bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}\right) = 0.
+\]
+<p>Observe, para tanto, que</p>
+\[
+    \bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} = \limsup_{n\rightarrow \infty} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}.
+\]
+<p>Usando o Lema de Borel-Cantelli para deduzir que o limite superior tem probabilidade nula, basta mostrar que</p>
+\[
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) < \infty.
+\]
+<p>Para isso, vamos usar que</p>
+\[
+    V_\tau = \frac{W_\tau}{\sqrt{\tau}} \sim \mathcal{N}(0, 1)
+\]
+<p>e que, para uma tal normal padrão \(V_\tau,\) vale</p>
+\[
+    \mathbb{P}(|V_\tau| \leq r) = \int_{|x|\leq r} \frac{1}{\sqrt{2\pi}}e^{-x^2/2} \;\mathrm{d}x \leq \frac{1}{\sqrt{2\pi}} \int_{-r}^r \;\mathrm{d}x = \frac{1}{\sqrt{2\pi}} 2r = \sqrt{\frac{2}{\pi}} r,
+\]
+<p>de modo que</p>
+\[
+    \mathbb{P}\left( \frac{|W_{\tau_n}|}{\tau_n} \leq M \right) = \mathbb{P}\left( \frac{|W_{\tau_n}|}{\sqrt{\tau_n}} \leq \sqrt{\tau_n}M \right) \leq \sqrt{\frac{2}{\pi}} \sqrt{\tau_n} M.
 \]
 <p>Assim,</p>
 \[
-\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}(|V_\tau^a| \leq r) = \mathbb{P}\left(\frac{|W_{a^2\tau}|}{a} \leq r\right).
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sqrt{\frac{2}{\pi}} M\sum_{n\in\mathbb{N}} \sqrt{\tau_n}.
 \]
-<p>Escolhendo \(a = 1/\sqrt{\tau}\), temos</p>
+<p>Basta, então, pegar qualquer sequência decrescendo suficientemente rápido para que o somatório seja finito, por exemplo,</p>
 \[
-\mathbb{P}(|W_\tau| \leq r) = \mathbb{P}\left(\sqrt{\tau}|W_{1}| \leq r\right).
+    \tau_n = \frac{1}{2^{2n}}.
 \]
-<p>Podemos escrever isso na forma</p>
+<p>Com tal escolha,</p>
 \[
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{r}{\tau}\right) = \mathbb{P}\left(|W_{1}| \leq \frac{r}{\sqrt{\tau}}\right).
+    \sum_{n\in\mathbb{N}} \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sqrt{\frac{2}{\pi}} M\sum_{n\in\mathbb{N}} \frac{1}{2^n} = \sqrt{\frac{2}{\pi}} M < \infty.
 \]
-<p>Escolhendo, agora, \(r = \tau^{3/4}\), obtemos</p>
+<p>Assim, segue do Lema de Borel-Cantelli que</p>
 \[
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right) = \mathbb{P}\left(|W_{1}| \leq \tau^{1/4}\right).
+    \mathbb{P}\left(\bigcap_{k\in\mathbb{N}} \bigcup_{n\geq k} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\}\right) = \mathbb{P}\left( \limsup_{n\rightarrow \infty} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} \right) = 0
 \]
-<p>Como \(W_1 \sim \mathcal{N}(0, 1)\), temos que</p>
+<p>e, portanto, </p>
 \[
-\mathbb{P}(|W_1| \leq \tau^{1/4}) \rightarrow 0, \qquad \tau \rightarrow 0.
+    \begin{align*}
+        \mathbb{P}\left(\limsup_{\tau\rightarrow 0} \frac{|W_\tau|}{\tau} = \infty\right) & \geq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right) \\
+        & \geq \mathbb{P}\left(\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} = \infty\right) \\
+        & = 1 - \mathbb{P}\left(\liminf_{n\rightarrow \infty} \frac{|W_{\tau_n}|}{\tau_n} < \infty\right) \\
+        & = 1 - \sum_{M\in\mathbb{N}} \mathbb{P}\left( \limsup_{n\rightarrow \infty} \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M\right\} \right) \\
+        & = 1 - 0 \\
+        & = 1.
+    \end{align*}
 \]
-<p>Portanto, para qualquer \(\varepsilon > 0\), existe \(\tau > 0\) tal que</p>
+<p>Isso conclui a demonstração de que, quase certamente, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
+<h2 id="não_diferenciabilidade_em_um_conjunto_enumerável_de_instantes"><a href="#não_diferenciabilidade_em_um_conjunto_enumerável_de_instantes" class="header-anchor">Não diferenciabilidade em um conjunto enumerável de instantes</a></h2>
+<p>Como um processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir. O que podemos obter do resultado acima é que quase todo caminho é não diferenciável em um conjunto denso enumerável de pontos, como os racionais. De fato, temos</p>
 \[
-\mathbb{P}\left(\frac{|W_\tau|}{\tau} \leq \frac{1}{\tau^{1/4}}\right)\leq \varepsilon.
+  \begin{align*}
+    \mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} = \infty, \;\forall t\in \mathbb{Q}\cap [0, \infty)\right) & = 1 - \mathbb{P}\left(\exists t\in \mathbb{Q}\cap [0, \infty), \;\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty\right) \\
+    & = 1 - \mathbb{P}\left( \bigcup_{t\in \mathbb{Q}\cap [0, \infty)} \limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty \right) \\
+    & = 1 - \sum_{t\in \mathbb{Q}\cap [0, \infty)} \mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t}{\tau} = \infty\right) \\
+    & = 1 - 0 \\
+    & = 1.
+  \end{align*}
 \]
-<p>Escolhemos uma sequência \(\{\varepsilon_n\}_{n\in\mathbb{N}}\) tal que \(\varepsilon_n > 0\) e \(\sum_n \varepsilon_n < \infty.\) &#40;Por exemplo, \(\varepsilon_n = 2^{-n}\).&#41; Agora, dado \(M > 0\), escolhemos, para cada \(n\), instantes \(\tau_n\) tais que \(0 < \tau_n \leq 1/M^4\) e</p>
-\[
-\mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \varepsilon_n.
-\]
-<p>Assim,</p>
-\[
-\sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq M\right) \leq \sum_{n=1}^\infty \mathbb{P}\left(\frac{|W_{\tau_n}|}{\tau_n} \leq \frac{1}{\tau_n^{1/4}}\right) \leq \sum_n \varepsilon_n < \infty
-\]
-<p>Segue, então, pelo Lema de Borel-Cantelli, que</p>
-\[
-\mathbb{P}\left(\limsup_{n\rightarrow \infty} E_n^M\right) = 0,
-\]
-<p>onde</p>
-\[
-E_n^M = \left\{\frac{|W_{\tau_n}|}{\tau_n} \leq M \right\}.
-\]
-<p>Temos</p>
-\[
-\limsup_{n\rightarrow \infty} E_n^M = \bigcap_{n\in\mathbb{N}}\bigcup_{j\geq n} E_j^M = \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\}
-\]
-<p>Observe que</p>
-\[
-\left\{\omega; \; \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < M \right\} \subset \left\{\omega; \;\forall n\in \mathbb{N}, \exists j \geq n, \;\frac{|W_{\tau_j}|}{\tau_j} \leq M \right\} = \limsup_{n\rightarrow \infty} E_n^M.
-\]
-<p>Portanto,</p>
-\[
-\mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M\right) = 0.
-\]
-<p>Nesse momento, essa estimativa é válida para qualquer \(M>0\). Como</p>
-\[
-\left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right\} = \bigcup_{M\in \mathbb{N}} \left\{ \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} \leq M \right\},
-\]
-<p>deduzimos que</p>
-\[
-\mathbb{P}\left( \limsup_{\tau \rightarrow 0} \frac{|W_\tau|}{\tau} < \infty \right) = 0.
-\]
-<p>Isso mostra que, com probabilidade um, os caminhos amostrais não são diferenciáveis em \(t = 0\).</p>
-<h2 id="não_diferenciabilidade_em_nenhum_ponto"><a href="#não_diferenciabilidade_em_nenhum_ponto" class="header-anchor">Não diferenciabilidade em nenhum ponto</a></h2>
-<p>Como um processo de Wiener é invariante por translações, aplicando o resultado acima a \(V_t^s = W_{s + t} - W_s\), para \(s \geq 0\), segue que, para qualquer \(t \geq 0\), quase todo caminho amostral é não diferenciável no instante \(t\). Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes \(t \geq 0\). Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir.</p>
 <h2 id="quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto"><a href="#quase_todo_caminho_amostral_é_não_diferenciável_em_nenhum_ponto" class="header-anchor">Quase todo caminho amostral é não diferenciável em nenhum ponto</a></h2>
-<p>O resultado anterior diz que, para todo \(t \geq 0\) dado, os caminhos amostrais são quase todos não diferenciáveis em \(t\). Um resultado mais forte é dizer que quase todo caminho amostral não é diferenciável em nenhum ponto. Isso também é verdade, mas a demonstração é mais delicada, como veremos agora. Vamos seguir essencialmente a demonstração em Mörters &amp; Peres &#40;2010&#41;, com pequenas modificações.</p>
+<p>A demonstração de que quase todo caminho amostral não é diferenciável em nenhum ponto é mais delicada, como veremos agora. Vamos seguir essencialmente a demonstração em Mörters &amp; Peres &#40;2010&#41;, com algumas modificações.</p>
 <p>Começamos mostrando a não diferenciabilidade no intervalo \([0, 1)\). Seja \(t \mapsto W_t(\omega)\) um caminho amostral tal que, para algum \(0\leq t_0 < 1\),</p>
 \[
-\limsup_{\tau \rightarrow 0} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty.
+\limsup_{\tau \rightarrow 0} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} < \infty.
 \]
 <p>Isso acontece se, e somente se, existem \(m, M \in \mathbb{N}\) tais que</p>
 \[
-\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M, \qquad \forall n \geq m.
+\sup_{\tau\in (0,2^{-n+2}]} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M, \qquad \forall n \geq m.
 \]
 <p>O motivo de usarmos \(2^{-n+2}\) acima, ao invés de \(2^{-n}\), é que vamos usar, abaixo, a partição diádica de tal forma que quatro intervalos sucessivos da malha com espaçamento \(2^{-n}\) cabem em um único intervalo da malha com espaçamento \(2^{-n+2}\). A importância disso será vista em seguida.</p>
 
 <img src="/notas_sde/assets/pages/c05/naodiferenciabilidade_wiener/code/output/dyadic_points.svg" alt="">
 <p>Com a caracterização acima, podemos escrever</p>
 \[
-\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} = \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} \left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{|W_{t_0+\tau}(\omega) - W_{t_0}(\omega)|}{\tau} < \infty \right\} = \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} \left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\}
 \]
-<p>Considere as malhas diádicas \(\{k/2^n, \;k=0, \ldots, 2^n\}\), \(n\in \mathbb{N}\). O ponto \(t_0\) pode estar em qualquer um dos intervalos definidos por essa malha. Logo, podemos escrever</p>
+<p>Observe que também podemos escrever que o conjunto à esquerda é a união em \(M\) e em \(n\) dos conjuntos mais à direita, mas não é tão simples mostrar que os conjuntos mais à direita têm medida nula. É mais fácil trabalhar refinando a malha e escrevendo a interseção das uniões, ou seja, como um limite superior, para aplicarmos o Lema de Borel-Cantelli. Nesse caso, basta mostrar que as medidas dos conjuntos mais à esquerda são somáveis em \(n.\)</p>
+<p>Considere, então, as malhas diádicas \(\{k/2^n, \;k=0, \ldots, 2^n\}\), \(n\in \mathbb{N}\). O ponto \(t_0\) pode estar em qualquer um dos intervalos definidos por essa malha. Logo, podemos escrever</p>
 \[
-\left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\} = \bigcup_{k = 1, \ldots, 2^n}\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\}
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\} = \bigcup_{k = 1, \ldots, 2^n}\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\}
 \]
-<p>Suponha que \(t_0\) pertença a um determinado intervalo \((k-1)/2^n \leq t_0 < k/2^n\). Considere o incremento \(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\), para \(j=1, 2, 3\). Observe que</p>
+<p>Suponha que \(t_0\) pertença a um determinado intervalo \((k-1)/2^n \leq t_0 < k/2^n\). Considere os incrementos \(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\), para \(j=1, 2, 3\). Observe que</p>
 \[
 t_0 < \frac{k}{2^n} < \frac{k+j}{2^n} = \frac{k-1}{2^n} + \frac{j+1}{2^n} \leq \frac{k-1}{2^n} + \frac{4}{2^{n}} \leq t_0 + \frac{1}{2^{n-2}}.
 \]
@@ -488,65 +514,61 @@ t_0 < \frac{k}{2^n} < \frac{k+j}{2^n} = \frac{k-1}{2^n} + \frac{j+1}{2^n} \leq \
 \]
 <p>Ou seja, para cada \(n, M, k\), vale</p>
 \[
-\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)}{\tau} \leq M\right\} \leq \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
+\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\} \leq \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
 \]
 <p>Com isso,</p>
 \[
-\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{W_{t_0+\tau}(\omega) - W_{t_0}(\omega)}{\tau} < \infty \right\} \subset \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_n,
+\left\{\omega; \;\exists t_0 \in [0, 1), \;\limsup_{\tau \rightarrow 0} \frac{|W_{t_0+\tau}(\omega) - W_{t_0}(\omega)|}{\tau} < \infty \right\} \subset \bigcup_{M\in\mathbb{N}} \bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_{M, n},
 \]
 <p>onde</p>
 \[
-E_n = \bigcup_{k = 1, \ldots, 2^n} \Omega_{n, M, k}, \qquad \Omega_{n, M, k} = \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
+E_{M, n} = \bigcup_{k = 1, \ldots, 2^n} E_{M, n, k}, \qquad E_{M, n, k} = \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
 \]
 <p>Aqui fica evidente o uso da malha mais grossa, na estimativa da diferença finita, gerando as estimativas nos incrementos na malha mais fina. O motivo do uso desses três incrementos será aparente em seguida.</p>
 <p>Vamos mostrar, usando o Lema de Borel-Cantelli, que</p>
 \[
-\bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_n = \limsup_{n\rightarrow \infty} E_n = 0.
+\bigcap_{m\in \mathbb{N}}\bigcup_{n \geq m} E_{M, n} = \limsup_{n\rightarrow \infty} E_{M, n} = 0.
 \]
 <p>Para isso, basta mostrar que</p>
 \[
-\sum_{n\in \mathbb{N}} \mathbb{P}(E_n) < \infty.
+\sum_{n\in \mathbb{N}} \mathbb{P}(E_{M, n}) < \infty.
 \]
 <p>Como os incrementos são independentes, temos que</p>
 \[
-\mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^n}\right).
+\mathbb{P}(E_{M, n, k}) = \prod_{j=1,2,3}\mathbb{P}\left(\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^n}\right) = \prod_{j=1,2,3}\mathbb{P}\left(2^{n/2}\left|W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right| \leq \frac{7M}{2^{n/2}}\right).
 \]
 <p>Pela invariância dos processos de Wiener padrão por translações e por rescalonamento &#40;com \(a= 2^{n/2}\)&#41;,</p>
 \[
-W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
-\]
-<p>Ou, de outra forma,</p>
-\[
-2^{n/2}\left(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right) \sim W_1.
+Z_{n, k, j} = 2^{n/2}\left(W_{(k+j)/2^n} - W_{(k+j-1)/2^n}\right) \sim \mathcal{N}(0, 1).
 \]
 <p>Assim,</p>
 \[
-\mathbb{P}(\Omega_{n, k}) = \Pi_{j=1,2,3}\mathbb{P}\left(|W_1| \leq \frac{7M}{2^{n/2}}\right).
+\mathbb{P}(E_{M, n, k}) = \prod_{j=1,2,3}\mathbb{P}\left(|Z_{n, k, j}| \leq \frac{7M}{2^{n/2}}\right).
 \]
-<p>Como a função de distribuição de probabilidade da normal padrão é limitada por \(1/\sqrt{2\pi}\leq 1/2\), temos</p>
+<p>Como a função de distribuição de probabilidade da normal padrão é limitada por \(1/\sqrt{2\pi}\), temos</p>
 \[
-\mathbb{P}\left(|W_1| \leq r\right) \leq \frac{2r}{\sqrt{2\pi}} = r, \qquad r > 0.
+\mathbb{P}\left(|Z_{n, k, j}| \leq r\right) \leq \frac{2r}{\sqrt{2\pi}} \leq r, \qquad \forall r > 0.
 \]
 <p>Logo,</p>
 \[
-\mathbb{P}(\Omega_{n, k}) \leq \left(\frac{7M}{2^{n/2}}\right)^3.
+\mathbb{P}(E_{M, n, k}) \leq \left(\frac{7M}{2^{n/2}}\right)^3.
 \]
 <p>Portanto,</p>
 \[
-\mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n} \Omega_{n, k}\right) \leq 2^n \left(\frac{7M}{2^{n/2}}\right)^3 = \frac{7^3M^3}{2^{n/2}}.
+\mathbb{P}\left(E_{M, n}\right) = \mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n} E_{M, n, k}\right) \leq 2^n \left(\frac{7M}{2^{n/2}}\right)^3 = \frac{7^3M^3}{2^{n/2}}.
 \]
 <p>Isso nos dá que</p>
 \[
-\sum_n \mathbb{P}\left(\bigcup_{k=1, \ldots, 2^n - 3} \Omega_{n, k}\right) \leq 7^3M^3\sum_n \frac{1}{2^{n/2}} < \infty.
+\sum_n \mathbb{P}\left(E_{M, n}\right) \leq 7^3M^3\sum_n \frac{1}{2^{n/2}} < \infty.
 \]
 <p>Aqui revelou-se a importância do uso dos três incrementos. A probabilidade de termos a limitação em um dos incrementos é da ordem de \(2^{-n/2}\). Como os incrementos são independentes, a probabilidade de termos a limitação em três incrementos consecutívos é o cubo disso, i.e. da ordem de \(2^{-3n/2}\). Como temos \(2^n\) conjuntos em cada malha, isso nos dá uma estimativa total ainda pequena, da ordem de \(2^{-n/2}\). Se usássemos só um incremento, a estimativa total cresceria exponencialmente. Se usássemos só dois, a estimativa seria uma constante. Mas usando três incrementos, conseguimos uma estimativa decrescendo exponencialmente e sendo, portanto, somável.</p>
 <p>Assim, pelo Lema de Borel-Cantelli,</p>
 \[
-\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} \leq M \right\}\right) \leq \mathbb{P}\left(\limsup_{n\rightarrow \infty} \bigcup_{k=1, \ldots, 2^n-3}\Omega_{n, k}\right) = 0.
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{|W_{t+\tau} - W_t|}{\tau} \leq M \right\}\right) \leq \mathbb{P}\left(\limsup_{n\rightarrow \infty} E_{M, n}\right) = 0.
 \]
-<p>Ou seja,</p>
+<p>Portanto,</p>
 \[
-\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{W_{t+\tau} - W_t}{\tau} < \infty \right\}\right) = 0.
+\mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty \right\}\right) = \lim_{M\rightarrow \infty} \mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{|W_{t+\tau} - W_t|}{\tau} \leq M \right\}\right) = 0.
 \]
 <p>Isso conclui a demonstração de que, quase certamente, os caminhos amostrais de um processo de Wiener padrão não são diferenciáveis em nenhum ponto no intervalo \([0, 1)\). Pela invariância por translações, isso se estende para qualquer intervalo \([n, n+1)\). Fazendo a interseção desse conjunto contável, obtemos que, quase certamente, os caminhos amostrais não são diferenciáveis em nenhum ponto \(t\geq 0\).</p>
 
@@ -572,7 +594,7 @@ W_{(k+j)/2^n} - W_{(k+j-1)/2^n} \sim W_{1/2^n} \sim \frac{1}{2^{n/2}}W_1.
         </div>
     
 
-    Last modified: May 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 03, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
