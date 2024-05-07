@@ -75,8 +75,6 @@ $$
     \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2 \right] & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
     & \quad + \int_0^t\int_0^s g'(s)g'(\tau)\tau \;\mathrm{d}\tau\;\mathrm{d}s + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
     & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
-    & \quad + \int_0^t\int_0^s g'(s)g'(\tau)\tau \;\mathrm{d}\tau\;\mathrm{d}s + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
-    & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
     & \quad + \int_0^t\int_\tau^t g'(s)g'(\tau)\tau \;\mathrm{d}s\;\mathrm{d}\tau + \int_0^t\int_s^t g'(s)g'(\tau)s \;\mathrm{d}\tau\;\mathrm{d}s \\
     & = g(t)^2t - 2g(t)\int_0^t g'(s) s \;\mathrm{d}s \\
     & \quad + \int_0^t (g(t) - g(\tau))g'(\tau)\tau\;\mathrm{d}\tau + \int_0^t g'(s)(g(t) - g(s))s \;\mathrm{d}s \\
