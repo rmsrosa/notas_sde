@@ -72,7 +72,7 @@ $$
 $$
 é uma variável aleatória com média zero e variância $T^3/3$. Observe, finalmente, que os somatórios de Riemann são combinações lineares de variáveis aleatórias normais, portanto são, também, normais. No limite, obtemos uma variável aleatória normal, com média zero e variância $T^3/3$. Ou seja,
 $$
-\int_0^T W_t \;\mathrm{d}t \sim \mathcal{N}\left(0, \frac{T}{3}\right).
+\int_0^T W_t \;\mathrm{d}t \sim \mathcal{N}\left(0, \frac{T^3}{3}\right).
 $$
 
 ## Processos integrais
