@@ -80,7 +80,7 @@ menu = [
         "pages/c05/naodiferenciabilidade_wiener"
         "pages/c05/variacao_ilimitada_wiener"
     ]
-    "Integração estocástica" => [
+    "pages/c06/integracao_estocastica" => [
         "pages/c06/integral_riemann"
         "pages/c06/integral_riemannstieltjes"
         "pages/c06/integral_dualidade"

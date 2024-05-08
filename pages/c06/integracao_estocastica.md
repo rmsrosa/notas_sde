@@ -12,11 +12,11 @@ $$
 $$
 como uma função determinística
 $$
-    \mu = \mu(t) = \mu_0 + \sigma\sin(\varomega t), \quad \mu_0, \sigma, \varomega > 0;
+    \mu = \mu(t) = \mu_0 + \sigma\sin(\varpi t), \quad \mu_0, \sigma, \varpi > 0;
 $$
 como uma função aleatória (processo estocástico de transporte)
 $$
-    \mu = \mu_t = \mu_0 + \sigma\sin(\varomega t), \qqua \sigma \sim \operatorname{Beta}(a, b), \; \varomega \sim \operatorname{Exponential}(\lambda), \;\mu_0, a, b, \lambda > 0;
+    \mu = \mu_t = \mu_0 + \sigma\sin(\varpi t), \qquad \sigma \sim \operatorname{Beta}(a, b), \; \varpi \sim \operatorname{Exponential}(\lambda), \;\mu_0, a, b, \lambda > 0;
 $$
 como um processo estocástico
 $$
@@ -42,7 +42,7 @@ $$
 $$
 onde $\{\mu_t\}_{t\geq 0}$ são, também, processos estocásticos, o que nos levam às integrais
 $$
-    \int_0^t \left(\mu_0 + \sigma\sin(\varomega s)\right) \;\mathrm{d}s
+    \int_0^t \left(\mu_0 + \sigma\sin(\varpi s)\right) \;\mathrm{d}s
 $$
 e
 $$
@@ -81,5 +81,10 @@ $$
 $$
 e, como objeto de maior interesse, a integração estocástica em relação ao processo de Wiener,
 $$
-    \int_0^t X_s;\mathrm{d}W_s.
+    \int_0^t X_s\;\mathrm{d}W_s.
 $$
+Dessa forma, veremos a forma correta da solução da equação estocástica
+$$
+    \mathrm{d}X_t = \mu_0 X_t\;\mathrm{d}t + \sigma X_t\;\mathrm{d}W_t.
+$$
+Veremos também propriedades curiosas da integral estocástica com respeito a $\{W_t\}_{t\geq 0}.$ Veremos quais propriedades da integral clássica se estendem a essa integral e quais propriedades devem ser reformuladas.
