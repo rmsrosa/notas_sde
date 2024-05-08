@@ -83,8 +83,12 @@ e, como objeto de maior interesse, a integração estocástica em relação ao p
 $$
     \int_0^t X_s\;\mathrm{d}W_s.
 $$
-Dessa forma, veremos a forma correta da solução da equação estocástica
+Dessa forma, veremos que a forma correta da solução da equação estocástica
 $$
-    \mathrm{d}X_t = \mu_0 X_t\;\mathrm{d}t + \sigma X_t\;\mathrm{d}W_t.
+    \mathrm{d}X_t = \mu_0 X_t\;\mathrm{d}t + \sigma X_t\;\mathrm{d}W_t
+$$
+é
+$$
+    X_t = x_0 e^{\left(\mu_0 - \frac{\sigma^2}{2}\right)t + \sigma W_t}.
 $$
 Veremos também propriedades curiosas da integral estocástica com respeito a $\{W_t\}_{t\geq 0}.$ Veremos quais propriedades da integral clássica se estendem a essa integral e quais propriedades devem ser reformuladas.
