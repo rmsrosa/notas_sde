@@ -4,13 +4,13 @@
 
 Vimos uma maneira de definir a integral em relação a processos $\{Y_t\}_t$ cujos caminhos amostrais não são de variação limitada. Mas apenas integrandos da forma $g(t, Y_t)$, para certos tipos particulares de funções, são permitidos ($g = g(t)$ continuamente diferenciáveis ou $g=g(t, y) = \partial_y G(t, y)$). Queremos estender a noção de integral para funções mais gerais e com integrandos da forma $g(t, X_t)$, i.e. envolvendo processos $\{X_t\}_t$ diferentes daquele em relação ao qual estamos integrando. A motivação é prática: queremos integrar em relação a um processo de Wiener.
 
-A integral definida anteriormente não foi feita diretamente em termos de somas de Riemann ou de integrais de funções simples. Foi definida na forma de dualidade (seja via fórmula de integração por parte, quando $g=g(t)$ é diferenciável, ou via fórmula de mudança de variáveis, quando $g=g(t, y) = \partial_y G(t, y)$). Aqui, por outro lado, vamos investigar um caminho semelhante ao feito em integrais de Riemann.
+A integral definida anteriormente não foi feita diretamente em termos de somas de Riemann ou de integrais de funções simples. Foi definida na forma de dualidade (seja via fórmula de integração por partes, quando $g=g(t)$ é diferenciável, ou via fórmula de mudança de variáveis, quando $g=g(t, y) = \partial_y G(t, y)$). Aqui, por outro lado, vamos investigar um caminho semelhante ao feito em integrais de Riemann-Stieltjes.
 
-Na integral de Riemann, consideramos malhas cada vez mais finas e aproximamos a função por funções constantes por partes, mais precisamente constantes em cada subintervalo da malha, cuja integral se reduz a um somatório finito. O valor em cada subintervalo da malha é determinado pelo valor da função em um ponto escolhido arbitrariamente em cada subintervalo. O limite do somatório deve existir e ser único independentemente da escolha desse ponto em cada subintervalo. Isso é possível sempre que a função integrada é contínua ou tem descontinuidades em um conjunto de medida nula.
+Na integral de Riemann-Stieltjes, consideramos malhas cada vez mais finas e aproximamos a função por funções constantes por partes, mais precisamente constantes em cada subintervalo da malha, cuja integral se reduz a um somatório finito. O valor em cada subintervalo da malha é determinado pelo valor da função em um ponto escolhido arbitrariamente em cada subintervalo. O limite do somatório deve existir e ser único independentemente da escolha desse ponto em cada subintervalo. Isso é possível sempre que a função integrada é contínua ou tem descontinuidades em um conjunto de medida nula.
 
-Veremos, a seguir, que esse limite pode não ser único, ou não existir, quando integramos em relação a um processo de Wiener e escolhemos os pontos de forma arbitrária.
+Veremos, a seguir, que esse limite pode não ser único, ou não existir, quando integramos em relação a um processo de Wiener e escolhemos os pontos de forma arbitrária. A regularidade do integrando não é o problema. Muitas vezes vamos integrar processos cujos caminhos são contínuos. O problema é a possível dependência entre o integrando $X_{\theta},$ em um ponto qualquer $t \leq \theta \leq t + \Delta t,$ e o passo $W_{t + \delta t} - W_t.$ Por conta disso o limite irá depender da escolha do ponto e pode não convergir se a escolha não for feita de forma sistemática.
 
-Para ilustrar a complexidade do problema, vamos considerar diferentes somas de Riemann associadas à seguinte integral envolvendo um processo de Wiener $\{W_t\}_{t\geq 0}$:
+Para ilustrar a complexidade desse problema, vamos considerar diferentes somas de Riemann associadas à seguinte integral envolvendo um processo de Wiener $\{W_t\}_{t\geq 0}$:
 $$
 \int_0^T W_t \;\mathrm{d}W_t.
 $$
@@ -151,149 +151,52 @@ $$
 
 Aqui já vemos que o limite depende de $\lambda$.
 
-### Caso $\lambda = 1/2$
-
-Este também é um caso significativo, pois corresponde à integral no sentido de Stratonovich, que veremos em seguida. Temos
-$$
-R_M(1/2) = \sum_{j=1}^{n} W_{(t_{j-1}+ t_j)/2} (W_{t_j} - W_{t_{j-1}}).
-$$
-
-Para $a, b, c$ reais quaisquer temos
-$$
-(c - a)^2 - (b - c)^2 + (b^2 - a^2) = c^2 - 2ac + a^2 - b^2 + 2bc - c^2 + b^2 - a^2 = - 2ac + 2bc = 2c(b - a).
-$$
-Aplicando isso a $a = W_{t_{j-1}}(\omega)$, $b = W_{t_j}(\omega)$ e $c = W_{(t_{j-1}+ t_j)/2}$, vemos que
-$$
-\begin{align*}
-R_M(1/2) = & \frac{1}{2}\sum_{j=1}^{n} (W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\\
-& - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\\
-& + \frac{1}{2}\sum_{j=1}^{n} \left(W_{t_j}^2 - W_{t_{j-1}}^2\right).
-\end{align*}
-$$
-A última soma é uma soma telescópica, que nos leva a
-$$
-R_M(1/2) = \frac{1}{2}\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\} + \frac{1}{2}W_T^2.
-$$
-
-Vamos, agora, mostrar que o termo restante converge para zero. Primeiramente, temos o valor esperado
-$$
-\begin{align*}
-\mathbb{E}&\left[\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\}\right] \\
-& = \sum_{j=1}^{n} \left\{\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] - \mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right]\right\} \\
-& = \sum_{j=1}^{n} \left\{ ((t_{j-1}+ t_j)/2 - t_{j-1}) - (t_j - (t_{j-1}+ t_j)/2)\right\} \\
-& = 0.
-\end{align*}
-$$
-Agora, a variância pode ser escrita como
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = \sum_{i,j=1}^{n}\mathbb{E}\left[\left((W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2 - (W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right) \right. \\
-& \qquad\qquad \left.\left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right] \\
-& = \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
-& \quad - \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
-& \quad - \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
-& \quad + \sum_{i,j=1}^{n}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right].
-\end{align*}
-$$
-Para $i \neq j$ no primeiro e no último somatórios e para $i, j$ quaisquer no segundo e no terceiro somatórios, os termos envolvem incrementos em intervalos disjuntos, sendo, portanto, independentes. Assim,
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = \sum_{i \neq j}\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2\right]\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
-& \quad - \sum_{i,j=1}^n\mathbb{E}\left[(W_{(t_{i-1}+ t_i)/2} - W_{t_{i-1}})^2\right]\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
-& \quad - \sum_{i,j=1}^n\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right]\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2\right] \\
-& \quad + \sum_{i \neq j}\mathbb{E}\left[(W_{t_i} - W_{(t_{i-1}+ t_i)/2})^2\right]\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right] \\
-& \quad + \sum_{j=1}^n\mathbb{E}\left[(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^4\right] \\
-& \quad + \sum_{j=1}^n\mathbb{E}\left[(W_{t_j} - W_{(t_{j-1}+ t_j)/2})^4\right].
-\end{align*}
-$$
-Os momentos de segunda ordem são as variâncias dos incrementos correspondentes. O momento de ordem quatro é dado em termos do momento de ordem dois, já que os incrementos são normais. Portanto,
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = \sum_{i\neq j}((t_{i-1}+ t_i)/2 - t_{i-1})((t_{j-1}+ t_j)/2 - t_{j-1}) \\
-& \quad - \sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})(t_j - (t_{j-1}+ t_j)/2) \\
-& \quad - \sum_{i,j=1}^n(t_i - (t_{i-1} + t_i)/2)((t_{j-1}+ t_j)/2 - t_{j-1}) \\
-& \quad + \sum_{i \neq j}(t_i - (t_{i-1} + t_i)/2)(t_j - (t_{j-1}+ t_j)/2) \\
-& \quad + 3\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
-& \quad + 3\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2.
-\end{align*}
-$$
-Isso pode ser reescrito como
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = \sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})((t_{j-1}+ t_j)/2 - t_{j-1}) \\
-& \quad - \sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})(t_j - (t_{j-1}+ t_j)/2) \\
-& \quad - \sum_{i,j=1}^n(t_i - (t_{i-1} + t_i)/2)((t_{j-1}+ t_j)/2 - t_{j-1}) \\
-& \quad + \sum_{i,j=1}^n(t_i - (t_{i-1} + t_i)/2)(t_j - (t_{j-1}+ t_j)/2) \\
-& \quad + 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
-& \quad + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2
-\end{align*}
-$$
-Observe a simetria que nos permite ver que o primeiro e o quarto termo são idênticos, assim como o segundo e o terceiro. Assim,
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = 2\sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})((t_{j-1}+ t_j)/2 - t_{j-1}) \\
-& \quad - 2\sum_{i,j=1}^n((t_{i-1}+ t_i)/2 - t_{i-1})(t_j - (t_{j-1}+ t_j)/2) \\
-& \quad + 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 \\
-& \quad + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2
-\end{align*}
-$$
-Agora, observe que os dois primeiro termos se cancelam, de modo que
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& = 2\sum_{j=1}^n((t_{j-1}+ t_j)/2 - t_{j-1})^2 + 2\sum_{j=1}^n(t_j - (t_{j-1}+ t_j)/2)^2.
-\end{align*}
-$$
-Esse somatório pode ser visto como um somatório dos quadrados dos incrementos de uma malha mais fina. Mas, para simplificar, podemos simplesmente estimar
-$$
-\begin{align*}
-\mathrm{Var}&\left(\sum_{j=1}^{n} \left((W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right) \right) \\
-& \leq 4\sum_{j=1}^n(t_j - t_{j-1})^2 \\
-& \leq 4T\max_{j=1, \ldots, n}|t_j - t_{j-1}| \rightarrow 0.
-\end{align*}
-$$
-Dessa forma, vemos que
-$$
-\frac{1}{2}\sum_{j=1}^{n} \left\{(W_{(t_{j-1}+ t_j)/2} - W_{t_{j-1}})^2 - (W_{t_j} - W_{(t_{j-1}+ t_j)/2})^2\right\} \rightarrow 0
-$$
-em probabilidade, de modo que
-$$
-R_M(1/2) \rightarrow \frac{1}{2}W_T^2.
-$$
-
 ### Caso geral $0 \leq \lambda \leq 1$
 
-Vimos, acima, que
+Vamos considerar, agora, o caso geral $R_M(\lambda).$ Somando e subtraindo $W_{t_{j-1}}$ no primeiro termo e, em seguida, somando e subtraindo $W_{\theta_j^\lambda}$ no segundo termo, obtemos
 $$
-R_M(0) \rightarrow \frac{1}{2}W_T^2 - \frac{1}{2}T, \quad R_M(1/2) \rightarrow \frac{1}{2}W_T^2, \quad R_M(1) \rightarrow \frac{1}{2}W_T^2 + \frac{1}{2}T.
+\begin{align*}
+    R_M(\lambda) & = \sum_{j=1}^{n} W_{\theta_j^\lambda} (W_{t_j} - W_{t_{j-1}}) \\
+    & = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) + \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
+    & = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) + \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{t_j} - W_{\theta_j^\lambda} + W_{\theta_j^\lambda} - W_{t_{j-1}}) \\
+    & = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) + \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{t_j} - W_{\theta_j^\lambda}) + \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{\theta_j^\lambda} - W_{t_{j-1}})
+\end{align*}
 $$
-Mais geralmente, para $0 \leq \lambda \leq 1$, vale
+O primeiro termo é $R_M(0),$ de modo que podemos escrever
+$$
+R_M(\lambda) = R_M(0) + A_n + B_n,
+$$
+onde
+$$
+A_n = \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{t_j} - W_{\theta_j^\lambda}), \qquad B_n = \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{\theta_j^\lambda} - W_{t_{j-1}}).
+$$
+Já sabemos que 
+$$
+R_M(0) \rightarrow \frac{W_T}{2} - \frac{T}{2},
+$$
+em probabilidade. Quanto aos outros termos, é possível mostrar que
+$$
+A_n \rightarrow \lambda T, \qquad B_n \rightarrow 0,
+$$
+em probabilidade. Para isso, basta mostrar que
+$$
+\mathbb{E}[A_n] \rightarrow \lambda T, \qquad \operatorname{Var}(A_n) \rightarrow 0,
+$$
+e
+$$
+\mathbb{E}[B_n] \rightarrow 0, \qquad \operatorname{Var}(B_n) \rightarrow 0.
+$$
+Essas demonstrações são semelhantes à de que
+$$
+\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \rightarrow T.
+$$
+Deixamos os detalhes a cargo do leitor.
+
+Como resultado, obtemos que
 $$
 R_M(\lambda) \rightarrow \frac{1}{2}W_T^2 + \left(\lambda - \frac{1}{2}\right)T,
 $$
 em probabilidade.
-
-Como no caso do ponto médio, vale a relação
-$$
-\begin{align*}
-W_{\theta_j^\lambda}(W_{t_j} - W_{t_{j-1}}) & = \frac{1}{2} (W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2} (W_{t_j} - W_{t_{j-1}}) ^2 \\
-& \quad + (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 + (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}}).
-\end{align*}
-$$
-Assim,
-$$
-\begin{align*}
-R_M(\lambda) & = \frac{1}{2}\sum_{j=1}^{n} (W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \\
-& \quad + \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 + \sum_{j=1}^{n} (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}})
-\end{align*}
-$$
-
-O primeiro termo é uma soma telescópica resultando em $W_T/2$. O segundo termo converge, em probabilidade, para $-T/2$. O terceiro termo, para $\lambda T$. E o último termo, para $0$. Isso demonstra o resultado. Deixamos os detalhes como exercício.
 
 ## Considerações finais
 
@@ -311,8 +214,20 @@ $$
 1. No caso geral $0\leq \lambda \leq 1$, mostre que, ao refinarmos a malha, os seguintes limites valem em probabilidade:
 $$
 \begin{align*}
-- \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 & \rightarrow -\frac{1}{2}T\\
 \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 & \rightarrow \lambda T\\
 \sum_{j=1}^{n} (W_{t_j} - W_{\theta_j^\lambda})(W_{\theta_j^\lambda} - W_{t_{j-1}}) & \rightarrow 0.
 \end{align*}
+$$
+2. Pensando na integral $\int_0^T t \;\mathrm{d}W_t,$ mostre que
+$$
+\int_0^T t\;\mathrm{d}W_t = \lim_{\substack{0\leq t_0 < \ldots < t_n \leq t, \;n\in \mathbb{N} \\ \max_{i=1, \ldots, n}|t_i - t_{i-1}| \rightarrow 0}} \sum_{j=1}^n t_{j-1}(W_{t_j} - W_{t_{j-1}}) \rightarrow TW_T - \int_0^T W_t \;\mathrm{d}t,
+$$
+(dica, soma e subtraia $\Delta t_j = t_j - t_{j-1}$ ao termos $t_{j-1}$)
+de modo que essa definição via limite coincide com a definição via dualidade,
+$$
+\int_0^T g(t) \;\mathrm{d}W_t = g(T)W_T - \int_0^T g'(t)W_t\;\mathrm{d}t.
+$$
+3. Deduza, usando tanto a fórmula acima quanto as somas de Riemann-Stieljes que
+$$
+\int_0^T t\;\mathrm{d}W_t \sim \mathcal{N}\left(0, \frac{T^3}{3}\right).
 $$
