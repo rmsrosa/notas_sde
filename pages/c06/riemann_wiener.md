@@ -26,7 +26,7 @@ O que acontece se, por outro lado, considerarmos as somas de Riemann-Stieltjes a
 
 Se os caminhos fossem, quase certamente, de variação limitada, poderiamos definir, para quase todo $\omega$,
 $$
-\int_0^T W_t \;\mathrm{d}W_t = \lim_{\max\{t_j - t_{j-1}\} \rightarrow 0} \sum_{j=1}^{n} W_{\theta_j} (W_{t_j} - W_{t_{j-1}}),
+\int_0^T W_t \;\mathrm{d}W_t = \lim_{\|M\| \rightarrow 0} \sum_{j=1}^{n} W_{\theta_j} (W_{t_j} - W_{t_{j-1}}),
 $$
 onde $0 = t_0 < t_1 < \ldots < t_n = T$ e cada $\theta_j$ é um número arbitrário em $t_{j-1} \leq \theta_j \leq t_j$, $j = 1, \ldots, n$.
 
@@ -38,12 +38,16 @@ $$
 $$
 o limite acima existe e depende de $\lambda$.
 
-Para vermos isso, dada uma partição $M = \{t_j\}_{j=0}^n$ como acima e $\lambda$ satisfazendo $0 \leq \lambda \leq 1$, definimos
+Para vermos isso, dada uma partição $M = \{t_j\}_{j=0}^n$ como acima e dado $\lambda$ satisfazendo $0 \leq \lambda \leq 1$, definimos
 $$
 R_M(\lambda) = \sum_{j=1}^{n} W_{\theta_j^\lambda} (W_{t_j} - W_{t_{j-1}}).
 $$
+Denotamos, ainda,
+$$
+\|M\| = \max_{j=1, \ldots, n}\{t_j - t_{j-1}\}.
+$$
 
-Vamos calcular, a seguir, o limite no caso $\lambda = 0$, depois no caso $\lambda = 1$, em seguida no caso $\lambda = 1/2$ e, finalmente, o caso geral $0 \leq \lambda \leq 1$.
+Vamos calcular, a seguir, o limite de $R_M(\lambda)$ quando $\|M\|\rightarrow 0,$ no caso $\lambda = 0$, depois no caso $\lambda = 1$ e, finalmente, no caso geral $0 \leq \lambda \leq 1$.
 
 ### Caso $\lambda = 0$
 
@@ -104,7 +108,7 @@ Juntando os resultados dos dois somatórios, obtemos, ao refinarmos a malha, a c
 $$
 R_M(0) \rightarrow \frac{1}{2}W_T^2 - \frac{1}{2}T,
 $$
-no limite $\max_{j=1, \ldots, n}\{t_j - t_{j-1}\} \rightarrow 0$.
+no limite $\|M\| \rightarrow 0$.
 
 Observe que, no limite,
 $$
@@ -164,11 +168,11 @@ $$
 $$
 O primeiro termo é $R_M(0),$ de modo que podemos escrever
 $$
-R_M(\lambda) = R_M(0) + A_n + B_n,
+R_M(\lambda) = R_M(0) + A_M(\lambda) + B_M(\lambda),
 $$
 onde
 $$
-A_n = \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{t_j} - W_{\theta_j^\lambda}), \qquad B_n = \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{\theta_j^\lambda} - W_{t_{j-1}}).
+A_M(\lambda) = \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{t_j} - W_{\theta_j^\lambda}), \qquad B_M(\lambda) = \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})(W_{\theta_j^\lambda} - W_{t_{j-1}}).
 $$
 Já sabemos que 
 $$
@@ -176,15 +180,15 @@ R_M(0) \rightarrow \frac{W_T}{2} - \frac{T}{2},
 $$
 em probabilidade. Quanto aos outros termos, é possível mostrar que
 $$
-A_n \rightarrow \lambda T, \qquad B_n \rightarrow 0,
+A_M(\lambda) \rightarrow \lambda T, \qquad B_M(\lambda) \rightarrow 0,
 $$
 em probabilidade. Para isso, basta mostrar que
 $$
-\mathbb{E}[A_n] \rightarrow \lambda T, \qquad \operatorname{Var}(A_n) \rightarrow 0,
+\mathbb{E}[A_M(\lambda)] \rightarrow \lambda T, \qquad \operatorname{Var}(A_M(\lambda)) \rightarrow 0,
 $$
 e
 $$
-\mathbb{E}[B_n] \rightarrow 0, \qquad \operatorname{Var}(B_n) \rightarrow 0.
+\mathbb{E}[B_M(\lambda)] \rightarrow 0, \qquad \operatorname{Var}(B_M(\lambda)) \rightarrow 0.
 $$
 Essas demonstrações são semelhantes à de que
 $$
@@ -220,7 +224,7 @@ $$
 $$
 2. Pensando na integral $\int_0^T t \;\mathrm{d}W_t,$ mostre que
 $$
-\int_0^T t\;\mathrm{d}W_t = \lim_{\substack{0\leq t_0 < \ldots < t_n \leq t, \;n\in \mathbb{N} \\ \max_{i=1, \ldots, n}|t_i - t_{i-1}| \rightarrow 0}} \sum_{j=1}^n t_{j-1}(W_{t_j} - W_{t_{j-1}}) \rightarrow TW_T - \int_0^T W_t \;\mathrm{d}t,
+\int_0^T t\;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n t_{j-1}(W_{t_j} - W_{t_{j-1}}) \rightarrow TW_T - \int_0^T W_t \;\mathrm{d}t,
 $$
 (dica, soma e subtraia $\Delta t_j = t_j - t_{j-1}$ ao termos $t_{j-1}$)
 de modo que essa definição via limite coincide com a definição via dualidade,
@@ -230,4 +234,8 @@ $$
 3. Deduza, usando tanto a fórmula acima quanto as somas de Riemann-Stieljes que
 $$
 \int_0^T t\;\mathrm{d}W_t \sim \mathcal{N}\left(0, \frac{T^3}{3}\right).
+$$
+4. Deduza, usando as somas de Riemann-Stieltjes, que vale o caso particular da isometria de Itô
+$$
+\mathbb{E}\left[\left(\int_0^T g(t)\;\mathrm{d}W_t\right)^2\right] = \int_0^t g(t)^2 \;\mathrm{d}t.
 $$
