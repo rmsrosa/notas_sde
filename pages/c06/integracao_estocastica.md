@@ -73,22 +73,18 @@ que por sua vez deve ser interpretada como uma equação integral
 $$
     X_t = x_0 + \mu_0\int_0^t X_s\;\mathrm{d}s + \sigma \int_0^t X_s\;\mathrm{d}W_s.
 $$
-A integral *estocástica* mais à direita deve ser tratada com cuidado e nos levará a uma solução ligeiramente diferente da esperada acima.
-
-Neste capítulo, vamos ver integração de processos no sentido de Riemann,
-$$
-    \int_0^t X_s\;\mathrm{d}s
-$$
-e, como objeto de maior interesse, a integração estocástica em relação ao processo de Wiener,
-$$
-    \int_0^t X_s\;\mathrm{d}W_s.
-$$
-Dessa forma, veremos que a forma correta da solução da equação estocástica
-$$
-    \mathrm{d}X_t = \mu_0 X_t\;\mathrm{d}t + \sigma X_t\;\mathrm{d}W_t
-$$
-é
+A integral *estocástica* mais à direita deve ser tratada com cuidado e nos levará a uma solução ligeiramente diferente da esperada acima, a saber
 $$
     X_t = x_0 e^{\left(\mu_0 - \frac{\sigma^2}{2}\right)t + \sigma W_t}.
 $$
-Veremos também propriedades curiosas da integral estocástica com respeito a $\{W_t\}_{t\geq 0}.$ Veremos quais propriedades da integral clássica se estendem a essa integral e quais propriedades devem ser reformuladas.
+Observe o termo extra envolvendo $\sigma^2.$
+
+Com isso em mente, vamos ver, neste capítulo, integração de processos no sentido de Riemann,
+$$
+    \int_0^t H_s\;\mathrm{d}s
+$$
+e, como objeto de maior interesse, a integração estocástica em relação a um processo de Wiener,
+$$
+    \int_0^t H_s\;\mathrm{d}W_s,
+$$
+onde $\{H_t\}_{t\geq 0}$ é um dado processo a ser integrado. Veremos também propriedades curiosas da integral estocástica com respeito a $\{W_t\}_{t\geq 0}.$ Veremos quais propriedades da integral clássica se estendem a essa integral e quais propriedades devem ser modificadas.
