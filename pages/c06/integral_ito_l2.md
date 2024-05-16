@@ -2,32 +2,11 @@
 
 # {{ get_title }}
 
-Bom, já vimos como integrar processos em relação ao tempo (Seção {{link_section pages/c05/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c05/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c05/integral_dualidade}}). Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo (Seção {{link_section pages/c05/riemann_wiener}}). Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.
-
-No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico $\{H_t\}_{t\geq 0}$ e a integral é em relação a um processo de Wiener $\{W_t\}_{t\geq 0}$:
+Vamos, agora, estender a integral estocástica
 $$
-\int_0^T H_t \;\mathrm{d}W_t.
+\int_0^T H_t \;\mathrm{d}W_t
 $$
-
-Observe que se $\{X_t\}_t$ é um processo estocástico e $g = g(t, x)$ é uma função contínua, então $\{g(t, X_t)\}_t$ define um processo estocástico, de modo que podemos considerar a integral
-$$
-\int_0^T g(t, X_t)\;\mathrm{d}W_t
-$$
-simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais de um processo $\{H_t\}_t$.
-
-## Integrandos permitidos
-
-Uma condição essencial pode ser posta do seguinte modo informal:
-
-> A cada instante $t \geq 0$, o integrando $H_t$ deve ser independente da evolução futura $s \geq t$ do processo de Wiener.
-
-Vamos chamar essa condição de *não antecipativa* *("non-antecipating")* ou *adaptada* ao processo $\{W_t\}_t$. Uma definição mais formal envolve o conceito de *filtração*.
-
-Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de sub $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t$, para $0 \leq s \leq t$. Uma filtração é dita **não antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$. Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0$, $H_t$ é mensurável em relação a $\mathcal{F}_t$, onde $\{\mathcal{F}_t\}_{t\geq 0}$ é a filtração natural de $\{W_t\}_{t\geq 0}$.
-
-Sob a condição de $\{H_t\}_{t\geq 0}$ estar adaptada a $\{W_t\}_{t\geq 0}$ e dos caminhos amostrais de $\{H_t\}_{t\geq 0}$ serem quase certamente contínuos, a *integral de Itô* pode ser bem definida e possui boas propriedades, como veremos posteriormente.
-
-Essa construção pode ser estendida a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam *progressivamente mensuráveis* e de *quadrado integrável.* Mais precisamente, $\{H_t\}_{t\geq 0}$ é dito **progressivamente mensurável** em relação uma filtração $\mathcal{F}_t$ quando, para cada $t' \geq 0$, a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, t'] \times \Omega$ é mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, t') \times \mathcal{F}_{t'}$, onde $\mathcal{B}(0, t')$ é a $\sigma$-álgebra de Borel do intervalo $[0, t'].$ Um tal processo progressivamente mensurável é dito de quadrado integrável quando
+a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam *progressivamente mensuráveis* e de *quadrado integrável.* Mais precisamente, $\{H_t\}_{t\geq 0}$ é dito **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t$ quando, para cada $t' \geq 0$, a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, t'] \times \Omega$ é mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, t') \times \mathcal{F}_{t'}$, onde $\mathcal{B}(0, t')$ é a $\sigma$-álgebra de Borel do intervalo $[0, t'].$ Um tal processo progressivamente mensurável é dito de quadrado integrável quando
 $$
 \int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
 $$
@@ -39,11 +18,11 @@ onde $\lambda \times \mathbb{P}$ denota a medida produto entre a medida de Lebes
 
 Vale observar que se $\{H_t\}_{t\geq 0}$ é adaptada a $\{W_t\}_{t\geq 0}$ e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.
 
-Essa construção pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales* (ou, mais geralmente ainda, semi-martingales), i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T)$, então a *integral de Itô*
+Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales* (ou, mais geralmente ainda, semi-martingales), i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T)$, então a *integral de Itô*
 $$
 \int_0^T H_t \;\mathrm{d}Z_t
 $$
-está bem definida no sentido de média quadrática, como veremos agora no caso da integral de Itô com relação a $\{W_t\}_t.$
+está bem definida no sentido de média quadrática. Mas vamos fazer isso apenas no caso da integral de Itô com relação a $\{W_t\}_t.$
 
 ## Construção
 

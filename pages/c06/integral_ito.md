@@ -25,41 +25,17 @@ Chamamos essa condição de *não antecipativa* *("non-antecipating")* ou *adapt
 
 Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de sub $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t$, para $0 \leq s \leq t$. Uma filtração é dita **não antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$. Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0$, $H_t$ é mensurável em relação a $\mathcal{F}_t$, onde $\{\mathcal{F}_t\}_{t\geq 0}$ é a filtração natural de $\{W_t\}_{t\geq 0}$. A **filtração natural** é a menor filtração possível que torna cada $W_t$ mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$.
 
-Sob a condição de $\{H_t\}_{t\geq 0}$ estar adaptada a $\{W_t\}_{t\geq 0}$ e dos caminhos amostrais de $\{H_t\}_{t\geq 0}$ serem quase certamente contínuos, a *integral de Itô* pode ser bem definida e possui boas propriedades, como veremos posteriormente.
-
-Essa construção pode ser estendida a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam *progressivamente mensuráveis* e de *quadrado integrável.* Mais precisamente, $\{H_t\}_{t\geq 0}$ é dito **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t$ quando, para cada $t' \geq 0$, a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, t'] \times \Omega$ é mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, t') \times \mathcal{F}_{t'}$, onde $\mathcal{B}(0, t')$ é a $\sigma$-álgebra de Borel do intervalo $[0, t'].$ Um tal processo progressivamente mensurável é dito de quadrado integrável quando
-$$
-\int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
-$$
-Observe que, pelo Teorema de Fubini, essa condição garante que
-$$
-\int_{[0, T]\times \Omega} H_t(\omega)^2 \;\mathrm{d}(\lambda \times \mathbb{P})(t, \omega) = \int_0^T \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t = \mathbb{E}\left[\int_0^T H_t(\omega)^2 \;\mathrm{d}t\right] < \infty,
-$$
-onde $\lambda \times \mathbb{P}$ denota a medida produto entre a medida de Lebesgue $\lambda$ e a medida de probabilidade $\mathbb{P}$ em $\Omega.$
-
-Vale observar que se $\{H_t\}_{t\geq 0}$ é adaptada a $\{W_t\}_{t\geq 0}$ e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.
-
-Essa construção pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales* (ou, mais geralmente ainda, semi-martingales), i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T)$, então a *integral de Itô*
-$$
-\int_0^T H_t \;\mathrm{d}Z_t
-$$
-está bem definida no sentido de média quadrática, como veremos posteiormente no caso da integral de Itô com relação a $\{W_t\}_t.$
-
-Na presente discussão, vamos assumir, inicialmente, uma outra condição, de continuidade uniforme no sentido de média quadrática. Mais precisamente, vamos pedir que $\{H_t\}_{t\geq 0},$ além de ser não antecipativo em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de que, dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
+Na presente discussão, vamos assumir, inicialmente, uma outra condição, de continuidade uniforme no sentido de média quadrática. Mais precisamente, vamos pedir que $\{H_t\}_{t\geq 0},$ além de ser não antecipativo em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
 $$
     \mathbb{E}\left[ |H_{t +\tau} - H_t|^2 \right] < \eta, \qquad \forall 0 < \tau < \delta, \; 0 \geq t \leq t + \tau \leq T.
 $$
+Com isso, a *integral de Itô* pode ser bem definida e possui boas propriedades.
 
 Observe que o processo de Wiener tem a propriedade de que $W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau),$ de forma que
 $$
     \mathbb{E}\left[ |W_{t+\tau} - W_t|^2 \right] = \tau,
 $$
 que implica trivialmente na condição acima. Qualquer potência do processo de Wiener também pode ser adequadamente estimada de acordo com a condição acima.
-
-Em seguida, vamos apenas assumir que $\{H_t\}_{t\geq 0}$ é progressivamente mensurável e de quadrado integrável, i.e.
-$$
-\int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
-$$
 
 ## Somas finitas de Riemann-Stieltjs
 
