@@ -224,10 +224,9 @@ $$
 $$
 2. Pensando na integral $\int_0^T t \;\mathrm{d}W_t,$ mostre que
 $$
-\int_0^T t\;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n t_{j-1}(W_{t_j} - W_{t_{j-1}}) \rightarrow TW_T - \int_0^T W_t \;\mathrm{d}t,
+\int_0^T t\;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n t_{j-1}(W_{t_j} - W_{t_{j-1}}) \rightarrow TW_T - \int_0^T W_t \;\mathrm{d}t
 $$
-(dica, soma e subtraia $\Delta t_j = t_j - t_{j-1}$ ao termos $t_{j-1}$)
-de modo que essa definição via limite coincide com a definição via dualidade,
+(dica, soma e subtraia $\Delta t_j = t_j - t_{j-1}$ a cada termo $t_{j-1}$), de modo que essa definição via limite coincide com a definição via dualidade,
 $$
 \int_0^T g(t) \;\mathrm{d}W_t = g(T)W_T - \int_0^T g'(t)W_t\;\mathrm{d}t.
 $$
@@ -235,7 +234,33 @@ $$
 $$
 \int_0^T t\;\mathrm{d}W_t \sim \mathcal{N}\left(0, \frac{T^3}{3}\right).
 $$
-4. Deduza, usando as somas de Riemann-Stieltjes, que vale o caso particular da isometria de Itô
+
+4. Usando a aproximação
+$$
+\int_0^T W_t\;\mathrm{d}W_t \approx \sum_{j=1}^n W_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
+$$
+para calcular a integral para um certo número $m$ de amostras, em uma malha bem fina (por exemplo, $m = 100,$ $n = 100,$ $T = 1,$ $t_j = jT/n,$ $W_{t_j}(\omega_i)$, $i = 1, \ldots, m,$), faça um histograma dessas aproximações e compare com o histograma de
+$$
+    \frac{W_T^2}{2} - \frac{T}{2}
+$$
+e com a função densidade de probabilidade de 
+$$
+    -\frac{T}{2} + \frac{1}{2}\Gamma\left(\frac{1}{2}, T\right),
+$$
+onde $\Gamma = \Gamma(k, \theta)$ é a distribuição Gamma com parâmetros de forma $k$ e de escala $\theta.$
+
+(Lembrando que se $Z \sim \mathcal{N}(0, \sigma^2),$ então $Z^2 \sim \sigma^2 \chi_1^2 \sim \Gamma(1/2, 2\sigma^2),$ onde $\chi_k^2 = \sum_{i=1}^k Z_k$ é a distribuição $\chi$-quadrado, definida com normais $Z_k\sim \mathcal{N}(0, 1)$ independentes.)
+
+5. Use a fórmula
+$$
+b^2(a - b) = \frac{1}{3}(a^3 - b^3) - b(a - b)^2 - \frac{1}{3}(b - a)^3,
+$$
+para calcular o limite
+$$
+\int_0^T W_t^2\;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n W_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}}) = \frac{W_T}{3} - \int_0^T W_t\;\mathrm{d}t.
+$$
+
+6. Deduza, usando as somas de Riemann-Stieltjes, que vale o caso particular da isometria de Itô
 $$
 \mathbb{E}\left[\left(\int_0^T g(t)\;\mathrm{d}W_t\right)^2\right] = \int_0^t g(t)^2 \;\mathrm{d}t.
 $$

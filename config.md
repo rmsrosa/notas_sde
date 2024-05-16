@@ -86,6 +86,7 @@ menu = [
         "pages/c06/integral_dualidade"
         "pages/c06/riemann_wiener"
         "pages/c06/integral_ito"
+        "pages/c06/integral_ito_l2"
         "pages/c06/integral_ito_propriedades"
         "pages/c06/formula_ito"
     ]
