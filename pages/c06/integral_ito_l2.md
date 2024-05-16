@@ -6,19 +6,9 @@ Vamos, agora, estender a integral estocástica
 $$
 \int_0^T H_t \;\mathrm{d}W_t
 $$
-a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam *progressivamente mensuráveis* e de *quadrado integrável.* Mais precisamente, $\{H_t\}_{t\geq 0}$ é dito **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t$ quando, para cada $t' \geq 0$, a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, t'] \times \Omega$ é mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, t') \times \mathcal{F}_{t'}$, onde $\mathcal{B}(0, t')$ é a $\sigma$-álgebra de Borel do intervalo $[0, t'].$ Um tal processo progressivamente mensurável é dito de quadrado integrável quando
-$$
-\int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
-$$
-Observe que, pelo Teorema de Fubini, essa condição garante que
-$$
-\int_{[0, T]\times \Omega} H_t(\omega)^2 \;\mathrm{d}(\lambda \times \mathbb{P})(t, \omega) = \int_0^T \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t = \mathbb{E}\left[\int_0^T H_t(\omega)^2 \;\mathrm{d}t\right] < \infty,
-$$
-onde $\lambda \times \mathbb{P}$ denota a medida produto entre a medida de Lebesgue $\lambda$ e a medida de probabilidade $\mathbb{P}$ em $\Omega.$
+a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam progressivamente mensuráveis e de quadrado integrável, mas não necessariamente com caminhos contínuos.
 
-Vale observar que se $\{H_t\}_{t\geq 0}$ é adaptada a $\{W_t\}_{t\geq 0}$ e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.
-
-Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales* (ou, mais geralmente ainda, semi-martingales), i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T)$, então a *integral de Itô*
+Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T)$, então a *integral de Itô*
 $$
 \int_0^T H_t \;\mathrm{d}Z_t
 $$
