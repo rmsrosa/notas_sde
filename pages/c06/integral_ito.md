@@ -60,6 +60,8 @@ $$
 $$
 que implica trivialmente na condição acima. Qualquer potência do processo de Wiener também pode ser adequadamente estimada de acordo com a condição acima.
 
+Observe, ainda, que a condição acima não garante que os caminhos sejam, quase certamente, contínuos. Apenas que, quase certamente (em $\Omega$), os caminhos são contínuos quase sempre (em $[0, T]$). De fato, basta considerar $\Omega = [0, 1]$ com probabilidade uniforme e definir $H_t(\omega) = \chi_{[\omega, 1]},$ de modo que $H_{t + \tau} - H_t = 1,$ para $t < \omega \leq t + \tau,$ se anulando fora desse intervalo, e portanto $\mathbb{E}[|H_{t+\tau} - H_t|^2] = \mathbb{P}(|H_{t+\tau} - H_t| > \eta) = \tau,$ para todo $0< \eta < 1.$ Por outro lado, podemos mostrar que $\int_\Omega \int_0^T |\Delta H_t(\omega)|^2 \;\mathrm{d}t\;\mathrm{d}\mathbb{P}(\omega) = 0,$ onde $\Delta H_t = \lim_{\tau \searrow 0}H_{t+\tau} - H_t$ existe em média quadrática, para todo $t\in [0,T],$ nos dando que $\Delta H_t(\omega) = 0$ quase sempre em $t\in [0, T],$ ou seja, que os caminhos são, quase certamente, contínuous quase sempre. Observe que isso também mostra a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência $\tau^{1 + \varepsilon}$ no lado direito da condição, com $\varepsilon$ estritamente positivo. 
+
 Fazemos isso em nome de uma construção mais simples e direta da integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. 
 
 ## Somas finitas de Riemann-Stieltjes
@@ -196,7 +198,7 @@ $$
 $$
 para qualquer malha $M.$ No limite, como $R_M \rightarrow R$ em média quadrática, segue que
 $$
-    \mathbb{E}[\int_0^T H_t\;\mathrm{d}t] = \mathbb{E}[R] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[R_M] = 0.
+    \mathbb{E}\left[\int_0^T H_t\;\mathrm{d}t\right] = \mathbb{E}[R] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[R_M] = 0.
 $$
 
 ## Isometria de Itô
