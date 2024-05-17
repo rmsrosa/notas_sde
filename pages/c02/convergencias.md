@@ -8,7 +8,7 @@
 
 Vamos considerar, para começar, variáveis aleatórias reais $X$ e $\{X_n\}_{n\in \mathbb{N}}$ em um mesmo espaço de probabilidade $(\Omega, \mathcal{A}, \mathbb{P})$.
 
-### Convergência forte ou quase certamente
+### Convergência quase certamente
 
 Dizemos que $X_n$ **converge fortemente**, ou **quase sempre**, ou **quase certamente**, ou **em quase toda parte**, para $X$ quando o conjunto $\{\omega; \;X_n(\omega) \rightarrow X(\omega)\}$ tem probabilidade total, i.e.
 $$
@@ -57,9 +57,9 @@ Para todo $p \geq 1$, $L^p(\Omega)$ forma uma *espaço de Banach*, que é um esp
 
 ### Relações entre as convergências
 
-#### Convergência forte implica em convergência em probabilidade
+#### Convergência quase certamente implica em convergência em probabilidade
 
-Considere $\{X_n\}_n$ convergindo fortemente para $X$. Então $\mathbb{P}(X_n \rightarrow X) = 1$. De outra forma, temos que
+Considere $\{X_n\}_n$ convergindo quase certamente para $X$. Então $\mathbb{P}(X_n \rightarrow X) = 1$. De outra forma, temos que
 $$
 \mathbb{P}(\lim_{n\rightarrow \infty} X_n \neq X) = 0.
 $$
@@ -70,15 +70,35 @@ $$
 $$
 para uma sequência qualquer $\{\varepsilon_k\}_{k\in\mathbb{N}}$ de números positivos com $\varepsilon_k \rightarrow 0.$ Isso implica em
 $$
-\mathbb{P}\left( \left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon_k\right\}\right) = 0, \quad \forall k\in\mathbb{N}.
+\mathbb{P}\left(\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon_k\right) = 0, \quad \forall k\in\mathbb{N}.
 $$
 Como $\varepsilon_k \rightarrow 0,$ então
 $$
-\mathbb{P}\left( \left\{\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon\right\}\right) = 0, \quad \forall \varepsilon > 0,
+\mathbb{P}\left(\lim_{n\rightarrow \infty} \|X_n - X\| \geq \varepsilon\right) = 0, \quad \forall \varepsilon > 0,
 $$
 o que significa dizer que $X_n \rightarrow X$ em probabilidade.
 
-#### Convergência em probabilidade com erro somável implica em subsequência convergindo fortemente
+#### Convergência em média $p > 1$ implica em convergência em média $1 \leq q < p$
+
+Supondo $X_n \rightarrow X$ em média $p > 1,$ quando $n\rightarrow \infty,$ e considerando $1 \leq q < p,$ temos
+$$
+    \mathbb{E}[|X_n - X|^q] \leq \mathbb{E}[|X_n - X|^p]^{q/p} \rightarrow 0,
+$$
+quando $n\rightarrow \infty,$ mostrando a convergência em média $q.$
+
+#### Convergência em média $p \geq 1$ implica em convergência em probabilidade
+
+Suponha que $X_n \rightarrow X$ em média $p$, com $p \geq 1,$ o que significa que
+$$
+    \mathbb{E}[|X_n - X|^p] \rightarrow 0,
+$$
+quando $n\rightarrow \infty.$ Dado $\varepsilon > 0,$ temos, então,
+$$
+    \mathbb{P}(|X_n - X| > \varepsilon) \leq \frac{\mathbb{E}[|X_n - X|]}{\varepsilon} \leq \frac{\mathbb{E}[|X_n - X|^p]^{1/p}}{\varepsilon} \rightarrow 0,
+$$
+quando $n\rightarrow \infty,$ o que significa dizer que $X_n \rightarrow X$ em probabilidade.
+
+#### Convergência em probabilidade com erro somável implica em subsequência convergindo quase certamente
 
 Suponha que, para todo $\varepsilon > 0$, vale
 $$
@@ -94,9 +114,9 @@ Observe que não há ambiguidade acima, pois
 $$
 \begin{align*}
 \limsup_{n\rightarrow\infty} \{|X_n - X| > \varepsilon\} & = 
-\bigcap_n \bigcup_k \{\omega; |X_k - X| > \varepsilon\} \\
-& = \left\{\omega; \forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} \\
-& = \left\{\omega; \;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
+\bigcap_n \bigcup_k \{|X_k - X| > \varepsilon\} \\
+& = \left\{\forall n, \exists k\geq n |X_k - X| > \varepsilon \right\} \\
+& = \left\{\;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
 \end{align*}
 $$
 
@@ -110,7 +130,7 @@ $$
 $$
 provando a convergência $X_n \rightarrow X$ quase certamente.
 
-#### Convergência em probabilidade implica em subsequência convergindo fortemente
+#### Convergência em probabilidade implica em subsequência convergindo quase certamente
 
 Seja $n_1$ tal que
 $$
@@ -131,12 +151,12 @@ $$
 \sum_k \mathbb{P}\left(|X_{n_k} - X| > \varepsilon\right) < \infty.
 $$
 
-Pelo resultado anterior de convergência com erros somáveis, obtemos a convergência forte da subsequência:
+Pelo resultado anterior de convergência com erros somáveis, obtemos a convergência quase certamente da subsequência:
 $$
 \mathbb{P}\left( X_{n_k} \rightarrow X \right) = 1.
 $$
 
-#### Convergência em probabilidade de sequência monótona implica em convergência forte
+#### Convergência em probabilidade de sequência monótona implica em convergência quase certamente
 
 Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência $X_{n_k} \rightarrow X$. Ou seja, para quase todo $\omega$, dado $\varepsilon > 0$, existe $j$ tal que
 $$
@@ -155,7 +175,7 @@ $$
 
 Isso significa que, quase certamente, $X_n \rightarrow X$, concluindo a demonstração.
 
-## Esperança convergindo e variância esvanecendo implica em convergência em probabilidade para constante
+#### Esperança convergindo e variância esvanecendo implica em convergência em probabilidade para constante
 
 Suponha que $\{X_n\}_{n\in\mathbb{N}}$ seja um processo discreto real tal que
 $$
@@ -178,7 +198,7 @@ $$
 $$
 provando a convergência em probabilidade para uma constante.
 
-## Exemplos de convergências
+## Exemplos
 
 ### Sequências de normais dependentes
 
@@ -234,3 +254,35 @@ $$
 \frac{1}{\sqrt{2\pi \sigma_n^2}}e^{-x^2/2\sigma_n^2},
 $$
 onde $\sigma_n > 0$.
+
+### Convergências quase certamente e em probabilidade não implicam em convergência em média
+
+Seja $\Omega = [0, 1]$ com medida de probabilidade $\mathbb{P}$ uniforme em $\Omega.$ Considere a sequência $X_n$ definida por
+$$
+    X_n(\omega) = n^2\chi_{[0, 1/n]}(\omega), \qquad n \in \mathbb{N},
+$$
+em $\Omega = [0, 1],$ onde $\chi_{[0, 1/n]}(\omega),$ $\omega\in\Omega$ é a função característica do intervalo $[0, 1/n].$ Então
+$$
+    X_n(\omega) \rightarrow 0,
+$$
+para todo $\omega \in (0, 1],$ portanto $X_n \rightarrow X=0,$ quase certamente. Com isso, também temos a convergência em probabilidade, o que pode também ser obtido explicitamente, visto que para $0 < \varepsilon \leq 1,$ temos
+$$
+    \mathbb{P}(|X_n - X| \geq \varepsilon) = \mathbb{P}(X_n \geq \varepsilon) = \frac{1}{n} \rightarrow 0,
+$$
+de modo que $X_n \rightarrow 0$ também em probabilidade. No entanto,
+$$
+    \mathbb{E}[|X_n - X|] = \mathbb{E}[X_n] = \frac{n^2}{n} = n \rightarrow \infty,
+$$
+de modo que $X_n$ não converge para $X=0$ em média, nem em qualquer média $p > 1.$
+
+### Convergência em probabilidade não implica em convergência quase certamente
+
+Novamente considere $\Omega = [0, 1]$ com medida de probabilidade $\mathbb{P}$ uniforme em $\Omega.$ Para cada $n\in\mathbb{N},$ escrevemos $k = \log_2(n)$ e $j = n - 2^k,$ de modo que $n = 2^k + j,$ com $k\in \mathbb{N}$ e $0 \leq j \leq 2^k-1.$ Com essa decomposição (única), definimos a sequência
+$$
+    X_n = \chi_{\left[\frac{j}{2^k}, \frac{j+1}{2^k}\right]}.
+$$
+Para essa sequência, temos $X_n(\omega)$ assumindo os valores $0$ e $1$ indefinidamente, para todo $\omega\in\Omega,$ de modo que $X_n$ não converge para $X=0$ em nenhum ponto. Por outro lado, para qualquer $0 < \varepsilon < 1,$ temos
+$$
+    \mathbb{P}(|X_n - X| > \varepsilon) = \mathbb{P}(X_n > \varepsilon) = \frac{1}{2^k} \rightarrow 0, \qquad n\rightarrow \infty.
+$$
+Portanto, $X_n \rightarrow X = 0$ em probabilidade mas não converge em nenhum ponto.
