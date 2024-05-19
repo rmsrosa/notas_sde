@@ -245,7 +245,7 @@ $$
 $$
 e com a função densidade de probabilidade de 
 $$
-    -\frac{T}{2} + \frac{1}{2}\Gamma\left(\frac{1}{2}, T\right),
+    -\frac{T}{2} + \frac{1}{2}\Gamma\left(\frac{1}{2}, 2T\right),
 $$
 onde $\Gamma = \Gamma(k, \theta)$ é a distribuição Gamma com parâmetros de forma $k$ e de escala $\theta.$
 
