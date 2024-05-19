@@ -43,13 +43,17 @@ As condições acima são suficientes para a definição da integral estocástic
 $$
     \int_0^T H_t\;\mathrm{d}t
 $$
-via limites, em $L^2(\Omega),$ das somas finitas de Riemann-Stieljes
+via limites, em média quadrática (i.e. $L^2(\Omega),$) das somas finitas de Riemann-Stieljes
 $$
 \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 $$
-onde $M = \{t_j\}_{j=1}^n$ é uma malha formada por $0 = t_0 < t_1 < \ldots < t_n = T,$ com $n\in \mathbb{N}$ arbitrário.
+onde $M = \{t_j\}_{j=1}^n$ é uma malha formada por $0 = t_0 < t_1 < \ldots < t_n = T,$ com $n\in \mathbb{N}$ arbitrário. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.
 
-Inicialmente, no entanto, vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática. Mais precisamente, vamos pedir que $\{H_t\}_{t\geq 0},$ além de ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
+## Caso particular de ntegrandos permitidos
+
+Inicialmente vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes.
+
+Mais precisamente, vamos pedir que $\{H_t\}_{t\geq 0},$ além de ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
 $$
     \mathbb{E}\left[ |H_{t +\tau} - H_t|^2 \right] < \eta, \qquad \forall 0 < \tau < \delta, \; 0 \leq t \leq t + \tau \leq T.
 $$
@@ -60,9 +64,19 @@ $$
 $$
 que implica trivialmente na condição acima. Qualquer potência do processo de Wiener também pode ser adequadamente estimada de acordo com a condição acima.
 
-Observe, ainda, que a condição acima não garante que os caminhos sejam, quase certamente, contínuos. De fato, basta considerar $\Omega = [0, 1]$ com probabilidade uniforme e definir $H_t(\omega) = \chi_{[\omega, 1]},$ de modo que $H_{t + \tau} - H_t = 1,$ para $t < \omega \leq t + \tau,$ se anulando fora desse intervalo, e portanto $\mathbb{E}[|H_{t+\tau} - H_t|^2] = \mathbb{P}(|H_{t+\tau} - H_t| > \eta) = \tau,$ para todo $0< \eta < 1.$  Observe que isso mostra a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência $\tau^{1 + \varepsilon}$ no lado direito da condição, com $\varepsilon$ estritamente positivo. 
+Observe, ainda, que a condição acima não garante que os caminhos sejam, quase certamente, contínuos. De fato, basta considerar $\Omega = [0, 1]$ com probabilidade uniforme e definir $H_t(\omega) = \chi_{[\omega, 1]}(t),$ de modo que $H_{t + \tau} - H_t = 1,$ para $t < \omega \leq t + \tau,$ se anulando fora desse intervalo. Com isso, os caminhos são, quase certamente, descontínuos em algum ponto. No entanto, $\mathbb{E}[|H_{t+\tau} - H_t|^2] = \mathbb{P}(|H_{t+\tau} - H_t| > \eta) = \tau,$ para todo $0< \eta < 1,$ mostrando que a condição de continuidade uniforme em média quadrática é valida.
 
-Fazemos isso em nome de uma construção mais simples e direta da integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. 
+O mesmo vale para $H_t(\omega) = (1/2)\chi_{\omega}(t) + \chi_{(\omega, 1]}(t),$ cujos caminhos amostrais não são contínuous nem à esquerda, nem à direita.
+
+Outro exemplo de caminhos descontínuos, em um conjunto enumerável de pontos, é o de um processo de Poisson composto, $H_t = \sum_{i=1}^{N_t} D_i,$ onde $\{N_t\}_{t\geq 0}$ é um processo de contagem de Poisson em taxa $\lambda > 0$ e $\{D_i\}_{i\in\mathbb{N}}$ é um processo independente e identicamente distribuído com distribuições $D$ com $\mathbb{E}[D^2] < \infty.$ Nesse caso, é possível mostrar que
+$$
+    \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t] + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
+$$
+de modo que a condição de continuidade uniforme em média quadrática também é válida.
+
+Observe que esses exemplos mostram a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência $\tau^{1 + \varepsilon}$ no lado direito da condição, com $\varepsilon$ estritamente positivo. Nos exemplos acima, temos a estimativa com $\varepsilon = 0$ e os caminhos não são nem contínuos.
+
+Como dito acima, consideramos esse caso particular a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. 
 
 ## Somas finitas de Riemann-Stieltjes
 
@@ -260,3 +274,19 @@ $$
     \end{align*}
 $$
 onde usamos que $W_T$ é uma normal e, portanto, $\mathbb{E}[W_T^4] = 3\mathbb{E}[W_T^2]^2.$
+
+## Exercícios
+
+1. Suponha $f=f(x)$ localmente Hölder/Lipschitz contínua em $\mathbb{R},$ satisfendo uma estimativa da forma
+$$
+    |f(y) - f(x)| \leq \left(c_0 + c_1\max\{|x|^p, |y|^p\}\right)|y - x|^\theta,
+$$
+para todo $x, y\in\mathbb{R},$ onde $c_0, c_1 \geq 0,$ $p\geq 1,$ e $0 < \theta \leq 1$ (na verdade basta que $p$ e $\theta$ sejam positivos). Considere o processo estocástico $\{H_t\}_{t\geq 0}$ definido por
+$$
+    H_t = f(W_t),
+$$
+onde $\{W_t\}_{t\geq 0}$ é um processo de Wiener. Usando a desigualdade maximal
+$$
+    \mathbb{E}[\max_{0\leq t \leq T} |W_t|^2] \leq 4\mathbb{E}[W_T^2],
+$$
+mostre que $\{H_t\}_{t \geq 0}$ é uniformemente contínuo em média quadrática.
