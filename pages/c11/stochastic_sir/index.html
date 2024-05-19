@@ -178,7 +178,7 @@
     <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
-    <li>6. Integração estocástica</li>
+    <li><a href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
@@ -193,13 +193,16 @@
     <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.8. Fórmula de Itô</a></li>
     </div>
     <div class="menu-level-1">
     <li>7. Equações diferenciais aleatórias</li>
@@ -523,7 +526,7 @@ end</code></pre>
 2.0
 
 Benchmark SIR_noise!
-  3.716 ns (0 allocations: 0 bytes)
+  3.406 ns (0 allocations: 0 bytes)
 -20.0
 </code></pre>
 <p>Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro <code>InteractiveUtils.@code_warntype</code> para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável <code>u</code> e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável &#40;verifique isso usando <code>@btime</code> com os parâmetros abaixo&#33;&#41;.</p>
@@ -655,7 +658,7 @@ nothing
         </div>
     
 
-    Last modified: May 03, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

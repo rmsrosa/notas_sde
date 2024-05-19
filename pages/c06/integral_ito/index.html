@@ -5,23 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Integral de Itô</title>  
+   <title>Integral de Itô de processos uniformemente contínuos em média quadrática</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
   <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
 
-  
-    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
-    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('pre').forEach((el) => {
-          hljs.highlightElement(el);
-        });
-      });
-    </script>
   
 
   
@@ -178,7 +167,7 @@
     <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
-    <li>6. Integração estocástica</li>
+    <li><a href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
@@ -193,13 +182,16 @@
     <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.8. Fórmula de Itô</a></li>
     </div>
     <div class="menu-level-1">
     <li>7. Equações diferenciais aleatórias</li>
@@ -350,7 +342,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_propriedades"><kbd>→</kbd> 6.6. Propriedades da integral de Itô</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_l2"><kbd>→</kbd> 6.6. Integral de Itô de processos L²</a>
 </span>
     </p>
 </div>
@@ -361,8 +353,8 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.5. Integral de Itô</a></h1>
-<p>Bom, já vimos como integrar processos em relação ao tempo &#40;Seção <a href="/notas_sde/pages/c05/integral_riemann">pages/c05/integral_riemann.md</a>&#41;, em relação a processos de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_riemannstieltjes">pages/c05/integral_riemannstieltjes.md</a>&#41; e como integrar certas classes de funções em relação a processos que não são de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_dualidade">pages/c05/integral_dualidade.md</a>&#41;. Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo &#40;Seção <a href="/notas_sde/pages/c05/riemann_wiener">pages/c05/riemann_wiener.md</a>&#41;. Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></h1>
+<p>Bom, já vimos como integrar processos em relação a variações no tempo &#40;Seção <a href="/notas_sde/pages/c05/integral_riemann">pages/c05/integral_riemann.md</a>&#41;, em relação a processos de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_riemannstieltjes">pages/c05/integral_riemannstieltjes.md</a>&#41; e como integrar certas classes de funções em relação a processos que não são de variação limitada &#40;Seção <a href="/notas_sde/pages/c05/integral_dualidade">pages/c05/integral_dualidade.md</a>&#41;. Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo &#40;Seção <a href="/notas_sde/pages/c05/riemann_wiener">pages/c05/riemann_wiener.md</a>&#41;. Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.</p>
 <p>No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico \(\{H_t\}_{t\geq 0}\) e a integral é em relação a um processo de Wiener \(\{W_t\}_{t\geq 0}\):</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t.
@@ -377,218 +369,248 @@
 <blockquote>
 <p>A cada instante \(t \geq 0\), o integrando \(H_t\) deve ser independente da evolução futura \(s \geq t\) do processo de Wiener.</p>
 </blockquote>
-<p>Vamos chamar essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t\). Uma definição mais formal envolve o conceito de <em>filtração</em>.</p>
-<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de sub \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação a \(\mathcal{F}_t\), onde \(\{\mathcal{F}_t\}_{t\geq 0}\) é a filtração natural de \(\{W_t\}_{t\geq 0}\).</p>
-<p>Sob a condição de \(\{H_t\}_{t\geq 0}\) estar adaptada a \(\{W_t\}_{t\geq 0}\) e dos caminhos amostrais de \(\{H_t\}_{t\geq 0}\) serem quase certamente contínuos, a <em>integral de Itô</em> pode ser bem definida e possui boas propriedades, como veremos posteriormente.</p>
-<p>Essa construção pode ser estendida a processos \(\{H_t\}_{t\geq 0}\) adaptados a \(\{W_t\}_{t\geq 0}\) que sejam <em>progressivamente mensuráveis</em> e de <em>quadrado integrável.</em> Mais precisamente, \(\{H_t\}_{t\geq 0}\) é dito <strong>progressivamente mensurável</strong> em relação uma filtração \(\mathcal{F}_t\) quando, para cada \(t' \geq 0\), a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, t'] \times \Omega\) é mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, t') \times \mathcal{F}_{t'}\), onde \(\mathcal{B}(0, t')\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, t'].\) Um tal processo progressivamente mensurável é dito de quadrado integrável quando</p>
+<p>Independente da <em>evolução futura</em> significa que, para cada \(t\geq 0,\) \(H_t\) é independente de \(W_{t + \tau} - W_t,\) para todo \(\tau > 0.\) Chamamos essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t\). Uma definição mais formal envolve o conceito de <em>filtração:</em></p>
+<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de sub \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). A <strong>filtração natural</strong> é a menor filtração possível que torna cada \(W_t\) mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\). Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação à filtração natural de \(\{W_t\}_{t\geq 0}\).</p>
+<p>Em relação à mensurabilidade, pedimos, também, que \(\{H_t\}_{t\geq 0}\) seja <strong>progressivamente mensurável</strong> em relação a uma filtração \(\mathcal{F}_t,\) ou seja, que para cada \(\bar t \geq 0\), a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, \bar t] \times \Omega\) seja mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t}\), onde \(\mathcal{B}(0, \bar t)\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, \bar t].\)</p>
+<p>Em relação à integrabilidade, pedimos, ainda, que \(\{H_t\}_{t\geq 0}\) seja de <strong>quadrado integrável,</strong> i.e.</p>
 \[
 \int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
 \]
 <p>Observe que, pelo Teorema de Fubini, essa condição garante que</p>
 \[
-\int_{[0, T]\times \Omega} H_t(\omega)^2 \;\mathrm{d}(\lambda \times \mathbb{P})(t, \omega) = \int_0^T \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t = \mathbb{E}\left[\int_0^T H_t(\omega)^2 \;\mathrm{d}t\right] < \infty,
+\int_{[0, T]\times \Omega} H_t(\omega)^2 \;\mathrm{d}(\lambda \times \mathbb{P})(t, \omega) = \mathbb{E}\left[\int_0^T H_t(\omega)^2 \;\mathrm{d}t\right] = \int_0^T \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t < \infty,
 \]
 <p>onde \(\lambda \times \mathbb{P}\) denota a medida produto entre a medida de Lebesgue \(\lambda\) e a medida de probabilidade \(\mathbb{P}\) em \(\Omega.\)</p>
-<p>Vale observar que se \(\{H_t\}_{t\geq 0}\) é adaptada a \(\{W_t\}_{t\geq 0}\) e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.</p>
-<p>Essa construção pode ser estendida a integrais em relação a processos \(\{Z_t\}_{t\geq 0}\) que sejam <em>martingales</em> &#40;ou, mais geralmente ainda, semi-martingales&#41;, i.e. sendo \(\{H_t\}_{t \geq 0}\) progressivamente mensurável em relação a \(\{Z_t\}_{t\geq 0}\) e de quadrado integrável em \((0, T)\), então a <em>integral de Itô</em></p>
+<p>Vale ressaltar que se \(\{H_t\}_{t\geq 0}\) é adaptada a \(\{W_t\}_{t\geq 0}\) e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.</p>
+<p>As condições acima são suficientes para a definição da integral estocástica</p>
 \[
-\int_0^T H_t \;\mathrm{d}Z_t
+    \int_0^T H_t\;\mathrm{d}t
 \]
-<p>está bem definida no sentido de média quadrática, como veremos agora no caso da integral de Itô com relação a \(\{W_t\}_t.\)</p>
-<h2 id="construção"><a href="#construção" class="header-anchor">Construção</a></h2>
-<p>No caso de \(\{H_t\}_{t\geq 0}\) ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos tratar primeiro de processos do tipo escada.</p>
-<h3 id="processo_escada_e_integral_de_itô"><a href="#processo_escada_e_integral_de_itô" class="header-anchor">Processo escada e integral de Itô</a></h3>
-<p>Um processo \(\{H_t\}_{t\geq 0}\) é do tipo escada quando é &quot;constante por partes&quot;, i.e. quando existe uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\) tal que \(H_t\) seja constante, \(H_t = H_{t_{j-1}}\), em cada intervalo \(t_{j-1} \leq t < t_j\). Para esses processo, define-se, naturalmente, a integral de Itô por</p>
+<p>via limites, em média quadrática &#40;i.e. \(L^2(\Omega),\)&#41; das somas finitas de Riemann-Stieljes</p>
 \[
-\int_0^T H_t \;\mathrm{d}W_t = \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
+\sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 \]
-<h3 id="integral_de_itô_via_aproximação_por_processo_escada"><a href="#integral_de_itô_via_aproximação_por_processo_escada" class="header-anchor">Integral de Itô via aproximação por processo escada</a></h3>
-<p>Para um processo \(\{H_t\}_{t \geq 0}\) que seja progressivamente mensurável e em \(L^2((0, T)\times \Omega)\), aproximamos o processo por processos \(\{H_t^m\}_{t \geq 0}\) do tipo escada e adaptados a \(\{W_t\}_{t\geq 0}\). Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.</p>
-<p>O passo seguinte é mostrar que as integrais de Itô dos processos escada convergem em média quadrática. Isso é obtido graças a duas propriedades fundamentais da integral de Itô em relação a \(\{W_t\}_{t \geq 0}\), a saber que o valor esperado é nulo e que a <em>isometria de Itô</em> vale para processos escada &#40;veremos isso em seguida&#41;:</p>
+<p>onde \(M = \{t_j\}_{j=1}^n\) é uma malha formada por \(0 = t_0 < t_1 < \ldots < t_n = T,\) com \(n\in \mathbb{N}\) arbitrário. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.</p>
+<h2 id="caso_particular_de_ntegrandos_permitidos"><a href="#caso_particular_de_ntegrandos_permitidos" class="header-anchor">Caso particular de ntegrandos permitidos</a></h2>
+<p>Inicialmente vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes.</p>
+<p>Mais precisamente, vamos pedir que \(\{H_t\}_{t\geq 0},\) além de ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente &#40;no tempo&#41; uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer \(T > 0\) e \(\eta > 0,\) existe \(\delta > 0\) tal que</p>
 \[
-\mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t\right)^2 \right] = \mathbb{E}\left[ \int_0^T\left(H_t^m\right)^2 \;\mathrm{d}t\right]  = \int_0^T\mathbb{E}\left[ \left(H_t^m\right)^2 \right] \;\mathrm{d}t
+    \mathbb{E}\left[ |H_{t +\tau} - H_t|^2 \right] < \eta, \qquad \forall 0 < \tau < \delta, \; 0 \leq t \leq t + \tau \leq T.
 \]
-<p>Como a combinação linear de processos escada também é um processo escada, temos</p>
+<p>Observe que o processo de Wiener tem a propriedade de que \(W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau),\) de forma que</p>
 \[
-\mathbb{E}\left[ \int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t \right] = 0
+    \mathbb{E}\left[ |W_{t+\tau} - W_t|^2 \right] = \tau,
+\]
+<p>que implica trivialmente na condição acima. Qualquer potência do processo de Wiener também pode ser adequadamente estimada de acordo com a condição acima.</p>
+<p>Observe, ainda, que a condição acima não garante que os caminhos sejam, quase certamente, contínuos. De fato, basta considerar \(\Omega = [0, 1]\) com probabilidade uniforme e definir \(H_t(\omega) = \chi_{[\omega, 1]}(t),\) de modo que \(H_{t + \tau} - H_t = 1,\) para \(t < \omega \leq t + \tau,\) se anulando fora desse intervalo. Com isso, os caminhos são, quase certamente, descontínuos em algum ponto. No entanto, \(\mathbb{E}[|H_{t+\tau} - H_t|^2] = \mathbb{P}(|H_{t+\tau} - H_t| > \eta) = \tau,\) para todo \(0< \eta < 1,\) mostrando que a condição de continuidade uniforme em média quadrática é valida.</p>
+<p>O mesmo vale para \(H_t(\omega) = (1/2)\chi_{\omega}(t) + \chi_{(\omega, 1]}(t),\) cujos caminhos amostrais não são contínuous nem à esquerda, nem à direita.</p>
+<p>Outro exemplo de caminhos descontínuos, em um conjunto enumerável de pontos, é o de um processo de Poisson composto, \(H_t = \sum_{i=1}^{N_t} D_i,\) onde \(\{N_t\}_{t\geq 0}\) é um processo de contagem de Poisson em taxa \(\lambda > 0\) e \(\{D_i\}_{i\in\mathbb{N}}\) é um processo independente e identicamente distribuído com distribuições \(D\) com \(\mathbb{E}[D^2] < \infty.\) Nesse caso, é possível mostrar que</p>
+\[
+    \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t] + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
+\]
+<p>de modo que a condição de continuidade uniforme em média quadrática também é válida.</p>
+<p>Observe que esses exemplos mostram a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência \(\tau^{1 + \varepsilon}\) no lado direito da condição, com \(\varepsilon\) estritamente positivo. Nos exemplos acima, temos a estimativa com \(\varepsilon = 0\) e os caminhos não são nem contínuos.</p>
+<p>Como dito acima, consideramos esse caso particular a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. </p>
+<h2 id="somas_finitas_de_riemann-stieltjes"><a href="#somas_finitas_de_riemann-stieltjes" class="header-anchor">Somas finitas de Riemann-Stieltjes</a></h2>
+<p>Consideremos, então, as somas finitas de Riemann-Stieltjes</p>
+\[
+    R_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
+\]
+<p>onde \(M = \{t_j\}_{j=1}^n\) é uma malha formada por \(0 = t_0 < t_1 < \ldots < t_n = T,\) com \(n\in \mathbb{N}\) arbitrário. Vamos mostrar que \(\{R_M\}_{M}\) é &#40;uma rede&#41; de Cauchy, em \(L^2(\Omega).\)</p>
+\[
+    \lim_{\|M_1\|, \|M_2\| \rightarrow 0} \mathbb{P}(|R_{M_1} - R_{M_2}| \geq \varepsilon) = 0,
+\]
+<p>lembrando que, para uma malha \(M,\)</p>
+\[
+    \|M\| = \max_{j=1, \ldots, n} |t_j - t_{j-1}|.
+\]
+<p>Uma vez feito isso, obtemos que existe uma variável aleatória limite \(R,\) tal que \(R_M \rightarrow R\) em em média quadrática, i.e.</p>
+\[
+    \lim_{\|M\|\rightarrow 0} \mathbb{E}(|R_M - R|^2) = 0.
+\]
+<p>Com isso, \(R_M\) converge, em média quadrática, para um limite \(R,\) que definimos como sendo a integral de \(\{H_t\}_{t\geq 0}\) em relação a \(\{W_t\}_{t\geq 0},\) no intervalo \([0, T]:\)</p>
+\[
+    \int_0^T H_t\;\mathrm{d}t = R = \lim_{\|M\|\rightarrow 0} R_M = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}).
+\]
+<p>No caso de \(\{H_t\}_{t\geq 0}\) ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos, antes, tratar primeiro de processos localmente uniformemente contínuos em média quadrática.</p>
+<h3 id="média_quadrática"><a href="#média_quadrática" class="header-anchor">Média quadrática</a></h3>
+<p>Dadas duas malhas \(M_1\) e \(M_2,\) podemos fazer uma triangulação com o refinamento das duas malhas, \(M = M_1 \cup M_2.\) Naturalmente,</p>
+\[
+    \|M\| \leq \min\{M_1, M_2\}.
+\]
+<p>Vamos comparar \(M_1\) e \(M_2\) com \(M\). Denotando os pontos da malha mais grossa \(M_1\) por \(t_i',\) \(i = 1, \ldots, n_1,\) e os pontos da malha mais fina \(M\) por \(t_j,\) \(j=1, \ldots, n,\) com \(M\subset M_1\) e \(n \geq n_1,\) podemos escrever</p>
+\[
+    R_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
 \]
 <p>e</p>
 \[
-\mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] = \int_0^T \mathbb{E}\left[ \left(H_t^m - H_t^k\right)^2 \right] \;\mathrm{d}t
+    R_{M_1} = \sum_{i=1}^{n_1} H_{t_{i-1}'}(W_{t_i'} - W_{t_{i-1}'}),
 \]
-<p>Com a hipótese de que \(\{H_t^m\}_{t \geq 0}\) converge em média quadrática para \(\{H_t\}_{t \geq 0}\), o lado direito da expressão acima converge para zero:</p>
+<p>onde, para cada \(j=0, \ldots, n,\) existe um único \(i_j\) tal que</p>
 \[
-\mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] \rightarrow 0.
+    t_{i_j}' \leq t_j < t_{i_j+1}.
 \]
-<p>Isso mostra que a sequência</p>
+<p>Assim, somando e subtraindo os passos intermediários se necessário, podemos escrever</p>
 \[
-\int_0^T H_t^m \;\mathrm{d}W_t
+    R_{M_1} = \sum_{j=1}^{n} H_{t_{i_{j-1}}}(W_{t_j} - W_{t_{j-1}}).
 \]
-<p>converge em média quadrática e em probabilidade para um limite que independe da escolha da sequência de funções escada.</p>
-<p>A integral de Itô é, então, definida como o limite das integrais de funções escada:</p>
+<p>Com isso,</p>
 \[
-\int_0^T H_t \;\mathrm{d}W_t = \lim \int_0^T H_t^m \;\mathrm{d}W_t.
+    R_{M_1} - R_M = \sum_{j=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}).
 \]
-<h3 id="propriedades_da_integral_de_itô_de_funções_escada"><a href="#propriedades_da_integral_de_itô_de_funções_escada" class="header-anchor">Propriedades da integral de Itô de funções escada</a></h3>
-<p>Vamos ver aqui as duas propriedades fundamentais que utilizamos acima. Suponha que \(\{H_t\}_{t\geq 0}\) seja um função escada adaptada a \(\{W_t\}_{t \geq 0}\) e com o processo sendo constante nos intervalos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\).</p>
-<p>Calculemos, primeiramente, a esperança da integral de Itô:</p>
+<p>Elevando ao quadrado,</p>
 \[
-\mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
-\]
-<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo, temos \(H_{t_{j-1}}\) independente de \(\Delta_j = W_{t_j} - W_{t_{j-1}}\), de modo que</p>
-\[
-\mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
-\]
-<p>Como um processo de Wiener tem valor esperado nulo, segue que \(\mathbb{E}\left[\Delta W_j\right] = 0\), de maneira que</p>
-\[
-\mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
-\]
-<p>Calculemos, agora, o momento de ordem dois da integral de Itô:</p>
-\[
-\begin{align*}
-\mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] & = \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] \\
-& = \mathbb{E}\left[\left(\sum_{i=1}^n H_{t_{i-1}}\Delta W_i\right)\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)\right] \\
-& = \sum_{i,j=1}^n\mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] \\
-& = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\Delta W_j^2\right]
-\end{align*}
-\]
-<p>Pela hipótese de \(\{H_t\}_t\) ser não antecipativo e com \(i < j\), temos \(H_{t_{i-1}}\), \(H_{t_{j-1}}\) e \(\Delta W_i\) independente de \(\Delta W_j\), de modo que</p>
-\[
-\begin{align*}
-\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\right]\mathbb{E}\left[\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] \mathbb{E}\left[\Delta W_j^2\right]
-\end{align*}
-\]
-<p>Como</p>
-\[
-\mathbb{E}\left[\Delta W_j\right] = 0, \qquad \mathbb{E}\left[\Delta W_j^2\right] = t_j - t_{j-1},
-\]
-<p>temos</p>
-\[
-\mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] = \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] (t_j - t_{j-1}) = \mathbb{E}\left[\sum_j H_{t_{j-1}}^2 (t_j - t_{j-1})\right].
-\]
-<p>Lembrando que \(\{H_t\}_{t \geq 0}\) é um processo escada, o somatório à direita é uma integral e obtemos a seguinte identidade para funções escada, conhecida como <strong>isometria de Itô:</strong></p>
-\[
-\mathbb{E}\left[ \left( \int_0^T H_t \;\mathrm{d}W_t\right)^2\right] = \mathbb{E}\left[ \int_0^T H_t^2 \;\mathrm{d}t\right].
-\]
-<h3 id="aproximação_por_processos_contínuos"><a href="#aproximação_por_processos_contínuos" class="header-anchor">Aproximação por processos contínuos</a></h3>
-<p>Dada uma função de quadrado integrável \(f:\mathbb{R} \rightarrow \mathbb{R}\), uma maneira clássica de aproximá-la por funções contínuas é através da convolução \(t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t\) com aproximações da identidade \(\varphi_\varepsilon\). Essa convolução, no entanto, envolve, tipicamente, olhar para o &quot;passado&quot; e para o &quot;futuro&quot; da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,</p>
-\[
-\varphi_\varepsilon(t) = \begin{cases}
-\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \geq 0, \\
-0, & t < 0.
-\end{cases}
-\]
-
-<img src="/notas_sde/assets/pages/c06/integral_ito/code/output/aprox_id_exp.svg" alt="">
-<p>Mais especificamente, dado um processo \(\{H_t\}_{t \geq 0}\) de quadrado integrável e progressivamente mensurável em relação a \(\{W_t\}_{t \geq 0}\), estendemos \(H_t = 0,\) para \(t \leq 0\) e definimos</p>
-\[
-H_t^m = \varphi_{1/m} \star H_t = \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s.
-\]
-<p>Como \(H_t^m\) só envolve \(H_s\), para \(0\leq s \leq t\), então \(H_t^m\) continua sendo não antecipativo. Além disso, para \(t \geq 0\) e \(\tau > 0\),</p>
-\[
-\begin{align*}
-H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s - \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s \\
-& = \int_t^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s + \int_0^t m \left(e^{-m(t + \tau - s)} - e^{-m(t - s)}\right) H_s \;\mathrm{d}s
-\end{align*}
-\]
-<p>Usando que \(e^{-m(t + \tau - s)} \leq 1\) e</p>
-\[
-\left|e^{-m(t + \tau - s)} - e^{-m(t - s)}\right| = \int_{t - s}^{t + \tau - s} m e^{-m\eta}\;\mathrm{d}\eta \leq m \tau,
-\]
-<p>obtemos</p>
-\[
-\begin{align*}
-\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m |H_s| \;\mathrm{d}s - \int_0^t m^2 \tau |H_s| \;\mathrm{d}s \\
-& \leq m \sqrt{\tau} \int_t^{t+\tau} H_s^2 \;\mathrm{d}s + m^2 \tau \sqrt{t}\int_0^t H_s^2 \;\mathrm{d}s \\
-& \leq m \sqrt{\tau}\left(1 + m\sqrt{\tau t}\right)\int_0^t H_s^2 \;\mathrm{d}s.
-\end{align*}
-\]
-<p>Para \(0 \leq \tau < t\), obtemos, analogamente, a mesma estimativa.</p>
-<p>Como \(\{H_t\}_{t\geq 0}\) é de quadrado integrável em intervalos finitos, segue que, para quase todo caminho amostral,</p>
-\[
-\int_0^t H_s(\omega)^2 \;\mathrm{d}s < \infty,
-\]
-<p>de modo que</p>
-\[
-H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
-\]
-<p>mostrando a continuidade quase certamente das aproximações \(\{H_t^m\}_{t \geq 0}\).</p>
-<h3 id="aproximação_por_processo_escada"><a href="#aproximação_por_processo_escada" class="header-anchor">Aproximação por processo escada</a></h3>
-<p>Assumindo \(\{H_t\}_{t \geq 0}\) com caminhos contínuous e \(T > 0,\) consideramos as malhas \(\{t_j^n\}_j\) dadas por</p>
-\[
-    t_j^n = \frac{j T}{2^n}, \quad j = 0, \ldots, 2^n,
-\]
-<p>para \(n\in \mathbb{N}.\) Em cada malha, consideramos o processo escada \(\{H_t^n\}_t\) dado por</p>
-\[
-    H_t^n = \begin{cases}
-        H_{t_{j-1}^n}, & t_{j-1}^n \leq t < t_j^n, \; j = 1, \ldots, 2^n, \\
-        H_{T}, & t \geq T.
-    \end{cases} 
-\]
-<p>Para quase todo \(\omega\in\Omega\), como \(t\mapsto H_t(\omega)\) é um caminho contínuo, portanto uniformemente contínuo em \([0, T],\) temos</p>
-\[
-    H_t^n(\omega) \rightarrow H_t(\omega)
-\]
-<p>uniformemente em \(t \in [0, T].\) Pelo Teorema da Convergência Dominada de Lebesgue,</p>
-\[
-    H_t^n \rightarrow H_t
-\]
-<p>em \(L^2((0, T)\times \Omega),\) ou seja, \(\{H_t^n\}_{0 \leq t \leq T}\) é uma aproximação, em média quadrática, por processos do tipo escada, do processo \(\{H_t\}_{0 \leq t \leq T}.\) </p>
-<h3 id="aproximação_no_caso_de_processos_com_caminhos_contínuos"><a href="#aproximação_no_caso_de_processos_com_caminhos_contínuos" class="header-anchor">Aproximação no caso de processos com caminhos contínuos</a></h3>
-<p>Obtivemos, acima, a convergência das integrais de Itô das aproximações \(\{H_t^n\}_t\) de uma função progressivamente mensurável de quadrado integrável. Mas se os caminhos não forem contínuous, não podemos garantir que \(H_t^n = H_{t_j^n}^n\) em pontos arbitrários \(t_j^n\) das malhas das aproximações-escada do processo. Então, em geral, não podemos dizer que a integral de Itô de \(\{H_t\}_t\) é o limite de somatórios</p>
-\[
-    \sum_{j=1}^n H_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
-\]
-<p>nem no sentido de média quadrática.</p>
-<p>Mas se os caminhos forem contínuous, ou quase certamente contínuous, então podemos aproximar, em média quadrática, o processo \(\{H_t\}_t\) por \(H_t^n\) obtido através de</p>
-\[
-    H_t^n = \begin{cases}
-        H_{t_{j-1}^n}, & t_{j-1}^n \leq t < t_j^n, \; j = 1, \ldots, 2^n, \\
-        H_{T}, & t \geq T.
-    \end{cases} 
-\]
-<p>Nesse caso, \(H_{t_{j-1}^n}^n = H_{t_{j-1}^n}\), ou seja, nos pontos da malha, os valores do processo aproximado são os valores do próprio processo. Assim, vale a convergência</p>
-\[
-    \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
-\]
-<p>no sentido de média quadrática. Isso para quaisquer sequências de malhas \(\{t_j^n\}_{j}\) com</p>
-\[
-    \max_{j=1, \ldots, n} (t_j^n - t_{j-1}^n) \rightarrow 0.
-\]
-<p>Além disso, extraindo uma subsequência \(n_k\rightarrow \infty\) tal que</p>
-\[
-    \int_0^T\mathbb{E}\left[ H_t - H_t^{n_k} \right] < \epsilon_k^2,
-\]
-<p>com</p>
-\[
-    \sum_k \epsilon_k < \infty,
-\]
-<p>então esse limite vale quase certamente. De fato, nesse caso, temos</p>
-\[
-    \mathbb{P}\left( \left|\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right| \geq \sqrt{\epsilon_k} \right) \leq \frac{1}{\epsilon_k}\mathbb{E}\left[ \left(\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right)^2\right] = \frac{1}{\epsilon_k}\int_0^T\mathbb{E}\left[ (H_t - H_t^{n_k})^2 \right]\;\mathrm{dt} \leq \epsilon_k.
+    \begin{align*}
+        (R_{M_1} - R_M)^2 & = \left(\sum_{j=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})\right)^2 \\
+        & = \sum_{j=1}^{n} \sum_{k=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}}).
+    \end{align*}
 \]
 <p>Logo,</p>
 \[
-    \sum_{k\in\mathbb{N}} \mathbb{P}\left( \left|\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right| \geq \sqrt{\epsilon_k} \right) \leq \sum_{k\in\mathbb{N}} \epsilon_k < \infty.
+    \mathbb{E}[|R_{M_1} - R_M|^2] = \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}})\right]
 \]
-<p>Pelo Lema de Borel-Cantelli, isso implica em</p>
+<p>Para \(j < k,\) temos \(W_{t_k} - W_{t_{k-1}},\) que tem esperança nula, independente dos outros termos, de modo que</p>
 \[
-    \mathbb{P}\left( \limsup_{k\rightarrow \infty} \left|\int_0^T H_t \;\mathrm{d}W_t - \int_0^T H_t^{n_k} \;\mathrm{d}W_t\right| \geq \sqrt{\epsilon_k} \right) = 0,
+    \begin{align*}
+        & \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}})\right] \\
+        & \qquad = \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})\right]\mathbb{E}\left[(W_{t_k} - W_{t_{k-1}})\right] \\
+        & \qquad = 0.
+    \end{align*}
 \]
-<p>ou seja</p>
+<p>Por outro lado, para \(k > j,\) temos \(W_{t_j} - W_{t_{j-1}},\) que também tem esperança nula, independente dos outros termos. Logo,</p>
 \[
-    \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^{n_k} H_{t_{j-1}^{n_k}} (W_{t_j^{n_k}} - W_{t_{j-1}}^{n_k}),
+    \begin{align*}
+        & \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}})\right] \\
+        & \qquad = \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_k} - W_{t_{k-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})\right] \\
+        & \qquad = 0.
+    \end{align*}
 \]
-<p>quase certamente.</p>
-<h3 id="integral_de_itô_do_processo_de_wiener"><a href="#integral_de_itô_do_processo_de_wiener" class="header-anchor">Integral de Itô do processo de Wiener</a></h3>
-<p>Como o processo de Wiener tem caminhos quase certamente contínuos, vale o limite</p>
+<p>Sobram, então, apenas os termos com \(k=j,\) i.e.</p>
 \[
-    \int_0^T W_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n W_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
+    \mathbb{E}[|R_{M_1} - R_M|^2] = \sum_{j=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right].
 \]
-<p>em média quadrática. Por outro lado, já calculamos que o limite do lado direito acima é \(W_T/2 - T/2.\) Portanto, vale, de fato, para a integral de Itô, que</p>
+<p>Como \(\{H_t\}_{t\geq 0}\) é não antecipativo, cada termo \(H_{t_{i_{j-1}}} - H_{t_{j-1}}\) é independente de \(W_{t_j} - W_{t_{j-1}},\) de modo que</p>
 \[
-    \int_0^T W_t \;\mathrm{d}W_t = \frac{W_T}{2} - \frac{T}{2}.
+    \mathbb{E}[|R_{M_1} - R_M|^2] = \sum_{j=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})^2\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right].
 \]
+<p>Dado \(\eta > 0,\) existe \(\delta > 0\) tal que, para \(\|M_1\|, \|M_2\| < \delta,\) cada \(t_{j-1} - t_{i_{j-1}}\) está limitado pela malha mais grossa \(M_1,\) de modo que \(0 \leq t_{j-1} - t_{i_{j-1}} < \delta\) e, com isso,</p>
+\[
+\mathbb{E}\left[|H_{t_{i_{j-1}}} - H_{t_{j-1}}|^2\right] < \eta.
+\]
+<p>Usando, ainda, que \(\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = t_j - t_{j-1},\) obtemos</p>
+\[
+\mathbb{E}[|R_{M_1} - R_M|^2] \leq \sum_{j=1}^{n} \eta (t_j - t_{j-1}) = \eta T.
+\]
+<p>Idem para \(M_2.\) Logo,</p>
+\[
+\mathbb{E}[|R_{M_1} - R_{M_2}|^2] \leq 2\eta T.
+\]
+<p>Como podemos tomar \(\eta > 0\) arbitrariamente pequeno, bastando refinar cada vez mais a malha, obtemos que</p>
+\[
+    \lim_{\|M_1\|, \|M_2\| \rightarrow 0} \mathbb{E}(|R_{M_1} - R_{M_2}|^2) = 0.
+\]
+<p>Logo, existe uma variável aleatória \(R=R(\omega)\) de quadrado integrável tal que</p>
+\[
+    \lim_{\|M\|\rightarrow 0} \mathbb{E}(|R_M - R|^2) = 0,
+\]
+<p>ou seja, existe o limite</p>
+\[
+    R = \lim_{\|M\|\rightarrow 0} R_M
+\]
+<p>e podemos definir a integral de \(\{H_t\}_{t\geq 0}\) em relação a \(\{W_t\}_{t\geq 0},\) no intervalo \([0, T],\) por</p>
+\[
+    \int_0^T H_t\;\mathrm{d}W_t = R = \lim_{\|M\|\rightarrow 0} R_M = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}).
+\]
+<p>Essa definição nos dá a <strong>integral de Itô,</strong> em relação a um processo de Wiener \(\{W_t\}_{t\geq 0},\) de um processo estocástico \(\{H_t\}_{t\geq 0}\) com as propriedades de ser progressivamente mensurável em relação à filtração natural do processo de Wiener, ter quadrado integrável em \([0, T]\times \Omega\) e ser localmente uniformemente contínuo em média quadrática.</p>
+<h3 id="valor_esperado_da_integral_estocástica"><a href="#valor_esperado_da_integral_estocástica" class="header-anchor">Valor esperado da integral estocástica</a></h3>
+<p>Temos</p>
+\[
+    \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
+\]
+<p>Como \(\{H_t\}_{t\geq 0}\) é não antecipativo, temos que cada \(H_{t_{j-1}}\) é independente de \(W_{t_j} - W_{t_{j-1}}\). Logo,</p>
+\[
+    \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[W_{t_j} - W_{t_{j-1}}\right] = 0,
+\]
+<p>visto que cada passo \(W_{t_j} - W_{t_{j-1}}\) tem valor esperado nulo. Portanto,</p>
+\[
+    \mathbb{E}[R_M] = 0,
+\]
+<p>para qualquer malha \(M.\) No limite, como \(R_M \rightarrow R\) em média quadrática, segue que</p>
+\[
+    \mathbb{E}\left[\int_0^T H_t\;\mathrm{d}t\right] = \mathbb{E}[R] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[R_M] = 0.
+\]
+<h2 id="isometria_de_itô"><a href="#isometria_de_itô" class="header-anchor">Isometria de Itô</a></h2>
+<p>Sabendo que \(R_M\) converge para \(R\) em média quadrádica, segue que </p>
+\[
+    \mathbb{E}[R_M^2] \rightarrow \mathbb{E}[R^2],
+\]
+<p>quando a malha é refinada ao limite \(\|M\| \rightarrow 0.\) Vamos calcular o limite de \(\mathbb{E}[R_M^2]\) e ver que isso nos dá uma importante identidade conhecida como <em>isometria de Itô.</em></p>
+<p>Primeiramente, temos</p>
+\[
+    \begin{align*}
+        \mathbb{E}[R_M^2] & = \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right)^2\right] \\
+        & = \mathbb{E}\left[\sum_{i=1}^n \sum_{j=1}^n H_{t_{i-1}}(W_{t_i} - W_{t_{i-1}})H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right] \\
+        & = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[H_{t_{i-1}}(W_{t_i} - W_{t_{i-1}})H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
+    \end{align*}
+\]
+<p>De maneira análoga à feita acima para o cálculo de \(\mathbb{E}[|R_{M_1} - R_{M_2}|^2],\) os termos com \(i\neq j\) se anulam, restando</p>
+\[
+    \begin{align*}
+        \mathbb{E}[R_M^2] & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2\right] \\
+        & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] \\
+        & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2\right](t_j t_{j-1})
+    \end{align*}
+\]
+<p>Note, agora, que o último termo é uma soma de Riemann da função \(\mathbb{E}[H_t^2].\) Com a hipótese de continuidade uniforme em média quadrática, segue que</p>
+\[
+    t \mapsto \mathbb{E}[H_t^2]
+\]
+<p>é uma função contínua, de modo que o soma de Riemann converge para a integral de Riemann</p>
+\[
+    \mathbb{E}[R^2] = \lim_{\|M\|\rightarrow 0} \mathbb{E}[R_M] = \int_0^T \mathbb{E}[H_t^2]\;\mathrm{d}t.
+\]
+<p>De outra forma, escrevemos</p>
+\[
+    \mathbb{E}\left[\left(\int_0^T H_t \;\mathrm{d}W_t \right)^2\right] = \int_0^T \mathbb{E}[H_t^2]\;\mathrm{d}t.
+\]
+<p>Essa identidade é chamada <strong>isometria de Itô.</strong></p>
+<p>Por exemplo,</p>
+\[
+    \mathbb{E}\left[\left(\int_0^T W_t \;\mathrm{d}W_t \right)^2\right] = \int_0^T \mathbb{E}[W_t^2]\;\mathrm{d}t = \int_0^T t\;\mathrm{d}t = \frac{T^2}{2}.
+\]
+<p>Por outro lado, já vimos que</p>
+\[
+    \int_0^T W_t \;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n W_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}) = \frac{W_T^2}{2} - \frac{T}{2},
+\]
+<p>o que nos leva a uma outra forma de calcular essa esperança, a saber</p>
+\[
+    \begin{align*}
+        \mathbb{E}\left[\left(\int_0^T W_t \;\mathrm{d}W_t\right)^2\right] & = \mathbb{E}\left[\frac{W_T^4}{4} - 2\frac{W_T^2}{2}\frac{T}{2} + \frac{T^2}{4}\right] \\
+        & = \frac{\mathbb{E}[W_T^4]}{4} - 2\frac{\mathbb{E}[W_T^2]}{2}\frac{T}{2} + \frac{T^2}{4} \\
+        & = \frac{3\mathbb{E}[W_T^2]^2}{4} - 2\frac{T}{2}\frac{T}{2} + \frac{T^2}{4} \\
+        & = \frac{3T^2}{4} - 2\frac{T}{2}\frac{T}{2} + \frac{T^2}{4} \\
+        & = \frac{3T^2}{4} - 2\frac{T^2}{4} + \frac{T^2}{4} \\
+        & = \frac{T^2}{2},
+    \end{align*}
+\]
+<p>onde usamos que \(W_T\) é uma normal e, portanto, \(\mathbb{E}[W_T^4] = 3\mathbb{E}[W_T^2]^2.\)</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Suponha \(f=f(x)\) localmente Hölder/Lipschitz contínua em \(\mathbb{R},\) satisfendo uma estimativa da forma</p>
+</li>
+</ol>
+\[
+    |f(y) - f(x)| \leq \left(c_0 + c_1\max\{|x|^p, |y|^p\}\right)|y - x|^\theta,
+\]
+<p>para todo \(x, y\in\mathbb{R},\) onde \(c_0, c_1 \geq 0,\) \(p\geq 1,\) e \(0 < \theta \leq 1\) &#40;na verdade basta que \(p\) e \(\theta\) sejam positivos&#41;. Considere o processo estocástico \(\{H_t\}_{t\geq 0}\) definido por</p>
+\[
+    H_t = f(W_t),
+\]
+<p>onde \(\{W_t\}_{t\geq 0}\) é um processo de Wiener. Usando a desigualdade maximal</p>
+\[
+    \mathbb{E}[\max_{0\leq t \leq T} |W_t|^2] \leq 4\mathbb{E}[W_T^2],
+\]
+<p>mostre que \(\{H_t\}_{t \geq 0}\) é uniformemente contínuo em média quadrática.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -596,7 +618,7 @@ H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
 <a class="menu-level-1" href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_propriedades"><kbd>→</kbd> 6.6. Propriedades da integral de Itô</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_l2"><kbd>→</kbd> 6.6. Integral de Itô de processos L²</a>
 </span>
     </p>
 </div>
@@ -612,7 +634,7 @@ H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
         </div>
     
 
-    Last modified: May 03, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
@@ -624,9 +646,6 @@ H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
         <script>renderMathInElement(document.body)</script>
     
 
-    
-        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
-        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
     
 
   </body>

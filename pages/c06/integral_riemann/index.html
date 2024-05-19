@@ -167,7 +167,7 @@
     <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais</a></li>
     </div>
     <div class="menu-level-1">
-    <li>6. Integração estocástica</li>
+    <li><a href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
@@ -182,13 +182,16 @@
     <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.6. Propriedades da integral de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/formula_ito">6.7. Fórmula de Itô</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.8. Fórmula de Itô</a></li>
     </div>
     <div class="menu-level-1">
     <li>7. Equações diferenciais aleatórias</li>
@@ -336,7 +339,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemannstieltjes"><kbd>→</kbd> 6.2. Integrais de Riemann-Stieltjes</a>
@@ -411,9 +414,9 @@ Z_M = \sum_{j=1}^{n} f(t_{j-1}, X_{t_{j-1}}(\omega)) (t_j - t_{j-1}).
 \[
 \int_0^T W_t \;\mathrm{d}t
 \]
-<p>é uma variável aleatória com média zero e variância \(T^3/3\). Observe, finalmente, que os somatórios de Riemann são combinações lineares de variáveis aleatórias normais, portanto são, também, normais. No limite, obtemos uma variável aleatória normal, com média zero e variância \(T^3/3\). Ou seja,</p>
+<p>é uma variável aleatória com média zero e variância \(T^3/3\). Observe, finalmente, que os somatórios de Riemann são combinações lineares de variáveis aleatórias conjuntamente normais &#40;normais multivariadas&#41;, portanto são, também, normais. No limite, obtemos uma variável aleatória normal, com média zero e variância \(T^3/3\). Ou seja,</p>
 \[
-\int_0^T W_t \;\mathrm{d}t \sim \mathcal{N}\left(0, \frac{T}{3}\right).
+\int_0^T W_t \;\mathrm{d}t \sim \mathcal{N}\left(0, \frac{T^3}{3}\right).
 \]
 <h2 id="processos_integrais"><a href="#processos_integrais" class="header-anchor">Processos integrais</a></h2>
 <p>Sob as mesmas hipóteses em \(f\) e \(\{X_t\}_{t\in [a, b]}\), podemos, também, considerar as integrais</p>
@@ -475,7 +478,7 @@ Z = \lim_n \sum_{j=1}^n f_j^n \chi_{E_j^n}(s) \;\mathrm{d}s,
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_riemannstieltjes"><kbd>→</kbd> 6.2. Integrais de Riemann-Stieltjes</a>
@@ -494,7 +497,7 @@ Z = \lim_n \sum_{j=1}^n f_j^n \chi_{E_j^n}(s) \;\mathrm{d}s,
         </div>
     
 
-    Last modified: May 03, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
