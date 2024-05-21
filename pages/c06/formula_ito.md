@@ -103,7 +103,7 @@ $$
 $$
 Em forma diferencial, escrevemos que
 $$
-    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(X_t)\;\mathrm{d}t,
+    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(W_t)\;\mathrm{d}t,
 $$
 que é um caso particular da fórmula de Itô mencionada acima. Veremos agora a fórmula de Itô para processos de Itô.
 

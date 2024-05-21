@@ -49,7 +49,7 @@ $$
 $$
 onde $M = \{t_j\}_{j=1}^n$ é uma malha formada por $0 = t_0 < t_1 < \ldots < t_n = T,$ com $n\in \mathbb{N}$ arbitrário. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.
 
-## Caso particular de ntegrandos permitidos
+## Caso particular de integrandos permitidos
 
 Inicialmente vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes.
 
@@ -70,7 +70,7 @@ O mesmo vale para $H_t(\omega) = (1/2)\chi_{\omega}(t) + \chi_{(\omega, 1]}(t),$
 
 Outro exemplo de caminhos descontínuos, em um conjunto enumerável de pontos, é o de um processo de Poisson composto, $H_t = \sum_{i=1}^{N_t} D_i,$ onde $\{N_t\}_{t\geq 0}$ é um processo de contagem de Poisson em taxa $\lambda > 0$ e $\{D_i\}_{i\in\mathbb{N}}$ é um processo independente e identicamente distribuído com distribuições $D$ com $\mathbb{E}[D^2] < \infty.$ Nesse caso, é possível mostrar que
 $$
-    \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t] + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
+    \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t]^2 + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
 $$
 de modo que a condição de continuidade uniforme em média quadrática também é válida.
 
