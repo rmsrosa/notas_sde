@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Uma outro propriedade fundamental da integral de Itô diz respeito a uma fórmula relacionada a mudanças de variáveis.
+Uma outra propriedade fundamental da integral de Itô diz respeito a uma fórmula relacionada a mudanças de variáveis.
 
 Considere um processo real $\{X_t\}_{t \geq 0}$ e uma função real contínua $u:\mathbb{R} \rightarrow \mathbb{R}$. Podemos definir um outro processo $\{Y_t\}_{t \geq 0}$ através de
 $$
@@ -14,14 +14,18 @@ $$
 \frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
 $$
 
-Mesmo quando os caminhos amostrais de $\{X_t\}_{t \geq 0}$ são apenas de variação limitada, ainda temos $\{Y_t\}_{t \geq 0}$ de variação limitada e ainda temos que $\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t$, no sentido de integral de Riemann-Stieltjes:
+Mesmo quando os caminhos amostrais de $\{X_t\}_{t \geq 0}$ são apenas de variação limitada, ainda temos $\{Y_t\}_{t \geq 0}$ de variação limitada e ainda temos que
+$$
+\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t,
+$$
+no sentido de integral de Riemann-Stieltjes, i.e.
 $$
     \int_a^b g(t) \;\mathrm{d}Y_t = \int_a^b u'(X_t)\;\mathrm{d}X_t.
 $$
 
 Mas e no caso em que $X_t$ não é nem de variação limitada? Por exemplo, se quiseremos calcular $X_t = \sin(W_t),$ para o processo de Wiener, ou qualquer outra $X_t = u(W_t)$? Podemos começar por aí e calcular $dX_t$ para funções de processos de Wiener. Mas e se quiseremos, em cima disso, consider $Y_t = v(X_t)$ e ainda $Z_t = w(Y_t)$, etc.
 
-Por conta disso, consideramos uma classe de processos que é, em um certo sentido, fechada para composições. E então calcular a diferencial para processos nessa classe. Essa classe é a de *processos de Itô,* ou seja, processos $\{X_t\}_t$ satisfazendo uma equação da forma
+Por conta disso, consideramos uma classe de processos que é, em um certo sentido, fechada para composições. E então calculamos a diferencial para processos nessa classe. Essa classe é a de *processos de Itô,* ou de *difusão,* ou seja, processos $\{X_t\}_t$ satisfazendo uma equação da forma
 $$
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 $$
