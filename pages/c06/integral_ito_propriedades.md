@@ -160,7 +160,7 @@ $$
 $$
 Por outro lado,
 $$
-\mathbb{E}\left[S_t | A_t\right] = S_t.
+\mathbb{E}\left[S_t | \mathcal{F}_t\right] = S_t.
 $$
 Portanto,
 $$
