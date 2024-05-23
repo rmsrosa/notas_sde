@@ -47,6 +47,32 @@ $$
 
 Observe que, em ambos os casos, se $B_t = 0$, para todo $t$, então $\{X_t\}_{t \geq 0}$ se reduz a um processo com caminhos diferenciáveis (ou de variação limitada) e recuperamos a fórmula clássica.
 
+## Ideia do termo de correção
+
+O motivo da correção é simples. A ideia fundamental é que $\mathrm{d}W_t$ é de ordem $\mathrm{d}t^{1/2}.$ Para obtermos uma expressão para $\mathrm{d}Y_t$ que seja até ordem $\mathrm{d}t,$ devemos manter o termo seguinte $\mathrm{d}W_t^2 \sim \mathrm{d}t$ na expansão de Taylor, que no caso
+$$
+    Y_t = u(W_t)
+$$
+significa
+$$
+    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(W_t)\;\mathrm{d}W_t^2 \sim u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(W_t)\;\mathrm{d}t.
+$$
+
+No caso $Y_t = u(X_t)$ para um processo de difusão, temos, formalmente,
+$$
+    \begin{align*}
+        \mathrm{d}Y_t & = u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}u''(X_t)\;\mathrm{d}X_t^2 \\
+        & = u'(X_t)\left(A_t \;\mathrm{d}t + B_t\;\mathrm{d}W_t\right) + \frac{1}{2}u''(X_t)\left(A_t \;\mathrm{d}t + B_t\;\mathrm{d}W_t\right)^2 \\
+        & = u'(X_t)A_t \;\mathrm{d}t + u'(X_t) B_t\;\mathrm{d}W_t + \frac{1}{2}u''(X_t)\left(A_t^2 \;\mathrm{d}t^2 + 2A_tB_t\;\mathrm{d}t\mathrm{d}W_t + B_t^2\;\mathrm{d}W_t^2\right) \\
+        & = u'(X_t)A_t \;\mathrm{d}t + u'(X_t) B_t\;\mathrm{d}W_t + \frac{1}{2}u''(X_t) B_t^2\;\mathrm{d}t.
+    \end{align*}
+$$
+Acima, usamos que $\mathrm{d}t^2$ é de ordem quadrática e que $\mathrm{d}t\mathrm{d}W_t$ é de ordem $\mathrm{d}t^{3/2},$ portanto são de ordems superiores e desprezados na aproximação de ordem linear, enquanto que $\mathrm{d}W_t^2 \sim \mathrm{d}t.$
+
+A mesma ideia funciona no caso não autônomo $Y_t = u(t, X_t).$
+
+Mas essa ideia não constitui uma demonstração e ainda está muito vaga. Vamos tratar do detalhes, a seguir.
+
 ## Fórmula de Itô no caso de um processo de Wiener
 
 Para deixar as ideias claras, vamos considerar o caso mais simples em que $X_t=W_t$ é o próprio processo de Wiener e $u=u(x)$ é uma função duas vezes continuamente diferenciável definida para todo $x\in\mathbb{R}.$ Estamos interessados em obter uma fórmula para $\mathrm{d}Y_t$, onde $\{Y_t\}_{t\geq 0}$ é dado por
@@ -190,7 +216,7 @@ Assim,
 $$
 \left|\int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi\right| \leq K |W_{t_j} - W_{t_{j-1}}|^3 \leq C^2K |t_j - t_{j-1}|^{3\theta}.
 $$
-Escolhendo $\theta < 1/2$ com $3\theta > 1,$ obtemos
+Escolhendo $1/3 < \theta < 1/2,$ temos $3\theta > 1,$ de modo que
 $$
     \sum_{j=1}^n \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi \leq C^2 K T \max_j |t_j - t_{j-1}|^{3\theta - 1} \rightarrow 0,
 $$
