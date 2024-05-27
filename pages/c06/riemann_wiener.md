@@ -257,7 +257,7 @@ b^2(a - b) = \frac{1}{3}(a^3 - b^3) - b(a - b)^2 - \frac{1}{3}(b - a)^3,
 $$
 para calcular o limite
 $$
-\int_0^T W_t^2\;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n W_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}}) = \frac{W_T}{3} - \int_0^T W_t\;\mathrm{d}t.
+\int_0^T W_t^2\;\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n W_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}}) = \frac{W_T^3}{3} - \int_0^T W_t\;\mathrm{d}t.
 $$
 
 6. Deduza, usando as somas de Riemann-Stieltjes, que vale o caso particular da isometria de Itô
