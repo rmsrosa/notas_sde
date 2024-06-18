@@ -1,4 +1,4 @@
-@def title = "O processo de Ornstein-Uhlenbeck e a equação de Langevin"
+@def title = "A equação de Langevin e o processo de Ornstein-Uhlenbeck"
 
 # {{ get_title }}
 
@@ -65,6 +65,19 @@ $$
 \end{align*}
 $$
 
+Bom, essas contas mostram que a fórmula acima nos dá, de fato, uma solução da equação. Mas como podemos chegar na solução a partir da equação? Podemos usar um fator de integração dado pelo termo de *drift,* a saber, $e^{\nu t}.$ Dessa forma, temos
+$$
+\mathrm{d}(e^{\nu t}O_t) = \nu e^{\nu t}O_t \;\mathrm{d}t + e^{\nu t}\;\mathrm{d}O_t = \nu e^{\nu t}O_t \;\mathrm{d}t + e^{\nu t}\left( - \nu O_t\;\mathrm{d}t + \sigma \;\mathrm{d}W_t \right) = \sigma e^{\nu t}\;\mathrm{d}W_t.
+$$
+Integrando, obtemos
+$$
+e^{\nu t}O_t - O_0 = \sigma\int_0^t e^{\nu s}\;\mathrm{d}W_s.
+$$
+Isso nos dá, exatamente, a solução
+$$
+O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s.
+$$
+
 ## Propriedades estatísticas
 
 Da fórmula
@@ -75,11 +88,11 @@ como a esperança da integral de Itô é nula, deduzimos que
 $$
 \mathbb{E}[O_t] = e^{-\nu t}\mathbb{E}[O_0].
 $$
-Calculando o quadrado, temos
+Calculando a média quadrática, temos
 $$
-O_t^2 = e^{-2\nu t}O_0^2 + 2\sigma e^{-\nu t}O_0\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s + \sigma^2\left( \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s\right).
+O_t^2 = e^{-2\nu t}O_0^2 + 2\sigma e^{-\nu t}O_0\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s + \sigma^2\left( \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s\right)^2.
 $$
-Usando que $O_0$ é independente do processo de Wiener, o termo misto também se anula. Assim, usando a isometria de Itô no último termo, obtemos
+Usando que $O_0$ é independente do processo de Wiener, o termo misto se anula. Assim, usando a isometria de Itô no último termo, obtemos
 $$
 \mathbb{E}[O_t^2] = e^{-2\nu t}\mathbb{E}[O_0^2] + \sigma^2 \int_0^t e^{-2\nu(t - s)}\;\mathrm{d}s = e^{-2\nu t}\mathbb{E}[O_0^2] + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right).
 $$
@@ -106,11 +119,11 @@ Novamente, a esperança dos termos mistos se anula, nos dando
 $$
 \mathbb{E}[O_{t_1} O_{t_2}] = e^{-\nu (t_1+t_2)}\mathbb{E}[O_0^2] + \sigma^2\mathbb{E}[\left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)].
 $$
-Como $t_2 > t_1$, separamos a segundo integral em duas partes,
+Como $t_2 > t_1$, separamos o segundo integral em duas partes,
 $$
 \int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s = \int_0^{t_1} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s + \int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s.
 $$
-Pela propriedade dos processos de Wiener, a segundo termo é independente da outra integral, ou seja,
+Pela propriedade dos processos de Wiener, o segundo termo é independente da outra integral, ou seja,
 $$
 \mathbb{E}\left[ \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)\right] = \mathbb{E}\left[ \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\right]\mathbb{E}\left[\left(\int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)\right] = 0.
 $$
