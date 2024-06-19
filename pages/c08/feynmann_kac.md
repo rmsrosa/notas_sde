@@ -74,21 +74,21 @@ Esta foi a visão de Mark Kac, um probabilista americano. Feynman, por sua vez, 
 
 A fórmula de Feynman-Kac é baseada na equação
 $$
-u_t(t, x) + u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0.
+u_t(t, x) + f(x)u_x(t, x) + \frac{1}{2}g(x)^2u_{xx}(t, x) = 0.
 $$
 Essa equação está diretamente relacionada à equação retrógrada de Kolmogorov, dada por
 $$
-v_t(t, x) = u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0,
+v_t(t, x) = f(x)v_x(t, x) + \frac{1}{2}g(x)^2v_{xx}(t, x),
 $$
-com
+com condição inicial
 $$
 v(0, x) = \Phi(x).
 $$
-Essa equação foi obtida por Kolmogorov (posteriormente e de maneira independente) para a função $v=v(t,x)$ definida por (considerando $\tau = 0$)
+Observe a diferença de sinal. Essa equação foi obtida por Kolmogorov (posteriormente e de maneira independente) para a função $v=v(t,x)$ definida por (considerando $\tau = 0$)
 $$
 v(t, x) = \mathbb{E}\left[ \Phi(X_t); X_0 = x\right]
 $$
-Observe que
+Note que
 $$
 v(0, x) = \mathbb{E}\left[\Phi(X_0); X_0 = x\right] = \Phi(x) = u(T, x).
 $$
@@ -100,4 +100,4 @@ Pela EDP, vemos que
 $$
 v(t, x) = u(T - t, x).
 $$
-Ou seja, $v=v(t, x),$ em si, evolui para frente no tempo, mas representa uma evolução retrógrada. (Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para $u$, mas a maioria a considera como sendo a equação para $v$.)
+Ou seja, $v=v(t, x),$ em si, evolui para frente no tempo, mas representa uma evolução retrógrada. (Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para $u$, mas a maioria a considera como sendo a equação para $v$.) Ou seja, é apenas uma outra maneira de ver a equação de Feynman-Kac.
