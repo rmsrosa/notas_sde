@@ -233,7 +233,7 @@
     <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
@@ -354,7 +354,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">6.8. Fórmula de Itô</a></h1>
-<p>Uma outro propriedade fundamental da integral de Itô diz respeito a uma fórmula relacionada a mudanças de variáveis.</p>
+<p>Uma outra propriedade fundamental da integral de Itô diz respeito a uma fórmula relacionada a mudanças de variáveis.</p>
 <p>Considere um processo real \(\{X_t\}_{t \geq 0}\) e uma função real contínua \(u:\mathbb{R} \rightarrow \mathbb{R}\). Podemos definir um outro processo \(\{Y_t\}_{t \geq 0}\) através de</p>
 \[
 Y_t = u(X_t).
@@ -363,12 +363,16 @@ Y_t = u(X_t).
 \[
 \frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
 \]
-<p>Mesmo quando os caminhos amostrais de \(\{X_t\}_{t \geq 0}\) são apenas de variação limitada, ainda temos \(\{Y_t\}_{t \geq 0}\) de variação limitada e ainda temos que \(\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t\), no sentido de integral de Riemann-Stieltjes:</p>
+<p>Mesmo quando os caminhos amostrais de \(\{X_t\}_{t \geq 0}\) são apenas de variação limitada, ainda temos \(\{Y_t\}_{t \geq 0}\) de variação limitada e ainda temos que</p>
+\[
+\mathrm{d}Y_t = u'(X_t)\mathrm{d}X_t,
+\]
+<p>no sentido de integral de Riemann-Stieltjes, i.e.</p>
 \[
     \int_a^b g(t) \;\mathrm{d}Y_t = \int_a^b u'(X_t)\;\mathrm{d}X_t.
 \]
 <p>Mas e no caso em que \(X_t\) não é nem de variação limitada? Por exemplo, se quiseremos calcular \(X_t = \sin(W_t),\) para o processo de Wiener, ou qualquer outra \(X_t = u(W_t)\)? Podemos começar por aí e calcular \(dX_t\) para funções de processos de Wiener. Mas e se quiseremos, em cima disso, consider \(Y_t = v(X_t)\) e ainda \(Z_t = w(Y_t)\), etc.</p>
-<p>Por conta disso, consideramos uma classe de processos que é, em um certo sentido, fechada para composições. E então calcular a diferencial para processos nessa classe. Essa classe é a de <em>processos de Itô,</em> ou seja, processos \(\{X_t\}_t\) satisfazendo uma equação da forma</p>
+<p>Por conta disso, consideramos uma classe de processos que é, em um certo sentido, fechada para composições. E então calculamos a diferencial para processos nessa classe. Essa classe é a de <em>processos de Itô,</em> ou de <em>difusão,</em> ou seja, processos \(\{X_t\}_t\) satisfazendo uma equação da forma</p>
 \[
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 \]
@@ -386,6 +390,27 @@ Y_t = u(t, X_t).
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
 \]
 <p>Observe que, em ambos os casos, se \(B_t = 0\), para todo \(t\), então \(\{X_t\}_{t \geq 0}\) se reduz a um processo com caminhos diferenciáveis &#40;ou de variação limitada&#41; e recuperamos a fórmula clássica.</p>
+<h2 id="ideia_do_termo_de_correção"><a href="#ideia_do_termo_de_correção" class="header-anchor">Ideia do termo de correção</a></h2>
+<p>O motivo da correção é simples. A ideia fundamental é que \(\mathrm{d}W_t\) é de ordem \(\mathrm{d}t^{1/2}.\) Para obtermos uma expressão para \(\mathrm{d}Y_t\) que seja até ordem \(\mathrm{d}t,\) devemos manter o termo seguinte \(\mathrm{d}W_t^2 \sim \mathrm{d}t\) na expansão de Taylor, que no caso</p>
+\[
+    Y_t = u(W_t)
+\]
+<p>significa</p>
+\[
+    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(W_t)\;\mathrm{d}W_t^2 \sim u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(W_t)\;\mathrm{d}t.
+\]
+<p>No caso \(Y_t = u(X_t)\) para um processo de difusão, temos, formalmente,</p>
+\[
+    \begin{align*}
+        \mathrm{d}Y_t & = u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}u''(X_t)\;\mathrm{d}X_t^2 \\
+        & = u'(X_t)\left(A_t \;\mathrm{d}t + B_t\;\mathrm{d}W_t\right) + \frac{1}{2}u''(X_t)\left(A_t \;\mathrm{d}t + B_t\;\mathrm{d}W_t\right)^2 \\
+        & = u'(X_t)A_t \;\mathrm{d}t + u'(X_t) B_t\;\mathrm{d}W_t + \frac{1}{2}u''(X_t)\left(A_t^2 \;\mathrm{d}t^2 + 2A_tB_t\;\mathrm{d}t\mathrm{d}W_t + B_t^2\;\mathrm{d}W_t^2\right) \\
+        & = u'(X_t)A_t \;\mathrm{d}t + u'(X_t) B_t\;\mathrm{d}W_t + \frac{1}{2}u''(X_t) B_t^2\;\mathrm{d}t.
+    \end{align*}
+\]
+<p>Acima, usamos que \(\mathrm{d}t^2\) é de ordem quadrática e que \(\mathrm{d}t\mathrm{d}W_t\) é de ordem \(\mathrm{d}t^{3/2},\) portanto são de ordems superiores e desprezados na aproximação de ordem linear, enquanto que \(\mathrm{d}W_t^2 \sim \mathrm{d}t.\)</p>
+<p>A mesma ideia funciona no caso não autônomo \(Y_t = u(t, X_t).\)</p>
+<p>Mas essa ideia não constitui uma demonstração e ainda está muito vaga. Vamos tratar do detalhes, a seguir.</p>
 <h2 id="fórmula_de_itô_no_caso_de_um_processo_de_wiener"><a href="#fórmula_de_itô_no_caso_de_um_processo_de_wiener" class="header-anchor">Fórmula de Itô no caso de um processo de Wiener</a></h2>
 <p>Para deixar as ideias claras, vamos considerar o caso mais simples em que \(X_t=W_t\) é o próprio processo de Wiener e \(u=u(x)\) é uma função duas vezes continuamente diferenciável definida para todo \(x\in\mathbb{R}.\) Estamos interessados em obter uma fórmula para \(\mathrm{d}Y_t\), onde \(\{Y_t\}_{t\geq 0}\) é dado por</p>
 \[
@@ -440,7 +465,7 @@ Y_T - Y_0 & = \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
 \]
 <p>Em forma diferencial, escrevemos que</p>
 \[
-    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(X_t)\;\mathrm{d}t,
+    \mathrm{d}Y_t = u'(W_t)\;\mathrm{d}W_t + \frac{1}{2}u''(W_t)\;\mathrm{d}t,
 \]
 <p>que é um caso particular da fórmula de Itô mencionada acima. Veremos agora a fórmula de Itô para processos de Itô.</p>
 <p>Vamos ver as convergências acima em mais detalhes.</p>
@@ -514,7 +539,7 @@ Y_T - Y_0 & = \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
 \[
 \left|\int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi\right| \leq K |W_{t_j} - W_{t_{j-1}}|^3 \leq C^2K |t_j - t_{j-1}|^{3\theta}.
 \]
-<p>Escolhendo \(\theta < 1/2\) com \(3\theta > 1,\) obtemos</p>
+<p>Escolhendo \(1/3 < \theta < 1/2,\) temos \(3\theta > 1,\) de modo que</p>
 \[
     \sum_{j=1}^n \int_{W_{t_{j-1}}}^{W_{t_j}} (u''(\xi) - u''(W_{t_{j-1}}))(W_{t_j} - \xi) \;\mathrm{d}\xi \leq C^2 K T \max_j |t_j - t_{j-1}|^{3\theta - 1} \rightarrow 0,
 \]
@@ -669,7 +694,7 @@ Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \
         </div>
     
 
-    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

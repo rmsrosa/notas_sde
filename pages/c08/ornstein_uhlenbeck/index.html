@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>O processo de Ornstein-Uhlenbeck e a equação de Langevin</title>  
+   <title>A equação de Langevin e o processo de Ornstein-Uhlenbeck</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -244,7 +244,7 @@
     <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
@@ -364,7 +364,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></h1>
 <p>O modelo clássico &#40;processo de Wiener&#41; para o movimento Browniano de uma micro-partícula em um determinado meio é fundamentado na ação causada pelo bombardeamento aleatório das partículas do meio, mas não leva em consideração o momento da partícula. De fato, cada colisão acarreta diretamente em uma mudança de posição da micro-partícula, influenciando a taxa de variação de posição &#40;i.e. velocidade&#41;, ao invés de acarretar em uma mudança na taxa de variação de momento &#40;ou de aceleração&#41;. Uma alternativa a esse modelo é a <strong>equação de Langevin</strong></p>
 \[
 \frac{\mathrm{d}v_t}{\mathrm{d}t} = - \nu v_t + \sigma \xi_t
@@ -420,6 +420,18 @@ O_t = e^{-\nu t}O_0 + \sigma e^{-\nu t}\int_0^t e^{\nu s}\;\mathrm{d}W_t,
 & = -\nu O_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
 \end{align*}
 \]
+<p>Bom, essas contas mostram que a fórmula acima nos dá, de fato, uma solução da equação. Mas como podemos chegar na solução a partir da equação? Podemos usar um fator de integração dado pelo termo de <em>drift,</em> a saber, \(e^{\nu t}.\) Dessa forma, temos</p>
+\[
+\mathrm{d}(e^{\nu t}O_t) = \nu e^{\nu t}O_t \;\mathrm{d}t + e^{\nu t}\;\mathrm{d}O_t = \nu e^{\nu t}O_t \;\mathrm{d}t + e^{\nu t}\left( - \nu O_t\;\mathrm{d}t + \sigma \;\mathrm{d}W_t \right) = \sigma e^{\nu t}\;\mathrm{d}W_t.
+\]
+<p>Integrando, obtemos</p>
+\[
+e^{\nu t}O_t - O_0 = \sigma\int_0^t e^{\nu s}\;\mathrm{d}W_s.
+\]
+<p>Isso nos dá, exatamente, a solução</p>
+\[
+O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s.
+\]
 <h2 id="propriedades_estatísticas"><a href="#propriedades_estatísticas" class="header-anchor">Propriedades estatísticas</a></h2>
 <p>Da fórmula</p>
 \[
@@ -429,11 +441,11 @@ O_t = e^{-\nu t}O_0 + \sigma \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s,
 \[
 \mathbb{E}[O_t] = e^{-\nu t}\mathbb{E}[O_0].
 \]
-<p>Calculando o quadrado, temos</p>
+<p>Calculando a média quadrática, temos</p>
 \[
-O_t^2 = e^{-2\nu t}O_0^2 + 2\sigma e^{-\nu t}O_0\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s + \sigma^2\left( \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s\right).
+O_t^2 = e^{-2\nu t}O_0^2 + 2\sigma e^{-\nu t}O_0\int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s + \sigma^2\left( \int_0^t e^{-\nu(t - s)}\;\mathrm{d}W_s\right)^2.
 \]
-<p>Usando que \(O_0\) é independente do processo de Wiener, o termo misto também se anula. Assim, usando a isometria de Itô no último termo, obtemos</p>
+<p>Usando que \(O_0\) é independente do processo de Wiener, o termo misto se anula. Assim, usando a isometria de Itô no último termo, obtemos</p>
 \[
 \mathbb{E}[O_t^2] = e^{-2\nu t}\mathbb{E}[O_0^2] + \sigma^2 \int_0^t e^{-2\nu(t - s)}\;\mathrm{d}s = e^{-2\nu t}\mathbb{E}[O_0^2] + \frac{\sigma^2}{2\nu}\left(1 - e^{-2\nu t}\right).
 \]
@@ -458,11 +470,11 @@ O_{t_1}O_{t_2} = e^{-\nu (t_1 + t_2)}O_0^2 + \sigma e^{-\nu t_1}O_0\int_0^{t_2} 
 \[
 \mathbb{E}[O_{t_1} O_{t_2}] = e^{-\nu (t_1+t_2)}\mathbb{E}[O_0^2] + \sigma^2\mathbb{E}[\left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)].
 \]
-<p>Como \(t_2 > t_1\), separamos a segundo integral em duas partes,</p>
+<p>Como \(t_2 > t_1\), separamos o segundo integral em duas partes,</p>
 \[
 \int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s = \int_0^{t_1} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s + \int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s.
 \]
-<p>Pela propriedade dos processos de Wiener, a segundo termo é independente da outra integral, ou seja,</p>
+<p>Pela propriedade dos processos de Wiener, o segundo termo é independente da outra integral, ou seja,</p>
 \[
 \mathbb{E}\left[ \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)\right] = \mathbb{E}\left[ \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\right]\mathbb{E}\left[\left(\int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)\right] = 0.
 \]
@@ -613,7 +625,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
         </div>
     
 
-    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

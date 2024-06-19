@@ -233,7 +233,7 @@
     <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
@@ -391,7 +391,7 @@
 \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 \]
 <p>onde \(M = \{t_j\}_{j=1}^n\) é uma malha formada por \(0 = t_0 < t_1 < \ldots < t_n = T,\) com \(n\in \mathbb{N}\) arbitrário. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.</p>
-<h2 id="caso_particular_de_ntegrandos_permitidos"><a href="#caso_particular_de_ntegrandos_permitidos" class="header-anchor">Caso particular de ntegrandos permitidos</a></h2>
+<h2 id="caso_particular_de_integrandos_permitidos"><a href="#caso_particular_de_integrandos_permitidos" class="header-anchor">Caso particular de integrandos permitidos</a></h2>
 <p>Inicialmente vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes.</p>
 <p>Mais precisamente, vamos pedir que \(\{H_t\}_{t\geq 0},\) além de ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente &#40;no tempo&#41; uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer \(T > 0\) e \(\eta > 0,\) existe \(\delta > 0\) tal que</p>
 \[
@@ -406,7 +406,7 @@
 <p>O mesmo vale para \(H_t(\omega) = (1/2)\chi_{\omega}(t) + \chi_{(\omega, 1]}(t),\) cujos caminhos amostrais não são contínuous nem à esquerda, nem à direita.</p>
 <p>Outro exemplo de caminhos descontínuos, em um conjunto enumerável de pontos, é o de um processo de Poisson composto, \(H_t = \sum_{i=1}^{N_t} D_i,\) onde \(\{N_t\}_{t\geq 0}\) é um processo de contagem de Poisson em taxa \(\lambda > 0\) e \(\{D_i\}_{i\in\mathbb{N}}\) é um processo independente e identicamente distribuído com distribuições \(D\) com \(\mathbb{E}[D^2] < \infty.\) Nesse caso, é possível mostrar que</p>
 \[
-    \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t] + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
+    \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t]^2 + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
 \]
 <p>de modo que a condição de continuidade uniforme em média quadrática também é válida.</p>
 <p>Observe que esses exemplos mostram a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência \(\tau^{1 + \varepsilon}\) no lado direito da condição, com \(\varepsilon\) estritamente positivo. Nos exemplos acima, temos a estimativa com \(\varepsilon = 0\) e os caminhos não são nem contínuos.</p>
@@ -634,7 +634,7 @@
         </div>
     
 
-    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

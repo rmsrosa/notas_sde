@@ -26,6 +26,7 @@ Yt = Matrix{Float64}(undef, N, M)
 Yt[1, :] .= x0
 
 x = x0 .* exp.(μ .* tt)
+std = abs(x0) .* exp.(μ .* tt) .* sqrt.( exp.( σ^2 .* tt ) .- 1 )
 
 dWt = zeros(M)
 for n in 2:N
@@ -40,4 +41,6 @@ end
 plot(tt, Xt, xaxis = "tempo", yaxis = "posição", title = "Movimento browniano geométrico \$\\mathrm{d}X_t = \\mu X_t \\;\\mathrm{d}t + \\sigma X_t \\;\\mathrm{d}W_t\$,\ncom μ = $μ, σ = $σ, \$X_0 = \$ $x0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topleft)
 plot!(tt, Xt[:, 1], color = 2, label = "um caminho amostral")
 plot!(tt, x, color = 3, label = "valor esperado")
+plot!(tt, x .+ std, color = 4, label = "valor esperado ± desvio padrão")
+plot!(tt, x .- std, color = 4, label = false)
 savefig(joinpath(@OUTPUT, "geometric_brownian.svg"))

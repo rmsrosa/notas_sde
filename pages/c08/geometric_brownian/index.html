@@ -244,7 +244,7 @@
     <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. O processo de Ornstein-Uhlenbeck e a equação de Langevin</a></li>
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c08/feynmann_kac">8.10. Fórmula de Feynman-Kac</a></li>
@@ -440,6 +440,43 @@ X_t = X_0 + \mu \int_0^t X_s \;\mathrm{d}s + \sigma \int_0^t X_s\;\mathrm{d}W_s.
 \mathbb{E}\left[X_t\right] = \mathbb{E}[X_0]e^{\mu t},
 \]
 <p>que é, também, a solução da equação diferencial ordinária obtida eliminando-se o ruído da equação estocástica &#40;\(\sigma = 0\)&#41;.</p>
+<h2 id="variância"><a href="#variância" class="header-anchor">Variância</a></h2>
+<p>Observe que \(X_t^2\) é, também, um movimento Browniano geométrico. De fato, segue dá fórmula de solução que</p>
+\[
+X_t^2 = X_0^2 e^{\left(2\mu - \sigma^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(2\mu + \sigma^2 - 2\sigma^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(2\mu + \sigma^2 - \frac{1}{2}(2\sigma)^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(\tilde \mu - \frac{1}{2}{\tilde \sigma}^2\right)t + \tilde\sigma W_t},
+\]
+<p>o que nos dá um movimento Browniano com condição inicial \(X_0^2\) e parâmetros</p>
+\[
+\tilde \mu = 2\mu + \sigma^2, \qquad \tilde\sigma = 2\sigma.
+\]
+<p>De outra maneira, usando a fórmula de Itô aplicada a \(X_t \mapsto X_t^2,\)</p>
+\[
+\mathrm{d}X_t^2 = 2X_t\;\mathrm{d}X_t + \sigma^2 X_t^2\;\mathrm{d}t = 2X_t (\mu X_t\;\mathrm{d}t + \sigma X_t\;\mathrm{d}W_t) + \sigma^2 X_t^2\;\mathrm{d}t,
+\]
+<p>de maneira que</p>
+\[
+\mathrm{d}X_t^2 = (2\mu + \sigma^2)X_t^2\;\mathrm{d}t + 2\sigma X_t^2\;\mathrm{d}W_t.
+\]
+<p>Isso nos dá que \(Y_t = X_t^2\) é solução da equação do movimento Browniano geométrico</p>
+\[
+\mathrm{d}Y_t = \tilde \mu Y_t\;\mathrm{d}t + \tilde\sigma Y_t\;\mathrm{d}W_t.
+\]
+<p>Assim, do valor esperado de um movimento Browniano geométrico com condição inicial \(X_0^2\) e parâmetros \(\tilde\mu\) and \(\tilde\sigma,\) obtemos</p>
+\[
+\mathbb{E}[X_t^2] = \mathbb{E}[X_0^2] e^{(2\mu + \sigma^2)t}, \quad t \geq 0.
+\]
+<p>Portanto, a variância é dada por</p>
+\[
+\operatorname{Var}(X_t) = \mathbb{E}[X_t^2] - \mathbb{E}[X_t]^2 = \mathbb{E}[X_0^2] e^{(2\mu + \sigma^2)t} - \mathbb{E}[X_0]^2 e^{2\mu t}
+\]
+<p>que também pode ser escrita de outras formas,</p>
+\[
+\operatorname{Var}(X_t) = \mathbb{E}[X_0^2]e^{2\mu t}(e^{\sigma^2 t} - 1) + \operatorname{Var}(X_0)e^{2\mu t} = \mathbb{E}[X_0]^2e^{2\mu t}(e^{\sigma^2 t} - 1) + \operatorname{Var}(X_0)e^{(2\mu + \sigma^2)t}.
+\]
+<p>Caso \(X_0 = x_0\) seja fixo, temos \(\operatorname{Var}(X_0) = 0\) e \(\mathbb{E}[X_0^2] = \mathbb{E}[X_0]^2 = x_0^2,\) de modo que</p>
+\[
+\operatorname{Var}(X_t) = x_0^2 e^{2\mu t}(e^{\sigma^2 t} - 1).
+\]
 
 <img src="/notas_sde/assets/pages/c08/geometric_brownian/code/output/geometric_brownian.svg" alt="">
 
@@ -465,7 +502,7 @@ X_t = X_0 + \mu \int_0^t X_s \;\mathrm{d}s + \sigma \int_0^t X_s\;\mathrm{d}W_s.
         </div>
     
 
-    Last modified: May 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 19, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
