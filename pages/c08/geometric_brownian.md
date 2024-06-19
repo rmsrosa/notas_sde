@@ -85,6 +85,48 @@ $$
 $$
 que é, também, a solução da equação diferencial ordinária obtida eliminando-se o ruído da equação estocástica ($\sigma = 0$).
 
+## Variância
+
+Observe que $X_t^2$ é, também, um movimento Browniano geométrico. De fato, segue dá fórmula de solução que
+$$
+X_t^2 = X_0^2 e^{\left(2\mu - \sigma^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(2\mu + \sigma^2 - 2\sigma^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(2\mu + \sigma^2 - \frac{1}{2}(2\sigma)^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(\tilde \mu - \frac{1}{2}{\tilde \sigma}^2\right)t + \tilde\sigma W_t},
+$$
+o que nos dá um movimento Browniano com condição inicial $X_0^2$ e parâmetros
+$$
+\tilde \mu = 2\mu + \sigma^2, \qquad \tilde\sigma = 2\sigma.
+$$
+De outra maneira, usando a fórmula de Itô aplicada a $X_t \mapsto X_t^2,$
+$$
+\mathrm{d}X_t^2 = 2X_t\;\mathrm{d}X_t + \sigma^2 X_t^2\;\mathrm{d}t = 2X_t (\mu X_t\;\mathrm{d}t + \sigma X_t\;\mathrm{d}W_t) + \sigma^2 X_t^2\;\mathrm{d}t,
+$$
+de maneira que
+$$
+\mathrm{d}X_t^2 = (2\mu + \sigma^2)X_t^2\;\mathrm{d}t + 2\sigma X_t^2\;\mathrm{d}W_t.
+$$
+Isso nos dá que $Y_t = X_t^2$ é solução da equação do movimento Browniano geométrico
+$$
+\mathrm{d}Y_t = \tilde \mu Y_t\;\mathrm{d}t + \tilde\sigma Y_t\;\mathrm{d}W_t.
+$$
+
+Assim, do valor esperado de um movimento Browniano geométrico com condição inicial $X_0^2$ e parâmetros $\tilde\mu$ and $\tilde\sigma,$ obtemos
+$$
+\mathbb{E}[X_t^2] = \mathbb{E}[X_0^2] e^{(2\mu + \sigma^2)t}, \quad t \geq 0.
+$$
+
+Portanto, a variância é dada por
+$$
+\operatorname{Var}(X_t) = \mathbb{E}[X_t^2] - \mathbb{E}[X_t]^2 = \mathbb{E}[X_0^2] e^{(2\mu + \sigma^2)t} - \mathbb{E}[X_0]^2 e^{2\mu t}
+$$
+que também pode ser escrita de outras formas,
+$$
+\operatorname{Var}(X_t) = \mathbb{E}[X_0^2]e^{2\mu t}(e^{\sigma^2 t} - 1) + \operatorname{Var}(X_0)e^{2\mu t} = \mathbb{E}[X_0]^2e^{2\mu t}(e^{\sigma^2 t} - 1) + \operatorname{Var}(X_0)e^{(2\mu + \sigma^2)t}.
+$$
+
+Caso $X_0 = x_0$ seja fixo, temos $\operatorname{Var}(X_0) = 0$ e $\mathbb{E}[X_0^2] = \mathbb{E}[X_0]^2 = x_0^2,$ de modo que
+$$
+\operatorname{Var}(X_t) = x_0^2 e^{2\mu t}(e^{\sigma^2 t} - 1).
+$$
+
 ```julia:geometric_brownian
 #hideall
 using Plots
@@ -113,6 +155,7 @@ Yt = Matrix{Float64}(undef, N, M)
 Yt[1, :] .= x0
 
 x = x0 .* exp.(μ .* tt)
+std = abs(x0) .* exp.(μ .* tt) .* sqrt.( exp.( σ^2 .* tt ) .- 1 )
 
 dWt = zeros(M)
 for n in 2:N
@@ -127,6 +170,8 @@ end
 plot(tt, Xt, xaxis = "tempo", yaxis = "posição", title = "Movimento browniano geométrico \$\\mathrm{d}X_t = \\mu X_t \\;\\mathrm{d}t + \\sigma X_t \\;\\mathrm{d}W_t\$,\ncom μ = $μ, σ = $σ, \$X_0 = \$ $x0", titlefont = 10, label = permutedims(["caminhos amostrais"; fill(nothing, M-1)]), color = 1, alpha = 0.1, legend = :topleft)
 plot!(tt, Xt[:, 1], color = 2, label = "um caminho amostral")
 plot!(tt, x, color = 3, label = "valor esperado")
+plot!(tt, x .+ std, color = 4, label = "valor esperado ± desvio padrão")
+plot!(tt, x .- std, color = 4, label = false)
 savefig(joinpath(@OUTPUT, "geometric_brownian.svg"))
 ```
 \fig{geometric_brownian}
