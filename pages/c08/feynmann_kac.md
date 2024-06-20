@@ -1,4 +1,4 @@
-@def title = "Fórmula de Feynman-Kac"
+@def title = "Fórmula de Feynman-Kac e a equação retrógrada de Kolmogorov"
 
 # {{ get_title }}
 
