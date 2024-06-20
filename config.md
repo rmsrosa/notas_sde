@@ -109,23 +109,23 @@ menu = [
         "pages/c08/relacoes_rode_sde"
     ]
     "Evolução da função densidade de probabilidade" => [
-        "pages/c10/deterministic"
-        "pages/c10/stochastic"
-        "pages/c10/stationaryOU"
-        "pages/c10/feynmann_kac"
+        "pages/c09/deterministic"
+        "pages/c09/stochastic"
+        "pages/c09/stationaryOU"
+        "pages/c09/feynmann_kac"
     ]
     "Métodos numéricos" => [
-        "pages/c09/tx_convergencia"
-        "pages/c09/simulacoes_wiener"
-        "pages/c09/convergencia_euler_maruyama"
-        "pages/c09/nao_convergencia_euler_maruyama"
-        "pages/c09/simulacoes_convergencia_em"
-        "pages/c09/heun"
-        "pages/c09/simulacoes_convergencia_randomheun"
-        "pages/c09/milstein"
-        "pages/c09/simulacoes_milstein"
-        "pages/c09/convergencia_fraca_em"
-        "pages/c09/sciml"
+        "pages/c10/tx_convergencia"
+        "pages/c10/simulacoes_wiener"
+        "pages/c10/convergencia_euler_maruyama"
+        "pages/c10/nao_convergencia_euler_maruyama"
+        "pages/c10/simulacoes_convergencia_em"
+        "pages/c10/heun"
+        "pages/c10/simulacoes_convergencia_randomheun"
+        "pages/c10/milstein"
+        "pages/c10/simulacoes_milstein"
+        "pages/c10/convergencia_fraca_em"
+        "pages/c10/sciml"
     ]
     "Sistemas de equações aleatórias"
     "Sistemas de equações estocásticas" => [
