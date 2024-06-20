@@ -105,9 +105,14 @@ menu = [
         "pages/c08/geometric_brownian"
         "pages/c08/brownian_bridge"
         "pages/c08/ornstein_uhlenbeck"
-        "pages/c08/feynmann_kac"
         "pages/c08/asymptotic_stability"
         "pages/c08/relacoes_rode_sde"
+    ]
+    "Evolução da função densidade de probabilidade" => [
+        "pages/c10/deterministic"
+        "pages/c10/stochastic"
+        "pages/c10/stationaryOU"
+        "pages/c10/feynmann_kac"
     ]
     "Métodos numéricos" => [
         "pages/c09/tx_convergencia"
@@ -121,12 +126,6 @@ menu = [
         "pages/c09/simulacoes_milstein"
         "pages/c09/convergencia_fraca_em"
         "pages/c09/sciml"
-    ]
-    "Evolução da função densidade de probabilidade" => [
-        "pages/c10/deterministic"
-        "pages/c10/stochastic"
-        "pages/c10/stationaryOU"
-        "Métodos numéricos"
     ]
     "Sistemas de equações aleatórias"
     "Sistemas de equações estocásticas" => [
