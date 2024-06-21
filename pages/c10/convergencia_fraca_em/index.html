@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>Convergência fraca do método de Euler-Maruyama</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_browniano">1.3. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_einstein">1.4. O modelo de Einstein para o movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_bachelier">1.6. O modelo de Bachelier para o mercado de opções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.7. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/simulacoes_intro">1.8. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades fundamentais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos em tempos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos em tempos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.8. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_stratonovich">6.9. Integral de Stratonovich</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções locais em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções globais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Limitação e continuidade das soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.10. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/stochastic">9.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/stationaryOU">9.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/feynmann_kac">9.4. Fórmula de Feynman-Kac e a equação retrógrada de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/tx_convergencia">10.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_wiener">10.2. Simulações de processos de Wiener e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/convergencia_euler_maruyama">10.3. Convergência forte do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/nao_convergencia_euler_maruyama">10.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_em">10.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/heun">10.6. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/milstein">10.8. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_milstein">10.9. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/convergencia_fraca_em">10.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/sciml">10.11. O ambiente SciML da linguagem Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo SIR estocástico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_milstein">10.9. Simulações Milstein <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c10/sciml"><kbd>→</kbd> 10.11. O ambiente SciML da linguagem Julia</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">10.10. Convergência fraca do método de Euler-Maruyama</a></h1>
+<p>Para a convergência fraca, buscamos mostrar que</p>
+\[
+\max_{j=1, \ldots, n} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)]| \rightarrow 0,
+\]
+<p>quando \(n\rightarrow \infty,\) para uma classe apropriada de funções \(\Phi.\) Mais ainda, buscamos estimar a ordem de convergência. Faremos isso no caso do método de Euler-Maruyama, mostrando a convergência de ordem 1, sob hipóteses adequadas nos termos da equação.</p>
+<h2 id="contexto"><a href="#contexto" class="header-anchor">Contexto</a></h2>
+<p>Para simplificar, consideramos uma equação estocástica autônoma, ou seja,</p>
+\[
+\mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
+\]
+<p>com condição inicial determinística</p>
+\[
+X_0 = x_0.
+\]
+<h2 id="convergência_forte_implica_em_convergência_fraca"><a href="#convergência_forte_implica_em_convergência_fraca" class="header-anchor">Convergência forte implica em convergência fraca</a></h2>
+<p>Suponha que tenhamos a convergência forte, em média quadrática, de ordem \(p\), de alguma aproximação \(\{X_j^n\}_j\) da solução \(\{X_t\}_t\). Nesse caso,</p>
+\[
+\max_{j=0, \ldots, n} \mathbb{E}[|X_{t_j} - X_j^n|^2] \leq C^2\Delta t^{2p},
+\]
+<p>para \(C, p \geq 0\) apropriados. Suponha ainda que \(\Phi\) &#40;ou uma classe de tais funções&#41; satisfaça</p>
+\[
+|\Phi(x) - \Phi(y)| \leq L(1 + |x|^k + |y|^k)|x - y|,
+\]
+<p>para certos \(L, k\geq 0\). Nesse caso, podemos estimar o erro fraco da seguinte forma.</p>
+\[
+\begin{align*}
+\left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| & \leq \mathbb{E}\left[|\Phi(X_{t_j}) -\Phi(X_j^n)|\right] \\
+& \leq L\mathbb{E}\left[ (1 + |X_{t_j}|^k + |X_j^n|^k)|X_{t_j} - X_j^n|\right] \\
+& \leq L\mathbb{E}\left[ (1 + |X_{t_j}|^k + |X_j^n|^k)^2\right]^{1/2}\mathbb{E}\left[|X_{t_j} - X_j^n|^2\right]^{1/2}
+\end{align*}
+\]
+<p>Supondo que os momentos de ordem \(k\) da solução e da aproximação sejam limitados, obtemos um \(K>0\) tal que</p>
+\[
+\left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| \leq LK\mathbb{E}\left[|X_{t_j} - X_j^n|^2\right]^{1/2} \leq LKC \Delta t^p,
+\]
+<p>mostrando a convergência fraca também de ordem \(p\).</p>
+<p>No entanto, é possível estimar a ordem fraca de maneira diferente e, em muitos casos, conseguir a convergência fraca com uma ordem de convergência melhor ou mesmo obter convergência fraca sem que haja convergência forte.</p>
+<h2 id="fórmula_de_feynman-kac"><a href="#fórmula_de_feynman-kac" class="header-anchor">Fórmula de Feynman-Kac</a></h2>
+<p>Em muitos casos práticos, conhecemos o valor atual \(X_\tau = \xi\) de um de um processo estocástico e queremos estimar o valor esperado \(\mathbb{E}[X_T; X_\tau = \xi]\) em um tempo futuro \(T > \tau,\) ou, mais geralmente, \(\mathbb{E}[\Phi(X_T); X_\tau = \xi],\) para algum momento \(\Phi.\) Lembremos que isso pode ser feito através da fórmula de Feynman-Kac.</p>
+<p>Considerando a equação diferencial estocástica</p>
+\[
+\mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
+\]
+<p>com condição inicial</p>
+\[
+X_\tau = \xi
+\]
+<p>dada em um instante \(\tau\in\mathbb{R}\), podemos encontrar o momento</p>
+\[
+\mathbb{E}[\Phi(X_T); X_\tau = \xi]
+\]
+<p>em um instante futuro \(T > \tau\), para alguma \(\Phi\) dada, resolvendo a EDP</p>
+\[
+u_t(t, x) + u_x(t, x)f(x) = - \frac{1}{2}u_{xx}(t, x)g(x)^2,
+\]
+<p>no intervalo \(\tau \leq t \leq T\), em \(x\in \mathbb{R}\), dada a condição <em>final</em></p>
+\[
+u(T, x) = \Phi(x),
+\]
+<p>em \(x\in\mathbb{R},\) e encontrando</p>
+\[
+\mathbb{E}[\Phi(X_T); X_\tau = \xi] = u(\tau, \xi).
+\]
+<p>Essa é a <strong>fórmula de Feynman-Kac.</strong></p>
+<h2 id="erro_fraco"><a href="#erro_fraco" class="header-anchor">Erro fraco</a></h2>
+<p>O que a fórmula de Feynman-Kac tem a ver com o erro fraco? No erro fraco, queremos estimar</p>
+\[
+\max_{j=1, \ldots, n} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)]|.
+\]
+<p>Para simplificar, podemos olhar para o erro fraco só no instante final, \(j = n\), em que \(t_j = t_n = T\) e o erro se torna</p>
+\[
+|\mathbb{E}[\Phi(X_T)] - \mathbb{E}[\Phi(X_n^n)]|.
+\]
+<p>A ideia é aplicar a fórmula de Itô à interpolação linear da aproximação definida por</p>
+\[
+\hat X_t = X_0 + \int_0^t f(X_{\tau^n(s)}) \;\mathrm{d}s + \int_0^t g(X_{\tau^n(s)})\;\mathrm{d}W_s, \quad t \geq 0,
+\]
+<p>onde \(\tau^n\) é a função de malha</p>
+\[
+\tau^n(s) = \max\{t_j \leq s, j = 0, \ldots, n\},
+\]
+<p>definida para \(s\geq 0.\) Para facilitar a notação, vamos considerar, também, a interpolação constante por partes</p>
+\[
+\bar X_t = X_{\tau^n(t)}, \quad t \geq 0.
+\]
+<p>Assim, podemos escrever</p>
+\[
+\hat X_t = X_0 + \int_0^t f(\bar X_s) \;\mathrm{d}s + \int_0^t g(\bar X_s)\;\mathrm{d}W_s.
+\]
+<p>Pela fórmula de Itô,</p>
+\[
+\begin{align*}
+u(T, \hat X_T) & = u(0, \hat X_0) + \int_0^T \left(u_t(t, \hat X_t) + u_x(t, \hat X_t)f(\bar X_t) + \frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
+\end{align*}
+\]
+<p>De acordo com a EDP,</p>
+\[
+u_t(t, \hat X_t) = - u_x(t, \hat X_t)f(\hat X_t) - \frac{1}{2}u_{xx}(t, \hat X_t)g(\hat X_t)^2.
+\]
+<p>Substituindo o primeiro termo do integrando por essa expressão do lado direito, obtemos</p>
+\[
+\begin{align*}
+u(T, \hat X_T) & = u(0, \hat X_0) + \int_0^T \left(u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T \left(\frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2 - \frac{1}{2}u_{xx}(t, \hat X_t)g(\hat X_t)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
+\end{align*}
+\]
+<p>Tomando a valor esperado,</p>
+\[
+\begin{align*}
+\mathbb{E}[u(T, \hat X_T)] & = \mathbb{E}[u(0, \hat X_0)] + \int_0^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t
+\end{align*}
+\]
+<p>Por construção,</p>
+\[
+u(T, \hat X_T) = \Phi(\hat X_T).
+\]
+<p>Além disso, pela fórmula de Feynman-Kac, como a condição inicial é em \(\tau = 0,\) temos</p>
+\[
+u(0, X_0) = \mathbb{E}[\Phi(X_T)].
+\]
+<p>Assim,</p>
+\[
+\begin{align*}
+\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)] & = \int_0^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t.
+\end{align*}
+\]
+<p>Agora precisamos estimar os erros do lado direito.</p>
+<p>A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de \(f\) e \(g\) e estimar esses termos em função de \(\mathbb{E}[|\hat X_t - \bar X_t|^2]\). Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.</p>
+<p>Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos</p>
+\[
+u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)), \qquad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
+\]
+<p>Em cada subintervalo \([t_{j-1}, t_j]\), temos \(\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n\) constante, de modo que podemos olhar para</p>
+\[
+e_{j-1}(t, x) = u_x(t, x)(f(x) - f(X_{j-1}^n))
+\]
+<p>e analogamente para o termo envolvendo \(g\). Observe que</p>
+\[
+e_{j-1}(t_{j-1}, \hat X_{t_{j-1}}) = u_x(t_{j-1}, \hat X_{t_{j-1}})(f(\hat X_{t_{j-1}}) - f(\bar X_{t_{j-1}})) = 0,
+\]
+<p>já que \(\hat X_{t_{j-1}} = \bar X_{t_{j-1}} = X_{j-1}^n\) coincidem. Assim, pela fórmula de Itô,</p>
+\[
+e_{j-1}(t, \hat X_t) = \int_0^t L_0(s) e_{j-1}(s, \hat X_s) \;\mathrm{d}s + \int_0^t L_1(s) e_{j-1}(s, \hat X_s)\;\mathrm{d}W_s,
+\]
+<p>onde \(L_0(t)\) e \(L_1(t)\) são operadores diferenciais definidos por</p>
+\[
+L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_{xx}, \qquad L_1(t) = g(\hat X_t)^2\partial_x.
+\]
+<p>Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem \(\Delta t^{1/2}\), desaparece e ficamos apenas com</p>
+\[
+\mathbb{E}[e_{j-1}(t, \hat X_t)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, \hat X_s)\right] \;\mathrm{d}s.
+\]
+<p>Assumindo-se que o integrando seja limitado no intervalo \([0, T]\) por uma constante \(K_{\Phi, T}\), obtemos a estimativa de ordem 1</p>
+\[
+\left| \mathbb{E}[e_{j-1}(t, \hat X_t)] \right| \leq K_{\Phi, T} \Delta t.
+\]
+<p>Idem para o termo em \(g\), para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre \(0\) e \(t\), que</p>
+\[
+\left|\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
+\]
+<p>Isso nos dá a convergência fraca do método de Euler-Maruyama.</p>
+<p>A limitação uniforme passa por &#40;i&#41; mostrarmos que as normas \(L^p\) solução da equação parabólica são controladas pela norma \(L^p\) da &quot;condição final&quot; \(\Phi\); &#40;ii&#41; por assumirmos que \(\Phi\) tem um crescimento polinomial &#40;apropriado para qualquer momento que queiramos estimar&#41;; &#40;iii&#41; por mostrarmos que, sob a hipótese de continuidade Lipschitz global de \(f\) e \(g\), os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial \(X_0\); e, por fim, &#40;iv&#41; por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_milstein">10.9. Simulações Milstein <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c10/sciml"><kbd>→</kbd> 10.11. O ambiente SciML da linguagem Julia</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: June 21, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+
+  </body>
+</html>

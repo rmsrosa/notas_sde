@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="" />
+  <meta name="author" content="and contributors" />
+   <title>O ambiente SciML da linguagem Julia</title>  
+  <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
+  <link rel="stylesheet" href="/notas_sde/css/base.css"/>
+  
+  <script src="/notas_sde/libs/mousetrap/mousetrap.min.js"></script>
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/highlight/github.min.css">
+    <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+    <script src="/notas_sde/libs/highlight/julia.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  
+
+  
+    <link rel="stylesheet" href="/notas_sde/libs/katex/katex.min.css">
+  
+</head>
+
+<body>
+
+  <div class="books-container">
+
+  <aside class="books-menu">
+  <input type="checkbox" id="menu">
+  <label for="menu">☰</label>
+
+  <div class="books-title">
+    <a href="/notas_sde/">Equações Diferenciais Estocásticas e Aleatórias</a>
+  </div>
+
+  <br />
+
+  <div class="books-subtitle">
+    Aspectos Teóricos e Numéricos
+  </div>
+
+  <br />
+
+  <div class="books-author">
+    <a href="https://rmsrosa.github.io">Ricardo M. S. Rosa</a>
+  </div>
+
+  <div class="books-menu-content">
+    <div class="menu-level-1">
+    <li>1. Introdução</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/apresentacao">1.1. Apresentação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_iniciais">1.2. Equações diferenciais aleatórias e estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/movimento_browniano">1.3. Movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_einstein">1.4. O modelo de Einstein para o movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/passeioaleatorio_movbrowniano">1.5. Do passeio aleatório ao movimento Browniano</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/modelo_bachelier">1.6. O modelo de Bachelier para o mercado de opções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/aspectos_numericos">1.7. Aspectos numéricos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c01/simulacoes_intro">1.8. Simulações numéricas de modelos de crescimento natural</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>2. Variáveis Aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/definicao_va">2.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_discretas">2.2. Variáveis aleatórias discretas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/exemplos_va_continuas">2.3. Variáveis aleatórias contínuas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/media_momentos">2.4. Média, variância e outros momentos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/prob_condicionada">2.5. Probabilidade condicionada</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/desigualdades">2.6. Desigualdades fundamentais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/multi_va">2.7. Variáveis aleatórias multivariadas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/transformacoes">2.8. Transformações de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/convergencias">2.9. Tipos de convergências</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/borel_cantelli">2.10. Lema de Borel-Cantelli</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c02/teorema_central">2.11. Teorema Central do Limite</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>3. O método de Monte-Carlo</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/monte_carlo">3.1. O método de Monte-Carlo no estudo de variáveis aleatórias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/histograma">3.2. Histograma - estimando a distribuição de probabilidades</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c03/gerando_num_aleatorios">3.3. Gerando números aleatórios no computador</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>4. Processos Estocásticos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/definicao_pe">4.1. Conceitos essenciais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_discretos">4.2. Processos em tempos discretos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/processos_continuos">4.3. Processos em tempos contínuos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/tipos_processos">4.4. Classes de processos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/filtracao">4.5. Filtração</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/cadeias_markov">4.6. Processos de Markov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c04/continuity_kolmogorov">4.7. Teorema de Continuidade de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>5. Processos de Wiener</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/definicao_processo_wiener">5.1. Definição</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/existencia_processo_wiener">5.2. Existência de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/propriedades_wiener">5.3. Propriedades de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/ruido_branco">5.4. Relação com ruído branco</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/simetrias_wiener">5.5. Simetrias de processos de Wiener</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/naodiferenciabilidade_wiener">5.6. Não diferenciabilidade quase sempre dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c05/variacao_ilimitada_wiener">5.7. Variação ilimitada dos caminhos amostrais</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/c06/integracao_estocastica">6. Integração estocástica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/formula_ito">6.8. Fórmula de Itô</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c06/integral_stratonovich">6.9. Integral de Stratonovich</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>7. Equações diferenciais aleatórias</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/existence_solutions_rde">7.1. Existência e unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/basic_examples_rde">7.2. Exemplos básicos</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c07/logistic_rde">7.3. Equação logística aleatória</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>8. Equações diferenciais estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/setting">8.1. Interpretação da equação</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde_particulares">8.2. Existência de soluções locais em casos particulares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/existence_solutions_sde">8.3. Existência de soluções globais</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/unicidade_sol_sde">8.4. Unicidade de soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/continuidade_caminhos">8.5. Limitação e continuidade das soluções</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/linear_sde">8.6. Resolução de equações lineares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/geometric_brownian">8.7. Movimento Browniano geométrico e o preço de ações</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/brownian_bridge">8.8. Ponte Browniana</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/ornstein_uhlenbeck">8.9. A equação de Langevin e o processo de Ornstein-Uhlenbeck</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/asymptotic_stability">8.10. Estabilidade assintótica</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c08/relacoes_rode_sde">8.11. Relações entre equações estocásticas e equações aleatórias</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>9. Evolução da função densidade de probabilidade</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/stochastic">9.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/stationaryOU">9.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c09/feynmann_kac">9.4. Fórmula de Feynman-Kac e a equação retrógrada de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>10. Métodos numéricos</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/tx_convergencia">10.1. Convergências forte e fraca</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_wiener">10.2. Simulações de processos de Wiener e browniano geométrico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/convergencia_euler_maruyama">10.3. Convergência forte do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/nao_convergencia_euler_maruyama">10.4. Não convergência do método de Euler-Maruyama sem condição Lipschitz global</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_em">10.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/heun">10.6. Método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/milstein">10.8. O método de Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/simulacoes_milstein">10.9. Simulações Milstein</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/convergencia_fraca_em">10.10. Convergência fraca do método de Euler-Maruyama</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c10/sciml">10.11. O ambiente SciML da linguagem Julia</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>11. Sistemas de equações aleatórias</li>
+    </div>
+    <div class="menu-level-1">
+    <li>12. Sistemas de equações estocásticas</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir">12.2. Modelo SIR estocástico</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/c11/stochastic_sir_network">12.3. Modelo SIR estocástico estruturado em rede</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li>Apêndice</li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_fund_kolmogorov">Teorema Fundamental de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-2">
+    <li><a href="/notas_sde/pages/appendix/teo_extension_kolmogorov">Teorema de Extensão de Kolmogorov</a></li>
+    </div>
+    <div class="menu-level-1">
+    <li><a href="/notas_sde/pages/references">References</a></li>
+    </div>
+<div>
+
+
+  
+    <a href="https://github.com/rmsrosa/notas_sde"><img src="/notas_sde/assets/images/GitHub-Mark-32px.png" alt="GitHub repo" width="18" style="margin:5px 5px" align="left"></a>
+
+  
+
+</aside>
+
+
+  <div class="books-content">
+
+    
+      <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c10/convergencia_fraca_em">10.10. Convergência fraca do método de Euler-Maruyama <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c11/nuclear_reactions"><kbd>→</kbd> 12.1. Reações nucleares</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+    
+
+    
+      
+    
+<h1 id="get_title"><a href="#get_title" class="header-anchor">10.11. O ambiente SciML da linguagem Julia</a></h1>
+<p>Estivemos, até agora, implementando diretamente os métodos numéricos, por motivos didáticos. Nas aplicações, porém, podemos utilizar pacotes numéricos que já têm esses e outros métodos implementados. Nos basta formular o problema de acordo com a interface de cada pacote &#40;chamada de <em>api</em>, acrônimo de <em>application programming interface</em>&#41;.</p>
+<p>Com isso em mente, vamos usar o ambiente <a href="https://docs.sciml.ai/dev/">SciML - The SciML Open Source Software Ecosystem</a>, que é, de fato, um dos carros chefes da linguagem <a href="The SciML Open Source Software Ecosystem">Julia</a>, com uma ampla gama de métodos implementados e otimizados. Há não apenas métodos para aproximar os caminhos amostrais de soluções de equações estocásticas e aleatórias, mas também para serem usados em conjunto com métodos de determinação de parâmetros, quantificação de incertezas, redes neurais e modelagem simbólica.</p>
+<p>Vamos ilustrar aqui como usar esse ambiente para resolver as equações tratadas até agora. Nos capítulos seguintes, exploraremos esse ambiente na resolução de problemas mais complexos, envolvendo sistemas de equações.</p>
+<p>O ambiente contém pacotes para a resolução de <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/sde_types/">equações diferenciais estocásticas</a>, <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/sdae_types/">equações estocástico-algébricas</a>, <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/sdde_types/">equações estocásticas com retardamento/atraso</a> e <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/rode_types/">equações diferenciais aleatórias</a>, além de diversos métodos para equações determinísticas &#40;veja <a href="https://docs.sciml.ai/dev/#Domains-of-SciML">Domains of SciML</a>&#41;.</p>
+<p>O ambiente <a href="https://docs.sciml.ai/dev/">SciML - The SciML Open Source Software Ecosystem</a> é uma <a href="https://github.com/SciML">organização SciML no github</a> e mantém, mais precisamente, uma <a href="https://github.com/orgs/SciML/repositories">longa lista de repositórios</a> com pacotes Julia. É possivel instalar o pacote <a href="https://github.com/SciML/DifferentialEquations.jl">SciML/DifferentialEquations.jl</a> que é um <em>wrapper</em> para quase todos os pacotes. Isso facilita em um certo sentido, mas por outro lado torna a instalação mais lenta e pesada, e mais sujeita a conflitos de instalação com outros pacotes. Uma alternativa é instalar apenas os pacotes necessários para o problema em questão. Para os nossos objetivos, vamos instalar apenas os pacotes <a href="https://github.com/SciML/OrdinaryDiffEq.jl/tree/master/src">SciML/OrdinaryDiffEq.jl</a>, que contém os métodos para a resolução de equações diferenciais ordinárias determinísticas, e <a href="https://github.com/SciML/StochasticDiffEq.jl">SciML/StochasticDiffEq.jl</a>, que contém os pacotes para a resolução de equações diferenciais aleatórias e estocásticas.</p>
+<h2 id="resolvendo_equações_diferenciais_ordinárias_via_sciml"><a href="#resolvendo_equações_diferenciais_ordinárias_via_sciml" class="header-anchor">Resolvendo equações diferenciais ordinárias via SciML</a></h2>
+<p>Nesse caso, usamos o pacote <a href="https://github.com/SciML/OrdinaryDiffEq.jl">SciML/OrdinaryDiffEq.jl</a>, junto com o <a href="https://github.com/JuliaPlots/Plots.jl">JuliaPlots/Plots.jl</a>.</p>
+<pre><code class="language-julia">using OrdinaryDiffEq
+using Plots</code></pre>
+<p>Para aprender a usar o pacote, é útil ver os exemplos em <a href="https://diffeq.sciml.ai/stable/tutorials/ode_example/">tutorial SciML - ODE</a>. A interface considera um <em>problema de valor inicial,</em> da forma</p>
+\[
+\frac{\mathrm{d}u}{\mathrm{d}t} = f(u, p, t), \quad t_0 \leq t \leq T,
+\]
+<p>com uma condição inicial</p>
+\[
+u(t_0) = u_0.
+\]
+<p>Devemos informar a função <code>f&#40;u, p, t&#41;</code>, onde <code>u</code> é a variável dependente, <code>p</code> é um conjunto de parâmetros e <code>t</code> é a variável temporal. O conjunto de parâmetros <code>p</code> pode ser dado de várias maneiras, como, por exemplo, um escalar, um vetor ou uma lista de números ou de outros tipos. A variável temporal <code>t</code> deve ser um número.</p>
+<p>A solução numérica é obtida através de um <em>problema</em> montado via <code>ODEProblem&#40;&#41;</code>, que tem duas assinaturas:</p>
+<ol>
+<li><p><code>ODEProblem&#40;f::ODEFunction,u0,tspan,p&#61;NullParameters&#40;&#41;;kwargs...&#41;</code>;</p>
+</li>
+<li><p><code>ODEProblem&#123;isinplace&#125;&#40;f,u0,tspan,p&#61;NullParameters&#40;&#41;;kwargs...&#41;</code>.</p>
+</li>
+</ol>
+<p>Na prática, a principal diferença é se o primeiro argumento é da forma <code>f&#40;u, p, t&#41;</code> ou da forma <code>f&#33;&#40;du, u, p, t&#41;</code>. Lembre-se que a exclamação ao final do nome da função é apenas uma convenção, para informar se a função altera um dos seus argumentos ou não. O que distingue as duas funções é que a primeira tem três argumentos e a segunda tem quatro argumentos. Ao definirmos um <code>ODEProblem&#40;f, u0, tspan, ...&#41;</code> ou um <code>ODEProblem&#40;f&#33;, u0, tspan, ...&#41;</code>, a interface irá escolher o método certo baseado na forma da função passada como primeiro argumento e não por conta da exclamação, que é indiferente para ela.</p>
+<p>A primeira forma da função, <code>f&#40;u, p, t&#41;</code>, retorna um valor armazenado em uma nova variável <code>du</code>, que é usada como sendo a derivada temporal de <code>u</code>. A segunda forma recebe uma variável <code>du</code> já alocada na memória e apenas atualiza o valor dessa variável com a derivada de <code>u</code>. O primeiro caso é apropriado para equações escalares, em que <code>u</code> e <code>du</code> são variáveis imutáveis &#40;e.g. <code>u::Float64</code> e <code>du::Float64</code>&#41;. O segundo caso é apropriado para sistemas de equações, onde <code>u</code> e <code>du</code> são vetores ou arrays &#40;e.g. <code>u::Vector&#123;Float64&#125;</code>&#41;, portanto mutáveis, sendo muito mais eficiente atualizar o valor de <code>du</code> do que criar um novo vetor a cada iteração, gerando novas alocações e um acúmulo desnecessário de recursos computacionais.</p>
+<p>Além de passarmos a função para <code>ODEProblem&#40;&#41;</code>, devemos informar, também, a condição initial <code>u_0</code>, o intervalo de tempo <code>tspan</code> e, se necessário, o conjunto de parâmetros <code>p</code>.</p>
+<p>Uma vez montado um problema <code>prob &#61; ODEProblem&#40;f, u0, tspan, ...&#41;</code>, podemos resolvê-lo através da função <code>solve</code>. Se tivermos o pacote <a href="https://github.com/SciML/DifferentialEquations.jl">SciML/DifferentialEquations.jl</a> carregado, basta escrevermos <code>solve&#40;prob&#41;</code> que a interface escolhe um método numérico apropriado para resolver o problema. Mas, como dissemos acima, esse pacote é muito pesado, pois carrega dezenas de pacotes do ambiente SciML. Além disso, um objetivo principal aqui é didático. Assim, optamos por não carregar esse pacote e escolher explicitamente o método numérico. Assim, devemos informar o método numérico e quaisquer outros parâmetros necessários para o método.</p>
+<p>Vamos ilustrar isso resolvendo a equação logística</p>
+\[
+\frac{\mathrm{d}u}{\mathrm{d}t} = (\alpha - \beta u) u, \quad 0 \leq t \leq T,
+\]
+<p>com condição inicial</p>
+\[
+u(0) = u_0.
+\]
+<p>Definimos</p>
+<pre><code class="language-julia">function f_logistic&#40;u, p, t&#41;
+    α, β &#61; p
+    du &#61; &#40;α - β  * u&#41; * u
+    return du
+end</code></pre>
+<p>Para geramos o problema de valor inicial, escolhemos os parâmetros e chamamos <code>ODEProblem&#40;&#41;</code>:</p>
+<pre><code class="language-julia">u0 &#61; 0.01
+α &#61; 3.0
+β &#61; 2.0
+p &#61; &#40;α, β&#41;
+tspan &#61; &#40;0.0, 5.0&#41;
+prob &#61; ODEProblem&#40;f_logistic, u0, tspan, p&#41;</code></pre>
+<p>Uma vez montado esse problema, podemos resolvê-lo usando o método <code>Tsit5&#40;&#41;</code> &#40;<em>Tsitouras 5/4 Runge-Kutta method - free 4th order interpolant;</em> veja mais sobre este e outros métodos em <a href="https://diffeq.sciml.ai/stable/solvers/ode_solve/#ode_solve">ODE Solvers</a>&#41;:</p>
+<pre><code class="language-julia">sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;</code></pre>
+<p>Abaixo o código completo e o resultado da simulação</p>
+<pre><code class="language-julia">using OrdinaryDiffEq
+using Plots
+
+let
+    function f_logistic&#40;u, p, t&#41;
+        α, β &#61; p
+        du &#61; &#40;α - β * u&#41; * u
+        return du
+    end
+
+    u0 &#61; 0.01
+    α &#61; 3.0
+    β &#61; 2.0
+    p &#61; &#40;α, β&#41;
+    tspan &#61; &#40;0.0, 5.0&#41;
+    prob &#61; ODEProblem&#40;f_logistic, u0, tspan, p&#41;
+
+    sol &#61; solve&#40;prob, Tsit5&#40;&#41;&#41;
+
+    plot&#40;sol, title &#61; &quot;solução da equação logística determinística&quot;, titlefont &#61; 10, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, label &#61; false, size &#61; &#40;800, 600&#41;&#41;
+
+end</code></pre>
+
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/ode_via_sciml_pop.svg" alt="">
+<h2 id="resolvendo_um_conjunto_de_equações_com_parâmetros_variados"><a href="#resolvendo_um_conjunto_de_equações_com_parâmetros_variados" class="header-anchor">Resolvendo um conjunto de equações com parâmetros variados</a></h2>
+<p>Na análise de quantificação de incertezas e no estudo da sensibilidade do modelo nos parâmetros é útil considerar parâmetros com uma determinada incerteza, ou seja, com parâmetros como variáveis aleatórias.</p>
+<p>Para isso, podemos usar o método de Monte-Carlo e inferir as estatísticas do processo estocástico através de um conjunto de soluções. Podemos fazer isso resolvendo uma série de problemas de valor inicial como acima. Para facilitar esse processo e, inclusive, a análise do conjunto de soluções, os pacotes do SciML disponibilizam um <code>EnsembleProblem&#40;&#41;</code>, a ser montado a partir de um problema de valor inicial, como o <code>ODEProblem&#40;&#41;</code>. Em seguida, podemos acessar um resumo do resultado do conjunto de simulações através de <code>EnsembleSummary&#40;&#41;</code>. Mais informações na página <a href="https://diffeq.sciml.ai/stable/features/ensemble/">Parallel Ensemble Simulations</a>.</p>
+<p>Para esse fim, o método <code>EnsembleProblem&#40;&#41;</code> recebe o problema <code>prob</code> a ser resolvido e uma função <code>prob_func&#61; &#40;prob,i,repeat&#41;-&gt;&#40;prob&#41;</code> que altera o problema de valor inicial a cada iteração. Por exemplo, podemos alterar a condição inicial ou um dos parâmetros da equação. Para alterar a condição inicial e/ou os parâmetros, temos algums opções. Caso sejam mutáveis &#40;e.g. vetores, arrays, etc.&#41;, podemos redefinir diretamente <code>prob.u0</code> e/ou <code>prob.p</code>. Mas caso eles, ou algum deles, seja imutável, como no caso logístico acima, podemos montar um novo problema do zero ou montar alterando algum parâmetro através da função <code>remake&#40;&#41;</code>. Por exemplo, <code>remake&#40;prob, u0 &#61; 1.0, p &#61; &#40;2.0, 1.0&#41;&#41;</code> altera a condição inicial e os parâmetros.</p>
+<p>Assim, se quisermos alterar a condição inicial \(u_0\) uniformemente entre os valores \(0.2\) e \(0.3\) e os parâmetros \(\alpha\) e \(\beta\) também uniformemente entre determinados valores, definimos</p>
+<pre><code class="language-julia">prob_func&#40;prob, i, repeat&#41; &#61; remake&#40;prob, u0 &#61; 0.2 &#43; 0.1 * rand&#40;&#41;, p &#61; &#40;3.0 &#43; 0.01 * randn&#40;&#41;, 2.0 &#43; 0.02 * randn&#40;&#41;&#41;&#41;</code></pre>
+<p>Essa função é, então, passada para o <code>EnsembleProblem&#40;&#41;</code>, i.e.</p>
+<pre><code class="language-julia">ensemble_prob &#61; EnsembleProblem&#40;prob; prob_func&#41;</code></pre>
+<p>Com isso, podemos resolver esse conjunto de problemas com <code>solve&#40;&#41;</code>, informando o número de trajetórias a serem simuladas, e.g.</p>
+<pre><code class="language-julia">sols &#61; solve&#40;ensemble_prob, Tsit5&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;100&#41;</code></pre>
+<p>A cada iteração, um novo valor inicial e novos valores dos parâmetros são sorteados e uma trajetória correspondente é calculada. O conjunto de trajetórias pode ser visualizado via <code>plot&#40;&#41;</code>. Além disso, um sumário estatístico das simulações, informando, por exemplo, os intervalos de confiança, pode ser obtido com a função <code>EnsembleSummary&#40;sols; quantiles&#61;&#91;0.25,0.75&#93;&#41;</code>. Se o argumento <code>quantiles</code> não for informado, o <em>default</em> é de 95&#37;. Esse sumário pode ser visualizado com a função <code>plot&#40;&#41;</code>. Vejamos o exemplo completo abaixo. Varias estatísticas podem ser obtidas diretamente e <code>sols</code>, como pode ser visto em <a href="https://diffeq.sciml.ai/stable/features/ensemble/#Summary-Statistics">Summary Statistics</a>.</p>
+<pre><code class="language-julia">using OrdinaryDiffEq
+using Plots
+
+let
+    function f_logistic&#40;u, p, t&#41;
+        α, β &#61; p
+        du &#61; &#40;α - β * u&#41; * u
+        return du
+    end
+
+    u0 &#61; 0.1
+    α &#61; 3.0
+    β &#61; 2.0
+    p &#61; &#40;α, β&#41;
+    tspan &#61; &#40;0.0, 5.0&#41;
+    prob &#61; ODEProblem&#40;f_logistic, u0, tspan, p&#41;
+
+    prob_func&#40;prob, i, repeat&#41; &#61; remake&#40;prob, u0 &#61; 0.2 &#43; 0.1 * rand&#40;&#41;, p &#61; &#40;3.0 &#43; 0.01 * randn&#40;&#41;, 2.0 &#43; 0.02 * randn&#40;&#41;&#41;&#41;
+
+    ensemble_prob &#61; EnsembleProblem&#40;prob; prob_func&#41;
+
+    sols &#61; solve&#40;ensemble_prob, Tsit5&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;20&#41;
+
+    plot&#40;title &#61; &quot;soluções da equação logística&quot;, titlefont &#61; 12, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;população&quot;, size &#61; &#40;800, 600&#41;&#41;
+    plot&#33;&#40;sols, color &#61; 1, alpha &#61; 0.1&#41;
+    plot&#33;&#40;sols&#91;1&#93;&#41;
+
+    sols &#61; solve&#40;ensemble_prob, Tsit5&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;250, saveat &#61; range&#40;tspan..., length &#61; 200&#41;&#41;
+
+    summ95 &#61; EnsembleSummary&#40;sols&#41;
+    summ68 &#61; EnsembleSummary&#40;sols; quantiles&#61;&#91;0.16,0.84&#93;&#41;
+    plot&#40;title &#61; &quot;valor esperado e intervalos de confiança&quot;, titlefont &#61; 12, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;população&quot;, size &#61; &#40;800, 600&#41;&#41;
+    plot&#33;&#40;summ95, label &#61; &quot;95&#37;&quot;&#41;
+    plot&#33;&#40;summ68, label &#61; &quot;68&#37;&quot;, legend &#61; :bottomright&#41;
+
+end</code></pre>
+
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/ode_via_sciml_pop_ensemb_trajectories.svg" alt="">
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/ode_via_sciml_pop_ensemb.svg" alt="">
+<h2 id="resolvendo_equações_aleatórias_via_sciml"><a href="#resolvendo_equações_aleatórias_via_sciml" class="header-anchor">Resolvendo equações aleatórias via SciML</a></h2>
+<p>Vamos ver, agora, como usar <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/rode_types/">a interface para equações aleatórias</a>. Desta vez, usamos o pacote <a href="https://github.com/SciML/StochasticDiffEq.jl">SciML/StochasticDiffEq.jl</a>. Começamos carregando os pacotes.</p>
+<pre><code class="language-julia">using StochasticDiffEq
+using Plots</code></pre>
+<p>Para equações aleatórias, é útil ver os exemplos em <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/tutorials/rode_example/">tutorial SciML - RODE</a>. A interface considera um <em>problema de valor inicial,</em> da forma</p>
+\[
+\frac{\mathrm{d}u}{\mathrm{d}t} = f(u, p, t, W(t)), \quad t_0 \leq t \leq T,
+\]
+<p>com uma condição inicial</p>
+\[
+u(t_0) = u_0.
+\]
+<p>O objetivo da interface é disponibilizar métodos para aproximar um <em>caminho amostral</em> dessa equação, de maneira que a condição inicial deve ser informada como sendo uma variável do tipo <code>Number</code> &#40;como <code>Float64</code>, <code>Float32</code>, <code>Int</code>, etc.&#41;, ou do tipo <code>AbstractArray&#123;&lt;:Number&#125;</code> &#40;no caso de sistemas de equações ou, até mesmo, de um conjunto amostral&#41;.</p>
+<p>Além disso, devemos informar a função <code>f&#40;u, p, t, W&#41;</code>, onde <code>p</code> é um conjunto de parâmetros, <code>t</code> é a variável temporal, e <code>W</code> representa um processo estocástico. O processo <code>W</code> é um <em>ruído</em> conforme definido em <a href="https://noise.sciml.ai/stable/">ScimML/DiffEqNoiseProcess.jl</a>, que pode ser escolhido ao montarmos o problema de valor inicial.</p>
+<p>A solução numérica é obtida através de um <em>problema</em> montado via <code>RODEProblem&#40;&#41;</code>, que tem duas assinaturas:</p>
+<ol>
+<li><p><code>RODEProblem&#40;f::RODEFunction,u0,tspan,p&#61;NullParameters&#40;&#41;;noise&#61;WHITE_NOISE,rand_prototype&#61;nothing,callback&#61;nothing&#41;</code></p>
+</li>
+<li><p><code>RODEProblem&#123;isinplace&#125;&#40;f,u0,tspan,p&#61;NullParameters&#40;&#41;;noise&#61;WHITE_NOISE,rand_prototype&#61;nothing,callback&#61;nothing,mass_matrix&#61;I&#41;</code>.</p>
+</li>
+</ol>
+<p>Como no caso determinístico, a principal diferença é se o primeiro argumento é da forma <code>f&#40;u, t, p, W&#41;</code> ou da forma <code>f&#33;&#40;du, u, t, p, W&#41;</code>. Ao definirmos um <code>RODEProblem&#40;f, u0, tspan, ...&#41;</code> ou um <code>RODEProblem&#40;f&#33;, u0, tspan, ...&#41;</code>, a interface irá escolher o método certo baseado na forma da função passada como primeiro argumento.</p>
+<p>Observe que, nos argumentos de <code>RODEProblem</code>, temos o termo extra <code>noise</code>, que define o tipo de processo \(\{W_t\}_{t \geq 0}\) que será passado para a função <code>f&#40;u, p, t, W&#41;</code>, a cada iteração. Caso o ruído não seja informado, a interface assume o valor <em>default</em> de ser um processo de Wiener. Mas outros processos podem ser passados. Pode-se usar um dos processos já definidos em <a href="https://noise.sciml.ai/stable/">SciML/DiffEqNoiseProcess.jl</a> &#40;e.g. Wiener, Browniano geométrico, Ornstein-Uhlenbeck, ponte browniana&#41;, ou se definir um novo processo com a interface de processo abstrato fornecida por esse pacote &#40;leia mais sobre isso em <a href="https://diffeq.sciml.ai/stable/features/noise_process/#noise_process">Noise Processes</a>&#41;.</p>
+<p>A outra opção <code>rand_prototype</code> é usada caso se precise de um número diferente de processos se comparado ao argumento <code>u</code>. Mais precisamente, se <code>u</code> é um escalar, então <code>W</code> é tomado como escalar. Se <code>u</code> for um vetor de tamanho <code>d</code>, então <code>W</code> é tomado como sendo um processo vetorial, também de tamanho <code>d</code>, apropriado para sistemas com processos independentes para cada equação. Mas, em muitos casos, podemos querer usar um número diferente de processos independentes. Nesse caso, informamos isso através de <code>rand_prototype</code>, passando um vetor &#40;ou array&#41; com o tamanho desejado &#40;e.g. <code>rand_prototype &#61; zeros&#40;3&#41;</code>, caso se deseje usar três processos em <code>W</code>, acessíveis individualmente por <code>W&#91;1&#93;</code>, <code>W&#91;2&#93;</code> e <code>W&#91;3&#93;</code>&#41;.</p>
+<p>Uma vez montado um problema <code>prob &#61; RODEProblem&#40;f, u0, tspan, ...&#41;</code>, podemos resolvê-lo através da função <code>solve</code>, informando o método numérico apropriado. No caso de equações estocásticas aleatórias, o único método disponível é o de Euler-Maruyama. Outros métodos podem ser acessados convertendo a equação aleatória em uma equação estocástica, visto que há uma ampla gama de métodos implementados para estas equações, mas para equações aleatórias, especificamente, temos apenas o Euler-Maruyama. Para revolvermos via Euler-Maruyama, passamos o argumento <code>RandomEM&#40;&#41;</code>, que identifica esse método. Este é um método de passo fixo e devemos, também, passar o tamanho do passo. Assim, podemos resolver o problema via <code>sol &#61; solve&#40;prob, RandomEM&#40;&#41;, dt&#61;1/100&#41;</code>.</p>
+<p>Uma vez resolvido o problema, podemos acessar os instantes de tempo via <code>sol.t</code>, os valores ao longo do tempo via <code>sol.u</code> e exibir a evolução da solução <code>u&#40;t&#41;</code> diretamente via <code>plot&#40;sol&#41;</code>. Podemos passar diversos argumentos da função <code>plot</code> para construir o gráfico.</p>
+<p>Mais detalhes sobre a inferface podem ser vistos na página <a href="https://docs.sciml.ai/dev/modules/DiffEqDocs/types/rode_types/">RODE Problems</a>.</p>
+<p>Agora, na prática, queremos inferir a evolução do processo como um todo, não apenas de um caminho amostral. Para isso, podemos usar o método de Monte-Carlo e inferir as estatísticas do processo estocástico através de um conjunto de caminhos amostrais. Podemos fazer isso resolvendo uma série de problemas de valor inicial como acima. Para facilitar esse processo e, inclusive, a análise do conjunto de soluções, os pacotes do SciML disponibilizam um <code>EnsembleProblem&#40;&#41;</code>, a ser montado a partir de um problema de valor inicial, como o <code>RODEProblem&#40;&#41;</code>. Em seguida, podemos acessar um resumo do resultado do conjunto de simulações através de <code>EnsembleSummary&#40;&#41;</code>. Mais informações na página <a href="https://diffeq.sciml.ai/stable/features/ensemble/">Parallel Ensemble Simulations</a>.</p>
+<h3 id="resolvendo_uma_equação_aleatória_simples"><a href="#resolvendo_uma_equação_aleatória_simples" class="header-anchor">Resolvendo uma equação aleatória simples</a></h3>
+<p>Por exemplo, vamos considerar o problema concreto</p>
+\[
+\frac{\mathrm{d}u}{\mathrm{d}t} = \sin(W) u, \quad t_0 \leq t \leq T,
+\]
+<p>com uma condição inicial</p>
+\[
+u(t_0) = x_0.
+\]
+<p>Nesse caso, podemos definir a função da seguinte forma</p>
+<pre><code class="language-julia">f&#40;u, p, t, W&#41; &#61; sin&#40;W&#41; * u</code></pre>
+<p>Para geramos o problema de valor inicial, escolhemos os parâmetros \(x_0 = 1\), \(t_0 = 0\) e \(T = 5\) e definimos</p>
+<pre><code class="language-julia">u0 &#61; 1.0
+tspan &#61; &#40;0.0, 5.0&#41;
+prob &#61; RODEProblem&#40;f, u0, tspan&#41;</code></pre>
+<p>Uma vez montado esse problema, podemos resolvê-lo via</p>
+<pre><code class="language-julia">sol &#61; solve&#40;prob, RandomEM&#40;&#41;, dt&#61;1/100&#41;</code></pre>
+<p>Após a simulação, podemos exibir o gráfico da solução via <code>solve</code>. Abaixo o código completo e o resultado da simulação.</p>
+<pre><code class="language-julia">using StochasticDiffEq
+using Plots
+
+let
+    f&#40;u, p, t, W&#41; &#61; sin&#40;W&#41; * u
+
+    u0 &#61; 1.0
+    tspan &#61; &#40;0.0, 5.0&#41;
+    prob &#61; RODEProblem&#40;f, u0, tspan&#41;
+
+    sol &#61; solve&#40;prob, RandomEM&#40;&#41;, dt&#61;1/100&#41;
+
+    plot&#40;sol, title &#61; &quot;solução da equação diferencial aleatória &#96;u&#39; &#61; sin&#40;W&#41;u&#96; com &#96;u&#40;0&#41; &#61; 1.0&#96;&quot;, titlefont &#61; 10, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, label &#61; false, size &#61; &#40;800, 600&#41;&#41;
+
+end</code></pre>
+
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/rode_via_sciml.svg" alt="">
+<h3 id="resolvendo_a_equação_logística_aleatória"><a href="#resolvendo_a_equação_logística_aleatória" class="header-anchor">Resolvendo a equação logística aleatória</a></h3>
+<p>Vejamos, agora, como implementar a equação logística aleatória discutida anteriormente. A equação tem a forma</p>
+\[
+\frac{\mathrm{d}X_t}{\mathrm{d}t} = (A_t - B_t X_t)X_t,
+\]
+<p>onde</p>
+\[
+A_t = a + \delta Y_t, \qquad B_t = b + \varepsilon Z_t,
+\]
+<p>com</p>
+\[
+a, b, \delta, \varepsilon > 0, \quad a - \delta > 0, \quad b - \varepsilon > 0,
+\]
+<p>e onde</p>
+\[
+Y_t = \frac{W_t}{1 + |W_t|}, \quad Z_t = \sin(W_t).
+\]
+<p>Assim, podemos definir a função <code>f&#40;t, u, p, W&#41;</code> como</p>
+<pre><code class="language-julia">function f&#40;u, p, t, W&#41;
+    a, b, δ, ε &#61; p
+    Y &#61; W / &#40;1 &#43; abs&#40;W&#41;&#41;
+    Z &#61; sin&#40;W&#41;
+    A &#61; a &#43; δ * Y
+    B &#61; b &#43; ε * Z
+    du &#61; &#40;A - B * u&#41; * u
+    return du
+end</code></pre>
+<p>Observe que poderíamos ter escrito diretamente</p>
+<pre><code class="language-julia">f&#40;u, p, t, W&#41; &#61; &#40;p&#91;1&#93; &#43; p&#91;3&#93; * W / &#40;1 &#43; abs&#40;W&#41;&#41; - &#40;p&#91;2&#93; &#43; p&#91;3&#93; * sin&#40;W&#41;&#41; * u&#41; * u</code></pre>
+<p>Felizmente, nesse caso, não há custo computacional algum em se introduzir as variáveis auxiliares e deixar o código mais claro. As sintaxes adicionadas por nós para facilitar a leitura da função são otimizadas e descartadas pelo compilador. Mas é importante tomar cuidado e evitar casos em que há uma alocação desnecessária de memória &#40;veja discussão mais abaixo&#41;.</p>
+<p>O restante do código é essencialmente o mesmo diante, exceto que, agora, precisamos definir o conjunto <code>p</code> de parâmetros. Isso é feito no código completo, a seguir.</p>
+<pre><code class="language-julia">using StochasticDiffEq
+using Plots
+
+let
+
+    function f&#40;u, p, t, W&#41;
+        a, b, δ, ε &#61; p
+        Y &#61; W / &#40;1 &#43; abs&#40;W&#41;&#41;
+        Z &#61; sin&#40;W&#41;
+        A &#61; a &#43; δ * Y
+        B &#61; b &#43; ε * Z
+        du &#61; &#40;A - B * u&#41; * u
+        return du
+    end
+
+    u0 &#61; 1.0
+    p &#61; &#40;3.0, 2.0, 0.1, 0.2&#41;
+    tspan &#61; &#40;0.0, 5.0&#41;
+    prob &#61; RODEProblem&#40;f, u0, tspan, p&#41;
+
+    sol &#61; solve&#40;prob, RandomEM&#40;&#41;, dt&#61;1/100&#41;
+
+    plot&#40;sol, title &#61; &quot;solução da equação logística aleatória&quot;, titlefont &#61; 10, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, label &#61; false, size &#61; &#40;800, 600&#41;&#41;
+
+end</code></pre>
+
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/rode_via_sciml_pop.svg" alt="">
+<p>Agora, na prática, queremos inferir a evolução do processo estocástico. Essa análise é facilitada pela função <code>EnsembleProblem&#40;&#41;</code>. Isso é ilustrado a seguir.</p>
+<pre><code class="language-julia">using StochasticDiffEq
+using Plots
+
+let
+    function f&#40;u, p, t, W&#41;
+        a, b, δ, ε &#61; p
+        Y &#61; W / &#40;1 &#43; abs&#40;W&#41;&#41;
+        Z &#61; sin&#40;W&#41;
+        A &#61; a &#43; δ * Y
+        B &#61; b &#43; ε * Z
+        du &#61; &#40;A - B * u&#41; * u
+        return du
+    end
+
+    u0 &#61; 0.01
+    p &#61; &#40;3.0, 2.0, 0.1, 0.2&#41;
+    tspan &#61; &#40;0.0, 8.0&#41;
+    prob &#61; RODEProblem&#40;f, u0, tspan, p&#41;
+
+    ensembleprob &#61; EnsembleProblem&#40;prob&#41;
+    sols &#61; solve&#40;ensembleprob, RandomEM&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;100, dt&#61;1/100&#41;
+    plot&#40;title &#61; &quot;soluções da equação logística aleatória&quot;, titlefont &#61; 12, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;população&quot;, size &#61; &#40;800, 600&#41;&#41;
+    plot&#33;&#40;sols, color &#61; 1, alpha &#61; 0.1&#41;
+    plot&#33;&#40;sols&#91;1&#93;&#41;
+    savefig&#40;joinpath&#40;@OUTPUT, &quot;rode_via_sciml_pop_ensemb_trajectories.svg&quot;&#41;&#41;
+
+    sols &#61; solve&#40;ensembleprob, RandomEM&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;1000, dt&#61;1/100&#41;
+
+    summ95 &#61; EnsembleSummary&#40;sols&#41;
+    summ68 &#61; EnsembleSummary&#40;sols; quantiles&#61;&#91;0.16,0.84&#93;&#41;
+    plot&#40;title &#61; &quot;valor esperado e intervalos de amostras&quot;, titlefont &#61; 12, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;população&quot;, size &#61; &#40;800, 600&#41;&#41;
+    plot&#33;&#40;summ95, label &#61; &quot;95&#37; das amostras&quot;&#41;
+    plot&#33;&#40;summ68, label &#61; &quot;68&#37; das amostras&quot;, legend &#61; :bottomright&#41;
+
+end</code></pre>
+
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/rode_via_sciml_pop_ensemb_trajectories.svg" alt="">
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/rode_via_sciml_pop_ensemb.svg" alt="">
+<h2 id="resolvendo_equações_estocásticas_via_sciml"><a href="#resolvendo_equações_estocásticas_via_sciml" class="header-anchor">Resolvendo equações estocásticas via SciML</a></h2>
+<p><a href="https://diffeq.sciml.ai/stable/types/sde_types/">A interface para a resolução de equações estocásticas</a> é acessível pelo pacote <a href="https://github.com/SciML/StochasticDiffEq.jl">SciML/StochasticDiffEq.jl</a>. Nesse caso, precisamos informar a função de <em>drift</em> <code>f&#40;u, p, t&#41;</code> e a função de difusão <code>g&#40;u, p, t&#41;</code>. Veja os exemplos no <a href="https://diffeq.sciml.ai/stable/tutorials/sde_example/">tutorial de SDE</a>. A equação estocástica em questão tem a forma</p>
+\[
+\mathrm{d}X_t = f(X_t, p, t)\;\mathrm{d}t + g(X_t, p, t)\;\mathrm{d}W_t
+\]
+<p>onde agora incluímos explicitamente parâmetros \(p\). Observe a troca de ordem dos argumentos \(X_t\) e \(t\), em relação ao formato tratado na parte teórica.</p>
+<p>De maneira similar aos casos anteriores, os problemas de valor inicial para equações estocásticas são montados através das interfaces</p>
+<ol>
+<li><p><code>SDEProblem&#40;f::SDEFunction,g,u0,tspan,p&#61;NullParameters&#40;&#41;;noise&#61;WHITE_NOISE,noise_rate_prototype&#61;nothing&#41;</code>;</p>
+</li>
+<li><p><code>SDEProblem&#123;isinplace&#125;&#40;f,g,u0,tspan,p&#61;NullParameters&#40;&#41;;noise&#61;WHITE_NOISE,noise_rate_prototype&#61;nothing&#41;</code>.</p>
+</li>
+</ol>
+<p>Há uma <a href="https://diffeq.sciml.ai/stable/solvers/sde_solve/">série de métodos disponíveis para equações estocásticas</a>. O Euler-Maruyama para equações estocásticas é definido simplesmente por <code>EM&#40;&#41;</code>. Da mesma forma, podemos usar o método de Monte Carlo através do <code>EnsembleProblem&#40;&#41;</code>, conforme descrito em <a href="https://diffeq.sciml.ai/stable/features/ensemble/">Parallel Ensemble Simulations</a>.</p>
+<p>Vejamos um exemplo concreto, da ponte browniana, cuja equação tem a forma</p>
+\[
+\mathrm{d}B_t = - \frac{B_t}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
+\]
+<p>com condição inicial</p>
+\[
+B_0 = 0.
+\]
+<p>Nesse caso, resolvemos como feito a seguir.</p>
+<pre><code class="language-julia">using StochasticDiffEq
+using Plots
+
+let T &#61; 1.0
+    f&#40;u, p, t&#41; &#61; - u / &#40;T - t&#41;
+    g&#40;u, p, t&#41; &#61; 1.0
+
+    u0 &#61; 0.0
+    tspan &#61; &#40;0.0, T&#41;
+    prob &#61; SDEProblem&#40;f, g, u0, tspan&#41;
+
+    ensembleprob &#61; EnsembleProblem&#40;prob&#41;
+    sols &#61; solve&#40;ensembleprob, EM&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;100, dt&#61;1/100&#41;
+    plot&#40;title &#61; &quot;soluções da ponte browniana&quot;, titlefont &#61; 12, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;x&quot;, size &#61; &#40;800, 600&#41;&#41;
+    plot&#33;&#40;sols, color &#61; 1, alpha &#61; 0.1&#41;
+    plot&#33;&#40;sols&#91;1&#93;&#41;
+
+    sols &#61; solve&#40;ensembleprob, EM&#40;&#41;, EnsembleThreads&#40;&#41;, trajectories&#61;1000, dt&#61;1/100&#41;
+
+    summ95 &#61; EnsembleSummary&#40;sols&#41;
+    summ68 &#61; EnsembleSummary&#40;sols; quantiles&#61;&#91;0.16,0.84&#93;&#41;
+    plot&#40;title &#61; &quot;valor esperado e intervalos de amostras&quot;, titlefont &#61; 12, xaxis &#61; &quot;t&quot;, yaxis &#61; &quot;população&quot;, size &#61; &#40;800, 600&#41;&#41;
+    plot&#33;&#40;summ95, label &#61; &quot;95&#37; das amostras&quot;&#41;
+    plot&#33;&#40;summ68, label &#61; &quot;68&#37; das amostras&quot;&#41;
+    plot&#33;&#40;range&#40;tspan..., length &#61; 200&#41;, &#91;t -&gt; sqrt&#40;t * &#40;1 - t&#41;&#41;, t -&gt; - sqrt&#40;t * &#40;1 - t&#41;&#41;&#93;, color &#61; 3, label &#61; &#91;&quot;desvio padrão&quot; nothing&#93;, legend &#61; :topright&#41;
+
+end</code></pre>
+
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/sde_via_sciml_pop_ensemb_trajectories.svg" alt="">
+<img src="/notas_sde/assets/pages/c10/sciml/code/output/sde_via_sciml_pop_ensemb.svg" alt="">
+<h2 id="sobre_reproducibilidade"><a href="#sobre_reproducibilidade" class="header-anchor">Sobre reproducibilidade</a></h2>
+<p>Naturalmente, é da natureza estocástica desses problemas que cada simulação nos dê um resultado diferente. No entanto, para efeitos de testes &#40;<em>unit testing</em> de um pacote ou de um método específico&#41; ou por motivos de apresentação de um problema, é interessante reproduzir os resultados de uma simulação estocástica. Fazemos isso comumente em outras situações, defindo uma semente, tal como <code>rng &#61; Random.Xoshiro&#40;123&#41;</code>, e passando essa semente para os algoritmos de geração de números pseudo aleatórios &#40;e.g. <code>randn&#40;rng&#41;</code>&#41;. Isso pode ser feito, em particular, no exemplo de quantificação de incertezas, usando a semente <code>rng</code> na função <code>prob_func&#40;prob, i, repeat&#41;</code> de reformulação do problema, e.g.</p>
+<pre><code class="language-julia">prob_func&#40;prob, i, repeat&#41; &#61; remake&#40;prob, u0 &#61; 0.2 &#43; 0.1 * rand&#40;Random.Xoshiro&#40;123&#41;&#41;&#41;</code></pre>
+<p>No caso das equações aleatórias e estocásticas, a semente deve ser usada na definição do ruído <code>noise</code> passado como argumento para a construção do problema de valor inicial, i.e. em <code>RODEProblem</code> ou em <code>SDEProblem</code>. O construtor do ruído pode ser acessado instalando-se o pacote <a href="https://github.com/SciML/DiffEqNoiseProcess.jl">SciML/DiffEqNoiseProcess.jl</a>. Por exemplo, para obtermos sempre o mesmo caminho amostral de um processo de Wiener, podemos definir <code>W &#61; DiffEqNoiseProcess.WienerProcess&#40;0.0, 0.0, rng &#61; Random.Xoshiro&#40;123&#41;&#41;</code>. Para verificar isso, cada passo do processo associado a passos de tempo <code>dt</code> pode ser dado explicitamente via <code>calculate_step&#33;&#40;W, dt, nothing, nothing&#41;</code> e acessado via <code>W.dW</code>. Verifique que ao redefinirmos <code>W</code> com a mesma semente, como acima, observamos os exatos mesmos passos.</p>
+<h2 id="ferramentas_de_introspecção"><a href="#ferramentas_de_introspecção" class="header-anchor">Ferramentas de introspecção</a></h2>
+<p>A linguagem Julia é uma linguagem de programação <em>dinâmica,</em> com um processo de compilação conhecido como <em>just in time,</em> ou, mais precisamente, <em>just ahead of time.</em> Isso significa que funções e trechos de código são compiladas para código de máquina antes serem executadas ou quando chamadas com novos tipos de argumentos. Linguagens interpretadas, como Python, por sua vez, executam cada instrução das funções separadamente &#40;enquanto que em linguagens estáticas, como C e Fortran, todo o código é compilado de antemão&#41;. Além disso, esse processo de compilação contém um grande esforço de otimização e que é particularmente efetivo no caso do Julia, permitindo que o seu código seja, em alguns casos, mais rápido que o de linguagens estáticas.</p>
+<p>Uma outra vantagem disso é que podemos ser mais explícitos e elegantes na definição das funções, sem maiores custos computacionais. Por exemplo, considere as duas funções a seguir.</p>
+<pre><code class="language-julia">function f_logistic1&#40;u, p, t&#41;
+    α, β &#61; p
+    du &#61; &#40;α - β  * u&#41; * u
+    return du
+end
+
+f_logistic2&#40;u, p, t&#41; &#61; &#40;p&#91;1&#93; - p&#91;2&#93; * u&#41; * u</code></pre>
+<p>As duas funções fazem a mesma coisa. Mas, nitidamente, a primeira forma é mais clara. Em uma linguagem interpretada, seria um pouco mais custoso usar a primeira forma. Mas em linguagens compiladas, as variáveis auxiliares são abstraidas. Podemos ver isso com as ferramentas de <em>instrospecção</em> do Julia, ou seja, ferramentas que nos permitem ver os códigos gerados nas várias etapas de compilação. Há, de fato, vários níveis de compilação/otimização. Eles podem ser acessados através das macros <code>@code_lowered</code>, <code>@code_typed</code>, <code>@code_llvm</code> e <code>@code_native</code>. Uma outra macro útil na análise dos códigos gerados é <code>@code_warntype</code>. Mais informações sobre isso no vídeo <a href="https://www.youtube.com/watch?v&#61;OdZwoEPKEkM">How Julia Works</a> e nas páginas <a href="https://docs.julialang.org/en/v1/devdocs/reflection/#Intermediate-and-compiled-representations">Intermediate and compiled representations</a> e <a href="https://docs.julialang.org/en/v1/manual/performance-tips/#man-code-warntype">@code_warntype</a>.</p>
+<p>Por exemplo, usando <code>@code_lowered</code>, vemos como as funções acima são passadas para o compilados. Aqui, vemos como são tratadas as variáveis auxiliares, em um primeiro momento.</p>
+<pre><code class="language-julia">let u &#61; 1.0; p &#61; &#40;1.5, 2.0&#41;; t &#61; 3.0
+    println&#40;&quot;Code lowered for &#96;f_logistic1&#40;&#36;u, &#36;p, &#36;t&#41;&#41;:&quot;&#41;
+    println&#40;@code_lowered&#40;f_logistic1&#40;u, p, t&#41;&#41;&#41;
+    println&#40;&#41;
+    println&#40;&quot;Code lowered for &#96;f_logistic2&#40;&#36;u, &#36;p, &#36;t&#41;&#41;&quot;&#41;
+    println&#40;@code_lowered&#40;f_logistic2&#40;u, p, t&#41;&#41;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">Code lowered for `f_logistic1(1.0, (1.5, 2.0), 3.0)):
+CodeInfo(
+1 ─ %1 = Base.indexed_iterate(p, 1)
+│        α = Core.getfield(%1, 1)
+│        @_5 = Core.getfield(%1, 2)
+│   %4 = Base.indexed_iterate(p, 2, @_5)
+│        β = Core.getfield(%4, 1)
+│   %6 = α
+│   %7 = β * u
+│   %8 = %6 - %7
+│        du = %8 * u
+└──      return du
+)
+
+Code lowered for `f_logistic2(1.0, (1.5, 2.0), 3.0))
+CodeInfo(
+1 ─ %1 = Base.getindex(p, 1)
+│   %2 = Base.getindex(p, 2)
+│   %3 = %2 * u
+│   %4 = %1 - %3
+│   %5 = %4 * u
+└──      return %5
+)
+</code></pre>
+<p>Agora, através da macro <code>@code_typed</code>, podemos ver que, já no primeiro nível de otimização, os códigos gerados para as duas funções é o mesmo.</p>
+<pre><code class="language-julia">let u &#61; 1.0; p &#61; &#40;1.5, 2.0&#41;; t &#61; 3.0
+    println&#40;&quot;Code typed for &#96;f_logistic1&#40;&#36;u, &#36;p, &#36;t&#41;&#41;:&quot;&#41;
+    println&#40;@code_typed&#40;f_logistic1&#40;u, p, t&#41;&#41;&#41;
+    println&#40;&#41;
+    println&#40;&quot;Code typed for &#96;f_logistic2&#40;&#36;u, &#36;p, &#36;t&#41;&#41;&quot;&#41;
+    println&#40;@code_typed&#40;f_logistic2&#40;u, p, t&#41;&#41;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">Code typed for `f_logistic1(1.0, (1.5, 2.0), 3.0)):
+CodeInfo(
+1 ─ %1 = Base.getfield(p, 1)::Float64
+│   %2 = Base.getfield(p, 2)::Float64
+│   %3 = Base.mul_float(%2, u)::Float64
+│   %4 = Base.sub_float(%1, %3)::Float64
+│   %5 = Base.mul_float(%4, u)::Float64
+└──      return %5
+) => Float64
+
+Code typed for `f_logistic2(1.0, (1.5, 2.0), 3.0))
+CodeInfo(
+1 ─ %1 = Base.getfield(p, 1, true)::Float64
+│   %2 = Base.getfield(p, 2, true)::Float64
+│   %3 = Base.mul_float(%2, u)::Float64
+│   %4 = Base.sub_float(%1, %3)::Float64
+│   %5 = Base.mul_float(%4, u)::Float64
+└──      return %5
+) => Float64
+</code></pre>
+<p>. Isso pode ser verificado através da função de introspecção <code>@code_typed</code> &#40;leia mais sobre isso em <a href="https://docs.julialang.org/en/v1/devdocs/reflection/#Intermediate-and-compiled-representations">Intermediate and compiled representations</a>&#41;, que exibe o mesmo conjunto de instruções para ambas as definições &#40;verifique isso, por exemplo, através de <code>@code_typed f&#40;1.0, &#40;1.0, 2.0, 3.0, 4.0&#41;, 5.0, 6.0&#41;</code> em ambas as formas da função <code>f</code>&#41;.</p>
+<p>Abaixo, um outro exemplo, com duas versões da função para a equação logística aleatórias, exibindo apenas o resultado de <code>@code_typed</code>.</p>
+<pre><code class="language-julia">function f_randomlogistic1&#40;u, p, t, W&#41;
+    a, b, δ, ε &#61; p
+    Y &#61; W / &#40;1 &#43; abs&#40;W&#41;&#41;
+    Z &#61; sin&#40;W&#41;
+    A &#61; a &#43; δ * Y
+    B &#61; b &#43; ε * Z
+    du &#61; &#40;A - B * u&#41; * u
+    return du
+end
+
+f_randomlogistic2&#40;u, p, t, W&#41; &#61; &#40;p&#91;1&#93; &#43; p&#91;3&#93; * W / &#40;1 &#43; abs&#40;W&#41;&#41; - &#40;p&#91;2&#93; &#43; p&#91;3&#93; * sin&#40;W&#41;&#41; * u&#41; * u
+
+let u &#61; 1.0; p &#61; &#40;1.5, 2.0, 0.2, 0.1&#41;; t &#61; 3.0; w &#61; 0.5
+    println&#40;&quot;Code typed for &#96;f_randomlogistic1&#40;&#36;u, &#36;p, &#36;t, &#36;w&#41;&#41;:&quot;&#41;
+    println&#40;@code_typed&#40;f_randomlogistic1&#40;u, p, t, w&#41;&#41;&#41;
+    println&#40;&#41;
+    println&#40;&quot;Code typed for &#96;f_randomlogistic2&#40;&#36;u, &#36;p, &#36;t, &#36;w&#41;&#41;&quot;&#41;
+    println&#40;@code_typed&#40;f_randomlogistic2&#40;u, p, t, w&#41;&#41;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">Code typed for `f_randomlogistic1(1.0, (1.5, 2.0, 0.2, 0.1), 3.0, 0.5)):
+CodeInfo(
+1 ─ %1  = Base.getfield(p, 1)::Float64
+│   %2  = Base.getfield(p, 2)::Float64
+│   %3  = Base.getfield(p, 3)::Float64
+│   %4  = Base.getfield(p, 4)::Float64
+│   %5  = Base.abs_float(W)::Float64
+│   %6  = Base.add_float(1.0, %5)::Float64
+│   %7  = Base.div_float(W, %6)::Float64
+│   %8  = invoke Main.FD_SANDBOX_3637103081925323742.sin(W::Float64)::Float64
+│   %9  = Base.mul_float(%3, %7)::Float64
+│   %10 = Base.add_float(%1, %9)::Float64
+│   %11 = Base.mul_float(%4, %8)::Float64
+│   %12 = Base.add_float(%2, %11)::Float64
+│   %13 = Base.mul_float(%12, u)::Float64
+│   %14 = Base.sub_float(%10, %13)::Float64
+│   %15 = Base.mul_float(%14, u)::Float64
+└──       return %15
+) => Float64
+
+Code typed for `f_randomlogistic2(1.0, (1.5, 2.0, 0.2, 0.1), 3.0, 0.5))
+CodeInfo(
+1 ─ %1  = Base.getfield(p, 1, true)::Float64
+│   %2  = Base.getfield(p, 3, true)::Float64
+│   %3  = Base.mul_float(%2, W)::Float64
+│   %4  = Base.abs_float(W)::Float64
+│   %5  = Base.add_float(1.0, %4)::Float64
+│   %6  = Base.div_float(%3, %5)::Float64
+│   %7  = Base.add_float(%1, %6)::Float64
+│   %8  = Base.getfield(p, 2, true)::Float64
+│   %9  = Base.getfield(p, 3, true)::Float64
+│   %10 = invoke Main.FD_SANDBOX_3637103081925323742.sin(W::Float64)::Float64
+│   %11 = Base.mul_float(%9, %10)::Float64
+│   %12 = Base.add_float(%8, %11)::Float64
+│   %13 = Base.mul_float(%12, u)::Float64
+│   %14 = Base.sub_float(%7, %13)::Float64
+│   %15 = Base.mul_float(%14, u)::Float64
+└──       return %15
+) => Float64
+</code></pre>
+<h2 id="otimização_do_código"><a href="#otimização_do_código" class="header-anchor">Otimização do código</a></h2>
+<p>Outras macros também são bastante úteis na análise do código e na busca por códigos mais eficientes. Utilizaremos, abaixo, a macro <code>@btime</code> do pacote <a href="https://github.com/JuliaCI/BenchmarkTools.jl">JuliaCI/BenchmarkTools</a>. Esse mesmo pacote possui uma macro <code>@benchmark</code> que nos fornece resultados mais completos, mas, para efeito da análise que iremos fazer, <code>@btime</code> é suficiente. Há outras ferramentas, também, como a própria macro <code>@code_warntype</code>, que ajuda a identificar problemas no código causados por mudança de tipo de alguma variável no meio da função &#40;e.g. alguma variável que em certo momento é um inteiro mas em outro é um número em ponto flutuante&#41;. Outros ajudam a identificar quais partes do código demoram mais a ser executados, nos permitindo otimizar partes mais custosas do código.</p>
+<p>Mas, voltando ao nosso caso, vamos comparar a performance, por exemplo, das seguintes funções:</p>
+<pre><code class="language-julia">function fsir1&#40;u, p, t&#41;
+    β, γ &#61; p
+    s, i &#61; u
+    du &#61; &#91;-β * s * i, β * s * i - γ * i&#93;
+    return du
+end
+
+function fsir2&#33;&#40;du, u, p, t&#41; # does not work as desired
+    β, γ &#61; p
+    s, i &#61; u
+    du &#61; &#91;-β * s * i, β * s * i - γ * i&#93;
+    return du
+end
+
+function fsir3&#33;&#40;du, u, p, t&#41;
+    β, γ &#61; p
+    s, i &#61; u
+    du .&#61; &#91;-β * s * i, β * s * i - γ * i&#93;
+    return du
+end
+
+function fsir4&#33;&#40;du, u, p, t&#41;
+    β, γ &#61; p
+    s, i &#61; u
+    inew &#61; -β * s * i
+    rnew &#61; γ * i
+    du&#91;1&#93; &#61; -inew
+    du&#91;2&#93; &#61; inew - rnew
+    return du
+end</code></pre>
+<p>Para quem já estudou o modelo SIR de epidemia, pode reconhecer a função como sendo a lei de evolução para o subsistema composto pelas variáveis \(s = S/N\) e \(i = I/N\), onde \(S\) e \(I\) são as populações de suscetíveis e de infectados, respectivamente, e \(N\) é a população total.</p>
+<p>Observe que a primeira função, <code>fsir1&#40;u, p, t&#41;</code>, está na forma <em>out of place</em>, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções, <code>fsir3&#33;&#40;du, u, p, t&#41;</code>, <code>fsir4&#33;&#40;du, u, p, t&#41;</code>, estão na forma <em>inplace</em> e modificam a primeira variável, <code>du</code>, com o valor calculado para essas taxas. A segunda função, <code>fsir2&#33;&#40;du, u, p, t&#41;</code>, no entanto, deveria alterar o valor de <code>du</code>, mas na verdade ela cria um novo vetor, local, também denominado de <code>du</code>, ao invés de alterar a variável <code>du</code> passada para a função. Muito cuidado&#33; Essa função não funciona como desejamos.</p>
+<p>Em relação à performance, a forma <em>inplace</em> não é necessariamente mais rápida, como mostram os resultados a seguir da utilização da macro <code>@btime</code>.</p>
+<pre><code class="language-julia">using BenchmarkTools
+
+let u &#61; &#91;0.8, 0.2&#93;; p &#61; &#40;0.2, 0.15&#41;; t &#61; 1.0; du &#61; similar&#40;u&#41;
+    println&#40;&quot;Benchmark fsir&quot;&#41;
+    println&#40;@btime fsir&#40;&#36;u, &#36;p, &#36;t&#41;&#41;
+    println&#40;&quot;\nBenchmark fsir1&#33;&quot;&#41;
+    println&#40;@btime fsir1&#33;&#40;&#36;du, &#36;u, &#36;p, &#36;t&#41;&#41;
+    println&#40;&quot;\nBenchmark fsir2&#33;&quot;&#41;
+    println&#40;@btime fsir2&#33;&#40;&#36;du, &#36;u, &#36;p, &#36;t&#41;&#41;
+    println&#40;&quot;\nBenchmark fsir3&#33;&quot;&#41;
+    println&#40;@btime fsir3&#33;&#40;&#36;du, &#36;u, &#36;p, &#36;t&#41;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">Benchmark fsir
+UndefVarError: fsir not defined
+</code></pre>
+<p>Naturalmente, a primeira forma, <code>fsir1</code>, gera um novo vetor e aloca espaço na memória para ele, a cada iteração. Isso é custoso, como podemos ver. O que não é tão óbvio é que as duas outras funções, <code>fsir2&#33;</code> e <code>fsir3&#33;</code>, também alocam espaço na memória. Ambas tem um passo intermediário de criar o vetor <code>&#91;-β * s * i, β * s * i - γ * i&#93;</code>. Mesmo estando esse vetor à direita da expressão de atribuição, ele é criado antes de ser passado para o vetor <code>du</code>. A função <code>fsir2&#33;</code> é um pouco mais rápida pois apenas muda o ponteiro do vetor <code>du</code> para o vetor recém criado. Porém, ao mudar o ponteiro, faz de <code>du</code> uma variável local, cuja mudança não se reflete na variável <code>du</code> passada para a função, que continua apontando para o mesmo endereço de memória &#40;pode verificar isso usando a função <code>pointer&#40;du&#41;</code>, dentro e fora da função&#41;. A função <code>fsir3&#33;</code> copia os valores do vetor recém criado para o espaço de memória para o qual <code>du</code> aponta, tendo, portanto, um custo extra.</p>
+<p>Só a última versão, <code>fsir3&#33;</code>, é que não faz nenhuma alocação nova, sendo extremamente mais eficiente. Imagine resolver o sistema de EDOs e iterar isso milhares de vezes. A escolha da função mais eficiente faz uma grande diferença&#33;</p>
+
+    <div class="navbar">
+    <p id="nav">
+<span id="nav-prev" style="float: left;">
+<a class="menu-level-1" href="/notas_sde/pages/c10/convergencia_fraca_em">10.10. Convergência fraca do método de Euler-Maruyama <kbd>←</kbd></a>
+</span>
+<span id="nav-next" style="float: right;">
+    <a class="menu-level-1" href="/notas_sde/pages/c11/nuclear_reactions"><kbd>→</kbd> 12.1. Reações nucleares</a>
+</span>
+    </p>
+</div>
+</br></br>
+
+
+
+<div class="page-foot">
+    
+        <div class="license">
+            <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a>
+            Ricardo M. S. Rosa
+        </div>
+    
+
+    Last modified: June 21, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+</div><!-- CONTENT ENDS HERE -->
+
+      </div> <!-- .books-content -->
+    </div> <!-- .books-container -->
+
+    
+        <script src="/notas_sde/libs/katex/katex.min.js"></script>
+        <script src="/notas_sde/libs/katex/auto-render.min.js"></script>
+        <script>renderMathInElement(document.body)</script>
+    
+
+    
+        <script src="/notas_sde/libs/highlight/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+    
+
+  </body>
+</html>
