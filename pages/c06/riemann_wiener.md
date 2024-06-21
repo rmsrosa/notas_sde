@@ -74,7 +74,7 @@ $$
 \frac{1}{2}\sum_{j=1}^{n}(W_{t_j}^2 - W_{t_{j-1}}^2) = \frac{1}{2}(W_T^2 - W_0^2) = \frac{1}{2}W_T^2.
 $$
 
-O segundo somatório foi considerado na seção {{link_section pages/c04/variacao_ilimitada_wiener}}, onde mostramos, para uma malha qualquer, que o valor esperado satisfaz
+O segundo somatório foi considerado na seção {{link_section pages/c05/variacao_ilimitada_wiener}}, onde mostramos, para uma malha qualquer, que o valor esperado satisfaz
 $$
 \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T,
 $$
@@ -208,7 +208,7 @@ No caso mais geral, ao considerarmos um integrando da forma $g(t, X_t, Y_t)$ em 
 $$
 \int_0^T W_t \;\mathrm{d}W_t = \frac{1}{2}W_T - \frac{1}{2}T.
 $$
-Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c05/integral_dualidade}}. A definição via dualidade coincide com a escolha $\lambda = 1/2$, que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa, sim, coincide com a definição via dualidade, nos casos em que aquela está definida:
+Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c06/integral_dualidade}}. A definição via dualidade coincide com a escolha $\lambda = 1/2$, que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa, sim, coincide com a definição via dualidade, nos casos em que aquela está definida:
 $$
 \int_0^T W_t \circ\mathrm{d}W_t = \frac{1}{2}W_T.
 $$

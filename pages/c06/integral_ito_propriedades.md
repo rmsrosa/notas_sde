@@ -101,7 +101,7 @@ $$
 
 ## Relação com a definição via dualidade
 
-Na Seção {{link_section pages/c05/integral_dualidade}}, definimos a integral de uma função determinística $g=g(t)$ continuamente diferenciável em relação a um processo estocástico como um processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade
+Na Seção {{link_section pages/c06/integral_dualidade}}, definimos a integral de uma função determinística $g=g(t)$ continuamente diferenciável em relação a um processo estocástico como um processo de Wiener, cujos caminhos amostrais são quase certamente contínuos, através da dualidade
 $$
 \int_0^T g(t)\;\mathrm{d}W_t = g(T)W_T - g(0)W_0 - \int_0^t g'(t)W_t \;\mathrm{d}t.
 $$
