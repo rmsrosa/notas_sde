@@ -74,30 +74,6 @@ em probabilidade. Como os caminhos amostrais são contínuos, obtemos a converg�
 
 Observe, ainda, que a variância é simétrica em relação ao instante médio $t = 1/2$ e alcança o seu máximo exatamente nesse ponto.
 
-## Outras representações
-
-Uma ponte browniana também tem outras representações, como 
-$$
-B_t = W_t - t W_1 =  (1-t)W_{t/(1-t)}.
-$$
-Por sua vez, um processo de Wiener também pode ser escrito em termos de pontes brownianas, como em 
-$$
-W_t = B_t + t N, \quad 0\leq t < 1,
-$$
-onde $N$ é uma variável aleatória normal e independente de $\{B_t\}_{t \geq 0}$, e
-$$
-W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
-$$
-Mas deixamos isso a cargo do leitor mais interessado.
-
-## Exercícios
-
-1. Uma ponte browniana pode ser definida, mais geralmente, em um intervalo $[0, T)$, como solução da equação
-$$
-\mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
-$$
-com condição inicial $B_0 = 0$. Ache uma fórmula explíta para $B_t$ como uma integral de Itô e encontro a variância $\mathrm{V}(B_t)$, ao longo de $0 \leq t < T$.
-
 ```julia:brownian_bridge
 #hideall
 using Plots
@@ -130,3 +106,27 @@ plot!(tt, Yt[:, 1], color = 2, label = "um caminho amostral")
 savefig(joinpath(@OUTPUT, "brownian_bridge.svg"))
 ```
 \fig{brownian_bridge}
+
+## Outras representações
+
+Uma ponte browniana também tem outras representações, como 
+$$
+B_t = W_t - t W_1 =  (1-t)W_{t/(1-t)}.
+$$
+Por sua vez, um processo de Wiener também pode ser escrito em termos de pontes brownianas, como em 
+$$
+W_t = B_t + t N, \quad 0\leq t < 1,
+$$
+onde $N$ é uma variável aleatória normal e independente de $\{B_t\}_{t \geq 0}$, e
+$$
+W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
+$$
+Mas deixamos isso a cargo do leitor mais interessado.
+
+## Exercícios
+
+1. Uma ponte browniana pode ser definida, mais geralmente, em um intervalo $[0, T)$, como solução da equação
+$$
+\mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
+$$
+com condição inicial $B_0 = 0$. Ache uma fórmula explíta para $B_t$ como uma integral de Itô e encontro a variância $\mathrm{V}(B_t)$, ao longo de $0 \leq t < T$.
