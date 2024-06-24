@@ -4,7 +4,7 @@
 
 Considere, agora, uma equação diferencial estocástica
 $$
-\mathrm{d}X_y = f(t, X_y)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t,
+\mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t,
 $$
 com uma condição initial
 $$

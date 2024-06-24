@@ -29,7 +29,7 @@ $$
 
 Por outro lado, também temos
 $$
-\frac{\mathrm{d}}{\mathrm{d}t} \mathbb{E}[\Phi] = \int_\mathbb{R} \Phi'(X_t(\omega))\frac{\mathrm{d}}{\mathrm{d}t}X_t(\omega)\;\mathrm{d}\omega = \int_\mathbb{R} \Phi'(X_t(\omega))f(t, X_t(\omega))\;\mathrm{d}\omega = \int_\mathbb{R} \Phi'(x)f(t, x) p(t, x)\;\mathrm{d}x.
+\frac{\mathrm{d}}{\mathrm{d}t} \mathbb{E}[\Phi] = \int_\mathbb{R} \Phi'(X_t(\omega))\frac{\mathrm{d}}{\mathrm{d}t}X_t(\omega)\;\mathrm{d}\mathbb{P}(\omega) = \int_\mathbb{R} \Phi'(X_t(\omega))f(t, X_t(\omega))\;\mathrm{d}\mathbb{P}(\omega) = \int_\mathbb{R} \Phi'(x)f(t, x) p(t, x)\;\mathrm{d}x.
 $$
 Integrando por partes,
 $$
