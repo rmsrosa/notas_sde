@@ -125,8 +125,9 @@ Mas deixamos isso a cargo do leitor mais interessado.
 
 ## Exercícios
 
-1. Uma ponte browniana pode ser definida, mais geralmente, em um intervalo $[0, T)$, como solução da equação
+1. Uma ponte browniana também pode ser considerada em um intervalo $[0, T)$, cuja equação toma a forma
 $$
 \mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
 $$
 com condição inicial $B_0 = 0$. Ache uma fórmula explíta para $B_t$ como uma integral de Itô e encontro a variância $\mathrm{V}(B_t)$, ao longo de $0 \leq t < T$.
+1. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener e considere o processo $\{B_t\}_{0\leq t \leq T}$ definido por $B_t = W_t - t W_T / T,$ para $0 \leq t \leq T.$ Mostre que $\{B_t\}_{0\leq t \leq T}$ é independente de $\{W_t\}_{t \geq T}.$ (Argumente que ambos são gaussianos com esperança nula e calcule a covariância.)
