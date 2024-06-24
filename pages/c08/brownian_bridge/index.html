@@ -429,6 +429,8 @@ B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \]
 <p>em probabilidade. Como os caminhos amostrais são contínuos, obtemos a convergência quase certamente.</p>
 <p>Observe, ainda, que a variância é simétrica em relação ao instante médio \(t = 1/2\) e alcança o seu máximo exatamente nesse ponto.</p>
+
+<img src="/notas_sde/assets/pages/c08/brownian_bridge/code/output/brownian_bridge.svg" alt="">
 <h2 id="outras_representações"><a href="#outras_representações" class="header-anchor">Outras representações</a></h2>
 <p>Uma ponte browniana também tem outras representações, como </p>
 \[
@@ -453,8 +455,6 @@ W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
 \]
 <p>com condição inicial \(B_0 = 0\). Ache uma fórmula explíta para \(B_t\) como uma integral de Itô e encontro a variância \(\mathrm{V}(B_t)\), ao longo de \(0 \leq t < T\).</p>
 
-<img src="/notas_sde/assets/pages/c08/brownian_bridge/code/output/brownian_bridge.svg" alt="">
-
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
@@ -477,7 +477,7 @@ W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
         </div>
     
 
-    Last modified: June 21, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 24, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
