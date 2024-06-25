@@ -74,6 +74,31 @@ em probabilidade. Como os caminhos amostrais são contínuos, obtemos a converg�
 
 Observe, ainda, que a variância é simétrica em relação ao instante médio $t = 1/2$ e alcança o seu máximo exatamente nesse ponto.
 
+Por fim, podemos calcular a covariância entre instantes $0 \leq s, t \leq 1.$ Nesse caso, temos
+$$
+\mathbb{E}[B_tB_s] = (1 - t)(1 - s)\mathbb{E}\left[ \int_0^t \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau\right]
+$$
+Caso $0 \leq s \leq t \leq 1,$ dividimos a integral exterior de $0$ a $s$ e de $s$ a $t$. Como os incrementos no intervalo $[s, t]$ são independentes dos incrementos no intervalo $[0, s],$ temos
+$$
+\mathbb{E}\left[ \int_s^t \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau \right],
+$$
+de modo que
+$$
+\mathbb{E}[B_tB_s] = (1 - t)(1 - s)\mathbb{E}\left[ \int_0^s \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau \right] = (1 - t)(1 - s) \mathbb{E}\left[ \left(\int_0^s \frac{1}{(1-\tau)}\;\mathrm{d}W_\tau\right)^2\right].
+$$
+Usando a fórmula de Itô para dois processos, temos
+$$
+\mathbb{E}[B_tB_s] = (1 - t)(1 - s)\int_0^s \frac{1}{(1-\tau)^2}\;\mathrm{d}\tau = (1 - t)(1 - s)\left(\frac{1}{1 - \tau}\right)\bigg|_{\tau = 0}^{\tau = s} = (1 - t) - (1 - t)(1 - s) = (1 - t)s.
+$$
+Caso $0 \leq t \leq s \leq 1,$ obtemos, por simetria,
+$$
+\mathbb{E}[B_tB_s] = (1 - s)t
+$$
+De modo geral, como a ponte Browniana tem esperança nula, temos
+$$
+\operatorname{Cov}(B_t, B_s) = \mathbb{E}[B_tB_s] = \min\{s, t\} - st, \qquad 0 \leq s, t \leq 1.
+$$
+
 ```julia:brownian_bridge
 #hideall
 using Plots
@@ -125,9 +150,19 @@ Mas deixamos isso a cargo do leitor mais interessado.
 
 ## Exercícios
 
-1. Uma ponte browniana também pode ser considerada em um intervalo $[0, T)$, cuja equação toma a forma
+1. Mostre que um processo $\{B_t\}_{0\leq t\leq 1}$ definido por $B_0 = B_1 = 0$ e 
+$$
+B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 < t < 1,
+$$
+tem covariância dada por
+$$
+\operatorname{Cov}(B_t, B_s) = \min\{s, t\} - st, \quad 0 \leq s, t \leq 1.
+$$
+2. Uma ponte Browniana também pode ser definida como sendo um processo Gaussiano $\{B_t\}_{0 \leq t \leq 1}$ com caminhos contínuous quase certamente e satisfazendo $B_0 = B_1 = 0$ quase certamente; $\mathbb{E}[B_t] = 0,$ para todo $0 \leq t \leq 1;$ e $\operatorname{Cov}(B_t, B_s) = \min\{s, t\} - st,$ para $0 \leq s, t \leq 1.$ Usando essa caracterização, mostre que, se $\{W_t\}_{t\geq 0}$ é um processo de Wiener, então $B_t = W_t - tW_1,$ $0\leq t \leq 1,$ é uma ponte Browniana. Por sua vez, mostre que se $\{B_t\}_{0\leq t \leq 1}$ é uma ponte Browniana e $Z\sim \mathcal{N}(0, 1),$ então $W_t = B_t + tZ,$ $0\leq t \leq 1,$ é um processo de Wiener no intervalo $[0, 1].$ 
+3. Uma ponte browniana também pode ser considerada em um intervalo $[0, T]$, cuja equação toma a forma
 $$
 \mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
 $$
-com condição inicial $B_0 = 0$. Ache uma fórmula explíta para $B_t$ como uma integral de Itô e encontro a variância $\mathrm{V}(B_t)$, ao longo de $0 \leq t < T$.
-1. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener e considere o processo $\{B_t\}_{0\leq t \leq T}$ definido por $B_t = W_t - t W_T / T,$ para $0 \leq t \leq T.$ Mostre que $\{B_t\}_{0\leq t \leq T}$ é independente de $\{W_t\}_{t \geq T}.$ (Argumente que ambos são gaussianos com esperança nula e calcule a covariância.)
+com condições inicial e final $B_0 = B_T = 0$. Ache uma fórmula explícita para $B_t$ como uma integral de Itô ao longo de $0 \leq t < T$ e encontre a variância $\mathrm{V}(B_t).$
+4. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener e considere o processo $\{B_t\}_{0\leq t \leq T}$ definido por $B_t = W_t - t W_T / T,$ para $0 \leq t \leq T.$ Mostre que $\{B_t\}_{0\leq t \leq T}$ é independente de $\{W_t\}_{t \geq T}.$
+
