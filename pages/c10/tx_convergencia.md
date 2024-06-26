@@ -6,7 +6,7 @@
 
 Processos estocásticos são famílias de variáveis aleatória e qualquer noção de convergência de variáveis aleatórias pode ser utilizada para analisar a convergência de processos estocásticos. No estudo da convergência de métodos numéricos para equações aleatórias e estocásticas, no entanto, uma noção é particularmente utilizada, que é a de convergência em média, que é a convergência do valor esperado do erro absoluto, também conhecida aqui como *convergência forte* (mas que é diferente da noção de convergência forte de variáveis aleatórias, que diz respeito à convergência quase certamente).
 
-Uma outra noção de convergência que não nos dá, exatamente, uma convergência de variáveis aleatórias é a chamada *convergência fraca*, que diz respeito apenas à convergência do valor esperado. A distribuição de probabilidades, em si, pode não convergir.
+Uma outra noção de convergência é a chamada *convergência fraca*, que diz respeito apenas à convergência de certas informações estatísticas, como o valor esperado. 
 
 Associadas a essas convergências, uma outra questão importante é sobre a *taxa* de convergência, ou seja, quão rápida se dá a convergência. Vejamos, aqui, mais detalhes sobre essas noções.
 
@@ -46,30 +46,32 @@ Ou seja, tomando-se $\Delta t$ pequeno, temos, com probabilidade perto de um, qu
 
 ## Convergência fraca
 
-Em muitos casos, temos um interesse particular no valor esperado de um processo. É claro que se um método numérico converge fortemente, então ele o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência do valor esperado, que é esta chamada de convergência fraca.
+Em muitos casos, temos um interesse particular no valor esperado de um processo ou de outras informações estatísticas. Se um método numérico converge fortemente, então o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência desses momentos generalizados, que é esta chamada de convergência fraca.
 
 Nesse sentido, novamente, dado um processo contínuo $\{X_t\}_{t \in [0, T]}$ e uma aproximação discreta $\{X_j^{\mathrm{\Delta t}}\}_j$ em instantes $t_j = j \Delta t$, $\Delta t = T/n$, o **erro fraco** é dado por
 $$
-e_{\Delta t}^{\mathrm{fraco}} = \max_{j} |\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]|.
+e_{\Phi, \Delta t}^{\mathrm{fraco}} = \max_{j} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^{\mathrm{\Delta t}})]|,
 $$
+para uma função real $\Phi$ em uma classe apropriada (e.g. polinômios, polinômios até uma determinada ordem, funções contínuas limitadas, etc.)
 
 Dizemos que o método numérico **converge fracamente** quando
 $$
-e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
+e_{\Phi, \Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^{\mathrm{\Delta t}})]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0,
 $$
+para toda $\Phi$ na classe designada.
 
 Um método numérico, ou uma aproximação, é dita de **ordem fraca** $p > 0$, quando existe uma constante $C > 0$ e um limiar $\delta > 0$ tais que
 $$
-e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+e_{\Phi, \Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^{\mathrm{\Delta t}})]\right| \leq C_\Phi \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 $$
 
-Observe que, para cada $n$,
+Observe que, para cada $n$, considerando $\Phi(x) = x,$ i.e. a função identidade $\Phi = I,$
 $$
 \left| \mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_j} - X_j^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_j} - X_j^{\mathrm{\Delta t}}\right| \right],
 $$
 de modo que
 $$
-e_{\Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall \Delta t.
+e_{I, \Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall \Delta t.
 $$
 
 No entanto, como dissemos acima, um método numérico pode convergir fracamente sem que convirja fortemente (e.g. Euler-Maruyama fraco, onde o termo estocástico é calculado via passeio aleatório) ou ambos podem convergir mas com a ordem de convergência fraca mais alta do que a sua ordem de convergência forte.
