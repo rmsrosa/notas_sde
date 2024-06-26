@@ -1,1 +1,1 @@
-"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_2.svg"
+nothing

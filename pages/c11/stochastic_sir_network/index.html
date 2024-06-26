@@ -292,7 +292,7 @@
     <li><a href="/notas_sde/pages/c10/heun">10.6. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c10/milstein">10.8. O método de Milstein</a></li>
@@ -378,7 +378,8 @@
 using StochasticDiffEq
 
 using Plots</code></pre>
-
+<pre><code class="plaintext code-output">Failed to precompile StochasticDiffEq [789caeaf-c7a9-5a7d-9973-96adeb23e2a0] to /home/runner/.julia/compiled/v1.8/StochasticDiffEq/jl_MddTNQ.
+</code></pre>
 <h2 id="modelo_sir_determinístico_em_rede"><a href="#modelo_sir_determinístico_em_rede" class="header-anchor">Modelo SIR determinístico em rede</a></h2>
 <p>Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por \(A\), \(B\) e \(C\).</p>
 <h2 id="modelo_sir_em_rede_de_sítios"><a href="#modelo_sir_em_rede_de_sítios" class="header-anchor">Modelo SIR em rede de sítios</a></h2>
@@ -554,7 +555,7 @@ for &#40;j, s&#41; in zip&#40;1:3, &#39;A&#39;:&#39;C&#39;&#41;
     plot&#33;&#40;getindex.&#40;SIR_network_sol.u, 2, j&#41;/pop&#91;j&#93;, label &#61; &quot;Site &#36;s&quot;&#41;
 end
 plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&quot;, titlefont &#61; 10&#41;</code></pre>
-<p><img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_1.svg" alt=""> <img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_2.svg" alt=""></p>
+<p><p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_2' not found. //</span></p></p>
 <h2 id="modelos_sir_estocástico_em_rede"><a href="#modelos_sir_estocástico_em_rede" class="header-anchor">Modelos SIR estocástico em rede</a></h2>
 
     <div class="navbar">

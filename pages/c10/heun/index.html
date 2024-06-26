@@ -281,7 +281,7 @@
     <li><a href="/notas_sde/pages/c10/heun">10.6. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c10/milstein">10.8. O método de Milstein</a></li>
@@ -342,7 +342,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_em">10.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun"><kbd>→</kbd> 10.7. Simulações ilustrando ordem de convergência do método de Heun</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun"><kbd>→</kbd> 10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias</a>
 </span>
     </p>
 </div>
@@ -369,8 +369,10 @@ x_j = x_{j-1} + \frac{1}{2}\left( f(t_{j-1}, x_{j-1}) + f(t_j, x_{j-1} + \Delta 
 x_j = x_{j-1} + \frac{f(t_{j-1}, x_{j-1}) + f(t_j, x_j)}{2}\Delta t,
 \]
 <p>ao substituírmos \(x_j\) no termo \(f(t_j, x_j)\) à direita pelo passo do método de Euler, \(x_j \approx x_{j-1} + \Delta t f(t_{j-1}, x_{j-1}).\) Nesse sentido, ele pode ser visto, também, como um método de previsão-correção, onde a previsão é dada pelo método de Euler.</p>
+<h2 id="método_de_heun_no_caso_aleatório"><a href="#método_de_heun_no_caso_aleatório" class="header-anchor">Método de Heun no caso aleatório</a></h2>
+<p>No caso de equações diferenciais aleatórias, o método de Heun converge de forma forte. Veremos simulações sobre isso a seguir.</p>
 <h2 id="não_convergência_do_método_de_heun_no_caso_estocástico"><a href="#não_convergência_do_método_de_heun_no_caso_estocástico" class="header-anchor">Não convergência do método de Heun no caso estocástico</a></h2>
-<p>No caso estocástico, como aproximação de uma equação</p>
+<p>No caso estocástico, no entanto, o método não converge nem fracamante. Para a equação</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t,
 \]
@@ -426,7 +428,7 @@ X_j = \prod_{i = 0}^{j-1}\left(1 + 2\Delta W_i + 2\Delta W_i^2\right).
 <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_em">10.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun"><kbd>→</kbd> 10.7. Simulações ilustrando ordem de convergência do método de Heun</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun"><kbd>→</kbd> 10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias</a>
 </span>
     </p>
 </div>

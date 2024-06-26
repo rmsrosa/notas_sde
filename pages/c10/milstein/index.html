@@ -281,7 +281,7 @@
     <li><a href="/notas_sde/pages/c10/heun">10.6. Método de Heun</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun</a></li>
+    <li><a href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c10/milstein">10.8. O método de Milstein</a></li>
@@ -339,7 +339,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_milstein"><kbd>→</kbd> 10.9. Simulações Milstein</a>
@@ -457,7 +457,7 @@ X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})\Delta W_{j-1}, \qquad j = 1, \l
 \[
 \int_{t_0}^t g(X_s)\;\mathrm{d}W_s = g(X_{t_0})\Delta t^{1/2} + \mathcal{O}(\Delta t)
 \]
-<p>A integral em \(f\) tem uma ordem mais alta do que a em \(g\), mas não podemos descartá-la por completo, pois aproximação em \(f\) cairia para ordem zero, na verdade &#40;Pense em aproximar a função \(f(t) = t = \int_0^t \;\mathrm{d}s\) por zero, \(\tilde f(t) = 0\), em que cada passo \(\int_t^{\Delta t} \;\mathrm{d}s = \Delta t\) mas, após a integração em um intervalo \(0\leq t \leq 1,\) o erro é \(f(1) - \tilde f(1) = 1 - 0 = 1\)&#41;. Temos que aproximar os dois termos até uma ordem mínima desejada.</p>
+<p>A integral em \(f\) tem uma ordem mais alta do que a em \(g\), mas não podemos descartá-la por completo, pois a aproximação em \(f\) cairia para ordem zero, na verdade &#40;Pense em aproximar a função \(f(t) = t = \int_0^t \;\mathrm{d}s\) por zero, \(\tilde f(t) = 0\), em que cada passo \(\int_t^{\Delta t} \;\mathrm{d}s = \Delta t\) mas, após a integração em um intervalo \(0\leq t \leq 1,\) o erro é \(f(1) - \tilde f(1) = 1 - 0 = 1\)&#41;. Temos que aproximar os dois termos até uma ordem mínima desejada.</p>
 <h2 id="o_método_de_milstein"><a href="#o_método_de_milstein" class="header-anchor">O método de Milstein</a></h2>
 <p>Para o método de Milstein, vamos reter o termo de ordem mais baixa do resto \(R_j\), que é o termo com a integral estocástica dupla:</p>
 \[
@@ -532,12 +532,12 @@ X_j = X_{j-1} + f(X_{j-1}) \Delta t + g(X_{j-1})Z_{j-1}\sqrt{\Delta t} + \frac{1
 \]
 <p>onde \(Z_i \sim \mathcal{N}(0, 1)\) são independentes.</p>
 <h2 id="ordem_de_convergência_do_método_de_milstein"><a href="#ordem_de_convergência_do_método_de_milstein" class="header-anchor">Ordem de convergência do método de Milstein</a></h2>
-<p>Não faremos as estimativas aqui, mas, como dito acima, pode-se mostrar que o método de Milstein tem ordem forte \(1\) e ordem fraca \(1\), também.</p>
+<p>Não faremos as estimativas rigorosas aqui, mas, como dito acima, pode-se mostrar que o método de Milstein tem ordem forte \(1\) e ordem fraca \(1\), também.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_convergencia_randomheun">10.7. Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c10/simulacoes_milstein"><kbd>→</kbd> 10.9. Simulações Milstein</a>
