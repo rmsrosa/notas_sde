@@ -358,7 +358,7 @@
 <p>&quot;Whereas weak convergence measures the &#39;error of the means,&#39; strong convergence measures the &#39;mean of the errors.&#39;&quot; - D. J. Higham &amp; P. E. Kloeden, in <em>An Introduction to the Numerical Simulation of Stochastic Differential Equations,</em> &#40;SIAM, 2021&#41;.</p>
 </blockquote>
 <p>Processos estocásticos são famílias de variáveis aleatória e qualquer noção de convergência de variáveis aleatórias pode ser utilizada para analisar a convergência de processos estocásticos. No estudo da convergência de métodos numéricos para equações aleatórias e estocásticas, no entanto, uma noção é particularmente utilizada, que é a de convergência em média, que é a convergência do valor esperado do erro absoluto, também conhecida aqui como <em>convergência forte</em> &#40;mas que é diferente da noção de convergência forte de variáveis aleatórias, que diz respeito à convergência quase certamente&#41;.</p>
-<p>Uma outra noção de convergência que não nos dá, exatamente, uma convergência de variáveis aleatórias é a chamada <em>convergência fraca</em>, que diz respeito apenas à convergência do valor esperado. A distribuição de probabilidades, em si, pode não convergir.</p>
+<p>Uma outra noção de convergência é a chamada <em>convergência fraca</em>, que diz respeito apenas à convergência de certas informações estatísticas, como o valor esperado. </p>
 <p>Associadas a essas convergências, uma outra questão importante é sobre a <em>taxa</em> de convergência, ou seja, quão rápida se dá a convergência. Vejamos, aqui, mais detalhes sobre essas noções.</p>
 <h2 id="convergência_forte"><a href="#convergência_forte" class="header-anchor">Convergência forte</a></h2>
 <p>Dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_j^{\mathrm{\Delta t}}\}_j\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro forte</strong>, ou <strong>erro médio,</strong> é dado por</p>
@@ -388,26 +388,28 @@ e_{\Delta t}^{\mathrm{forte}} = \max_{j} \mathbb{E}[|X_{t_j} - X_j^{\mathrm{\Del
 \]
 <p>Ou seja, tomando-se \(\Delta t\) pequeno, temos, com probabilidade perto de um, que o erro ao longo de um caminho amostral é pequeno.</p>
 <h2 id="convergência_fraca"><a href="#convergência_fraca" class="header-anchor">Convergência fraca</a></h2>
-<p>Em muitos casos, temos um interesse particular no valor esperado de um processo. É claro que se um método numérico converge fortemente, então ele o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência do valor esperado, que é esta chamada de convergência fraca.</p>
+<p>Em muitos casos, temos um interesse particular no valor esperado de um processo ou de outras informações estatísticas. Se um método numérico converge fortemente, então o valor esperado das simulações converge para o valor esperado da solução da equação que está sendo aproximada. Mas pode ser que, em alguns casos, a convergência do valor esperado seja mais rápida. E também pode acontecer do valor esperado convergir, sem que o método seja fortemente convergente. Por esses motivos, define-se uma noção para a convergência desses momentos generalizados, que é esta chamada de convergência fraca.</p>
 <p>Nesse sentido, novamente, dado um processo contínuo \(\{X_t\}_{t \in [0, T]}\) e uma aproximação discreta \(\{X_j^{\mathrm{\Delta t}}\}_j\) em instantes \(t_j = j \Delta t\), \(\Delta t = T/n\), o <strong>erro fraco</strong> é dado por</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} = \max_{j} |\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]|.
+e_{\Phi, \Delta t}^{\mathrm{fraco}} = \max_{j} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^{\mathrm{\Delta t}})]|,
 \]
+<p>para uma função real \(\Phi\) em uma classe apropriada &#40;e.g. polinômios, polinômios até uma determinada ordem, funções contínuas limitadas, etc.&#41;</p>
 <p>Dizemos que o método numérico <strong>converge fracamente</strong> quando</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0.
+e_{\Phi, \Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^{\mathrm{\Delta t}})]\right| \rightarrow 0, \qquad \Delta t \rightarrow 0,
 \]
+<p>para toda \(\Phi\) na classe designada.</p>
 <p>Um método numérico, ou uma aproximação, é dita de <strong>ordem fraca</strong> \(p > 0\), quando existe uma constante \(C > 0\) e um limiar \(\delta > 0\) tais que</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}]\right| \leq C \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
+e_{\Phi, \Delta t}^{\mathrm{fraco}} = \max_{j} \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^{\mathrm{\Delta t}})]\right| \leq C_\Phi \Delta t^p, \qquad \forall 0 < \Delta t \leq \delta.
 \]
-<p>Observe que, para cada \(n\),</p>
+<p>Observe que, para cada \(n\), considerando \(\Phi(x) = x,\) i.e. a função identidade \(\Phi = I,\)</p>
 \[
 \left| \mathbb{E}[X_{t_j}] - \mathbb{E}[X_j^{\mathrm{\Delta t}}] \right| = \left| \mathbb{E}[X_{t_j} - X_j^{\mathrm{\Delta t}}] \right| \leq \mathbb{E}\left[ \left| X_{t_j} - X_j^{\mathrm{\Delta t}}\right| \right],
 \]
 <p>de modo que</p>
 \[
-e_{\Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall \Delta t.
+e_{I, \Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall \Delta t.
 \]
 <p>No entanto, como dissemos acima, um método numérico pode convergir fracamente sem que convirja fortemente &#40;e.g. Euler-Maruyama fraco, onde o termo estocástico é calculado via passeio aleatório&#41; ou ambos podem convergir mas com a ordem de convergência fraca mais alta do que a sua ordem de convergência forte.</p>
 <h2 id="outras_fontes_de_erro"><a href="#outras_fontes_de_erro" class="header-anchor">Outras fontes de erro</a></h2>
@@ -446,7 +448,7 @@ e_{\Delta t}^{\mathrm{fraco}} \leq e_{\Delta t}^{\mathrm{forte}}, \quad \forall 
         </div>
     
 
-    Last modified: June 24, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
