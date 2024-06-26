@@ -1,4 +1,4 @@
-@def title = "Simulações ilustrando ordem de convergência do método de Heun"
+@def title = "Simulações ilustrando ordem de convergência do método de Heun para equações diferenciais aleatórias"
 
 # {{ get_title }}
 

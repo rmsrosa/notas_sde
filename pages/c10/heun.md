@@ -20,9 +20,13 @@ x_j = x_{j-1} + \frac{f(t_{j-1}, x_{j-1}) + f(t_j, x_j)}{2}\Delta t,
 $$
 ao substituírmos $x_j$ no termo $f(t_j, x_j)$ à direita pelo passo do método de Euler, $x_j \approx x_{j-1} + \Delta t f(t_{j-1}, x_{j-1}).$ Nesse sentido, ele pode ser visto, também, como um método de previsão-correção, onde a previsão é dada pelo método de Euler.
 
+## Método de Heun no caso aleatório
+
+No caso de equações diferenciais aleatórias, o método de Heun converge de forma forte. Veremos simulações sobre isso a seguir.
+
 ## Não convergência do método de Heun no caso estocástico
 
-No caso estocástico, como aproximação de uma equação
+No caso estocástico, no entanto, o método não converge nem fracamante. Para a equação
 $$
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t,
 $$

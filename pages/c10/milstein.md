@@ -122,7 +122,7 @@ $$
 \int_{t_0}^t g(X_s)\;\mathrm{d}W_s = g(X_{t_0})\Delta t^{1/2} + \mathcal{O}(\Delta t)
 $$
 
-A integral em $f$ tem uma ordem mais alta do que a em $g$, mas não podemos descartá-la por completo, pois aproximação em $f$ cairia para ordem zero, na verdade (Pense em aproximar a função $f(t) = t = \int_0^t \;\mathrm{d}s$ por zero, $\tilde f(t) = 0$, em que cada passo $\int_t^{\Delta t} \;\mathrm{d}s = \Delta t$ mas, após a integração em um intervalo $0\leq t \leq 1,$ o erro é $f(1) - \tilde f(1) = 1 - 0 = 1$). Temos que aproximar os dois termos até uma ordem mínima desejada.
+A integral em $f$ tem uma ordem mais alta do que a em $g$, mas não podemos descartá-la por completo, pois a aproximação em $f$ cairia para ordem zero, na verdade (Pense em aproximar a função $f(t) = t = \int_0^t \;\mathrm{d}s$ por zero, $\tilde f(t) = 0$, em que cada passo $\int_t^{\Delta t} \;\mathrm{d}s = \Delta t$ mas, após a integração em um intervalo $0\leq t \leq 1,$ o erro é $f(1) - \tilde f(1) = 1 - 0 = 1$). Temos que aproximar os dois termos até uma ordem mínima desejada.
 
 ## O método de Milstein
 
@@ -203,4 +203,4 @@ onde $Z_i \sim \mathcal{N}(0, 1)$ são independentes.
 
 ## Ordem de convergência do método de Milstein
 
-Não faremos as estimativas aqui, mas, como dito acima, pode-se mostrar que o método de Milstein tem ordem forte $1$ e ordem fraca $1$, também.
+Não faremos as estimativas rigorosas aqui, mas, como dito acima, pode-se mostrar que o método de Milstein tem ordem forte $1$ e ordem fraca $1$, também.
