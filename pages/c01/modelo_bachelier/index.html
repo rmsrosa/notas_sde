@@ -361,25 +361,25 @@
 <p>Bachelier teve como professores matemáticos ilustres como Emile Picard, Joseph Boussinesq e Henri Poincaré, este último seu orientador de doutorado, na Sorbonne, e com quem aprendeu o cálculo de probabilidades. Além disso, tinha a sua própria experiência no mercado financeiro. De Boussinesq, herdou o conhecimento de mecânica dos fluidos, como ilustra o título da sua segunda tese &quot;Résistance d&#39;une masse liquide indéfinie pourvue de frottements int́erieurs, régis par les formules de Navier, aux petits mouvements variés de translation d&#39;une sphère solide, immergée dans cette masse et adhérente à la couche fluide qui la touche&quot;.</p>
 <p>Em sua tese, Bachelier considerou as flutuações no mercado de ações. Segundo Bachelier, as pequenas flutuações no preço observadas em curtos intervalos de tempo são independentes do preço no momento. Implicitamente, também assume que essas flutuações são independentes das flutuações passadas e que são identicamente distribuídas. Dessa forma, Bachelier deduz que os incrementos têm uma distribuição Normal.</p>
 <p>Bachelier apresentou, na verdade, duas deduções diferentes, uma semelhante à de Einstein e outra como um caminho aleatório. Em relação ao argumento via caminho aleatório, Mark Davies menciona, em  <a href="https://www.jstor.org/stable/j.ctt7scn4">Louis Bachelier&#39;s Theory of Speculation: The Origins of Modern Finance, Louis Bachelier, Edited and translated by Mark Davis, Alison Etheridge</a>, que Bachelier obteve, assim, o movimento Browniano como limite difusivo de caminhos aleatórios. Uma demonstração mais rigorosa do processo de limite do discreto para o contínuo, no entanto, só aparece nos trabalhos de Kolomogorov, em 1931, que reconhece a influência de Bachelier.</p>
-<p>Em relação ao primeiro modelo, ao qual o modelo de Einstein se assemelha, Bachelier considera a densidade de probabilidade \(p(t, x)\) para o preço de uma ação no tempo \(t\) e valor \(x\), como feito posteriormente por Einstein para a posição de uma partícula. Uma diferença, no entanto, é que ele não desconecta a densidade de probabilidade \(g=g(\ell)\), considerada por Einstein para os passos de comprimento \(\ell\) ao longo de um tempo característico \(\tau,\) da própria densidade de probabilidade da partícula, ou melhor, do preço. Mais precisamente, observe que um passo \(\ell\) do instante \(0\) ao instante \(\tau\) nos leva à densidade \(p(\tau, \ell)\) no instante \(\tau\) e posição \(\ell,\) i.e.</p>
+<p>Em relação ao primeiro modelo, ao qual o modelo de Einstein se assemelha, Bachelier considera a densidade de probabilidade \(p(t, x)\) para o preço de uma ação no tempo \(t\) e valor \(x,\) como feito posteriormente por Einstein para a posição de uma partícula. Uma diferença, no entanto, é que ele não desconecta a densidade de probabilidade \(g=g(\ell),\) considerada por Einstein para os passos de comprimento \(\ell\) ao longo de um tempo característico \(\tau,\) da própria densidade de probabilidade da partícula, ou melhor, do preço. Mais precisamente, observe que um passo \(\ell\) do instante \(0\) ao instante \(\tau\) nos leva à densidade \(p(\tau, \ell)\) no instante \(\tau\) e posição \(\ell,\) i.e.</p>
 \[
     g(\ell) = \rho(\tau, \ell).
 \]
-<p>Em outras palavras, a &#40;densidade de&#41; probabilidade \((\rho(\tau, \ell))\) da partícula, que começou na origem, estar em \(\ell\) após o tempo característico \(\tau\) é a &#40;densidade de&#41; probabilidade \((g(\ell))\) da partícula dar o passo \(\ell\), no tempo característico \(\tau\). Da mesma forma para o preço de uma ação. Assim, Bachelier escreve direto</p>
+<p>Em outras palavras, a &#40;densidade de&#41; probabilidade \((\rho(\tau, \ell))\) da partícula, que começou na origem, estar em \(\ell\) após o tempo característico \(\tau\) é a &#40;densidade de&#41; probabilidade \((g(\ell))\) da partícula dar o passo \(\ell,\) no tempo característico \(\tau.\) Da mesma forma para o preço de uma ação. Assim, Bachelier escreve direto</p>
 \[
     p(t + \tau, x) = \int_{-\infty}^\infty p(\tau, \ell)p(t, x - \ell)\;\mathrm{d}\ell.
 \]
-<p>A partir desse ponto, no entanto, ele <em>não</em> faz propriamente uma aproximação de Taylor para chegar a uma equação diferencial para \(p\). Ele observa diretamente que uma Gaussiana apropriada resolve a equação e prossegue para achar os parâmetros apropriados da Gaussiana, chegando a uma solução da mesma  forma, exceto com parâmetros diferentes, i.e.</p>
+<p>A partir desse ponto, no entanto, ele <em>não</em> faz propriamente uma aproximação de Taylor para chegar a uma equação diferencial para \(p.\) Ele observa diretamente que uma Gaussiana apropriada resolve a equação e prossegue para achar os parâmetros apropriados da Gaussiana, chegando a uma solução da mesma  forma, exceto com parâmetros diferentes, i.e.</p>
 \[
     p(t, x) = \frac{1}{2\pi k \sqrt{t}} e^{- \frac{x^2}{4\pi k^2 t}},
 \]
-<p>para uma determinada constante \(k\).</p>
+<p>para uma determinada constante \(k.\)</p>
 <p>No entanto, ele justifica essa solução Gaussiana de outras formas, incluindo via passeio aleatório; via teoria de radiação de Kirchhoff, que o leva de uma forma ou de outra à equação do calor de Fourier; e via argumentos semelhantes ao do Teorema Central do Limite.</p>
 <p>Em particular, Bachelier é creditado também pela própria equação integral acima, que é vista como uma versão da equação conhecida atualmente como equação de Chapman-Kolmogorov para a distribuição conjunta de probabilidades. De fato, podemos escrever a relação de forma condicionada a sabermos \(x_0\) em um instante \(t_0,\) i.e.</p>
 \[
     p(t + \tau, x | t_0, x_0) = \int_{-\infty}^\infty p(t + \tau, x | t, x - \ell) p(t, x - \ell | t_0, x_0)\;\mathrm{d}\ell.
 \]
-<p>No caso do movimento Browniano, temos \(x_0 = 0,\) em \(t_0 = 0\), mas a relação vale de forma geral. Essa equação vale, de fato, para qualquer processo Markoviano. A Gaussiana não é a única solução possível. Mas é uma solução, encontrada por Bachelier. E como dito acima, a Gaussiana é também justificada por outras razões.</p>
+<p>No caso do movimento Browniano, temos \(x_0 = 0,\) em \(t_0 = 0,\) mas a relação vale de forma geral. Essa equação vale, de fato, para qualquer processo Markoviano. A Gaussiana não é a única solução possível. Mas é uma solução, encontrada por Bachelier. E como dito acima, a Gaussiana é também justificada por outras razões.</p>
 <p>Conta a história que a tese de Bachelier foi um pouco criticada por não ser muito rigorosa e por ser em uma área pouco familiar para os matemáticos da época. Mas Poincaré o apoiou, apreciando e valorizando vários aspectos do seu trabalho. O seu impacto no desenvolvimento da Teoria das Probabilidades e na Análise Estocástica acabou se mostrando significativo nas décadas seguintes. Já o seu impacto em finanças veio apenas bem mais tarde, quando os seus trabalhos chegaram ao conhecimento do economista Paul Samuelson, na década de 1960.</p>
 
     <div class="navbar">
@@ -404,7 +404,7 @@
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

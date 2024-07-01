@@ -369,7 +369,7 @@
 \[
     c(\tau) = \sigma_0^2\delta_0.
 \]
-<p>Assim, o seu espectro \(\hat c(\varpi)\) é, de fato, constante &#40;usamos \(\varpi\), aqui, para denotar a frequência, já que \(\omega\) é usado como elemento do espaço amostral&#41;:</p>
+<p>Assim, o seu espectro \(\hat c(\varpi)\) é, de fato, constante &#40;usamos \(\varpi,\) aqui, para denotar a frequência, já que \(\omega\) é usado como elemento do espaço amostral&#41;:</p>
 \[
 \hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{\sqrt{2\pi}}\varpi^2, \quad \forall \varpi \in \mathbb{R}.
 \]
@@ -387,7 +387,7 @@
 <p>É claro que a série acima não converge em um sentido clássico. Mas serve como conexão com a ideia da derivada ser um ruído branco. De qualquer forma, um sentido mais preciso pode ser dado em um espaço apropriado de distribuições.</p>
 <h2 id="limite_de_diferenças_finitas_de_um_processo_de_wiener"><a href="#limite_de_diferenças_finitas_de_um_processo_de_wiener" class="header-anchor">Limite de diferenças finitas de um processo de Wiener</a></h2>
 <p>A outra conexão pode ser vista mostrando-se que os processos obtidos via diferenças finitas de um processo de Wiener tem covariância convergindo para um delta de Dirac. Para isso, seguimos a derivação feita no Capítulo 3.8 de Higham &amp; Kloeden &#40;2021&#41;.</p>
-<p>Vamos considerar as diferenças finitas \(\{D^h_t\}_{t\geq 0}\) de um processo de Wiener \(\{W_t\}_{t\geq 0}\), para cada \(h>0:\)</p>
+<p>Vamos considerar as diferenças finitas \(\{D^h_t\}_{t\geq 0}\) de um processo de Wiener \(\{W_t\}_{t\geq 0},\) para cada \(h>0:\)</p>
 \[
 D^h_t = \frac{W_{t+h} - W_t}{h}.
 \]
@@ -403,19 +403,19 @@ c_h(t, s) = \frac{1}{h^2}\mathbb{E}\left[ W_{t+h}W_{s+h} - W_tW_{s+h} - W_{t+h}W
 \[
 c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
 \]
-<p>Observe que, se \(t \leq s - h\), então</p>
+<p>Observe que, se \(t \leq s - h,\) então</p>
 \[
 c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
 \]
-<p>Se \(s - h \leq t \leq s\), então</p>
+<p>Se \(s - h \leq t \leq s,\) então</p>
 \[
 c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
 \]
-<p>que é linearmente crescente, de \(0\) a \(1/h\). Se \(s \leq t \leq s + h\), então</p>
+<p>que é linearmente crescente, de \(0\) a \(1/h.\) Se \(s \leq t \leq s + h,\) então</p>
 \[
 c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
 \]
-<p>que é linearmente decrescente, de \(1/h\) a \(0\). Por último, se \(t \geq s + h\), então</p>
+<p>que é linearmente decrescente, de \(1/h\) a \(0.\) Por último, se \(t \geq s + h,\) então</p>
 \[
 c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
 \]
@@ -461,7 +461,7 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

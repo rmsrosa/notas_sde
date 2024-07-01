@@ -356,15 +356,15 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">4.5. Filtração</a></h1>
 <p>O conceito de <em>filtração</em> é fundamental para a definição e análise de processos do tipo Martingale e no cálculo estocástico com integrais de Itô, por exemplo. Intuitivamente, uma filtração carrega a informação de algum processo até um determinado instante. Vamos começar com um exemplo, para ilustrar a ideia.</p>
 <h2 id="filtração_em_um_passeio_aleatório"><a href="#filtração_em_um_passeio_aleatório" class="header-anchor">Filtração em um passeio aleatório</a></h2>
-<p>Considere o passeio aleatório \(\{X_n\}_{n=0}^\infty\), onde \(X_0 = 0\). Digamos que queiramos calcular a esperança de \(X_2\), dado \(X_1\):</p>
+<p>Considere o passeio aleatório \(\{X_n\}_{n=0}^\infty,\) onde \(X_0 = 0.\) Digamos que queiramos calcular a esperança de \(X_2,\) dado \(X_1\):</p>
 \[
 \mathbb{E}\left[X_2 | X_1 = x_1\right].
 \]
-<p>As únicas possibilidades para \(X_1\) são \(X_1 = -1\) e \(X_1 = 1\). Caso \(X_1 = 1\), então podemos ter \(X_2\) igual a \(2\) ou \(0\), com probabilidade \(1/2\) cada um. Ou seja,</p>
+<p>As únicas possibilidades para \(X_1\) são \(X_1 = -1\) e \(X_1 = 1.\) Caso \(X_1 = 1,\) então podemos ter \(X_2\) igual a \(2\) ou \(0,\) com probabilidade \(1/2\) cada um. Ou seja,</p>
 \[
 \mathbb{E}\left[X_2 | X_1 = 1\right] = 2 \times \frac{1}{2} + 0 \times \frac{1}{2} = 1.
 \]
-<p>Caso \(X_1 = -1\), temos</p>
+<p>Caso \(X_1 = -1,\) temos</p>
 \[
 \mathbb{E}\left[X_2 | X_1 = -1\right] = 0 \times \frac{1}{2} - 2 \times \frac{1}{2} = -1.
 \]
@@ -383,8 +383,8 @@
 \[
 \mathbb{P}(X_2 \in E | X_1 \in E_1) = \mathbb{P}(X_2 \in E | A_1) = \mathbb{P}_{A_1}(X_2 \in E),
 \]
-<p>onde \(A_1 = X_1^{-1}(E_1)\).</p>
-<p>Caso tenhamos eventos \(X_0 \in E_0, X_1\in E_1, \ldots, X_n \in E_n\), podemos considerar o valor esperado para \(X_{n+1}\):</p>
+<p>onde \(A_1 = X_1^{-1}(E_1).\)</p>
+<p>Caso tenhamos eventos \(X_0 \in E_0, X_1\in E_1, \ldots, X_n \in E_n,\) podemos considerar o valor esperado para \(X_{n+1}\):</p>
 \[
 \mathbb{E}\left[X_{n+1} | X_0 \in E_0, X_1\in E_1, \ldots, X_n \in E_n\right].
 \]
@@ -396,7 +396,7 @@
 \[
 A_n = \{\omega; X_0(\omega) \in E_0, X_1(\omega) \in E_1, \ldots, X_n(\omega) \in E_n\} = X_0^{-1}(E_0) \cap X_1^{-1}(E_1) \cap \ldots \cap X_n^{-1}(E_n).
 \]
-<p>Na verdade, não há motivo para nos restringirmos a conjuntos cilíndricos dessa forma. Podemos considerar informações sobre os estados passados que formem conjuntos que sejam uniões e/ou interseções de diferentes conjuntos cilíndricos da forma acima. Isso nos leva, naturalmente, a considerarmos conjuntos \(A_n\) que pertençam à \(\sigma\)-álgebra gerada por esses conjuntos cilíndricos. Denotamos essa tal \(\sigma\)-álgebra por \(\mathcal{F}_n\). Ou seja, \(\mathcal{F}_n\) é a \(\sigma\)-álgebra gerada pelo conjunto de cilindros da forma \(X_0^{-1}(E_0) \cap X_1^{-1}(E_1) \cap \ldots \cap X_n^{-1}(E_n)\), onde \(E_0, E_1, \ldots, E_n\in \mathcal{E}\). Escrevemos isso como</p>
+<p>Na verdade, não há motivo para nos restringirmos a conjuntos cilíndricos dessa forma. Podemos considerar informações sobre os estados passados que formem conjuntos que sejam uniões e/ou interseções de diferentes conjuntos cilíndricos da forma acima. Isso nos leva, naturalmente, a considerarmos conjuntos \(A_n\) que pertençam à \(\sigma\)-álgebra gerada por esses conjuntos cilíndricos. Denotamos essa tal \(\sigma\)-álgebra por \(\mathcal{F}_n.\) Ou seja, \(\mathcal{F}_n\) é a \(\sigma\)-álgebra gerada pelo conjunto de cilindros da forma \(X_0^{-1}(E_0) \cap X_1^{-1}(E_1) \cap \ldots \cap X_n^{-1}(E_n),\) onde \(E_0, E_1, \ldots, E_n\in \mathcal{E}.\) Escrevemos isso como</p>
 \[
 \mathcal{F}_n = \sigma\left(\left\{ X_0^{-1}(E_0) \cap X_1^{-1}(E_1) \cap \ldots \cap X_n^{-1}(E_n); \;E_1, \ldots, E_n\in \mathcal{E}\right\}\right).
 \]
@@ -416,42 +416,42 @@ A_n = \{\omega; X_0(\omega) \in E_0, X_1(\omega) \in E_1, \ldots, X_n(\omega) \i
 </li>
 <li><p>\(\mathcal{A} = \mathcal{P}(\Omega)\) como sendo o conjunto de todas as partes de \(\Omega\); e </p>
 </li>
-<li><p>\(X_n(\omega) = \omega_n\), para \(\omega = (\omega_0, \omega_1, \omega_2, \ldots) \in \Omega\).</p>
+<li><p>\(X_n(\omega) = \omega_n,\) para \(\omega = (\omega_0, \omega_1, \omega_2, \ldots) \in \Omega.\)</p>
 </li>
 </ol>
 <p>Assim, a filtração é dada por \(\mathcal{F}_n\) definido como a \(\sigma\)-álgebra gerada pelos conjuntos cilíndricos da forma</p>
 \[
 E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \times \cdots,
 \]
-<p>onde \(E_0, E_1, \ldots, E_n \subset \mathbb{Z}\). Dessa forma, não temos como observar eventos a partir de \(X_{n+1}\) olhando para a filtração até \(\mathcal{F}_n\).</p>
+<p>onde \(E_0, E_1, \ldots, E_n \subset \mathbb{Z}.\) Dessa forma, não temos como observar eventos a partir de \(X_{n+1}\) olhando para a filtração até \(\mathcal{F}_n.\)</p>
 <h2 id="filtração"><a href="#filtração" class="header-anchor">Filtração</a></h2>
-<p>Vamos, agora, à definição formal. Uma <strong>filtração</strong> em um espaço mensurável \((\Omega, \mathcal{A})\) é uma família não decrescente \(\{\mathcal{F}_t\}_{t\in I}\), em algum espaço de índices \(I\) discreto ou contínuo, de \(\sigma\)-álgebras contidas em \(\mathcal{A}\), i.e.</p>
+<p>Vamos, agora, à definição formal. Uma <strong>filtração</strong> em um espaço mensurável \((\Omega, \mathcal{A})\) é uma família não decrescente \(\{\mathcal{F}_t\}_{t\in I},\) em algum espaço de índices \(I\) discreto ou contínuo, de \(\sigma\)-álgebras contidas em \(\mathcal{A},\) i.e.</p>
 <ol>
-<li><p>\(\mathcal{F}_t\) é uma \(\sigma\)-álgebra em \(\Omega\), para todo \(t\in I\);</p>
+<li><p>\(\mathcal{F}_t\) é uma \(\sigma\)-álgebra em \(\Omega,\) para todo \(t\in I\);</p>
 </li>
-<li><p>\(\mathcal{F}_t\) é uma sub \(\sigma\)-álgebra de \(\mathcal{A}\), i.e. \(\mathcal{F}_t \subset \mathcal{A}\); e</p>
+<li><p>\(\mathcal{F}_t\) é uma sub \(\sigma\)-álgebra de \(\mathcal{A},\) i.e. \(\mathcal{F}_t \subset \mathcal{A}\); e</p>
 </li>
-<li><p>É uma família não decrescente, i.e. \(\mathcal{F}_s \subset \mathcal{F}_t\), para todo \(s, t\in I\) com \(s < t\).</p>
+<li><p>É uma família não decrescente, i.e. \(\mathcal{F}_s \subset \mathcal{F}_t,\) para todo \(s, t\in I\) com \(s < t.\)</p>
 </li>
 </ol>
 <p>Denominamos um tal \((\Omega, \mathcal{A}, \{\mathcal{F}_t\}_{t\in I})\) por <strong>espaço filtrado.</strong>.</p>
-<p>No caso discreto \(I = \mathbb{N}\), basta pedir que \(\mathcal{F}_1 \subset \mathcal{F}_2 \subset \ldots \subset \mathcal{F}_n \subset \mathcal{F}_{n+1} \subset \ldots \subset \mathcal{A}\), com cada \(\mathcal{F}_n\) sendo uma \(\sigma\)-álgebra.</p>
+<p>No caso discreto \(I = \mathbb{N},\) basta pedir que \(\mathcal{F}_1 \subset \mathcal{F}_2 \subset \ldots \subset \mathcal{F}_n \subset \mathcal{F}_{n+1} \subset \ldots \subset \mathcal{A},\) com cada \(\mathcal{F}_n\) sendo uma \(\sigma\)-álgebra.</p>
 <h2 id="processo_adaptado"><a href="#processo_adaptado" class="header-anchor">Processo adaptado</a></h2>
-<p>Um processo \(\{X_t\}_{t\in I}\) em \((\Omega, \mathcal{A}, \mathbb{P})\) é dito <strong>adaptado</strong> a uma filtração \(\{\mathcal{F}_t\}_{t\in I}\) nesse espaço de probabilidades quando \(X_t\) é \(\mathcal{F}_t\)-mensurável, para qualquer \(t \in I\). Um tal processo também é dito <strong>não antecipativo,</strong> em relação a essa filtração. De fato, qualquer evento \(E\) observável por \(X_t\) deve estar associado a um conjunto amostral \(X_t^{-1}(E)\) em \(\mathcal{F}_t\), sem necessitar de conjuntos nas \(\sigma\)-álgebras posteriores.</p>
+<p>Um processo \(\{X_t\}_{t\in I}\) em \((\Omega, \mathcal{A}, \mathbb{P})\) é dito <strong>adaptado</strong> a uma filtração \(\{\mathcal{F}_t\}_{t\in I}\) nesse espaço de probabilidades quando \(X_t\) é \(\mathcal{F}_t\)-mensurável, para qualquer \(t \in I.\) Um tal processo também é dito <strong>não antecipativo,</strong> em relação a essa filtração. De fato, qualquer evento \(E\) observável por \(X_t\) deve estar associado a um conjunto amostral \(X_t^{-1}(E)\) em \(\mathcal{F}_t,\) sem necessitar de conjuntos nas \(\sigma\)-álgebras posteriores.</p>
 <p>Por exemplo, o passeio aleatório considerado acima está adaptado à filtração natural definida por ele. De fato, qualquer processo é adaptado à sua filtração natural, por construção.</p>
 <p>Esse conceito é útil na definição formal de Martingale, onde exigimos, para ser uma Martingale, um determinado processo \(\{X_t\}_t\) seja tal que </p>
 \[
 \mathbb{E}[|X_t|] < \infty \quad \textrm{e} \quad \mathbb{E}[X_{t + \tau} | A_t] = X_t, \; \forall A_t \in \mathcal{F}_t, \;\forall t < t + \tau \text{ em } I.
 \]
-<p>No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo \(\{H_t\}_t\) seja adaptado à filtração natural de outro processo, como um processo de Wiener \(\{W_t\}_t\). Dessa forma, teremos boas propriedades da integral de Itô \(\int_a^b H_t \;\mathrm{d}W_t\) de \(\{H_t\}_t\) em relação a \(\{W_t\}_t\).</p>
+<p>No desenvolvimento da integral de Itô, veremos uma outra situação, em que exigiremos que um determinando processo \(\{H_t\}_t\) seja adaptado à filtração natural de outro processo, como um processo de Wiener \(\{W_t\}_t.\) Dessa forma, teremos boas propriedades da integral de Itô \(\int_a^b H_t \;\mathrm{d}W_t\) de \(\{H_t\}_t\) em relação a \(\{W_t\}_t.\)</p>
 <h2 id="filtração_natural"><a href="#filtração_natural" class="header-anchor">Filtração natural</a></h2>
-<p>Conforme feito no exemplo inicial, dado um processo discreto \(\{X_n\}_{n\in \mathbb{N}}\) em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P})\), com valores em um espaço mensurável \((\Sigma, \mathcal{E})\), definimos a <strong>filtração natural</strong> desse processo como sendo a filtração em que cada \(\mathcal{F}_n\) é dado pela \(\sigma\)-álgebra gerada pelas variáveis aleatórias \(X_1, \ldots, X_n\), ou seja, a menor \(\sigma\)-álgebra em que \(X_1, \ldots, X_n\) são mensuráveis &#40;mas que \(X_{n+1}, \ldots\) não precisam ser&#41;.</p>
-<p>Uma tal \(\sigma\) álgebra precisa conter todos os conjuntos da forma \(X_j^{-1}(E_j)\), onde \(j = 1, \ldots, n\) e \(E_j\in \mathcal{E}\).</p>
-<p>Para \(n=1\), essa \(\sigma\)-álgebra é exatamente a pré-imagem, por \(X_1\), de \(\Sigma\) &#40;a pré-imagem de uma \(\sigma\)-álgebra por uma função qualquer é necessariamente uma \(\sigma\)-álgebra, já que a operação inversa de função preserva todas as operações de conjuntos&#41;:</p>
+<p>Conforme feito no exemplo inicial, dado um processo discreto \(\{X_n\}_{n\in \mathbb{N}}\) em um espaço de probabilidades \((\Omega, \mathcal{A}, \mathbb{P}),\) com valores em um espaço mensurável \((\Sigma, \mathcal{E}),\) definimos a <strong>filtração natural</strong> desse processo como sendo a filtração em que cada \(\mathcal{F}_n\) é dado pela \(\sigma\)-álgebra gerada pelas variáveis aleatórias \(X_1, \ldots, X_n,\) ou seja, a menor \(\sigma\)-álgebra em que \(X_1, \ldots, X_n\) são mensuráveis &#40;mas que \(X_{n+1}, \ldots\) não precisam ser&#41;.</p>
+<p>Uma tal \(\sigma\) álgebra precisa conter todos os conjuntos da forma \(X_j^{-1}(E_j),\) onde \(j = 1, \ldots, n\) e \(E_j\in \mathcal{E}.\)</p>
+<p>Para \(n=1,\) essa \(\sigma\)-álgebra é exatamente a pré-imagem, por \(X_1,\) de \(\Sigma\) &#40;a pré-imagem de uma \(\sigma\)-álgebra por uma função qualquer é necessariamente uma \(\sigma\)-álgebra, já que a operação inversa de função preserva todas as operações de conjuntos&#41;:</p>
 \[
 \mathcal{F}_1 = \sigma(X_1) = X_1^{-1}(\mathcal{E}) = \{X_1^{-1}(E); \;\forall E\in \mathcal{E}\}.
 \]
-<p>No caso geral \(n\), escrevemos</p>
+<p>No caso geral \(n,\) escrevemos</p>
 \[
 \mathcal{F}_n = \sigma(X_1, \ldots, X_n) = \sigma( \{X_1^{-1}(E_1) \cap \ldots \cap X_n^{-1}(E_n); \; E_1, \ldots, E_n \in \Sigma\}).
 \]
@@ -479,7 +479,7 @@ E_0 \times E_1 \times \ldots \times E_n \times \mathbb{Z} \times \mathbb{Z} \tim
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

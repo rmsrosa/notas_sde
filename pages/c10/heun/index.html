@@ -354,7 +354,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">10.6. Método de Heun</a></h1>
-<p>Este método melhora a ordem de convergência para \(p = 2\), no caso determinístico. Em casos especiais de ruídos suaves &#40;e.g. processos de transporte com funções suaves&#41; essa ordem \(p = 2\) também ocorre em equações aleatórias &#40;veja Neckel &amp; Rupp &#40;2013&#41;, Seções 7.3.2 e 7.3.4&#41;. Quando o ruído não tem regularidade suficiente, a ordem de convergência para equações aleatórias é menor. No caso estocástico, porém, o método não converge &#40;veja Higham &amp; Kloeden &#40;2021&#41;, Seção 17.3&#41;.</p>
+<p>Este método melhora a ordem de convergência para \(p = 2,\) no caso determinístico. Em casos especiais de ruídos suaves &#40;e.g. processos de transporte com funções suaves&#41; essa ordem \(p = 2\) também ocorre em equações aleatórias &#40;veja Neckel &amp; Rupp &#40;2013&#41;, Seções 7.3.2 e 7.3.4&#41;. Quando o ruído não tem regularidade suficiente, a ordem de convergência para equações aleatórias é menor. No caso estocástico, porém, o método não converge &#40;veja Higham &amp; Kloeden &#40;2021&#41;, Seção 17.3&#41;.</p>
 <h2 id="método_de_heun_no_caso_determinístico"><a href="#método_de_heun_no_caso_determinístico" class="header-anchor">Método de Heun no caso determinístico</a></h2>
 <p>No caso de uma equação diferencial ordinária</p>
 \[
@@ -400,7 +400,7 @@ X_t = 1 + \int_0^t 2X_s\;\mathrm{d}W_s.
 \mathbb{E}[X_t] = 1,
 \]
 <p>já que a integral estocástica tem esperança nula.</p>
-<p>Já a aproximação pelo método de Heun, considerando que \(f(t, x) = 0\) e \(g(t, x) = 2x\), nos dá</p>
+<p>Já a aproximação pelo método de Heun, considerando que \(f(t, x) = 0\) e \(g(t, x) = 2x,\) nos dá</p>
 \[
 \begin{align*}
 X_j & = X_{j-1} + \frac{1}{2} \left( 2X_{j-1} + 2(X_{j-1} + 2X_{j-1}\Delta W_{j-1}) \right)\Delta W_{j-1} \\
@@ -444,7 +444,7 @@ X_j = \prod_{i = 0}^{j-1}\left(1 + 2\Delta W_i + 2\Delta W_i^2\right).
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

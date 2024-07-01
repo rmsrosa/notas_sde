@@ -364,7 +364,7 @@ u(T, X_T) & = u(\tau, X_\tau) + \int_\tau^T \left(u_t(t, X_t) + u_x(t, X_t)f(X_t
 & \qquad + \int_\tau^T u_x(t, X_t)g(X_t)\;\mathrm{d}W_t.
 \end{align*}
 \]
-<p>Ao tomarmos o valor esperado, condicionada a \(X_\tau = \xi\), e considerando que a integral estocástica tem esperança zero, obtemos</p>
+<p>Ao tomarmos o valor esperado, condicionada a \(X_\tau = \xi,\) e considerando que a integral estocástica tem esperança zero, obtemos</p>
 \[
 \mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi) + \int_\tau^T \mathbb{E}\left[ u_t(t, X_t) + u_x(t, X_t)f(X_t) + \frac{1}{2}u_{xx}(t, X_t)g(X_t)^2; X_\tau = \xi\right]\;\mathrm{d}t.
 \]
@@ -381,7 +381,7 @@ u_t(t, x) + u_x(t, x)f(x) + \frac{1}{2}u_{xx}(t, x)g(x)^2 = 0.
 \[
 u(T, x) = \Phi(x),
 \]
-<p>para o momento desejado \(\Phi\), em seguida resolver &quot;para trás no tempo&quot; para obter \(u(\tau, \xi)\) e encontrar o desejado valor esperado</p>
+<p>para o momento desejado \(\Phi,\) em seguida resolver &quot;para trás no tempo&quot; para obter \(u(\tau, \xi)\) e encontrar o desejado valor esperado</p>
 \[
 \mathbb{E}[\Phi(X_T); X_\tau = \xi] = \mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi).
 \]
@@ -393,15 +393,15 @@ u(T, x) = \Phi(x),
 \[
 X_\tau = \xi
 \]
-<p>dada em um instante \(\tau\in\mathbb{R}\), podemos encontrar o momento</p>
+<p>dada em um instante \(\tau\in\mathbb{R},\) podemos encontrar o momento</p>
 \[
 \mathbb{E}[\Phi(X_T); X_\tau = \xi]
 \]
-<p>em um instante futuro \(T > \tau\), para alguma \(\Phi\) dada, resolvendo a EDP</p>
+<p>em um instante futuro \(T > \tau,\) para alguma \(\Phi\) dada, resolvendo a EDP</p>
 \[
 u_t(t, x) + u_x(t, x)f(x) = - \frac{1}{2}u_{xx}(t, x)g(x)^2,
 \]
-<p>no intervalo \(\tau \leq t \leq T\), em \(x\in \mathbb{R}\), dada a condição <em>final</em></p>
+<p>no intervalo \(\tau \leq t \leq T,\) em \(x\in \mathbb{R},\) dada a condição <em>final</em></p>
 \[
 u(T, x) = \Phi(x),
 \]
@@ -440,7 +440,7 @@ v(T, x) = \mathbb{E}\left[ \Phi(X_T); X_0 = x\right] = u(0, x).
 \[
 v(t, x) = u(T - t, x).
 \]
-<p>Ou seja, \(v=v(t, x),\) em si, evolui para frente no tempo, mas representa uma evolução retrógrada. &#40;Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para \(u\), mas a maioria a considera como sendo a equação para \(v\).&#41; Ou seja, é apenas uma outra maneira de ver a equação de Feynman-Kac.</p>
+<p>Ou seja, \(v=v(t, x),\) em si, evolui para frente no tempo, mas representa uma evolução retrógrada. &#40;Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para \(u,\) mas a maioria a considera como sendo a equação para \(v.\)&#41; Ou seja, é apenas uma outra maneira de ver a equação de Feynman-Kac.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -464,7 +464,7 @@ v(t, x) = u(T - t, x).
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

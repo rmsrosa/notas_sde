@@ -364,7 +364,7 @@
 \[
 x_j = x_{j-1} - x_{j-1}^3 \Delta t  = x_{j-1}(1 - x_{j-1}^2 \Delta t).
 \]
-<p>Seja \(T > 0\) arbitrário e fixe um passo de tempo qualquer \(\Delta t = T/N \leq 2,\) para algum \(N\in\mathbb{N}\). Suponha que a condição inicial seja tal que</p>
+<p>Seja \(T > 0\) arbitrário e fixe um passo de tempo qualquer \(\Delta t = T/N \leq 2,\) para algum \(N\in\mathbb{N}.\) Suponha que a condição inicial seja tal que</p>
 \[
 x_0 \geq \frac{2}{\Delta t} \geq 1.
 \]
@@ -376,7 +376,7 @@ x_0 \geq \frac{2}{\Delta t} \geq 1.
 \[
 x_1  =  x_0 - \Delta t x_0^3 =  x_0(1 - \Delta t x_0^2) \leq -x_0^2.
 \]
-<p>Por indução, vamos supor que \(|x_j| \geq x_{j-1}^2\), com sinais alternados, \(\mathrm{sgn}(x_j) = (-1)^j\). Vamos separar em dois casos, dependendo da paridade de \(j,\) ou seja, do sinal de \(x_j.\)</p>
+<p>Por indução, vamos supor que \(|x_j| \geq x_{j-1}^2,\) com sinais alternados, \(\mathrm{sgn}(x_j) = (-1)^j.\) Vamos separar em dois casos, dependendo da paridade de \(j,\) ou seja, do sinal de \(x_j.\)</p>
 <p>Quando \(j\) é par, \(x_j\) tem sinal positivo e</p>
 \[
 x_j = |x_j| \geq x_0 \geq \frac{2}{\Delta t} \geq 1,
@@ -439,7 +439,7 @@ x_{j+1} = x_j (1 - x_j^2 \Delta t) \geq x_j^2,
 \[
 X_0 \sim \mathcal{N}(0, \sigma^2),
 \]
-<p>para algum \(\sigma > 0\) e que \(T > 0.\) Dado \(N\in\mathbb{N}\), seja \(\Delta t = T/N\) e defina</p>
+<p>para algum \(\sigma > 0\) e que \(T > 0.\) Dado \(N\in\mathbb{N},\) seja \(\Delta t = T/N\) e defina</p>
 \[
 A_N = \left\{\omega; \;|X_0(\omega)| \geq \frac{2N}{T} \right\}.
 \]
@@ -455,7 +455,7 @@ A_N = \left\{\omega; \;|X_0(\omega)| \geq \frac{2N}{T} \right\}.
 \[
 \mathbb{P}(A_N) = 2\mathbb{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{4}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
 \]
-<p>Pelas estimativas acima, temos, para as aproximações de Euler \(X_j(\omega),\) \(j=0, \ldots, N\), onde \(\Delta t = T/N,\) que</p>
+<p>Pelas estimativas acima, temos, para as aproximações de Euler \(X_j(\omega),\) \(j=0, \ldots, N,\) onde \(\Delta t = T/N,\) que</p>
 \[
 |X_j(\omega)| \geq |X_0(\omega)|^{2^j},
 \]
@@ -481,11 +481,11 @@ A_N = \left\{\omega; \;|X_0(\omega)| \geq \frac{2N}{T} \right\}.
 \[
 \mathrm{d}X_t = -X_t^3\;\mathrm{d}t + \;\mathrm{d}W_t.
 \]
-<p>Vamos assumir \(X_0 = 0,\) para simplificar, mas o resultado vale de maneira mais geral. Dados \(T > 0\) e \(N\in\mathbb{N}\), temos o passo de tempo \(\Delta t = T/N.\) Consideramos apenas \(N\) suficientemente grande tal que</p>
+<p>Vamos assumir \(X_0 = 0,\) para simplificar, mas o resultado vale de maneira mais geral. Dados \(T > 0\) e \(N\in\mathbb{N},\) temos o passo de tempo \(\Delta t = T/N.\) Consideramos apenas \(N\) suficientemente grande tal que</p>
 \[
 \Delta t = \frac{T}{N} \leq \frac{1}{2}.
 \]
-<p>A aproximação de Euler \(X_j\), nos instantes \(t_j = j\Delta t,\) \(j=0, \ldots, N,\) é dada por</p>
+<p>A aproximação de Euler \(X_j,\) nos instantes \(t_j = j\Delta t,\) \(j=0, \ldots, N,\) é dada por</p>
 \[
 X_j = X_{j-1} - X_{j-1}^3\Delta t + \Delta W_{j-1}, \quad j = 1, \ldots, N,
 \]
@@ -506,7 +506,7 @@ A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2 \textrm{ e } \
 \[
 |X_1| = |\Delta W_0| \geq r_N^2.
 \]
-<p>Agora, vamos assumir, por indução, que \(|X_j| \geq |X_{j-1}|^2,\) para \(j\in\mathbb{N}.\) Para \(j=1,\) como \(X_0 = 0\), então isso vale trivialmente. Vamos, então, assumir que \(|X_j| \geq |X_{j-1}|^2,\) até um certo \(j\in\mathbb{N}\), e mostrar para \(j+1\). Observe que acabamos de ver que \(|X_1| \geq r_N^2.\) Como \(r_N\geq 2\), então \(|X_1|\geq 4.\) Até \(j\), também temos \(|X_j|\geq |X_{j-1}|^2 \geq \ldots \geq |X_1|^{2^{j-1}} \geq r_N^{2^j} \geq 4.\)</p>
+<p>Agora, vamos assumir, por indução, que \(|X_j| \geq |X_{j-1}|^2,\) para \(j\in\mathbb{N}.\) Para \(j=1,\) como \(X_0 = 0,\) então isso vale trivialmente. Vamos, então, assumir que \(|X_j| \geq |X_{j-1}|^2,\) até um certo \(j\in\mathbb{N},\) e mostrar para \(j+1.\) Observe que acabamos de ver que \(|X_1| \geq r_N^2.\) Como \(r_N\geq 2,\) então \(|X_1|\geq 4.\) Até \(j,\) também temos \(|X_j|\geq |X_{j-1}|^2 \geq \ldots \geq |X_1|^{2^{j-1}} \geq r_N^{2^j} \geq 4.\)</p>
 <p>Agora, para \(j+1,\) temos</p>
 \[
 |X_{j+1}| = |X_j (1 - X_j^2\Delta t) + \Delta W_j| \geq |\Delta W_j - X_j^3\Delta t| - |X_j| \geq \max\{|\Delta W_j|, |X_j^3\Delta t|\} - \min\{|\Delta W_j|, |X_j^3\Delta t|\} - |X_j|.
@@ -544,11 +544,11 @@ A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2 \textrm{ e } \
 |X_{j+1}| \geq |X_j^3|\frac{1}{r_N} - \frac{2|X_j|^2}{r_N} = |X_j|^2\frac{2}{r_N} \geq |X_j|^2.
 \]
 <p>Isso completa a indução.</p>
-<p>Agora, precisamos estimar a medidade de \(A_N\). Como os passos de um processo de Wiener são independentes, temos</p>
+<p>Agora, precisamos estimar a medidade de \(A_N.\) Como os passos de um processo de Wiener são independentes, temos</p>
 \[
 \mathbb{P}(A_N) =  \mathbb{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathbb{P}\left(\frac{1}{r_N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right).
 \]
-<p>Como os passos são normais, \(\Delta W_j \sim \mathcal{N}(0, \Delta t),\) com \(\Delta t = 1/r_N,\) usamos a estimativa acima, que nos diz que para \(Z\sim \mathcal{N}(0, \sigma^2)\), vale</p>
+<p>Como os passos são normais, \(\Delta W_j \sim \mathcal{N}(0, \Delta t),\) com \(\Delta t = 1/r_N,\) usamos a estimativa acima, que nos diz que para \(Z\sim \mathcal{N}(0, \sigma^2),\) vale</p>
 \[
 \mathbb{P}(Z \geq r) \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
 \]
@@ -578,11 +578,11 @@ A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2 \textrm{ e } \
 \[
 \mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
 \]
-<p>sob condições apropriadas de crescimento em \(f\) e \(g\), conforme demonstrado em <a href="https://doi.org/10.1098/rspa.2010.0348">Hutzenthaler, Jentzen &amp; Kloeden &#40;2011&#41;</a>. Mais precisamente, devemos ter</p>
+<p>sob condições apropriadas de crescimento em \(f\) e \(g,\) conforme demonstrado em <a href="https://doi.org/10.1098/rspa.2010.0348">Hutzenthaler, Jentzen &amp; Kloeden &#40;2011&#41;</a>. Mais precisamente, devemos ter</p>
 \[
 \max\{|f(x)|, |g(x)|\} \geq \frac{|x|^\beta}{R}, \quad \min\{|f(x)|, |g(x)|\} \leq R|x|^\alpha, \quad \mathbb{P}\left(g(X_0) \neq 0\right) > 0,
 \]
-<p>para \(|x| \geq R\), com \(R \geq 1\), \(\beta > \alpha > 1,\) Isso inclui equações como a equação de Ginzburg-Landau estocástica, a equação de Verhulst estocástica, a equação de difusão de Feller com crescimento logístico, equações cinéticas e outras tantas.</p>
+<p>para \(|x| \geq R,\) com \(R \geq 1,\) \(\beta > \alpha > 1,\) Isso inclui equações como a equação de Ginzburg-Landau estocástica, a equação de Verhulst estocástica, a equação de difusão de Feller com crescimento logístico, equações cinéticas e outras tantas.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -606,7 +606,7 @@ A_N = \left\{\omega\in \Omega; \; |\Delta W_0(\omega)| \geq r_N^2 \textrm{ e } \
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -365,7 +365,7 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.3. Variáveis aleatórias contínuas</a></h1>
-<p>Uma variável aleatória contínua assume valores em \(\mathbb{R}\). A probabilidade de um determinado valor \(x\) ocorrer é expressa por</p>
+<p>Uma variável aleatória contínua assume valores em \(\mathbb{R}.\) A probabilidade de um determinado valor \(x\) ocorrer é expressa por</p>
 \[
 \mathbb{P}(X = x).
 \]
@@ -373,22 +373,22 @@
 \[
 \mathbb{P}(X \in E).
 \]
-<p>Em Teoria da Medida, escreveríamos isso simplesmente como \(\mathbb{P}(E)\). De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever</p>
+<p>Em Teoria da Medida, escreveríamos isso simplesmente como \(\mathbb{P}(E).\) De qualquer forma, não é necessário escrever o conjunto de forma explícita. Por exemplo, se quisermos saber a probabilidade da variável aleatória ser positiva, podemos escrever</p>
 \[
 \mathbb{P}(X > 0)
 \]
-<p>ao invés de \(\mathbb{P}(X \in (0, \infty))\). Aqui, estamos representando \(E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty)\).</p>
+<p>ao invés de \(\mathbb{P}(X \in (0, \infty)).\) Aqui, estamos representando \(E = \{ X > 0 \} = \{x \in \mathbb{R}; \;x > 0\} = (0, \infty).\)</p>
 <p>A <strong>função acumulada de probabilidades</strong> é dada, como no caso discreto, por</p>
 \[
 f(x) = \mathbb{P}(X \leq x), \quad x \in \mathbb{R}.
 \]
 <p>A função acumulada de probabilidade define unicamente a variável aleatória &#40;a menos de um conjunto de medida nula&#41;.</p>
-<p>Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma <strong>função de densidade de probabilidades</strong> \(p(x)\), de tal forma que</p>
+<p>Em muitos casos, podemos expressar uma probabilidade contínua em termos de uma <strong>função de densidade de probabilidades</strong> \(p(x),\) de tal forma que</p>
 \[
 \mathbb{P}(X \in E) = \int_\mathbb{R} \chi_E(x) p(x) \;\mathrm{d}x = \int_E p(x) \;\mathrm{d}x,
 \]
-<p>onde \(\chi_E(x)\) é a função característica de um conjunto \(E\), ou seja, vale \(1\), se \(x\in E\), caso contrário, vale \(0\).</p>
-<p>Se \(E = \{a \leq X \leq b}\), temos, em particular,</p>
+<p>onde \(\chi_E(x)\) é a função característica de um conjunto \(E,\) ou seja, vale \(1,\) se \(x\in E,\) caso contrário, vale \(0.\)</p>
+<p>Se \(E = \{a \leq X \leq b},\) temos, em particular,</p>
 \[
   \mathbb{P}(a \leq X \leq b) = \int_a^b p(x) \;\mathrm{d}x.
 \]
@@ -407,11 +407,11 @@ p(x) \geq 0, \qquad \int p(x) \;\mathrm{d}x = 1.
 <p>Portanto, a função densidade de probabilidades só existe quando a função acumulada de probabilidades é derivável quase sempre. Esse resultado pode ser generalizado para contexto bem mais gerais de acordo com o <strong>Teorema de Radon-Nikodym</strong>.</p>
 <p>Vejamos alguns exemplos de variáveis aleatórias contínuas.</p>
 <h2 id="distribuição_uniforme"><a href="#distribuição_uniforme" class="header-anchor">Distribuição uniforme</a></h2>
-<p>Dado um intervalo finito \(I\subset \mathbb{R}\), a distribuição uniforme está associada a uma variável que pode assumir qualquer valor nesse intervalo, com a mesma probabilidade. A função de densidade de probabilidades é um múltiplo da função característica do intervalo \(I\):</p>
+<p>Dado um intervalo finito \(I\subset \mathbb{R},\) a distribuição uniforme está associada a uma variável que pode assumir qualquer valor nesse intervalo, com a mesma probabilidade. A função de densidade de probabilidades é um múltiplo da função característica do intervalo \(I\):</p>
 \[
 f(x) = \frac{1}{|I|}\chi_I(x) = \begin{cases} \displaystyle \frac{1}{|I|}, & x \in I, \\ 0, & x \notin I, \end{cases}
 \]
-<p>onde \(|I|\) é o comprimento de \(I\), já que devemos ter massa um, \(\int f = 1\). Observe que, como o intervalo \(I\) é contínuo, as chances de termos um valor específico \(x_0\) é nula. Mas as chances de termos um valor em um determinado subintervalo \(J\subset I\) são iguais à fração do comprimento desse intervalo no intervalo total, i.e.</p>
+<p>onde \(|I|\) é o comprimento de \(I,\) já que devemos ter massa um, \(\int f = 1.\) Observe que, como o intervalo \(I\) é contínuo, as chances de termos um valor específico \(x_0\) é nula. Mas as chances de termos um valor em um determinado subintervalo \(J\subset I\) são iguais à fração do comprimento desse intervalo no intervalo total, i.e.</p>
 \[
 \mathbb{P}(X \in J) = \frac{|J|}{|I|}
 \]
@@ -419,14 +419,14 @@ f(x) = \frac{1}{|I|}\chi_I(x) = \begin{cases} \displaystyle \frac{1}{|I|}, & x \
 \[
 X \sim \mathcal{U}_I.
 \]
-<p>Por exemplo, caso \(I = [\alpha, \beta)\), então a variável aleatória \(X \sim \mathcal{U}_{[\alpha, \beta)}\) tem sua função densidade de probabilidades dada por</p>
+<p>Por exemplo, caso \(I = [\alpha, \beta),\) então a variável aleatória \(X \sim \mathcal{U}_{[\alpha, \beta)}\) tem sua função densidade de probabilidades dada por</p>
 \[
 f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \beta, \\ 0, & x < \alpha \text{ ou } x \geq \beta. \end{cases}
 \]
 
 <img src="/notas_sde/assets/pages/c02/exemplos_va_continuas/code/output/cdfuniform.svg" alt="">
 <h2 id="distribuição_normal"><a href="#distribuição_normal" class="header-anchor">Distribuição normal</a></h2>
-<p>A distribuição normal com média \(\mu\) e desvio padrão \(\sigma\), ou seja, variância \(\sigma^2\), é denotada por \(\mathcal{N}(\mu, \sigma^2)\). Sua função densidade de probabilidades é</p>
+<p>A distribuição normal com média \(\mu\) e desvio padrão \(\sigma,\) ou seja, variância \(\sigma^2,\) é denotada por \(\mathcal{N}(\mu, \sigma^2).\) Sua função densidade de probabilidades é</p>
 \[
   f(x) = \frac{1}{2\pi \sigma^2} e^{\displaystyle - \frac{x^2}{2\sigma^2}}.
 \]
@@ -434,7 +434,7 @@ f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \
 \[
   X \sim \mathcal{N}(\mu, \sigma^2)
 \]
-<p>Vimos, por exemplo, nos modelos para o movimento Browniano, que a variável aleatória \(X_t\) para a posição da partícula no instante \(t\) é uma normal com média \(0\) e variância \(2Dt\), para algum \(D > 0\), ou seja</p>
+<p>Vimos, por exemplo, nos modelos para o movimento Browniano, que a variável aleatória \(X_t\) para a posição da partícula no instante \(t\) é uma normal com média \(0\) e variância \(2Dt,\) para algum \(D > 0,\) ou seja</p>
 \[
   X_t \sim \mathcal{N}(0, 2Dt), \quad t > 0.
 \]
@@ -445,11 +445,11 @@ f(x) = \begin{cases} \displaystyle \frac{1}{\beta - \alpha}, & \alpha \leq x < \
 \[
 \mathbb{P}(X = x_0) = 1, \qquad \mathbb{P}(X \neq x_0) = 0.
 \]
-<p>A distribuição de probabilidades associada a essa variável é exatamente a delta de Dirac no ponto \(x_0\), denotada por \(\delta_{x_0}\). Ou seja,</p>
+<p>A distribuição de probabilidades associada a essa variável é exatamente a delta de Dirac no ponto \(x_0,\) denotada por \(\delta_{x_0}.\) Ou seja,</p>
 \[
 X \sim \delta_{x_0}.
 \]
-<p>Vimos esse exemplo no caso do movimento Browniano, onde a posição inicial da partícula é a origem. Em termos de variáveis aleatórias, escrevemos \(X_0 = 0\),  <em>quase certamente</em>, i.e.</p>
+<p>Vimos esse exemplo no caso do movimento Browniano, onde a posição inicial da partícula é a origem. Em termos de variáveis aleatórias, escrevemos \(X_0 = 0,\)  <em>quase certamente</em>, i.e.</p>
 \[
 X_0 \sim \delta_0.
 \]
@@ -457,12 +457,12 @@ X_0 \sim \delta_0.
 \[
 \mathcal{N}(\mu, \sigma^2) \rightarrow \delta_\mu, \quad \text{quando } \sigma \rightarrow 0,
 \]
-<p>para qualquer \(\mu\) fixo &#40;ou mesmo com \(\mu\) variando e convergindo para um determinado valor \(\mu_0\), caso em que teríamos \(\delta_{\mu_0}\), no limite&#41;.</p>
-<p>O limite acontece <em>no sentido fraco</em> &#40;veremos melhor isso posteriormente&#41;, i.e. para qualquer função contínua limitada \(f:\mathbb{R} \rightarrow \mathbb{R}\), temos</p>
+<p>para qualquer \(\mu\) fixo &#40;ou mesmo com \(\mu\) variando e convergindo para um determinado valor \(\mu_0,\) caso em que teríamos \(\delta_{\mu_0},\) no limite&#41;.</p>
+<p>O limite acontece <em>no sentido fraco</em> &#40;veremos melhor isso posteriormente&#41;, i.e. para qualquer função contínua limitada \(f:\mathbb{R} \rightarrow \mathbb{R},\) temos</p>
 \[
 \mathbb{E}_{\mathcal{N}(\mu, \sigma^2)}(f) \rightarrow \mathbb{E}_{\delta_\mu}(f) = f(\mu);
 \]
-<p>Essa convergência fraca não implica na convergência \(\mathbb{P}_{\mathcal{N}(\mu, \sigma^2)}(E) \rightarrow \mathbb{P}_{\delta_0}(E)\), para qualquer conjunto mensurável \(E\). De fato, seja \(\mu = 0\), para simplificar, e considere \(A = [0, \infty)\) e \(B = (0, \infty)\). Então, \(\mathbb{P}_{\delta_0}(A) = 1\) e \(\mathbb{P}_{\delta_0}(B) = 0\), enquanto que \(\mathbb{P}_{\mathcal{N}(0, \sigma^2)}(A) = \mathbb{P}_{\mathcal{N}(0, \sigma^2)}(B) = 1/2\), para todo \(\sigma > 0\). Tal convergência só acontece quando \(E\) é um conjunto de continuidade em relação a \(\delta_0\), i.e. \(\delta_0(\partial E) = 0\), o que não é o caso de \(A\) e \(B\).</p>
+<p>Essa convergência fraca não implica na convergência \(\mathbb{P}_{\mathcal{N}(\mu, \sigma^2)}(E) \rightarrow \mathbb{P}_{\delta_0}(E),\) para qualquer conjunto mensurável \(E.\) De fato, seja \(\mu = 0,\) para simplificar, e considere \(A = [0, \infty)\) e \(B = (0, \infty).\) Então, \(\mathbb{P}_{\delta_0}(A) = 1\) e \(\mathbb{P}_{\delta_0}(B) = 0,\) enquanto que \(\mathbb{P}_{\mathcal{N}(0, \sigma^2)}(A) = \mathbb{P}_{\mathcal{N}(0, \sigma^2)}(B) = 1/2,\) para todo \(\sigma > 0.\) Tal convergência só acontece quando \(E\) é um conjunto de continuidade em relação a \(\delta_0,\) i.e. \(\delta_0(\partial E) = 0,\) o que não é o caso de \(A\) e \(B.\)</p>
 
     <div class="navbar">
     <p id="nav">
@@ -486,7 +486,7 @@ X_0 \sim \delta_0.
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -369,7 +369,7 @@
 X_0 = x_0.
 \]
 <h2 id="convergência_forte_implica_em_convergência_fraca"><a href="#convergência_forte_implica_em_convergência_fraca" class="header-anchor">Convergência forte implica em convergência fraca</a></h2>
-<p>Suponha que tenhamos a convergência forte, em média quadrática, de ordem \(p\), de alguma aproximação \(\{X_j^n\}_j\) da solução \(\{X_t\}_t\). Nesse caso,</p>
+<p>Suponha que tenhamos a convergência forte, em média quadrática, de ordem \(p,\) de alguma aproximação \(\{X_j^n\}_j\) da solução \(\{X_t\}_t.\) Nesse caso,</p>
 \[
 \max_{j=0, \ldots, n} \mathbb{E}[|X_{t_j} - X_j^n|^2] \leq C^2\Delta t^{2p},
 \]
@@ -377,7 +377,7 @@ X_0 = x_0.
 \[
 |\Phi(x) - \Phi(y)| \leq L(1 + |x|^k + |y|^k)|x - y|,
 \]
-<p>para certos \(L, k\geq 0\). Nesse caso, podemos estimar o erro fraco da seguinte forma.</p>
+<p>para certos \(L, k\geq 0.\) Nesse caso, podemos estimar o erro fraco da seguinte forma.</p>
 \[
 \begin{align*}
 \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| & \leq \mathbb{E}\left[|\Phi(X_{t_j}) -\Phi(X_j^n)|\right] \\
@@ -389,7 +389,7 @@ X_0 = x_0.
 \[
 \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| \leq LK\mathbb{E}\left[|X_{t_j} - X_j^n|^2\right]^{1/2} \leq LKC \Delta t^p,
 \]
-<p>mostrando a convergência fraca também de ordem \(p\).</p>
+<p>mostrando a convergência fraca também de ordem \(p.\)</p>
 <p>No entanto, é possível estimar a ordem fraca de maneira diferente e, em muitos casos, conseguir a convergência fraca com uma ordem de convergência melhor ou mesmo obter convergência fraca sem que haja convergência forte.</p>
 <h2 id="fórmula_de_feynman-kac"><a href="#fórmula_de_feynman-kac" class="header-anchor">Fórmula de Feynman-Kac</a></h2>
 <p>Em muitos casos práticos, conhecemos o valor atual \(X_\tau = \xi\) de um de um processo estocástico e queremos estimar o valor esperado \(\mathbb{E}[X_T; X_\tau = \xi]\) em um tempo futuro \(T > \tau,\) ou, mais geralmente, \(\mathbb{E}[\Phi(X_T); X_\tau = \xi],\) para algum momento \(\Phi.\) Lembremos que isso pode ser feito através da fórmula de Feynman-Kac.</p>
@@ -401,15 +401,15 @@ X_0 = x_0.
 \[
 X_\tau = \xi
 \]
-<p>dada em um instante \(\tau\in\mathbb{R}\), podemos encontrar o momento</p>
+<p>dada em um instante \(\tau\in\mathbb{R},\) podemos encontrar o momento</p>
 \[
 \mathbb{E}[\Phi(X_T); X_\tau = \xi]
 \]
-<p>em um instante futuro \(T > \tau\), para alguma \(\Phi\) dada, resolvendo a EDP</p>
+<p>em um instante futuro \(T > \tau,\) para alguma \(\Phi\) dada, resolvendo a EDP</p>
 \[
 u_t(t, x) + u_x(t, x)f(x) = - \frac{1}{2}u_{xx}(t, x)g(x)^2,
 \]
-<p>no intervalo \(\tau \leq t \leq T\), em \(x\in \mathbb{R}\), dada a condição <em>final</em></p>
+<p>no intervalo \(\tau \leq t \leq T,\) em \(x\in \mathbb{R},\) dada a condição <em>final</em></p>
 \[
 u(T, x) = \Phi(x),
 \]
@@ -423,7 +423,7 @@ u(T, x) = \Phi(x),
 \[
 \max_{j=1, \ldots, n} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)]|.
 \]
-<p>Para simplificar, podemos olhar para o erro fraco só no instante final, \(j = n\), em que \(t_j = t_n = T\) e o erro se torna</p>
+<p>Para simplificar, podemos olhar para o erro fraco só no instante final, \(j = n,\) em que \(t_j = t_n = T\) e o erro se torna</p>
 \[
 |\mathbb{E}[\Phi(X_T)] - \mathbb{E}[\Phi(X_n^n)]|.
 \]
@@ -485,16 +485,16 @@ u(0, X_0) = \mathbb{E}[\Phi(X_T)].
 \end{align*}
 \]
 <p>Agora precisamos estimar os erros do lado direito.</p>
-<p>A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de \(f\) e \(g\) e estimar esses termos em função de \(\mathbb{E}[|\hat X_t - \bar X_t|^2]\). Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.</p>
+<p>A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de \(f\) e \(g\) e estimar esses termos em função de \(\mathbb{E}[|\hat X_t - \bar X_t|^2].\) Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.</p>
 <p>Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos</p>
 \[
 u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)), \qquad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
 \]
-<p>Em cada subintervalo \([t_{j-1}, t_j]\), temos \(\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n\) constante, de modo que podemos olhar para</p>
+<p>Em cada subintervalo \([t_{j-1}, t_j],\) temos \(\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n\) constante, de modo que podemos olhar para</p>
 \[
 e_{j-1}(t, x) = u_x(t, x)(f(x) - f(X_{j-1}^n))
 \]
-<p>e analogamente para o termo envolvendo \(g\). Observe que</p>
+<p>e analogamente para o termo envolvendo \(g.\) Observe que</p>
 \[
 e_{j-1}(t_{j-1}, \hat X_{t_{j-1}}) = u_x(t_{j-1}, \hat X_{t_{j-1}})(f(\hat X_{t_{j-1}}) - f(\bar X_{t_{j-1}})) = 0,
 \]
@@ -506,20 +506,20 @@ e_{j-1}(t, \hat X_t) = \int_0^t L_0(s) e_{j-1}(s, \hat X_s) \;\mathrm{d}s + \int
 \[
 L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_{xx}, \qquad L_1(t) = g(\hat X_t)^2\partial_x.
 \]
-<p>Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem \(\Delta t^{1/2}\), desaparece e ficamos apenas com</p>
+<p>Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem \(\Delta t^{1/2},\) desaparece e ficamos apenas com</p>
 \[
 \mathbb{E}[e_{j-1}(t, \hat X_t)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, \hat X_s)\right] \;\mathrm{d}s.
 \]
-<p>Assumindo-se que o integrando seja limitado no intervalo \([0, T]\) por uma constante \(K_{\Phi, T}\), obtemos a estimativa de ordem 1</p>
+<p>Assumindo-se que o integrando seja limitado no intervalo \([0, T]\) por uma constante \(K_{\Phi, T},\) obtemos a estimativa de ordem 1</p>
 \[
 \left| \mathbb{E}[e_{j-1}(t, \hat X_t)] \right| \leq K_{\Phi, T} \Delta t.
 \]
-<p>Idem para o termo em \(g\), para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre \(0\) e \(t\), que</p>
+<p>Idem para o termo em \(g,\) para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre \(0\) e \(t,\) que</p>
 \[
 \left|\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
 \]
 <p>Isso nos dá a convergência fraca do método de Euler-Maruyama.</p>
-<p>A limitação uniforme passa por &#40;i&#41; mostrarmos que as normas \(L^p\) solução da equação parabólica são controladas pela norma \(L^p\) da &quot;condição final&quot; \(\Phi\); &#40;ii&#41; por assumirmos que \(\Phi\) tem um crescimento polinomial &#40;apropriado para qualquer momento que queiramos estimar&#41;; &#40;iii&#41; por mostrarmos que, sob a hipótese de continuidade Lipschitz global de \(f\) e \(g\), os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial \(X_0\); e, por fim, &#40;iv&#41; por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.</p>
+<p>A limitação uniforme passa por &#40;i&#41; mostrarmos que as normas \(L^p\) solução da equação parabólica são controladas pela norma \(L^p\) da &quot;condição final&quot; \(\Phi\); &#40;ii&#41; por assumirmos que \(\Phi\) tem um crescimento polinomial &#40;apropriado para qualquer momento que queiramos estimar&#41;; &#40;iii&#41; por mostrarmos que, sob a hipótese de continuidade Lipschitz global de \(f\) e \(g,\) os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial \(X_0\); e, por fim, &#40;iv&#41; por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -543,7 +543,7 @@ L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

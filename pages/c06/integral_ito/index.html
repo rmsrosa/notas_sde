@@ -363,15 +363,15 @@
 \[
 \int_0^T g(t, X_t)\;\mathrm{d}W_t
 \]
-<p>simplesmente definindo \(H_t = g(t, X_t)\). Ou seja, basta considerarmos integrais de um processo \(\{H_t\}_t\).</p>
+<p>simplesmente definindo \(H_t = g(t, X_t).\) Ou seja, basta considerarmos integrais de um processo \(\{H_t\}_t.\)</p>
 <h2 id="integrandos_permitidos"><a href="#integrandos_permitidos" class="header-anchor">Integrandos permitidos</a></h2>
 <p>Uma condição essencial pode ser posta do seguinte modo informal:</p>
 <blockquote>
-<p>A cada instante \(t \geq 0\), o integrando \(H_t\) deve ser independente da evolução futura \(s \geq t\) do processo de Wiener.</p>
+<p>A cada instante \(t \geq 0,\) o integrando \(H_t\) deve ser independente da evolução futura \(s \geq t\) do processo de Wiener.</p>
 </blockquote>
-<p>Independente da <em>evolução futura</em> significa que, para cada \(t\geq 0,\) \(H_t\) é independente de \(W_{t + \tau} - W_t,\) para todo \(\tau > 0.\) Chamamos essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t\). Uma definição mais formal envolve o conceito de <em>filtração:</em></p>
-<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de sub \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t\), para \(0 \leq s \leq t\). A <strong>filtração natural</strong> é a menor filtração possível que torna cada \(W_t\) mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\). Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s\), para todo \(s \geq t\). Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0\), \(H_t\) é mensurável em relação à filtração natural de \(\{W_t\}_{t\geq 0}\).</p>
-<p>Em relação à mensurabilidade, pedimos, também, que \(\{H_t\}_{t\geq 0}\) seja <strong>progressivamente mensurável</strong> em relação a uma filtração \(\mathcal{F}_t,\) ou seja, que para cada \(\bar t \geq 0\), a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, \bar t] \times \Omega\) seja mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t}\), onde \(\mathcal{B}(0, \bar t)\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, \bar t].\)</p>
+<p>Independente da <em>evolução futura</em> significa que, para cada \(t\geq 0,\) \(H_t\) é independente de \(W_{t + \tau} - W_t,\) para todo \(\tau > 0.\) Chamamos essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t.\) Uma definição mais formal envolve o conceito de <em>filtração:</em></p>
+<p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de sub \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t,\) para \(0 \leq s \leq t.\) A <strong>filtração natural</strong> é a menor filtração possível que torna cada \(W_t\) mensurável em relação a \(\mathcal{F}_s,\) para todo \(s \geq t.\) Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s,\) para todo \(s \geq t.\) Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0,\) \(H_t\) é mensurável em relação à filtração natural de \(\{W_t\}_{t\geq 0}.\)</p>
+<p>Em relação à mensurabilidade, pedimos, também, que \(\{H_t\}_{t\geq 0}\) seja <strong>progressivamente mensurável</strong> em relação a uma filtração \(\mathcal{F}_t,\) ou seja, que para cada \(\bar t \geq 0,\) a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, \bar t] \times \Omega\) seja mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t},\) onde \(\mathcal{B}(0, \bar t)\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, \bar t].\)</p>
 <p>Em relação à integrabilidade, pedimos, ainda, que \(\{H_t\}_{t\geq 0}\) seja de <strong>quadrado integrável,</strong> i.e.</p>
 \[
 \int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
@@ -438,7 +438,7 @@
 \[
     \|M\| \leq \min\{M_1, M_2\}.
 \]
-<p>Vamos comparar \(M_1\) e \(M_2\) com \(M\). Denotando os pontos da malha mais grossa \(M_1\) por \(t_i',\) \(i = 1, \ldots, n_1,\) e os pontos da malha mais fina \(M\) por \(t_j,\) \(j=1, \ldots, n,\) com \(M\subset M_1\) e \(n \geq n_1,\) podemos escrever</p>
+<p>Vamos comparar \(M_1\) e \(M_2\) com \(M.\) Denotando os pontos da malha mais grossa \(M_1\) por \(t_i',\) \(i = 1, \ldots, n_1,\) e os pontos da malha mais fina \(M\) por \(t_j,\) \(j=1, \ldots, n,\) com \(M\subset M_1\) e \(n \geq n_1,\) podemos escrever</p>
 \[
     R_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
 \]
@@ -527,7 +527,7 @@
 \[
     \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
 \]
-<p>Como \(\{H_t\}_{t\geq 0}\) é não antecipativo, temos que cada \(H_{t_{j-1}}\) é independente de \(W_{t_j} - W_{t_{j-1}}\). Logo,</p>
+<p>Como \(\{H_t\}_{t\geq 0}\) é não antecipativo, temos que cada \(H_{t_{j-1}}\) é independente de \(W_{t_j} - W_{t_{j-1}}.\) Logo,</p>
 \[
     \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[W_{t_j} - W_{t_{j-1}}\right] = 0,
 \]
@@ -634,7 +634,7 @@
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

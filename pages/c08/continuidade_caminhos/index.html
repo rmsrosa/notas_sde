@@ -366,17 +366,17 @@
 \[
 X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 \]
-<p>Sob as mesmas condições &#40;continuidade em \(t\) e \(x\) e continuidade Lipschitz global em \(x\), uniformemente em \(t\)&#41;, vamos mostrar que cada caminho amostral é limitado em intervalos finitos \([0, T]\) e contínuo no tempo.</p>
+<p>Sob as mesmas condições &#40;continuidade em \(t\) e \(x\) e continuidade Lipschitz global em \(x,\) uniformemente em \(t\)&#41;, vamos mostrar que cada caminho amostral é limitado em intervalos finitos \([0, T]\) e contínuo no tempo.</p>
 <h2 id="limitação_dos_caminhos"><a href="#limitação_dos_caminhos" class="header-anchor">Limitação dos caminhos</a></h2>
 <p>Primeiramente, lembremos das estimativas</p>
 \[
 |f(t, x)| \leq C_f + L_f|x|,
 \]
-<p>onde \(C_f = \max_{t\in [0, T]}|f(t, 0)|\), e</p>
+<p>onde \(C_f = \max_{t\in [0, T]}|f(t, 0)|,\) e</p>
 \[
 |g(t, x)| \leq C_g + L_g|x|,
 \]
-<p>onde \(C_g = \max_{t\in [0, T]}|g(t, 0)|\).</p>
+<p>onde \(C_g = \max_{t\in [0, T]}|g(t, 0)|.\)</p>
 <p>Com isso,</p>
 \[
 \mathbb{E}\left[X_t^2\right] \leq 3\mathbb{E}\left[X_0^2\right] + 3\mathbb{E}\left[ \left(\int_0^t f(s, X_s)\;\mathrm{d}s\right)^2\right] + 3\mathbb{E}\left[ \left(\int_0^t g(s, X_s)\;\mathrm{d}W_s\right)^2 \right].
@@ -444,7 +444,7 @@ X_{t+\tau} - X_t = \int_t^{t+\tau} f(s, X_s)\;\mathrm{d}s + \int_t^{t+\tau} g(s,
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

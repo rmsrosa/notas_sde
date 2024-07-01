@@ -358,7 +358,7 @@
 \[
 Z = \int_a^b f(t, X_t) \;\mathrm{d}Y_t,
 \]
-<p>onde \(\{X_t\}_{t \in [a, b]}\) é um processo estocástico real definido em um intervalo \([a, b]\subset \mathbb{R}\).</p>
+<p>onde \(\{X_t\}_{t \in [a, b]}\) é um processo estocástico real definido em um intervalo \([a, b]\subset \mathbb{R}.\)</p>
 <p>Vamos considerar, principalmente, funções e processos em que</p>
 <ol>
 <li><p>\(f:[a, b]\times \mathbb{R} \rightarrow \mathbb{R}\) é contínuo; e</p>
@@ -366,18 +366,18 @@ Z = \int_a^b f(t, X_t) \;\mathrm{d}Y_t,
 <li><p>Quase certamente, os caminhos amostrais de \(\{X_t\}_{t\in [a,b]}\) são contínuos.</p>
 </li>
 </ol>
-<p>Sob essas condições, para quase todo \(\omega\), a função</p>
+<p>Sob essas condições, para quase todo \(\omega,\) a função</p>
 \[
 t \mapsto f(t, X_t(\omega))
 \]
-<p>é contínua e limitada no intervalo compacto \(t\in [a, b]\). Portanto, a sua integral de Riemann-Stieltjes com respeito ao caminho de variação limitada \(t \mapsto Y_t(\omega)\) está bem definida. Dessa forma, podemos definir \(Z\) pontualmente, via essa integral:</p>
+<p>é contínua e limitada no intervalo compacto \(t\in [a, b].\) Portanto, a sua integral de Riemann-Stieltjes com respeito ao caminho de variação limitada \(t \mapsto Y_t(\omega)\) está bem definida. Dessa forma, podemos definir \(Z\) pontualmente, via essa integral:</p>
 \[
 Z(\omega) = \int_a^b f(s, X_s(\omega)) \;\mathrm{d}Y_s(\omega).
 \]
 <p>O conjunto em que o caminho amostral não é contínuo tem medida nula e, nele, podemos definir \(Z(\omega)\) como sendo zero ou qualquer outro valor.</p>
 <h2 id="integração_por_partes"><a href="#integração_por_partes" class="header-anchor">Integração por partes</a></h2>
 <p>Se \(\{X_t\}_t\) e \(\{Y_t\}_t\) são processos com caminhos aleatórios de variação limitada, então \(\{X_tY_t\}_t\) também tem seus caminhos de variação limitada.</p>
-<p>Dada uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\), temos</p>
+<p>Dada uma partição \(0 = t_0 < t_1 < \ldots < t_n = T,\) temos</p>
 \[
 X_TY_T - X_0Y_0 = \sum_{j=1}^n \left(X_{t_j}Y_{t_j} - X_{t_{j-1}}Y_{t_{j-1}}\right) = \sum_{j=1}^n \left((X_{t_j} - X_{t_{j-1}})Y_{t_j} + X_{t_{j-1}}(Y_{t_j} - Y_{t_{j-1}})\right)
 \]
@@ -409,7 +409,7 @@ X_TY_T - X_0Y_0 = \int_0^T Y_t \;\mathrm{d}X_t + \int_0^T X_t \;\mathrm{d}X_t.
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

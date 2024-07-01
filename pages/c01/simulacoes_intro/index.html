@@ -366,7 +366,7 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">1.8. Simulações numéricas de modelos de crescimento natural</a></h1>
 <p>Hora de implementarmos os métodos de Euler descritos na seção anterior.</p>
-<p>Vamos ver variações do modelo de crescimento natural. Primeiramente, vamos considerar o modelo clássico, de uma equação diferencial ordinária \(\mathrm{d}x/\mathrm{d}t = \mu x\), com um parâmetro \(\mu\) constante, representando a taxa de crescimento específico. Depois, vamos permitir que \(\mu\) seja uma variável aleatória, representando uma incerteza no parâmetro. Em seguida, vamos considerar o caso em que \(\mu = \{\mu_t\}_{t\geq 0}\) é um processo aleatório, representando uma variabilidade temporal aleatória no parâmetro. Por último, vamos considerar \(\mu\) novamente constante mas com a equação perturbada por um termo estocástico, \(\mathrm{d}x = \mu x \mathrm{d}t + \sigma \mathrm{d}W_t\).</p>
+<p>Vamos ver variações do modelo de crescimento natural. Primeiramente, vamos considerar o modelo clássico, de uma equação diferencial ordinária \(\mathrm{d}x/\mathrm{d}t = \mu x,\) com um parâmetro \(\mu\) constante, representando a taxa de crescimento específico. Depois, vamos permitir que \(\mu\) seja uma variável aleatória, representando uma incerteza no parâmetro. Em seguida, vamos considerar o caso em que \(\mu = \{\mu_t\}_{t\geq 0}\) é um processo aleatório, representando uma variabilidade temporal aleatória no parâmetro. Por último, vamos considerar \(\mu\) novamente constante mas com a equação perturbada por um termo estocástico, \(\mathrm{d}x = \mu x \mathrm{d}t + \sigma \mathrm{d}W_t.\)</p>
 <p>Usaremos apenas dois pacotes do Julia. Um é o <a href="https://docs.juliaplots.org/stable/">Plots.jl</a>, para visualização das soluções. O outro é o <a href="https://docs.julialang.org/en/v1/stdlib/Random/">Random</a>, da biblioteca padrão, apenas para fixar a reprodução das notas &#40;gerar sempre os mesmos conjuntos de números aleatórios, por motivos didáticos e de controle de versão&#41;.</p>
 <pre><code class="language-julia">using Plots
 theme&#40;:ggplot2&#41;
@@ -380,13 +380,13 @@ rng &#61; Xoshiro&#40;123&#41;</code></pre>
   x(0) = x_0.
 \end{cases}
 \]
-<p>Para cada \(\mu > 0\) fixo, temos a solução \(x(t) = x_0 e^{\mu t}\), para \(t \geq 0\).</p>
-<p>Resolvendo o problema de valor inicial pelo método de Euler, em um intervalo \(t_0 \leq t \leq T\), com \(t_0 = 0\), \(T > 0\) e um passo de tempo \(\Delta t > 0\), obtemos a sequência de valores aproximados</p>
+<p>Para cada \(\mu > 0\) fixo, temos a solução \(x(t) = x_0 e^{\mu t},\) para \(t \geq 0.\)</p>
+<p>Resolvendo o problema de valor inicial pelo método de Euler, em um intervalo \(t_0 \leq t \leq T,\) com \(t_0 = 0,\) \(T > 0\) e um passo de tempo \(\Delta t > 0,\) obtemos a sequência de valores aproximados</p>
 \[
 x_{n+1} = x_n + \mu \Delta t x_n, \quad n = 0, 1, \dots, N,
 \]
-<p>onde \(N\) é um inteiro mais próximo de \(T/\Delta t\).</p>
-<p>Escolhemos valores para \(T\), \(\mu\) e \(x_0\), além de \(t_0=0\):</p>
+<p>onde \(N\) é um inteiro mais próximo de \(T/\Delta t.\)</p>
+<p>Escolhemos valores para \(T,\) \(\mu\) e \(x_0,\) além de \(t_0=0\):</p>
 <pre><code class="language-julia">t0 &#61; 0.0
 T &#61; 20.0
 μ &#61; 0.1
@@ -424,7 +424,7 @@ end
 plot&#40;t, x, title&#61;&quot;Crescimento exponencial \&#36;&#40;x_0 &#61; &#36;x₀, \\mu &#61; &#36;μ, T &#61; &#36;T, \\Delta t &#61; &#36;Δt&#41;\&#36;&quot;, titlefont &#61; 10, xlabel &#61; &quot;t&quot;, ylabel&#61;&quot;x&quot;, label&#61;&quot;aproximação&quot;, color&#61;1&#41;</code></pre>
 <img src="/notas_sde/assets/pages/c01/simulacoes_intro/code/output/intro_sol_approx.svg" alt="">
 <h2 id="modelo_com_parâmetros_aleatórios"><a href="#modelo_com_parâmetros_aleatórios" class="header-anchor">Modelo com parâmetros aleatórios</a></h2>
-<p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2)\).</p>
+<p>Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média \(\bar\mu\) e desvio padrão \(\sigma\): \(\mu = \mathcal{N}(\bar\mu, \sigma^2).\)</p>
 <p>Façamos uma amostragem de um certo número \(M\) de valores.</p>
 <pre><code class="language-julia">M &#61; 100
 μ̄ &#61; 0.1
@@ -452,7 +452,7 @@ plot&#33;&#40;t, sum&#40;x, dims&#61;2&#41;/size&#40;x, 2&#41;, linewidth&#61;3,
 \[
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = \mu_t X_t,
 \]
-<p>onde \(\{\mu_t\}_t\) é um processo aleatório dado por \(\mu_t = \bar\mu + \sigma \sin(W_t)\), onde \(\bar\mu, \sigma > 0\) e \(\{W_t\}_{t\geq 0}\) é tal que \(W_0 = 0\), e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\) independentes.</p>
+<p>onde \(\{\mu_t\}_t\) é um processo aleatório dado por \(\mu_t = \bar\mu + \sigma \sin(W_t),\) onde \(\bar\mu, \sigma > 0\) e \(\{W_t\}_{t\geq 0}\) é tal que \(W_0 = 0,\) e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\) independentes.</p>
 <pre><code class="language-julia">μ̄ &#61; 0.1
 σ &#61; 0.05
 wt &#61; 0.0
@@ -475,7 +475,7 @@ plot&#33;&#40;t, sum&#40;x, dims&#61;2&#41;/size&#40;x, 2&#41;, linewidth&#61;3,
 \[
 \mathrm{d}X_t = \bar\mu X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t,
 \]
-<p>onde \(\{W_t\}_t\) é um processo aleatório. Mais especificamente, vamos assumir que \(\{W_t\}_t\) modela um <strong>movimento Browniano,</strong> tendo incrementos independentes e estacionários, dados por \(\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)\).</p>
+<p>onde \(\{W_t\}_t\) é um processo aleatório. Mais especificamente, vamos assumir que \(\{W_t\}_t\) modela um <strong>movimento Browniano,</strong> tendo incrementos independentes e estacionários, dados por \(\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t).\)</p>
 <pre><code class="language-julia">μ̄ &#61; 0.1
 σ &#61; 0.05
 
@@ -519,7 +519,7 @@ plot&#33;&#40;t, sum&#40;x, dims&#61;2&#41;/size&#40;x, 2&#41;, linewidth&#61;3,
 \[
 \mathrm{d}X_t/\mathrm{d}t = (A_t - b X_t) X_t, \quad X_0 = x_0,
 \]
-<p>onde \(A_t = a + \sigma\sin(W_t)\) e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(a, b, \sigma > 0\), \(0 < x_0 < a / b\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Escolha parâmetros apropriados para que a <em>média</em> das realizações exiba a mudança de concavidade.</p>
+<p>onde \(A_t = a + \sigma\sin(W_t)\) e \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau),\) com \(a, b, \sigma > 0,\) \(0 < x_0 < a / b,\) \(t_0 = 0,\) \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Escolha parâmetros apropriados para que a <em>média</em> das realizações exiba a mudança de concavidade.</p>
 <ol start="4">
 <li><p>Resolva, via método de Euler, a equação diferencial estocástica</p>
 </li>
@@ -527,7 +527,7 @@ plot&#33;&#40;t, sum&#40;x, dims&#61;2&#41;/size&#40;x, 2&#41;, linewidth&#61;3,
 \[
 \mathrm{d}X_t = (\alpha - \beta X_t) X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t, \quad X_0 = x_0,
 \]
-<p>onde \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)\), com \(\alpha, \beta > 0\), \(0 < x_0 < \alpha / \beta\), \(\sigma > 0\), \(t_0 = 0\), \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Novamente, escolha parâmetros apropriados para que a média das realizações exiba a mudança de concavidade.</p>
+<p>onde \(W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau),\) com \(\alpha, \beta > 0,\) \(0 < x_0 < \alpha / \beta,\) \(\sigma > 0,\) \(t_0 = 0,\) \(T > 0\) e \(0 < \Delta t \ll T\) de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Novamente, escolha parâmetros apropriados para que a média das realizações exiba a mudança de concavidade.</p>
 
     <div class="navbar">
     <p id="nav">
@@ -551,7 +551,7 @@ plot&#33;&#40;t, sum&#40;x, dims&#61;2&#41;/size&#40;x, 2&#41;, linewidth&#61;3,
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

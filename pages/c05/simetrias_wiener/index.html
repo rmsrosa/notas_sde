@@ -356,24 +356,24 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">5.5. Simetrias de processos de Wiener</a></h1>
 <p>Processos de Wiener possuem algumas simetrias importantes.</p>
 <h2 id="invariância_por_reflexão"><a href="#invariância_por_reflexão" class="header-anchor">Invariância por reflexão</a></h2>
-<p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Então o processo \(\{V_t\}_{t \geq 0}\) definido por \(V_t = - W_t\) também é um processo de Wiener padrão. De fato, observe, inicialmente, que \(V_0 = -W_0 = 0\). Agora, se \(0 \leq t_0 \leq \cdots \leq t_k\) então os passos \(\{W_{t_j} - W_{t_{j-1}}\}_{j=1}^k\) são independentes. Como \(V_{t_j} - V_{t_{j-1}} =  - (W_{t_j} - W_{t_{j-1}})\), então os passos \(\{V_{t_j} - V_{t_{j-1}}\}_{j=1}^k\) também são independentes. Além disso, \(V_{t + \tau} - V_t = - (W_{t+\tau} - W_t) \sim -\mathcal{N}(0, \tau) = \mathcal{N}(0, \tau).\) Finalmente, como os caminhos amostrais \(t \mapsto W_t\) são continuos, então \(t \mapsto V_t = -W_t\) também os são.</p>
+<p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}.\) Então o processo \(\{V_t\}_{t \geq 0}\) definido por \(V_t = - W_t\) também é um processo de Wiener padrão. De fato, observe, inicialmente, que \(V_0 = -W_0 = 0.\) Agora, se \(0 \leq t_0 \leq \cdots \leq t_k\) então os passos \(\{W_{t_j} - W_{t_{j-1}}\}_{j=1}^k\) são independentes. Como \(V_{t_j} - V_{t_{j-1}} =  - (W_{t_j} - W_{t_{j-1}}),\) então os passos \(\{V_{t_j} - V_{t_{j-1}}\}_{j=1}^k\) também são independentes. Além disso, \(V_{t + \tau} - V_t = - (W_{t+\tau} - W_t) \sim -\mathcal{N}(0, \tau) = \mathcal{N}(0, \tau).\) Finalmente, como os caminhos amostrais \(t \mapsto W_t\) são continuos, então \(t \mapsto V_t = -W_t\) também os são.</p>
 <p>Observe que, por conta dessa simetria,</p>
 \[
     \mathbb{P}(|W_t| \geq r) = 2\mathbb{P}(W_t \geq r),
 \]
 <p>para todo \(r \geq 0.\)</p>
 <h2 id="invariância_por_rescalonamento"><a href="#invariância_por_rescalonamento" class="header-anchor">Invariância por rescalonamento</a></h2>
-<p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Dado \(a > 0\), defina o processo \(\{V_t^a\}_{t\geq 0}\) por</p>
+<p>Considere um processo de Wiener padrão \(\{W_t\}_{t\geq 0}.\) Dado \(a > 0,\) defina o processo \(\{V_t^a\}_{t\geq 0}\) por</p>
 \[
 V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 \]
-<p>Então \(\{V_t^a\}_{t\geq 0}\) também é um processo de Wiener padrão. Caso \(\{W_t\}_{t\in [0, T]}\) só esteja definido em um intervalor \([0, T]\), \(T > 0\), então obtemos um processo de Wiener \(\{V_t^a\}_{t\in [0, a^2T]}\) em \([0, a^2T]\).</p>
+<p>Então \(\{V_t^a\}_{t\geq 0}\) também é um processo de Wiener padrão. Caso \(\{W_t\}_{t\in [0, T]}\) só esteja definido em um intervalor \([0, T],\) \(T > 0,\) então obtemos um processo de Wiener \(\{V_t^a\}_{t\in [0, a^2T]}\) em \([0, a^2T].\)</p>
 <p>É imediato verificar que</p>
 <p>&#40;i&#41; \(V_0^a = W_0 = 0\);</p>
 <p>&#40;ii&#41; quase sempre os caminhos amostrais \(t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)\) são contínuos; e</p>
-<p>&#40;iii&#41; os incrementos \(V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}\), \(j = 1, \ldots, n\), \(0 \leq t_0 < t_1 < \ldots < t_n\), são independentes.</p>
+<p>&#40;iii&#41; os incrementos \(V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}},\) \(j = 1, \ldots, n,\) \(0 \leq t_0 < t_1 < \ldots < t_n,\) são independentes.</p>
 <p>Quando à lei de distribuição dos incrementos, temos</p>
-<p>&#40;iv&#41; Para todo \(\tau>0\), vale</p>
+<p>&#40;iv&#41; Para todo \(\tau>0,\) vale</p>
 \[
 V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \sim \frac{1}{a}\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 \]
@@ -438,13 +438,13 @@ V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \s
 \[
     \mathbb{P}\left(\limsup_{t\rightarrow \infty} \left|\frac{W_t}{t}\right| \geq \varepsilon\right) = 0,
 \]
-<p>para \(\varepsilon > 0\) arbitrário, de modo que, quando \(t\rightarrow \infty,\), obtemos \(W_t/t \rightarrow 0\) quase certamente.</p>
+<p>para \(\varepsilon > 0\) arbitrário, de modo que, quando \(t\rightarrow \infty,,\) obtemos \(W_t/t \rightarrow 0\) quase certamente.</p>
 <h3 id="desigualdade_maximal"><a href="#desigualdade_maximal" class="header-anchor">Desigualdade maximal</a></h3>
 <p>Para completar, vamos mostrar que</p>
 \[
     \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) \leq \frac{2}{r^4}\mathbb{E}\left[ W_T^4 \right],
 \]
-<p>para \(T > 0\) e \(r > 0\).</p>
+<p>para \(T > 0\) e \(r > 0.\)</p>
 <p>Pela simetria por reflexão \(W_t \mapsto -W_t,\) segue que</p>
 \[
     \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) = 2 \mathbb{P}\left(\max_{0 \leq t \leq T} W_t \geq r \right).
@@ -465,7 +465,7 @@ V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \s
 \[
     \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r \right) \leq \frac{1}{r^4}\mathbb{E}\left[ W_T^4 \right],
 \]
-<p>para todo \(k\in\mathbb{N}.\) Para isso, fazemos como na demonstração da desigualdade maximal de Kolmogorov. Dado \(D_k\), escrevemos \(t_j^k = jT/2^k,\) \(j=0, \ldots, 2^k,\) de modo que</p>
+<p>para todo \(k\in\mathbb{N}.\) Para isso, fazemos como na demonstração da desigualdade maximal de Kolmogorov. Dado \(D_k,\) escrevemos \(t_j^k = jT/2^k,\) \(j=0, \ldots, 2^k,\) de modo que</p>
 \[
     W_T = \sum_{j=1}^{2^k} (W_{t_j} - W_{t_{j-1}}).
 \]
@@ -490,19 +490,19 @@ V_t = \begin{cases}
  tW_{1/t}, & t > 0.
 \end{cases}
 \]
-<p>Então \(\{V_t\}_{t\geq 0}\) também é um processo de Wiener padrão em \([0, \infty)\). Vamos verificar isso.</p>
+<p>Então \(\{V_t\}_{t\geq 0}\) também é um processo de Wiener padrão em \([0, \infty).\) Vamos verificar isso.</p>
 <h3 id="estado_inicial"><a href="#estado_inicial" class="header-anchor">Estado inicial</a></h3>
-<p>Por construção, temos \(V_0 = W_0 = 0\).</p>
+<p>Por construção, temos \(V_0 = W_0 = 0.\)</p>
 <h3 id="continuidade_quase_sempre_dos_caminhos_amostrais"><a href="#continuidade_quase_sempre_dos_caminhos_amostrais" class="header-anchor">Continuidade quase sempre dos caminhos amostrais</a></h3>
-<p>Para quase todo \(\omega\), o caminho \(t \mapsto W_t(\omega)\) é contínuo. Daí tiramos que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo em \((0, \infty)\). Além disso, segue do crescimento sublinear dos caminhos amostrais que, quase sempre,</p>
+<p>Para quase todo \(\omega,\) o caminho \(t \mapsto W_t(\omega)\) é contínuo. Daí tiramos que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo em \((0, \infty).\) Além disso, segue do crescimento sublinear dos caminhos amostrais que, quase sempre,</p>
 \[
 \lim_{t \rightarrow 0} V_t = \lim_{t \rightarrow 0} t W_{1/t} = \lim_{s \rightarrow \infty} \frac{W_s}{s} = 0.
 \]
-<p>Portanto, para quase todo \(\omega\), vale \(t W_{1/t}(\omega) \rightarrow 0\), quando \(t \rightarrow 0\), mostrando que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo também em \(t = 0\), portanto é contíno em \([0, \infty)\), para quase todo \(\omega\). Isso mostra a continuidade quase sempre dos caminhos amostrais de \(\{V_t\}_{t\geq 0}\).</p>
+<p>Portanto, para quase todo \(\omega,\) vale \(t W_{1/t}(\omega) \rightarrow 0,\) quando \(t \rightarrow 0,\) mostrando que \(t \mapsto V_t(\omega) = t W_{1/t}(\omega)\) é contínuo também em \(t = 0,\) portanto é contíno em \([0, \infty),\) para quase todo \(\omega.\) Isso mostra a continuidade quase sempre dos caminhos amostrais de \(\{V_t\}_{t\geq 0}.\)</p>
 <h3 id="independência_dos_incrementos"><a href="#independência_dos_incrementos" class="header-anchor">Independência dos incrementos</a></h3>
-<p>Quanto à independência dos incrementos, se \(0 < t_0 < t_1 < \ldots < t_n\), então \(1/t_n < \ldots < 1/t_1 < t/t_0\) e vemos que os incrementos \(V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}}\), \(j = 1, \ldots, n\), também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.</p>
+<p>Quanto à independência dos incrementos, se \(0 < t_0 < t_1 < \ldots < t_n,\) então \(1/t_n < \ldots < 1/t_1 < t/t_0\) e vemos que os incrementos \(V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}},\) \(j = 1, \ldots, n,\) também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.</p>
 <p>Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência segue da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.</p>
-<p>Vamos, então, considerar quatro instantes distintos \(0 \leq t_1 < t_2 < t_3 < t_4\) e olhar para as covariâncias de dois incrementos disjuntos. Se \(t_1 > 0\), temos</p>
+<p>Vamos, então, considerar quatro instantes distintos \(0 \leq t_1 < t_2 < t_3 < t_4\) e olhar para as covariâncias de dois incrementos disjuntos. Se \(t_1 > 0,\) temos</p>
 \[
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 \]
@@ -515,7 +515,7 @@ V_t = \begin{cases}
 & = t_2 - t_2 - t_1 + t_1 = 0.
 \end{align*}
 \]
-<p>Se \(t_1 = 0\), então</p>
+<p>Se \(t_1 = 0,\) então</p>
 \[
 \begin{align*}
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2} - 0, t_4 W_{1/t_4} - t_3 W_{1/t_3}) \\
@@ -527,11 +527,11 @@ V_t = \begin{cases}
 \]
 <p>Como os incrementos são normais, isso mostra que quaisquer dois incrementos disjuntos de \(\{V_t\}_{t\geq 0}\) são independentes. Agora, considerando \(n\) incrementos consecutivos, o argumento acima mostra que eles são independentes dois a dois. E como são normais, isso implica neles serem mutuamente independentes.</p>
 <h3 id="distribuição_de_probabilidades_dos_incrementos"><a href="#distribuição_de_probabilidades_dos_incrementos" class="header-anchor">Distribuição de probabilidades dos incrementos</a></h3>
-<p>Sejam, agora, \(t \geq 0\), \(\tau > 0\). Se \(t = 0\), então</p>
+<p>Sejam, agora, \(t \geq 0,\) \(\tau > 0.\) Se \(t = 0,\) então</p>
 \[
 V_{t + \tau} - V_t = V_\tau = \tau W_{1/\tau} = \tau (W_{1/\tau} - W_0) \sim \tau \mathcal{N}(0, 1/\tau) = \mathcal{N}(0, \tau).
 \]
-<p>Se \(t > 0\), então</p>
+<p>Se \(t > 0,\) então</p>
 \[
     \mathbb{E}[V_{t + \tau} - V_t] = 0
 \]
@@ -554,11 +554,11 @@ V_{t + \tau} - V_t = V_\tau = \tau W_{1/\tau} = \tau (W_{1/\tau} - W_0) \sim \ta
 \[
 V_{t + \tau} - V_t = (t + \tau)W_{1/(t + \tau)} - tW_{1/t}.
 \]
-<p>Somando e subtraindo \(t W_{1/(t + \tau)}\), obtemos</p>
+<p>Somando e subtraindo \(t W_{1/(t + \tau)},\) obtemos</p>
 \[
 V_{t + \tau} - V_t = (t + \tau)W_{1/(t + \tau)} - t W_{1/(t + \tau)} + t W_{1/(t + \tau)} - tW_{1/t} = \tau W_{1/(t + \tau)} + t (W_{1/(t + \tau)} - W_{1/t}).
 \]
-<p>Como \(W_0 = 0\), temos</p>
+<p>Como \(W_0 = 0,\) temos</p>
 \[
 V_{t + \tau} - V_t  = \tau (W_{1/(t + \tau)} - W_0) - t (W_{1/t} - W_{1/(t + \tau)}).
 \]
@@ -575,7 +575,7 @@ W_{1/(t + \tau)} - W_0 \sim \mathcal{N}(0, 1/(t + \tau)), \quad W_{1/t} - W_{1/(
 V_{t + \tau} - V_t  \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \;\tau > 0.
 \]
 <h2 id="invariância_por_translações"><a href="#invariância_por_translações" class="header-anchor">Invariância por translações</a></h2>
-<p>Considere, novamente, um processo de Wiener padrão \(\{W_t\}_{t\geq 0}\). Seja \(s > 0\) e defina o processo \(\{V_t^s\}_{t\geq 0}\) por</p>
+<p>Considere, novamente, um processo de Wiener padrão \(\{W_t\}_{t\geq 0}.\) Seja \(s > 0\) e defina o processo \(\{V_t^s\}_{t\geq 0}\) por</p>
 \[
 V_t^s = W_{s + t} - W_s, \qquad t \geq 0.
 \]
@@ -583,16 +583,16 @@ V_t^s = W_{s + t} - W_s, \qquad t \geq 0.
 \[
 V_0^s = W_s - W_s = 0.
 \]
-<p>Dados \(t_0 < t_1 < \cdots < t_n\), temos</p>
+<p>Dados \(t_0 < t_1 < \cdots < t_n,\) temos</p>
 \[
 V_{t_j}^s - V_{t_{j-1}}^s = W_{s + t_j} - W_s - W_{s + t_{j-1}} + W_s = W_{s + t_j} - W_{s + t_{j-1}},
 \]
 <p>sendo evidente que os incrementos de \(\{V_t^s\}_{t\geq 0}\) são independentes.</p>
-<p>Agora, dado \(\tau > 0\), temos</p>
+<p>Agora, dado \(\tau > 0,\) temos</p>
 \[
 V_{t + \tau}^s = W_{s + t + \tau} - W_s - W_{s + t} + W_s = W_{s + t + \tau} - W_{s + t} \sim \mathcal{N}(0, \tau).
 \]
-<p>Finalmente, como, para quase todo \(\omega\), o caminho amostral \(t \mapsto W_t(\omega)\) é contínuo, temos, em particular, que</p>
+<p>Finalmente, como, para quase todo \(\omega,\) o caminho amostral \(t \mapsto W_t(\omega)\) é contínuo, temos, em particular, que</p>
 \[
 t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
 \]
@@ -601,7 +601,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
 <ol>
 <li><p>Mostre que a combinação convexa \(W_t = (1-\theta)W_t^{(1)} + \theta W_t^{(2)},\) \(0\leq \theta \leq 1,\) entre dois processos de Wiener independentes \(\{W_t^{(1)}\}_{t\geq 0}\) e \(\{W_t^{(1)}\}_{t\geq 0}\) também é um processo de Wiener.</p>
 </li>
-<li><p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer \(p > 1/2\).</p>
+<li><p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer \(p > 1/2.\)</p>
 </li>
 </ol>
 \[
@@ -630,7 +630,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

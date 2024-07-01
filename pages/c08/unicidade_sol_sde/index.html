@@ -355,7 +355,7 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">8.4. Unicidade de soluções</a></h1>
 <p>Como visto anteriormente, um processo de Wiener não é único, assim como podemos ter várias variáveis aleatórias independentes, com a mesma distribuição.</p>
-<p>Agora, uma vez definido um processo de Wiener \(\{W_t\}_{t \geq 0}\), podemos ter, sob as devidas condições nos termos \(f=f(t, x)\) e \(g = g(t, x)\), a unicidade do processo estocástico \(\{X_t\}_{t \geq 0}\) definido através da equação diferencial estocástica</p>
+<p>Agora, uma vez definido um processo de Wiener \(\{W_t\}_{t \geq 0},\) podemos ter, sob as devidas condições nos termos \(f=f(t, x)\) e \(g = g(t, x),\) a unicidade do processo estocástico \(\{X_t\}_{t \geq 0}\) definido através da equação diferencial estocástica</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 \]
@@ -366,7 +366,7 @@
 <p>Assim como no caso de equações diferenciais ordinárias determinísticas, uma condição do tipo continuidade Lipschitz nos garante essa continuidade. No caso, a continuidade Lipschitz uniforme em \(t\) e global em \(x\) dos termos \(f = f(t, x)\) e \(g = g(t, x)\) que utilizamos para a demonstração de existência é, também, suficiente para a unicidade e para a dependência contínua nos dados iniciais.</p>
 <p>A ideia é estimar a evolução temporal da média quadrática entre duas possíveis soluções no instante \(t\) e aplicar o Lema de Gronwall para relacionar essa evolução com a média quadrática inicial.</p>
 <h2 id="continuidade_em_relação_à_condição_inicial"><a href="#continuidade_em_relação_à_condição_inicial" class="header-anchor">Continuidade em relação à condição inicial</a></h2>
-<p>Sejam \(\{X_t\}_{t \geq 0}\) e \(\{\tilde X_t\}_{t \geq 0}\) duas soluções da equação diferencial estocástica, com condições iniciais \(X_0\) e \(\tilde X_0\), respectivamente. Posteriormente vamos considerar condições iniciais iguais, mas, no momento, permitimos que sejam diferentes.</p>
+<p>Sejam \(\{X_t\}_{t \geq 0}\) e \(\{\tilde X_t\}_{t \geq 0}\) duas soluções da equação diferencial estocástica, com condições iniciais \(X_0\) e \(\tilde X_0,\) respectivamente. Posteriormente vamos considerar condições iniciais iguais, mas, no momento, permitimos que sejam diferentes.</p>
 <p>Considere a média quadrática da diferença entre essas duas soluções, em cada instante \(t \geq 0\):</p>
 \[
 e(t) = \mathbb{E}\left[ |X_t - \tilde X_t|^2 \right]
@@ -383,11 +383,11 @@ X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s
 \[
 X_t - \tilde X_t = X_0 - \tilde X_0 + \int_0^t (f(s, X_s) - f(s, \tilde X_s))\;\mathrm{d}s + \int_0^t (g(s, X_s) - g(s, \tilde X_s))\;\mathrm{d}W_s.
 \]
-<p>Usando que \(f\) e \(g\) são globalmente Lipschitz em \(x\), uniformemente em \(t\), obtemos</p>
+<p>Usando que \(f\) e \(g\) são globalmente Lipschitz em \(x,\) uniformemente em \(t,\) obtemos</p>
 \[
 \left| X_t - \tilde X_t \right| \leq \left| X_0 - \tilde X_0 \right| + \int_0^t L_f \left| X_s - \tilde X_s \right| \;\mathrm{d}s + \int_0^t L_g \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s.
 \]
-<p>Elevando ao quadrado e usando que \((a + b + c)^2 \leq 3a^2 + 3b^2 + 3c^2\),</p>
+<p>Elevando ao quadrado e usando que \((a + b + c)^2 \leq 3a^2 + 3b^2 + 3c^2,\)</p>
 \[
 \left| X_t - \tilde X_t \right|^2 \leq 3\left| X_0 - \tilde X_0 \right|^2 + 3L_f^2\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}s\right)^2 + 3L_g^2\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s\right)^2.
 \]
@@ -438,7 +438,7 @@ X_t - \tilde X_t = X_0 - \tilde X_0 + \int_0^t (f(s, X_s) - f(s, \tilde X_s))\;\
 \mathbb{P}\left(X_t = \tilde X_t, t \geq 0\right) = 1.
 \]
 <h2 id="exemplo_de_não_unicidade"><a href="#exemplo_de_não_unicidade" class="header-anchor">Exemplo de não unicidade</a></h2>
-<p>De maneira semelhante ao caso de equações diferenciais ordinárias, equações que envolvem potências de ordem \(p\) com \(0< p < 1\) são fortes candidatos a não unicidade. Mas por conta da fórmula de Itô, a equação pode ser um pouco mais complicada. Vamos, então, ver o caminho contrário. Considere \(X_t = W_t^3\) e vamos ver que equação \(\{X_t\}_t\) deve satisfazer. Pela fórmula de Itô com \(X_t = h(W_t)\) e \(h(w) = w^3\), temos</p>
+<p>De maneira semelhante ao caso de equações diferenciais ordinárias, equações que envolvem potências de ordem \(p\) com \(0< p < 1\) são fortes candidatos a não unicidade. Mas por conta da fórmula de Itô, a equação pode ser um pouco mais complicada. Vamos, então, ver o caminho contrário. Considere \(X_t = W_t^3\) e vamos ver que equação \(\{X_t\}_t\) deve satisfazer. Pela fórmula de Itô com \(X_t = h(W_t)\) e \(h(w) = w^3,\) temos</p>
 \[
 \mathrm{d}X_t = \frac{1}{2}h''(W_t)\;\mathrm{d}t + h'(W_t)\;\mathrm{d}W_t
 \]
@@ -474,7 +474,7 @@ X_0 = W_0^3 = 0.
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

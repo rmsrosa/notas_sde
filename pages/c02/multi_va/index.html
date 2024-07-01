@@ -356,12 +356,12 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">2.7. Variáveis aleatórias multivariadas</a></h1>
 <p>As coisas começam a ficar mais interessantes quando consideramos mais de uma variável aleatória. Para que elas sejam consideradas juntas, é necessário que estejam definidas em um mesmo espaço de probabilidades. Isso aparece de forma natural, como veremos aqui.</p>
 <h2 id="variáveis_aleatórias_multivariadas"><a href="#variáveis_aleatórias_multivariadas" class="header-anchor">Variáveis aleatórias multivariadas</a></h2>
-<p>Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor \(X = (X_1, \ldots, X_n)\) &#40;muitas vezes se considera um vetor coluna, na verdade&#41; cujos elementos estão em um mesmo espaço de probabilidades, digamos \((\Omega, \mathcal{A}, \mathbb{P})\). Os espaços de eventos podem ser diferentes, de forma que \(\Sigma = \Sigma_1 \times \cdots \times \Sigma_n\), com a \(\sigma\)-algebra \(\mathcal{E}\) gerada por \(\mathcal{E}_1 \times \cdots \times \mathcal{E}_n\). Tal objeto é chamado de <strong>variável aleatória multivariada.</strong> E a probabilidade \(\mathbb{P}\) é chamada de <strong>distribuição conjunta de probabilidades.</strong></p>
+<p>Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor \(X = (X_1, \ldots, X_n)\) &#40;muitas vezes se considera um vetor coluna, na verdade&#41; cujos elementos estão em um mesmo espaço de probabilidades, digamos \((\Omega, \mathcal{A}, \mathbb{P}).\) Os espaços de eventos podem ser diferentes, de forma que \(\Sigma = \Sigma_1 \times \cdots \times \Sigma_n,\) com a \(\sigma\)-algebra \(\mathcal{E}\) gerada por \(\mathcal{E}_1 \times \cdots \times \mathcal{E}_n.\) Tal objeto é chamado de <strong>variável aleatória multivariada.</strong> E a probabilidade \(\mathbb{P}\) é chamada de <strong>distribuição conjunta de probabilidades.</strong></p>
 <p>A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos \(E \in \mathcal{E}\) acontecerem:</p>
 \[
 \mathbb{P}(X \in E).
 \]
-<p>Quando o evento conjunto é da forma \(E = E_1 \times \ldots \times E_n\), podemos escrever</p>
+<p>Quando o evento conjunto é da forma \(E = E_1 \times \ldots \times E_n,\) podemos escrever</p>
 \[
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n)
 \]
@@ -369,10 +369,10 @@
 \[
 \mathbb{P}(X_i \in E_i).
 \]
-<p>Isso pode ser obtido da distribuição conjunta, considerando o evento \(\mathbb{E} = \Sigma_1 \times \ldots \Sigma_{i-1}\times E_i \times \Sigma_{i+1} \times \cdot \times \Sigma_n\).</p>
+<p>Isso pode ser obtido da distribuição conjunta, considerando o evento \(\mathbb{E} = \Sigma_1 \times \ldots \Sigma_{i-1}\times E_i \times \Sigma_{i+1} \times \cdot \times \Sigma_n.\)</p>
 <h2 id="exemplo"><a href="#exemplo" class="header-anchor">Exemplo</a></h2>
 <p>Por exemplo, considere um dado de quatro lados e um de seis. Ambos dados não viciados. Há \(4 \times 6 = 24\) combinações possíveis. O espaço amostral \(\Omega\) deverá ter &#40;pelo menos&#41; 24 elementos, cada combinação com uma determinada probabilidade.</p>
-<p>Podemos representar os resultado dos dados através de duas variáveis aleatórias, digamos \(X\) e \(Y\), com \(X\) para o resultado do lançamento do dado de quatro lados e \(Y\), para o de seis. Isoladamente, teríamos um espaço amostral de quatro elementos para \(X\) e um de seis para \(Y\). Mas em conjunto, temos uma variável multivariada \((X, Y)\) em um espaço amostral de 24 elementos. Mais explicitamente, podemos considerar</p>
+<p>Podemos representar os resultado dos dados através de duas variáveis aleatórias, digamos \(X\) e \(Y,\) com \(X\) para o resultado do lançamento do dado de quatro lados e \(Y,\) para o de seis. Isoladamente, teríamos um espaço amostral de quatro elementos para \(X\) e um de seis para \(Y.\) Mas em conjunto, temos uma variável multivariada \((X, Y)\) em um espaço amostral de 24 elementos. Mais explicitamente, podemos considerar</p>
 \[
 \Omega = \Sigma = \{1, \ldots, 4\} \times \{1, \ldots, 6\}.
 \]
@@ -393,7 +393,7 @@
 \[
 \mathbb{P}(X \in E_1, Y \in E_2) = \mathbb{P}(X \in E_1)\mathbb{P}(X \in E_2).
 \]
-<p>No caso de uma variável multivariada \((X_1, \ldots, X_n)\), dizemos que as variáveis \(X_i\) são <strong>&#40;mutuamente&#41; independentes</strong> quando</p>
+<p>No caso de uma variável multivariada \((X_1, \ldots, X_n),\) dizemos que as variáveis \(X_i\) são <strong>&#40;mutuamente&#41; independentes</strong> quando</p>
 \[
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n) = \mathbb{P}(X_1 \in E_1)\cdots \mathbb{P}(X_n \in E_n).
 \]
@@ -404,11 +404,11 @@
 \[
 \mathbb{P}(X_i \in E_i, X_j \in E_j) = \mathbb{P}(X_i \in E_i)\mathbb{P}(X_j \in E_j), \qquad \forall i \neq j.
 \]
-<p>Observe que podemos ter um conjunto com mais de duas variáveis aleatórias cujas variáveis sejam independentes dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias \(X\), \(Y\) e \(Z\), onde \(X\) e \(Y\) são variáveis de Bernoulli independentes, com probabilidade de sucesso \(p = 1/2\), e defina \(Z\) como sendo \(1\), caso os resultados de \(X\) e \(Y\) sejam diferentes, e \(0\), caso os resultados sejam iguais. Podemos escrever isso como \(Z = X + Y \mod 2\), com \(X\) e \(Y\) assumindo valores \(0\) ou \(1\). Podemos pensar nisso como um <em>checksum</em> simples, ou um dígito verificador.</p>
-<p>Nesse caso, \(X\) e \(Y\) são independentes, \(X\) e \(Z\) são independentes e \(Y\) e \(Z\) são independentes. Mas \(X, Y\) e \(Z\) não são mutuamente independentes, já que \(Z\) está completamente determinado pelos resultados de \(X\) e \(Y\).</p>
+<p>Observe que podemos ter um conjunto com mais de duas variáveis aleatórias cujas variáveis sejam independentes dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias \(X,\) \(Y\) e \(Z,\) onde \(X\) e \(Y\) são variáveis de Bernoulli independentes, com probabilidade de sucesso \(p = 1/2,\) e defina \(Z\) como sendo \(1,\) caso os resultados de \(X\) e \(Y\) sejam diferentes, e \(0,\) caso os resultados sejam iguais. Podemos escrever isso como \(Z = X + Y \mod 2,\) com \(X\) e \(Y\) assumindo valores \(0\) ou \(1.\) Podemos pensar nisso como um <em>checksum</em> simples, ou um dígito verificador.</p>
+<p>Nesse caso, \(X\) e \(Y\) são independentes, \(X\) e \(Z\) são independentes e \(Y\) e \(Z\) são independentes. Mas \(X, Y\) e \(Z\) não são mutuamente independentes, já que \(Z\) está completamente determinado pelos resultados de \(X\) e \(Y.\)</p>
 <p>Podemos mostrar isso mais explicitamente, através da distribuição conjunta de probabilidade, até mesmo para solidificar as ideias acima. A tabela abaixo nos dá a distribuição conjunta de probabilidades:</p>
 <table><tr><th align="center">X</th><th align="center">Y</th><th align="center">Z</th><th align="left">Probabilidade</th></tr><tr><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="left">1/4</td></tr><tr><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="left">1/4</td></tr></table>
-<p>O espaço amostral pode ser tomado como sendo \(\Omega = \{0, 1\}^3\). Acima, só mostramos as combinações com probabilidade positiva. Mas podemos completar o quadro:</p>
+<p>O espaço amostral pode ser tomado como sendo \(\Omega = \{0, 1\}^3.\) Acima, só mostramos as combinações com probabilidade positiva. Mas podemos completar o quadro:</p>
 <table><tr><th align="center">X</th><th align="center">Y</th><th align="center">Z</th><th align="left">Probabilidade</th></tr><tr><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">0</td><td align="center">0</td><td align="center">1</td><td align="left">0</td></tr><tr><td align="center">1</td><td align="center">0</td><td align="center">0</td><td align="left">0</td></tr><tr><td align="center">1</td><td align="center">0</td><td align="center">1</td><td align="left">1/4</td></tr><tr><td align="center">0</td><td align="center">1</td><td align="center">0</td><td align="left">0</td></tr><tr><td align="center">0</td><td align="center">1</td><td align="center">1</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">1</td><td align="center">0</td><td align="left">1/4</td></tr><tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="left">0</td></tr></table>
 <p>Observe que</p>
 \[
@@ -448,7 +448,7 @@
 \[
 S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j \leq n} X_j
 \]
-<p>são independentes entre si. Além disso, \(\chi_{A_k}\) só envolve os processos \(X_1, \ldots, X_k,\) sendo também independente de \(S_n - S_k\). Desse modo,</p>
+<p>são independentes entre si. Além disso, \(\chi_{A_k}\) só envolve os processos \(X_1, \ldots, X_k,\) sendo também independente de \(S_n - S_k.\) Desse modo,</p>
 \[
     \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) = 0
 \]
@@ -456,7 +456,7 @@ S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j 
 \[
     \mathbb{E}[S_k\chi_{A_k}(S_n - S_k)] = \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) + \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right] = \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right].
 \]
-<p>Observe que \(S_k \geq r\) em \(A_k\), logo</p>
+<p>Observe que \(S_k \geq r\) em \(A_k,\) logo</p>
 \[
     \mathbb{E}\left[S_k\chi_{A_k}\right] \geq r,
 \]
@@ -488,7 +488,7 @@ S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j 
 \[
     \mathbb{E}[S_n^2\chi_{A_1 \cup \ldots \cup A_n}] \leq \mathbb{E}[S_n^2].
 \]
-<p>Como \(S_n\) também tem valor esperado nulo, o lado direito é igual à variância de \(S_n\), nos levando à desigualdade final, conhecida como <strong>desigualdade de Kolmogorov:</strong></p>
+<p>Como \(S_n\) também tem valor esperado nulo, o lado direito é igual à variância de \(S_n,\) nos levando à desigualdade final, conhecida como <strong>desigualdade de Kolmogorov:</strong></p>
 \[
     \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
 \]
@@ -506,14 +506,14 @@ S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j 
 <p><em>Dicas:</em></p>
 <p>&#40;i&#41; Substitua a desigualdade de Chebyshev por \( \mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_k^{m} \chi_{A_k}]. \)</p>
 <p>&#40;ii&#41; Escreva \( S_n^{m} = (S_k + (S_n - S_k))^{m} = \sum_{i=0}^{m} \left( \begin{matrix} m \\ i \end{matrix}\right)S_k^{m - i}(S_n - S_k)^{i}.\)</p>
-<p>&#40;iii&#41; Quando \(i\) é ímpar, segue da simetria de cada \(X_j\) que \(S_n - S_k\) também é simétrico em relação a origem e, portanto, \(\mathbb{E}\left[(S_n - S_k)^i\right] = 0\). Além disso, \(S_n - S_k\) é independente de \(S_k^{m - i}\chi_{A_k}.\) Assim, \(\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{m - i}\chi_{A_k}]\mathbb{E}[(S_n - S_k)^{i}] = 0.\)</p>
-<p>&#40;iv&#41; Quando \(i\) é par, temos \((S_n - S_k)^i \geq 0\). Além disso, \(S_k \geq r > 0\) em \(A_k\), de modo que \(S_k^{m - i}\chi_{A_k} \geq 0.\) Portanto, \(\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.\)</p>
+<p>&#40;iii&#41; Quando \(i\) é ímpar, segue da simetria de cada \(X_j\) que \(S_n - S_k\) também é simétrico em relação a origem e, portanto, \(\mathbb{E}\left[(S_n - S_k)^i\right] = 0.\) Além disso, \(S_n - S_k\) é independente de \(S_k^{m - i}\chi_{A_k}.\) Assim, \(\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{m - i}\chi_{A_k}]\mathbb{E}[(S_n - S_k)^{i}] = 0.\)</p>
+<p>&#40;iv&#41; Quando \(i\) é par, temos \((S_n - S_k)^i \geq 0.\) Além disso, \(S_k \geq r > 0\) em \(A_k,\) de modo que \(S_k^{m - i}\chi_{A_k} \geq 0.\) Portanto, \(\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.\)</p>
 <p>&#40;v&#41; Mantendo apenas o termo \(i=0\) e descartando os outros que se anulam ou são não-negativos, obtemos \(\mathbb{E}[S_n^{m} \chi_{A_k}] \geq \mathbb{E}[S_k^{m}\chi_{A_k}].\)</p>
 <p>&#40;vi&#41; Isso nos dá que \(\mathbb{P}\left(A_k\right) = \mathbb{E}[\chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_k^{m} \chi_{A_k}] \leq \frac{1}{r^{m}}\mathbb{E}[S_n^{m} \chi_{A_k}].\)</p>
 <p>&#40;vii&#41; Somando em \(k=1, \ldots, n\) e usando que os conjuntos \(A_1, \ldots, A_n\) são disjuntos, como na demonstração acima, obtemos, finalmente, a desigualdade desejada.</p>
 </blockquote>
 <ol start="2">
-<li><p>Sob as condições do exercício anterior, assume, ainda, que \(\mathbb{E}[e^{X_k}] < \infty,\) para todo \(k=1, \ldots, n\). Mostre que</p>
+<li><p>Sob as condições do exercício anterior, assume, ainda, que \(\mathbb{E}[e^{X_k}] < \infty,\) para todo \(k=1, \ldots, n.\) Mostre que</p>
 </li>
 </ol>
 \[
@@ -543,7 +543,7 @@ S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j 
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

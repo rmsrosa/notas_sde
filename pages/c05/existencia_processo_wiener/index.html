@@ -383,9 +383,9 @@
 \[
     W_t^{(n)} = \frac{1}{\sqrt{n}}\sum_{1 \leq k \leq nt} Z_k, \qquad 0\leq t \leq 1.
 \]
-<p>O intervalo \([0, 1]\) é dividido em \(n\) subintervalos de tamanho \(1/n\) e passos \(Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)\) são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada \(t\), as variáveis aleatórias \(W_t^{(n)}\) convergem para \(\mathcal{N}(0, t),\) mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais em um espaço adequado. Esse resultado de que, de fato, esses processos \(\{W_t^{(n)}\}_t,\) \(n\in\mathbb{N},\) convergem para um processo de Wiener é devido a Monroe Donsker &#40;1951, 1952&#41;.</p>
-<p>Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, e inspirada nas demonstrações apresentadas em Morters &amp; Peres &#40;2010&#41; e Evans &#40;2013&#41;. A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo \(I = [0, 1]\). A partir daí, podemos transladar e concatenar processos independentes em \([0, 1]\) para obter um processo de Wiener em \([0, \infty)\).</p>
-<p>Veremos duas formas de escrever essa sequência aproximante de processos no intervalo \([0, 1]\). Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.</p>
+<p>O intervalo \([0, 1]\) é dividido em \(n\) subintervalos de tamanho \(1/n\) e passos \(Z_k/\sqrt{n} \sim \mathcal{N}(0, 1/n)\) são dados a cada subintervalo. Pelo Teorema Central do Limite, para cada \(t,\) as variáveis aleatórias \(W_t^{(n)}\) convergem para \(\mathcal{N}(0, t),\) mas isso não resolve a questão toda, da convergência do processo como um todo e dos passos serem independentes e identicamente distribuídos, com a distribuição correta. Para isso, é preciso explorar certas simetrias do passeio aleatório e usar uma norma apropriada para mostrar a convergência dos caminhos amostrais em um espaço adequado. Esse resultado de que, de fato, esses processos \(\{W_t^{(n)}\}_t,\) \(n\in\mathbb{N},\) convergem para um processo de Wiener é devido a Monroe Donsker &#40;1951, 1952&#41;.</p>
+<p>Vamos, no entanto, discutir, a seguir, uma demonstração mais simples, dada por Paul Lévy, e inspirada nas demonstrações apresentadas em Morters &amp; Peres &#40;2010&#41; e Evans &#40;2013&#41;. A demonstração é feita por um processo de limite, a partir de um processo estocástico discreto que é interpolado para um processo contínuo. A construção crucial é feita no intervalo \(I = [0, 1].\) A partir daí, podemos transladar e concatenar processos independentes em \([0, 1]\) para obter um processo de Wiener em \([0, \infty).\)</p>
+<p>Veremos duas formas de escrever essa sequência aproximante de processos no intervalo \([0, 1].\) Uma facilita mostrarmos que os incrementos são normais independentes e identicamente distribuídos, enquanto que a outra facilita a demonstração de convergência da sequência.</p>
 <p>Vale ressaltar que um processo de Wiener não é único, assim como não há uma única variável aleatória normal. Podemos, naturalmente, ter várias normais, independentes umas das outras. No caso do processo de Wiener, podemos, por exemplo, contruir um processo através do limite de interpolações de diferentes sequências de variáveis normais, obtendo diferentes processos de Wiener.</p>
 <h2 id="partição_diádica_do_intervalo_unitário"><a href="#partição_diádica_do_intervalo_unitário" class="header-anchor">Partição diádica do intervalo unitário</a></h2>
 <p>A aproximação é feita a partir de malhas formadas por números <em>diádicos</em> &#40;números racionais cujo denominador é uma potência de 2&#41; entre zero e um. Mais precisamente, considere os conjuntos</p>
@@ -399,32 +399,32 @@ D = \cup_{n\in \mathbb{N}} D_n.
 
 <img src="/notas_sde/assets/pages/c05/existencia_processo_wiener/code/output/dyadic_points.svg" alt="">
 <h2 id="processo_discreto_iid_e_espaço_amostral"><a href="#processo_discreto_iid_e_espaço_amostral" class="header-anchor">Processo discreto i.i.d. e espaço amostral</a></h2>
-<p>Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de um processo discreto i.i.d., que vamos definir em \(D\).</p>
-<p>Com esse fim, considere um processo discreto <em>i.i.d.</em> \(\{Z_d\}_{d\in D\setminus \{0\}}\), onde as variáveis \(Z_d\) são mutuamente independentes e dadas por normais \(Z_d \sim \mathcal{N}(0, 1)\). Como \(D\) é enumerável, podemos considerar o conjunto</p>
+<p>Como dito, um processo de Wiener pode ser obtido como limite de processos obtidos por interpolação de um processo discreto i.i.d., que vamos definir em \(D.\)</p>
+<p>Com esse fim, considere um processo discreto <em>i.i.d.</em> \(\{Z_d\}_{d\in D\setminus \{0\}},\) onde as variáveis \(Z_d\) são mutuamente independentes e dadas por normais \(Z_d \sim \mathcal{N}(0, 1).\) Como \(D\) é enumerável, podemos considerar o conjunto</p>
 \[
 \Omega = \mathbb{R}^D
 \]
-<p>como espaço amostral, e por \(\mathcal{A}\) a \(\sigma\)-álgebra gerada por \(\pi_d^{-1}(\mathcal{B})\), onde \(\mathcal{B}\) são os conjuntos borelianos em \(\mathbb{R}\) e \(\pi_d : \Omega \rightarrow \mathbb{R}\) são as projeções levam um caminho \(\omega\in \Omega\) no elemento \(\pi_d \omega = \omega(d)\), em \(d\in D\). Denotamos a medida de probabilidade do processo \(\{Z_d\}_{d\in D\setminus \{0\}}\) por \(\mathbb{P}\). Para simplificar, escrevemos \(Z_0 = 0\), já que queremos que o processo de Wiener limite satisfaça \(W_0 = Z_0 = 0\).</p>
+<p>como espaço amostral, e por \(\mathcal{A}\) a \(\sigma\)-álgebra gerada por \(\pi_d^{-1}(\mathcal{B}),\) onde \(\mathcal{B}\) são os conjuntos borelianos em \(\mathbb{R}\) e \(\pi_d : \Omega \rightarrow \mathbb{R}\) são as projeções levam um caminho \(\omega\in \Omega\) no elemento \(\pi_d \omega = \omega(d),\) em \(d\in D.\) Denotamos a medida de probabilidade do processo \(\{Z_d\}_{d\in D\setminus \{0\}}\) por \(\mathbb{P}.\) Para simplificar, escrevemos \(Z_0 = 0,\) já que queremos que o processo de Wiener limite satisfaça \(W_0 = Z_0 = 0.\)</p>
 <h2 id="sequência_aproximante_de_processos_discretos"><a href="#sequência_aproximante_de_processos_discretos" class="header-anchor">Sequência aproximante de processos discretos</a></h2>
-<p>Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em \(D_n\), \(n\in\mathbb{N}.\) Estes processos serão interpolados para processos em \([0, 1]\). Por motivo de clareza, vamos denotar esses processos discretos por \(\{X_d^{(n)}\}_{d\in D_n}\). As interpolações contínuas serão denotadas por \(\{W_t^{(n)}\}_{t\in [0, 1]}\). E, no limite, teremos o processo contínuo \(\{W_t\}_{t\in [0, 1]}\). Por serem extensões, teremos \(W_d = W_d^{(n)} = X_d^{(n)}\), nos pontos diádicos \(d\in D_n\). Observe que os processos \(\{X_d^{(n)}\}_{d\in D_n}\) são, na verdade, vetores aleatórios, já que cada \(D_n\) é finito.</p>
-<p>Para cada \(d\in D_n\), esperamos ter \(X_d^{(n)} = W_d = W_d - W_0 \sim \mathcal{N}(0, d)\). Então seria natural pensarmos em definir \(X_d^{(n)}\) como \(Z_d / \sqrt{d}\), já que \(Z_d \sim \mathcal{N}(0, 1)\), de modo que \(Z_d/\sqrt{d} \sim \mathcal{N}(0, d)\), e interpolar, de alguma forma, para \(t\in I \setminus D_n\). Apesar disso convergir para um processo, este não terá a distribuição correta dos passos. E nem os seus passos serão independentes. Mas uma variação disso funciona. Essa variação se baseia no fato de que se \(A\) e \(B\) são duas variáveis normais independentes com mesma variância, então \(A+B\) e \(A-B\) também são independentes e com o dobro da variância de \(A\) e \(B\).</p>
-<p>Mais precisamente, definimos, para cada \(n\in \mathbb{N}\), o processo discreto \(\{X_d^{(n)}\}_{d\in D_n}\), na malha finita \(D_n\), da seguinte forma. Primeiramente, sendo \(D_1 = \{0, 1\}\), definimos</p>
+<p>Vamos primeiro construir uma sequência de processos discretos, cada um com parâmetro em \(D_n,\) \(n\in\mathbb{N}.\) Estes processos serão interpolados para processos em \([0, 1].\) Por motivo de clareza, vamos denotar esses processos discretos por \(\{X_d^{(n)}\}_{d\in D_n}.\) As interpolações contínuas serão denotadas por \(\{W_t^{(n)}\}_{t\in [0, 1]}.\) E, no limite, teremos o processo contínuo \(\{W_t\}_{t\in [0, 1]}.\) Por serem extensões, teremos \(W_d = W_d^{(n)} = X_d^{(n)},\) nos pontos diádicos \(d\in D_n.\) Observe que os processos \(\{X_d^{(n)}\}_{d\in D_n}\) são, na verdade, vetores aleatórios, já que cada \(D_n\) é finito.</p>
+<p>Para cada \(d\in D_n,\) esperamos ter \(X_d^{(n)} = W_d = W_d - W_0 \sim \mathcal{N}(0, d).\) Então seria natural pensarmos em definir \(X_d^{(n)}\) como \(Z_d / \sqrt{d},\) já que \(Z_d \sim \mathcal{N}(0, 1),\) de modo que \(Z_d/\sqrt{d} \sim \mathcal{N}(0, d),\) e interpolar, de alguma forma, para \(t\in I \setminus D_n.\) Apesar disso convergir para um processo, este não terá a distribuição correta dos passos. E nem os seus passos serão independentes. Mas uma variação disso funciona. Essa variação se baseia no fato de que se \(A\) e \(B\) são duas variáveis normais independentes com mesma variância, então \(A+B\) e \(A-B\) também são independentes e com o dobro da variância de \(A\) e \(B.\)</p>
+<p>Mais precisamente, definimos, para cada \(n\in \mathbb{N},\) o processo discreto \(\{X_d^{(n)}\}_{d\in D_n},\) na malha finita \(D_n,\) da seguinte forma. Primeiramente, sendo \(D_1 = \{0, 1\},\) definimos</p>
 \[
 X_0^{(1)} = 0, \quad X_1^{(1)} = Z_1.
 \]
-<p>Para \(n = 2\), temos \(D_2 = \{0, 1/2, 1\}\). A ideia é estender \(\{X_d^{(1)}\}_{d\in D_1}\) para um \(\{X_d^{(2)}\}_{d\in D_2}\), em \(D_2\supset D_1\), mantendo os processos \(X_0^{(1)}, X_1^{(1)}\) em \(d = 0, 1\) e adicionando uma fração de \(Z_{1/2}\) à interpolação linear de \(X_0^{(1)} = 0\) e \(X_1^{(1)} = Z_1\), em \(d = 1/2\). Mais precisamente, fazemos</p>
+<p>Para \(n = 2,\) temos \(D_2 = \{0, 1/2, 1\}.\) A ideia é estender \(\{X_d^{(1)}\}_{d\in D_1}\) para um \(\{X_d^{(2)}\}_{d\in D_2},\) em \(D_2\supset D_1,\) mantendo os processos \(X_0^{(1)}, X_1^{(1)}\) em \(d = 0, 1\) e adicionando uma fração de \(Z_{1/2}\) à interpolação linear de \(X_0^{(1)} = 0\) e \(X_1^{(1)} = Z_1,\) em \(d = 1/2.\) Mais precisamente, fazemos</p>
 \[
 X_0^{(2)} = X_0^{(1)}, \quad X_1^{(2)} = X_1^{(1)}, \quad X_{1/2}^{(2)} = \frac{X_0^{(1)} + X_1^{(1)}}{2} + \frac{Z_{1/2}}{2}.
 \]
-<p>Agora, continuamos por indução, estendendo o processo \(\{X_d^{(n)}\}_{d\in D_n}\), em \(D_n\), para um processo \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\), em \(D_{n+1}\). Para isso, começamos fazendo</p>
+<p>Agora, continuamos por indução, estendendo o processo \(\{X_d^{(n)}\}_{d\in D_n},\) em \(D_n,\) para um processo \(\{X_d^{(n+1)}\}_{d\in D_{n+1}},\) em \(D_{n+1}.\) Para isso, começamos fazendo</p>
 \[
 X_d^{(n+1)} = X_d^{(n)}, \qquad \forall d\in D_n.
 \]
-<p>Agora, para \(d \in D_{n+1} \setminus D_n\), tomamos a média em relação aos valores adjacentes \(d \pm 1/2^n\) e somamos uma fração apropriada de \(Z_d\):</p>
+<p>Agora, para \(d \in D_{n+1} \setminus D_n,\) tomamos a média em relação aos valores adjacentes \(d \pm 1/2^n\) e somamos uma fração apropriada de \(Z_d\):</p>
 \[
 X_d^{(n+1)} = \frac{X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)}}{2} + \frac{Z_d}{2^{(n + 1)/2}}.
 \]
-<p>Observe que, com \(n = 1\), esta fórmula coincide com a fórmula acima dada explicitamente para \(\{X_d^{(2)}\}_{d\in D_2}\).</p>
+<p>Observe que, com \(n = 1,\) esta fórmula coincide com a fórmula acima dada explicitamente para \(\{X_d^{(2)}\}_{d\in D_2}.\)</p>
 <p>A escolha da fração \(1/2^{(n+1)/2}\) no termo \(Z_d\) é para que esta fração tenha a variância adequada, como veremos a seguir.</p>
 
 <img src="/notas_sde/assets/pages/c05/existencia_processo_wiener/code/output/sequenciaWn.svg" alt="">
@@ -433,8 +433,8 @@ X_d^{(n+1)} = \frac{X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)}}{2} + \frac{Z_d}{2
 <p>É importante ressaltar, no entanto, que cada \(\{X_d^{(n)}\}_{d\in D_n}\) não é formado por variáveis aleatórias independentes.</p>
 <p>Da mesma forma, os incrementos são combinações lineares de normais independentes, portanto também são normais multivariadas. Em princípio, também não seriam independentes. Mas veremos a seguir que os incrementos têm uma estrutura particular, de tal forma que são, sim, independentes.</p>
 <h3 id="independência_e_distribuição_dos_incrementos"><a href="#independência_e_distribuição_dos_incrementos" class="header-anchor">Independência e distribuição dos incrementos</a></h3>
-<p>Observe que cada \(X_d^{(n)}\) só depende das variáveis \(\{Z_d\}_{d\in D_n}\), que são independentes de \(\{Z_d\}_{d \in D \setminus D_n}\). Portanto, os processos \((X_d^{(n)})_{d\in D_n}\) e \(\{Z_d\}_{d \in D \setminus D_n}\) são independentes.</p>
-<p>Agora, vamos ver que os incrementos de cada processo \(\{X_d^{(n)}\}_{d\in D_n}\) são independentes. Para \(n = 1\), isso é vácuo, já que só há um incremento, \(X_1^{(1)} - X_0^{(1)} = Z_1\). Para \(n = 2\), temos apenas dois incrementos,</p>
+<p>Observe que cada \(X_d^{(n)}\) só depende das variáveis \(\{Z_d\}_{d\in D_n},\) que são independentes de \(\{Z_d\}_{d \in D \setminus D_n}.\) Portanto, os processos \((X_d^{(n)})_{d\in D_n}\) e \(\{Z_d\}_{d \in D \setminus D_n}\) são independentes.</p>
+<p>Agora, vamos ver que os incrementos de cada processo \(\{X_d^{(n)}\}_{d\in D_n}\) são independentes. Para \(n = 1,\) isso é vácuo, já que só há um incremento, \(X_1^{(1)} - X_0^{(1)} = Z_1.\) Para \(n = 2,\) temos apenas dois incrementos,</p>
 \[
 \Delta_{1/2}^{(2)} = X_1^{(2)} - X_{1/2}^{(2)} = X_1^{(1)} - \frac{X_0^{(1)} + X_1^{(1)}}{2} - \frac{Z_{1/2}}{2} = \frac{X_1^{(1)} - X_0^{(1)}}{2} - \frac{Z_{1/2}}{2} = \frac{Z_1}{2} - \frac{Z_{1/2}}{2}
 \]
@@ -442,14 +442,14 @@ X_d^{(n+1)} = \frac{X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)}}{2} + \frac{Z_d}{2
 \[
 \Delta_0^{(2)} = X_{1/2}^{(2)} - X_0^{(2)} = \frac{X_0^{(1)} + X_1^{(1)}}{2} + \frac{Z_{1/2}}{2} - X_0^{(2)} = \frac{X_1^{(1)} - X_0^{(1)}}{2} + \frac{Z_{1/2}}{2} = \frac{Z_1}{2} + \frac{Z_{1/2}}{2}.
 \]
-<p>Aparentemente, esses incrementos poderiam não ser independentes, mas são. Como \(Z_1\) e \(Z_{1/2}\) são independentes e são normais identicamente distribuídas com distribuição \(\mathcal{N}(0,1)\), então \(Z_1/2\) e \(Z_{1/2}/2\) são independentes e são normais identicamente distribuídas com distribuição \(\mathcal{N}(0,1/4)\). Assim, a soma e a diferença de \(Z_1/2\) e \(Z_{1/2}/2\), que são exatamente os incrementos, são, também, normais independentes e identicamente distribuídas, com distribuição \(\mathcal{N}(0, 1/2)\). Além disso, também são independentes de \(\{Z_d\}_{d \in D \setminus D_2}\).</p>
+<p>Aparentemente, esses incrementos poderiam não ser independentes, mas são. Como \(Z_1\) e \(Z_{1/2}\) são independentes e são normais identicamente distribuídas com distribuição \(\mathcal{N}(0,1),\) então \(Z_1/2\) e \(Z_{1/2}/2\) são independentes e são normais identicamente distribuídas com distribuição \(\mathcal{N}(0,1/4).\) Assim, a soma e a diferença de \(Z_1/2\) e \(Z_{1/2}/2,\) que são exatamente os incrementos, são, também, normais independentes e identicamente distribuídas, com distribuição \(\mathcal{N}(0, 1/2).\) Além disso, também são independentes de \(\{Z_d\}_{d \in D \setminus D_2}.\)</p>
 <p>Agora, vamos assumir, em um argumento de indução, que os incrementos de \(\{X_d^{(n)}\}_{d \in D_n}\) são independentes e identicamente distribuídos, com distribuição</p>
 \[
 X_{d + 1/2^{n-1}}^{(n)} - X_d^{(n)} \sim \mathcal{N}\left(0, \frac{1}{2^{n-1}}\right).
 \]
-<p>Além disso, assumimos que são independentes de \(\{Z_d\}_{d\in D \setminus D_n}\).</p>
-<p>Vamos mostrar que o mesmo vale para \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\), com incrementos consecutivos sendo normais independentes com média zero, variância \(1/2^n\) e independentes de \(\{Z_d\}_{d\in D \setminus D_{n+1}}\).</p>
-<p>Considere \(d \in D_{n+1}\setminus D_n\), lembremos que</p>
+<p>Além disso, assumimos que são independentes de \(\{Z_d\}_{d\in D \setminus D_n}.\)</p>
+<p>Vamos mostrar que o mesmo vale para \(\{X_d^{(n+1)}\}_{d\in D_{n+1}},\) com incrementos consecutivos sendo normais independentes com média zero, variância \(1/2^n\) e independentes de \(\{Z_d\}_{d\in D \setminus D_{n+1}}.\)</p>
+<p>Considere \(d \in D_{n+1}\setminus D_n,\) lembremos que</p>
 \[
 X_d^{(n+1)} = \frac{X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)}}{2} + \frac{Z_d}{2^{(n+1)/2}}.
 \]
@@ -461,12 +461,12 @@ X_d^{(n+1)} - X_{d - 1/2^n}^{(n+1)} = \frac{X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^
 \[
 X_{d + 1/2^n}^{(n+1)} - X_d^{(n+1)} = \frac{X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)}}{2} - \frac{Z_d}{2^{(n+1)/2}}.
 \]
-<p>Observe que \(X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)}\) é um passo consecutivo do processo \(\{X_d^{(n)}\}_{d\in D_n}\). Assim, usando a hipótese de indução, temos que \(X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)}\) e \(Z_d\) são independentes e que \(X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)} \sim \mathcal{N}(0, 1/2^{n-1})\). Assim, temos</p>
+<p>Observe que \(X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)}\) é um passo consecutivo do processo \(\{X_d^{(n)}\}_{d\in D_n}.\) Assim, usando a hipótese de indução, temos que \(X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)}\) e \(Z_d\) são independentes e que \(X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)} \sim \mathcal{N}(0, 1/2^{n-1}).\) Assim, temos</p>
 \[
 \frac{X_{d + 1/2^n}^{(n)} - X_{d - 1/2^n}^{(n)}}{2} \quad \text{e} \quad \frac{Z_d}{2^{(n+1)/2}} \sim \mathcal{N}\left(0, \frac{1}{2^{n+1}}\right).
 \]
-<p>Portanto, as suas somas e diferenças, que são exatamente os dois passos consecutivos, também são independentes e identicamente distribuídos, com distribuição \(\mathcal{N}(0, 1/2^{n+1} + 1/2^{n+1}) = \mathcal{N}(0, 1/2^n)\).</p>
-<p>Isso mostra que dois passos consecutivos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\), com ponto em comum \(d\) em \(d \in D_{n+1}\setminus D_n\), são independentes e a distribuição dada como na indução. Agora, se \(d \in D_n\setminus\), então \(d \pm 1/2^n \in D_{n+1} \setminus D_n\). Nesse caso, os passos consecutivos envolvem um estêncil de cinco pontos diádicos:</p>
+<p>Portanto, as suas somas e diferenças, que são exatamente os dois passos consecutivos, também são independentes e identicamente distribuídos, com distribuição \(\mathcal{N}(0, 1/2^{n+1} + 1/2^{n+1}) = \mathcal{N}(0, 1/2^n).\)</p>
+<p>Isso mostra que dois passos consecutivos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}},\) com ponto em comum \(d\) em \(d \in D_{n+1}\setminus D_n,\) são independentes e a distribuição dada como na indução. Agora, se \(d \in D_n\setminus,\) então \(d \pm 1/2^n \in D_{n+1} \setminus D_n.\) Nesse caso, os passos consecutivos envolvem um estêncil de cinco pontos diádicos:</p>
 \[
 X_d^{(n+1)} - X_{d - 1/2^n}^{(n+1)} = X_d^{(n)} - \frac{X_{d}^{(n)} + X_{d - 1/2^{n-1}}^{(n)}}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}} = \frac{X_{d}^{(n)} - X_{d - 1/2^{n-1}}^{(n)}}{2} - \frac{Z_{d-1/2^n}}{2^{(n+1)/2}}
 \]
@@ -474,10 +474,10 @@ X_d^{(n+1)} - X_{d - 1/2^n}^{(n+1)} = X_d^{(n)} - \frac{X_{d}^{(n)} + X_{d - 1/2
 \[
 X_{d + 1/2^n}^{(n+1)} - X_d^{(n+1)} = \frac{X_{d + 1/2^{n-1}}^{(n)} - X_d^{(n)}}{2} + \frac{Z_{d+1/2^n}}{2^{(n+1)/2}}.
 \]
-<p>Observe que os dois incrementos no lado direito das duas expressões acima são incrementos consecutivos do processo \(\{X_d^{(n)}\}_{d\in D_n}\) e que os termos restantes são variáveis distintas de \(\{Z_d\}_{d\in D\setminus D_n}\). Pela hipótese de indução, todas essas variáveis são mutuamente independentes. Portanto, os dois incrementos acima de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) também são independentes entre si. Além disso, como esses termos do lado direito tem distribuição normal \(\mathcal{N}(0, 1/2^{n+1})\), então os incrementos tem distribuição normal \(\mathcal{N}(0, 1/2^n)\).</p>
+<p>Observe que os dois incrementos no lado direito das duas expressões acima são incrementos consecutivos do processo \(\{X_d^{(n)}\}_{d\in D_n}\) e que os termos restantes são variáveis distintas de \(\{Z_d\}_{d\in D\setminus D_n}.\) Pela hipótese de indução, todas essas variáveis são mutuamente independentes. Portanto, os dois incrementos acima de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) também são independentes entre si. Além disso, como esses termos do lado direito tem distribuição normal \(\mathcal{N}(0, 1/2^{n+1}),\) então os incrementos tem distribuição normal \(\mathcal{N}(0, 1/2^n).\)</p>
 <p>Provamos que quaisquer dois incrementos consecutivos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) são independentes dois a dois. Como a distribuição conjunta é normal, segue, da independência dois a dois, que todos os incrementos consecutivos são mutuamente independentes.</p>
-<p>Disso segue, também, que incrementos disjuntos a &quot;passos largos&quot; \(X_{d_2}^{n+1} - X_{d_1}^{n+1}\), \(X_{d_3}^{n+1} - X_{d_2}^{n+1}\), ..., com \(d_1 < d_2 < d_3 < \ldots < d_n\) em \(D_{n+1}\), também são independentes, pois cada incremento desses é combinação linear de passos &quot;curtos&quot; independentes distintos.</p>
-<p>Finalmente, como eles só envolvem \(\{Z_d\}_{d\in D \setminus D_{n+1}}\), então os incrementos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) e os processos restantes \(\{Z_d\}_{d\in D \setminus D_{n+1}}\) também são mutuamente independentes.</p>
+<p>Disso segue, também, que incrementos disjuntos a &quot;passos largos&quot; \(X_{d_2}^{n+1} - X_{d_1}^{n+1},\) \(X_{d_3}^{n+1} - X_{d_2}^{n+1},\) ..., com \(d_1 < d_2 < d_3 < \ldots < d_n\) em \(D_{n+1},\) também são independentes, pois cada incremento desses é combinação linear de passos &quot;curtos&quot; independentes distintos.</p>
+<p>Finalmente, como eles só envolvem \(\{Z_d\}_{d\in D \setminus D_{n+1}},\) então os incrementos de \(\{X_d^{(n+1)}\}_{d\in D_{n+1}}\) e os processos restantes \(\{Z_d\}_{d\in D \setminus D_{n+1}}\) também são mutuamente independentes.</p>
 <h3 id="comentário_sobre_a_definição_da_distribuição_no_ponto_médio"><a href="#comentário_sobre_a_definição_da_distribuição_no_ponto_médio" class="header-anchor">Comentário sobre a definição da distribuição no ponto médio</a></h3>
 <p>A definição de \(X_d^{(n+1)}\) em \(d\in D_{n+1}\setminus D_n\) como a média entre \(X_{d - 1/2^n}^{(n)}\) e \(X_{d + 1/2^n}^{(n)}\) mais uma normal independente está ligada a distribuição <em>ponte</em> do processo de Wiener em um instante \(t'\) dados os valores em outros dois pontos em torno de \(t'.\) Mais precisamente, tomemos, por exemplo, \(t'= 1/2,\) como ponto médio entre \(0\) e \(1.\) Então</p>
 \[
@@ -629,13 +629,13 @@ X_{d + 1/2^n}^{(n+1)} - X_d^{(n+1)} = \frac{X_{d + 1/2^{n-1}}^{(n)} - X_d^{(n)}}
 \[
 W_t^{(n)} = \sum_{d\in D_n} s_d(t) Z_d, \qquad 0 \leq t \leq 1
 \]
-<p>é uma representação para a interpolação linear do processo discreto \(\{X_d^{(n)}\}_{d\in D_n}\), i.e. \(W_d^{(n)} = X_d^{(n)}\), para todo \(d\in D_n\) e que \(W_t^{(n)}\) é linear em cada intervalo \([d, d + 1/2^n]\) com \(d, d + 1/2^n\in D_n\).</p>
+<p>é uma representação para a interpolação linear do processo discreto \(\{X_d^{(n)}\}_{d\in D_n},\) i.e. \(W_d^{(n)} = X_d^{(n)},\) para todo \(d\in D_n\) e que \(W_t^{(n)}\) é linear em cada intervalo \([d, d + 1/2^n]\) com \(d, d + 1/2^n\in D_n.\)</p>
 <h2 id="limite"><a href="#limite" class="header-anchor">Limite</a></h2>
 <p>A ideia, agora, é passar ao limite e definir o processo de Wiener \(\{W_t\}_{t\in [0, 1]}\) através da série</p>
 \[
 W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 \]
-<p>Para isso, precisamos mostrar a convergência dessa série. Vamos mostrar que, com probabilidade \(1\), essa convergência se dá uniformemente em \(0 \leq t \leq 1\). Podemos escrever isso como</p>
+<p>Para isso, precisamos mostrar a convergência dessa série. Vamos mostrar que, com probabilidade \(1,\) essa convergência se dá uniformemente em \(0 \leq t \leq 1.\) Podemos escrever isso como</p>
 \[
 \mathbb{P}\left( \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| = 0\right) = 1.
 \]
@@ -648,7 +648,7 @@ W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 \lim_{m, n\rightarrow 0} \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| = 0 \quad \textrm{para quase todo } \omega \in \mathbb{R}^D.
 \]
 <h3 id="plano_para_a_demonstração"><a href="#plano_para_a_demonstração" class="header-anchor">Plano para a demonstração</a></h3>
-<p>A ideia é obter uma estimativa para a sequência de Cauchy em termos de um processo discreto \((A_n)_{n\in\mathbb{N}}\) com valores não-negativos e com \(A_n \rightarrow 0\) quase sempre, definido no mesmo espaço amostral \(\Omega\), i.e.</p>
+<p>A ideia é obter uma estimativa para a sequência de Cauchy em termos de um processo discreto \((A_n)_{n\in\mathbb{N}}\) com valores não-negativos e com \(A_n \rightarrow 0\) quase sempre, definido no mesmo espaço amostral \(\Omega,\) i.e.</p>
 \[
 \max_{0\leq t\leq 1} |W_t^{(m)}(\omega) - W_t^{(n)}(\omega)| \leq A_n(\omega), \quad \forall m \geq n,
 \]
@@ -658,11 +658,11 @@ A_n \rightarrow 0,
 \]
 <p>quase certamente.</p>
 <h3 id="processo_a_n"><a href="#processo_a_n" class="header-anchor">Processo \(A_n\)</a></h3>
-<p>Para obter a estimativa acima, usamos a representacão em série de \(\{W_t^{(n)}\}_n\) para estimar, para \(m\geq n\),</p>
+<p>Para obter a estimativa acima, usamos a representacão em série de \(\{W_t^{(n)}\}_n\) para estimar, para \(m\geq n,\)</p>
 \[
 |W_t^{(m)} - W_t^{(n)}| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \left(\max_{d\in D_{k+1}\setminus D_k} |Z_d|\sum_{d\in D_{k+1}\setminus D_k} s_d(t)\right).
 \]
-<p>para todo \(0\leq t \leq 1\). Como visto acima, em cada nível \(D_{k+1}\setminus D_k\), as funções \(s_d=s_d(t)\) têm suportes não encaixantes e o somatório é limitado pelo máximo dessas funções, que é exatamente \(1/2^{(k+1)/2}\), ou seja,</p>
+<p>para todo \(0\leq t \leq 1.\) Como visto acima, em cada nível \(D_{k+1}\setminus D_k,\) as funções \(s_d=s_d(t)\) têm suportes não encaixantes e o somatório é limitado pelo máximo dessas funções, que é exatamente \(1/2^{(k+1)/2},\) ou seja,</p>
 \[
 0 \leq \sum_{d\in D_{k+1}\setminus D_k} s_d(t) \leq \frac{1}{2^{(k+1)/2}}.
 \]
@@ -670,7 +670,7 @@ A_n \rightarrow 0,
 \[
 |W_t^{(m)} - W_t^{(n)}| = \left|\sum_{d\in D_m\setminus D_n} s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \sum_{d\in D_{k+1}\setminus D_k} \left| s_d(t) Z_d \right| \leq \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
 \]
-<p>O lado direito é independente de \(t\) e de \(m \geq n\). Assim, podemos escrever</p>
+<p>O lado direito é independente de \(t\) e de \(m \geq n.\) Assim, podemos escrever</p>
 \[
 \max_{m\geq n} \sup_{0\leq t \leq 1} |W_t^{(m)} - W_t^{(n)}| \leq A_n,
 \]
@@ -678,7 +678,7 @@ A_n \rightarrow 0,
 \[
 A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d|.
 \]
-<p>Para obter que \(A_n \rightarrow 0\), basta mostrar que a série converge quase sempre.</p>
+<p>Para obter que \(A_n \rightarrow 0,\) basta mostrar que a série converge quase sempre.</p>
 <h3 id="convergência_da_série"><a href="#convergência_da_série" class="header-anchor">Convergência da série</a></h3>
 <p>Queremos mostrar, portanto, que</p>
 \[
@@ -688,7 +688,7 @@ A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} 
 \[
 |Z_d| \leq r_k, \quad \forall d\in D_{k+1}\setminus D_k, \;\forall k \geq N,
 \]
-<p>para algum \(N=N(\omega)\) e para uma série apropriada \(r_k\). Se isso for possível, então, quase sempre, teremos</p>
+<p>para algum \(N=N(\omega)\) e para uma série apropriada \(r_k.\) Se isso for possível, então, quase sempre, teremos</p>
 \[
 \sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} |Z_d| \leq \sum_{k = 1}^\infty \frac{1}{2^{(k+1)/2}}r_k.
 \]
@@ -721,11 +721,11 @@ A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} 
 \sum_{k=1}^\infty 2^{k-1} \mathbb{P}\left( |Z_d| > r_k \right) < \infty.
 \]
 <h3 id="estimativa_para_a_concentração_de_processos_iid_normais"><a href="#estimativa_para_a_concentração_de_processos_iid_normais" class="header-anchor">Estimativa para a concentração de processos i.i.d. normais</a></h3>
-<p>Precisamos, assim, obter uma estimativa para as variáveis aleatórias \(Z_d\) do processo \(\{Z_d\}_{d\in D}\). Como elas são independentes, a função de densidade de probabilidade das marginais desse processo é dada pela Gaussiana padrão. Assim, para cada \(d\in D\) e para \(r \geq 0\) arbitrário,</p>
+<p>Precisamos, assim, obter uma estimativa para as variáveis aleatórias \(Z_d\) do processo \(\{Z_d\}_{d\in D}.\) Como elas são independentes, a função de densidade de probabilidade das marginais desse processo é dada pela Gaussiana padrão. Assim, para cada \(d\in D\) e para \(r \geq 0\) arbitrário,</p>
 \[
 \mathbb{P}(|Z_d| \geq r) = \frac{1}{\sqrt{2\pi}}\int_{|s|\geq r} e^{-\frac{s^2}{2}} \;\mathrm{d}s \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_{|s| \geq r} e^{-\frac{s^2}{4}} \;\mathrm{d}s.
 \]
-<p>Limitando a integral e fazendo a mudança de variáveis \(s = \sqrt{2}\sigma\), obtemos</p>
+<p>Limitando a integral e fazendo a mudança de variáveis \(s = \sqrt{2}\sigma,\) obtemos</p>
 \[
 \mathbb{P}(|Z_d| \geq r) \leq \frac{1}{\sqrt{2\pi}}e^{-\frac{r^2}{4}} \int_\mathbb{R} e^{-\frac{s^2}{4}} \;\mathrm{d}s = \frac{\sqrt{2}}{\sqrt{2\pi}}e^{-\frac{r^2}{4}}\int_\mathbb{R} e^{-\frac{\sigma^2}{2}} \;\mathrm{d}\sigma = \sqrt{2} e^{-\frac{r^2}{4}}.
 \]
@@ -735,11 +735,11 @@ A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} 
 \]
 <p>para um \(r_k \geq 0\) qualquer.</p>
 <h3 id="escolha_dos_r_k"><a href="#escolha_dos_r_k" class="header-anchor">Escolha dos \(r_k\)</a></h3>
-<p>Assim, removendo o fator \(\sqrt{2}\) que é independente de \(k\), precisamos encontrar \(\{r_k\}_{k\in\mathbb{N}}\) tais que</p>
+<p>Assim, removendo o fator \(\sqrt{2}\) que é independente de \(k,\) precisamos encontrar \(\{r_k\}_{k\in\mathbb{N}}\) tais que</p>
 \[
 \sum_{k = 1}^\infty \frac{1}{2^{k/2}}r_k < \infty, \quad \textrm{e} \quad \sum_{k=1}^\infty 2^k e^{-\frac{r_k^2}{4}} < \infty.
 \]
-<p>Observe que \(r_k\) tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Procurando um crescimento potencial \(r_k = k^\alpha\), vemos que qualquer valor \(\alpha>1/2\) é suficiente, já que é subexponencial, perdendo pro decrescimento exponencial \(1/2^k\), e \(r_k^2 \geq k^{2\alpha}\), de tal forma que \(e^{-r_k^2} \leq e^{-k^{2\alpha}}\), que ganha de \(2^k\). Também podemos escolher \(\alpha=1/2\) desde que multipiquemos a sequência por um fator apropriado. Essa escolha nos dá a taxa de decrescimento dos coeficientes a mais rápida possível. Observe que, escolhendo \(r_k = 2\sqrt{k}\), temos</p>
+<p>Observe que \(r_k\) tem que crescer suficientemente rápido para que a exponencial ganhe da potência de dois, no segundo somatório, mas não pode crescer muito rápido, para não ganhar do denominador no primeiro somatório. Procurando um crescimento potencial \(r_k = k^\alpha,\) vemos que qualquer valor \(\alpha>1/2\) é suficiente, já que é subexponencial, perdendo pro decrescimento exponencial \(1/2^k,\) e \(r_k^2 \geq k^{2\alpha},\) de tal forma que \(e^{-r_k^2} \leq e^{-k^{2\alpha}},\) que ganha de \(2^k.\) Também podemos escolher \(\alpha=1/2\) desde que multipiquemos a sequência por um fator apropriado. Essa escolha nos dá a taxa de decrescimento dos coeficientes a mais rápida possível. Observe que, escolhendo \(r_k = 2\sqrt{k},\) temos</p>
 \[
 \sum_{k=1}^\infty 2^k e^{-\frac{r_k^2}{4}} \leq \sum_{k=1}^\infty 2^k e^{-k} \leq \sum_{k=1}^\infty e^{k\ln 2} e^{-k} = \sum_{k=1}^\infty e^{- (1 - \ln 2)k} < \infty,
 \]
@@ -756,21 +756,21 @@ A_n = \sum_{k = n}^\infty \frac{1}{2^{(k+1)/2}}\max_{d\in D_{k+1}\setminus D_k} 
 \[
 \lim_{m, n \rightarrow \infty} \max_{0\leq t\leq 1} |W_t^{(m)} - W_t^{(n)}| = 0
 \]
-<p>quase sempre. Isso demonstra que a série é uniformenente convergente para quase todo \(\omega\in\mathbb{R}^D\). Portanto, podemos definir \(\{W_t\}_{t\in [0, 1]}\) por</p>
+<p>quase sempre. Isso demonstra que a série é uniformenente convergente para quase todo \(\omega\in\mathbb{R}^D.\) Portanto, podemos definir \(\{W_t\}_{t\in [0, 1]}\) por</p>
 \[
 W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 \]
-<p>Além disso, para quase todo \(\omega\), o caminho amostral \(W_t(\omega)\) é o limite uniforme dos caminhos contínuos \(W_t^{(n)}(\omega)\), sendo, também, contínuo.</p>
+<p>Além disso, para quase todo \(\omega,\) o caminho amostral \(W_t(\omega)\) é o limite uniforme dos caminhos contínuos \(W_t^{(n)}(\omega),\) sendo, também, contínuo.</p>
 <h3 id="mais_explicitamente"><a href="#mais_explicitamente" class="header-anchor">Mais explicitamente</a></h3>
 <p>Podemos ser um pouco mais explícitos e considerar o conjunto &quot;bom&quot;</p>
 \[
     G = \bigcup_{n\in\mathbb{N}}\bigcap_{m \geq n} \bigcap_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| \leq r_k\}.
 \]
-<p>Nesse conjunto, i.e. para todo \(\omega\in G\), temos que existe \(N=N(\omega)\) tal que</p>
+<p>Nesse conjunto, i.e. para todo \(\omega\in G,\) temos que existe \(N=N(\omega)\) tal que</p>
 \[
     \bigcap_{m \geq N(\omega)} \bigcap_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| \leq r_k\}.
 \]
-<p>Como esses conjuntos são não crescentes em \(n\), temos, de fato, que</p>
+<p>Como esses conjuntos são não crescentes em \(n,\) temos, de fato, que</p>
 \[
     \bigcap_{m \geq n} \bigcap_{d\in D_{k+1}\setminus D_k} \{\omega; \;|Z_d(\omega)| \leq r_k\}, \qquad \forall n \geq N(\omega).
 \]
@@ -812,24 +812,24 @@ W_t = \sum_{d\in D} s_d(t) Z_d, \qquad 0 \leq t \leq 1.
 <p>dada a escolha \(r_k = 2\sqrt{k}.\)</p>
 <p>Assim, mostramos que, com probabilidade \(1,\) a sequência converge uniformemente.</p>
 <h2 id="processo_de_wiener_no_intervalo_unitário"><a href="#processo_de_wiener_no_intervalo_unitário" class="header-anchor">Processo de Wiener no intervalo unitário</a></h2>
-<p>Resta mostrar que \(\{W_t\}_{t\in [0, 1]}\) tem todas as propriedades desejadas para que seja um processo de Wiener no intervalo \([0, 1]\). Para mostrarmos isso, vamos explorar a convergência obtida acima, que implica em convergência em distribuição, para passar ao limite as propriedades já estabelecidas para os processos discretos \(\{X_d^{(n)}\}_{d\in D_n}\), usando, também, que \(D\) é denso em \(I=[0,1]\).</p>
+<p>Resta mostrar que \(\{W_t\}_{t\in [0, 1]}\) tem todas as propriedades desejadas para que seja um processo de Wiener no intervalo \([0, 1].\) Para mostrarmos isso, vamos explorar a convergência obtida acima, que implica em convergência em distribuição, para passar ao limite as propriedades já estabelecidas para os processos discretos \(\{X_d^{(n)}\}_{d\in D_n},\) usando, também, que \(D\) é denso em \(I=[0,1].\)</p>
 <h3 id="processo_inicial"><a href="#processo_inicial" class="header-anchor">Processo inicial</a></h3>
-<p>Como \(s_d(0) = 0\), para todo \(d\in D\), segue imediatamente que</p>
+<p>Como \(s_d(0) = 0,\) para todo \(d\in D,\) segue imediatamente que</p>
 \[
 W_0 = \sum_{d\in D} s_d(0)Z_d = 0
 \]
 <h3 id="continuidade_dos_caminhos_amostrais"><a href="#continuidade_dos_caminhos_amostrais" class="header-anchor">Continuidade dos caminhos amostrais</a></h3>
-<p>Construímos \(\{W_t^{(n)}\}_{t\in [0,1]}\) de tal forma que, para todo \(\omega\in \Omega\), o caminho amostral \(t \mapsto W_t^{(n)}(\omega)\) é contínuo. Obtivemos, ainda, que cada caminho amostral \(t \mapsto W_t(\omega)\) é limite uniforme de \(t \mapsto W_t^{(n)}(\omega)\). Portanto, para todo \(\omega\in\Omega\), o caminho amostral \(t \mapsto W_t(\omega)\) também contínuo. Em particular,</p>
+<p>Construímos \(\{W_t^{(n)}\}_{t\in [0,1]}\) de tal forma que, para todo \(\omega\in \Omega,\) o caminho amostral \(t \mapsto W_t^{(n)}(\omega)\) é contínuo. Obtivemos, ainda, que cada caminho amostral \(t \mapsto W_t(\omega)\) é limite uniforme de \(t \mapsto W_t^{(n)}(\omega).\) Portanto, para todo \(\omega\in\Omega,\) o caminho amostral \(t \mapsto W_t(\omega)\) também contínuo. Em particular,</p>
 \[
 \mathbb{P}(\{\omega; \;t \mapsto W_t(\omega) \textrm{ é contínuo}\}) = 1.
 \]
 <h3 id="independência_dos_incrementos"><a href="#independência_dos_incrementos" class="header-anchor">Independência dos incrementos</a></h3>
-<p>Sejam \(0 \leq t_0 < t_1 < \ldots < t_n \leq 1\), onde \(n\in \mathbb{N}\), \(n \geq 2\). Dados eventos \(E_1, \ldots, E_n\in \mathbb{A}\), vamos considerar a probabilidade conjunta dos incrementos \(W_{t_j} - W_{t_{j-1}}\), \(j = 1, \ldots, n\).</p>
+<p>Sejam \(0 \leq t_0 < t_1 < \ldots < t_n \leq 1,\) onde \(n\in \mathbb{N},\) \(n \geq 2.\) Dados eventos \(E_1, \ldots, E_n\in \mathbb{A},\) vamos considerar a probabilidade conjunta dos incrementos \(W_{t_j} - W_{t_{j-1}},\) \(j = 1, \ldots, n.\)</p>
 \[
 \mathbb{P}(W_{t_1} - W_{t_0} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n).
 \]
-<p>Considere sequências \(\{t_j^k\}_{k\in \mathbb{N}}\) tais que \(t_j^k\in D\), \(0 \leq t_0^k < t_1^k < \ldots < t_n^k \leq 1\) e \(t_j^k \rightarrow t_j\), quando \(k \rightarrow \infty\), para qualquer \(j = 0, \ldots, n\).</p>
-<p>Como os caminhos amostrais são contínuos, temos que \(W_{t_j^k}\) converge quase-sempre para \(W_{t_j}\), quando \(k \rightarrow \infty\). Como cada incremento é Gaussiano e a função de distribuição de probabilidades de uma Gaussiana é contínua, seque que</p>
+<p>Considere sequências \(\{t_j^k\}_{k\in \mathbb{N}}\) tais que \(t_j^k\in D,\) \(0 \leq t_0^k < t_1^k < \ldots < t_n^k \leq 1\) e \(t_j^k \rightarrow t_j,\) quando \(k \rightarrow \infty,\) para qualquer \(j = 0, \ldots, n.\)</p>
+<p>Como os caminhos amostrais são contínuos, temos que \(W_{t_j^k}\) converge quase-sempre para \(W_{t_j},\) quando \(k \rightarrow \infty.\) Como cada incremento é Gaussiano e a função de distribuição de probabilidades de uma Gaussiana é contínua, seque que</p>
 \[
 \mathbb{P}(W_{t_j^k} - W_{t_{j-1}^k} \in E_1) \rightarrow \mathbb{P}(W_{t_j} - W_{t_{j-1}} \in E_1), \quad k \rightarrow \infty.
 \]
@@ -837,7 +837,7 @@ W_0 = \sum_{d\in D} s_d(0)Z_d = 0
 \[
 \mathbb{P}(W_{t_1^k} - W_{t_0^k} \in E_1, \ldots, W_{t_n^k} - W_{t_{n-1}^k} \in E_n) \rightarrow \mathbb{P}(W_{t_1} - W_{t_0} \in E_1, \ldots, W_{t_n} - W_{t_{n-1}} \in E_n), \quad k \rightarrow \infty.
 \]
-<p>Já vimos que, em pontos diádicos, \(W_{t_j^k} = W_{t_j^k}^{n_k} = X_{t_j^k}^{n_k}\), para algum \(n_k\) tal que \(t_j^k\in D_{n_k}\), para todo \(j = 0, \ldots, n\) e para todo \(k\in \mathbb{N}\). Já vimos, também, que os incrementos de \(\{X_d^{(n)}\}_{d\in D_n}\) são independentes. Portanto,</p>
+<p>Já vimos que, em pontos diádicos, \(W_{t_j^k} = W_{t_j^k}^{n_k} = X_{t_j^k}^{n_k},\) para algum \(n_k\) tal que \(t_j^k\in D_{n_k},\) para todo \(j = 0, \ldots, n\) e para todo \(k\in \mathbb{N}.\) Já vimos, também, que os incrementos de \(\{X_d^{(n)}\}_{d\in D_n}\) são independentes. Portanto,</p>
 \[
 \mathbb{P}(W_{t_1^k} - W_{t_0^k} \in E_1, \ldots, W_{t_n^k} - W_{t_{n-1}^k} \in E_n) = \mathbb{P}(W_{t_1^k} - W_{t_0^k} \in E_1) \times \cdots \times \mathbb{P}(W_{t_n^k} - W_{t_{n-1}^k} \in E_n).
 \]
@@ -847,16 +847,16 @@ W_0 = \sum_{d\in D} s_d(0)Z_d = 0
 \]
 <p>mostrando a independência dos incrementos.</p>
 <h3 id="distribuição_dos_incrementos"><a href="#distribuição_dos_incrementos" class="header-anchor">Distribuição dos incrementos</a></h3>
-<p>Sejam \(t\) e \(\tau\) tais que \(0\leq t < t + \tau \leq 1\). Considere sequências \(\{t^k\}_{k\in \mathbb{N}}\), \(\{\tau_k\}_{k\in \mathbb{N}}\) tais que \(t^k \rightarrow t\), \(\tau^k \rightarrow \tau\), \(0 \leq t^k < t^k + \tau^k \leq 1\) e \(t^k, t^k + \tau^k \in D\). Para cada \(k\), temos, de fato, \(t^k, t^k + \tau^k\in D_{n_k}\), para \(n_k\in \mathbb{N}\) suficientemente grande.</p>
+<p>Sejam \(t\) e \(\tau\) tais que \(0\leq t < t + \tau \leq 1.\) Considere sequências \(\{t^k\}_{k\in \mathbb{N}},\) \(\{\tau_k\}_{k\in \mathbb{N}}\) tais que \(t^k \rightarrow t,\) \(\tau^k \rightarrow \tau,\) \(0 \leq t^k < t^k + \tau^k \leq 1\) e \(t^k, t^k + \tau^k \in D.\) Para cada \(k,\) temos, de fato, \(t^k, t^k + \tau^k\in D_{n_k},\) para \(n_k\in \mathbb{N}\) suficientemente grande.</p>
 <p>Conforme argumentado acima, temos</p>
 \[
 \mathbb{P}(W_{t^k + \tau^k} - W_{t^k} \leq x) \rightarrow \mathbb{P}(W_{t + \tau} - W_t \leq x), \quad k \rightarrow \infty,
 \]
-<p>para todo \(x \in \mathbb{R}\). Por outro lado, sabemos que \(W_{t^k + \tau^k} - W_{t^k} = X_{t^k + \tau^k}^{n_k} - X_{t^k}^{n_k} \sim \mathcal{N}(0, \tau^k)\), de forma que</p>
+<p>para todo \(x \in \mathbb{R}.\) Por outro lado, sabemos que \(W_{t^k + \tau^k} - W_{t^k} = X_{t^k + \tau^k}^{n_k} - X_{t^k}^{n_k} \sim \mathcal{N}(0, \tau^k),\) de forma que</p>
 \[
 \mathbb{P}(W_{t^k + \tau^k} - W_{t^k} \leq x) = F_{\tau_k}(x),
 \]
-<p>onde \(F_{\sigma^2}(\cdot)\) denota a função de distribuição acumulada da normal \(\mathcal{N}(0, \sigma^2)\), \(\sigma > 0\). Passando ao limite em \(k\rightarrow \infty\), obtemos</p>
+<p>onde \(F_{\sigma^2}(\cdot)\) denota a função de distribuição acumulada da normal \(\mathcal{N}(0, \sigma^2),\) \(\sigma > 0.\) Passando ao limite em \(k\rightarrow \infty,\) obtemos</p>
 \[
 \mathbb{P}(W_{t + \tau} - W_{t} \leq x) = F_{\tau}(x).
 \]
@@ -864,15 +864,15 @@ W_0 = \sum_{d\in D} s_d(0)Z_d = 0
 \[
 W_{t + \tau} - W_{t} \sim \mathcal{N}(0, \tau).
 \]
-<p>Isso completa a demonstração de que \(\{W_t\}_{t\in [0, 1]}\) é um processo de Wiener em \([0, 1]\).</p>
+<p>Isso completa a demonstração de que \(\{W_t\}_{t\in [0, 1]}\) é um processo de Wiener em \([0, 1].\)</p>
 <h2 id="extensão_para_a_semireta"><a href="#extensão_para_a_semireta" class="header-anchor">Extensão para a semireta</a></h2>
-<p>Construímos um processo \(\{W_t\}_{t\in [0, 1]}\) com todas as propriedades de um processo de Wiener, exceto que só está definido no intervalo \([0, 1]\). Podemos construir um processo de Wiener em \([0, \infty)\) simplesmente transladando e concatenando processos em \([0, 1]\).</p>
-<p>Sejam, então, \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos independentes com as propriedades de um processo de Wiener no intervalo \(0\leq t \leq 1.\) Podem ser construídos através de uma família \(\{Z_d^{(n)}\}_{d\in D, n\in \mathbb{N}}\) de processos independentes normais, com \(Z_d^{(n)} \sim \mathcal{N}(0, 1)\) e \(Z_0^{(n)} = 0 \sim \mathcal{N}(0, 0)\), com espaço amostral \(\tilde\Omega = \Omega^{\mathbb{N}} = \mathbb{R}^{D^{\mathbb{N}}}\).</p>
+<p>Construímos um processo \(\{W_t\}_{t\in [0, 1]}\) com todas as propriedades de um processo de Wiener, exceto que só está definido no intervalo \([0, 1].\) Podemos construir um processo de Wiener em \([0, \infty)\) simplesmente transladando e concatenando processos em \([0, 1].\)</p>
+<p>Sejam, então, \(\{W_t^k\}_{t \in [0, 1]},\) \(k\in \mathbb{N},\) processos independentes com as propriedades de um processo de Wiener no intervalo \(0\leq t \leq 1.\) Podem ser construídos através de uma família \(\{Z_d^{(n)}\}_{d\in D, n\in \mathbb{N}}\) de processos independentes normais, com \(Z_d^{(n)} \sim \mathcal{N}(0, 1)\) e \(Z_0^{(n)} = 0 \sim \mathcal{N}(0, 0),\) com espaço amostral \(\tilde\Omega = \Omega^{\mathbb{N}} = \mathbb{R}^{D^{\mathbb{N}}}.\)</p>
 <p>Definimos cada \(\{W_t^{(n)}\}_{0 \leq t \leq 1}\) a partir de \(\{Z_d^{(n)}\}_{d\in D}\) e, em seguida, concatenamo-los através da fórmula</p>
 \[
 W_t = \sum_{k = 1}^{[t]} W_1^k + W_{t - [t]}^{[t]+1}, \qquad \forall t \geq 0,
 \]
-<p>onde \([t] = \max\{n \leq t, n \in \mathbb{Z}\}\) é o maior inteiro menor do que \(t \geq 0\).</p>
+<p>onde \([t] = \max\{n \leq t, n \in \mathbb{Z}\}\) é o maior inteiro menor do que \(t \geq 0.\)</p>
 <p>Isso define um processo estocástico contínuo com todos as condições necessárias para ser um processo de Wiener. A demonstração disso fica como exercício.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
@@ -882,17 +882,17 @@ W_t = \sum_{k = 1}^{[t]} W_1^k + W_{t - [t]}^{[t]+1}, \qquad \forall t \geq 0,
 \[
 W_t^{(n+1)} = W_t^{(n)} + \sum_{d\in D_{n+1}\setminus D_n} s_d(t)Z_d = \sum_{d\in D_{n+1}} s_d(t)Z_d
 \]
-<p>são interpolações dos processos discretos \(\{X_d^{(n)}\}_{d\in D_n}\), i.e. \(W_d^{(n)} = X_d^{(n)}\), para todo \(d\in D_n\) e todo \(n\in\mathbb{N}\).</p>
+<p>são interpolações dos processos discretos \(\{X_d^{(n)}\}_{d\in D_n},\) i.e. \(W_d^{(n)} = X_d^{(n)},\) para todo \(d\in D_n\) e todo \(n\in\mathbb{N}.\)</p>
 <ol start="2">
-<li><p>Sejam \(\{W_t^k\}_{t \in [0, 1]}\), \(k\in \mathbb{N}\), processos de Wiener, em \([0, 1]\), independentes. Faça os detalhes da demonstração de que \(W_t = \sum_{k = 1}^{[t]} W_1^k + W_{t - [t]}^{[t]+1}\) é um processo de Wiener em \([0, \infty)\).</p>
+<li><p>Sejam \(\{W_t^k\}_{t \in [0, 1]},\) \(k\in \mathbb{N},\) processos de Wiener, em \([0, 1],\) independentes. Faça os detalhes da demonstração de que \(W_t = \sum_{k = 1}^{[t]} W_1^k + W_{t - [t]}^{[t]+1}\) é um processo de Wiener em \([0, \infty).\)</p>
 </li>
-<li><p>Na construção, definimos \(X_{d}^{n+1}\), para \(d \in D_{n+1}\setminus D_n\), pela fórmula \((X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)})/2 + Z_d/2^{(n + 1)/2}\), com os \(Z_d\)&#39;s sendo mutamente independentes. Essa construção não é arbitrária. Mostre que se \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(0 \leq s < t,\) então</p>
+<li><p>Na construção, definimos \(X_{d}^{n+1},\) para \(d \in D_{n+1}\setminus D_n,\) pela fórmula \((X_{d - 1/2^n}^{(n)} + X_{d + 1/2^n}^{(n)})/2 + Z_d/2^{(n + 1)/2},\) com os \(Z_d\)&#39;s sendo mutamente independentes. Essa construção não é arbitrária. Mostre que se \(\{W_t\}_{t\geq 0}\) é um processo de Wiener e \(0 \leq s < t,\) então</p>
 </li>
 </ol>
 \[
 W_{(t + s)/2} - \frac{W_s + W_t}{2}
 \]
-<p>é independente de \(W_\tau,\) para \(\tau \leq s\) e para \(\tau \geq t\).</p>
+<p>é independente de \(W_\tau,\) para \(\tau \leq s\) e para \(\tau \geq t.\)</p>
 <ol start="4">
 <li><p>Além de pontos médios, mostre, usando a independência de incrementos disjuntos, que \(W_t - tW_1\) e \(W_1\) são mutuamente independentes, para \(0 < t < 1.\)</p>
 </li>
@@ -920,7 +920,7 @@ W_{(t + s)/2} - \frac{W_s + W_t}{2}
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

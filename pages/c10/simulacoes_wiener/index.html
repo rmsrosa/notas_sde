@@ -358,15 +358,15 @@
 <p>A observação importante é que, a menos de erros de arredondamento para ponto flutuante e de erros na geração de números aleatórios &#40;que na prática são pseudo aleatórios&#41;, um processo de Wiener \(\{W_t\}_{t \geq 0}\) pode ser expresso de maneira exata, ao longo dos pontos de uma malha temporal.</p>
 <p>O mesmo acontece ao utilizarmos um movimento browniano geométrico, uma ponte browniana ou qualquer outro processo para o qual conhecemos explicitamente a solução.</p>
 <h2 id="simulando_um_processo_de_wiener"><a href="#simulando_um_processo_de_wiener" class="header-anchor">Simulando um processo de Wiener</a></h2>
-<p>Ao considerarmos uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\), por exemplo, começamos com</p>
+<p>Ao considerarmos uma malha \(0 = t_0 < t_1 < \ldots < t_n = T,\) por exemplo, começamos com</p>
 \[
 W_0^n = 0,
 \]
-<p>que é exato, pois \(W_0 = 0\). No próximo ponto, temos</p>
+<p>que é exato, pois \(W_0 = 0.\) No próximo ponto, temos</p>
 \[
 W_{t_1} = W_{t_1} - W_0 \sim \mathcal{N}(0, t_1) = \sqrt{t_1} \mathcal{N}(0, 1).
 \]
-<p>Considerando uma variável aleatória normal padrão \(Z_{t_1} \sim \mathcal{N}(0, 1)\), podemos escrever</p>
+<p>Considerando uma variável aleatória normal padrão \(Z_{t_1} \sim \mathcal{N}(0, 1),\) podemos escrever</p>
 \[
 W_{t_1} = W_{t_1} + \sqrt{t_1} Z_1.
 \]
@@ -374,11 +374,11 @@ W_{t_1} = W_{t_1} + \sqrt{t_1} Z_1.
 \[
 W_{t_2} - W_{t_1} \sim \mathcal{N}(0, t_2 - t_1) = \sqrt{t_2 - t_1}\mathcal{N}(0, 1).
 \]
-<p>Considerando uma variável aleatória normal padrão \(Z_{t_2} \sim \mathcal{N}(0, 1)\) independente de \(Z_1\), podemos escrever</p>
+<p>Considerando uma variável aleatória normal padrão \(Z_{t_2} \sim \mathcal{N}(0, 1)\) independente de \(Z_1,\) podemos escrever</p>
 \[
 W_{t_2} = W_{t_1} + \sqrt{t_2 - t_1}Z_{t_2}.
 \]
-<p>E assim sucessivamente. Consideramos variáveis aleatórias \(Z_{t_j}\). \(j = 1, \ldots, n\), com \(Z_{t_j}\) independente de \(Z_{t_1}, \ldots, Z_{t_{j-1}}\), e obtemos</p>
+<p>E assim sucessivamente. Consideramos variáveis aleatórias \(Z_{t_j}.\) \(j = 1, \ldots, n,\) com \(Z_{t_j}\) independente de \(Z_{t_1}, \ldots, Z_{t_{j-1}},\) e obtemos</p>
 \[
 W_{t_j} = W_{t_{j-1}} + \sqrt{t_j - t_{j-1}}Z_{t_j}, \quad j = 1, \ldots, n.
 \]
@@ -388,8 +388,8 @@ W_{t_j} = W_{t_{j-1}} + \sqrt{t_j - t_{j-1}}Z_{t_j}, \quad j = 1, \ldots, n.
 W_0^n(\omega) = 0, \quad 
 W_{t_j}^n(\omega) = W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}(\omega), \quad j = 1, \ldots, n,
 \]
-<p>estamos, efetivamente, calculando uma <em>discretização</em> exata de um caminho amostral de um processo de Wiener. Da mesma forma que os pontos \(\{\sin(j\pi/n)\}_{j=0, \ldots, n}\) formam uma discretização exata da função \(\sin(x)\), no intervalo \([0, \pi]\).</p>
-<p>Os únicos erros possíveis são os erros de arredondamente em ponto flutuante, ao calcularmos \(W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}\) e os erros na geração da sequência de números aleatórios \(Z_{t_j}(\omega)\), visto que os números gerados são pseudo aleatórios e não são amostras de uma variável verdadeiramente normal.</p>
+<p>estamos, efetivamente, calculando uma <em>discretização</em> exata de um caminho amostral de um processo de Wiener. Da mesma forma que os pontos \(\{\sin(j\pi/n)\}_{j=0, \ldots, n}\) formam uma discretização exata da função \(\sin(x),\) no intervalo \([0, \pi].\)</p>
+<p>Os únicos erros possíveis são os erros de arredondamente em ponto flutuante, ao calcularmos \(W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}\) e os erros na geração da sequência de números aleatórios \(Z_{t_j}(\omega),\) visto que os números gerados são pseudo aleatórios e não são amostras de uma variável verdadeiramente normal.</p>
 <p>De qualquer forma, ao analisarmos a convergência de métodos de aproximação de equações estocásticas e de equações aleatórias que envolvam um processo de Wiener, não precisamos considerar, em um primeiro momento, esses erros de arredontamento e de geração de números pseudo-aleatórios e podemos assumir que a sequência gerada \(\{W_{t_j}^n(\omega)\}_{j = 0}^n\) é uma discretização exata do processo de Wiener usado na definição da equação em questão.</p>
 <p>Mais ainda. Se tivermos uma sequência \(\{W_{t_j}^n\}_{j = 0}^n\) e quisermos estender essa sequência a uma malha mais fina, podemos utilizar o procedimento feito na demonstração de existência de um processo de Wiener. Não precisamos refazer todo o processo. Basta introduzir novos pontos, de acordo com uma média ponderada entre as variáveis na malha mais grossa e acrescentar um múltiplo apropriado de uma normal padão associada ao ponto intermediário. As contas são facilitadas no caso de uma malha uniforme e de um refinamento dobrando o número de pontos, mas isso não é necessário. Qualquer refinamento pode ser considerado.</p>
 <h2 id="simulando_um_movimento_browniano_geométrico"><a href="#simulando_um_movimento_browniano_geométrico" class="header-anchor">Simulando um movimento browniano geométrico</a></h2>
@@ -397,15 +397,15 @@ W_{t_j}^n(\omega) = W_{t_{j-1}}^n(\omega) + \sqrt{t_j - t_{j-1}}Z_{t_j}(\omega),
 \[
 \mathrm{d}X_t = \mu X_t \;\mathrm{d}t + \sigma X_t \;\mathrm{d}W_t,
 \]
-<p>com uma condição inicial \(X_t|_{t = 0} = X_0\), é conhecida explicitamente, pela fórmula</p>
+<p>com uma condição inicial \(X_t|_{t = 0} = X_0,\) é conhecida explicitamente, pela fórmula</p>
 \[
 X_t = X_0 e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t + \sigma W_t}.
 \]
-<p>Assim, uma vez de posse de uma amostra discreta exata \(\{W_{t_j}^n\}_{j = 0}^n\) de um processo de Wiener em pontos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T\), podemos obter uma amostra discreta exata do movimento browniano através de</p>
+<p>Assim, uma vez de posse de uma amostra discreta exata \(\{W_{t_j}^n\}_{j = 0}^n\) de um processo de Wiener em pontos de uma malha \(0 = t_0 < t_1 < \ldots < t_n = T,\) podemos obter uma amostra discreta exata do movimento browniano através de</p>
 \[
 X_{t_j}^n = X_0 e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}}.
 \]
-<p>Mais precisamente, se \(\{W_{t_j}(\omega)\}_j\) é uma amostra discreta de um determinado caminho amostral do processo de Wiener, então sorteando uma condição inicial \(X_0(\omega)\), obtemos uma amostra discreta de um caminho amostral do movimento browniano geométrico, através de</p>
+<p>Mais precisamente, se \(\{W_{t_j}(\omega)\}_j\) é uma amostra discreta de um determinado caminho amostral do processo de Wiener, então sorteando uma condição inicial \(X_0(\omega),\) obtemos uma amostra discreta de um caminho amostral do movimento browniano geométrico, através de</p>
 \[
 X_{t_j}^n(\omega) = X_0(\omega) e^{\displaystyle \left(\mu - \frac{\sigma^2}{2}\right)t_j + \sigma W_{t_j}(\omega)}.
 \]
@@ -440,7 +440,7 @@ X_{t_j}^n(\omega) = X_{t_{j-1}}^n(\omega) e^{\displaystyle \left(\mu - \frac{\si
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

@@ -369,7 +369,7 @@
 \[
 \frac{\mathrm{d}P_t}{P_t} = \mu\;\mathrm{d}t + \sigma\;\mathrm{d}W_t,
 \]
-<p>onde \(\mu > 0\) é o <em>drift</em> &#40;tendência?&#41; e \(\sigma\), a <em>volatilidade</em> da ação. Desse modo,</p>
+<p>onde \(\mu > 0\) é o <em>drift</em> &#40;tendência?&#41; e \(\sigma,\) a <em>volatilidade</em> da ação. Desse modo,</p>
 \[
 \mathrm{d}P_t = \mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t,
 \]
@@ -400,11 +400,11 @@ P_t = p_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
 \]
 <p>que tem a mesma forma da equação acima para o preço de uma ação.</p>
 <h2 id="resolução"><a href="#resolução" class="header-anchor">Resolução</a></h2>
-<p>A solução segue da fórmula geral obtida na seção anterior, com \(f_0 = 0\), \(f_1 = \mu\), \(g_0 = 0\) e \(g_1 = \sigma\). Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos</p>
+<p>A solução segue da fórmula geral obtida na seção anterior, com \(f_0 = 0,\) \(f_1 = \mu,\) \(g_0 = 0\) e \(g_1 = \sigma.\) Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos</p>
 \[
 \mathrm{d}X_t - \mu X_t \;\mathrm{d}t = \sigma X_t\;\mathrm{d}W_t.
 \]
-<p>Analogamente ao caso determinístico &#40;pense em \(x' - \mu x = g(t)\)&#41;, podemos considerar o fator de integração \(e^{-\mu t}\). Observe que, derivando o produto \(Y_t = X_t e^{-\mu t}\) pela fórmula de Itô, temos</p>
+<p>Analogamente ao caso determinístico &#40;pense em \(x' - \mu x = g(t)\)&#41;, podemos considerar o fator de integração \(e^{-\mu t}.\) Observe que, derivando o produto \(Y_t = X_t e^{-\mu t}\) pela fórmula de Itô, temos</p>
 \[
 \begin{align*}
 \mathrm{d}X_t & = \mathrm{d}(X_t e^{-\mu t}) \\
@@ -427,7 +427,7 @@ Y_t = Y_0 e^{-\frac{1}{2}\sigma^2 t + \sigma W_t},
 X_t = e^{\mu t}Y_t = X_0 e^{\mu t} e^{-\frac{1}{2}\sigma^2 t + \sigma W_t} = X_0 e^{\left(\mu - \frac{1}{2} \sigma^2\right)t + \sigma W_t}.
 \]
 <h2 id="valor_esperado"><a href="#valor_esperado" class="header-anchor">Valor esperado</a></h2>
-<p>Vamos, agora, calcular o valor esperado de \(P_t\). Para isso, escrevemos a equação integral associada à equação diferencial estocástica:</p>
+<p>Vamos, agora, calcular o valor esperado de \(P_t.\) Para isso, escrevemos a equação integral associada à equação diferencial estocástica:</p>
 \[
 X_t = X_0 + \mu \int_0^t X_s \;\mathrm{d}s + \sigma \int_0^t X_s\;\mathrm{d}W_s.
 \]
@@ -502,7 +502,7 @@ X_t^2 = X_0^2 e^{\left(2\mu - \sigma^2\right)t + 2\sigma W_t} = X_0^2 e^{\left(2
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

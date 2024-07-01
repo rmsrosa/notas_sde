@@ -378,19 +378,18 @@
 using StochasticDiffEq
 
 using Plots</code></pre>
-<pre><code class="plaintext code-output">Failed to precompile StochasticDiffEq [789caeaf-c7a9-5a7d-9973-96adeb23e2a0] to /home/runner/.julia/compiled/v1.8/StochasticDiffEq/jl_MddTNQ.
-</code></pre>
+
 <h2 id="modelo_sir_determinístico_em_rede"><a href="#modelo_sir_determinístico_em_rede" class="header-anchor">Modelo SIR determinístico em rede</a></h2>
-<p>Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por \(A\), \(B\) e \(C\).</p>
+<p>Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por \(A,\) \(B\) e \(C.\)</p>
 <h2 id="modelo_sir_em_rede_de_sítios"><a href="#modelo_sir_em_rede_de_sítios" class="header-anchor">Modelo SIR em rede de sítios</a></h2>
 <h3 id="representação_do_sistema"><a href="#representação_do_sistema" class="header-anchor">Representação do sistema</a></h3>
 <p>Nesse caso, consideramos </p>
 <ul>
 <li><p>\(m\)<strong>sítios</strong>.</p>
 </li>
-<li><p>Em cada sítio, uma <strong>população total</strong> \(N_i\), com um número \(S_i\) de <strong>suscetíveis</strong>, \(I_i\) de <strong>infectados</strong> e \(R_i\) de <strong>recuperados</strong>, \(i=1, \ldots, m\).</p>
+<li><p>Em cada sítio, uma <strong>população total</strong> \(N_i,\) com um número \(S_i\) de <strong>suscetíveis</strong>, \(I_i\) de <strong>infectados</strong> e \(R_i\) de <strong>recuperados</strong>, \(i=1, \ldots, m.\)</p>
 </li>
-<li><p>Sem vitalidade, de forma que \(S_i + I_i + R_i = N_i\) é constante, para cada \(i=1, \ldots, m\).</p>
+<li><p>Sem vitalidade, de forma que \(S_i + I_i + R_i = N_i\) é constante, para cada \(i=1, \ldots, m.\)</p>
 </li>
 </ul>
 <h3 id="dinâmica"><a href="#dinâmica" class="header-anchor">Dinâmica</a></h3>
@@ -401,11 +400,11 @@ using Plots</code></pre>
 </li>
 <li><p>Na fase <strong>ativa</strong> de cada ciclo, uma <strong>fração</strong> \(\alpha_{ij}\) da população \(N_i\) migra <strong>do sítio \(i\) para o sítio \(j\)</strong>, voltando ao sítio \(i\) na fase <strong>inativa</strong>.</p>
 </li>
-<li><p>Naturalmente, \(0\leq \alpha_{ij} \leq 1\), para cada \(i,j=1, \ldots, m\), e \(\sum_{j=1}^m\alpha_{ij} = 1\), para cada \(i=1,\ldots, m\).</p>
+<li><p>Naturalmente, \(0\leq \alpha_{ij} \leq 1,\) para cada \(i,j=1, \ldots, m,\) e \(\sum_{j=1}^m\alpha_{ij} = 1,\) para cada \(i=1,\ldots, m.\)</p>
 </li>
-<li><p>Em cada sítio \(j=1, \ldots, m\), os indivíduos <strong>suscetíveis</strong> que lá se encontram podem se tornar <strong>infectados</strong> ao encontrar um indivíduo infectado no mesmo sítio, com um <strong>fator de transmissão</strong> \(\beta_j\) característico do sítio \(j\) em que se encontram.</p>
+<li><p>Em cada sítio \(j=1, \ldots, m,\) os indivíduos <strong>suscetíveis</strong> que lá se encontram podem se tornar <strong>infectados</strong> ao encontrar um indivíduo infectado no mesmo sítio, com um <strong>fator de transmissão</strong> \(\beta_j\) característico do sítio \(j\) em que se encontram.</p>
 </li>
-<li><p>Os indivíduos <strong>infectados</strong> de cada sítio, podem se recuperar com um <strong>fator de recuperação</strong> \(\gamma_i\), característico do ambiente e dos indivíduos que habitam o sítio.</p>
+<li><p>Os indivíduos <strong>infectados</strong> de cada sítio, podem se recuperar com um <strong>fator de recuperação</strong> \(\gamma_i,\) característico do ambiente e dos indivíduos que habitam o sítio.</p>
 </li>
 </ul>
 <h3 id="sistema_de_equações_diferenciais"><a href="#sistema_de_equações_diferenciais" class="header-anchor">Sistema de equações diferenciais</a></h3>
@@ -460,7 +459,7 @@ using Plots</code></pre>
 \]
 <p>onde </p>
 <ul>
-<li><p>\(\Gamma\) é a matriz diagonal \(\Gamma = \rm{diag}(\gamma_1, \ldots, \gamma_m)\), </p>
+<li><p>\(\Gamma\) é a matriz diagonal \(\Gamma = \rm{diag}(\gamma_1, \ldots, \gamma_m),\) </p>
 </li>
 <li><p>\(A\) é a matriz</p>
 </li>
@@ -468,19 +467,19 @@ using Plots</code></pre>
 \[ A = \left(\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j}\right)_{ik}
 \]
 <ul>
-<li><p>\(\rm{diag}(AI)\) é a matriz diagonal formada pelo vetor obtido da aplicação da matriz \(A\) ao vetor \(I\),</p>
+<li><p>\(\rm{diag}(AI)\) é a matriz diagonal formada pelo vetor obtido da aplicação da matriz \(A\) ao vetor \(I,\)</p>
 </li>
 </ul>
 \[ AI = \left(\sum_{k=1}^m\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j} I_k\right)_i
 \]
 <h3 id="matriz_de_fluxo"><a href="#matriz_de_fluxo" class="header-anchor">Matriz de fluxo</a></h3>
 <p>A key component of the network model is the flux matrix, defining the fraction of the population and of the time that the residents of a given site spend in another site.</p>
-<p>We denote this matrix by \(\phi = (\phi_{ij})_{i,j}\).</p>
-<p>More precisely, each individual \(k=1, \ldots, N_i\) in site \(i\) may spend a time \(\theta^k_{i,j}\) in site \(j\), during a specified unit of time. In this case,</p>
+<p>We denote this matrix by \(\phi = (\phi_{ij})_{i,j}.\)</p>
+<p>More precisely, each individual \(k=1, \ldots, N_i\) in site \(i\) may spend a time \(\theta^k_{i,j}\) in site \(j,\) during a specified unit of time. In this case,</p>
 \[
   0 \leq \theta^k_{ij} \leq 1, \qquad \sum_j \theta^k_{i,j} = 1.
 \]
-<p>We then define \(\phi_{ij} = (1/N_i)\sum_{k=1}^{N_i} \theta^k_{i,j}\). Notice</p>
+<p>We then define \(\phi_{ij} = (1/N_i)\sum_{k=1}^{N_i} \theta^k_{i,j}.\) Notice</p>
 \[
 0 \leq \phi_{ij} \leq 1, \qquad \sum_j \phi_{ij} = 1.
 \]
@@ -555,7 +554,7 @@ for &#40;j, s&#41; in zip&#40;1:3, &#39;A&#39;:&#39;C&#39;&#41;
     plot&#33;&#40;getindex.&#40;SIR_network_sol.u, 2, j&#41;/pop&#91;j&#93;, label &#61; &quot;Site &#36;s&quot;&#41;
 end
 plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&quot;, titlefont &#61; 10&#41;</code></pre>
-<p><p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_1' not found. //</span></p> <p><span style="color:red;">// Image matching '/assets/pages/c11/stochastic_sir_network/code/plot_sol_sir_network_2' not found. //</span></p></p>
+<p><img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_1.svg" alt=""> <img src="/notas_sde/assets/pages/c11/stochastic_sir_network/code/output/plot_sol_sir_network_2.svg" alt=""></p>
 <h2 id="modelos_sir_estocástico_em_rede"><a href="#modelos_sir_estocástico_em_rede" class="header-anchor">Modelos SIR estocástico em rede</a></h2>
 
     <div class="navbar">
@@ -580,7 +579,7 @@ plot&#33;&#40;title &#61; &quot;Fraction of infected individuals in each site&qu
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

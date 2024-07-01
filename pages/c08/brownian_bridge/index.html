@@ -390,11 +390,11 @@ B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 \leq t \leq 1.
 \[
 \mathrm{d}B_t = - \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s + (1 - t)\frac{\mathrm{d}W_t}{1 - t} = - \frac{1}{1-t}B_t + \;\mathrm{d}W_t.
 \]
-<p>Para deduzir a solução via fator de integração, observe que uma primitiva de \(p(t) = 1/(1-t)\) é \(-\ln(1-t) = \ln((1-t)^{-1})\), de modo que o fator de integração é \(I(t) = e^{\int^t 1/(1-s)\;\mathrm{d}s} = (1-t)^{-1}\). Dividindo, então, a equação por \(1-t\), temos</p>
+<p>Para deduzir a solução via fator de integração, observe que uma primitiva de \(p(t) = 1/(1-t)\) é \(-\ln(1-t) = \ln((1-t)^{-1}),\) de modo que o fator de integração é \(I(t) = e^{\int^t 1/(1-s)\;\mathrm{d}s} = (1-t)^{-1}.\) Dividindo, então, a equação por \(1-t,\) temos</p>
 \[
 \frac{1}{1-t}\mathrm{d}B_t + \frac{B_t}{(1-t)^2}\;\mathrm{d}t = \frac{1}{1-t}\;\mathrm{d}W_t.
 \]
-<p>O lado esquerdo é a derivada do termo \(Y_t = B_t/(1-t)\), de modo que</p>
+<p>O lado esquerdo é a derivada do termo \(Y_t = B_t/(1-t),\) de modo que</p>
 \[
 \mathrm{d}Y_t = \frac{1}{1-t}\;\mathrm{d}W_t.
 \]
@@ -402,7 +402,7 @@ B_t = (1 - t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s, \quad 0 \leq t \leq 1.
 \[
 Y_t = \int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \]
-<p>Voltando para \(B_t\), temos</p>
+<p>Voltando para \(B_t,\) temos</p>
 \[
 B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \]
@@ -441,7 +441,7 @@ B_t = (1-t)Y_t = (1-t)\int_0^t \frac{1}{1-s}\;\mathrm{d}W_s.
 \[
 \mathbb{E}[B_tB_s] = (1 - t)(1 - s)\mathbb{E}\left[ \int_0^t \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau\right]
 \]
-<p>Caso \(0 \leq s \leq t \leq 1,\) dividimos a integral exterior de \(0\) a \(s\) e de \(s\) a \(t\). Como os incrementos no intervalo \([s, t]\) são independentes dos incrementos no intervalo \([0, s],\) temos</p>
+<p>Caso \(0 \leq s \leq t \leq 1,\) dividimos a integral exterior de \(0\) a \(s\) e de \(s\) a \(t.\) Como os incrementos no intervalo \([s, t]\) são independentes dos incrementos no intervalo \([0, s],\) temos</p>
 \[
 \mathbb{E}\left[ \int_s^t \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau \right],
 \]
@@ -481,11 +481,11 @@ W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
 <ol>
 <li><p>Uma ponte Browniana, sendo um processo gaussiano, também pode ser definido através da sua covariância, ou seja, como sendo um processo Gaussiano \(\{B_t\}_{0 \leq t \leq 1}\) com caminhos contínuous quase certamente;  satisfazendo \(B_0 = B_1 = 0\) quase certamente; \(\mathbb{E}[B_t] = 0,\) para todo \(0 \leq t \leq 1;\) e \(\operatorname{Cov}(B_t, B_s) = \min\{s, t\} - st,\) para \(0 \leq s, t \leq 1.\) &#40;i&#41; Usando essa caracterização, mostre que, se \(\{W_t\}_{t\geq 0}\) é um processo de Wiener, então \(B_t = W_t - tW_1,\) \(0\leq t \leq 1,\) é uma ponte Browniana. &#40;ii&#41; Por sua vez, mostre que se \(\{B_t\}_{0\leq t \leq 1}\) é uma ponte Browniana segundo essa definição via caracterização da covariância e \(N\sim \mathcal{N}(0, 1)\) é independente dessa ponte, então \(W_t = B_t + tZ,\) \(0\leq t \leq 1,\) é um processo de Wiener no intervalo \([0, 1].\) &#40;iii&#41; Por último, assumindo, novamente, que \(\{B_t\}_{0\leq t \leq 1}\) é uma ponte Browniana segundo essa definição via caracterização da covariância, considere o processo \(V_t = \int_0^t B_s / (1 - s) \;\mathrm{d}s\) e mostre que \(W_t = B_t + V_t\) é um processo de Wiener, concluindo que \(B_t\) satisfaz a equação diferencial estocástica \(\mathrm{d}B_t = - B_t / (1 - t) \;\mathrm{d}t + \mathrm{d}W_t.\)</p>
 </li>
-<li><p>Uma ponte browniana também pode ser considerada em um intervalo \([0, T]\), cuja equação toma a forma </p>
+<li><p>Uma ponte browniana também pode ser considerada em um intervalo \([0, T],\) cuja equação toma a forma </p>
 </li>
 </ol>
 \[ \mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t, \]
-<p>com condições inicial e final \(B_0 = B_T = 0\). Ache uma fórmula explícita para \(B_t\) como uma integral de Itô ao longo de \(0 \leq t \leq T\) e encontre a variância e a covariância desse processo.</p>
+<p>com condições inicial e final \(B_0 = B_T = 0.\) Ache uma fórmula explícita para \(B_t\) como uma integral de Itô ao longo de \(0 \leq t \leq T\) e encontre a variância e a covariância desse processo.</p>
 <ol start="3">
 <li><p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener e considere o processo \(\{B_t\}_{0\leq t \leq T}\) definido por \(B_t = W_t - t W_T / T,\) para \(0 \leq t \leq T.\) Mostre que \(\{B_t\}_{0\leq t \leq T}\) é independente de \(\{W_t\}_{t \geq T}.\)</p>
 </li>
@@ -515,7 +515,7 @@ W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

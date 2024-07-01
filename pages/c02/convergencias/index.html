@@ -358,7 +358,7 @@
 <p>&quot;Whereas weak convergence measures the <em>error of the means</em>, strong convergence measures the <em>mean of the errors</em>&quot;. - Higham &amp; Kloeden, in <em>An Introduction to the Numerical Simulation of Stochastic Differential Equations</em> &#40;SIAM, 2021&#41; página 83, Seção 8.4.</p>
 </blockquote>
 <h2 id="noções_de_convergência_para_sequências_de_variáveis_aleatórias_reais"><a href="#noções_de_convergência_para_sequências_de_variáveis_aleatórias_reais" class="header-anchor">Noções de convergência para sequências de variáveis aleatórias reais</a></h2>
-<p>Vamos considerar, para começar, variáveis aleatórias reais \(X\) e \(\{X_n\}_{n\in \mathbb{N}}\) em um mesmo espaço de probabilidade \((\Omega, \mathcal{A}, \mathbb{P})\).</p>
+<p>Vamos considerar, para começar, variáveis aleatórias reais \(X\) e \(\{X_n\}_{n\in \mathbb{N}}\) em um mesmo espaço de probabilidade \((\Omega, \mathcal{A}, \mathbb{P}).\)</p>
 <h3 id="convergência_quase_certamente"><a href="#convergência_quase_certamente" class="header-anchor">Convergência quase certamente</a></h3>
 <p>Dizemos que \(X_n\)<strong>converge fortemente</strong>, ou <strong>quase sempre</strong>, ou <strong>quase certamente</strong>, ou <strong>em quase toda parte</strong>, para \(X\) quando o conjunto \(\{\omega; \;X_n(\omega) \rightarrow X(\omega)\}\) tem probabilidade total, i.e.</p>
 \[
@@ -374,7 +374,7 @@
 \[
 \mathbb{P}(X_n \leq x) \rightarrow \mathbb{P}(X \leq x),
 \]
-<p>para todo \(x\) que seja ponto de continuidade da função \(x \mapsto \mathbb{P}(X \leq x)\) de distribuição acumulada de \(X\).</p>
+<p>para todo \(x\) que seja ponto de continuidade da função \(x \mapsto \mathbb{P}(X \leq x)\) de distribuição acumulada de \(X.\)</p>
 <h3 id="convergência_em_média"><a href="#convergência_em_média" class="header-anchor">Convergência em média</a></h3>
 <p>Dizemos que \(X_n\)<strong>converge em média</strong> para \(X\) quando</p>
 \[
@@ -386,15 +386,15 @@
 \mathbb{E}(|X_n - X|^2) \rightarrow 0.
 \]
 <h3 id="convergência_em_média_p"><a href="#convergência_em_média_p" class="header-anchor">Convergência em média \(p\)</a></h3>
-<p>Dado \(p > 0\), dizemos que \(X_n\)<strong>converge em média p</strong>, ou <strong>converge em momento de ordem p</strong> para \(X\) quando</p>
+<p>Dado \(p > 0,\) dizemos que \(X_n\)<strong>converge em média p</strong>, ou <strong>converge em momento de ordem p</strong> para \(X\) quando</p>
 \[
 \mathbb{E}(|X_n - X|^p) \rightarrow 0.
 \]
-<p>A convergência em média corresponde ao caso \(p = 1\) e a convergência em média quadrática corresponde a \(p = 2\). Em Teoria da Medida, dizemos que \(X_n\) converge para \(X\) em \(L^p(\Omega)\).</p>
-<p>Para todo \(p \geq 1\), \(L^p(\Omega)\) forma uma <em>espaço de Banach</em>, que é um espaço normado completo, com norma \(\|X\|_{L^p} = \left(\mathbb{E}[|X|^p]\right)^{1/p}\). No caso \(p = 2\), temos que \(L^2(\Omega)\) é um <em>espaço de Hilbert</em>, que é um espaço normado completo onde a norma está associada a um produto interno. No caso, o produto interno entre duas variáveis aleatórias \(X\) e \(Y\) é \(\langle X, Y \rangle = \mathbb{E}[XY]\). A norma \(L^2(\Omega)\) é \(\|X\|_{L^2} = \sqrt{\mathbb{E}[X^2]}\).</p>
+<p>A convergência em média corresponde ao caso \(p = 1\) e a convergência em média quadrática corresponde a \(p = 2.\) Em Teoria da Medida, dizemos que \(X_n\) converge para \(X\) em \(L^p(\Omega).\)</p>
+<p>Para todo \(p \geq 1,\) \(L^p(\Omega)\) forma uma <em>espaço de Banach</em>, que é um espaço normado completo, com norma \(\|X\|_{L^p} = \left(\mathbb{E}[|X|^p]\right)^{1/p}.\) No caso \(p = 2,\) temos que \(L^2(\Omega)\) é um <em>espaço de Hilbert</em>, que é um espaço normado completo onde a norma está associada a um produto interno. No caso, o produto interno entre duas variáveis aleatórias \(X\) e \(Y\) é \(\langle X, Y \rangle = \mathbb{E}[XY].\) A norma \(L^2(\Omega)\) é \(\|X\|_{L^2} = \sqrt{\mathbb{E}[X^2]}.\)</p>
 <h3 id="relações_entre_as_convergências"><a href="#relações_entre_as_convergências" class="header-anchor">Relações entre as convergências</a></h3>
 <h4 id="convergência_quase_certamente_implica_em_convergência_em_probabilidade"><a href="#convergência_quase_certamente_implica_em_convergência_em_probabilidade" class="header-anchor">Convergência quase certamente implica em convergência em probabilidade</a></h4>
-<p>Considere \(\{X_n\}_n\) convergindo quase certamente para \(X\). Então \(\mathbb{P}(X_n \rightarrow X) = 1\). De outra forma, temos que</p>
+<p>Considere \(\{X_n\}_n\) convergindo quase certamente para \(X.\) Então \(\mathbb{P}(X_n \rightarrow X) = 1.\) De outra forma, temos que</p>
 \[
 \mathbb{P}(\lim_{n\rightarrow \infty} X_n \neq X) = 0.
 \]
@@ -418,7 +418,7 @@
 \]
 <p>quando \(n\rightarrow \infty,\) mostrando a convergência em média \(q.\)</p>
 <h4 id="convergência_em_média_p_geq_1_implica_em_convergência_em_probabilidade"><a href="#convergência_em_média_p_geq_1_implica_em_convergência_em_probabilidade" class="header-anchor">Convergência em média \(p \geq 1\) implica em convergência em probabilidade</a></h4>
-<p>Suponha que \(X_n \rightarrow X\) em média \(p\), com \(p \geq 1,\) o que significa que</p>
+<p>Suponha que \(X_n \rightarrow X\) em média \(p,\) com \(p \geq 1,\) o que significa que</p>
 \[
     \mathbb{E}[|X_n - X|^p] \rightarrow 0,
 \]
@@ -428,7 +428,7 @@
 \]
 <p>quando \(n\rightarrow \infty,\) o que significa dizer que \(X_n \rightarrow X\) em probabilidade.</p>
 <h4 id="convergência_em_probabilidade_com_erro_somável_implica_em_subsequência_convergindo_quase_certamente"><a href="#convergência_em_probabilidade_com_erro_somável_implica_em_subsequência_convergindo_quase_certamente" class="header-anchor">Convergência em probabilidade com erro somável implica em subsequência convergindo quase certamente</a></h4>
-<p>Suponha que, para todo \(\varepsilon > 0\), vale</p>
+<p>Suponha que, para todo \(\varepsilon > 0,\) vale</p>
 \[
 \sum_{n=1}^\infty \mathbb{P}(|X_n - X| > \varepsilon) < \infty.
 \]
@@ -445,7 +445,7 @@
 & = \left\{\;\limsup_{n\rightarrow \infty}|X_k - X| > \varepsilon\right\}.
 \end{align*}
 \]
-<p>Tomando uma sequência positiva \(\varepsilon_n \rightarrow 0\), temos</p>
+<p>Tomando uma sequência positiva \(\varepsilon_n \rightarrow 0,\) temos</p>
 \[
 \mathbb{P}\left(\limsup_{n\rightarrow\infty} |X_n - X| > 0\right) = \mathbb{P}\left(\bigcup_n \left(\limsup_{n\rightarrow\infty} |X_n - X| > \varepsilon_n\right)\right) = 0.
 \]
@@ -467,7 +467,7 @@
 \[
 \sum_k \mathbb{P}\left(|X_{n_k} - X| > \frac{1}{k}\right) < \infty.
 \]
-<p>Assim, para qualquer \(\varepsilon > 0\), temos</p>
+<p>Assim, para qualquer \(\varepsilon > 0,\) temos</p>
 \[
 \sum_k \mathbb{P}\left(|X_{n_k} - X| > \varepsilon\right) < \infty.
 \]
@@ -476,19 +476,19 @@
 \mathbb{P}\left( X_{n_k} \rightarrow X \right) = 1.
 \]
 <h4 id="convergência_em_probabilidade_de_sequência_monótona_implica_em_convergência_quase_certamente"><a href="#convergência_em_probabilidade_de_sequência_monótona_implica_em_convergência_quase_certamente" class="header-anchor">Convergência em probabilidade de sequência monótona implica em convergência quase certamente</a></h4>
-<p>Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência \(X_{n_k} \rightarrow X\). Ou seja, para quase todo \(\omega\), dado \(\varepsilon > 0\), existe \(j\) tal que</p>
+<p>Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência \(X_{n_k} \rightarrow X.\) Ou seja, para quase todo \(\omega,\) dado \(\varepsilon > 0,\) existe \(j\) tal que</p>
 \[
 X - \varepsilon < X_{n_k} < X + \varepsilon, \qquad \forall k \geq j.
 \]
-<p>Como a sequência é monótona, digamos monótona não decrescente &#40;é análogo caso seja não crescente&#41;, então, para todo \(n \geq n_j\), temos \(n_k \leq n < n_{k+1}\), para algum \(k \geq j\). Assim,</p>
+<p>Como a sequência é monótona, digamos monótona não decrescente &#40;é análogo caso seja não crescente&#41;, então, para todo \(n \geq n_j,\) temos \(n_k \leq n < n_{k+1},\) para algum \(k \geq j.\) Assim,</p>
 \[
 X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
 \]
-<p>Em outras palavras, para todo \(\varepsilon > 0\), existe \(j\) tal que</p>
+<p>Em outras palavras, para todo \(\varepsilon > 0,\) existe \(j\) tal que</p>
 \[
 X - \varepsilon < X_n < X + \varepsilon.
 \]
-<p>Isso significa que, quase certamente, \(X_n \rightarrow X\), concluindo a demonstração.</p>
+<p>Isso significa que, quase certamente, \(X_n \rightarrow X,\) concluindo a demonstração.</p>
 <h4 id="esperança_convergindo_e_variância_esvanecendo_implica_em_convergência_em_probabilidade_para_constante"><a href="#esperança_convergindo_e_variância_esvanecendo_implica_em_convergência_em_probabilidade_para_constante" class="header-anchor">Esperança convergindo e variância esvanecendo implica em convergência em probabilidade para constante</a></h4>
 <p>Suponha que \(\{X_n\}_{n\in\mathbb{N}}\) seja um processo discreto real tal que</p>
 \[
@@ -514,16 +514,16 @@ X - \varepsilon < X_n < X + \varepsilon.
 \[
 X_n = \frac{1}{n}X.
 \]
-<p>Observe que \(X_n \sim \mathcal{N}(0, 1/n^2)\). Vamos mostrar que essa sequência converge para zero, cuja distribuição é a delta de Dirac \(0 \sim \mathrm{Dirac}(0) = \mathcal{N}(0, 0)\), em vários sentidos.</p>
+<p>Observe que \(X_n \sim \mathcal{N}(0, 1/n^2).\) Vamos mostrar que essa sequência converge para zero, cuja distribuição é a delta de Dirac \(0 \sim \mathrm{Dirac}(0) = \mathcal{N}(0, 0),\) em vários sentidos.</p>
 <p>Os caminhos amostrais são</p>
 \[
 t\mapsto X_n(\omega) = \frac{\omega}{n}.
 \]
-<p>Observe que essas variáveis não são independentes. Para cada \(\omega\), temos</p>
+<p>Observe que essas variáveis não são independentes. Para cada \(\omega,\) temos</p>
 \[
 X_n(\omega) = \frac{\omega}{n} \rightarrow 0, \qquad n \rightarrow 0.
 \]
-<p>Ou seja, \(X_n\) converge para \(0\) quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer \(\varepsilon > 0\),</p>
+<p>Ou seja, \(X_n\) converge para \(0\) quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer \(\varepsilon > 0,\)</p>
 \[
 \mathbb{P}(|X_n| > \varepsilon) = \mathbb{P}(|X| > n\varepsilon ) \rightarrow 0, \qquad n \rightarrow 0,
 \]
@@ -533,13 +533,13 @@ F(x) = \begin{cases} 0, & x < 0, \\
 1, & x \geq 0.
 \end{cases}
 \]
-<p>Os pontos de continuidade de \(F\) são os pontos \(x \neq 0\). Nesses pontos, temos,</p>
+<p>Os pontos de continuidade de \(F\) são os pontos \(x \neq 0.\) Nesses pontos, temos,</p>
 \[
 \mathbb{P}(X_n \leq x) = \mathbb{P}(X \leq n x) \rightarrow \begin{cases} 0, & x < 0, \\
 1, & x > 0.
 \end{cases}
 \]
-<p>No ponto de descontinuidade \(x = 0\), temos</p>
+<p>No ponto de descontinuidade \(x = 0,\) temos</p>
 \[
 \mathbb{P}(X_n \leq 0) = \frac{1}{2},
 \]
@@ -557,7 +557,7 @@ F(x) = \begin{cases} 0, & x < 0, \\
 \[
 \frac{1}{\sqrt{2\pi \sigma_n^2}}e^{-x^2/2\sigma_n^2},
 \]
-<p>onde \(\sigma_n > 0\).</p>
+<p>onde \(\sigma_n > 0.\)</p>
 <h3 id="convergências_quase_certamente_e_em_probabilidade_não_implicam_em_convergência_em_média"><a href="#convergências_quase_certamente_e_em_probabilidade_não_implicam_em_convergência_em_média" class="header-anchor">Convergências quase certamente e em probabilidade não implicam em convergência em média</a></h3>
 <p>Seja \(\Omega = [0, 1]\) com medida de probabilidade \(\mathbb{P}\) uniforme em \(\Omega.\) Considere a sequência \(X_n\) definida por</p>
 \[
@@ -609,7 +609,7 @@ F(x) = \begin{cases} 0, & x < 0, \\
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

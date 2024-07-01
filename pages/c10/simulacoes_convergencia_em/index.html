@@ -366,7 +366,7 @@
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">10.5. Simulações ilustrando ordem de  convergência do método de Euler-Maruyama</a></h1>
 <p>Podemos ilustrar e conferir a order de convergência do método de Euler-Maruyama considerando equações diferenciais estocásticas para as quais conhemos explicitamente a solução exata.</p>
-<p>Vamos considerar duas equações, uma com ruído multiplicativo, que teoricamente nos dá uma convergência forte de ordem \(1/2\), e outra com ruído aditivo, que teoricamente nos dá uma convergência forte de ordem \(1\). Em ambas temos, também, convergência fraca de ordem \(1\).</p>
+<p>Vamos considerar duas equações, uma com ruído multiplicativo, que teoricamente nos dá uma convergência forte de ordem \(1/2,\) e outra com ruído aditivo, que teoricamente nos dá uma convergência forte de ordem \(1.\) Em ambas temos, também, convergência fraca de ordem \(1.\)</p>
 <p>O caso com ruído multiplicativo é ilustrado com o movimento Browniano geométrico, enquanto que o caso com ruído aditivo é ilustrado com o processo de Orstein-Uhlenbeck.</p>
 <h2 id="convergência_forte_de_ordem_12_no_movimento_browniano_geométrico"><a href="#convergência_forte_de_ordem_12_no_movimento_browniano_geométrico" class="header-anchor">Convergência forte de ordem 1/2 no movimento browniano geométrico</a></h2>
 <p>Nesse caso, a equação do movimento browniano geométrico é</p>
@@ -377,7 +377,7 @@
 \[
 X_t = X_0 e^{(\mu + \sigma^2/2)t + \sigma W_t}.
 \]
-<p>Aproximamos a solução pelo método de Euler-Maruyama, em um intervalo de tempo \([0, T]\), dado por</p>
+<p>Aproximamos a solução pelo método de Euler-Maruyama, em um intervalo de tempo \([0, T],\) dado por</p>
 \[
 X_j^n = X_{j-1}^n + \mu X_{j-1}^n\Delta t + \sigma X_{j-1}^n \Delta W_j, \quad j = 1, \ldots, n,
 \]
@@ -389,8 +389,8 @@ n\in \mathbb{N}, \quad \Delta j = \frac{T}{n}, \quad \Delta W_j = Z_j \sqrt{\Del
 \[
 W_0^n = 0, \quad W_j^n = W_{j-1}^n + \Delta W_j.
 \]
-<p>Para cada \(n\) fixo, podemos interpretar \(\{W_j^n\}_j\) como, de fato, uma amostra exata de um processo de Wiener \(\{W_t\}_{t \geq 0}\), com \(W_j^n = W_{t_j}\).</p>
-<p>De posse de \(\{W_j^n\}_j\), podemos considerar uma amostra da solução exata</p>
+<p>Para cada \(n\) fixo, podemos interpretar \(\{W_j^n\}_j\) como, de fato, uma amostra exata de um processo de Wiener \(\{W_t\}_{t \geq 0},\) com \(W_j^n = W_{t_j}.\)</p>
+<p>De posse de \(\{W_j^n\}_j,\) podemos considerar uma amostra da solução exata</p>
 \[
 X_{t_j}^n = X_0 e^{(\mu + \sigma^2/2)t_j + \sigma W_j^n}.
 \]
@@ -399,9 +399,9 @@ X_{t_j}^n = X_0 e^{(\mu + \sigma^2/2)t_j + \sigma W_j^n}.
 \[
 e_n^{\mathrm{forte}} = \max_{j = 0, \ldots, n} \mathbb{E}_m\left[ \left| X_j^n - X_{t_j}^n\right|\right] = \max_{j=0, \ldots, n}\frac{1}{M}\sum_{m=1}^M \left| X_j^n(\omega_m) - X_{t_j}^n(\omega_m)\right|,
 \]
-<p>onde o valor esperado é tomado em relação às amostras \(\omega_1, \ldots, \omega_M\).</p>
-<p>Observe que devemos considerar o erro em relação ao passo \(\Delta t\), mas também temos o erro em relação à amostragem, que pode ser significativo se \(M\) não for suficientemente grande.</p>
-<p>Nas simulações abaixo, tomamos alguns valores de \(\mu\), \(\sigma\), \(T\), \(M\) e \(n\) para ilustrar os efeitos desse parâmetros. Fazemos uma regressão linear de mínimos quadrados nos \((\Delta t^n, e_n^{\mathrm{forte}})\) para encontrar \(\ln(C)\) e a ordem de convergência \(p\) tais que</p>
+<p>onde o valor esperado é tomado em relação às amostras \(\omega_1, \ldots, \omega_M.\)</p>
+<p>Observe que devemos considerar o erro em relação ao passo \(\Delta t,\) mas também temos o erro em relação à amostragem, que pode ser significativo se \(M\) não for suficientemente grande.</p>
+<p>Nas simulações abaixo, tomamos alguns valores de \(\mu,\) \(\sigma,\) \(T,\) \(M\) e \(n\) para ilustrar os efeitos desse parâmetros. Fazemos uma regressão linear de mínimos quadrados nos \((\Delta t^n, e_n^{\mathrm{forte}})\) para encontrar \(\ln(C)\) e a ordem de convergência \(p\) tais que</p>
 \[
 \ln(e_n^{\mathrm{forte}}) \approx \ln(C) + p \ln(\Delta t_n),
 \]
@@ -409,7 +409,7 @@ e_n^{\mathrm{forte}} = \max_{j = 0, \ldots, n} \mathbb{E}_m\left[ \left| X_j^n -
 \[
 e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 \]
-<p>correspondendo a uma taxa de convergência da ordem de \(\Delta t^p\).</p>
+<p>correspondendo a uma taxa de convergência da ordem de \(\Delta t^p.\)</p>
 <p>As amostras do processo de Wiener são calculadas na malha mais fina. Os passos correspondentes são dados a partir dessas amostras, seja na malha mais fina ou nas mais grossas.</p>
 
 <p>Se o ruído for relativamente pequeno, o erro pode não sofrer tanto e acabar sendo de ordem um pouco melhor:</p>
@@ -423,7 +423,7 @@ e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 <p>Se por outro lado, diminuirmos a amostragem, enxergamos uma ordem forte diferente, mas isso é por conta do erro amostral, mascarando a taxa real de convergência:</p>
 <img src="/notas_sde/assets/pages/c10/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfig5.svg" alt="">
 <h2 id="convergência_fraca_de_ordem_1_no_movimento_browniano_geométrico"><a href="#convergência_fraca_de_ordem_1_no_movimento_browniano_geométrico" class="header-anchor">Convergência fraca de ordem 1 no movimento Browniano geométrico</a></h2>
-<p>A ordem da convergência fraca também sofre influências do número de amostras e da intensidade de ruído. Mas não vamos ilustrar isso aqui. Exibimos apenas uma simulação, com uma ordem de convergência próxima de \(1\). Observe, também, que, além da ordem mais alta de convergência, o erro em si tem uma magnitude bem menor.</p>
+<p>A ordem da convergência fraca também sofre influências do número de amostras e da intensidade de ruído. Mas não vamos ilustrar isso aqui. Exibimos apenas uma simulação, com uma ordem de convergência próxima de \(1.\) Observe, também, que, além da ordem mais alta de convergência, o erro em si tem uma magnitude bem menor.</p>
 
 <img src="/notas_sde/assets/pages/c10/simulacoes_convergencia_em/code/output/geometric_brownian_EMconvfraca.svg" alt="">
 <h2 id="convergência_forte_de_ordem_1_no_processo_de_orstein-uhlenbeck"><a href="#convergência_forte_de_ordem_1_no_processo_de_orstein-uhlenbeck" class="header-anchor">Convergência forte de ordem 1 no processo de Orstein-Uhlenbeck</a></h2>
@@ -435,7 +435,7 @@ e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 \[
 O_t = e^{-\nu t} O_0 + \int_0^t e^{-\nu (t - s)} \;\mathrm{d}W_s.
 \]
-<p>Como o ruído é aditivo, esperamos recuperar a convergência forte de ordem \(1\).</p>
+<p>Como o ruído é aditivo, esperamos recuperar a convergência forte de ordem \(1.\)</p>
 
     <div class="navbar">
     <p id="nav">
@@ -459,7 +459,7 @@ O_t = e^{-\nu t} O_0 + \int_0^t e^{-\nu (t - s)} \;\mathrm{d}W_s.
         </div>
     
 
-    Last modified: June 26, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
