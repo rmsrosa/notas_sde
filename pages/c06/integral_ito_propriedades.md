@@ -201,3 +201,59 @@ $$
 que não é positiva.
 
 Para que a positividade valha na integral de Riemann-Stieltjes, é necessário impor condições extras, como $g$ ser não decrescente ou então $g$ ser positiva e $f$ ser estritamente uniformemente positiva.
+
+## Movimento Browniano com mudança temporal
+
+A integral de uma função determinística $g=g(t)$ em relação a um processo de Wiener nos dá um novo processo estocástico
+$$
+    X_t = \int_0^t g(s)\;\mathrm{d}W_s.
+$$
+Sendo um limite de combinações lineares de processos Gaussianos, o processo $\{X_t\}_{t\geq 0}$ também é um processo Gaussiano. O interessante é que esse processo é como um movimento Browniano com tempo modificado, i.e. $X_t = {\tilde W}_{\theta(t)},$ para uma certa função $\theta=\theta(t)$ e para um processo de Wiener $\{\tilde W_t\}_{t \geq 0}$ possivelmente diferente (Mais significativo ainda é que toda martingale local contínua com $X_0=0$ é um movimento Browniano com tempo modificado.)
+
+Dada a caracterização do processo de Wiener através das suas correlações e de ser um processo Gaussiano, basta verificarmos que
+$$
+    \mathbb{E}[X_tX_s] = \mathbb{E}[{\tilde W}_{\theta(t)}{\tilde W}_{\theta(s)}] = \min\{\theta(t), \theta(s)\}, \quad \forall t, s \geq 0,
+$$
+para uma função $\theta=\theta(t)$ apropriada. No caso, veremos que
+$$
+    \theta(t) = \int_0^t g(s)^2 \;\mathrm{d}s,
+$$
+e, para isso, devemos ter $g$ localmente de quadrado integrável.
+
+Observe que
+$$
+    \mathbb{E}[X_t] = 0,
+$$
+e, pela isometria de Itô,
+$$
+    \mathbb{E}[X_t^2] = \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2\right] = \int_0^t \mathbb{E}[g(s)^2]\;\mathrm{d}s = \int_0^t g(s)^2\;\mathrm{d}s = \theta(t),
+$$
+para todo $t \geq 0.$ Além disso, para $t, s \geq 0,$
+$$
+    \begin{align*}
+        \mathbb{E}[X_tX_s] & = \mathbb{E}\left[\left(\int_0^t g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^s g(\xi)\;\mathrm{d}W_\xi\right)\right] \\
+        & = \mathbb{E}\left[\left(\int_0^{\min\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^{\min\{t, s\}} g(\xi)\;\mathrm{d}W_\xi\right)\right] + \mathbb{E}\left[\left(\int_{\min\{t,s\}}^{\max\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^{\min\{t, s\}} g(\xi)\;\mathrm{d}W_\xi\right)\right] \\
+        & = \mathbb{E}\left[\left(\int_0^{\min\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)^2\right] + \mathbb{E}\left[\left(\int_{\min\{t,s\}}^{\max\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^{\min\{t, s\}} g(\xi)\;\mathrm{d}W_\xi\right)\right]
+    \end{align*}
+$$
+Pela independência de passos disjuntos do processo de Wiener, o segundo termo se anula, enquanto que no primeiro termo usamos a isometria de Itô, obtendo
+$$
+    \mathbb{E}[X_tX_s] = \int_0^{\min\{t, s\}} \mathbb{E}[g(\tau)^2]\;\mathrm{d}\tau = \int_0^{\min\{t, s\}} g(\tau)^2\;\mathrm{d}\tau = \min\{\theta(t), \theta(s)\}.
+$$
+Dessa forma, provamos que
+$$
+    X_t = {\tilde W}_{\theta(t)}, \qquad \forall t \geq 0,
+$$
+ou, mais explicitamente,
+$$
+    \int_0^t g(s)\;\mathrm{d}W_s = {\tilde W}_{\int_0^t g(s)^2\;\mathrm{d}s}, \qquad \forall t \geq 0,
+$$
+para algum processo de Wiener $\{\tilde W_t\}_{t \geq 0}$ que, em geral, é diferente de $\{W_t\}_{t\geq 0}.$
+
+## Exercícios
+
+1. Mostre que, em geral, a identidade
+$$
+    \int_0^t g(s)\;\mathrm{d}W_s = W_{\int_0^t g(s)^2\;\mathrm{d}s}, \qquad \forall t \geq 0,
+$$
+não vale para o mesmo processo de Wiener $\{W_t\}_{t \geq 0}.$ (Isso é verdade se, e somente se, $g^2(t) = 1,$ para todo $t \geq 0.$)
