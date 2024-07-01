@@ -21,7 +21,7 @@ Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}.$ Dado $a > 0,$ defin
 $$
 V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 $$
-Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalor $[0, T],$ $T > 0,$ então obtemos um processo de Wiener $\{V_t^a\}_{t\in [0, a^2T]}$ em $[0, a^2T].$
+Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalo $[0, T],$ $T > 0,$ então obtemos um processo de Wiener $\{V_t^a\}_{t\in [0, a^2T]}$ em $[0, a^2T].$
 
 É imediato verificar que
 
@@ -296,7 +296,9 @@ $$
 
 1. Mostre que a combinação convexa $W_t = (1-\theta)W_t^{(1)} + \theta W_t^{(2)},$ $0\leq \theta \leq 1,$ entre dois processos de Wiener independentes $\{W_t^{(1)}\}_{t\geq 0}$ e $\{W_t^{(1)}\}_{t\geq 0}$ também é um processo de Wiener.
 
-2. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2.$
+2. Vimos que ${\tilde W}_t = (1/a)W_{a^2t},$ $t \geq 0,$ define um novo processo de Wiener. Mostre que, a menos que $a = \pm 1,$ não é verdade que ${\tilde W}_t = W_t,$ ou seja, as distribuições são as mesmas, mas os caminhos não são. (Dica: isso viola, por exemplo, a independência entre passos disjuntos.)
+
+3. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2.$
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t^p} = 0.
 $$
