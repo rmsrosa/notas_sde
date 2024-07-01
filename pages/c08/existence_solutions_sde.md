@@ -13,7 +13,7 @@ $$
 
 ## Hipóteses iniciais
 
-Como antes, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem Lipschitz contínuas na variável $x$, mas com a diferença que pedimos agora que essa continuidade Lipschitz seja *global.*
+Como antes, vamos assumir que $f = f(t, x),$ $g = g(t, x)$ são funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem Lipschitz contínuas na variável $x,$ mas com a diferença que pedimos agora que essa continuidade Lipschitz seja *global.*
 
 Mais precisamente, existem $L_f, L_g > 0$ tais que
 $$
@@ -27,7 +27,7 @@ Observe que a desigualdade para $f$ implica em
 $$
 |f(t, x)| = |f(t, x) - f(t, 0) + f(t, 0)| \leq |f(t, 0)| + L_f|x| \leq C_f + L_f|x|,
 $$
-para $C_f = \max_{t\in [0, T]}|f(t, 0)|$. Analogamente,
+para $C_f = \max_{t\in [0, T]}|f(t, 0)|.$ Analogamente,
 $$
 |g(t, x)| = |g(t, x) - g(t, 0) + g(t, 0)| \leq |g(t, 0)| + L_g|x| \leq C_g + L_g|x|.
 $$
@@ -48,7 +48,7 @@ $$
 X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s)\;\mathrm{d}W_s.
 $$
 
-A ideia é, novamente, resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0$,
+A ideia é, novamente, resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0,$
 $$
 \begin{align*}
 X_t^0 & = X_0, \\
@@ -67,7 +67,7 @@ Vamos mostrar, por indução, que
 $$
 d^m(t) \leq \frac{M K^m t^{m+1}}{(m+1)!},
 $$
-para $K = 2(L_f^2 + L_g^2)$ e para alguma constante $M$ dependendo de $C_f$, $C_g$, $L_f$, $L_g$, $T$ e $X_0$.
+para $K = 2(L_f^2 + L_g^2)$ e para alguma constante $M$ dependendo de $C_f,$ $C_g,$ $L_f,$ $L_g,$ $T$ e $X_0.$
 
 Primeiramente, temos
 $$
@@ -81,7 +81,7 @@ Estimando a primeira integral de maneira usual e usando a isometria de Itô na s
 $$
 d^0(t) \leq 2\int_0^t\mathbb{E}\left[ f(s, X_s^0)^2 \right]\;\mathrm{d}s + 2\int_0^t\mathbb{E}\left[ g(s, X_s^0)^2 \right]\;\mathrm{d}t.
 $$
-Usando as estimativas para $f$ e $g$ e usando que $X_s^0 = X_0$, chegamos a
+Usando as estimativas para $f$ e $g$ e usando que $X_s^0 = X_0,$ chegamos a
 $$
 \begin{align*}
 d^0(t) & \leq 2\int_0^t\mathbb{E}\left[ \left(C_f + L_fX_0\right)^2 \right]\;\mathrm{d}t + 2\int_0^t\mathbb{E}\left[ \left(C_g + L_gX_0\right)^2 \right]\;\mathrm{d}t \\
@@ -102,7 +102,7 @@ $$
 M = 4\left((C_f^2 + C_g^2) + (L_f^2 + L_g^2)\mathbb{E}\left[X_0^2\right]\right).
 $$
 
-Agora, prosseguindo por indução, assumimos que a estimativa seja válida para $m-1$ e buscamos prová-la para $m$. Temos
+Agora, prosseguindo por indução, assumimos que a estimativa seja válida para $m-1$ e buscamos prová-la para $m.$ Temos
 $$
 \begin{align*}
 d^m(t) & = \mathbb{E}\left[\left|X_t^{m+1} - X_t^m\right|^2\right] \\
@@ -115,7 +115,7 @@ Usando a isometria de Itô no segundo termo, chegamos a
 $$
 d^m(t) \leq 2(L_f^2 + L_g^2)\int_0^T \mathbb{E}\left[ |X_s^m - X_s^{m-1}|^2 \right]\;\mathrm{d}s \leq K\int_0^T d^{m-1}(s)\;\mathrm{d}s.
 $$
-Usando a hipótese de indução para $m-1$, chegamos na estimativa para $d^m(t)$:
+Usando a hipótese de indução para $m-1,$ chegamos na estimativa para $d^m(t)$:
 $$
 d^m(t) \leq K\int_0^T \frac{MK^{m-1}s^m}{m!}\;\mathrm{d}s \leq \frac{MK^mt^{m+1}}{(m+1)!}.
 $$

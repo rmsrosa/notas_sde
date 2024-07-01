@@ -4,12 +4,12 @@
 
 Uma outra propriedade fundamental da integral de Itô diz respeito a uma fórmula relacionada a mudanças de variáveis.
 
-Considere um processo real $\{X_t\}_{t \geq 0}$ e uma função real contínua $u:\mathbb{R} \rightarrow \mathbb{R}$. Podemos definir um outro processo $\{Y_t\}_{t \geq 0}$ através de
+Considere um processo real $\{X_t\}_{t \geq 0}$ e uma função real contínua $u:\mathbb{R} \rightarrow \mathbb{R}.$ Podemos definir um outro processo $\{Y_t\}_{t \geq 0}$ através de
 $$
 Y_t = u(X_t).
 $$
 
-A questão é sobre a relação entre $\mathrm{d}Y_t$ e $\mathrm{d}X_t$. Quando $u$ e $\{X_t\}_{t \geq 0}$ são diferenciáveis, temos simplesmente
+A questão é sobre a relação entre $\mathrm{d}Y_t$ e $\mathrm{d}X_t.$ Quando $u$ e $\{X_t\}_{t \geq 0}$ são diferenciáveis, temos simplesmente
 $$
 \frac{\mathrm{d}Y_t}{\mathrm{d}t} = u'(X_t)\frac{\mathrm{d}X_t}{\mathrm{d}t}.
 $$
@@ -23,20 +23,20 @@ $$
     \int_a^b g(t) \;\mathrm{d}Y_t = \int_a^b u'(X_t)\;\mathrm{d}X_t.
 $$
 
-Mas e no caso em que $X_t$ não é nem de variação limitada? Por exemplo, se quiseremos calcular $X_t = \sin(W_t),$ para o processo de Wiener, ou qualquer outra $X_t = u(W_t)$? Podemos começar por aí e calcular $dX_t$ para funções de processos de Wiener. Mas e se quiseremos, em cima disso, consider $Y_t = v(X_t)$ e ainda $Z_t = w(Y_t)$, etc.
+Mas e no caso em que $X_t$ não é nem de variação limitada? Por exemplo, se quiseremos calcular $X_t = \sin(W_t),$ para o processo de Wiener, ou qualquer outra $X_t = u(W_t)$? Podemos começar por aí e calcular $dX_t$ para funções de processos de Wiener. Mas e se quiseremos, em cima disso, consider $Y_t = v(X_t)$ e ainda $Z_t = w(Y_t),$ etc.
 
 Por conta disso, consideramos uma classe de processos que é, em um certo sentido, fechada para composições. E então calculamos a diferencial para processos nessa classe. Essa classe é a de *processos de Itô,* ou de *difusão,* ou seja, processos $\{X_t\}_t$ satisfazendo uma equação da forma
 $$
 \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t,
 $$
-para outros dados processos $\{A_t\}_t$ e $\{B_t\}_t$ adaptados a $\{W_t\}_t$.
+para outros dados processos $\{A_t\}_t$ e $\{B_t\}_t$ adaptados a $\{W_t\}_t.$
 
 Para esses processos, teremos uma correção na fórmula de mudança de variáveis, nos levando à *fórmula de Itô*, que, nesse caso autônomo, tem a forma:
 $$
 \mathrm{d}Y_t = u'(X_t) \;\mathrm{d}X_t + \frac{1}{2} B_t^2 u''(X_t)\;\mathrm{d}t. 
 $$
 
-Essa mesma análise pode ser feita no caso em que $u$ depende também da variável temporal, i.e. $u:[0, \infty) \times \mathbb{R} \rightarrow \mathbb{R}$. Nesse caso, temos
+Essa mesma análise pode ser feita no caso em que $u$ depende também da variável temporal, i.e. $u:[0, \infty) \times \mathbb{R} \rightarrow \mathbb{R}.$ Nesse caso, temos
 $$
 Y_t = u(t, X_t).
 $$
@@ -45,7 +45,7 @@ $$
 \mathrm{d}Y_t = u_t(t, X_t)\;\mathrm{d}t + u_x(t, X_t)\;\mathrm{d}X_t + \frac{1}{2} u_{xx} B_t^2\;\mathrm{d}t.
 $$
 
-Observe que, em ambos os casos, se $B_t = 0$, para todo $t$, então $\{X_t\}_{t \geq 0}$ se reduz a um processo com caminhos diferenciáveis (ou de variação limitada) e recuperamos a fórmula clássica.
+Observe que, em ambos os casos, se $B_t = 0,$ para todo $t,$ então $\{X_t\}_{t \geq 0}$ se reduz a um processo com caminhos diferenciáveis (ou de variação limitada) e recuperamos a fórmula clássica.
 
 ## Ideia do termo de correção
 
@@ -75,12 +75,12 @@ Mas essa ideia não constitui uma demonstração e ainda está muito vaga. Vamos
 
 ## Fórmula de Itô no caso de um processo de Wiener
 
-Para deixar as ideias claras, vamos considerar o caso mais simples em que $X_t=W_t$ é o próprio processo de Wiener e $u=u(x)$ é uma função duas vezes continuamente diferenciável definida para todo $x\in\mathbb{R}.$ Estamos interessados em obter uma fórmula para $\mathrm{d}Y_t$, onde $\{Y_t\}_{t\geq 0}$ é dado por
+Para deixar as ideias claras, vamos considerar o caso mais simples em que $X_t=W_t$ é o próprio processo de Wiener e $u=u(x)$ é uma função duas vezes continuamente diferenciável definida para todo $x\in\mathbb{R}.$ Estamos interessados em obter uma fórmula para $\mathrm{d}Y_t,$ onde $\{Y_t\}_{t\geq 0}$ é dado por
 $$
     Y_t = u(W_t).
 $$
 
-Considere uma malha temporal $0 = t_0 < t_1 < \cdots < t_n = T$. Escrevemos
+Considere uma malha temporal $0 = t_0 < t_1 < \cdots < t_n = T.$ Escrevemos
 $$
 Y_t = Y_0 + \sum_{j = 1}^n (Y_{t_j} - Y_{t_{j-1}}),
 $$
@@ -117,7 +117,7 @@ $$
     \sum_{j=1}^n u'(W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \rightarrow \int_0^T u'(W_t)\;\mathrm{d}W_t.
 $$
 
-No segundo termo, usamos que $\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})$. É possível mostrar que
+No segundo termo, usamos que $\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1}).$ É possível mostrar que
 $$
 \frac{1}{2}\sum_{j=1}^n u''(W_{t_{j-1}}) (W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(W_t) \;\mathrm{d}t,
 $$
@@ -147,7 +147,7 @@ $$
 $$
 para um processo qualquer $\{H_t\}_t$ progessivamente mensurável e de quadrado integrável (como o é $u''(W_t)$ quando $u$ é suave e $\{W_t\}_t$ é o processo de Wiener).
 
-O primeiro passo é aproximar, no sentido de média quadrática, o processo $\{H_t\}_t$ por processos escada $\{H_t^m\}_t$ adaptados a $\{W_t\}_t$, conforme feito na parte de existência de integral de Itô. Cada $H_t^m$ é constante em uma partição $0 = a_0 < a_1 < \ldots < a_m = T$. Em cada subintervalo $A_k = [a_{k-1}, a_k)$, temos índices
+O primeiro passo é aproximar, no sentido de média quadrática, o processo $\{H_t\}_t$ por processos escada $\{H_t^m\}_t$ adaptados a $\{W_t\}_t,$ conforme feito na parte de existência de integral de Itô. Cada $H_t^m$ é constante em uma partição $0 = a_0 < a_1 < \ldots < a_m = T.$ Em cada subintervalo $A_k = [a_{k-1}, a_k),$ temos índices
 $$
     J_k = \{t_j \in A_k\}
 $$
@@ -200,7 +200,7 @@ Isso completa a demonstração da convergência em média quadrática do segundo
 
 Por densidade, basta mostrar no caso em que $u$ é três vezes continuamente diferenciável. Vamos assumir isso.
 
-Quase todo caminho amostral de $\{W_t\}_t$ é H\"older contínou com expoente $\theta < 1/2$ e é limitado em $[0, T]$. Assim, fixado um caminho amostral, existe $C>0$ tal que
+Quase todo caminho amostral de $\{W_t\}_t$ é H\"older contínou com expoente $\theta < 1/2$ e é limitado em $[0, T].$ Assim, fixado um caminho amostral, existe $C>0$ tal que
 $$
 |W_{t+\tau}(\omega) - W_t(\omega)| \leq C\tau ^\theta
 $$
@@ -208,7 +208,7 @@ Em particular, como $W_0 = 0,$
 $$
   |W_{t}(\omega)| \leq CT^\theta,
 $$
-para todo $t\in [0, T]$. Além disso, assumindo $u''$ continuamente diferenciável, dado $\epsilon > 0,$ existe $K > 0$ tal que
+para todo $t\in [0, T].$ Além disso, assumindo $u''$ continuamente diferenciável, dado $\epsilon > 0,$ existe $K > 0$ tal que
 $$
   w_1, w_2 \leq CT^\theta \Rightarrow |u(w_2) - u(w_1)| \leq K|w_2 - w_1|.
 $$
@@ -232,7 +232,7 @@ onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener e $\{A_t\}_{t \geq 0}$ e $\{B
 
 ## Fórmula de Itô no caso autônomo
 
-Considere, novamente, uma malha temporal $0 = t_0 < t_1 < \cdots < t_n = T$ com $\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0$. Escrevemos
+Considere, novamente, uma malha temporal $0 = t_0 < t_1 < \cdots < t_n = T$ com $\max_{j=1, \ldots, n}\{t_j  - t_{j-1}\} \rightarrow 0.$ Escrevemos
 $$
 Y_t = Y_0 + \sum_{j = 1}^n (Y_{t_j} - Y_{t_{j-1}}).
 $$
@@ -255,7 +255,7 @@ Y_T - Y_0 & = \sum_{j=1}^n u'(X_{t_{j-1}})(X_{t_j} - X_{t_{j-1}}) \\
 \end{align*}
 $$
 
-No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de $\{u'(X_t)\}_{t \geq 0}$ com respeito $\{X_t\}_{t \geq 0}.$ O último termo converge para zero, graças à continuidade da segunda derivada de $u = u(x)$. Em relação ao segundo termo, temos
+No limite de refinamento da malha, o primeiro termo converge para a integral de Itô de $\{u'(X_t)\}_{t \geq 0}$ com respeito $\{X_t\}_{t \geq 0}.$ O último termo converge para zero, graças à continuidade da segunda derivada de $u = u(x).$ Em relação ao segundo termo, temos
 $$
 \begin{align*}
 (X_{t_j} - X_{t_{j-1}})^2 & \approx \left(A_{t_{j-1}}(t_j - t_{j-1}) + B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}) \right)^2 \\
@@ -274,7 +274,7 @@ $$
 & \rightarrow 0 \times \int_0^T 4A_t^2 B_t^2 \;\mathrm{d}t = 0.
 \end{align*}
 $$
-No último termo, usando que $\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1})$, obtemos
+No último termo, usando que $\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1}),$ obtemos
 $$
 \frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) B_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2 \rightarrow \frac{1}{2}\int_0^T u''(X_t) B_t^2 \;\mathrm{d}t.
 $$
@@ -317,7 +317,7 @@ Em seguida, eleva-se ao quadrado a equação para $\{X_t\}_{t \geq 0}$:
 $$
 (\mathrm{d}X_t)^2 = \left(A_t \;\mathrm{d}t + B_t \;\mathrm{d}W_t\right)^2 = A_t^2\;(\mathrm{d}t)^2 + 2A_tB_t \;\mathrm{d}t\;\mathrm{d}W_t + B_t^2\;(\mathrm{d}W_t)^2.
 $$
-Substituindo $(\mathrm{d}X_t)^2$ na expansão de segunda ordem de $\mathrm{d}Y_t$, obtemos
+Substituindo $(\mathrm{d}X_t)^2$ na expansão de segunda ordem de $\mathrm{d}Y_t,$ obtemos
 $$
 \begin{align*}
 \mathrm{d}Y_t & = u_t\;\mathrm{d}t + u_x\;\mathrm{d}X_t \\

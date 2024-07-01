@@ -11,9 +11,9 @@ $$
 \left. X_t \right|_{t = 0} = X_0.
 $$
 
-Suponhamos, para todos os efeitos, que exista uma solução  definida pelo menos em um intervalo de tempo $[0, T]$. Suponhamos, ainda, que cada $X_t$ tenha uma função densidade de probabilidade $p(t, x)$ bem definida. A questão que queremos investigar é sobre a evolução dessa função.
+Suponhamos, para todos os efeitos, que exista uma solução  definida pelo menos em um intervalo de tempo $[0, T].$ Suponhamos, ainda, que cada $X_t$ tenha uma função densidade de probabilidade $p(t, x)$ bem definida. A questão que queremos investigar é sobre a evolução dessa função.
 
-Vamos considerar funções testes $\Phi(t, x)$ que se anulem nos extremos do intervalo temporal, i.e. $\Phi(T, x) = \Phi(0, x) = 0$, e que decaiam suficientemente rápido quando $|x|\rightarrow \infty.$
+Vamos considerar funções testes $\Phi(t, x)$ que se anulem nos extremos do intervalo temporal, i.e. $\Phi(T, x) = \Phi(0, x) = 0,$ e que decaiam suficientemente rápido quando $|x|\rightarrow \infty.$
 
 Temos, pela fórmula de Itô, que
 $$
@@ -33,7 +33,7 @@ $$
 \int_0^T \int_{-\infty}^{\infty} \left(\Phi_t(t, x) + \Phi_x(t, x)f(t, x) + \frac{1}{2}\Phi_{xx}(t, x)g(t, x)^2\right)p(t, x)\;\mathrm{d}x\;\mathrm{d}t = 0.
 $$
 
-Integrando por partes, em $t$, a primeira integral, temos
+Integrando por partes, em $t,$ a primeira integral, temos
 $$
 \begin{align*}
 \int_0^T \int_{-\infty}^{\infty} \Phi_t(t, x) p(t, x)\;\mathrm{d}x\;\mathrm{d}t & = \int_{-\infty}^{\infty} \int_0^T \Phi_t(t, x) p(t, x)\;\mathrm{d}t \;\mathrm{d}x \\

@@ -239,7 +239,7 @@ Nesse caso, podemos definir a função da seguinte forma
 f(u, p, t, W) = sin(W) * u
 ```
 
-Para geramos o problema de valor inicial, escolhemos os parâmetros $x_0 = 1$, $t_0 = 0$ e $T = 5$ e definimos
+Para geramos o problema de valor inicial, escolhemos os parâmetros $x_0 = 1,$ $t_0 = 0$ e $T = 5$ e definimos
 ```julia
 u0 = 1.0
 tspan = (0.0, 5.0)
@@ -406,7 +406,7 @@ end
 $$
 \mathrm{d}X_t = f(X_t, p, t)\;\mathrm{d}t + g(X_t, p, t)\;\mathrm{d}W_t
 $$
-onde agora incluímos explicitamente parâmetros $p$. Observe a troca de ordem dos argumentos $X_t$ e $t$, em relação ao formato tratado na parte teórica.
+onde agora incluímos explicitamente parâmetros $p.$ Observe a troca de ordem dos argumentos $X_t$ e $t,$ em relação ao formato tratado na parte teórica.
 
 De maneira similar aos casos anteriores, os problemas de valor inicial para equações estocásticas são montados através das interfaces
 1. `SDEProblem(f::SDEFunction,g,u0,tspan,p=NullParameters();noise=WHITE_NOISE,noise_rate_prototype=nothing)`;
@@ -587,7 +587,7 @@ function fsir4!(du, u, p, t)
 end
 ```
 
-Para quem já estudou o modelo SIR de epidemia, pode reconhecer a função como sendo a lei de evolução para o subsistema composto pelas variáveis $s = S/N$ e $i = I/N$, onde $S$ e $I$ são as populações de suscetíveis e de infectados, respectivamente, e $N$ é a população total.
+Para quem já estudou o modelo SIR de epidemia, pode reconhecer a função como sendo a lei de evolução para o subsistema composto pelas variáveis $s = S/N$ e $i = I/N,$ onde $S$ e $I$ são as populações de suscetíveis e de infectados, respectivamente, e $N$ é a população total.
 
 Observe que a primeira função, `fsir1(u, p, t)`, está na forma *out of place*, sem modificar nenhum dos seus argumentos e retornando um novo vetor com o conteúdo das taxas de variação de cada componente do sistema. Por outro lado, a terceira e a quarta funções, `fsir3!(du, u, p, t)`, `fsir4!(du, u, p, t)`, estão na forma *inplace* e modificam a primeira variável, `du`, com o valor calculado para essas taxas. A segunda função, `fsir2!(du, u, p, t)`, no entanto, deveria alterar o valor de `du`, mas na verdade ela cria um novo vetor, local, também denominado de `du`, ao invés de alterar a variável `du` passada para a função. Muito cuidado! Essa função não funciona como desejamos.
 

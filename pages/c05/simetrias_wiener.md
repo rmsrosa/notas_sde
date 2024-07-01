@@ -7,7 +7,7 @@ Processos de Wiener possuem algumas simetrias importantes.
 
 ## Invariância por reflexão
 
-Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Então o processo $\{V_t\}_{t \geq 0}$ definido por $V_t = - W_t$ também é um processo de Wiener padrão. De fato, observe, inicialmente, que $V_0 = -W_0 = 0$. Agora, se $0 \leq t_0 \leq \cdots \leq t_k$ então os passos $\{W_{t_j} - W_{t_{j-1}}\}_{j=1}^k$ são independentes. Como $V_{t_j} - V_{t_{j-1}} =  - (W_{t_j} - W_{t_{j-1}})$, então os passos $\{V_{t_j} - V_{t_{j-1}}\}_{j=1}^k$ também são independentes. Além disso, $V_{t + \tau} - V_t = - (W_{t+\tau} - W_t) \sim -\mathcal{N}(0, \tau) = \mathcal{N}(0, \tau).$ Finalmente, como os caminhos amostrais $t \mapsto W_t$ são continuos, então $t \mapsto V_t = -W_t$ também os são.
+Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}.$ Então o processo $\{V_t\}_{t \geq 0}$ definido por $V_t = - W_t$ também é um processo de Wiener padrão. De fato, observe, inicialmente, que $V_0 = -W_0 = 0.$ Agora, se $0 \leq t_0 \leq \cdots \leq t_k$ então os passos $\{W_{t_j} - W_{t_{j-1}}\}_{j=1}^k$ são independentes. Como $V_{t_j} - V_{t_{j-1}} =  - (W_{t_j} - W_{t_{j-1}}),$ então os passos $\{V_{t_j} - V_{t_{j-1}}\}_{j=1}^k$ também são independentes. Além disso, $V_{t + \tau} - V_t = - (W_{t+\tau} - W_t) \sim -\mathcal{N}(0, \tau) = \mathcal{N}(0, \tau).$ Finalmente, como os caminhos amostrais $t \mapsto W_t$ são continuos, então $t \mapsto V_t = -W_t$ também os são.
 
 Observe que, por conta dessa simetria,
 $$
@@ -17,11 +17,11 @@ para todo $r \geq 0.$
 
 ## Invariância por rescalonamento
 
-Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Dado $a > 0$, defina o processo $\{V_t^a\}_{t\geq 0}$ por
+Considere um processo de Wiener padrão $\{W_t\}_{t\geq 0}.$ Dado $a > 0,$ defina o processo $\{V_t^a\}_{t\geq 0}$ por
 $$
 V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 $$
-Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalor $[0, T]$, $T > 0$, então obtemos um processo de Wiener $\{V_t^a\}_{t\in [0, a^2T]}$ em $[0, a^2T]$.
+Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W_t\}_{t\in [0, T]}$ só esteja definido em um intervalor $[0, T],$ $T > 0,$ então obtemos um processo de Wiener $\{V_t^a\}_{t\in [0, a^2T]}$ em $[0, a^2T].$
 
 É imediato verificar que
 
@@ -29,11 +29,11 @@ Então $\{V_t^a\}_{t\geq 0}$ também é um processo de Wiener padrão. Caso $\{W
 
   (ii) quase sempre os caminhos amostrais $t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)$ são contínuos; e
   
-  (iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}}$, $j = 1, \ldots, n$, $0 \leq t_0 < t_1 < \ldots < t_n$, são independentes.
+  (iii) os incrementos $V_{t_j}^a - V_{t_{j-1}}^a = (1/a)W_{a^2 t_j} - (1/a)W_{a^2 t_{j-1}},$ $j = 1, \ldots, n,$ $0 \leq t_0 < t_1 < \ldots < t_n,$ são independentes.
 
 Quando à lei de distribuição dos incrementos, temos
 
-  (iv) Para todo $\tau>0$, vale
+  (iv) Para todo $\tau>0,$ vale
 $$
 V_{t + \tau}^a - V_t^a = \frac{1}{a}\left(W_{a^2(t + \tau)} - W_{a^2t}\right) \sim \frac{1}{a}\mathcal{N}(0, a^2\tau) = \mathcal{N}(0, \tau).
 $$
@@ -106,7 +106,7 @@ Portanto, como desejado, segue pelo Lema de Borel Cantelli que
 $$
     \mathbb{P}\left(\limsup_{t\rightarrow \infty} \left|\frac{W_t}{t}\right| \geq \varepsilon\right) = 0,
 $$
-para $\varepsilon > 0$ arbitrário, de modo que, quando $t\rightarrow \infty,$, obtemos  $W_t/t \rightarrow 0$ quase certamente.
+para $\varepsilon > 0$ arbitrário, de modo que, quando $t\rightarrow \infty,,$ obtemos  $W_t/t \rightarrow 0$ quase certamente.
 
 ### Desigualdade maximal
 
@@ -114,7 +114,7 @@ Para completar, vamos mostrar que
 $$
     \mathbb{P}\left(\max_{0 \leq t \leq T}|W_t| \geq r \right) \leq \frac{2}{r^4}\mathbb{E}\left[ W_T^4 \right],
 $$
-para $T > 0$ e $r > 0$.
+para $T > 0$ e $r > 0.$
 
 Pela simetria por reflexão $W_t \mapsto -W_t,$ segue que
 $$
@@ -137,7 +137,7 @@ Logo, basta mostrarmos que
 $$
     \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r \right) \leq \frac{1}{r^4}\mathbb{E}\left[ W_T^4 \right],
 $$
-para todo $k\in\mathbb{N}.$ Para isso, fazemos como na demonstração da desigualdade maximal de Kolmogorov. Dado $D_k$, escrevemos $t_j^k = jT/2^k,$ $j=0, \ldots, 2^k,$ de modo que
+para todo $k\in\mathbb{N}.$ Para isso, fazemos como na demonstração da desigualdade maximal de Kolmogorov. Dado $D_k,$ escrevemos $t_j^k = jT/2^k,$ $j=0, \ldots, 2^k,$ de modo que
 $$
     W_T = \sum_{j=1}^{2^k} (W_{t_j} - W_{t_{j-1}}).
 $$
@@ -164,27 +164,27 @@ V_t = \begin{cases}
  tW_{1/t}, & t > 0.
 \end{cases}
 $$
-Então $\{V_t\}_{t\geq 0}$ também é um processo de Wiener padrão em $[0, \infty)$. Vamos verificar isso.
+Então $\{V_t\}_{t\geq 0}$ também é um processo de Wiener padrão em $[0, \infty).$ Vamos verificar isso.
 
 ### Estado inicial
 
-Por construção, temos $V_0 = W_0 = 0$.
+Por construção, temos $V_0 = W_0 = 0.$
 
 ### Continuidade quase sempre dos caminhos amostrais
 
-Para quase todo $\omega$, o caminho $t \mapsto W_t(\omega)$ é contínuo. Daí tiramos que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo em $(0, \infty)$. Além disso, segue do crescimento sublinear dos caminhos amostrais que, quase sempre,
+Para quase todo $\omega,$ o caminho $t \mapsto W_t(\omega)$ é contínuo. Daí tiramos que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo em $(0, \infty).$ Além disso, segue do crescimento sublinear dos caminhos amostrais que, quase sempre,
 $$
 \lim_{t \rightarrow 0} V_t = \lim_{t \rightarrow 0} t W_{1/t} = \lim_{s \rightarrow \infty} \frac{W_s}{s} = 0.
 $$
-Portanto, para quase todo $\omega$, vale $t W_{1/t}(\omega) \rightarrow 0$, quando $t \rightarrow 0$, mostrando que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo também em $t = 0$, portanto é contíno em $[0, \infty)$, para quase todo $\omega$. Isso mostra a continuidade quase sempre dos caminhos amostrais de $\{V_t\}_{t\geq 0}$.
+Portanto, para quase todo $\omega,$ vale $t W_{1/t}(\omega) \rightarrow 0,$ quando $t \rightarrow 0,$ mostrando que $t \mapsto V_t(\omega) = t W_{1/t}(\omega)$ é contínuo também em $t = 0,$ portanto é contíno em $[0, \infty),$ para quase todo $\omega.$ Isso mostra a continuidade quase sempre dos caminhos amostrais de $\{V_t\}_{t\geq 0}.$
 
 ### Independência dos incrementos
 
-Quanto à independência dos incrementos, se $0 < t_0 < t_1 < \ldots < t_n$, então $1/t_n < \ldots < 1/t_1 < t/t_0$ e vemos que os incrementos $V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}}$, $j = 1, \ldots, n$, também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.
+Quanto à independência dos incrementos, se $0 < t_0 < t_1 < \ldots < t_n,$ então $1/t_n < \ldots < 1/t_1 < t/t_0$ e vemos que os incrementos $V_{t_j} - V_{t_{j-1}} = t_jW_{1/t_j} - t_{j-1}W_{1/t_{j-1}},$ $j = 1, \ldots, n,$ também envolvem intervalos disjuntos, mas cada fator está multiplicado por um instante diferente, não sendo tão imediado deduzir a independência.
 
 Vamos usar o fato de que esses incrementos formam uma normal multivariada e, com isso, a independência segue da independência dois a dois, que, por sua vez, segue se provarmos que as covariâncias são nulas.
 
-Vamos, então, considerar quatro instantes distintos $0 \leq t_1 < t_2 < t_3 < t_4$ e olhar para as covariâncias de dois incrementos disjuntos. Se $t_1 > 0$, temos
+Vamos, então, considerar quatro instantes distintos $0 \leq t_1 < t_2 < t_3 < t_4$ e olhar para as covariâncias de dois incrementos disjuntos. Se $t_1 > 0,$ temos
 $$
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) = \mathrm{Cov}(t_2 W_{1/t_2} - t_1 W_{1/t_1}, t_4 W_{1/t_4} - t_3 W_{1/t_3}).
 $$
@@ -198,7 +198,7 @@ $$
 \end{align*}
 $$
 
-Se $t_1 = 0$, então
+Se $t_1 = 0,$ então
 $$
 \begin{align*}
 \mathrm{Cov}(V_{t_2} - V_{t_1}, V_{t_4} - V_{t_3}) & = \mathrm{Cov}(t_2 W_{1/t_2} - 0, t_4 W_{1/t_4} - t_3 W_{1/t_3}) \\
@@ -213,12 +213,12 @@ Como os incrementos são normais, isso mostra que quaisquer dois incrementos dis
 
 ### Distribuição de probabilidades dos incrementos
 
-Sejam, agora, $t \geq 0$, $\tau > 0$. Se $t = 0$, então
+Sejam, agora, $t \geq 0,$ $\tau > 0.$ Se $t = 0,$ então
 $$
 V_{t + \tau} - V_t = V_\tau = \tau W_{1/\tau} = \tau (W_{1/\tau} - W_0) \sim \tau \mathcal{N}(0, 1/\tau) = \mathcal{N}(0, \tau).
 $$
 
-Se $t > 0$, então
+Se $t > 0,$ então
 $$
     \mathbb{E}[V_{t + \tau} - V_t] = 0
 $$
@@ -242,11 +242,11 @@ De outra forma, podemos escrever
 $$
 V_{t + \tau} - V_t = (t + \tau)W_{1/(t + \tau)} - tW_{1/t}.
 $$
-Somando e subtraindo $t W_{1/(t + \tau)}$, obtemos
+Somando e subtraindo $t W_{1/(t + \tau)},$ obtemos
 $$
 V_{t + \tau} - V_t = (t + \tau)W_{1/(t + \tau)} - t W_{1/(t + \tau)} + t W_{1/(t + \tau)} - tW_{1/t} = \tau W_{1/(t + \tau)} + t (W_{1/(t + \tau)} - W_{1/t}).
 $$
-Como $W_0 = 0$, temos
+Como $W_0 = 0,$ temos
 $$
 V_{t + \tau} - V_t  = \tau (W_{1/(t + \tau)} - W_0) - t (W_{1/t} - W_{1/(t + \tau)}).
 $$
@@ -265,7 +265,7 @@ $$
 
 ## Invariância por translações
 
-Considere, novamente, um processo de Wiener padrão $\{W_t\}_{t\geq 0}$. Seja $s > 0$ e defina o processo $\{V_t^s\}_{t\geq 0}$ por
+Considere, novamente, um processo de Wiener padrão $\{W_t\}_{t\geq 0}.$ Seja $s > 0$ e defina o processo $\{V_t^s\}_{t\geq 0}$ por
 $$
 V_t^s = W_{s + t} - W_s, \qquad t \geq 0.
 $$
@@ -275,18 +275,18 @@ $$
 V_0^s = W_s - W_s = 0.
 $$
 
-Dados $t_0 < t_1 < \cdots < t_n$, temos
+Dados $t_0 < t_1 < \cdots < t_n,$ temos
 $$
 V_{t_j}^s - V_{t_{j-1}}^s = W_{s + t_j} - W_s - W_{s + t_{j-1}} + W_s = W_{s + t_j} - W_{s + t_{j-1}},
 $$
 sendo evidente que os incrementos de $\{V_t^s\}_{t\geq 0}$ são independentes.
 
-Agora, dado $\tau > 0$, temos
+Agora, dado $\tau > 0,$ temos
 $$
 V_{t + \tau}^s = W_{s + t + \tau} - W_s - W_{s + t} + W_s = W_{s + t + \tau} - W_{s + t} \sim \mathcal{N}(0, \tau).
 $$
 
-Finalmente, como, para quase todo $\omega$, o caminho amostral $t \mapsto W_t(\omega)$ é contínuo, temos, em particular, que
+Finalmente, como, para quase todo $\omega,$ o caminho amostral $t \mapsto W_t(\omega)$ é contínuo, temos, em particular, que
 $$
 t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
 $$
@@ -296,7 +296,7 @@ $$
 
 1. Mostre que a combinação convexa $W_t = (1-\theta)W_t^{(1)} + \theta W_t^{(2)},$ $0\leq \theta \leq 1,$ entre dois processos de Wiener independentes $\{W_t^{(1)}\}_{t\geq 0}$ e $\{W_t^{(1)}\}_{t\geq 0}$ também é um processo de Wiener.
 
-2. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2$.
+2. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer $p > 1/2.$
 $$
 \lim_{t \rightarrow \infty} \frac{W_t}{t^p} = 0.
 $$

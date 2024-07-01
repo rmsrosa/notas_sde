@@ -27,11 +27,11 @@ e onde
 $$
 Y_t = \frac{W_t}{1 + |W_t|}, \quad Z_t = \sin(W_t).
 $$
-onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener. Como ambos $\{Y_t\}_{t \geq 0}$ e $\{Z_t\}_{t \geq 0}$ estão concentrados no intervalo $[-1, 1]$, as condições acima são satisfeitas.
+onde $\{W_t\}_{t \geq 0}$ é um processo de Wiener. Como ambos $\{Y_t\}_{t \geq 0}$ e $\{Z_t\}_{t \geq 0}$ estão concentrados no intervalo $[-1, 1],$ as condições acima são satisfeitas.
 
-Usamos um mesmo processo de Wiener $\{W_t\}_{t \geq 0}$ para definir $Y_t$ e $Z_t$, mas poderíamos ter usado processos de Wiener independentes.
+Usamos um mesmo processo de Wiener $\{W_t\}_{t \geq 0}$ para definir $Y_t$ e $Z_t,$ mas poderíamos ter usado processos de Wiener independentes.
 
-Em relação a $X_0$, assumimos que $X_0 \geq 0$ quase certamente. Por exemplo, podemos tomar a condição como sendo uma log-normal:
+Em relação a $X_0,$ assumimos que $X_0 \geq 0$ quase certamente. Por exemplo, podemos tomar a condição como sendo uma log-normal:
 $$
 X_0 = e^{c + d N},
 $$
@@ -39,11 +39,11 @@ onde
 $$
 c \in \mathbb{R}, \quad d > 0, \quad N \sim \mathcal{N}(0, 1).
 $$
-Ou uma distribuição uniforme $X_0 \sim \mathrm{Unif}(c, d)$, com $d > c > 0$.
+Ou uma distribuição uniforme $X_0 \sim \mathrm{Unif}(c, d),$ com $d > c > 0.$
 
 ## Existência
 
-Sob essas condições, temos, para quase todo $\omega$, que
+Sob essas condições, temos, para quase todo $\omega,$ que
 $$
 X_0(\omega), A_t(\omega), B_t(\omega) > 0.
 $$
@@ -54,13 +54,13 @@ $$
 X_t(\omega)|_{t = 0} = X_0(\omega),
 \end{cases}
 $$
-está definida para todo $t \geq 0$.
+está definida para todo $t \geq 0.$
 
 Assim, $\{X_t\}_{t \geq 0}$ nos dá um processo definido em toda a reta e que é solução da equação diferencial aleatória.
 
 ## Comportamento assintótico
 
-Além disso, para cada $\omega$, temos
+Além disso, para cada $\omega,$ temos
 $$
 A_t(\omega) - B_t(\omega)x \geq a - \delta - (b + \delta) x > 0,
 $$

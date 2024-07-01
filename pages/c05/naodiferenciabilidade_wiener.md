@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Caso os caminhos amostrais de um processo de Wiener $\{W_t\}_{t\geq 0}$ fossem diferenciáveis em um instante $t$, teríamos a existência, quase certamente, do limite
+Caso os caminhos amostrais de um processo de Wiener $\{W_t\}_{t\geq 0}$ fossem diferenciáveis em um instante $t,$ teríamos a existência, quase certamente, do limite
 $$
 \lim_{\tau \rightarrow 0} \frac{W_{t+\tau} - W_t}{\tau}.
 $$
@@ -22,7 +22,7 @@ quando $\tau \rightarrow 0.$ A questão é mostrar que isso ocorre quase certame
 
 ## Não diferenciabilidade na origem
 
-Vamos começar ilustrando isso no instante $t = 0$. Nesse caso, temos
+Vamos começar ilustrando isso no instante $t = 0.$ Nesse caso, temos
 $$
 \lim_{\tau\rightarrow 0} \frac{W_\tau - W_0}{\tau} = \lim_{\tau\rightarrow 0} \frac{W_\tau}{\tau}.
 $$
@@ -110,11 +110,11 @@ $$
     \end{align*}
 $$
 
-Isso conclui a demonstração de que, quase certamente, os caminhos amostrais não são diferenciáveis em $t = 0$.
+Isso conclui a demonstração de que, quase certamente, os caminhos amostrais não são diferenciáveis em $t = 0.$
 
 ## Não diferenciabilidade em um conjunto enumerável de instantes
 
-Como um processo de Wiener é invariante por translações, aplicando o resultado acima a $V_t^s = W_{s + t} - W_s$, para $s \geq 0$, segue que, para qualquer $t \geq 0$, quase todo caminho amostral é não diferenciável no instante $t$. Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes $t \geq 0$. Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir. O que podemos obter do resultado acima é que quase todo caminho é não diferenciável em um conjunto denso enumerável de pontos, como os racionais. De fato, temos
+Como um processo de Wiener é invariante por translações, aplicando o resultado acima a $V_t^s = W_{s + t} - W_s,$ para $s \geq 0,$ segue que, para qualquer $t \geq 0,$ quase todo caminho amostral é não diferenciável no instante $t.$ Mas isso não é o mesmo que dizer que quase todo caminho amostral é não diferenciável em nenhum dos instantes $t \geq 0.$ Isso também é verdade, mas não segue diretamente do resultado acima. Veremos isso a seguir. O que podemos obter do resultado acima é que quase todo caminho é não diferenciável em um conjunto denso enumerável de pontos, como os racionais. De fato, temos
 $$
   \begin{align*}
     \mathbb{P}\left(\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} = \infty, \;\forall t\in \mathbb{Q}\cap [0, \infty)\right) & = 1 - \mathbb{P}\left(\exists t\in \mathbb{Q}\cap [0, \infty), \;\limsup_{\tau \rightarrow 0} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty\right) \\
@@ -129,7 +129,7 @@ $$
 
 A demonstração de que quase todo caminho amostral não é diferenciável em nenhum ponto é mais delicada, como veremos agora. Vamos seguir essencialmente a demonstração em Mörters & Peres (2010), com algumas modificações.
 
-Começamos mostrando a não diferenciabilidade no intervalo $[0, 1)$. Seja $t \mapsto W_t(\omega)$ um caminho amostral tal que, para algum $0\leq t_0 < 1$,
+Começamos mostrando a não diferenciabilidade no intervalo $[0, 1).$ Seja $t \mapsto W_t(\omega)$ um caminho amostral tal que, para algum $0\leq t_0 < 1,$
 $$
 \limsup_{\tau \rightarrow 0} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} < \infty.
 $$
@@ -138,7 +138,7 @@ Isso acontece se, e somente se, existem $m, M \in \mathbb{N}$ tais que
 $$
 \sup_{\tau\in (0,2^{-n+2}]} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M, \qquad \forall n \geq m.
 $$
-O motivo de usarmos $2^{-n+2}$ acima, ao invés de $2^{-n}$, é que vamos usar, abaixo, a partição diádica de tal forma que quatro intervalos sucessivos da malha com espaçamento $2^{-n}$ cabem em um único intervalo da malha com espaçamento $2^{-n+2}$. A importância disso será vista em seguida.
+O motivo de usarmos $2^{-n+2}$ acima, ao invés de $2^{-n},$ é que vamos usar, abaixo, a partição diádica de tal forma que quatro intervalos sucessivos da malha com espaçamento $2^{-n}$ cabem em um único intervalo da malha com espaçamento $2^{-n+2}.$ A importância disso será vista em seguida.
 
 ```julia:dyadic_points
 #hideall
@@ -161,16 +161,16 @@ $$
 
 Observe que também podemos escrever que o conjunto à esquerda é a união em $M$ e em $n$ dos conjuntos mais à direita, mas não é tão simples mostrar que os conjuntos mais à direita têm medida nula. É mais fácil trabalhar refinando a malha e escrevendo a interseção das uniões, ou seja, como um limite superior, para aplicarmos o Lema de Borel-Cantelli. Nesse caso, basta mostrar que as medidas dos conjuntos mais à esquerda são somáveis em $n.$
 
-Considere, então, as malhas diádicas $\{k/2^n, \;k=0, \ldots, 2^n\}$, $n\in \mathbb{N}$. O ponto $t_0$ pode estar em qualquer um dos intervalos definidos por essa malha. Logo, podemos escrever
+Considere, então, as malhas diádicas $\{k/2^n, \;k=0, \ldots, 2^n\},$ $n\in \mathbb{N}.$ O ponto $t_0$ pode estar em qualquer um dos intervalos definidos por essa malha. Logo, podemos escrever
 $$
 \left\{\omega; \;\exists t_0 \in [0, 1), \;\sup_{\tau\in (0,2^{-n+2}]} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\} = \bigcup_{k = 1, \ldots, 2^n}\left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\}
 $$
 
-Suponha que $t_0$ pertença a um determinado intervalo $(k-1)/2^n \leq t_0 < k/2^n$. Considere os incrementos $W_{(k+j)/2^n} - W_{(k+j-1)/2^n}$, para $j=1, 2, 3$. Observe que
+Suponha que $t_0$ pertença a um determinado intervalo $(k-1)/2^n \leq t_0 < k/2^n.$ Considere os incrementos $W_{(k+j)/2^n} - W_{(k+j-1)/2^n},$ para $j=1, 2, 3.$ Observe que
 $$
 t_0 < \frac{k}{2^n} < \frac{k+j}{2^n} = \frac{k-1}{2^n} + \frac{j+1}{2^n} \leq \frac{k-1}{2^n} + \frac{4}{2^{n}} \leq t_0 + \frac{1}{2^{n-2}}.
 $$
-Assim, todos os pontos $k/2^n$ e $(k+j)/2^n$, para $j=1, 2, 3$, são da forma $t_0 + \tau$, para $\tau$ no intervalo $(0, 2^{-n+2}]$. 
+Assim, todos os pontos $k/2^n$ e $(k+j)/2^n,$ para $j=1, 2, 3,$ são da forma $t_0 + \tau,$ para $\tau$ no intervalo $(0, 2^{-n+2}].$ 
 
 ```julia:dyadic_points_increments
 #hideall
@@ -222,7 +222,7 @@ $$
 & \leq \frac{7M}{2^n}.
 \end{align*}
 $$
-Ou seja, para cada $n, M, k$, vale
+Ou seja, para cada $n, M, k,$ vale
 $$
 \left\{\omega; \;\exists t_0 \in \left[\frac{k-1}{2^n}, \frac{k}{2^n}\right), \;\sup_{\tau\in (0,2^{-n+2})} \frac{|W_{t_0 + \tau}(\omega) - W_{t_0}(\omega)|}{\tau} \leq M\right\} \leq \left\{\omega; \;\left|W_{(k+j)/2^n}(\omega) - W_{(k+j-1)/2^n}(\omega)\right| \leq \frac{7M}{2^n}, \;j=1,2,3\right\}.
 $$
@@ -260,7 +260,7 @@ $$
 \mathbb{P}(E_{M, n, k}) = \prod_{j=1,2,3}\mathbb{P}\left(|Z_{n, k, j}| \leq \frac{7M}{2^{n/2}}\right).
 $$
 
-Como a função de distribuição de probabilidade da normal padrão é limitada por $1/\sqrt{2\pi}$, temos
+Como a função de distribuição de probabilidade da normal padrão é limitada por $1/\sqrt{2\pi},$ temos
 $$
 \mathbb{P}\left(|Z_{n, k, j}| \leq r\right) \leq \frac{2r}{\sqrt{2\pi}} \leq r, \qquad \forall r > 0.
 $$
@@ -278,7 +278,7 @@ $$
 \sum_n \mathbb{P}\left(E_{M, n}\right) \leq 7^3M^3\sum_n \frac{1}{2^{n/2}} < \infty.
 $$
 
-Aqui revelou-se a importância do uso dos três incrementos. A probabilidade de termos a limitação em um dos incrementos é da ordem de $2^{-n/2}$. Como os incrementos são independentes, a probabilidade de termos a limitação em três incrementos consecutívos é o cubo disso, i.e. da ordem de $2^{-3n/2}$. Como temos $2^n$ conjuntos em cada malha, isso nos dá uma estimativa total ainda pequena, da ordem de $2^{-n/2}$. Se usássemos só um incremento, a estimativa total cresceria exponencialmente. Se usássemos só dois, a estimativa seria uma constante. Mas usando três incrementos, conseguimos uma estimativa decrescendo exponencialmente e sendo, portanto, somável.
+Aqui revelou-se a importância do uso dos três incrementos. A probabilidade de termos a limitação em um dos incrementos é da ordem de $2^{-n/2}.$ Como os incrementos são independentes, a probabilidade de termos a limitação em três incrementos consecutívos é o cubo disso, i.e. da ordem de $2^{-3n/2}.$ Como temos $2^n$ conjuntos em cada malha, isso nos dá uma estimativa total ainda pequena, da ordem de $2^{-n/2}.$ Se usássemos só um incremento, a estimativa total cresceria exponencialmente. Se usássemos só dois, a estimativa seria uma constante. Mas usando três incrementos, conseguimos uma estimativa decrescendo exponencialmente e sendo, portanto, somável.
 
 Assim, pelo Lema de Borel-Cantelli,
 $$
@@ -289,4 +289,4 @@ $$
 \mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{|W_{t+\tau} - W_t|}{\tau} < \infty \right\}\right) = \lim_{M\rightarrow \infty} \mathbb{P}\left( \left\{ \exists t_0 \in [0, 1), \; \sup_{\tau\in [0,1]} \frac{|W_{t+\tau} - W_t|}{\tau} \leq M \right\}\right) = 0.
 $$
 
-Isso conclui a demonstração de que, quase certamente, os caminhos amostrais de um processo de Wiener padrão não são diferenciáveis em nenhum ponto no intervalo $[0, 1)$. Pela invariância por translações, isso se estende para qualquer intervalo $[n, n+1)$. Fazendo a interseção desse conjunto contável, obtemos que, quase certamente, os caminhos amostrais não são diferenciáveis em nenhum ponto $t\geq 0$.
+Isso conclui a demonstração de que, quase certamente, os caminhos amostrais de um processo de Wiener padrão não são diferenciáveis em nenhum ponto no intervalo $[0, 1).$ Pela invariância por translações, isso se estende para qualquer intervalo $[n, n+1).$ Fazendo a interseção desse conjunto contável, obtemos que, quase certamente, os caminhos amostrais não são diferenciáveis em nenhum ponto $t\geq 0.$

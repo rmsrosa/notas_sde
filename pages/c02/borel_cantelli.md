@@ -8,7 +8,7 @@ O Lema de Borel-Cantelli é um dos resultados mais utilizados em Teoria da Medid
 
 ## Lema de Borel-Cantelli
 
-Considere um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$ e uma sequência de eventos $E_1, E_2, \ldots \in \mathcal{A}$. O **Lema de Borel-Cantelli** garante que, se
+Considere um espaço de probabilidades $(\Omega, \mathcal{A}, \mathbb{P})$ e uma sequência de eventos $E_1, E_2, \ldots \in \mathcal{A}.$ O **Lema de Borel-Cantelli** garante que, se
 $$
 \sum_{n=1}^\infty \mathbb{P}(E_n) < \infty,
 $$
@@ -27,7 +27,7 @@ $$
 $$
 onde *i.o.* significa "infinitas vezes" (do inglês, *"infinitely often"*).
 
-A demonstração é simples. Observe que os conjuntos $\bigcup_{j\geq n} E_j$ são decrescentes em $n\in\mathbb{N}$. Então, para qualquer $n\in \mathbb{N}$,
+A demonstração é simples. Observe que os conjuntos $\bigcup_{j\geq n} E_j$ são decrescentes em $n\in\mathbb{N}.$ Então, para qualquer $n\in \mathbb{N},$
 $$
 \mathbb{P}\left(\limsup_{n\rightarrow \infty} E_n\right) \leq \mathbb{P}\left(\bigcup_{j\geq n} E_j\right) \leq \sum_{j=n}^\infty \mathbb{P}(E_j).
 $$
@@ -35,7 +35,7 @@ Com a hipótese do somatório ser finito, o termo do lado direito da desigualdad
 
 ## Exemplo
 
-No caso particular, comumente encontrado, de termos variáveis aleatórias $\{X_n\}_{n\in \mathbb{N}}$ em $(\Omega, \mathcal{A}, \mathbb{P})$ e os eventos dados por $E_n = \{X_n \geq r\}$, então
+No caso particular, comumente encontrado, de termos variáveis aleatórias $\{X_n\}_{n\in \mathbb{N}}$ em $(\Omega, \mathcal{A}, \mathbb{P})$ e os eventos dados por $E_n = \{X_n \geq r\},$ então
 $$
 \limsup_{n\rightarrow \infty} \{X_n \geq r\} = \left\{X_n \geq r \textit{ i.o.} \right\} = \left\{\limsup_{n\rightarrow \infty} X_n \geq r\right\}.
 $$
@@ -72,7 +72,7 @@ Começamos escrevendo
 $$
 \mathbb{P}\left(\limsup_{n\rightarrow \infty} E_n\right) = \mathbb{P}\left(\bigcap_{n\in \mathbb{N}}\bigcup_{j\geq n} E_j\right) = 1 - \mathbb{P}\left(\left(\bigcap_{n\in \mathbb{N}}\bigcup_{j\geq n} E_j\right)^c\right) = 1 - \mathbb{P}\left( \bigcup_{n\in\mathbb{N}}\bigcap_{j\geq n} E_j^c\right),
 $$
-onde $E^c = \Omega \setminus E$ é o complementar de um conjunto $E$ no espaço amostral $\Omega$. Como a sequência de conjuntos $\cap_{j\geq n} E_n^c$ é crescente em $n$ e as medidas de probabilidade são contínuas por baixo, então
+onde $E^c = \Omega \setminus E$ é o complementar de um conjunto $E$ no espaço amostral $\Omega.$ Como a sequência de conjuntos $\cap_{j\geq n} E_n^c$ é crescente em $n$ e as medidas de probabilidade são contínuas por baixo, então
 $$
 \mathbb{P}\left( \bigcup_{n\in\mathbb{N}}\bigcap_{j\geq n} E_j^c\right) = \lim_{n\rightarrow \infty}\mathbb{P}\left(\bigcap_{j\geq n} E_j^c\right).
 $$
@@ -87,12 +87,12 @@ $$
 \Pi_{j\geq n}\mathbb{P}\left( E_n^c\right).
 $$
 
-Usando que $\mathbb{P}\left( E_n^c\right) = 1 - \mathbb{P}(E_n)$ e que $e^{-s} \geq 1 - s$, para qualquer $s\in \mathbb{R}$, obtemos
+Usando que $\mathbb{P}\left( E_n^c\right) = 1 - \mathbb{P}(E_n)$ e que $e^{-s} \geq 1 - s,$ para qualquer $s\in \mathbb{R},$ obtemos
 $$
 \mathbb{P}\left(\bigcap_{j\geq n} E_n^c\right) = \Pi_{j\geq n}\left(1 - \mathbb{P}(E_n)\right) \leq e^{-\sum_{j\geq n}\mathbb{P}(E_n)}.
 $$
 
-Como $\sum_{n=1}^\infty \mathbb{P}(E_n) = \infty$, então $\sum_{j\geq n}^\infty \mathbb{P}(E_j) = \infty$ para qualquer $n\in \mathbb{N}$, de modo que
+Como $\sum_{n=1}^\infty \mathbb{P}(E_n) = \infty,$ então $\sum_{j\geq n}^\infty \mathbb{P}(E_j) = \infty$ para qualquer $n\in \mathbb{N},$ de modo que
 $$
 0 \leq \mathbb{P}\left(\bigcap_{j\geq n} E_n^c\right) \leq e^{-\sum_{j\geq n}\mathbb{P}(E_n)} = 0.
 $$

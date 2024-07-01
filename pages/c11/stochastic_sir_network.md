@@ -31,7 +31,7 @@ using Plots
 
 ## Modelo SIR determinístico em rede
 
-Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por $A$, $B$ e $C$.
+Agora, passamos para o modelo SIR em rede, no caso determinístico. Vamos assumir três sítios, denotados por $A,$ $B$ e $C.$
 
 ## Modelo SIR em rede de sítios
 
@@ -41,9 +41,9 @@ Nesse caso, consideramos
 
 * $m$ **sítios**.
 
-* Em cada sítio, uma **população total** $N_i$, com um número $S_i$ de **suscetíveis**, $I_i$ de **infectados** e $R_i$ de **recuperados**, $i=1, \ldots, m$.
+* Em cada sítio, uma **população total** $N_i,$ com um número $S_i$ de **suscetíveis**, $I_i$ de **infectados** e $R_i$ de **recuperados**, $i=1, \ldots, m.$
 
-* Sem vitalidade, de forma que $S_i + I_i + R_i = N_i$ é constante, para cada $i=1, \ldots, m$.
+* Sem vitalidade, de forma que $S_i + I_i + R_i = N_i$ é constante, para cada $i=1, \ldots, m.$
 
 ### Dinâmica
 
@@ -53,11 +53,11 @@ Nesse caso, consideramos
 
 - Na fase **ativa** de cada ciclo, uma **fração** $\alpha_{ij}$ da população $N_i$ migra **do sítio $i$ para o sítio $j$**, voltando ao sítio $i$ na fase **inativa**.
 
-- Naturalmente, $0\leq \alpha_{ij} \leq 1$, para cada $i,j=1, \ldots, m$, e $\sum_{j=1}^m\alpha_{ij} = 1$, para cada $i=1,\ldots, m$.
+- Naturalmente, $0\leq \alpha_{ij} \leq 1,$ para cada $i,j=1, \ldots, m,$ e $\sum_{j=1}^m\alpha_{ij} = 1,$ para cada $i=1,\ldots, m.$
 
-- Em cada sítio $j=1, \ldots, m$, os indivíduos **suscetíveis** que lá se encontram podem se tornar **infectados** ao encontrar um indivíduo infectado no mesmo sítio, com um **fator de transmissão** $\beta_j$ característico do sítio $j$ em que se encontram.
+- Em cada sítio $j=1, \ldots, m,$ os indivíduos **suscetíveis** que lá se encontram podem se tornar **infectados** ao encontrar um indivíduo infectado no mesmo sítio, com um **fator de transmissão** $\beta_j$ característico do sítio $j$ em que se encontram.
 
-- Os indivíduos **infectados** de cada sítio, podem se recuperar com um **fator de recuperação** $\gamma_i$, característico do ambiente e dos indivíduos que habitam o sítio.
+- Os indivíduos **infectados** de cada sítio, podem se recuperar com um **fator de recuperação** $\gamma_i,$ característico do ambiente e dos indivíduos que habitam o sítio.
 
 ### Sistema de equações diferenciais
 
@@ -137,13 +137,13 @@ $$
 $$
 
 onde 
-- $\Gamma$ é a matriz diagonal $\Gamma = \rm{diag}(\gamma_1, \ldots, \gamma_m)$, 
+- $\Gamma$ é a matriz diagonal $\Gamma = \rm{diag}(\gamma_1, \ldots, \gamma_m),$ 
 - $A$ é a matriz
 
 $$ A = \left(\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j}\right)_{ik}
 $$
 
-- $\rm{diag}(AI)$ é a matriz diagonal formada pelo vetor obtido da aplicação da matriz $A$ ao vetor $I$,
+- $\rm{diag}(AI)$ é a matriz diagonal formada pelo vetor obtido da aplicação da matriz $A$ ao vetor $I,$
 
 $$ AI = \left(\sum_{k=1}^m\sum_{j=1}^m\frac{\beta_j\alpha_{kj}\alpha_{ij}}{\tilde N_j} I_k\right)_i
 $$
@@ -154,15 +154,15 @@ A key component of the network model is the flux matrix, defining the fraction
 of the population and of the time that the residents of a given site spend
 in another site.
 
-We denote this matrix by $\phi = (\phi_{ij})_{i,j}$.
+We denote this matrix by $\phi = (\phi_{ij})_{i,j}.$
 
 More precisely, each individual $k=1, \ldots, N_i$ in site $i$ may spend a time
-$\theta^k_{i,j}$ in site $j$, during a specified unit of time. In this case,
+$\theta^k_{i,j}$ in site $j,$ during a specified unit of time. In this case,
 $$
   0 \leq \theta^k_{ij} \leq 1, \qquad \sum_j \theta^k_{i,j} = 1.
 $$
 
-We then define $\phi_{ij} = (1/N_i)\sum_{k=1}^{N_i} \theta^k_{i,j}$. Notice
+We then define $\phi_{ij} = (1/N_i)\sum_{k=1}^{N_i} \theta^k_{i,j}.$ Notice
 
 $$
 0 \leq \phi_{ij} \leq 1, \qquad \sum_j \phi_{ij} = 1.

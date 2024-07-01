@@ -27,17 +27,17 @@ Em suas palavras:
 
 Podemos dizer que a teoria de Einstein para o movimento Browniano é composta de duas partes. Uma é um modelo probabilístico para o movimento de partículas microscópicas, supostamente devido a colisões com os átomos e moléculas do meio fluido em que a partícula se encontra em suspensão. A outra conectando mais precisamente esse movimento à teoria cinética dos gases, em particular à pressão osmótica gerada pela movimentação errática dos átomos e moléculas do meio, que por sua vez depende de vários parâmetros como a constante universal dos gases, a temperatura do fluido e o número e a massa dos átomos e moléculas em uma determinada porção do fluido.
 
-No modelo probabilístico do movimento, Einstein considerou uma partícula em um movimento unidimensional, inicialmente, em uma posição denotada por $x = 0$. A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0$, temos uma *função densidade de probabilidades* $\rho(t, x)$, para a posição da partícula.
+No modelo probabilístico do movimento, Einstein considerou uma partícula em um movimento unidimensional, inicialmente, em uma posição denotada por $x = 0.$ A partir daí, a partícula pode se deslocar para um lado ou para o outro, de maneira aleatória. A cada instante $t \geq 0,$ temos uma *função densidade de probabilidades* $\rho(t, x),$ para a posição da partícula.
 
-A regra para o movimento é que, entre instantes $t$ e $t + \tau$, para um dado intervalo de tempo característico $\tau$ fixado a priori, a partícula pode dar um passo espacial $\ell$ de tamanho arbitrário, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g$. Essa densidade depende do passo $\tau$, mas essa dependência não aparece explicitamente, uma vez que $\tau$ está fixo na teoria do Einstein, como uma unidade de medida temporal.
+A regra para o movimento é que, entre instantes $t$ e $t + \tau,$ para um dado intervalo de tempo característico $\tau$ fixado a priori, a partícula pode dar um passo espacial $\ell$ de tamanho arbitrário, para um lado ou para o outro, de acordo com uma certa densidade de probabilidades $g.$ Essa densidade depende do passo $\tau,$ mas essa dependência não aparece explicitamente, uma vez que $\tau$ está fixo na teoria do Einstein, como uma unidade de medida temporal.
 
 Assume-se que essa densidade seja estacionária (independente do tempo), homogênea (independente da posição da partícula), isotrópica (independente da direção/sentido de movimento) e que os passos sejam independentes entre si (i.e. o passo num instante $s \geq t + \tau$ independe do passo dado em $t \geq 0$).
 
 Um argumento a favor dessas hipóteses é dado por Richard Feynman, em suas notas de aula sobre [Movimento Browniano](https://www.feynmanlectures.caltech.edu/I_41.html). A cada segundo, cada molécula de água é bombardeada por outras moléculas de água em torno de $10^{14}$ vezes. Se tomarmos o passo de tempo característico $\tau$ como sendo da ordem de um milésimo de segundo, teremos em torno de $10^{11}$ colisões por unidade de tempo. É um número tão grande de colisões e as colisões são em direções completamente aleatórias que é razoável assumir que o efeito (momento ganho) de colisões em instantes anteriores seja "esquecido", ou seja, os passos, em instantes diferentes, sejam independentes entre si.
 
-Assim, $\ell$ assume valores em $\mathbb{R}$ e $g$ é independente de $x$ e $t$, sendo portanto uma função apenas do passo, $g=g(\ell)$. Além disso, por ser uma distribuição de probabilidades, $g$ é não negativa e satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1$. Finalmente, da hipótese de isotropia, seque que $g$ é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell)$.
+Assim, $\ell$ assume valores em $\mathbb{R}$ e $g$ é independente de $x$ e $t,$ sendo portanto uma função apenas do passo, $g=g(\ell).$ Além disso, por ser uma distribuição de probabilidades, $g$ é não negativa e satisfaz $\int_{\mathbb{R}} g(\ell) \;\mathrm{d}\ell = 1.$ Finalmente, da hipótese de isotropia, seque que $g$ é simétrica em relação à origem, i.e. $g(-\ell) = g(\ell).$
 
-Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t$, uma expansão em série de Taylor nos dá, por um lado
+Sendo $\rho(t, x)$ a função densidade de distribuição das partículas no instante $t,$ uma expansão em série de Taylor nos dá, por um lado
 $$
 \rho(t + \tau, x) = \rho(t, x) + \tau \frac{\partial \rho}{\partial t}(x, t) + \mathcal{O}(\tau^2).
 $$
@@ -45,7 +45,7 @@ Por outro lado, usando a densidade de probabilidades $g(\ell)$ do passo espacial
 $$
 \rho(t + \tau, x) = \int_{\mathbb{R}} \rho(t, x - \ell)g(\ell) \;\mathrm{d}\ell.
 $$
-Ou seja, a probabilidade da partícula estar em torno de $x$ no instante $t + \tau$ é dada pela superposição das probabilidades da partícula ter estado em $\rho(t, x - \ell)$ no instante $t$ e ter dado um passo $\ell$ para chegar em $x$.
+Ou seja, a probabilidade da partícula estar em torno de $x$ no instante $t + \tau$ é dada pela superposição das probabilidades da partícula ter estado em $\rho(t, x - \ell)$ no instante $t$ e ter dado um passo $\ell$ para chegar em $x.$
 
 Usando novamente expansão em série de Taylor, dessa vez na direção espacial, vemos que
 $$
@@ -77,7 +77,7 @@ Considerando uma escala de tempo relativamente pequena e assumindo $\mathbb{E}[\
 $$
 \frac{\partial \rho}{\partial t}(x, t) = D\frac{\partial^2 \rho}{\partial x^2}(t, x).
 $$
-Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade $1$ de encontrar a partícula em $x = 0$. Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x)$. O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
+Como condição inicial, assumimos que a partícula parte da origem, ou seja, probabilidade $1$ de encontrar a partícula em $x = 0.$ Dito de outra forma, temos que $p(0, x)$ é a delta de Dirac $\delta_0(x).$ O problema de valor inicial com condição inicial sendo a delta de Dirac nos dá a solução fundamental
 $$
 \rho(t, x) = \frac{1}{\sqrt{4\pi D t}} e^{\displaystyle -\frac{x^2}{4D t}}.
 $$
@@ -86,16 +86,16 @@ Ou seja, lembrando que a distribuição normal $\mathcal{N}(0, \sigma^2)$ com m�
 $$
 \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\displaystyle \frac{1}{2}\left(\frac{x}{\sigma}\right)^2},
 $$
-então, em qualquer instante $t$, a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt)$, com média zero e variância $2Dt$.
+então, em qualquer instante $t,$ a posição da partícula é dada de acordo com uma distribuição normal $\mathcal{N}(0, 2Dt),$ com média zero e variância $2Dt.$
 
 ## Distância quadrática média percorrida
 
-Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2Dt$, a **distância quadrática média** percorrida pelas partículas, após um instante $t$, é exatamente esse desvio padrão:
+Sendo $x \mapsto p(t, x)$ uma Gaussiana com variância $\sigma^2 = 2Dt,$ a **distância quadrática média** percorrida pelas partículas, após um instante $t,$ é exatamente esse desvio padrão:
 $$
 \sqrt{\mathbb{E}[X_t^2]} = \left( \int_{\mathbb{R}} x^2 p(t, x) \;\mathrm{d}x \right)^{1/2} = \sigma = \sqrt{2 D t}.
 $$
 
-Se, por outro lado, observarmos $\mathbb{E}[|x|]$, obtemos uma distância da mesma ordem: $\mathbb{E}[|x|] = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}$.
+Se, por outro lado, observarmos $\mathbb{E}[|x|],$ obtemos uma distância da mesma ordem: $\mathbb{E}[|x|] = 2\int_0^\infty x p(t, x) \;\mathrm{d}x = \sigma\sqrt{2/\pi}.$
 
 Esse foi um dos resultados fundamentais obtidos por Einstein: a distância média percorrida pela partícula em um movimento Browniano é proporcional à raiz quadrada do tempo decorrido.
 
@@ -120,7 +120,7 @@ $$
 \sqrt{\mathbb{E}[x^2]} = \sqrt{2 D t} = \sqrt{\frac{RT}{N}\frac{1}{3k\pi P} t}.
 $$
 
-Para concluir, Einstein argumenta que se tormarmos $N = 6 \times 10^{23}$ de acordo com a teoria cinética dos gases; em um meio aquoso a uma temperatura de $T = 17\deg C$, com viscosidade $k = 1.35 \times 10^2$ e o diâmetro das partículas de $0.001\;\texttt{mm}$, então o caminho quadrático médio percorrido é da ordem de $0.8\;\mu$, um pouco abaixo de um micron. O deslocamento médio em um minuto seria da ordem de seis microns.
+Para concluir, Einstein argumenta que se tormarmos $N = 6 \times 10^{23}$ de acordo com a teoria cinética dos gases; em um meio aquoso a uma temperatura de $T = 17\deg C,$ com viscosidade $k = 1.35 \times 10^2$ e o diâmetro das partículas de $0.001\;\texttt{mm},$ então o caminho quadrático médio percorrido é da ordem de $0.8\;\mu,$ um pouco abaixo de um micron. O deslocamento médio em um minuto seria da ordem de seis microns.
 
 Por outro lado, Einstein conclui que pode-se usar o cálculo desse deslocamento para se deduzir quanto seria $N$ no caso desse meio aquoso, ou de qualquer outro fluido, ao invés de se considerar o valor emprestado da teoria dos gases.
 
@@ -132,7 +132,7 @@ Uma diferença no primeiro modelo do Bachelier é que ele não diferencia a dens
 $$
     g(\ell) = \rho(\tau, \ell),
 $$
-ou seja, a (densidade de) probabilidade $(\rho(\tau, \ell))$ da partícula, que começou na origem, estar em $\ell$ após o tempo característico $\tau$ é a (densidede de) probabilidade $(g(\ell))$ da partícula dar o passo $\ell$, no tempo característico $\tau$. Assim, Bachelier escreve direto
+ou seja, a (densidade de) probabilidade $(\rho(\tau, \ell))$ da partícula, que começou na origem, estar em $\ell$ após o tempo característico $\tau$ é a (densidede de) probabilidade $(g(\ell))$ da partícula dar o passo $\ell,$ no tempo característico $\tau.$ Assim, Bachelier escreve direto
 $$
     \rho(t + \tau, x) = \int_{-\infty}^\infty \rho(\tau, \ell)\rho(t, x - \ell)\;\mathrm{d}\ell.
 $$
@@ -141,11 +141,11 @@ Em seguida, ele procura direto uma solução dessa equação integral na forma d
 $$
     \rho(t, x) = \frac{1}{2\pi k \sqrt{t}} e^{- \frac{x^2}{4\pi k^2 t}},
 $$
-para uma determinada constante $k$. Vale ressaltar que essa não é a única solução da equação integral acima. De fato, essa equação vale de forma geral, para qualquer processo Markoviano, e é, no fundo, uma versão da equação conhecida atualmente como equação de Chapman-Kolmogorov. Veja mais detalhes na seção sobre o modelo de Bachelier.
+para uma determinada constante $k.$ Vale ressaltar que essa não é a única solução da equação integral acima. De fato, essa equação vale de forma geral, para qualquer processo Markoviano, e é, no fundo, uma versão da equação conhecida atualmente como equação de Chapman-Kolmogorov. Veja mais detalhes na seção sobre o modelo de Bachelier.
 
 ## Incrementos
 
-Em um instante $t$, a distribuição normal $\mathcal{N}(0, 2Dt)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t$, a posição dessa partícula em um instante $t + \Delta t$, com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2D(t+\Delta t))$ pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se $X_t = x$, temos que a posição futura da partícula será dada por
+Em um instante $t,$ a distribuição normal $\mathcal{N}(0, 2Dt)$ nos dá a probabilidade de encontrarmos a partícula em uma determinada posição (tendo ela partido de $x = 0$ em $t = 0$). Mas dada a posição da partícula no instante $t,$ a posição dessa partícula em um instante $t + \Delta t,$ com $\Delta t > 0$ não é dada por $\mathcal{N}(0, 2D(t+\Delta t))$ pura e simplesmente. Temos, na verdade, uma probabilidade condicionada. No modelo, isso se reflete nas hipóteses de homogeneidade espacial e temporal. Assim, conhecendo-se $X_t = x,$ temos que a posição futura da partícula será dada por
 $$
 \mathbb{P}(X_{t + \Delta t} | X_t = x) = \mathcal{N}(x, 2D\Delta t) = x + \mathcal{N}(0, 2D\Delta t),
 $$
@@ -177,7 +177,7 @@ savefig(joinpath(@OUTPUT, "pathWn.svg"))
 ```
 \fig{pathWn}
 
-Em um certo sentido, que veremos mais adiante de forma mais rigorosa, através da *isometria de Itô*, é como se $\Delta X \sim \sqrt{\Delta t}$, ou $\Delta X^2 \sim \Delta t$, com passos independentes. Assim, após $n$ passos $\Delta X_i,$ $i=1, \ldots, n,$ até um ponto $t_n = n\Delta t$, temos a posição $x = x_n$ dada por
+Em um certo sentido, que veremos mais adiante de forma mais rigorosa, através da *isometria de Itô*, é como se $\Delta X \sim \sqrt{\Delta t},$ ou $\Delta X^2 \sim \Delta t,$ com passos independentes. Assim, após $n$ passos $\Delta X_i,$ $i=1, \ldots, n,$ até um ponto $t_n = n\Delta t,$ temos a posição $x = x_n$ dada por
 $$
 \mathbb{E}[X_t^2] = \mathbb{E}\left[\left(\sum_{i=1}^n \Delta X_i\right)^2\right] = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[\Delta X_i \Delta X_j \right] = \sum_{i=1}^n \mathbb{E}\left[\Delta X_i^2\right] \sim \sum_{i=1}^n \Delta t = t.
 $$
@@ -190,13 +190,13 @@ Em um determinado intervalo curto de tempo, podemos ter passos arbitrariamente g
 
 O que salva é que esses possíveis caminhos são raros. De fato, o modelo de Einstein nos garante que, quase sempre, ou seja, com probabilidade um, os caminhos são Hölder contínuos, com expoente próximo de 1/2. Ou seja, probabilidade nula de "observarmos" caminhos descontínuos.
 
-Um caminho amostral $t \rightarrow x(t, \omega)$, em um intervalo $t\in I$, é Hölder contínuo com expoente $\theta > 0$ quando existe $C>0$ tal que
+Um caminho amostral $t \rightarrow x(t, \omega),$ em um intervalo $t\in I,$ é Hölder contínuo com expoente $\theta > 0$ quando existe $C>0$ tal que
 $$
   |x(s, \omega) - x(t, \omega)| \leq C|s - t|^\theta,
 $$
-para todo $s, t \in I$. O conjunto de caminhos Hölder-contínuos com expoente $\theta$ é a união, em $C > 0$, dos caminhos satisfazendo a desigualdade acima. Os caminhos que não são Hölder-contínuos com expoente $\theta$ pertencem à interseção dos complementos dos caminhos satisfazendo a desigualdade acima.
+para todo $s, t \in I.$ O conjunto de caminhos Hölder-contínuos com expoente $\theta$ é a união, em $C > 0,$ dos caminhos satisfazendo a desigualdade acima. Os caminhos que não são Hölder-contínuos com expoente $\theta$ pertencem à interseção dos complementos dos caminhos satisfazendo a desigualdade acima.
 
-Vamos considerar $I=[0, T]$, $T > 0$, e estimar a probabilidade de termos uma relação como a acima, em um dado instante fixo $0 \leq t < T$ para qualquer passo $\Delta t > 0$, com $0 \leq t < t + \Delta t \leq T$:
+Vamos considerar $I=[0, T],$ $T > 0,$ e estimar a probabilidade de termos uma relação como a acima, em um dado instante fixo $0 \leq t < T$ para qualquer passo $\Delta t > 0,$ com $0 \leq t < t + \Delta t \leq T$:
 $$
   |\Delta x(t, \omega)| = |x(t + \Delta t, \omega) - x(t, \omega)| \leq C\Delta t^\theta.
 $$
@@ -225,9 +225,9 @@ $$
   \mathbb{P}\left(\frac{|\Delta X_t|}{\Delta t^\theta} < \infty\right) = \mathbb{P}\left(\bigcup_{C > 0} \frac{|\Delta X_t|}{\Delta t^\theta} < C\right) = 1 - \mathbb{P}\left(\bigcap_{C > 0} \frac{|\Delta X_t|}{\Delta t^\theta} \geq C\right) \\ = 1 - \lim_{C\rightarrow \infty} \mathbb{P}\left(\frac{|\Delta X_t|}{\Delta t^\theta} \geq C\right) = 1.
 $$
 
-Ou seja, quase sempre, teremos ${|\Delta X_t|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t, \omega) - x(t, \omega)| = |\Delta x(t, \omega)| \leq C \Delta t^\theta $.
+Ou seja, quase sempre, teremos ${|\Delta X_t|}/{\Delta t^\theta}$ limitado, portanto existindo $C > 0$ tal que $|x(t + \Delta t, \omega) - x(t, \omega)| = |\Delta x(t, \omega)| \leq C \Delta t^\theta .$
 
-O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *quase todo* $t$ e para $\Delta t$ arbitrariamente pequeno (essa última condição é que força que $0<\theta \leq 1/2$, para termos $\Delta t^{1-2\theta} \leq h^{1-2\theta}$, para todo $\Delta t$ menor que um certo $h>0$ fixo). De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
+O argumento acima, na verdade, não é uma demonstração completa, pois a desigualdade de Hölder deve valer para *quase todo* $t$ e para $\Delta t$ arbitrariamente pequeno (essa última condição é que força que $0<\theta \leq 1/2,$ para termos $\Delta t^{1-2\theta} \leq h^{1-2\theta},$ para todo $\Delta t$ menor que um certo $h>0$ fixo). De qualquer forma, a estimativa acima é a ideia principal que garante esse resultado. Esse resultado pode ser visto como um caso particular do **Teorema de Continuidade de Kolmogorov**, que mencionaremos novamente ao falarmos de processos estocásticos.
 
 ## Exercícios
 

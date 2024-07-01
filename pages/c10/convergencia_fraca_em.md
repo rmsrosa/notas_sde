@@ -21,7 +21,7 @@ $$
 
 ## Convergência forte implica em convergência fraca
 
-Suponha que tenhamos a convergência forte, em média quadrática, de ordem $p$, de alguma aproximação $\{X_j^n\}_j$ da solução $\{X_t\}_t$. Nesse caso,
+Suponha que tenhamos a convergência forte, em média quadrática, de ordem $p,$ de alguma aproximação $\{X_j^n\}_j$ da solução $\{X_t\}_t.$ Nesse caso,
 $$
 \max_{j=0, \ldots, n} \mathbb{E}[|X_{t_j} - X_j^n|^2] \leq C^2\Delta t^{2p},
 $$
@@ -29,7 +29,7 @@ para $C, p \geq 0$ apropriados. Suponha ainda que $\Phi$ (ou uma classe de tais 
 $$
 |\Phi(x) - \Phi(y)| \leq L(1 + |x|^k + |y|^k)|x - y|,
 $$
-para certos $L, k\geq 0$. Nesse caso, podemos estimar o erro fraco da seguinte forma.
+para certos $L, k\geq 0.$ Nesse caso, podemos estimar o erro fraco da seguinte forma.
 $$
 \begin{align*}
 \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| & \leq \mathbb{E}\left[|\Phi(X_{t_j}) -\Phi(X_j^n)|\right] \\
@@ -41,7 +41,7 @@ Supondo que os momentos de ordem $k$ da solução e da aproximação sejam limit
 $$
 \left|\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)] \right| \leq LK\mathbb{E}\left[|X_{t_j} - X_j^n|^2\right]^{1/2} \leq LKC \Delta t^p,
 $$
-mostrando a convergência fraca também de ordem $p$.
+mostrando a convergência fraca também de ordem $p.$
 
 No entanto, é possível estimar a ordem fraca de maneira diferente e, em muitos casos, conseguir a convergência fraca com uma ordem de convergência melhor ou mesmo obter convergência fraca sem que haja convergência forte.
 
@@ -57,15 +57,15 @@ com condição inicial
 $$
 X_\tau = \xi
 $$
-dada em um instante $\tau\in\mathbb{R}$, podemos encontrar o momento
+dada em um instante $\tau\in\mathbb{R},$ podemos encontrar o momento
 $$
 \mathbb{E}[\Phi(X_T); X_\tau = \xi]
 $$
-em um instante futuro $T > \tau$, para alguma $\Phi$ dada, resolvendo a EDP
+em um instante futuro $T > \tau,$ para alguma $\Phi$ dada, resolvendo a EDP
 $$
 u_t(t, x) + u_x(t, x)f(x) = - \frac{1}{2}u_{xx}(t, x)g(x)^2,
 $$
-no intervalo $\tau \leq t \leq T$, em $x\in \mathbb{R}$, dada a condição *final*
+no intervalo $\tau \leq t \leq T,$ em $x\in \mathbb{R},$ dada a condição *final*
 $$
 u(T, x) = \Phi(x),
 $$
@@ -81,7 +81,7 @@ O que a fórmula de Feynman-Kac tem a ver com o erro fraco? No erro fraco, quere
 $$
 \max_{j=1, \ldots, n} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)]|.
 $$
-Para simplificar, podemos olhar para o erro fraco só no instante final, $j = n$, em que $t_j = t_n = T$ e o erro se torna
+Para simplificar, podemos olhar para o erro fraco só no instante final, $j = n,$ em que $t_j = t_n = T$ e o erro se torna
 $$
 |\mathbb{E}[\Phi(X_T)] - \mathbb{E}[\Phi(X_n^n)]|.
 $$
@@ -151,17 +151,17 @@ $$
 
 Agora precisamos estimar os erros do lado direito.
 
-A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}[|\hat X_t - \bar X_t|^2]$. Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
+A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}[|\hat X_t - \bar X_t|^2].$ Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
 
 Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos
 $$
 u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)), \qquad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
 $$
-Em cada subintervalo $[t_{j-1}, t_j]$, temos $\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n$ constante, de modo que podemos olhar para
+Em cada subintervalo $[t_{j-1}, t_j],$ temos $\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n$ constante, de modo que podemos olhar para
 $$
 e_{j-1}(t, x) = u_x(t, x)(f(x) - f(X_{j-1}^n))
 $$
-e analogamente para o termo envolvendo $g$. Observe que
+e analogamente para o termo envolvendo $g.$ Observe que
 $$
 e_{j-1}(t_{j-1}, \hat X_{t_{j-1}}) = u_x(t_{j-1}, \hat X_{t_{j-1}})(f(\hat X_{t_{j-1}}) - f(\bar X_{t_{j-1}})) = 0,
 $$
@@ -174,19 +174,19 @@ $$
 L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_{xx}, \qquad L_1(t) = g(\hat X_t)^2\partial_x.
 $$
 
-Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem $\Delta t^{1/2}$, desaparece e ficamos apenas com
+Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem $\Delta t^{1/2},$ desaparece e ficamos apenas com
 $$
 \mathbb{E}[e_{j-1}(t, \hat X_t)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, \hat X_s)\right] \;\mathrm{d}s.
 $$
 
-Assumindo-se que o integrando seja limitado no intervalo $[0, T]$ por uma constante $K_{\Phi, T}$, obtemos a estimativa de ordem 1
+Assumindo-se que o integrando seja limitado no intervalo $[0, T]$ por uma constante $K_{\Phi, T},$ obtemos a estimativa de ordem 1
 $$
 \left| \mathbb{E}[e_{j-1}(t, \hat X_t)] \right| \leq K_{\Phi, T} \Delta t.
 $$
-Idem para o termo em $g$, para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre $0$ e $t$, que
+Idem para o termo em $g,$ para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre $0$ e $t,$ que
 $$
 \left|\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
 $$
 Isso nos dá a convergência fraca do método de Euler-Maruyama.
 
-A limitação uniforme passa por (i) mostrarmos que as normas $L^p$ solução da equação parabólica são controladas pela norma $L^p$ da "condição final" $\Phi$; (ii) por assumirmos que $\Phi$ tem um crescimento polinomial (apropriado para qualquer momento que queiramos estimar); (iii) por mostrarmos que, sob a hipótese de continuidade Lipschitz global de $f$ e $g$, os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial $X_0$; e, por fim, (iv) por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.
+A limitação uniforme passa por (i) mostrarmos que as normas $L^p$ solução da equação parabólica são controladas pela norma $L^p$ da "condição final" $\Phi$; (ii) por assumirmos que $\Phi$ tem um crescimento polinomial (apropriado para qualquer momento que queiramos estimar); (iii) por mostrarmos que, sob a hipótese de continuidade Lipschitz global de $f$ e $g,$ os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial $X_0$; e, por fim, (iv) por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.

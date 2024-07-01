@@ -14,7 +14,7 @@ e suponha que o processo $\{\Lambda_t\}_t$ seja um processo de Itô satisfazendo
 $$
 \mathrm{d}\Lambda_t = a(t, \Lambda_t)\mathrm{d}t + \sigma(t, \Lambda_t)\mathrm{d}W_t,
 $$
-para um dado processo de Wiener $\{W_t\}_t$.
+para um dado processo de Wiener $\{W_t\}_t.$
 
 Formalmente, podemos reescrever a equação diferencial aleatória como um sistema de equações estocásticas,
 $$
@@ -38,14 +38,14 @@ Considere uma equação diferencial estocástica com **ruído aditivo**, na form
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t.
 $$
-Observe que, aqui, estamos assumindo que o termo de ruído $\sigma(t)$ é independente do processo $X_t$, daí o termo "aditivo". Caso contrário, sendo $\sigma = \sigma(t, X_t)$, o termo de rúido é denominado **multiplicativo.**
+Observe que, aqui, estamos assumindo que o termo de ruído $\sigma(t)$ é independente do processo $X_t,$ daí o termo "aditivo". Caso contrário, sendo $\sigma = \sigma(t, X_t),$ o termo de rúido é denominado **multiplicativo.**
 
-No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o **processo de Ornstein-Uhlenbeck** $\{O_t\}_t$, que satisfaz à equação diferencial estocástica
+No caso aditivo, é possível transformar facilmente essa equação estocástica em uma aleatória. Nessa passagem, um elemento importante é o **processo de Ornstein-Uhlenbeck** $\{O_t\}_t,$ que satisfaz à equação diferencial estocástica
 $$
 \mathrm{d}O_t = - O_t \mathrm{d}t + \sigma(t) \mathrm{d}W_t.
 $$
 
-Considerando um "mudança de variáveis" para o processo $Z_t = X_t - O_t$, temos, formalmente,
+Considerando um "mudança de variáveis" para o processo $Z_t = X_t - O_t,$ temos, formalmente,
 $$
 \mathrm{d}Z_t = \mathrm{d}X_t - \mathrm{d}O_t = f(t, X_t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t + O_t \mathrm{d}t - \sigma(t) \mathrm{d}W_t = (f(t, X_t) + O_t)\mathrm{d}t,
 $$
@@ -62,4 +62,4 @@ $$
 g(t, Z_t, O_t) = f(t, Z_t + O_t) + O_t.
 $$
 
-O caso multiplicativo em que o ruído é linear, i.e. $\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t$, também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.
+O caso multiplicativo em que o ruído é linear, i.e. $\sigma(t, X_t) = \sigma_0(t) + \sigma_1(t)X_t,$ também pode ser considerado, através da transformação de Doss-Sussmann. Generalizações para o caso de um ruído multiplicativo qualquer também foram obtidas recentemente, mas a técnica é bem mais envolvida.

@@ -6,20 +6,20 @@ O modelo clássico (processo de Wiener) para o movimento Browniano de uma micro-
 $$
 \frac{\mathrm{d}v_t}{\mathrm{d}t} = - \nu v_t + \sigma \xi_t
 $$
-onde $\nu > 0$, $\sigma > 0$, $v_t$ representa a velocidade da partícula no instante $t$ e $\xi_t$ é um *ruído branco*, modelado por $\mathrm{d}W_t/\mathrm{d}t$.
+onde $\nu > 0,$ $\sigma > 0,$ $v_t$ representa a velocidade da partícula no instante $t$ e $\xi_t$ é um *ruído branco*, modelado por $\mathrm{d}W_t/\mathrm{d}t.$
 
 Essa é uma versão estocástica das equações de movimento de Newton. O primeiro termo do lado direito representa um termo viscoso, com uma resultante de forças proporcional à velocidade da partícula. O segundo termo do lado direito representa a ação causada pelo bombardeamento aleatório das partículas do meio. O termo viscoso representa um bombardeamento "médio" ordenado, condizente com a ideia de que a maior parte do bombardeamento ocorre à frente do objeto, conjugada com uma atração molecular das partículas que ficam para trás, puxando a partícula no sentido contrário ao do seu movimento. Em cima desse bombardeamento médio, gerando a viscosidade, temos as flutuações desordenadas dos bombardeamentos, representado pelo ruído branco.
 
-Em termos da *posição* $x_t$ da partícula em cada instante $t$, o modelo de Langevin toma a forma
+Em termos da *posição* $x_t$ da partícula em cada instante $t,$ o modelo de Langevin toma a forma
 $$
 \ddot x_t = - \nu \dot x_t + \sigma \eta_t.
 $$
 
-No entanto, a derivada de um processo de Wiener não está bem definida no sentido clássico, de modo que a equação de Langevin tem apenas um sentido heurístico. Um modelo rigoroso utilizado com esse mesmo sentido físico é o **processo de Ornstein-Uhlenbeck** $\{O_t\}_{t \geq 0}$, dado como solução da equação diferencial estocástica
+No entanto, a derivada de um processo de Wiener não está bem definida no sentido clássico, de modo que a equação de Langevin tem apenas um sentido heurístico. Um modelo rigoroso utilizado com esse mesmo sentido físico é o **processo de Ornstein-Uhlenbeck** $\{O_t\}_{t \geq 0},$ dado como solução da equação diferencial estocástica
 $$
 \mathbb{d}O_t = - \nu O_t\;\mathrm{d}t + \sigma \mathrm{d}W_t,
 $$
-onde $O_t$ é interpretado como sendo uma variável aleatória representando a velocidade da partícula no instante $t$.
+onde $O_t$ é interpretado como sendo uma variável aleatória representando a velocidade da partícula no instante $t.$
 
 ## Resolução
 
@@ -44,11 +44,11 @@ Juntando o segundo e o terceiro termos, chegamos a
 $$
 O_t = O_0 - \nu\int_0^t \left(e^{-\nu s}O_0 + \sigma \int_0^s e^{-\nu(s - \tau)}\;\mathrm{d}W_\tau\right)\;\mathrm{d}s + \sigma\int_0^t \;\mathrm{d}W_s.
 $$
-O integrando do segundo termo é precisamente $O_s$, de modo que
+O integrando do segundo termo é precisamente $O_s,$ de modo que
 $$
 O_t = O_0 - \int_0^t \nu O_s\;\mathrm{d}s + \int_0^t \sigma\;\mathrm{d}W_s.
 $$
-Isso significa, exatamente, que $\{O_t\}_{t \geq 0}$, conforme definido acima, satisfaz a equação diferencial estocástica
+Isso significa, exatamente, que $\{O_t\}_{t \geq 0},$ conforme definido acima, satisfaz a equação diferencial estocástica
 $$
 \mathrm{d}O_t = -\nu O_t\;\mathrm{d}t + \sigma\;\mathrm{d}W_t.
 $$
@@ -110,7 +110,7 @@ $$
 \mathbb{E}[O_t] \rightarrow 0, \quad \mathrm{Var}(O_t) \rightarrow \frac{\sigma^2}{2\nu}, \qquad \textrm{quando } t \rightarrow \infty.
 $$
 
-Além disso, para $0 \leq t_1 < t_2$,
+Além disso, para $0 \leq t_1 < t_2,$
 $$
 O_{t_1}O_{t_2} = e^{-\nu (t_1 + t_2)}O_0^2 + \sigma e^{-\nu t_1}O_0\int_0^{t_2} e^{-\nu (t_2 - s)}\;\mathrm{d}W_s + \sigma e^{-\nu t_2}O_0\int_0^{t_1} e^{-\nu (t_1 - s)}\;\mathrm{d}W_s \\
 + \sigma^2 \left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)
@@ -119,7 +119,7 @@ Novamente, a esperança dos termos mistos se anula, nos dando
 $$
 \mathbb{E}[O_{t_1} O_{t_2}] = e^{-\nu (t_1+t_2)}\mathbb{E}[O_0^2] + \sigma^2\mathbb{E}[\left(\int_0^{t_1} e^{-\nu(t_1 - s)}\;\mathrm{d}W_s\right)\left(\int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s\right)].
 $$
-Como $t_2 > t_1$, separamos o segundo integral em duas partes,
+Como $t_2 > t_1,$ separamos o segundo integral em duas partes,
 $$
 \int_0^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s = \int_0^{t_1} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s + \int_{t_1}^{t_2} e^{-\nu(t_2 - s)}\;\mathrm{d}W_s.
 $$
@@ -140,7 +140,7 @@ Para $t_1, t_2 \geq 0$ arbitrários, isso nos dá, por simetria,
 $$
 \mathrm{Cov}(O_{t_1}, O_{t_2}) = e^{-\nu (t_1 + t_2)}\mathrm{Var}(O_0) + \frac{\sigma^2}{2\nu}\left( e^{-\nu |t_2 - t_1|} - e^{-\nu (t_1 + t_2)}\right).
 $$
-Para $t_1 = t$ e $t_2 = t + \tau$,
+Para $t_1 = t$ e $t_2 = t + \tau,$
 $$
 \mathrm{Cov}(O_{t}, O_{t+\tau}) = e^{-\nu (2t + \tau)}\mathrm{Var}(O_0) + \frac{\sigma^2}{2\nu}e^{-\nu \tau}\left( 1 - e^{-2\nu t}\right).
 $$
@@ -148,13 +148,13 @@ Assintoticamente em $t\rightarrow \infty,$ temos
 $$
 \mathrm{Cov}(O_{t}, O_{t+\tau}) \sim \frac{\sigma^2}{2\nu}e^{-\nu \tau},
 $$
-ou seja, para $\tau \gg 1/\nu$, os processos estão essencialmente descorrelacionados. O parâmetro $1/\nu$ funciona como uma escala de tempo para o correlacionamento.
+ou seja, para $\tau \gg 1/\nu,$ os processos estão essencialmente descorrelacionados. O parâmetro $1/\nu$ funciona como uma escala de tempo para o correlacionamento.
 
 Veremos, abaixo, como isso pode ser usado para se obter uma aproximação de um ruído branco.
 
 ## Posição e velocidade na forma de sistema
 
-Interpretando um processo de Ornstein-Uhlenbeck como representando a evolução da velocidade de uma partícula, podemos obter a posição integrando esse processo. Nesse caso, é comum denotarmos o processo de Ornstein-Uhlenbeck, modelando a equação de Langevin, como $\{Y_t\}_{t \geq 0}$, de modo que a posição fica sendo dada por
+Interpretando um processo de Ornstein-Uhlenbeck como representando a evolução da velocidade de uma partícula, podemos obter a posição integrando esse processo. Nesse caso, é comum denotarmos o processo de Ornstein-Uhlenbeck, modelando a equação de Langevin, como $\{Y_t\}_{t \geq 0},$ de modo que a posição fica sendo dada por
 $$
 X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 $$
@@ -234,28 +234,28 @@ savefig(joinpath(@OUTPUT, "ornstein_uhlenbeck_pos.svg"))
 
 ## Propriedade de reversão à média
 
-O processo de Orstein-Uhlenbeck $\{O_t\}_{t \geq 0}$, conforme definido acima, tem a propriedade $\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0$, quando $t \rightarrow \infty$ (veja os Exercícios). Nesse caso, podemos dizer que a média assintótica é nula e que o processo "reverte", assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra $\nu\mu\;\mathrm{d}t$ de *drift* aditivo, nos levando à equação
+O processo de Orstein-Uhlenbeck $\{O_t\}_{t \geq 0},$ conforme definido acima, tem a propriedade $\mathbb{E}[O_t] = \mathbb{E}[O_0] e^{-\nu t} \rightarrow 0,$ quando $t \rightarrow \infty$ (veja os Exercícios). Nesse caso, podemos dizer que a média assintótica é nula e que o processo "reverte", assintoticamente, a essa média nula. Mais geralmente, podemos adicionar um termo extra $\nu\mu\;\mathrm{d}t$ de *drift* aditivo, nos levando à equação
 $$
 \mathbb{d}\hat O_t = - \nu (\hat O_t - \mu)\;\mathrm{d}t + \sigma \mathrm{d}W_t.
 $$
 
-Escrevendo $O_t = \hat O_t - \mu$, vemos que $\{O_t\}_{t \geq 0}$ é um processo de  Orstein-Uhlenbeck sem o termo extra:
+Escrevendo $O_t = \hat O_t - \mu,$ vemos que $\{O_t\}_{t \geq 0}$ é um processo de  Orstein-Uhlenbeck sem o termo extra:
 $$
 \mathbb{d} O_t = -\nu O_t \;\mathrm{d}t + \sigma \mathrm{d}W_t.
 $$
 
-Como $\mathbb{E}[O_t] \rightarrow 0$, quando $t \rightarrow 0$, então $\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu$, ou seja, a esperança de $\{\hat O_t\}_{t \geq 0}$ converge para a média $\mu$. Assim, o processo de Orstein-Uhlenbeck é um exemplo de *mean-reverting process,* ou "processo que reverte à média".
+Como $\mathbb{E}[O_t] \rightarrow 0,$ quando $t \rightarrow 0,$ então $\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu,$ ou seja, a esperança de $\{\hat O_t\}_{t \geq 0}$ converge para a média $\mu.$ Assim, o processo de Orstein-Uhlenbeck é um exemplo de *mean-reverting process,* ou "processo que reverte à média".
 
 ## Ornstein-Uhlenbeck como aproximação de ruído branco
 
 O "ruído branco", como modelado pela "derivada" de um processo de Wiener, em um sentido apropriado de distribuições, é um processo comumente encontrado em diversos modelos. Em várias situações, no entanto, o ruído é "colorido", com algum decaimento característico do espectro de amplitudes.
 
-Aqui, exploramos o processo de Ornstein-Uhlenbeck (OU) como aproximação de um ruído branco. Isso é obtido controlando-se uma *escala temporal* $\tau$. Mais precisamente, consideramos um processo $\{O_t\}_t$ satisfazendo a equação diferencial estocástica
+Aqui, exploramos o processo de Ornstein-Uhlenbeck (OU) como aproximação de um ruído branco. Isso é obtido controlando-se uma *escala temporal* $\tau.$ Mais precisamente, consideramos um processo $\{O_t\}_t$ satisfazendo a equação diferencial estocástica
 
 $$
     \tau \mathrm{d}O_t = - \mathrm{d}t + \zeta \mathrm{d}W_t,
 $$
-onde $\{W_t\}_t$. Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva $\nu = 1/\tau$ e difusão $\sigma = \zeta/\tau.$ Esse processo tem média e covariância dadas por
+onde $\{W_t\}_t.$ Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva $\nu = 1/\tau$ e difusão $\sigma = \zeta/\tau.$ Esse processo tem média e covariância dadas por
 $$
 \mathbb{E}[O_t] = 
 \mathbb{E}[O_0] e^{-t/\tau}, \quad
@@ -338,6 +338,6 @@ $$
 \mathbb{E}[X_t] = \mathbb{E}[X_0]  + \frac{1}{\nu}\mathbb{E}[Y_0] \left(1 - e^{-\nu t}\right).
 $$
 
-3. Para $Y_0 = y_0$ determinístico, calcule a variância $\mathrm{Var}(Y_t)$.
+3. Para $Y_0 = y_0$ determinístico, calcule a variância $\mathrm{Var}(Y_t).$
 
-4. Para $X_0 = x_0$, $Y_0 = y_0$ determinísticos, calcule a variância $\mathrm{Var}(X_t)$.
+4. Para $X_0 = x_0,$ $Y_0 = y_0$ determinísticos, calcule a variância $\mathrm{Var}(X_t).$

@@ -6,13 +6,13 @@ As coisas começam a ficar mais interessantes quando consideramos mais de uma va
 
 ## Variáveis aleatórias multivariadas
 
-Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor $X = (X_1, \ldots, X_n)$ (muitas vezes se considera um vetor coluna, na verdade) cujos elementos estão em um mesmo espaço de probabilidades, digamos $(\Omega, \mathcal{A}, \mathbb{P})$. Os espaços de eventos podem ser diferentes, de forma que $\Sigma = \Sigma_1 \times \cdots \times \Sigma_n$, com a $\sigma$-algebra $\mathcal{E}$ gerada por $\mathcal{E}_1 \times \cdots \times \mathcal{E}_n$. Tal objeto é chamado de **variável aleatória multivariada.** E a probabilidade $\mathbb{P}$ é chamada de **distribuição conjunta de probabilidades.**
+Uma maneira de pensar uma coleção de variáveis aleatórias é como um vetor $X = (X_1, \ldots, X_n)$ (muitas vezes se considera um vetor coluna, na verdade) cujos elementos estão em um mesmo espaço de probabilidades, digamos $(\Omega, \mathcal{A}, \mathbb{P}).$ Os espaços de eventos podem ser diferentes, de forma que $\Sigma = \Sigma_1 \times \cdots \times \Sigma_n,$ com a $\sigma$-algebra $\mathcal{E}$ gerada por $\mathcal{E}_1 \times \cdots \times \mathcal{E}_n.$ Tal objeto é chamado de **variável aleatória multivariada.** E a probabilidade $\mathbb{P}$ é chamada de **distribuição conjunta de probabilidades.**
 
 A partir da probabilidade conjunta, podemos obter as chances de certas combinações de eventos $E \in \mathcal{E}$ acontecerem:
 $$
 \mathbb{P}(X \in E).
 $$
-Quando o evento conjunto é da forma $E = E_1 \times \ldots \times E_n$, podemos escrever
+Quando o evento conjunto é da forma $E = E_1 \times \ldots \times E_n,$ podemos escrever
 $$
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n)
 $$
@@ -21,13 +21,13 @@ Também podemos extrair a probabilidade de realização de um evento para apenas
 $$
 \mathbb{P}(X_i \in E_i).
 $$
-Isso pode ser obtido da distribuição conjunta, considerando o evento $\mathbb{E} = \Sigma_1 \times \ldots \Sigma_{i-1}\times E_i \times \Sigma_{i+1} \times \cdot \times \Sigma_n$.
+Isso pode ser obtido da distribuição conjunta, considerando o evento $\mathbb{E} = \Sigma_1 \times \ldots \Sigma_{i-1}\times E_i \times \Sigma_{i+1} \times \cdot \times \Sigma_n.$
 
 ## Exemplo
 
 Por exemplo, considere um dado de quatro lados e um de seis. Ambos dados não viciados. Há $4 \times 6 = 24$ combinações possíveis. O espaço amostral $\Omega$ deverá ter (pelo menos) 24 elementos, cada combinação com uma determinada probabilidade.
 
-Podemos representar os resultado dos dados através de duas variáveis aleatórias, digamos $X$ e $Y$, com $X$ para o resultado do lançamento do dado de quatro lados e $Y$, para o de seis. Isoladamente, teríamos um espaço amostral de quatro elementos para $X$ e um de seis para $Y$. Mas em conjunto, temos uma variável multivariada $(X, Y)$ em um espaço amostral de 24 elementos. Mais explicitamente, podemos considerar
+Podemos representar os resultado dos dados através de duas variáveis aleatórias, digamos $X$ e $Y,$ com $X$ para o resultado do lançamento do dado de quatro lados e $Y,$ para o de seis. Isoladamente, teríamos um espaço amostral de quatro elementos para $X$ e um de seis para $Y.$ Mas em conjunto, temos uma variável multivariada $(X, Y)$ em um espaço amostral de 24 elementos. Mais explicitamente, podemos considerar
 $$
 \Omega = \Sigma = \{1, \ldots, 4\} \times \{1, \ldots, 6\}.
 $$
@@ -52,7 +52,7 @@ $$
 \mathbb{P}(X \in E_1, Y \in E_2) = \mathbb{P}(X \in E_1)\mathbb{P}(X \in E_2).
 $$
 
-No caso de uma variável multivariada $(X_1, \ldots, X_n)$, dizemos que as variáveis $X_i$ são **(mutuamente) independentes** quando
+No caso de uma variável multivariada $(X_1, \ldots, X_n),$ dizemos que as variáveis $X_i$ são **(mutuamente) independentes** quando
 $$
 \mathbb{P}(X_1 \in E_1, \ldots, X_n \in E_n) = \mathbb{P}(X_1 \in E_1)\cdots \mathbb{P}(X_n \in E_n).
 $$
@@ -68,9 +68,9 @@ $$
 \mathbb{P}(X_i \in E_i, X_j \in E_j) = \mathbb{P}(X_i \in E_i)\mathbb{P}(X_j \in E_j), \qquad \forall i \neq j.
 $$
 
-Observe que podemos ter um conjunto com mais de duas variáveis aleatórias cujas variáveis sejam independentes dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias $X$, $Y$ e $Z$, onde $X$ e $Y$ são variáveis de Bernoulli independentes, com probabilidade de sucesso $p = 1/2$, e defina $Z$ como sendo $1$, caso os resultados de $X$ e $Y$ sejam diferentes, e $0$, caso os resultados sejam iguais. Podemos escrever isso como $Z = X + Y \mod 2$, com $X$ e $Y$ assumindo valores $0$ ou $1$. Podemos pensar nisso como um *checksum* simples, ou um dígito verificador.
+Observe que podemos ter um conjunto com mais de duas variáveis aleatórias cujas variáveis sejam independentes dois a dois, mas não mutuamente. De fato, considere três variáveis aleatórias $X,$ $Y$ e $Z,$ onde $X$ e $Y$ são variáveis de Bernoulli independentes, com probabilidade de sucesso $p = 1/2,$ e defina $Z$ como sendo $1,$ caso os resultados de $X$ e $Y$ sejam diferentes, e $0,$ caso os resultados sejam iguais. Podemos escrever isso como $Z = X + Y \mod 2,$ com $X$ e $Y$ assumindo valores $0$ ou $1.$ Podemos pensar nisso como um *checksum* simples, ou um dígito verificador.
 
-Nesse caso, $X$ e $Y$ são independentes, $X$ e $Z$ são independentes e $Y$ e $Z$ são independentes. Mas $X, Y$ e $Z$ não são mutuamente independentes, já que $Z$ está completamente determinado pelos resultados de $X$ e $Y$.
+Nesse caso, $X$ e $Y$ são independentes, $X$ e $Z$ são independentes e $Y$ e $Z$ são independentes. Mas $X, Y$ e $Z$ não são mutuamente independentes, já que $Z$ está completamente determinado pelos resultados de $X$ e $Y.$
 
 Podemos mostrar isso mais explicitamente, através da distribuição conjunta de probabilidade, até mesmo para solidificar as ideias acima. A tabela abaixo nos dá a distribuição conjunta de probabilidades:
 
@@ -81,7 +81,7 @@ Podemos mostrar isso mais explicitamente, através da distribuição conjunta de
 |  0  |  1  |  0  |      1/4      |
 |  1  |  1  |  1  |      1/4      |
 
-O espaço amostral pode ser tomado como sendo $\Omega = \{0, 1\}^3$. Acima, só mostramos as combinações com probabilidade positiva. Mas podemos completar o quadro:
+O espaço amostral pode ser tomado como sendo $\Omega = \{0, 1\}^3.$ Acima, só mostramos as combinações com probabilidade positiva. Mas podemos completar o quadro:
 
 |  X  |  Y  |  Z  | Probabilidade |
 |:---:|:---:|:---:|:--------------|
@@ -134,7 +134,7 @@ Como as variáveis $X_k,$ $k=1, \ldots, n,$ são independentes, temos que
 $$
 S_k=\sum_{1\leq j \leq k} X_j \qquad \textrm{e} \qquad  S_n - S_k = \sum_{k < j \leq n} X_j
 $$
-são independentes entre si. Além disso, $\chi_{A_k}$ só envolve os processos $X_1, \ldots, X_k,$ sendo também independente de $S_n - S_k$. Desse modo,
+são independentes entre si. Além disso, $\chi_{A_k}$ só envolve os processos $X_1, \ldots, X_k,$ sendo também independente de $S_n - S_k.$ Desse modo,
 $$
     \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) = 0
 $$
@@ -142,7 +142,7 @@ e
 $$
     \mathbb{E}[S_k\chi_{A_k}(S_n - S_k)] = \mathrm{Cov}\left(S_k\chi_{A_k}, S_n - S_k\right) + \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right] = \mathbb{E}\left[S_k\chi_{A_k}\right]\mathbb{E}\left[S_n - S_k\right].
 $$
-Observe que $S_k \geq r$ em $A_k$, logo
+Observe que $S_k \geq r$ em $A_k,$ logo
 $$
     \mathbb{E}\left[S_k\chi_{A_k}\right] \geq r,
 $$
@@ -175,7 +175,7 @@ de modo que
 $$
     \mathbb{E}[S_n^2\chi_{A_1 \cup \ldots \cup A_n}] \leq \mathbb{E}[S_n^2].
 $$
-Como $S_n$ também tem valor esperado nulo, o lado direito é igual à variância de $S_n$, nos levando à desigualdade final, conhecida como **desigualdade de Kolmogorov:**
+Como $S_n$ também tem valor esperado nulo, o lado direito é igual à variância de $S_n,$ nos levando à desigualdade final, conhecida como **desigualdade de Kolmogorov:**
 $$
     \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq \frac{1}{r^2}\mathrm{Var}\left(S_n^2\right),
 $$
@@ -196,9 +196,9 @@ para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 >
 > (ii) Escreva $ S_n^{m} = (S_k + (S_n - S_k))^{m} = \sum_{i=0}^{m} \left( \begin{matrix} m \\ i \end{matrix}\right)S_k^{m - i}(S_n - S_k)^{i}.$
 >
-> (iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $S_n - S_k$ também é simétrico em relação a origem e, portanto, $\mathbb{E}\left[(S_n - S_k)^i\right] = 0$. Além disso, $S_n - S_k$ é independente de $S_k^{m - i}\chi_{A_k}.$ Assim, $\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{m - i}\chi_{A_k}]\mathbb{E}[(S_n - S_k)^{i}] = 0.$
+> (iii) Quando $i$ é ímpar, segue da simetria de cada $X_j$ que $S_n - S_k$ também é simétrico em relação a origem e, portanto, $\mathbb{E}\left[(S_n - S_k)^i\right] = 0.$ Além disso, $S_n - S_k$ é independente de $S_k^{m - i}\chi_{A_k}.$ Assim, $\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] = \mathbb{E}[S_k^{m - i}\chi_{A_k}]\mathbb{E}[(S_n - S_k)^{i}] = 0.$
 >
-> (iv) Quando $i$ é par, temos $(S_n - S_k)^i \geq 0$. Além disso, $S_k \geq r > 0$ em $A_k$, de modo que $S_k^{m - i}\chi_{A_k} \geq 0.$ Portanto, $\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.$
+> (iv) Quando $i$ é par, temos $(S_n - S_k)^i \geq 0.$ Além disso, $S_k \geq r > 0$ em $A_k,$ de modo que $S_k^{m - i}\chi_{A_k} \geq 0.$ Portanto, $\mathbb{E}[S_k^{m - i}(S_n - S_k)^{i} \chi_{A_k}] \geq 0.$
 >
 > (v) Mantendo apenas o termo $i=0$ e descartando os outros que se anulam ou são não-negativos, obtemos $\mathbb{E}[S_n^{m} \chi_{A_k}] \geq \mathbb{E}[S_k^{m}\chi_{A_k}].$
 >
@@ -206,7 +206,7 @@ para todo $r > 0$ e todo inteiro $m\in\mathbb{N}.$
 >
 > (vii) Somando em $k=1, \ldots, n$ e usando que os conjuntos $A_1, \ldots, A_n$ são disjuntos, como na demonstração acima, obtemos, finalmente, a desigualdade desejada.
 
-2. Sob as condições do exercício anterior, assume, ainda, que $\mathbb{E}[e^{X_k}] < \infty,$ para todo $k=1, \ldots, n$. Mostre que
+2. Sob as condições do exercício anterior, assume, ainda, que $\mathbb{E}[e^{X_k}] < \infty,$ para todo $k=1, \ldots, n.$ Mostre que
 $$
     \mathbb{P}\left(\max_{1\leq k \leq n} \{S_k\} \geq r\right) \leq e^{-\lambda r}\mathbb{E}\left[e^{\lambda S_n}\right],
 $$

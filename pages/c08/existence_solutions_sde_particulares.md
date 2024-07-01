@@ -15,7 +15,7 @@ No momento, vamos considerar alguns casos particulares, com funções $f$ e $g$ 
 
 ## Hipóteses iniciais
 
-Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que $f = f(t, x)$, $g = g(t, x)$ sejam funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem localmente Lipschitz contínuas na variável $x.$
+Para os resultados de existência e unicidade locais nesses casos particular, vamos assumir que $f = f(t, x),$ $g = g(t, x)$ sejam funções contínuas $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ com a propriedade de serem localmente Lipschitz contínuas na variável $x.$
 
 Mais precisamente, assumimos que existem funções contínuas não decrescentes $L_f=L_f(R), L_g=L_g(R) > 0$ tais que
 $$
@@ -35,7 +35,7 @@ Em seguida, consideraremos, finalmente, a hipótese de continuidade Lipschitz gl
 
 ## Existência de caminhos amostrais locais no caso de equações com ruído aditivo
 
-Vamos começar com um caso particular, com ruído aditivo, onde o termo de difusão é da forma $g(t, X_t) = g(t) \in \mathbb{R}$, ou seja
+Vamos começar com um caso particular, com ruído aditivo, onde o termo de difusão é da forma $g(t, X_t) = g(t) \in \mathbb{R},$ ou seja
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t, \qquad t \geq 0.
 $$
@@ -46,7 +46,7 @@ X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(t)\mathrm{d}W_s.
 $$
 A segunda integral não envolve a incógnita $X_t$ e pode ser estimada de maneira independente da solução, para cada caminho amostral. Isso nos libera da necessidade de usar a isometria de Itô e a estimativa em média quadrática, o que nos levaria a precisar de condições globais de continuidade Lipschitz, como feito no caso geral.
 
-Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x$, conforme explicitado acima, e que $g=g(t)$ seja contínua. Com essa hipótese em $f,$ temos, ainda, que
+Assumimos, então, que $f=f(t, x)$ seja contínua nas duas variáveis e localmente Lipschitz contínua na coordenada $x,$ conforme explicitado acima, e que $g=g(t)$ seja contínua. Com essa hipótese em $f,$ temos, ainda, que
 $$
 |f(t, x)| \leq |f(t, 0)| + |f(t, x) - f(t, 0)| \leq \max_{0\leq s \leq T}|f(s, 0)| + L_f(|x|)|x|.
 $$
@@ -63,7 +63,7 @@ $$
 C_W(\omega) = \max_{0\leq t \leq T}\left|\int_0^t g(s)\mathrm{d}W_s(\omega)\right|.
 $$
 
-A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0$,
+A ideia é resolver a equação integral via método de Picard, ou seja, via iterações sucessivas. Definimos, para todo $t \geq 0,$
 $$
 \begin{align*}
 X_t^0 & = X_0, \\
@@ -71,7 +71,7 @@ X_t^m & = X_0 + \int_0^t f(s, X_s^{m-1})\mathrm{d}s + \int_0^t g(s)\mathrm{d}W_s
 \end{align*}
 $$
 
-A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para uma determinada variável aleatória $R(w)> 0$ e para uma função determinística $\tilde t=\tilde t(R)$ com $0 < \tilde t(R) \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro da bola de raio $R(\omega)$, no intervalo $[0, \tilde t(R(\omega))]$, na qual podemos estimar a constante de Lipschitz de maneira uniforme e mostrar que a aproximação é uma sequência de Cauchy na norma uniforme, de modo que os caminhos amostrais da família $\{X_t^m(\omega)\}_{0 \leq t \leq \tilde(\omega)}$ convergem uniformemente para um caminho amostral que é solução da equação integral.
+A ideia, como no caso de equações diferenciais ordinárias, é mostrar que, para uma determinada variável aleatória $R(w)> 0$ e para uma função determinística $\tilde t=\tilde t(R)$ com $0 < \tilde t(R) \leq T$ suficientemente pequeno, as aproximações obtidas pelas iterações do método de Picard estão dentro da bola de raio $R(\omega),$ no intervalo $[0, \tilde t(R(\omega))],$ na qual podemos estimar a constante de Lipschitz de maneira uniforme e mostrar que a aproximação é uma sequência de Cauchy na norma uniforme, de modo que os caminhos amostrais da família $\{X_t^m(\omega)\}_{0 \leq t \leq \tilde(\omega)}$ convergem uniformemente para um caminho amostral que é solução da equação integral.
 
 Observe, inicialmente, que
 $$
@@ -121,7 +121,7 @@ Como no método de Picard clássico, vamos mostrar que
 $$
 D_t^m \leq R \frac{L_f(R)^m}{m!} t^m \leq R,
 $$
-para $0\leq t \leq t(R)$. A estimativa acima mostra que isso é verdade para $m = 0$. Procedemos, agora, por indução, assumindo verdadeiro para $m-1$, onde $m\in \mathbb{N}$, e analisando $D_t^m$. Temos,
+para $0\leq t \leq t(R).$ A estimativa acima mostra que isso é verdade para $m = 0.$ Procedemos, agora, por indução, assumindo verdadeiro para $m-1,$ onde $m\in \mathbb{N},$ e analisando $D_t^m.$ Temos,
 $$
 \begin{align*}
 D_t^m(\omega) & = \max_{0 \leq \tau \leq t} |X_\tau^{m+1}(\omega) - X_\tau^m(\omega)| \\
@@ -136,11 +136,11 @@ D_t^m(\omega) & = \max_{0 \leq \tau \leq t} |X_\tau^{m+1}(\omega) - X_\tau^m(\om
 $$
 Isso completa a demonstração por indução da estimativa para $D_t^m(\omega).$
 
-Agora, para termos da sequência não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1$,
+Agora, para termos da sequência não necessariamente consecutivos, i.e. para inteiros quaisquer $k \geq j \geq 1,$
 $$
 \max_{0 \leq \tau \leq t} |X_\tau^k - X_\tau^j| \leq \sum_{m = j}^{k-1} D_t^m \leq \sum_{m = j}^\infty R(\omega) \frac{L_f(R(\omega))^m}{m!} t^m.
 $$
-Como o somatório é o "rabo" da série de Taylor da função exponencial $Re^{L_f(R)t}$, o lado direito converge para zero, quando $j \rightarrow \infty$. Ou seja, para quase toda amostra $\omega,$ temos $X_t^m(\omega)$ convergindo uniformemente no intervalo $[0, \tilde(R(\omega))].$ No limite, temos um caminho $X_t(\omega)$ satisfazendo a equação integral desejada:
+Como o somatório é o "rabo" da série de Taylor da função exponencial $Re^{L_f(R)t},$ o lado direito converge para zero, quando $j \rightarrow \infty.$ Ou seja, para quase toda amostra $\omega,$ temos $X_t^m(\omega)$ convergindo uniformemente no intervalo $[0, \tilde(R(\omega))].$ No limite, temos um caminho $X_t(\omega)$ satisfazendo a equação integral desejada:
 $$
 X_t(\omega) = X_0(\omega) + \int_0^t f(s, X_s(\omega))\mathrm{d}s + \int_0^t g(s) \mathrm{d}W_s(\omega), \quad 0 \leq t \leq \tilde t(R(\omega)).
 $$
@@ -208,7 +208,7 @@ A ideia é transformar essa equação em uma equação diferencial estocástica 
 $$
 Y_t = h(X_t)
 $$
-onde $h$ é uma primitiva de $1/g$, e.g.
+onde $h$ é uma primitiva de $1/g,$ e.g.
 $$
 h(x) = \int_0^x \frac{1}{g(\xi)} \;\mathrm{d}\xi,
 $$

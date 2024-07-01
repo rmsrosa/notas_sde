@@ -6,7 +6,7 @@ Um modelo clássico para o preço $P_t$ de uma ação é o de que a mudança rel
 $$
 \frac{\mathrm{d}P_t}{P_t} = \mu\;\mathrm{d}t + \sigma\;\mathrm{d}W_t,
 $$
-onde $\mu > 0$ é o *drift* (tendência?) e $\sigma$, a *volatilidade* da ação. Desse modo,
+onde $\mu > 0$ é o *drift* (tendência?) e $\sigma,$ a *volatilidade* da ação. Desse modo,
 $$
 \mathrm{d}P_t = \mu P_t \;\mathrm{d}t + \sigma P_t\;\mathrm{d}W_t,
 $$
@@ -42,11 +42,11 @@ que tem a mesma forma da equação acima para o preço de uma ação.
 
 ## Resolução
 
-A solução segue da fórmula geral obtida na seção anterior, com $f_0 = 0$, $f_1 = \mu$, $g_0 = 0$ e $g_1 = \sigma$. Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos
+A solução segue da fórmula geral obtida na seção anterior, com $f_0 = 0,$ $f_1 = \mu,$ $g_0 = 0$ e $g_1 = \sigma.$ Podemos, também, chegar nessa solução através de um fator de integração, visto que a equação é linear. Escrevemos
 $$
 \mathrm{d}X_t - \mu X_t \;\mathrm{d}t = \sigma X_t\;\mathrm{d}W_t.
 $$
-Analogamente ao caso determinístico (pense em $x' - \mu x = g(t)$), podemos considerar o fator de integração $e^{-\mu t}$. Observe que, derivando o produto $Y_t = X_t e^{-\mu t}$ pela fórmula de Itô, temos
+Analogamente ao caso determinístico (pense em $x' - \mu x = g(t)$), podemos considerar o fator de integração $e^{-\mu t}.$ Observe que, derivando o produto $Y_t = X_t e^{-\mu t}$ pela fórmula de Itô, temos
 $$
 \begin{align*}
 \mathrm{d}X_t & = \mathrm{d}(X_t e^{-\mu t}) \\
@@ -71,7 +71,7 @@ $$
 
 ## Valor esperado
 
-Vamos, agora, calcular o valor esperado de $P_t$. Para isso, escrevemos a equação integral associada à equação diferencial estocástica:
+Vamos, agora, calcular o valor esperado de $P_t.$ Para isso, escrevemos a equação integral associada à equação diferencial estocástica:
 $$
 X_t = X_0 + \mu \int_0^t X_s \;\mathrm{d}s + \sigma \int_0^t X_s\;\mathrm{d}W_s.
 $$

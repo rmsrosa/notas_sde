@@ -39,11 +39,11 @@ Observe que, caso $C > 0,$ então
 $$
 \frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C - \nu x p(x) \geq C > 0,
 $$
-para $x < 0$, visto que $p \geq 0.$ Mas isso nos leva a uma contradição, pois teríamos $p\rightarrow -\infty,$ quando $x \rightarrow -\infty,$ contradizendo o fato de que $p \geq 0.$ Da mesma forma, se $C < 0,$ então
+para $x < 0,$ visto que $p \geq 0.$ Mas isso nos leva a uma contradição, pois teríamos $p\rightarrow -\infty,$ quando $x \rightarrow -\infty,$ contradizendo o fato de que $p \geq 0.$ Da mesma forma, se $C < 0,$ então
 $$
 \frac{\sigma^2}{2}\frac{\mathrm{d} p}{\mathrm{d}x}(x) = C - \nu x p(x) \leq C < 0,
 $$
-para $x > 0.$ Novamente, $p\rightarrow -\infty,$ quando $x \rightarrow \infty,$ contradizendo o fato de que $p\geq 0$.
+para $x > 0.$ Novamente, $p\rightarrow -\infty,$ quando $x \rightarrow \infty,$ contradizendo o fato de que $p\geq 0.$
 
 Portanto, a única solução possível deve satisfazer
 $$

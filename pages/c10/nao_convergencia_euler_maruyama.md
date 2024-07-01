@@ -14,7 +14,7 @@ com condição inicial $x(0) = x_0 > 0.$ O método de Euler com passo constante 
 $$
 x_j = x_{j-1} - x_{j-1}^3 \Delta t  = x_{j-1}(1 - x_{j-1}^2 \Delta t).
 $$
-Seja $T > 0$ arbitrário e fixe um passo de tempo qualquer $\Delta t = T/N \leq 2,$ para algum $N\in\mathbb{N}$. Suponha que a condição inicial seja tal que
+Seja $T > 0$ arbitrário e fixe um passo de tempo qualquer $\Delta t = T/N \leq 2,$ para algum $N\in\mathbb{N}.$ Suponha que a condição inicial seja tal que
 $$
 x_0 \geq \frac{2}{\Delta t} \geq 1.
 $$
@@ -26,7 +26,7 @@ Assim, o primeiro passo de Euler nos dá
 $$
 x_1  =  x_0 - \Delta t x_0^3 =  x_0(1 - \Delta t x_0^2) \leq -x_0^2.
 $$
-Por indução, vamos supor que $|x_j| \geq x_{j-1}^2$, com sinais alternados, $\mathrm{sgn}(x_j) = (-1)^j$. Vamos separar em dois casos, dependendo da paridade de $j,$ ou seja, do sinal de $x_j.$
+Por indução, vamos supor que $|x_j| \geq x_{j-1}^2,$ com sinais alternados, $\mathrm{sgn}(x_j) = (-1)^j.$ Vamos separar em dois casos, dependendo da paridade de $j,$ ou seja, do sinal de $x_j.$
 
 Quando $j$ é par, $x_j$ tem sinal positivo e
 $$
@@ -97,7 +97,7 @@ para evitar as oscilações das aproximações de Euler para um $\omega$ qualque
 $$
 X_0 \sim \mathcal{N}(0, \sigma^2),
 $$
-para algum $\sigma > 0$ e que $T > 0.$ Dado $N\in\mathbb{N}$, seja $\Delta t = T/N$ e defina
+para algum $\sigma > 0$ e que $T > 0.$ Dado $N\in\mathbb{N},$ seja $\Delta t = T/N$ e defina
 $$
 A_N = \left\{\omega; \;|X_0(\omega)| \geq \frac{2N}{T} \right\}.
 $$
@@ -114,7 +114,7 @@ $$
 \mathbb{P}(A_N) = 2\mathbb{P}\left(X_0 \geq \frac{2N}{T}\right) \geq \frac{4}{\sqrt{2\pi \sigma^2}}\frac{N}{T} e^{-\frac{8N^2}{\sigma^2T^2}}.
 $$
 
-Pelas estimativas acima, temos, para as aproximações de Euler $X_j(\omega),$ $j=0, \ldots, N$, onde $\Delta t = T/N,$ que
+Pelas estimativas acima, temos, para as aproximações de Euler $X_j(\omega),$ $j=0, \ldots, N,$ onde $\Delta t = T/N,$ que
 $$
 |X_j(\omega)| \geq |X_0(\omega)|^{2^j},
 $$
@@ -142,11 +142,11 @@ Consideramos, agora, a perturbação estocástica da equação acima por um ruí
 $$
 \mathrm{d}X_t = -X_t^3\;\mathrm{d}t + \;\mathrm{d}W_t.
 $$
-Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral. Dados $T > 0$ e $N\in\mathbb{N}$, temos o passo de tempo $\Delta t = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
+Vamos assumir $X_0 = 0,$ para simplificar, mas o resultado vale de maneira mais geral. Dados $T > 0$ e $N\in\mathbb{N},$ temos o passo de tempo $\Delta t = T/N.$ Consideramos apenas $N$ suficientemente grande tal que
 $$
 \Delta t = \frac{T}{N} \leq \frac{1}{2}.
 $$
-A aproximação de Euler $X_j$, nos instantes $t_j = j\Delta t,$ $j=0, \ldots, N,$ é dada por
+A aproximação de Euler $X_j,$ nos instantes $t_j = j\Delta t,$ $j=0, \ldots, N,$ é dada por
 $$
 X_j = X_{j-1} - X_{j-1}^3\Delta t + \Delta W_{j-1}, \quad j = 1, \ldots, N,
 $$
@@ -169,7 +169,7 @@ No que se segue, assumimo, então, que $\omega\in A_N.$ No primeiro passo, como 
 $$
 |X_1| = |\Delta W_0| \geq r_N^2.
 $$
-Agora, vamos assumir, por indução, que $|X_j| \geq |X_{j-1}|^2,$ para $j\in\mathbb{N}.$ Para $j=1,$ como $X_0 = 0$, então isso vale trivialmente. Vamos, então, assumir que $|X_j| \geq |X_{j-1}|^2,$ até um certo $j\in\mathbb{N}$, e mostrar para $j+1$. Observe que acabamos de ver que $|X_1| \geq r_N^2.$ Como $r_N\geq 2$, então $|X_1|\geq 4.$ Até $j$, também temos $|X_j|\geq |X_{j-1}|^2 \geq \ldots \geq |X_1|^{2^{j-1}} \geq r_N^{2^j} \geq 4.$
+Agora, vamos assumir, por indução, que $|X_j| \geq |X_{j-1}|^2,$ para $j\in\mathbb{N}.$ Para $j=1,$ como $X_0 = 0,$ então isso vale trivialmente. Vamos, então, assumir que $|X_j| \geq |X_{j-1}|^2,$ até um certo $j\in\mathbb{N},$ e mostrar para $j+1.$ Observe que acabamos de ver que $|X_1| \geq r_N^2.$ Como $r_N\geq 2,$ então $|X_1|\geq 4.$ Até $j,$ também temos $|X_j|\geq |X_{j-1}|^2 \geq \ldots \geq |X_1|^{2^{j-1}} \geq r_N^{2^j} \geq 4.$
 
 Agora, para $j+1,$ temos
 $$
@@ -210,11 +210,11 @@ $$
 $$
 Isso completa a indução.
 
-Agora, precisamos estimar a medidade de $A_N$. Como os passos de um processo de Wiener são independentes, temos
+Agora, precisamos estimar a medidade de $A_N.$ Como os passos de um processo de Wiener são independentes, temos
 $$
 \mathbb{P}(A_N) =  \mathbb{P}\left(|\Delta W_0(\omega)| \geq r_N^2\right)\prod_{j=1}^N\mathbb{P}\left(\frac{1}{r_N} \leq |\Delta W_j(\omega)| \leq \frac{2}{r_N}\right).
 $$
-Como os passos são normais, $\Delta W_j \sim \mathcal{N}(0, \Delta t),$ com $\Delta t = 1/r_N,$ usamos a estimativa acima, que nos diz que para $Z\sim \mathcal{N}(0, \sigma^2)$, vale
+Como os passos são normais, $\Delta W_j \sim \mathcal{N}(0, \Delta t),$ com $\Delta t = 1/r_N,$ usamos a estimativa acima, que nos diz que para $Z\sim \mathcal{N}(0, \sigma^2),$ vale
 $$
 \mathbb{P}(Z \geq r) \geq \frac{1}{\sqrt{2\pi \sigma^2}}r e^{-\frac{2r^2}{\sigma^2}}.
 $$
@@ -246,9 +246,9 @@ Esse resultado vale para equações estocásticas mais gerais, da forma
 $$
 \mathrm{d}X_t = f(X_t)\;\mathrm{d}t + g(X_t)\;\mathrm{d}W_t,
 $$
-sob condições apropriadas de crescimento em $f$ e $g$, conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Mais precisamente, devemos ter
+sob condições apropriadas de crescimento em $f$ e $g,$ conforme demonstrado em [Hutzenthaler, Jentzen & Kloeden (2011)](https://doi.org/10.1098/rspa.2010.0348). Mais precisamente, devemos ter
 $$
 \max\{|f(x)|, |g(x)|\} \geq \frac{|x|^\beta}{R}, \quad \min\{|f(x)|, |g(x)|\} \leq R|x|^\alpha, \quad \mathbb{P}\left(g(X_0) \neq 0\right) > 0,
 $$
-para $|x| \geq R$, com $R \geq 1$, $\beta > \alpha > 1,$
+para $|x| \geq R,$ com $R \geq 1,$ $\beta > \alpha > 1,$
 Isso inclui equações como a equação de Ginzburg-Landau estocástica, a equação de Verhulst estocástica, a equação de difusão de Feller com crescimento logístico, equações cinéticas e outras tantas.

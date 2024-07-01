@@ -6,13 +6,13 @@ Um processo de Wiener é um processo estocástico que formaliza as ideias do mov
 
 ## Processo de Wiener
 
-Como visto anteriormente, um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x\_0\in \mathbb{R}$,
+Como visto anteriormente, um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x\_0\in \mathbb{R},$
 1. $W_0 = x_0$;
 2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes;
 3. $\{W_t\}_{t\geq 0}$ possui incrementos $W_{t+\tau} - W_t$ identicamente distribuídos e dados por uma normal com média zero e variância $\tau$;
 4. Com probabilidade um, os caminhos amostrais $t \mapsto W_t(\omega)$ são contínuos.
 
-Um processo de Wiener $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**, quando $x_0 = 0$, i.e.
+Um processo de Wiener $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**, quando $x_0 = 0,$ i.e.
 $$
 W_0 = 0.
 $$

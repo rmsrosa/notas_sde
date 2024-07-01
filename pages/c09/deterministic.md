@@ -7,7 +7,7 @@ $$
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x).
 $$
 
-Suponha que haja uma incerteza em relação à condição inicial. Isso nos dá a condição inicial como uma variável aleatória $X_0$. Nesse caso, para cada realização $X_0(\omega)$, temos uma solução $t \mapsto X_t(\omega)$ da equação diferencial ordinária aleatória
+Suponha que haja uma incerteza em relação à condição inicial. Isso nos dá a condição inicial como uma variável aleatória $X_0.$ Nesse caso, para cada realização $X_0(\omega),$ temos uma solução $t \mapsto X_t(\omega)$ da equação diferencial ordinária aleatória
 $$
 \begin{cases}
 \displaystyle \frac{\mathrm{d}X_t}{\mathrm{d}t} = f(t, X_t), \\
@@ -15,7 +15,7 @@ $$
 \end{cases}
 $$
 
-Suponhamos, para todos os efeitos, que essas soluções estejam definidas pelo menos em um intervalo de tempo $[0, T]$. Isso nos leva a um processo $\{X_t\}_{t\in [0, T]}$.
+Suponhamos, para todos os efeitos, que essas soluções estejam definidas pelo menos em um intervalo de tempo $[0, T].$ Isso nos leva a um processo $\{X_t\}_{t\in [0, T]}.$
 
 Suponhamos, mais ainda, que cada $X_t$ tenha uma função densidade de probabilidade $p(t, x)$ bem definida. A questão que queremos investigar é sobre a evolução dessa função. Temos, para uma "função teste" $\Phi$ qualquer,
 $$
@@ -41,11 +41,11 @@ $$
 \int_\mathbb{R} \Phi(x)\frac{\partial p}{\partial t}(t, x) \;\mathrm{d}x = - \int_\mathbb{R} \Phi(x)\frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right)\;\mathrm{d}x.
 $$
 
-Como isso é válido para qualquer $\Phi$, obtemos a equação
+Como isso é válido para qualquer $\Phi,$ obtemos a equação
 $$
 \frac{\partial p}{\partial t}(t, x) + \frac{\partial}{\partial x}\left(f(t, x) p(t, x)\right) = 0,
 $$
-para a evolução da função densidade de probabilidade $p(t, x)$.
+para a evolução da função densidade de probabilidade $p(t, x).$
 
 No caso de uma equação autônoma
 $$
@@ -95,7 +95,7 @@ $$
 & = g(0) + \int_{-\infty}^\infty p(t, x) (g(x)-g(0)) \;\mathrm{d}x.
 \end{align*}
 $$
-Pela continuidade da função $g=g(x)$, dado $\varepsilon > 0$, existe $\delta > 0$ tal que $|g(x) - g(0)| \leq \varepsilon$, para $|x|\leq \delta$. Além disso, $g=g(x)$ é limitada, digamos $|g(x)| \leq C.$ Assim,
+Pela continuidade da função $g=g(x),$ dado $\varepsilon > 0,$ existe $\delta > 0$ tal que $|g(x) - g(0)| \leq \varepsilon,$ para $|x|\leq \delta.$ Além disso, $g=g(x)$ é limitada, digamos $|g(x)| \leq C.$ Assim,
 $$
 \begin{align*}
 \left|\int_{-\infty}^\infty p(t, x) (g(x)-g(0)) \;\mathrm{d}x\right| & \leq \int_{|x| \leq \delta} p(t, x) |g(x)-g(0)| \;\mathrm{d}x + \int_{|x| \geq \delta} p(t, x) |g(x)-g(0)| \;\mathrm{d}x \\

@@ -6,7 +6,7 @@
 
 ## Noções de convergência para sequências de variáveis aleatórias reais
 
-Vamos considerar, para começar, variáveis aleatórias reais $X$ e $\{X_n\}_{n\in \mathbb{N}}$ em um mesmo espaço de probabilidade $(\Omega, \mathcal{A}, \mathbb{P})$.
+Vamos considerar, para começar, variáveis aleatórias reais $X$ e $\{X_n\}_{n\in \mathbb{N}}$ em um mesmo espaço de probabilidade $(\Omega, \mathcal{A}, \mathbb{P}).$
 
 ### Convergência quase certamente
 
@@ -28,7 +28,7 @@ Dizemos que $X_n$ **converge fracamente**, ou **em distribuição**, para $X$ qu
 $$
 \mathbb{P}(X_n \leq x) \rightarrow \mathbb{P}(X \leq x),
 $$
-para todo $x$ que seja ponto de continuidade da função $x \mapsto \mathbb{P}(X \leq x)$ de distribuição acumulada de $X$.
+para todo $x$ que seja ponto de continuidade da função $x \mapsto \mathbb{P}(X \leq x)$ de distribuição acumulada de $X.$
 
 ### Convergência em média
 
@@ -46,20 +46,20 @@ $$
 
 ### Convergência em média $p$
 
-Dado $p > 0$, dizemos que $X_n$ **converge em média p**, ou **converge em momento de ordem p** para $X$ quando
+Dado $p > 0,$ dizemos que $X_n$ **converge em média p**, ou **converge em momento de ordem p** para $X$ quando
 $$
 \mathbb{E}(|X_n - X|^p) \rightarrow 0.
 $$
 
-A convergência em média corresponde ao caso $p = 1$ e a convergência em média quadrática corresponde a $p = 2$. Em Teoria da Medida, dizemos que $X_n$ converge para $X$ em $L^p(\Omega)$.
+A convergência em média corresponde ao caso $p = 1$ e a convergência em média quadrática corresponde a $p = 2.$ Em Teoria da Medida, dizemos que $X_n$ converge para $X$ em $L^p(\Omega).$
 
-Para todo $p \geq 1$, $L^p(\Omega)$ forma uma *espaço de Banach*, que é um espaço normado completo, com norma $\|X\|_{L^p} = \left(\mathbb{E}[|X|^p]\right)^{1/p}$. No caso $p = 2$, temos que $L^2(\Omega)$ é um *espaço de Hilbert*, que é um espaço normado completo onde a norma está associada a um produto interno. No caso, o produto interno entre duas variáveis aleatórias $X$ e $Y$ é $\langle X, Y \rangle = \mathbb{E}[XY]$. A norma $L^2(\Omega)$ é $\|X\|_{L^2} = \sqrt{\mathbb{E}[X^2]}$.
+Para todo $p \geq 1,$ $L^p(\Omega)$ forma uma *espaço de Banach*, que é um espaço normado completo, com norma $\|X\|_{L^p} = \left(\mathbb{E}[|X|^p]\right)^{1/p}.$ No caso $p = 2,$ temos que $L^2(\Omega)$ é um *espaço de Hilbert*, que é um espaço normado completo onde a norma está associada a um produto interno. No caso, o produto interno entre duas variáveis aleatórias $X$ e $Y$ é $\langle X, Y \rangle = \mathbb{E}[XY].$ A norma $L^2(\Omega)$ é $\|X\|_{L^2} = \sqrt{\mathbb{E}[X^2]}.$
 
 ### Relações entre as convergências
 
 #### Convergência quase certamente implica em convergência em probabilidade
 
-Considere $\{X_n\}_n$ convergindo quase certamente para $X$. Então $\mathbb{P}(X_n \rightarrow X) = 1$. De outra forma, temos que
+Considere $\{X_n\}_n$ convergindo quase certamente para $X.$ Então $\mathbb{P}(X_n \rightarrow X) = 1.$ De outra forma, temos que
 $$
 \mathbb{P}(\lim_{n\rightarrow \infty} X_n \neq X) = 0.
 $$
@@ -88,7 +88,7 @@ quando $n\rightarrow \infty,$ mostrando a convergência em média $q.$
 
 #### Convergência em média $p \geq 1$ implica em convergência em probabilidade
 
-Suponha que $X_n \rightarrow X$ em média $p$, com $p \geq 1,$ o que significa que
+Suponha que $X_n \rightarrow X$ em média $p,$ com $p \geq 1,$ o que significa que
 $$
     \mathbb{E}[|X_n - X|^p] \rightarrow 0,
 $$
@@ -100,7 +100,7 @@ quando $n\rightarrow \infty,$ o que significa dizer que $X_n \rightarrow X$ em p
 
 #### Convergência em probabilidade com erro somável implica em subsequência convergindo quase certamente
 
-Suponha que, para todo $\varepsilon > 0$, vale
+Suponha que, para todo $\varepsilon > 0,$ vale
 $$
 \sum_{n=1}^\infty \mathbb{P}(|X_n - X| > \varepsilon) < \infty.
 $$
@@ -120,7 +120,7 @@ $$
 \end{align*}
 $$
 
-Tomando uma sequência positiva $\varepsilon_n \rightarrow 0$, temos
+Tomando uma sequência positiva $\varepsilon_n \rightarrow 0,$ temos
 $$
 \mathbb{P}\left(\limsup_{n\rightarrow\infty} |X_n - X| > 0\right) = \mathbb{P}\left(\bigcup_n \left(\limsup_{n\rightarrow\infty} |X_n - X| > \varepsilon_n\right)\right) = 0.
 $$
@@ -146,7 +146,7 @@ $$
 \sum_k \mathbb{P}\left(|X_{n_k} - X| > \frac{1}{k}\right) < \infty.
 $$
 
-Assim, para qualquer $\varepsilon > 0$, temos
+Assim, para qualquer $\varepsilon > 0,$ temos
 $$
 \sum_k \mathbb{P}\left(|X_{n_k} - X| > \varepsilon\right) < \infty.
 $$
@@ -158,22 +158,22 @@ $$
 
 #### Convergência em probabilidade de sequência monótona implica em convergência quase certamente
 
-Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência $X_{n_k} \rightarrow X$. Ou seja, para quase todo $\omega$, dado $\varepsilon > 0$, existe $j$ tal que
+Vimos acima que convergência em probabilidade implica na convergência quase certamente de uma subsequência $X_{n_k} \rightarrow X.$ Ou seja, para quase todo $\omega,$ dado $\varepsilon > 0,$ existe $j$ tal que
 $$
 X - \varepsilon < X_{n_k} < X + \varepsilon, \qquad \forall k \geq j.
 $$
 
-Como a sequência é monótona, digamos monótona não decrescente (é análogo caso seja não crescente), então, para todo $n \geq n_j$, temos $n_k \leq n < n_{k+1}$, para algum $k \geq j$. Assim,
+Como a sequência é monótona, digamos monótona não decrescente (é análogo caso seja não crescente), então, para todo $n \geq n_j,$ temos $n_k \leq n < n_{k+1},$ para algum $k \geq j.$ Assim,
 $$
 X - \varepsilon < X_{n_k} \leq X_n \leq X_{n_{k+1}} < X + \varepsilon.
 $$
 
-Em outras palavras, para todo $\varepsilon > 0$, existe $j$ tal que
+Em outras palavras, para todo $\varepsilon > 0,$ existe $j$ tal que
 $$
 X - \varepsilon < X_n < X + \varepsilon.
 $$
 
-Isso significa que, quase certamente, $X_n \rightarrow X$, concluindo a demonstração.
+Isso significa que, quase certamente, $X_n \rightarrow X,$ concluindo a demonstração.
 
 #### Esperança convergindo e variância esvanecendo implica em convergência em probabilidade para constante
 
@@ -206,17 +206,17 @@ Considere uma variável aleatória normal $X \sim \mathcal{N}(0, 1)$ e defina a 
 $$
 X_n = \frac{1}{n}X.
 $$
-Observe que $X_n \sim \mathcal{N}(0, 1/n^2)$. Vamos mostrar que essa sequência converge para zero, cuja distribuição é a delta de Dirac $0 \sim \mathrm{Dirac}(0) = \mathcal{N}(0, 0)$, em vários sentidos.
+Observe que $X_n \sim \mathcal{N}(0, 1/n^2).$ Vamos mostrar que essa sequência converge para zero, cuja distribuição é a delta de Dirac $0 \sim \mathrm{Dirac}(0) = \mathcal{N}(0, 0),$ em vários sentidos.
 
 Os caminhos amostrais são
 $$
 t\mapsto X_n(\omega) = \frac{\omega}{n}.
 $$
-Observe que essas variáveis não são independentes. Para cada $\omega$, temos
+Observe que essas variáveis não são independentes. Para cada $\omega,$ temos
 $$
 X_n(\omega) = \frac{\omega}{n} \rightarrow 0, \qquad n \rightarrow 0.
 $$
-Ou seja, $X_n$ converge para $0$ quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer $\varepsilon > 0$,
+Ou seja, $X_n$ converge para $0$ quase certamente. Isso implica nas outras convergências. Mas podemos prová-las diretamente. De fato, para qualquer $\varepsilon > 0,$
 $$
 \mathbb{P}(|X_n| > \varepsilon) = \mathbb{P}(|X| > n\varepsilon ) \rightarrow 0, \qquad n \rightarrow 0,
 $$
@@ -226,13 +226,13 @@ F(x) = \begin{cases} 0, & x < 0, \\
 1, & x \geq 0.
 \end{cases}
 $$
-Os pontos de continuidade de $F$ são os pontos $x \neq 0$. Nesses pontos, temos,
+Os pontos de continuidade de $F$ são os pontos $x \neq 0.$ Nesses pontos, temos,
 $$
 \mathbb{P}(X_n \leq x) = \mathbb{P}(X \leq n x) \rightarrow \begin{cases} 0, & x < 0, \\
 1, & x > 0.
 \end{cases}
 $$
-No ponto de descontinuidade $x = 0$, temos
+No ponto de descontinuidade $x = 0,$ temos
 $$
 \mathbb{P}(X_n \leq 0) = \frac{1}{2},
 $$
@@ -253,7 +253,7 @@ onde a distribuição de cada $X_n$ é uma Gaussiana
 $$
 \frac{1}{\sqrt{2\pi \sigma_n^2}}e^{-x^2/2\sigma_n^2},
 $$
-onde $\sigma_n > 0$.
+onde $\sigma_n > 0.$
 
 ### Convergências quase certamente e em probabilidade não implicam em convergência em média
 

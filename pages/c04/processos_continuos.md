@@ -8,25 +8,25 @@ Vamos começar vendo alguns exemplos em que o processo pode ser construído expl
 
 ## Transporte de uma variável aleatória
 
-Mais geralmente, dada uma variável aleatória $Y$ em um espaço amostral $(\Omega, \mathcal{A}, \mathbb{P})$, com valores em um espaço "de parâmetros" $(\Psi, \mathcal{Y})$, e uma função *mensurável* $f:I\times \Lambda \rightarrow \Sigma$, com valores no *espaço de eventos* $(\Sigma, \mathcal{E}),$ podemos definir o processo
+Mais geralmente, dada uma variável aleatória $Y$ em um espaço amostral $(\Omega, \mathcal{A}, \mathbb{P}),$ com valores em um espaço "de parâmetros" $(\Psi, \mathcal{Y}),$ e uma função *mensurável* $f:I\times \Lambda \rightarrow \Sigma,$ com valores no *espaço de eventos* $(\Sigma, \mathcal{E}),$ podemos definir o processo
 $$
 X_t = f(t, Y), \quad \forall t\in I.
 $$
-Uma vez sorteado $Y(\omega)$, temos o caminho amostral determinado por
+Uma vez sorteado $Y(\omega),$ temos o caminho amostral determinado por
 $$
 X_t(\omega) = f(t, Y(\omega)), \quad t\in I.
 $$
-Nesse caso, a lei para cada $X_t$ é dada pelo *transporte* da lei de $Y$ por $f(t, \cdot)$.
+Nesse caso, a lei para cada $X_t$ é dada pelo *transporte* da lei de $Y$ por $f(t, \cdot).$
 
-Quando o espaço de parâmetros $(\Psi, \mathcal{Y})$ coincide com o espaço de eventos $(\Sigma, \mathcal{E})$ e $f(0, x) = x$, para todo (ou quase todo) $x\in \Sigma,$ a variável aleatória $Y$ representa a condição inicial $X_0 = f(0, Y) = Y.$ Em geral, no entanto, $Y$ são parâmetros do processo. Vejamos alguns exemplos.
+Quando o espaço de parâmetros $(\Psi, \mathcal{Y})$ coincide com o espaço de eventos $(\Sigma, \mathcal{E})$ e $f(0, x) = x,$ para todo (ou quase todo) $x\in \Sigma,$ a variável aleatória $Y$ representa a condição inicial $X_0 = f(0, Y) = Y.$ Em geral, no entanto, $Y$ são parâmetros do processo. Vejamos alguns exemplos.
 
 ### Processos constantes
 
-Seja $Y$ uma variável aleatória em um espaço amostral $(\Omega, \mathcal{A}, \mathbb{P})$, com valores no espaço de estados $(\Sigma, \mathcal{E})$. Considerando um processo de transporte com $f(t, x) = x,$ obtemos um **processo constante** no tempo,
+Seja $Y$ uma variável aleatória em um espaço amostral $(\Omega, \mathcal{A}, \mathbb{P}),$ com valores no espaço de estados $(\Sigma, \mathcal{E}).$ Considerando um processo de transporte com $f(t, x) = x,$ obtemos um **processo constante** no tempo,
 $$
 X_t = Y, \quad \forall t\in I,
 $$
-onde $I\subset \mathbb{R}$ é um intervalo real qualquer. Uma vez sorteado $Y(\omega)$, temos o caminho amostral constante $X_t(\omega) = Y(\omega)$, $t\in I$.
+onde $I\subset \mathbb{R}$ é um intervalo real qualquer. Uma vez sorteado $Y(\omega),$ temos o caminho amostral constante $X_t(\omega) = Y(\omega),$ $t\in I.$
 
 ```julia:processo_constante
 #hideall
@@ -46,7 +46,7 @@ savefig(joinpath(@OUTPUT, "processo_constante.svg"))
 
 ### Transporte sin(U + t)
 
-Um caso mais interessante é dado por uma variável aleatória representando a fase de um processo senoidal. Mais precisamente, considerando uma variável aleatória com distribuição uniforme em $[0, 2\pi)$, i.e. $U \sim \mathrm{Unif}([0, 2\pi))$, e definindo $f(t, x) = \sin(s + t)$, temos o processo
+Um caso mais interessante é dado por uma variável aleatória representando a fase de um processo senoidal. Mais precisamente, considerando uma variável aleatória com distribuição uniforme em $[0, 2\pi),$ i.e. $U \sim \mathrm{Unif}([0, 2\pi)),$ e definindo $f(t, x) = \sin(s + t),$ temos o processo
 $$
 X_t = \sin(U + t).
 $$
@@ -68,7 +68,7 @@ savefig(joinpath(@OUTPUT, "processo_sintplusU.svg"))
 ```
 \fig{processo_sintplusU}
 
-Como o seno é periódico com período $2\pi$, os processos $X_t$ têm sempre a mesma distribuição:
+Como o seno é periódico com período $2\pi,$ os processos $X_t$ têm sempre a mesma distribuição:
 $$
 X_t \sim \sin(\mathrm{Unif}([0, 2\pi))).
 $$
@@ -97,20 +97,20 @@ savefig(joinpath(@OUTPUT, "cosuniform.svg"))
 ```
 \fig{cosuniform}
 
-O processo $\{X_t\}_{t\in \mathbb{R}}$ assume valores em $\mathbb{R}$, mas apenas valores entre $-1 \leq x \leq 1$ são realizáveis. A lei de cada $X_t$ não é uniforme; há mais chances dos valores estarem próximos de $\pm 1$ do que de zero. De fato, $X_t$ segue uma distribuição arcoseno:
+O processo $\{X_t\}_{t\in \mathbb{R}}$ assume valores em $\mathbb{R},$ mas apenas valores entre $-1 \leq x \leq 1$ são realizáveis. A lei de cada $X_t$ não é uniforme; há mais chances dos valores estarem próximos de $\pm 1$ do que de zero. De fato, $X_t$ segue uma distribuição arcoseno:
 $$
 X_t \sim \mathrm{Arcsin}(-1, 1).
 $$
-Para ver isso, observe que $\sin(U + t) = \sin( (U + t) \mod 2\pi)$ e que a distribuição de $(t + \mathrm{Unif}([0, 2\pi))) \mod 2\pi$ é a própria distribuição $\mathrm{Unif}([0, 2\pi))$. Assim,
+Para ver isso, observe que $\sin(U + t) = \sin( (U + t) \mod 2\pi)$ e que a distribuição de $(t + \mathrm{Unif}([0, 2\pi))) \mod 2\pi$ é a própria distribuição $\mathrm{Unif}([0, 2\pi)).$ Assim,
 $$
 F_{X_t}(x) = \mathbb{P}(X_t \leq x) = \mathbb{P}(\sin(U + t) \leq x) = \mathbb{P}(\sin(U) \leq x).
 $$
-Como $\sin(U)$ só assume valores entre $-1$ e $1$, temos $F_{X_t}(x) = 0$, para $x < -1$ e $F_{X_t}(x) = 1$, para $x > 1$. Agora, para $-1 \leq x \leq 1,$ podemos usar a periodicidade e a simetria do seno para escrever essas probabilidades em função da distribuição uniforme em $[-\pi, \pi)$ e, em seguida, em $[-\pi/2, \pi/2)$:
+Como $\sin(U)$ só assume valores entre $-1$ e $1,$ temos $F_{X_t}(x) = 0,$ para $x < -1$ e $F_{X_t}(x) = 1,$ para $x > 1.$ Agora, para $-1 \leq x \leq 1,$ podemos usar a periodicidade e a simetria do seno para escrever essas probabilidades em função da distribuição uniforme em $[-\pi, \pi)$ e, em seguida, em $[-\pi/2, \pi/2)$:
 $$
 F_{X_t}(x) = 2\mathbb{P}(U \leq \arcsin(x), 0 \leq U \leq \pi) = 2\mathbb{P}_{\mathrm{Unif}([-\pi, \pi))}(U \leq \arcsin(x), -\pi/2 \leq U \leq \pi/2) = \mathbb{P}_{\mathrm{Unif}([-\pi/2, \pi/2))}(U \leq \arcsin(x)). 
 $$
 
-A figura abaixo ilustra essas identidades, com a caixa em laranja exibindo a distribuição uniforme considerada e as partes preenchidas ilustrando a região abaixo de um determinado valor $x$, indicando a probabilidade correspondente.
+A figura abaixo ilustra essas identidades, com a caixa em laranja exibindo a distribuição uniforme considerada e as partes preenchidas ilustrando a região abaixo de um determinado valor $x,$ indicando a probabilidade correspondente.
 
 ```julia:processo_sintUcdf
 #hideall
@@ -164,7 +164,7 @@ Um outro exemplo importante é dado por
 $$
 X_t = \sin(Ut),
 $$
-onde, novamente, $U \sim \mathrm{Unif}([0, 2\pi))$. Nesse caso, $U$ representa uma frequência aleatória. Cada caminho amostral é um simples seno, $t \mapsto X_t(\omega) = \sin(U(\omega)t)$.
+onde, novamente, $U \sim \mathrm{Unif}([0, 2\pi)).$ Nesse caso, $U$ representa uma frequência aleatória. Cada caminho amostral é um simples seno, $t \mapsto X_t(\omega) = \sin(U(\omega)t).$
 
 ```julia:processo_sinttimesU
 #hideall
@@ -209,7 +209,7 @@ savefig(joinpath(@OUTPUT, "sinuniformt.svg"))
 
 ## Gaussiana senoidal
 
-Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, $Y_1$ e $Y_2$, em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere $a\in \mathbb{R}$ e defina
+Também podemos construir processos contínuos a partir de mais de uma variável aleatória. Considere, por exemplo, duas variáveis aleatórias quaisquer, $Y_1$ e $Y_2,$ em um mesmo espaço amostral e com valores em um espaço de estados comum. Considere $a\in \mathbb{R}$ e defina
 $$
 X_t = \cos(at)Y_1 + \sin(at)Y_2, \quad t\in \mathbb{R}.
 $$
@@ -245,7 +245,7 @@ savefig(joinpath(@OUTPUT, "gaussian_dance.svg"))
 
 ## Processo de renovação e o contador de Poisson
 
-Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos de tempo para "saltos" de estado. Mais precisamente, sejam $\{S_j\}_{j\in \mathbb{N}}$ variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, $\mathbb{E}(S_j) < \infty$. Para cada $n$, definimos os instantes de salto
+Os processos de renovação são processos contínuos com estados discretos e são dados a partir de uma sequência de variáveis aleatórias discretas representando intervalos de tempo para "saltos" de estado. Mais precisamente, sejam $\{S_j\}_{j\in \mathbb{N}}$ variáveis aleatórias positivas, independentes e identicamente distribuídas e com esperança finita, $\mathbb{E}(S_j) < \infty.$ Para cada $n,$ definimos os instantes de salto
 $$
 T_n = \sum_{j = 1}^n S_j.
 $$
@@ -274,20 +274,20 @@ savefig(joinpath(@OUTPUT, "renewal_uniform.svg"))
 ```
 \fig{renewal_uniform}
 
-Processos de renovação são usados para modelar sequências sucessivas de falhas de equipamentos (e.g. máquinas, velas, cabos, lâmpadas, etc.). Por exemplo, imagine um motor que precise de um cabo para movimentar uma polia. Sempre que um cabo arrebenta, a produção é interrompida, até que a troca seja feita. A vida útil de cada cabo é uma variável aleatória e as sucessivas quebras são assumidas independentes. Cada intervalo de tempo $Y_j$ representa a vida útil de um cabo. Cada $Z_n$ representa o momento da $n$-ésima quebra. A variável $X_t$ modela o número de quebras, ou trocas de cabo, até o instante $t$.
+Processos de renovação são usados para modelar sequências sucessivas de falhas de equipamentos (e.g. máquinas, velas, cabos, lâmpadas, etc.). Por exemplo, imagine um motor que precise de um cabo para movimentar uma polia. Sempre que um cabo arrebenta, a produção é interrompida, até que a troca seja feita. A vida útil de cada cabo é uma variável aleatória e as sucessivas quebras são assumidas independentes. Cada intervalo de tempo $Y_j$ representa a vida útil de um cabo. Cada $Z_n$ representa o momento da $n$-ésima quebra. A variável $X_t$ modela o número de quebras, ou trocas de cabo, até o instante $t.$
 
 O **contador de Poisson** é um processo de renovação onde cada salto $S_j$ seque uma distribuição exponencial,
 $$
 S_j \sim \operatorname{Exponential}(\lambda),
 $$
-para algum $\lambda$. O processo correspondente, usualmente denotado $\{N_t\}_{t\geq 0}$ é chamado de contador de Poisson com taxa $\lambda,$
+para algum $\lambda.$ O processo correspondente, usualmente denotado $\{N_t\}_{t\geq 0}$ é chamado de contador de Poisson com taxa $\lambda,$
 $$
 N_t = \sum_{j = 1}^n S_j.
 $$
 
 ## Processos de renovação e recompensa e o processo de Poisson composto
 
-Junto com um processo de renovação $\{X_t\}_{t \geq 0}$ como acima, obtido a partir de variáveis aleatórias positivas independentes $\{Y_j\}_{j\in \mathbb{N}}$, podemos ter, a cada evento $Z_n = \sum_{j=1}^n Y_j$, uma "recompensa"/"custo" $\{W_n\}_{n\in \mathbb{N}}$, que é uma variável aleatória real (ganhos e perdas). O total de recompensa após um tempo $t$ é dado pelo (lembrando que $X_t$ assume valores inteiros não negativos) **processo de renovação e recompensa**
+Junto com um processo de renovação $\{X_t\}_{t \geq 0}$ como acima, obtido a partir de variáveis aleatórias positivas independentes $\{Y_j\}_{j\in \mathbb{N}},$ podemos ter, a cada evento $Z_n = \sum_{j=1}^n Y_j,$ uma "recompensa"/"custo" $\{W_n\}_{n\in \mathbb{N}},$ que é uma variável aleatória real (ganhos e perdas). O total de recompensa após um tempo $t$ é dado pelo (lembrando que $X_t$ assume valores inteiros não negativos) **processo de renovação e recompensa**
 $$
 Y_t = \sum_{i = 1}^{X_t} W_i.
 $$

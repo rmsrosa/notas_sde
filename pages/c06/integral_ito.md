@@ -13,19 +13,19 @@ Observe que se $\{X_t\}_t$ é um processo estocástico e $g = g(t, x)$ é uma fu
 $$
 \int_0^T g(t, X_t)\;\mathrm{d}W_t
 $$
-simplesmente definindo $H_t = g(t, X_t)$. Ou seja, basta considerarmos integrais de um processo $\{H_t\}_t$.
+simplesmente definindo $H_t = g(t, X_t).$ Ou seja, basta considerarmos integrais de um processo $\{H_t\}_t.$
 
 ## Integrandos permitidos
 
 Uma condição essencial pode ser posta do seguinte modo informal:
 
-> A cada instante $t \geq 0$, o integrando $H_t$ deve ser independente da evolução futura $s \geq t$ do processo de Wiener.
+> A cada instante $t \geq 0,$ o integrando $H_t$ deve ser independente da evolução futura $s \geq t$ do processo de Wiener.
 
-Independente da *evolução futura* significa que, para cada $t\geq 0,$ $H_t$ é independente de $W_{t + \tau} - W_t,$ para todo $\tau > 0.$ Chamamos essa condição de *não antecipativa* *("non-antecipating")* ou *adaptada* ao processo $\{W_t\}_t$. Uma definição mais formal envolve o conceito de *filtração:*
+Independente da *evolução futura* significa que, para cada $t\geq 0,$ $H_t$ é independente de $W_{t + \tau} - W_t,$ para todo $\tau > 0.$ Chamamos essa condição de *não antecipativa* *("non-antecipating")* ou *adaptada* ao processo $\{W_t\}_t.$ Uma definição mais formal envolve o conceito de *filtração:*
 
-Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de sub $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t$, para $0 \leq s \leq t$. A **filtração natural** é a menor filtração possível que torna cada $W_t$ mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$. Uma filtração é dita **não antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s$, para todo $s \geq t$. Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0$, $H_t$ é mensurável em relação à filtração natural de $\{W_t\}_{t\geq 0}$.
+Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de sub $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t,$ para $0 \leq s \leq t.$ A **filtração natural** é a menor filtração possível que torna cada $W_t$ mensurável em relação a $\mathcal{F}_s,$ para todo $s \geq t.$ Uma filtração é dita **não antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s,$ para todo $s \geq t.$ Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0,$ $H_t$ é mensurável em relação à filtração natural de $\{W_t\}_{t\geq 0}.$
 
-Em relação à mensurabilidade, pedimos, também, que $\{H_t\}_{t\geq 0}$ seja **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t,$ ou seja, que para cada $\bar t \geq 0$, a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, \bar t] \times \Omega$ seja mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t}$, onde $\mathcal{B}(0, \bar t)$ é a $\sigma$-álgebra de Borel do intervalo $[0, \bar t].$
+Em relação à mensurabilidade, pedimos, também, que $\{H_t\}_{t\geq 0}$ seja **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t,$ ou seja, que para cada $\bar t \geq 0,$ a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, \bar t] \times \Omega$ seja mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t},$ onde $\mathcal{B}(0, \bar t)$ é a $\sigma$-álgebra de Borel do intervalo $[0, \bar t].$
 
 Em relação à integrabilidade, pedimos, ainda, que $\{H_t\}_{t\geq 0}$ seja de **quadrado integrável,** i.e.
 $$
@@ -109,7 +109,7 @@ Dadas duas malhas $M_1$ e $M_2,$ podemos fazer uma triangulação com o refiname
 $$
     \|M\| \leq \min\{M_1, M_2\}.
 $$
-Vamos comparar $M_1$ e $M_2$ com $M$. Denotando os pontos da malha mais grossa $M_1$ por $t_i',$ $i = 1, \ldots, n_1,$ e os pontos da malha mais fina $M$ por $t_j,$ $j=1, \ldots, n,$ com $M\subset M_1$ e $n \geq n_1,$ podemos escrever
+Vamos comparar $M_1$ e $M_2$ com $M.$ Denotando os pontos da malha mais grossa $M_1$ por $t_i',$ $i = 1, \ldots, n_1,$ e os pontos da malha mais fina $M$ por $t_j,$ $j=1, \ldots, n,$ com $M\subset M_1$ e $n \geq n_1,$ podemos escrever
 $$
     R_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
 $$
@@ -202,7 +202,7 @@ Temos
 $$
     \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
 $$
-Como $\{H_t\}_{t\geq 0}$ é não antecipativo, temos que cada $H_{t_{j-1}}$ é independente de $W_{t_j} - W_{t_{j-1}}$. Logo,
+Como $\{H_t\}_{t\geq 0}$ é não antecipativo, temos que cada $H_{t_{j-1}}$ é independente de $W_{t_j} - W_{t_{j-1}}.$ Logo,
 $$
     \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[W_{t_j} - W_{t_{j-1}}\right] = 0,
 $$

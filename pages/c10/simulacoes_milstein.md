@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Consideramos, novamente, o movimento browniano geométrico, a título de ilustrar a ordem de convergência do método de Milstein. Enquanto que o método de Euler tem ordem forte $1/2$, o de Milstein tem ordem $1$, conforme podemos verificar nas simulações abaixo.
+Consideramos, novamente, o movimento browniano geométrico, a título de ilustrar a ordem de convergência do método de Milstein. Enquanto que o método de Euler tem ordem forte $1/2,$ o de Milstein tem ordem $1,$ conforme podemos verificar nas simulações abaixo.
 
 Relembramos, aqui, a equação, que tem a forma
 $$
@@ -13,9 +13,9 @@ $$
 X_t = X_0 e^{(\mu + \sigma^2/2)t + \sigma W_t}.
 $$
 
-Tomamos a condição inicial $X_0 = 1.0$ e fixamos $\mu = 2.0$ e o tempo final $T = 2.0$. Variamos o coeficiente de difusão $\sigma$ e o número $M$ de amostras, além do número de pontos da malha, determinando o passo de tempo, que aparece no eixo das abscissas. O erro forte aparece no eixo das ordenadas.
+Tomamos a condição inicial $X_0 = 1.0$ e fixamos $\mu = 2.0$ e o tempo final $T = 2.0.$ Variamos o coeficiente de difusão $\sigma$ e o número $M$ de amostras, além do número de pontos da malha, determinando o passo de tempo, que aparece no eixo das abscissas. O erro forte aparece no eixo das ordenadas.
 
-Novamente, a ordem $p$ do método é estimada via regressão linear. Observe como está próxima de $1$, nos primeiros exemplos, com um número relativamente grande de amostras, enquanto que nos últimos exemplos a ordem fica ligeiramente mascarada pelo baixo número de amostras.
+Novamente, a ordem $p$ do método é estimada via regressão linear. Observe como está próxima de $1,$ nos primeiros exemplos, com um número relativamente grande de amostras, enquanto que nos últimos exemplos a ordem fica ligeiramente mascarada pelo baixo número de amostras.
 
 ```julia:geometric_brownian_EMconv
 #hideall

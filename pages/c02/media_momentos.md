@@ -4,7 +4,7 @@
 
 ## Valor esperado
 
-O **valor esperado**, ou média, de uma variável aleatória, é como uma média ponderada dos possíveis valores da variável, ponderados pela probabilidade de cada realização. No caso de uma variável discreta $X$ (finita ou infinita enumerável) com possíveis valores $\Sigma = \{x_j\}_j$, respectivas probabilidades $0 \leq p_j \leq 1$, com $\sum_j p_j = 1$, o valor esperado de $X$ é
+O **valor esperado**, ou média, de uma variável aleatória, é como uma média ponderada dos possíveis valores da variável, ponderados pela probabilidade de cada realização. No caso de uma variável discreta $X$ (finita ou infinita enumerável) com possíveis valores $\Sigma = \{x_j\}_j,$ respectivas probabilidades $0 \leq p_j \leq 1,$ com $\sum_j p_j = 1,$ o valor esperado de $X$ é
 $$
 \mathbb{E}[X] = \sum_j x_j p_j.
 $$

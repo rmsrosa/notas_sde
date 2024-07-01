@@ -6,7 +6,7 @@ Neste capítulo, vamos considerar equações diferenciais estocásticas da forma
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t, X_t)\mathrm{d}W_t, \qquad t \geq 0,
 $$
-onde $T > 0$, $\{W_t\}_{t\geq 0}$ é um processo de Wiener e $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$.
+onde $T > 0,$ $\{W_t\}_{t\geq 0}$ é um processo de Wiener e $f:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}$ e $g:[0, T]\times \mathbb{R} \times\mathbb{R} \rightarrow \mathbb{R}.$
 
 Junte-se à essa equação uma condição inicial
 $$
@@ -20,13 +20,13 @@ Os termos $\mathrm{d}X_t$ e $\mathrm{d}W_t$ não têm significado por si só. A 
 $$
 X_t = X_0 + \int_0^t f(s, X_s)\mathrm{d}s + \int_0^t g(s, X_s)\mathrm{d}W_s.
 $$
-Sob condições apropriadas em $f$, $g$ e na solução $X_t$, a primeira integral é uma integral de Riemann ou de Lebesgue de um processo definido por $H_t = f(t, X_t)$ e a segunda integral é uma integral de Itô de um processo definido por $G_t = g(t, X_t)$, em relação ao processo $\{W_t\}_{t\geq 0}$. Buscamos condições que garantam a existência de um processo apropriado $\{X_t\}_{t \geq 0}$ que satisfaça essa equação integral.
+Sob condições apropriadas em $f,$ $g$ e na solução $X_t,$ a primeira integral é uma integral de Riemann ou de Lebesgue de um processo definido por $H_t = f(t, X_t)$ e a segunda integral é uma integral de Itô de um processo definido por $G_t = g(t, X_t),$ em relação ao processo $\{W_t\}_{t\geq 0}.$ Buscamos condições que garantam a existência de um processo apropriado $\{X_t\}_{t \geq 0}$ que satisfaça essa equação integral.
 
 ## Nomenclatura
 
-O termo $f = f(t, x)$ é chamado de *drift* e $g = g(t, x)$, de *difusão.*
+O termo $f = f(t, x)$ é chamado de *drift* e $g = g(t, x),$ de *difusão.*
 
-Uma notação comum é escrevê-los como $\mu$ e $\sigma$. Para ver a razão disso, considere o caso com coeficientes determinísticos e condição inicial nula:
+Uma notação comum é escrevê-los como $\mu$ e $\sigma.$ Para ver a razão disso, considere o caso com coeficientes determinísticos e condição inicial nula:
 $$
 \mathrm{d}X_t = \mu(t)\mathrm{d}t + \sigma(t)\mathrm{d}W_t, \quad \left. X_t \right|_{t = 0} = 0.
 $$
@@ -56,9 +56,9 @@ Dessa forma, associamos $\mu$ e $\sigma$ diretamente ao valor esperado e ao desv
 
 ## Tipos de ruído
 
-Uma distinção comum é se o termo $g(t, x)$ de ruído depende ou não de $x$. Caso não dependa, dizemos que temos um **ruído aditivo,** ou seja, quando a equação tem a forma
+Uma distinção comum é se o termo $g(t, x)$ de ruído depende ou não de $x.$ Caso não dependa, dizemos que temos um **ruído aditivo,** ou seja, quando a equação tem a forma
 $$
 \mathrm{d}X_t = f(t, X_t)\mathrm{d}t + g(t)\mathrm{d}W_t.
 $$
 
-Mais geralmente, quando $g(t, x)$ depende explicitamente de $x$, dizemos que temo um **ruído multiplicativo**.
+Mais geralmente, quando $g(t, x)$ depende explicitamente de $x,$ dizemos que temo um **ruído multiplicativo**.

@@ -6,12 +6,12 @@ A distribuição de algumas variáveis aleatórias clássicas (normal, beta, exp
 
 ## Estimando o valor esperado
 
-Considere, por exemplo, uma variável aleatória com distribuição uniforme, $X \sim \mathrm{Unif}(0, 1)$ e seja $Y = X^2$. Nesse caso, podemos calcular o valor esperado de $Y$ diretamente:
+Considere, por exemplo, uma variável aleatória com distribuição uniforme, $X \sim \mathrm{Unif}(0, 1)$ e seja $Y = X^2.$ Nesse caso, podemos calcular o valor esperado de $Y$ diretamente:
 $$
 \mathbb{E}[Y] = \mathbb{E}[X^2] = \int_{-\infty}^\infty X^2 \;\mathrm{d}F(x) = \int_0^1 x^2 \;\mathrm{d}x = \left.\frac{x^3}{3}\right|_0^1 = \frac{1}{3}.
 $$
 
-Vamos agora ver como funciona o método de Monte-Carlo nesse caso. Calculamos um certo número $n$ de amostras $X(\omega_j)$, $j = 1, \ldots, n$, da distribuição uniforme e tomamos o *valor esperado da amostra* $Y_j = Y(\omega_j) = X(\omega_j)^2$:
+Vamos agora ver como funciona o método de Monte-Carlo nesse caso. Calculamos um certo número $n$ de amostras $X(\omega_j),$ $j = 1, \ldots, n,$ da distribuição uniforme e tomamos o *valor esperado da amostra* $Y_j = Y(\omega_j) = X(\omega_j)^2$:
 
 $$
 \mathbb{E}[Y_j] = \mathbb{E}[X(\omega_j)^2] = \frac{1}{n}\sum_{j=1}^n X(\omega_j)^2.

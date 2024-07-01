@@ -4,7 +4,7 @@
 
 Hora de implementarmos os métodos de Euler descritos na seção anterior.
 
-Vamos ver variações do modelo de crescimento natural. Primeiramente, vamos considerar o modelo clássico, de uma equação diferencial ordinária $\mathrm{d}x/\mathrm{d}t = \mu x$, com um parâmetro $\mu$ constante, representando a taxa de crescimento específico. Depois, vamos permitir que $\mu$ seja uma variável aleatória, representando uma incerteza no parâmetro. Em seguida, vamos considerar o caso em que $\mu = \{\mu_t\}_{t\geq 0}$ é um processo aleatório, representando uma variabilidade temporal aleatória no parâmetro. Por último, vamos considerar $\mu$ novamente constante mas com a equação perturbada por um termo estocástico, $\mathrm{d}x = \mu x \mathrm{d}t + \sigma \mathrm{d}W_t$.
+Vamos ver variações do modelo de crescimento natural. Primeiramente, vamos considerar o modelo clássico, de uma equação diferencial ordinária $\mathrm{d}x/\mathrm{d}t = \mu x,$ com um parâmetro $\mu$ constante, representando a taxa de crescimento específico. Depois, vamos permitir que $\mu$ seja uma variável aleatória, representando uma incerteza no parâmetro. Em seguida, vamos considerar o caso em que $\mu = \{\mu_t\}_{t\geq 0}$ é um processo aleatório, representando uma variabilidade temporal aleatória no parâmetro. Por último, vamos considerar $\mu$ novamente constante mas com a equação perturbada por um termo estocástico, $\mathrm{d}x = \mu x \mathrm{d}t + \sigma \mathrm{d}W_t.$
 
 Usaremos apenas dois pacotes do Julia. Um é o [Plots.jl](https://docs.juliaplots.org/stable/), para visualização das soluções. O outro é o [Random](https://docs.julialang.org/en/v1/stdlib/Random/), da biblioteca padrão, apenas para fixar a reprodução das notas (gerar sempre os mesmos conjuntos de números aleatórios, por motivos didáticos e de controle de versão).
 
@@ -26,15 +26,15 @@ $$
 \end{cases}
 $$
 
-Para cada $\mu > 0$ fixo, temos a solução $x(t) = x_0 e^{\mu t}$, para $t \geq 0$.
+Para cada $\mu > 0$ fixo, temos a solução $x(t) = x_0 e^{\mu t},$ para $t \geq 0.$
 
-Resolvendo o problema de valor inicial pelo método de Euler, em um intervalo $t_0 \leq t \leq T$, com $t_0 = 0$, $T > 0$ e um passo de tempo $\Delta t > 0$, obtemos a sequência de valores aproximados
+Resolvendo o problema de valor inicial pelo método de Euler, em um intervalo $t_0 \leq t \leq T,$ com $t_0 = 0,$ $T > 0$ e um passo de tempo $\Delta t > 0,$ obtemos a sequência de valores aproximados
 $$
 x_{n+1} = x_n + \mu \Delta t x_n, \quad n = 0, 1, \dots, N,
 $$
-onde $N$ é um inteiro mais próximo de $T/\Delta t$.
+onde $N$ é um inteiro mais próximo de $T/\Delta t.$
 
-Escolhemos valores para $T$, $\mu$ e $x_0$, além de $t_0=0$:
+Escolhemos valores para $T,$ $\mu$ e $x_0,$ além de $t_0=0$:
 
 ```julia:simulacoes_intro
 t0 = 0.0
@@ -106,7 +106,7 @@ savefig(joinpath(@OUTPUT, "intro_sol_approx.svg")) # hide
 
 ## Modelo com parâmetros aleatórios
 
-Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média $\bar\mu$ e desvio padrão $\sigma$: $\mu = \mathcal{N}(\bar\mu, \sigma^2)$.
+Agora, vamos assumir uma incerteza em relação ao parâmetro, dada por uma distribuição normal, com média $\bar\mu$ e desvio padrão $\sigma$: $\mu = \mathcal{N}(\bar\mu, \sigma^2).$
 
 Façamos uma amostragem de um certo número $M$ de valores.
 
@@ -146,7 +146,7 @@ Consideramos, agora, a equação aleatória
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = \mu_t X_t,
 $$
-onde $\{\mu_t\}_t$ é um processo aleatório dado por $\mu_t = \bar\mu + \sigma \sin(W_t)$, onde $\bar\mu, \sigma > 0$ e $\{W_t\}_{t\geq 0}$ é tal que $W_0 = 0$, e $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$ independentes.
+onde $\{\mu_t\}_t$ é um processo aleatório dado por $\mu_t = \bar\mu + \sigma \sin(W_t),$ onde $\bar\mu, \sigma > 0$ e $\{W_t\}_{t\geq 0}$ é tal que $W_0 = 0,$ e $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$ independentes.
 
 ```julia:simulacoes_intro
 μ̄ = 0.1
@@ -176,7 +176,7 @@ Finalmente, vamos considerar a equação estocástica
 $$
 \mathrm{d}X_t = \bar\mu X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t,
 $$
-onde $\{W_t\}_t$ é um processo aleatório. Mais especificamente, vamos assumir que $\{W_t\}_t$ modela um **movimento Browniano,** tendo incrementos independentes e estacionários, dados por $\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$.
+onde $\{W_t\}_t$ é um processo aleatório. Mais especificamente, vamos assumir que $\{W_t\}_t$ modela um **movimento Browniano,** tendo incrementos independentes e estacionários, dados por $\Delta W_t = W_{t + \Delta t} - W_t \sim \mathcal{N}(0, \Delta t).$
 
 ```julia:simulacoes_intro
 μ̄ = 0.1
@@ -220,11 +220,11 @@ com $\bar\alpha, \sigma_\alpha, \bar\beta, \sigma_\beta, \bar{x}_0, \sigma_{x_0}
 $$
 \mathrm{d}X_t/\mathrm{d}t = (A_t - b X_t) X_t, \quad X_0 = x_0,
 $$
-onde $A_t = a + \sigma\sin(W_t)$ e $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, com $a, b, \sigma > 0$, $0 < x_0 < a / b$, $t_0 = 0$, $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Escolha parâmetros apropriados para que a *média* das realizações exiba a mudança de concavidade.
+onde $A_t = a + \sigma\sin(W_t)$ e $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau),$ com $a, b, \sigma > 0,$ $0 < x_0 < a / b,$ $t_0 = 0,$ $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Escolha parâmetros apropriados para que a *média* das realizações exiba a mudança de concavidade.
 
 4. Resolva, via método de Euler, a equação diferencial estocástica
 $$
 \mathrm{d}X_t = (\alpha - \beta X_t) X_t \mathrm{d}t + \sigma X_t \mathrm{d}W_t, \quad X_0 = x_0,
 $$
-onde $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau)$, com $\alpha, \beta > 0$, $0 < x_0 < \alpha / \beta$, $\sigma > 0$, $t_0 = 0$, $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Novamente, escolha parâmetros apropriados para que a média das realizações exiba a mudança de concavidade.
+onde $W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau),$ com $\alpha, \beta > 0,$ $0 < x_0 < \alpha / \beta,$ $\sigma > 0,$ $t_0 = 0,$ $T > 0$ e $0 < \Delta t \ll T$ de sua escolha. Trace o gráfico de um conjunto de realizações dos parâmetros. Novamente, escolha parâmetros apropriados para que a média das realizações exiba a mudança de concavidade.
 

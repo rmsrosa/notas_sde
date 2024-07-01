@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Vimos uma maneira de definir a integral em relação a processos $\{Y_t\}_t$ cujos caminhos amostrais não são de variação limitada. Mas apenas integrandos da forma $g(t, Y_t)$, para certos tipos particulares de funções, são permitidos ($g = g(t)$ continuamente diferenciáveis ou $g=g(t, y) = \partial_y G(t, y)$). Queremos estender a noção de integral para funções mais gerais e com integrandos da forma $g(t, X_t)$, i.e. envolvendo processos $\{X_t\}_t$ diferentes daquele em relação ao qual estamos integrando. A motivação é prática: queremos integrar em relação a um processo de Wiener.
+Vimos uma maneira de definir a integral em relação a processos $\{Y_t\}_t$ cujos caminhos amostrais não são de variação limitada. Mas apenas integrandos da forma $g(t, Y_t),$ para certos tipos particulares de funções, são permitidos ($g = g(t)$ continuamente diferenciáveis ou $g=g(t, y) = \partial_y G(t, y)$). Queremos estender a noção de integral para funções mais gerais e com integrandos da forma $g(t, X_t),$ i.e. envolvendo processos $\{X_t\}_t$ diferentes daquele em relação ao qual estamos integrando. A motivação é prática: queremos integrar em relação a um processo de Wiener.
 
 A integral definida anteriormente não foi feita diretamente em termos de somas de Riemann ou de integrais de funções simples. Foi definida na forma de dualidade (seja via fórmula de integração por partes, quando $g=g(t)$ é diferenciável, ou via fórmula de mudança de variáveis, quando $g=g(t, y) = \partial_y G(t, y)$). Aqui, por outro lado, vamos investigar um caminho semelhante ao feito em integrais de Riemann-Stieltjes.
 
@@ -15,7 +15,7 @@ $$
 \int_0^T W_t \;\mathrm{d}W_t.
 $$
 
-Observe que, via dualidade com a fórmula de mudança de variáveis, tomando $G(y) = y^2/2$, temos $g(y) = G'(y) = y$ e 
+Observe que, via dualidade com a fórmula de mudança de variáveis, tomando $G(y) = y^2/2,$ temos $g(y) = G'(y) = y$ e 
 $$
 \int_0^T W_t \circ \;\mathrm{d}W_t = G(W_T) - G(W_0) = \frac{W_T}{2}.
 $$
@@ -24,11 +24,11 @@ O que acontece se, por outro lado, considerarmos as somas de Riemann-Stieltjes a
 
 ## Somas de Riemann-Stieltjes
 
-Se os caminhos fossem, quase certamente, de variação limitada, poderiamos definir, para quase todo $\omega$,
+Se os caminhos fossem, quase certamente, de variação limitada, poderiamos definir, para quase todo $\omega,$
 $$
 \int_0^T W_t \;\mathrm{d}W_t = \lim_{\|M\| \rightarrow 0} \sum_{j=1}^{n} W_{\theta_j} (W_{t_j} - W_{t_{j-1}}),
 $$
-onde $0 = t_0 < t_1 < \ldots < t_n = T$ e cada $\theta_j$ é um número arbitrário em $t_{j-1} \leq \theta_j \leq t_j$, $j = 1, \ldots, n$.
+onde $0 = t_0 < t_1 < \ldots < t_n = T$ e cada $\theta_j$ é um número arbitrário em $t_{j-1} \leq \theta_j \leq t_j,$ $j = 1, \ldots, n.$
 
 Mas como $\{W_t\}_{t\geq 0}$ não é de variação limitada, esse limite pode não existir. De fato, vamos ver que esse limite não existe.
 
@@ -36,9 +36,9 @@ Mais precisamente, vamos ver que, fixando $0 \leq \lambda \leq 1$ e escolhendo $
 $$
 \theta_j^\lambda = (1 - \lambda) t_{j-1} + \lambda t_j,
 $$
-o limite acima existe e depende de $\lambda$.
+o limite acima existe e depende de $\lambda.$
 
-Para vermos isso, dada uma partição $M = \{t_j\}_{j=0}^n$ como acima e dado $\lambda$ satisfazendo $0 \leq \lambda \leq 1$, definimos
+Para vermos isso, dada uma partição $M = \{t_j\}_{j=0}^n$ como acima e dado $\lambda$ satisfazendo $0 \leq \lambda \leq 1,$ definimos
 $$
 R_M(\lambda) = \sum_{j=1}^{n} W_{\theta_j^\lambda} (W_{t_j} - W_{t_{j-1}}).
 $$
@@ -47,7 +47,7 @@ $$
 \|M\| = \max_{j=1, \ldots, n}\{t_j - t_{j-1}\}.
 $$
 
-Vamos calcular, a seguir, o limite de $R_M(\lambda)$ quando $\|M\|\rightarrow 0,$ no caso $\lambda = 0$, depois no caso $\lambda = 1$ e, finalmente, no caso geral $0 \leq \lambda \leq 1$.
+Vamos calcular, a seguir, o limite de $R_M(\lambda)$ quando $\|M\|\rightarrow 0,$ no caso $\lambda = 0,$ depois no caso $\lambda = 1$ e, finalmente, no caso geral $0 \leq \lambda \leq 1.$
 
 ### Caso $\lambda = 0$
 
@@ -56,7 +56,7 @@ $$
 R_M(0) = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
 $$
 
-Para cada $j$, escrevemos
+Para cada $j,$ escrevemos
 $$
 \begin{align*}
 W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) & = W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) \pm \frac{1}{2}W_{t_j} (W_{t_j} - W_{t_{j-1}}) \\
@@ -83,7 +83,7 @@ $$
 \mathbb{E}\left[\left(\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right)^2\right] = \sum_{i, j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) + 2\sum_{j = 1}^n (t_j - t_{j-1})^2.
 $$
 
-Naquela seção, usamos, em seguida, que as malhas são diádicas, para obter a convergência, quase certamente, para $T$. Aqui, temos uma malha qualquer e vamos nos contentar com a convergência em probabilidade. De fato, podemos escrever, mesmo para uma malha qualquer, que
+Naquela seção, usamos, em seguida, que as malhas são diádicas, para obter a convergência, quase certamente, para $T.$ Aqui, temos uma malha qualquer e vamos nos contentar com a convergência em probabilidade. De fato, podemos escrever, mesmo para uma malha qualquer, que
 $$
 \sum_{i, j = 1}^n (t_i - t_{i-1})(t_j - t_{j-1}) = \sum_{i = 1}^n (t_i - t_{i-1}) \sum_{j = 1}^n (t_j - t_{j-1}) = T^2
 $$
@@ -108,7 +108,7 @@ Juntando os resultados dos dois somatórios, obtemos, ao refinarmos a malha, a c
 $$
 R_M(0) \rightarrow \frac{1}{2}W_T^2 - \frac{1}{2}T,
 $$
-no limite $\|M\| \rightarrow 0$.
+no limite $\|M\| \rightarrow 0.$
 
 Observe que, no limite,
 $$
@@ -153,7 +153,7 @@ $$
 R_M(1) \rightarrow \frac{1}{2}W_T^2 + \frac{1}{2}T.
 $$
 
-Aqui já vemos que o limite depende de $\lambda$.
+Aqui já vemos que o limite depende de $\lambda.$
 
 ### Caso geral $0 \leq \lambda \leq 1$
 
@@ -204,18 +204,18 @@ em probabilidade.
 
 ## Considerações finais
 
-No caso mais geral, ao considerarmos um integrando da forma $g(t, X_t, Y_t)$ em relação a um processo $\{Y_t\}_t$, a escolha $\lambda = 0$ nos levará à *integral de Itô*. Nesse caso, temos, como obtido acima,
+No caso mais geral, ao considerarmos um integrando da forma $g(t, X_t, Y_t)$ em relação a um processo $\{Y_t\}_t,$ a escolha $\lambda = 0$ nos levará à *integral de Itô*. Nesse caso, temos, como obtido acima,
 $$
 \int_0^T W_t \;\mathrm{d}W_t = \frac{1}{2}W_T - \frac{1}{2}T.
 $$
-Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c06/integral_dualidade}}. A definição via dualidade coincide com a escolha $\lambda = 1/2$, que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa, sim, coincide com a definição via dualidade, nos casos em que aquela está definida:
+Observe que isso **não** coincide com o resultado pela definição via dualidade, vista em na Seção {{link_section pages/c06/integral_dualidade}}. A definição via dualidade coincide com a escolha $\lambda = 1/2,$ que nos levará à *integral de Stratonovich*. Para evitar confusões, denotamos essa integral de forma diferente e essa, sim, coincide com a definição via dualidade, nos casos em que aquela está definida:
 $$
 \int_0^T W_t \circ\mathrm{d}W_t = \frac{1}{2}W_T.
 $$
 
 ## Exercícios
 
-1. No caso geral $0\leq \lambda \leq 1$, mostre que, ao refinarmos a malha, os seguintes limites valem em probabilidade:
+1. No caso geral $0\leq \lambda \leq 1,$ mostre que, ao refinarmos a malha, os seguintes limites valem em probabilidade:
 $$
 \begin{align*}
 \sum_{j=1}^{n} (W_{\theta_j^\lambda} - W_{t_{j-1}})^2 & \rightarrow \lambda T\\
@@ -239,7 +239,7 @@ $$
 $$
 \int_0^T W_t\;\mathrm{d}W_t \approx \sum_{j=1}^n W_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
 $$
-para calcular a integral para um certo número $m$ de amostras, em uma malha bem fina (por exemplo, $m = 100,$ $n = 100,$ $T = 1,$ $t_j = jT/n,$ $W_{t_j}(\omega_i)$, $i = 1, \ldots, m,$), faça um histograma dessas aproximações e compare com o histograma de
+para calcular a integral para um certo número $m$ de amostras, em uma malha bem fina (por exemplo, $m = 100,$ $n = 100,$ $T = 1,$ $t_j = jT/n,$ $W_{t_j}(\omega_i),$ $i = 1, \ldots, m,$), faça um histograma dessas aproximações e compare com o histograma de
 $$
     \frac{W_T^2}{2} - \frac{T}{2}
 $$

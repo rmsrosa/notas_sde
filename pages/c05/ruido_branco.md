@@ -6,7 +6,7 @@ Como já vimos, o conceito de processo do tipo ruído branco é delicado. Deve s
 $$
     c(\tau) = \sigma_0^2\delta_0.
 $$
-Assim, o seu espectro $\hat c(\varpi)$ é, de fato, constante (usamos $\varpi$, aqui, para denotar a frequência, já que $\omega$ é usado como elemento do espaço amostral):
+Assim, o seu espectro $\hat c(\varpi)$ é, de fato, constante (usamos $\varpi,$ aqui, para denotar a frequência, já que $\omega$ é usado como elemento do espaço amostral):
 $$
 \hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{\sqrt{2\pi}}\varpi^2, \quad \forall \varpi \in \mathbb{R}.
 $$
@@ -32,7 +32,7 @@ de modo que os coeficientes de Fourier são constantes.
 
 A outra conexão pode ser vista mostrando-se que os processos obtidos via diferenças finitas de um processo de Wiener tem covariância convergindo para um delta de Dirac. Para isso, seguimos a derivação feita no Capítulo 3.8 de Higham & Kloeden (2021).
 
-Vamos considerar as diferenças finitas $\{D^h_t\}_{t\geq 0}$ de um processo de Wiener $\{W_t\}_{t\geq 0}$, para cada $h>0:$
+Vamos considerar as diferenças finitas $\{D^h_t\}_{t\geq 0}$ de um processo de Wiener $\{W_t\}_{t\geq 0},$ para cada $h>0:$
 $$
 D^h_t = \frac{W_{t+h} - W_t}{h}.
 $$
@@ -48,19 +48,19 @@ Usando a expressão para a covariância de um processo de Wiener, obtemos
 $$
 c_h(t, s) = \frac{1}{h^2}\left( \min\{t + h, s + h\} - \min\{t, s + h\} - \min\{t + h, s\} + \min\{t, s\}\right).
 $$
-Observe que, se $t \leq s - h$, então
+Observe que, se $t \leq s - h,$ então
 $$
 c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - (t + h) + t \right) = 0.
 $$
-Se $s - h \leq t \leq s$, então
+Se $s - h \leq t \leq s,$ então
 $$
 c_h(t, s) = \frac{1}{h^2}\left( (t + h) - t - s + t \right) = \frac{t + h - s}{h^2},
 $$
-que é linearmente crescente, de $0$ a $1/h$. Se $s \leq t \leq s + h$, então
+que é linearmente crescente, de $0$ a $1/h.$ Se $s \leq t \leq s + h,$ então
 $$
 c_h(t, s) = \frac{1}{h^2}\left( (s + h) - t - s + s \right) = \frac{h + s - t}{h^2},
 $$
-que é linearmente decrescente, de $1/h$ a $0$. Por último, se $t \geq s + h$, então
+que é linearmente decrescente, de $1/h$ a $0.$ Por último, se $t \geq s + h,$ então
 $$
 c_h(t, s) = \frac{1}{h^2}\left( (s + h) - (s + h) - s + s \right) = 0.
 $$

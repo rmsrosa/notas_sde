@@ -10,7 +10,7 @@ Por exemplo, se $X$ é uma variável aleatória com espaço de eventos $(\Sigma_
 $$
 Y = f(X)
 $$
-denota uma variável aleatória com eventos em $\Sigma_2$. Dado um evento $E \in \mathcal{E}_2$, a probabilidade de $Y$ assumir valores em $E$ é dada por
+denota uma variável aleatória com eventos em $\Sigma_2.$ Dado um evento $E \in \mathcal{E}_2,$ a probabilidade de $Y$ assumir valores em $E$ é dada por
 $$
 \mathbb{P}_Y(Y \in E) = \mathbb{P}_X(f(X) \in E) = \mathbb{P}_X(X \in f^{-1}(E)),
 $$
@@ -40,7 +40,7 @@ $$
 \mathbb{E}[(Y - \mathbb{E}[Y])^2] = \mathbb{E}[(aX + b - a\mu - b)^2] = a^2\mathbb{E}[(X-\mu)^2] = a^2\sigma^2.
 $$
 
-Mas isso não mostra que $Y$ é uma normal. Para ver isso, seja $F$ a função de probabilidade acumulada de $X$, i.e.
+Mas isso não mostra que $Y$ é uma normal. Para ver isso, seja $F$ a função de probabilidade acumulada de $X,$ i.e.
 $$
 F_X(x) = \mathbb{P}(X \leq x) = \frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^x e^{- \frac{(\xi - \mu)^2}{2\sigma^2}}\;\mathrm{d}\xi.
 $$
@@ -48,39 +48,39 @@ Então a função de probabilidade acumulada de $Y$ é
 $$
 F_Y(y) = \mathbb{P}(Y \leq y) = \mathbb{P}(aX + b \leq y) = \mathbb{P}\left(X \leq \frac{y - b}{a}\right) = F_X\left(\frac{y - b}{a}\right) = \frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^{\frac{y - b}{a}} e^{- \frac{(\xi - \mu)^2}{2\sigma^2}}\;\mathrm{d}\xi.
 $$
-Fazendo $\eta = b + a\xi$, de modo que $(\eta - b)/a = \xi$ e $\mathrm{d}\xi = \mathrm{d}\eta / a$, temos
+Fazendo $\eta = b + a\xi,$ de modo que $(\eta - b)/a = \xi$ e $\mathrm{d}\xi = \mathrm{d}\eta / a,$ temos
 $$
 F_Y(y) = \frac{1}{\sqrt{2\pi a^2\sigma^2}}\int_{-\infty}^y e^{- \frac{(\eta - b - a\mu)^2}{2a^2\sigma^2}}\;\mathrm{d}\eta.
 $$
-Isso prova que $Y \sim \mathcal{N}(b + a\mu, a^2\sigma^2)$.
+Isso prova que $Y \sim \mathcal{N}(b + a\mu, a^2\sigma^2).$
 
 ## Transformação de várias variáveis aleatórias
 
-Também podemos fazer isso para várias variáveis aleatórias, digamos $X_1, \ldots, X_n$, em espaços de probabilidades $(\Omega_j, \mathcal{A}_j, \mathbb{P}_{X_1})$, com valores em $(\Sigma_j, \mathcal{E}_j)$, através de uma função mensurável
+Também podemos fazer isso para várias variáveis aleatórias, digamos $X_1, \ldots, X_n,$ em espaços de probabilidades $(\Omega_j, \mathcal{A}_j, \mathbb{P}_{X_1}),$ com valores em $(\Sigma_j, \mathcal{E}_j),$ através de uma função mensurável
 $$
 f: \Sigma_1 \times \cdots \times \Sigma_2 \rightarrow \Sigma,
 $$
-em um espaço de eventos $(\Sigma, \mathcal{E})$. O caso mais comum é quando todos os espaços de amostras são idênticos e quando todos os espaços de eventos também são idênticos, mas isso não é necessário.
+em um espaço de eventos $(\Sigma, \mathcal{E}).$ O caso mais comum é quando todos os espaços de amostras são idênticos e quando todos os espaços de eventos também são idênticos, mas isso não é necessário.
 
 Com isso, podemos definir uma variável aleatória
 $$
 Y = f(X_1, \ldots, X_n).
 $$
-Nesse caso, dado um evento $E\in \mathcal{E}$, temos
+Nesse caso, dado um evento $E\in \mathcal{E},$ temos
 $$
 \mathbb{P}_Y(Y \in E) = \mathbb{P}((X_1, \dots, X_n) \in f^{-1}(E)),
 $$
-onde $\mathbb{P}$ se refere à probabilidade conjunta $\mathbb{P} = \mathbb{P}_1 \times \cdots \times \mathbb{P}_n$, na $\sigma$-algebra $\mathcal{A} = \mathcal{A}_1 \times \cdots \mathcal{A}_n$ gerada no espaço produto $\Omega = \Omega_1 \times \cdots \times \Omega_n$.
+onde $\mathbb{P}$ se refere à probabilidade conjunta $\mathbb{P} = \mathbb{P}_1 \times \cdots \times \mathbb{P}_n,$ na $\sigma$-algebra $\mathcal{A} = \mathcal{A}_1 \times \cdots \mathcal{A}_n$ gerada no espaço produto $\Omega = \Omega_1 \times \cdots \times \Omega_n.$
 
-De fato, este pode ser visto como um caso particular do primeiro, considerando-se a variável aleatória vetorial $X = (X_1, \ldots, X_n)$ em $(\Omega, \mathcal{A}, \mathbb{P})$, com $f:\Sigma_1 \times \cdots \times \Sigma_n \rightarrow \Sigma$.
+De fato, este pode ser visto como um caso particular do primeiro, considerando-se a variável aleatória vetorial $X = (X_1, \ldots, X_n)$ em $(\Omega, \mathcal{A}, \mathbb{P}),$ com $f:\Sigma_1 \times \cdots \times \Sigma_n \rightarrow \Sigma.$
 
 ## Combinação linear de distribuições normais independentes
 
-Como exemplo, sejam $X_1$ e $X_2$ duas distribuições normais independentes, digamos $X_1, X_2 \sim \mathcal{N}(0, 1)$. Definimos
+Como exemplo, sejam $X_1$ e $X_2$ duas distribuições normais independentes, digamos $X_1, X_2 \sim \mathcal{N}(0, 1).$ Definimos
 $$
 X = a_1 X_1 + a_2 X_2,
 $$
-onde $a_1, a_2 \in \mathbb{R}$. Dados $\omega = (\omega_1, \omega_2)$ no espaço amostral $\Omega_1 \times \Omega_2$, temos uma realização
+onde $a_1, a_2 \in \mathbb{R}.$ Dados $\omega = (\omega_1, \omega_2)$ no espaço amostral $\Omega_1 \times \Omega_2,$ temos uma realização
 $$
 X(\omega) = a_1 X_1(\omega_1) + a_2 X(\omega_2).
 $$
@@ -112,7 +112,7 @@ $$
 
 Quanto ao fato da combinação linear ser uma normal, há várias demonstrações disso, por exemplo através de cálculo explícito da função acumulada de probabilidade ou da função característica. Mas a mais simples e elegante usa argumentos de simetria da normal, mais precisamente de argumentos de simetria por rotação da função densidade de probabilidades conjuntas de normais independentes com mesma variância. Mesmo que elas não tenham a mesma variância, podemos reescaloná-las. Vamos seguir, aqui, a demonstração como feita em Eisenberg & Sullivan (2008). Veja esse mesmo artigo para comentários sobre outras demonstrações.
 
-Se $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ e $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)$, então podemos escrever $X_1 = \mu_1 + \sigma_1 Y_1$ e $X_2 = \mu_2 + \sigma_2 Y_2$, com $Y_1, Y_2 \sim \mathcal{N}(0, 1)$. Assim,
+Se $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ e $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2),$ então podemos escrever $X_1 = \mu_1 + \sigma_1 Y_1$ e $X_2 = \mu_2 + \sigma_2 Y_2,$ com $Y_1, Y_2 \sim \mathcal{N}(0, 1).$ Assim,
 $$
 X = a_1\mu_1 + a_2\mu_2 + a_1\sigma_1 Y_1 + a_2\sigma_2 Y_2.
 $$
@@ -124,7 +124,7 @@ Então basta mostrar que
 $$
 b_1 Y_1 + b_2 Y_2 \sim \mathcal{N}(0, b_1^2 + b_2^2),
 $$
-com $b_1 = a_1\sigma_1$ e $b_2 = a_2\sigma_2$. Para provar isso, trabalhamos com a função acumulada de probabilidade (conjunta)
+com $b_1 = a_1\sigma_1$ e $b_2 = a_2\sigma_2.$ Para provar isso, trabalhamos com a função acumulada de probabilidade (conjunta)
 $$
 F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x).
 $$
@@ -132,7 +132,7 @@ Como a função densidade de probabilidades da distribuição conjunta é simét
 $$
 d = \frac{x}{\sqrt{b_1^2 + b_2^2}}
 $$
-da origem, então podemos fazer uma rotação do semiplano $b_1 Y_1 + b_2 Y_2 \leq x$ para o semiplano $Y_1 \leq d$.
+da origem, então podemos fazer uma rotação do semiplano $b_1 Y_1 + b_2 Y_2 \leq x$ para o semiplano $Y_1 \leq d.$
 
 ```julia:combinacao_linear_normais_rotacao
 #hideall
@@ -170,7 +170,7 @@ Fazendo isso, teremos a mesma probabilidade:
 $$
 F(x) = \mathbb{P}(b_1 Y_1 + b_2 Y_2 \leq x) = \mathbb{P}(Y_1 \leq d) = F_{Y_1}\left(\frac{x}{\sqrt{b_1^2 + b_2^2}}\right) = F_{(b_1^2 + b_2^2)Y_1}(x).
 $$
-Ou seja, $F$ é igual à função de densidade de probabilidades da normal $\mathcal{N}(0, b_1^2 + b_2^2)$, concidindo, portanto, com essa normal.
+Ou seja, $F$ é igual à função de densidade de probabilidades da normal $\mathcal{N}(0, b_1^2 + b_2^2),$ concidindo, portanto, com essa normal.
 
 ```julia:combinacao_linear_normais
 #hideall
@@ -202,12 +202,12 @@ $$
 Z = X + Y, \qquad W = X - Y.
 $$
 
-Primeiramente, como combinações lineares de normais, temos, pelo que acabamos de ver, que $Z$ e $W$ também são normais. Como $X$ e $Y$ têm média zero e variância $\sigma^2$, então $Z$ e $W$ também têm média zero e variância $a^2\sigma_1^2 + b^2\sigma_2^2 = 2\sigma^2$, onde $\sigma_1 = \sigma_2 = \sigma$, $a = 1$ e $b = \pm 1$. Assim,
+Primeiramente, como combinações lineares de normais, temos, pelo que acabamos de ver, que $Z$ e $W$ também são normais. Como $X$ e $Y$ têm média zero e variância $\sigma^2,$ então $Z$ e $W$ também têm média zero e variância $a^2\sigma_1^2 + b^2\sigma_2^2 = 2\sigma^2,$ onde $\sigma_1 = \sigma_2 = \sigma,$ $a = 1$ e $b = \pm 1.$ Assim,
 $$
 Z, W \sim \mathcal{N}(0, 2\sigma^2).
 $$
 
-Agora, para ver a independência entre $Z$ e $W$, sabendo que a média de cada uma das variáveis é zero, calculamos
+Agora, para ver a independência entre $Z$ e $W,$ sabendo que a média de cada uma das variáveis é zero, calculamos
 $$
     \mathbb{E}[ZW] = \mathbb{E}[(X+Y)(X-Y)] = \mathbb{E}[X^2 - Y^2] = \mathbb{E}[X^2] - \mathbb{E}[Y^2] = \sigma^2 - \sigma^2 = 0,
 $$
@@ -215,7 +215,7 @@ nos dando que a correlação entre as duas variáveis é nula e portanto elas s�
 
 ## Marginais normais sem vetor ser normal
 
-Um vetor aleatório pode ter marginais normais sem ele ser uma normal multivariada. Considere, por exemplo, $X \sim \mathcal{N}(0, 1)$ e $Y = \pm X = (2B - 1)X,$ onde $B \sim \operatorname{Bernoulli}(1/2)$. Temos
+Um vetor aleatório pode ter marginais normais sem ele ser uma normal multivariada. Considere, por exemplo, $X \sim \mathcal{N}(0, 1)$ e $Y = \pm X = (2B - 1)X,$ onde $B \sim \operatorname{Bernoulli}(1/2).$ Temos
 $$
     \mathbb{P}(Y \leq y) = \frac{1}{2}\mathbb{P}(Y \leq y | B = 0) + \frac{1}{2}\mathbb{P}(Y \leq y | B = 1) = \frac{1}{2}\mathbb{P}(X \leq y) + \frac{1}{2}\mathbb{P}(-X \leq y).
 $$
@@ -231,4 +231,4 @@ mostrando que a distribuição de $Y$ é normal. Mas a distribuição do vetor a
 
 ## Exercícios
 
-1. Seja $Y$ uma variável aleatória real e defina $X = \sin(Y)$. Suponha que $\mathbb{E}[Y] = 0$. Mostre que $\mathbb{E}[X] = 0$ e $\mathrm{Var}(X) \leq \mathrm{Var}(Y)$.
+1. Seja $Y$ uma variável aleatória real e defina $X = \sin(Y).$ Suponha que $\mathbb{E}[Y] = 0.$ Mostre que $\mathbb{E}[X] = 0$ e $\mathrm{Var}(X) \leq \mathrm{Var}(Y).$

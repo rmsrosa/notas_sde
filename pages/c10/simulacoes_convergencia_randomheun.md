@@ -8,7 +8,7 @@ No caso de uma equação diferencial ordinária
 $$
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x),
 $$
-a partir de uma aproximação $x_{j-1}$ da solução $x(t_{j-1})$ em um instante $t_{j-1}$, lembramso que o *método de Euler* nos dá a aproximação $x_j = x(t_{j-1}) + \Delta x_j$ no instante $t_j = t_{j-1} + \Delta t$ através de
+a partir de uma aproximação $x_{j-1}$ da solução $x(t_{j-1})$ em um instante $t_{j-1},$ lembramso que o *método de Euler* nos dá a aproximação $x_j = x(t_{j-1}) + \Delta x_j$ no instante $t_j = t_{j-1} + \Delta t$ através de
 $$
 \frac{\Delta x_j}{\Delta t} = f(t_{j-1}, x_{j-1}),
 $$
@@ -21,7 +21,7 @@ No **método de Heun,** usamos esse mesmo valor como uma *previsão* inicial
 $$
 \tilde x_j = x_{j-1} + \Delta t f(t_{j-1}, x_{j-1})
 $$
-e, em seguida, tomamos a média dos passos que seriam obtidos usando-se as inclinações $f(t_{j-1}, x_{j-1})$, em $t_{j-1}$, e $f(t_j, \tilde x_j)$, em $t_j$:
+e, em seguida, tomamos a média dos passos que seriam obtidos usando-se as inclinações $f(t_{j-1}, x_{j-1}),$ em $t_{j-1},$ e $f(t_j, \tilde x_j),$ em $t_j$:
 $$
 x_j = x_{j-1} + \frac{\Delta t}{2} \left(f(t_{j-1}, x_{j-1}) + f(t_j, \tilde x_j)\right).
 $$
@@ -40,10 +40,10 @@ $$
 X_j^n = X_{j-1}^n + \frac{\Delta t}{2} \left(f(t_{j-1}, X_{j-1}^n, Y_{t_{j-1}}) + f(t_{j-1} + \Delta t, X_{j-1}^n + \Delta t f(t_{j-1}, X_{j-1}^n, Y_{t_{j-1}}))\right).
 $$
 
-O método de Euler é um método de ordem um, enquanto que o método de Heun é um método de ordem dois. Mas isso depende da regularidade da função $f(t, x)$, tanto no contexto determinístico como no contexto de equações aleatórias. Para uma equação aleatória definida em termos de um processo de Wiener, esperamos uma regularidade temporal do tipo Hölder com expoente 1/2, nos levando a uma convergência forte de ordem 1.5.
+O método de Euler é um método de ordem um, enquanto que o método de Heun é um método de ordem dois. Mas isso depende da regularidade da função $f(t, x),$ tanto no contexto determinístico como no contexto de equações aleatórias. Para uma equação aleatória definida em termos de um processo de Wiener, esperamos uma regularidade temporal do tipo Hölder com expoente 1/2, nos levando a uma convergência forte de ordem 1.5.
 
 
-Ilustramos, a seguir, essa dependência da ordem de convergência na regularidade do processo $\{Y_t\}_{t\geq 0}$.
+Ilustramos, a seguir, essa dependência da ordem de convergência na regularidade do processo $\{Y_t\}_{t\geq 0}.$
 
 ## Simulações
 
@@ -51,9 +51,9 @@ Vamos considerar, para efeito de ilustração, a equação
 $$
 \frac{\mathrm{d}X_t}{\mathrm{d}t} = - \mu (1 + Y_t) X_t,
 $$
-com diferentes processos estocásticos $\{Y_t\}_{t\geq 0}$, variando a regulardiade dos seus caminhos amostrais.
+com diferentes processos estocásticos $\{Y_t\}_{t\geq 0},$ variando a regulardiade dos seus caminhos amostrais.
 
-Mais precisamente, dado $\theta > 0$, consideramos
+Mais precisamente, dado $\theta > 0,$ consideramos
 $$
 Y_t = \sin(2\pi U t)^\theta \cos(2\pi U t),
 $$
@@ -62,7 +62,7 @@ $$
 U \sim \mathrm{Unif}(0, 1).
 $$
 
-Observe que, para cada frequência amostrada $U(\omega) = \omega \in [0, 1)$, obtemos um caminho amostral
+Observe que, para cada frequência amostrada $U(\omega) = \omega \in [0, 1),$ obtemos um caminho amostral
 $$
 Y_t(\omega) = \sin(2\pi\omega t)^\theta \cos(2\pi \omega t), \qquad t \in \mathbb{R}.
 $$
@@ -81,13 +81,13 @@ $$
 X_t = X_0 e^{-\mu (t + Z_t)}.
 $$
 
-Com a solução exata em mãos, usamos o método de Monte-Carlo para resolver a equação pelos esquemas de Euler e de Heun, para um certo número $M\in \mathbb{N}$ de amostras do processo de Wiener, obtendo caminhos amostrais $\{X_j^n(\omega_m)\}_{j = 1}^n$. Ao final, podemos estimar o erro forte via
+Com a solução exata em mãos, usamos o método de Monte-Carlo para resolver a equação pelos esquemas de Euler e de Heun, para um certo número $M\in \mathbb{N}$ de amostras do processo de Wiener, obtendo caminhos amostrais $\{X_j^n(\omega_m)\}_{j = 1}^n.$ Ao final, podemos estimar o erro forte via
 $$
 e_n^{\mathrm{forte}} = \max_{j = 0, \ldots, n} \mathbb{E}_m\left[ \left| X_j^n - X_{t_j}^n\right|\right] = \max_{j=0, \ldots, n}\frac{1}{M}\sum_{m=1}^M \left| X_j^n(\omega_m) - X_{t_j}(\omega_m)\right|,
 $$
-onde o valor esperado é tomado em relação às amostras $\omega_1, \ldots, \omega_M$.
+onde o valor esperado é tomado em relação às amostras $\omega_1, \ldots, \omega_M.$
 
-Nas simulações abaixo, fixamos os valores de $\mu$, $T$, $M$ e variamos o valor do parâmetro de regularidade $\theta$, para ilustrar os efeitos da regularidade na ordem de convergência. Fazemos uma regressão linear de mínimos quadrados nos $(\Delta t^n, e_n^{\mathrm{forte}})$ para encontrar $\ln(C)$ e a ordem de convergência $p$ tais que
+Nas simulações abaixo, fixamos os valores de $\mu,$ $T,$ $M$ e variamos o valor do parâmetro de regularidade $\theta,$ para ilustrar os efeitos da regularidade na ordem de convergência. Fazemos uma regressão linear de mínimos quadrados nos $(\Delta t^n, e_n^{\mathrm{forte}})$ para encontrar $\ln(C)$ e a ordem de convergência $p$ tais que
 $$
 \ln(e_n^{\mathrm{forte}}) \approx \ln(C) + p \ln(\Delta t_n),
 $$
@@ -95,7 +95,7 @@ de modo que
 $$
 e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 $$
-correspondendo a uma taxa de convergência da ordem de $\Delta t^p$.
+correspondendo a uma taxa de convergência da ordem de $\Delta t^p.$
 
 Como os caminhos amostrais são relativamente bem comportados, não é necessário tomarmos um número grande amostras para visualizarmos a taxa correta de convergência.
 
@@ -188,12 +188,12 @@ Primeiramente, observe que, nesse caso, a regularidade não afeta a ordem de con
 \fig{rode_EMconvfig3}
 \fig{rode_EMconvfig4}
 
-Já o método de Euler precisa de regularidade suficiente da solução para apresentar o sua maior taxa de convergência, que é dois. Nos dois casos $\theta = 1$ e $\theta = 2$, há regularidade suficiente da solução (duas vezes continuamente diferenciável), de modo que a ordem de convergência é dois
+Já o método de Euler precisa de regularidade suficiente da solução para apresentar o sua maior taxa de convergência, que é dois. Nos dois casos $\theta = 1$ e $\theta = 2,$ há regularidade suficiente da solução (duas vezes continuamente diferenciável), de modo que a ordem de convergência é dois
 
 \fig{rode_Heunconvfig1}
 \fig{rode_Heunconvfig2}
 
-Agora, para $\theta = 2/3$ e $\theta = 1/3$, a ordem de convergência é menor, sendo respectivamente $5/3$ e $4/3$. Em geral, se $t \mapsto f(t, x, Y_t)$ é Hölder contínua em $t$, para $x$ fixo, com expoente $0 < \theta < 1$, então os caminhos amostrais da solução são de classe $\mathcal{C}^{1 + \theta}$, ou seja, continuamente diferenciáveis, com derivada Hölder contínua com expoente $\theta$. Nesse caso, a ordem de convergência do método é $1 + \theta$.
+Agora, para $\theta = 2/3$ e $\theta = 1/3,$ a ordem de convergência é menor, sendo respectivamente $5/3$ e $4/3.$ Em geral, se $t \mapsto f(t, x, Y_t)$ é Hölder contínua em $t,$ para $x$ fixo, com expoente $0 < \theta < 1,$ então os caminhos amostrais da solução são de classe $\mathcal{C}^{1 + \theta},$ ou seja, continuamente diferenciáveis, com derivada Hölder contínua com expoente $\theta.$ Nesse caso, a ordem de convergência do método é $1 + \theta.$
 
 \fig{rode_Heunconvfig3}
 \fig{rode_Heunconvfig4}

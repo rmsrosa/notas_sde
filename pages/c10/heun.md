@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Este método melhora a ordem de convergência para $p = 2$, no caso determinístico. Em casos especiais de ruídos suaves (e.g. processos de transporte com funções suaves) essa ordem $p = 2$ também ocorre em equações aleatórias (veja Neckel & Rupp (2013), Seções 7.3.2 e 7.3.4). Quando o ruído não tem regularidade suficiente, a ordem de convergência para equações aleatórias é menor. No caso estocástico, porém, o método não converge (veja Higham & Kloeden (2021), Seção 17.3).
+Este método melhora a ordem de convergência para $p = 2,$ no caso determinístico. Em casos especiais de ruídos suaves (e.g. processos de transporte com funções suaves) essa ordem $p = 2$ também ocorre em equações aleatórias (veja Neckel & Rupp (2013), Seções 7.3.2 e 7.3.4). Quando o ruído não tem regularidade suficiente, a ordem de convergência para equações aleatórias é menor. No caso estocástico, porém, o método não converge (veja Higham & Kloeden (2021), Seção 17.3).
 
 ## Método de Heun no caso determinístico
 
@@ -56,7 +56,7 @@ $$
 $$
 já que a integral estocástica tem esperança nula.
 
-Já a aproximação pelo método de Heun, considerando que $f(t, x) = 0$ e $g(t, x) = 2x$, nos dá
+Já a aproximação pelo método de Heun, considerando que $f(t, x) = 0$ e $g(t, x) = 2x,$ nos dá
 $$
 \begin{align*}
 X_j & = X_{j-1} + \frac{1}{2} \left( 2X_{j-1} + 2(X_{j-1} + 2X_{j-1}\Delta W_{j-1}) \right)\Delta W_{j-1} \\

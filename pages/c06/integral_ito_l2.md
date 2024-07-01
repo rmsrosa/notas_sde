@@ -8,7 +8,7 @@ $$
 $$
 a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam progressivamente mensuráveis e de quadrado integrável, mas não necessariamente com caminhos contínuos.
 
-Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T)$, então a *integral de Itô*
+Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T),$ então a *integral de Itô*
 $$
 \int_0^T H_t \;\mathrm{d}Z_t
 $$
@@ -20,16 +20,16 @@ No caso de $\{H_t\}_{t\geq 0}$ ser progressivamente mensurável e de quadrado in
 
 ### Processo escada e integral de Itô
 
-Um processo $\{H_t\}_{t\geq 0}$ é do tipo escada quando é "constante por partes", i.e. quando existe uma partição $0 = t_0 < t_1 < \ldots < t_n = T$ tal que $H_t$ seja constante, $H_t = H_{t_{j-1}}$, em cada intervalo $t_{j-1} \leq t < t_j$. Para esses processo, define-se, naturalmente, a integral de Itô por
+Um processo $\{H_t\}_{t\geq 0}$ é do tipo escada quando é "constante por partes", i.e. quando existe uma partição $0 = t_0 < t_1 < \ldots < t_n = T$ tal que $H_t$ seja constante, $H_t = H_{t_{j-1}},$ em cada intervalo $t_{j-1} \leq t < t_j.$ Para esses processo, define-se, naturalmente, a integral de Itô por
 $$
 \int_0^T H_t \;\mathrm{d}W_t = \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
 $$
 
 ### Integral de Itô via aproximação por processo escada
 
-Para um processo $\{H_t\}_{t \geq 0}$ que seja progressivamente mensurável e em $L^2((0, T)\times \Omega)$, aproximamos o processo por processos $\{H_t^m\}_{t \geq 0}$ do tipo escada e adaptados a $\{W_t\}_{t\geq 0}$. Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.
+Para um processo $\{H_t\}_{t \geq 0}$ que seja progressivamente mensurável e em $L^2((0, T)\times \Omega),$ aproximamos o processo por processos $\{H_t^m\}_{t \geq 0}$ do tipo escada e adaptados a $\{W_t\}_{t\geq 0}.$ Por serem processos escada, em particular contínuos à direita, esses processos são progressivamente mensuráveis também. Para estes processos, a integral de Itô está bem definida através do somatório.
 
-O passo seguinte é mostrar que as integrais de Itô dos processos escada convergem em média quadrática. Isso é obtido graças a duas propriedades fundamentais da integral de Itô em relação a $\{W_t\}_{t \geq 0}$, a saber que o valor esperado é nulo e que a *isometria de Itô* vale para processos escada (veremos isso em seguida):
+O passo seguinte é mostrar que as integrais de Itô dos processos escada convergem em média quadrática. Isso é obtido graças a duas propriedades fundamentais da integral de Itô em relação a $\{W_t\}_{t \geq 0},$ a saber que o valor esperado é nulo e que a *isometria de Itô* vale para processos escada (veremos isso em seguida):
 $$
 \mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t\right)^2 \right] = \mathbb{E}\left[ \int_0^T\left(H_t^m\right)^2 \;\mathrm{d}t\right]  = \int_0^T\mathbb{E}\left[ \left(H_t^m\right)^2 \right] \;\mathrm{d}t
 $$
@@ -43,7 +43,7 @@ $$
 \mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] = \int_0^T \mathbb{E}\left[ \left(H_t^m - H_t^k\right)^2 \right] \;\mathrm{d}t
 $$
 
-Com a hipótese de que $\{H_t^m\}_{t \geq 0}$ converge em média quadrática para $\{H_t\}_{t \geq 0}$, o lado direito da expressão acima converge para zero:
+Com a hipótese de que $\{H_t^m\}_{t \geq 0}$ converge em média quadrática para $\{H_t\}_{t \geq 0},$ o lado direito da expressão acima converge para zero:
 $$
 \mathbb{E}\left[ \left(\int_0^T H_t^m \;\mathrm{d}W_t - \int_0^T H_t^k \;\mathrm{d}W_t\right)^2 \right] \rightarrow 0.
 $$
@@ -61,17 +61,17 @@ $$
 
 ### Propriedades da integral de Itô de funções escada
 
-Vamos ver aqui as duas propriedades fundamentais que utilizamos acima. Suponha que $\{H_t\}_{t\geq 0}$ seja um função escada adaptada a $\{W_t\}_{t \geq 0}$ e com o processo sendo constante nos intervalos de uma malha $0 = t_0 < t_1 < \ldots < t_n = T$.
+Vamos ver aqui as duas propriedades fundamentais que utilizamos acima. Suponha que $\{H_t\}_{t\geq 0}$ seja um função escada adaptada a $\{W_t\}_{t \geq 0}$ e com o processo sendo constante nos intervalos de uma malha $0 = t_0 < t_1 < \ldots < t_n = T.$
 
 Calculemos, primeiramente, a esperança da integral de Itô:
 $$
 \mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\Delta W_j\right]
 $$
-Pela hipótese de $\{H_t\}_t$ ser não antecipativo, temos $H_{t_{j-1}}$ independente de $\Delta_j = W_{t_j} - W_{t_{j-1}}$, de modo que
+Pela hipótese de $\{H_t\}_t$ ser não antecipativo, temos $H_{t_{j-1}}$ independente de $\Delta_j = W_{t_j} - W_{t_{j-1}},$ de modo que
 $$
 \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[\Delta W_j\right].
 $$
-Como um processo de Wiener tem valor esperado nulo, segue que $\mathbb{E}\left[\Delta W_j\right] = 0$, de maneira que
+Como um processo de Wiener tem valor esperado nulo, segue que $\mathbb{E}\left[\Delta W_j\right] = 0,$ de maneira que
 $$
 \mathbb{E}\left[ \int_0^T H_t \;\mathrm{d}W_t \right] = \mathbb{E}\left[\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right] = 0.
 $$
@@ -85,7 +85,7 @@ $$
 & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\Delta W_j^2\right]
 \end{align*}
 $$
-Pela hipótese de $\{H_t\}_t$ ser não antecipativo e com $i < j$, temos $H_{t_{i-1}}$, $H_{t_{j-1}}$ e $\Delta W_i$ independente de $\Delta W_j$, de modo que
+Pela hipótese de $\{H_t\}_t$ ser não antecipativo e com $i < j,$ temos $H_{t_{i-1}},$ $H_{t_{j-1}}$ e $\Delta W_i$ independente de $\Delta W_j,$ de modo que
 $$
 \begin{align*}
 \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}\Delta W_j\right)^2\right] & = 2 \sum_{i < j} \mathbb{E}\left[H_{t_{i-1}}H_{t_{j-1}}\Delta W_i\right]\mathbb{E}\left[\Delta W_j\right] + \sum_j \mathbb{E}\left[H_{t_{j-1}}^2\right] \mathbb{E}\left[\Delta W_j^2\right]
@@ -107,7 +107,7 @@ $$
 
 ### Aproximação por processos contínuos
 
-Dada uma função de quadrado integrável $f:\mathbb{R} \rightarrow \mathbb{R}$, uma maneira clássica de aproximá-la por funções contínuas é através da convolução $t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t$ com aproximações da identidade $\varphi_\varepsilon$. Essa convolução, no entanto, envolve, tipicamente, olhar para o "passado" e para o "futuro" da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,
+Dada uma função de quadrado integrável $f:\mathbb{R} \rightarrow \mathbb{R},$ uma maneira clássica de aproximá-la por funções contínuas é através da convolução $t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t$ com aproximações da identidade $\varphi_\varepsilon.$ Essa convolução, no entanto, envolve, tipicamente, olhar para o "passado" e para o "futuro" da função. O mesmo acontece com processos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,
 $$
 \varphi_\varepsilon(t) = \begin{cases}
 \displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \geq 0, \\
@@ -129,11 +129,11 @@ savefig(joinpath(@OUTPUT, "aprox_id_exp.svg"))
 ```
 \fig{aprox_id_exp}
 
-Mais especificamente, dado um processo $\{H_t\}_{t \geq 0}$ de quadrado integrável e progressivamente mensurável em relação a $\{W_t\}_{t \geq 0}$, estendemos $H_t = 0,$ para $t \leq 0$ e definimos
+Mais especificamente, dado um processo $\{H_t\}_{t \geq 0}$ de quadrado integrável e progressivamente mensurável em relação a $\{W_t\}_{t \geq 0},$ estendemos $H_t = 0,$ para $t \leq 0$ e definimos
 $$
 H_t^m = \varphi_{1/m} \star H_t = \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s.
 $$
-Como $H_t^m$ só envolve $H_s$, para $0\leq s \leq t$, então $H_t^m$ continua sendo não antecipativo. Além disso, para $t \geq 0$ e $\tau > 0$,
+Como $H_t^m$ só envolve $H_s,$ para $0\leq s \leq t,$ então $H_t^m$ continua sendo não antecipativo. Além disso, para $t \geq 0$ e $\tau > 0,$
 $$
 \begin{align*}
 H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s - \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s \\
@@ -154,7 +154,7 @@ $$
 \end{align*}
 $$
 
-Para $0 \leq \tau < t$, obtemos, analogamente, a mesma estimativa.
+Para $0 \leq \tau < t,$ obtemos, analogamente, a mesma estimativa.
 
 Como $\{H_t\}_{t\geq 0}$ é de quadrado integrável em intervalos finitos, segue que, para quase todo caminho amostral,
 $$
@@ -164,7 +164,7 @@ de modo que
 $$
 H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
 $$
-mostrando a continuidade quase certamente das aproximações $\{H_t^m\}_{t \geq 0}$.
+mostrando a continuidade quase certamente das aproximações $\{H_t^m\}_{t \geq 0}.$
 
 ### Aproximação por processo escada
 
@@ -179,7 +179,7 @@ $$
         H_{T}, & t \geq T.
     \end{cases} 
 $$
-Para quase todo $\omega\in\Omega$, como $t\mapsto H_t(\omega)$ é um caminho contínuo, portanto uniformemente contínuo em $[0, T],$ temos
+Para quase todo $\omega\in\Omega,$ como $t\mapsto H_t(\omega)$ é um caminho contínuo, portanto uniformemente contínuo em $[0, T],$ temos
 $$
     H_t^n(\omega) \rightarrow H_t(\omega)
 $$
@@ -204,7 +204,7 @@ $$
         H_{T}, & t \geq T.
     \end{cases} 
 $$
-Nesse caso, $H_{t_{j-1}^n}^n = H_{t_{j-1}^n}$, ou seja, nos pontos da malha, os valores do processo aproximado são os valores do próprio processo. Assim, vale a convergência
+Nesse caso, $H_{t_{j-1}^n}^n = H_{t_{j-1}^n},$ ou seja, nos pontos da malha, os valores do processo aproximado são os valores do próprio processo. Assim, vale a convergência
 $$
     \int_0^T H_t \;\mathrm{d}W_t = \lim \sum_{j=1}^n H_{t_{j-1}^n}(W_{t_j^n} - W_{t_{j-1}^n}),
 $$

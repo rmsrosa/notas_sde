@@ -21,7 +21,7 @@ using Plots
 
 ## Modelo SIR compartimental clássico
 
-Esse é o modelo clássico, com a população toda dividida em três compartimentos: suscetíveis, infectados e recuperados. A população em cada compartimento, em cada instante de tempo $t$, é dada por $S(t)$, $I(t)$, $R(t)$, respectivamente. A evolução dessas quantidades é dada pelo sistema
+Esse é o modelo clássico, com a população toda dividida em três compartimentos: suscetíveis, infectados e recuperados. A população em cada compartimento, em cada instante de tempo $t,$ é dada por $S(t),$ $I(t),$ $R(t),$ respectivamente. A evolução dessas quantidades é dada pelo sistema
 $$
 \begin{cases}
 S' & = - \beta \frac{I}{N}S, \\
@@ -131,7 +131,7 @@ $$
 
 ### Implementando a lei de evolução
 
-A parte determinística é a mesma, dada pela função `SIR!(du, u, p, t)`. Falta implementar a parte do ruído. A parte de ruído é uma função matricial, com componentes $(g_{ij})_{i,j=1}^2$.
+A parte determinística é a mesma, dada pela função `SIR!(du, u, p, t)`. Falta implementar a parte do ruído. A parte de ruído é uma função matricial, com componentes $(g_{ij})_{i,j=1}^2.$
 ```julia:SIR_noise
 function SIR_noise!(du, u, p, t)
     S, I = u

@@ -60,7 +60,7 @@ $$
 X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
 
-De fato, vamos verificar, primeiro, o caso com condição inicial igual $1$,
+De fato, vamos verificar, primeiro, o caso com condição inicial igual $1,$
 $$
 \left.\hat X_t\right|_{t = 0} = 1.
 $$
@@ -78,7 +78,7 @@ podemos escrever a solução como
 $$
 \hat X_t = e^{Y_t}.
 $$
-De outra forma, definindo a função $u(y) = e^y$, podemos escrever
+De outra forma, definindo a função $u(y) = e^y,$ podemos escrever
 $$
 \hat X_t = u(Y_y).
 $$
@@ -109,7 +109,7 @@ escrevemos
 $$
 X_t = X_0 \hat X_t, \quad \hat X_t = u(Y_t).
 $$
-Como $\hat X_0 = 1$, segue que a condição inicial $X_t|_{t = 0} = X_0$ é satisfeita. Quanto à equação diferencial, temos
+Como $\hat X_0 = 1,$ segue que a condição inicial $X_t|_{t = 0} = X_0$ é satisfeita. Quanto à equação diferencial, temos
 $$
 \mathrm{d}X_t = X_0 \mathrm{d}\hat X_t = X_0 g_1(t)\hat X_t\;\mathrm{d}W_t = g_1(t) X_t\;\mathrm{d}W_t.
 $$
@@ -159,7 +159,7 @@ Um caso particular do anterior é o processo
 $$
 X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t},
 $$
-que faz um papel semelhante ao da função $x(t) = x_0e^{\lambda t}$, que é solução de
+que faz um papel semelhante ao da função $x(t) = x_0e^{\lambda t},$ que é solução de
 $$
 \frac{\mathrm{d}x}{\mathrm{d}t} = \lambda x,
 $$

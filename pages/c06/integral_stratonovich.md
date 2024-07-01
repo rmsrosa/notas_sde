@@ -12,7 +12,7 @@ No que se segue, vamos formalizar essa definição e ver a relação dela com a 
 
 ## Integrandos permitidos
 
-Como no caso da integral de Itô, pedimos que o integrando $\{H_t\}_{t\geq 0}$ seja *não antecipativo* *("non-antecipating"),* ou *adaptado,* ao processo $\{W_t\}_t$.
+Como no caso da integral de Itô, pedimos que o integrando $\{H_t\}_{t\geq 0}$ seja *não antecipativo* *("non-antecipating"),* ou *adaptado,* ao processo $\{W_t\}_t.$
 
 Em relação à mensurabilidade, pedimos, também, que $\{H_t\}_{t\geq 0}$ seja *progressivamente mensurável* em relação à filtração natural do processo de Wiener.
 

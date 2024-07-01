@@ -6,11 +6,11 @@ No caso determinístico, de uma equação diferencial
 $$
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x),
 $$
-com condição inicial $x(0) = x_0$, o método de Euler
+com condição inicial $x(0) = x_0,$ o método de Euler
 $$
 x_{j}^n = x_{j-1}^n + \Delta t f(t_{j-1} x_{j-1}^n), \qquad x_j^n|_{j = 0} = x_0,
 $$
-em uma malha temporal uniforme $t_j = jT/n$, $j = 0, \ldots, n$, com $\Delta t = T/n$, converge uniformemente, no intervalo $[0, T]$, para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existem $C > 0$ e $\delta > 0$ tais que
+em uma malha temporal uniforme $t_j = jT/n,$ $j = 0, \ldots, n,$ com $\Delta t = T/n,$ converge uniformemente, no intervalo $[0, T],$ para a solução do problema de valor inicial. Além disso, essa convergência é de ordem um. Mais precisamente, existem $C > 0$ e $\delta > 0$ tais que
 $$
 \max_{j}|x(t_j) - x_j| \leq C \Delta t, \qquad 0 < \Delta t \leq \delta.
 $$
@@ -24,13 +24,13 @@ com uma condição inicial
 $$
 \left.X_t\right|_{t = 0} = X_0,
 $$
-a convergência *forte* é apenas de ordem $1/2$ e isso sob a hipótese mais exigente de $f$ e $g$ serem *globalmente* Lipschitz contínuas. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g = g(t, X_t) = g(t)$, então ainda temos a convergência forte de ordem $1$.
+a convergência *forte* é apenas de ordem $1/2$ e isso sob a hipótese mais exigente de $f$ e $g$ serem *globalmente* Lipschitz contínuas. Mas é importante ressaltar que isso acontece no caso multiplicativo. Se o ruído for aditivo, $g = g(t, X_t) = g(t),$ então ainda temos a convergência forte de ordem $1.$
 
-A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t$, há termos da ordem de $\Delta W$. Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t$, o que nos dá um erro da ordem de $(\Delta t)^{1/2}$.
+A diferença, no caso multiplicativo, vem, essencialmente, do fato de que, na equação estocástica, além dos termos de erro da ordem de $\Delta t,$ há termos da ordem de $\Delta W.$ Em um sentido apropriado, vale $(\Delta W)^2 \sim \Delta t,$ o que nos dá um erro da ordem de $(\Delta t)^{1/2}.$
 
 Outro ponto importante é que, no caso discreto, a constante $C$ que aparece na ordem de convergência depende da condição inicial e explora o fato de que, com a condição inicial fixa, podemos limitar a solução exata e a aproximação. Por outro lado, no caso estocástico, considera-se, implicitamente, diversas condições iniciais $X_0(\omega)$ e não temos esse controle, por isso a necessidade de se assumir que os termos $f$ e $g$ sejam globalmente Lipschitz contínuos. Esse problema aparece mesmo no caso de ruído aditivo e apenas $f$ não globalmente Lipschitz.
 
-Por último, um ponto um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença $|x(t_j) - x_j^n|$, no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para $\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right]$.
+Por último, um ponto um pouco mais técnico, é que, enquanto no caso discreto estimamos diretamente a diferença $|x(t_j) - x_j^n|,$ no caso estocástico precisamos nos ancorar na isometria de Itô, de modo que o mais natural é olharmos para $\mathbb{E}\left[|X_{t_j} - X_j^n|^2 \right].$
 
 Em resumo, a hipótese de continuidade Lipschitz global é para garantir que o método convirja. E a presença de $\mathrm{d}W_t \sim \sqrt{\mathrm{d}t}$ nos dá uma convergência forte apenas de ordem $1/2,$ no caso multiplicativo. Vejamos os detalhes.
 
@@ -52,7 +52,7 @@ $$
   & \quad + \int_{t_{j-1}}^{t_j} |f(s, x(s)) - f(t_{j-1}, x(t_{j-1}))|\;\mathrm{d}s.
 \end{align*}
 $$
-Como a solução é contínua, ela é limitada no intervalo $[0, T]$, i.e.
+Como a solução é contínua, ela é limitada no intervalo $[0, T],$ i.e.
 $$
 R_0 = \max_{0\leq t \leq T}|x(t)| < \infty.
 $$
@@ -61,7 +61,7 @@ $$
   |f(t, x) - f(s, y)| \leq L_1(R)|t - s| + L_2(R)|x - y|, \quad \forall 0 \leq t, s \leq T, \;\forall x, y, \; |x|, |y| \leq R.
 $$
 
-Assuma, por indução, que $|x_{j-1}| \leq R$. Com isso,
+Assuma, por indução, que $|x_{j-1}| \leq R.$ Com isso,
 $$
 \begin{align*}
 |x(t_j) - x_j| & \leq |x(t_{j-1}) - x_{j-1}| + L_2 \Delta t |x(t_{j-1}) - x_{j-1}| \\
@@ -102,7 +102,7 @@ $$
 & \leq (1 + L_2\Delta t)^j|x(t_0) - x_0| + M \Delta t^2(1 + (1 + L_2\Delta t) + \ldots + (1 + L_2\Delta t)^{j-1}).
 \end{align*}
 $$
-Usando que $1 + a \leq e^a$, para todo $a \geq 0$, temos
+Usando que $1 + a \leq e^a,$ para todo $a \geq 0,$ temos
 $$
 (1 + L_2\Delta t)^j \leq e^{L_2j\Delta t} = e^{L_2 t_j}.
 $$
@@ -115,11 +115,11 @@ $$
 |x(t_j) - x_j| \leq e^{L_2T}|x(t_0) - x_0| + \frac{M}{L_2}e^{L_2T}\Delta t.
 $$
 
-Considerando que $x_0 = x(t_0)$, obtemos
+Considerando que $x_0 = x(t_0),$ obtemos
 $$
 |x(t_j) - x_j| \leq \frac{M}{L_2}e^{L_2T}\Delta t.
 $$
-Lembrando que $L_2=L_2(R)$, para $\Delta t$ suficientemente pequeno tal que
+Lembrando que $L_2=L_2(R),$ para $\Delta t$ suficientemente pequeno tal que
 $$
 \frac{M}{L_2(R)}e^{L_2(R)T}\Delta t \leq R - R_0,
 $$
@@ -154,7 +154,7 @@ Já a aproximação pelo método de Euler-Maruyama é dada por
 $$
 X_j^n = X_{j-1}^n + f(t_{j-1}, X_{j-1}^n) \Delta t + g(t_{j-1}, X_{j-1}^n) \Delta W_j,
 $$
-onde $X_0^n = X_0$ e $\Delta W_j$.
+onde $X_0^n = X_0$ e $\Delta W_j.$
 
 Assumimos $f$ e $g$ globalmente Lipschitz contínuas em $x$ e globalmente Hölder contínuas em $t.$ Mais precisamente, assumimos que
 $$
@@ -190,7 +190,7 @@ $$
 X_j^n = X_0 + \sum_{i=1}^j f(t_{i-1}, X_{i-1}^n)\Delta t_{i-1} + \sum_{i=1}^j g(t_{i-1}, X_{i-1}^n)\Delta W_{i-1}.
 $$
 
-Não funciona estimarmos de maneira recursiva, pois, por conta da desigualdade $(a_1 + \cdots + a_k)^2 \leq k(a_1^2 + \cdots + a_k^2),$ teríamos algo do tipo $d_j \leq C_1d_{j-1} + C_0$, com $C>1$, de forma que as iterações nos dariam um termo acumulado $C^j$, que explode à medida que a malha é refinada, pois não está acompanhado do passo de tempo $\Delta t$.
+Não funciona estimarmos de maneira recursiva, pois, por conta da desigualdade $(a_1 + \cdots + a_k)^2 \leq k(a_1^2 + \cdots + a_k^2),$ teríamos algo do tipo $d_j \leq C_1d_{j-1} + C_0,$ com $C>1,$ de forma que as iterações nos dariam um termo acumulado $C^j,$ que explode à medida que a malha é refinada, pois não está acompanhado do passo de tempo $\Delta t.$
 
 Assim, escrevendo o erro de $t=0$ a $t=t_j,$ temos
 $$
@@ -213,7 +213,7 @@ t^n(t) = t_{i^n(t)} = \max\{t_i \leq t; \; i = 0, \ldots, n\},
 $$
 que nos dão o índice $i^n(t)$ do ponto da malha que está mais próximo e à esquerda de um instante $t$ e o ponto correspondente $t^n(t) = t_{i^n(t)}$ da malha.
 
-Elevando ao quadrado e usando que $(a_1 + \ldots + a_4)^2 \leq 4(a_1^2 + \ldots + a_4^2)$,
+Elevando ao quadrado e usando que $(a_1 + \ldots + a_4)^2 \leq 4(a_1^2 + \ldots + a_4^2),$
 $$
 \begin{align*}
 \left(X_{t_j} - X_j^n\right)^2 & = 4\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2 + 4\left(\int_0^{t_j} (g(s, X_s) - g(t^n(s), X_{t^n(s)}))\;\mathrm{d}W_s\right)^2 \\
@@ -283,11 +283,11 @@ mostrando que o método de Euler-Maruyama é de ordem forte $1/2.$
 
 ## Convergência no caso estocástico com ruído aditivo
 
-Quando $g=g(t)$ não depende de $x$ e quando $f=f(t, x)$ e $g=g(t)$ são mais suaves, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, pedimos que $f$ e $g$ sejam continuamente diferenciáveis em $t$ e que $f$ seja duas vezes continuamente diferenciáveis em $x$, com limitações uniformes,
+Quando $g=g(t)$ não depende de $x$ e quando $f=f(t, x)$ e $g=g(t)$ são mais suaves, podemos mostrar que a convergência forte é, na verdade, de order 1. Mais precisamente, pedimos que $f$ e $g$ sejam continuamente diferenciáveis em $t$ e que $f$ seja duas vezes continuamente diferenciáveis em $x,$ com limitações uniformes,
 $$
 |(\partial_t f)(t, x)| \leq H_f, \quad |(\partial_x f)(t, x)| \leq L_f, \quad |(\partial_{xx} f)(t, x)| \leq L_{ff}.
 $$
-Isso tudo em $0\leq t \leq T$, $x\in \mathbb{R}.$ Como $g=g(t)$ só depende de $t$ e o intevalo $[0, T]$ é limitado, temos, pela suavidade de $g$, que
+Isso tudo em $0\leq t \leq T,$ $x\in \mathbb{R}.$ Como $g=g(t)$ só depende de $t$ e o intevalo $[0, T]$ é limitado, temos, pela suavidade de $g,$ que
 $$
 |g(t)| \leq M_g, \quad |(\partial_t g)(t)| \leq H_g.
 $$
@@ -313,7 +313,7 @@ $$
 \sum_{i=1}^j \mathbb{E}\left[(f(t_{i-1}, X_{t_{i-1}}) - f(t_{i-1}, X_{i-1}^n))^2\right] \Delta t_{i-1} \leq L_{f, 2}^2\sum_{i=1}^j \mathbb{E}\left[(X_{t_{i-1}} - X_{i-1}^n)^2\right] \Delta t_{i-1}.
 $$
 
-O segundo termo, agora sem a dependência em $x$ e com continuidade Lipschitz em $t$, nos dá
+O segundo termo, agora sem a dependência em $x$ e com continuidade Lipschitz em $t,$ nos dá
 $$
 \begin{align*}
 \mathbb{E}\left[\left(\int_0^{t_j} (g(s) - g(t_{i^n(s)}))\;\mathrm{d}W_s\right)^2\right] & = \int_0^{t_j} \mathbb{E}\left[\left(g(s) - g(t_{i^n(s)})\right)^2\right]\;\mathrm{d}s \\
@@ -342,7 +342,7 @@ onde
 $$
 \tilde t^{n}(t) = \min\{t_i \geq t; \; i = 0, \ldots, n\}
 $$
-é o ponto da malha que está mais próximo e à direita do instante $t.$ Observe que o integrando não depende de $s,$ de modo que o fato da integral em $s$ ser no intervalo $[\xi, \tilde t^n(\xi)]$, ou seja, posterior a $\xi,$ viola nenhuma condição de não antecipação do integrando.
+é o ponto da malha que está mais próximo e à direita do instante $t.$ Observe que o integrando não depende de $s,$ de modo que o fato da integral em $s$ ser no intervalo $[\xi, \tilde t^n(\xi)],$ ou seja, posterior a $\xi,$ viola nenhuma condição de não antecipação do integrando.
 
 Usando Cauchy-Schwartz e a isometria de Itô, obtemos a seguinte estimativa para a média quadrática desse termo.
 $$
@@ -352,7 +352,7 @@ $$
 & \quad + \int_0^{t_j} (\tilde t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} \mathbb{E}\left[\left((\partial_x f)(\xi, X_{\xi})g(\xi)\right)^2\right]\;\mathrm{d}s\;\mathrm{d}\xi.
 \end{align*}
 $$
-Usando as estimativas para $f$, $g$ e suas derivadas, obtemos
+Usando as estimativas para $f,$ $g$ e suas derivadas, obtemos
 $$
 \begin{align*}
 \mathbb{E}\left[\left(\int_0^{t_j} (f(s, X_s) - f(t^n(s), X_{t^n(s)}))\;\mathrm{d}s\right)^2\right] & \leq t_j\int_0^{t_j} (t^{n}(\xi) - \xi) \int_{\xi}^{\tilde t^{n}(\xi)} C_1\;\mathrm{d}s\;\mathrm{d}\xi \\

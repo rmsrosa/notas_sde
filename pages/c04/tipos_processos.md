@@ -8,28 +8,28 @@ Podemos classificar os processos aleatórios de várias formas diferentes. Vejam
 
 Um processo $\{X_t\}_{t\in I}$ é dito **identicamente distribuído** quando as variáveis aleatórias $X_t$ são identicamente distribuídas, ou seja, quando as leis de probabilidade das variáveis $X_t$ são iguais entre si.
 
-Por exemplo, o processo de Bernoulli $\{X_n\}_{n\in\mathbb{N}}$ tem $X_n \sim \textrm{Bernoulli}(p)$, para todo $n\in \mathbb{N}$, sendo, portanto, um processo identicamente distribuído.
+Por exemplo, o processo de Bernoulli $\{X_n\}_{n\in\mathbb{N}}$ tem $X_n \sim \textrm{Bernoulli}(p),$ para todo $n\in \mathbb{N},$ sendo, portanto, um processo identicamente distribuído.
 
-Jogar um mesmo dado, não viciado, várias vezes, também é um processo identicamente distribuído, com $X_n \sim \textrm{Unif}(\Sigma),$ com $\Sigma = \{1, 2, \ldots, 6\}$, para todo $n\in \mathbb{N}$. Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.
+Jogar um mesmo dado, não viciado, várias vezes, também é um processo identicamente distribuído, com $X_n \sim \textrm{Unif}(\Sigma),$ com $\Sigma = \{1, 2, \ldots, 6\},$ para todo $n\in \mathbb{N}.$ Mesmo um dado viciado também gera um processo identicamente distribuído, já que é o mesmo dado que estamos jogando. A distribuição só não será uniforme.
 
-O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada incremento $W_n$ tem distribuição binomial diferente $W_n \sim \textrm{Binomial}(n, p)$.
+O processo de contagem binomial, por outro lado, não é identicamente distribuído, pois cada incremento $W_n$ tem distribuição binomial diferente $W_n \sim \textrm{Binomial}(n, p).$
 
-Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli $X_n$ discutido acima é tal que, para algum $p$, vale $X_n \sim \mathrm{Bernoulli}(p)$, para todo $n$. Por outro lado, se definirmos o processo constante $Y_n = Y$, onde $Y = \mathrm{Bernoulli}(p)$, ou seja, com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p$, então também temos cada $Y_t \sim\mathrm{Bernouilli}(p)$. Mas os dois processos são bem diferentes entre si.
+Observe, como falamos antes, que não basta conhecermos apenas a função de probabilidade acumulada em cada instante de tempo. É preciso saber todas as probabilidades conjuntas. De fato, o processo de Bernoulli $X_n$ discutido acima é tal que, para algum $p,$ vale $X_n \sim \mathrm{Bernoulli}(p),$ para todo $n.$ Por outro lado, se definirmos o processo constante $Y_n = Y,$ onde $Y = \mathrm{Bernoulli}(p),$ ou seja, com medida de probabilidade $\tilde{\mathbb{P}}(Y = (0, 0, \ldots)) = 1 - p$ e $\tilde{\mathbb{P}}(Y = (1, 1, \ldots)) = p,$ então também temos cada $Y_t \sim\mathrm{Bernouilli}(p).$ Mas os dois processos são bem diferentes entre si.
 
 ## Processos com incrementos identicamente distribuídos
 
 O processo $\{X_n\}_{n\in \mathbb{Z}^*}$ de contagem binomial não é identicamente distribuído, mas os passos $X_{n+1} - X_n\sim \textrm{Bernoulli}(p)$ são testes de Bernoulli com a mesma probabilidade de sucesso, portanto identicamente distribuídos.
 
-Se $\Delta X_n = X_{n + 1} - X_n$ são identicamente distribuídos, então $\Delta X_n \sim \Delta X_1$, para todo $n\in \mathbb{N}$. Assim, para cada $k\in \mathbb{N}$, a família $\Delta X_n^k = X_{n + k} - X_n$, $n\in \mathbb{N}$, de "passos largos" também é identicamente distribuída, já que
+Se $\Delta X_n = X_{n + 1} - X_n$ são identicamente distribuídos, então $\Delta X_n \sim \Delta X_1,$ para todo $n\in \mathbb{N}.$ Assim, para cada $k\in \mathbb{N},$ a família $\Delta X_n^k = X_{n + k} - X_n,$ $n\in \mathbb{N},$ de "passos largos" também é identicamente distribuída, já que
 $$
 X_{n + k} - X_n = \sum_{j = 0}^{k-1} \left( X_{n + j + 1} - X_{n + j} \right) = \sum_{j = 0}^{k-1} \Delta X_{n + j} \sim \sum_{j = 0}^{k-1} \Delta X_1 = \text{ independente de $n$}.
 $$
 
-Mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0$, as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I}$, definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t$, são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau$, mas não com o instante $t$ em que cada incremento é dado.
+Mais geralmente, dizemos que um processo $\{X_t\}_{t\in I}$ é um **processo com incrementos identicamente distribuídos** quando, para cada $\tau > 0,$ as variáveis aleatórias $\{\Delta X_t^\tau\}_{t, t+\tau \in I},$ definidas por $\Delta X_t^\tau = X_{t + \tau} - X_t,$ são identicamente distribuídas. A distribuição pode variar com o tamanho do incremento $\tau,$ mas não com o instante $t$ em que cada incremento é dado.
 
 Um exemplo de processo contínuo que tem incrementos identicamente distribuídos é o de processo de Wiener, que veremos mais pra frente.
 
-Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes, com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2$, para $j \in \mathbb{N}$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
+Já o processo de renovação não tem incrementos identicamente distribuídos. De fato, sejam $S_j,$ $j\in \mathbb{N},$ variáveis aleatórias independentes, com distribuições $\mathbb{P}(S_j = 1) = \mathbb{P}(S_j = 2) = 1/2,$ para $j \in \mathbb{N}.$ Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 $$
@@ -37,20 +37,20 @@ onde
 $$
 T_n = \sum_{j = 1}^n S_j.
 $$
-Como $S_j = 1$ ou $2$, então $T_1 = 1$ ou $2$ e $T_j \geq 2$, para $j \geq 2$.
+Como $S_j = 1$ ou $2,$ então $T_1 = 1$ ou $2$ e $T_j \geq 2,$ para $j \geq 2.$
 
-Então $X_t = 0$, para $t < 1$; $X_t = 0$ ou $1$, para $1 \leq t < 2$; $X_t \geq 2$, para $t \geq 2$. Portanto, $X_{1/2} - X_0 = 0$ mas $X_1 - X_{1/2} = 0$ ou $1$, com iguais probabilidades. Ou seja, esses incrementos não têm a mesma distribuição, não sendo identicamente distribuídos.
+Então $X_t = 0,$ para $t < 1$; $X_t = 0$ ou $1,$ para $1 \leq t < 2$; $X_t \geq 2,$ para $t \geq 2.$ Portanto, $X_{1/2} - X_0 = 0$ mas $X_1 - X_{1/2} = 0$ ou $1,$ com iguais probabilidades. Ou seja, esses incrementos não têm a mesma distribuição, não sendo identicamente distribuídos.
 
 ## Processos independentes
 
-Um processo $\{X_t\}$ é dito **independente** quando as variáveis aleatórias $X_t$ são independentes entre si. Ou seja, as chances de $X_{t_1} \in E_1$ são independentes de $X_{t_2} \in E_2$, em momentos distintos $t_1$ e $t_2$. Podemos escrever isso na forma
+Um processo $\{X_t\}$ é dito **independente** quando as variáveis aleatórias $X_t$ são independentes entre si. Ou seja, as chances de $X_{t_1} \in E_1$ são independentes de $X_{t_2} \in E_2,$ em momentos distintos $t_1$ e $t_2.$ Podemos escrever isso na forma
 $$
 \mathbb{P}(X_{t_2} \in E_2 | X_{t_1} \in E_1) = \mathbb{P}(X_{t_2} \in E_2), \quad \forall t_1 \neq t_2.
 $$
 
 O processo de Bernoulli, por exemplo, é independente. Pense, novamente, no lançamento de uma moeda. Se em um determinado lançamento foi obtido cara, isso não vai mudar as chances de se obter coroa no próximo lançamento. Mesma coisa com lançamentos sucessivos de um dado.
 
-Já o caminho aleatório não é independente, pois as chances de termos $X_3 = 3$ dependem da posição $X_2$. Mais precisamente,
+Já o caminho aleatório não é independente, pois as chances de termos $X_3 = 3$ dependem da posição $X_2.$ Mais precisamente,
 $$
 \mathbb{P}(X_3 = 3 | X_2 = 2) = \frac{1}{2},
 $$
@@ -58,7 +58,7 @@ mas
 $$
 \mathbb{P}(X_3 = 3 | X_2 \leq 1) = 0.
 $$
-Além disso, como $X_0 = 0$, a única chance de chegar em $X_3 = 3$ é dar três passos $+1$, de modo que
+Além disso, como $X_0 = 0,$ a única chance de chegar em $X_3 = 3$ é dar três passos $+1,$ de modo que
 $$
 \mathbb{P}(X_3 = 3) = \frac{1}{2}\times\frac{1}{2}\times\frac{1}{2} = \frac{1}{8}.
 $$
@@ -67,11 +67,11 @@ $$
 
 O caminho aleatório não é independente, como vimos, mas os seus *incrementos* são independentes. De fato, as chances de darmos um passo $+1$ ou $-1$ em um determinado instante independe de qualquer passo dado anteriormente. Ou seja, os incrementos $X_{n+1} - X_n$ são independentes entre si. Nesse caso, dizemos que o processo $\{X_n\}_n$ tem *incrementos independentes.*
 
-Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias mutuamente independentes.
+Mais geralmente, um processo $\{X_t\}_{t\in I}$ tem **incrementos independentes** quando, para quaisquer $0 \leq t_0 < t_1, \ldots, t_n,$ os incrementos $X_{t_1} - X_{t_0},$ $X_{t_2} - X_{t_1},$ ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias mutuamente independentes.
 
 Veremos que um processo de Wiener é um exemplo de processo contínuo com incrementos independentes.
 
-O processo de renovação, por sua vez, também não tem incrementos independentes. De fato, sejam $S_j$, $j\in \mathbb{N}$, variáveis aleatórias independentes com distribuições $\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2$ e $\mathbb{P}(S_j < 2) = 0$, para $j \geq 2$. Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
+O processo de renovação, por sua vez, também não tem incrementos independentes. De fato, sejam $S_j,$ $j\in \mathbb{N},$ variáveis aleatórias independentes com distribuições $\mathbb{P}(S_1 = 1) = \mathbb{P}(S_j = 2) = 1/2$ e $\mathbb{P}(S_j < 2) = 0,$ para $j \geq 2.$ Seja $X_t$ o processo de renovação associado a esses saltos. Lembremos que
 $$
 X_t = \sum_{n\in \mathbb{N}} \chi_{\{T_n \leq t\}} = \sup\{n; \; T_n \leq t\},
 $$
@@ -79,9 +79,9 @@ onde
 $$
 T_n = \sum_{j = 1}^n S_j.
 $$
-Observe que $S_1 = 1$ ou $2$ e $S_j \geq 2$, para $j \geq 2$. Assim, $T_1 = 1$ ou $2$ e $T_j \geq 3$, para $j \geq 2$.
+Observe que $S_1 = 1$ ou $2$ e $S_j \geq 2,$ para $j \geq 2.$ Assim, $T_1 = 1$ ou $2$ e $T_j \geq 3,$ para $j \geq 2.$
 
-Então $X_t = 0$, para $t < 1$; $X_t = 0$ ou $1$, para $1 \leq t < 2$ e $X_t = 1$, para $2 \leq t < 3$. Observe, ainda, que $X_{5/4} - X_{3/4} = X_1 - X_{1/2}$ com iguais probabilidades de serem $0$ ou $1$, dependendo do resultado de $S_1$. Assim, esses incrementos não são independentes. Se $X_1 - X_{1/2} = 1$, então $S_1 = 1$ e necessariamente $X_{5/4} - X_{3/4} = 1$. Já se $X_1 - X_{1/2} = 0$, então $S_1 = 2$ e necessariamente $X_{5/4} - X_{3/4} = 0$. Todos os outros passos são mais longos e não interferem nesse movimento inicial.
+Então $X_t = 0,$ para $t < 1$; $X_t = 0$ ou $1,$ para $1 \leq t < 2$ e $X_t = 1,$ para $2 \leq t < 3.$ Observe, ainda, que $X_{5/4} - X_{3/4} = X_1 - X_{1/2}$ com iguais probabilidades de serem $0$ ou $1,$ dependendo do resultado de $S_1.$ Assim, esses incrementos não são independentes. Se $X_1 - X_{1/2} = 1,$ então $S_1 = 1$ e necessariamente $X_{5/4} - X_{3/4} = 1.$ Já se $X_1 - X_{1/2} = 0,$ então $S_1 = 2$ e necessariamente $X_{5/4} - X_{3/4} = 0.$ Todos os outros passos são mais longos e não interferem nesse movimento inicial.
 
 ## Processos independentes e identicamente distribuídos
 
@@ -89,7 +89,7 @@ Esses processos, chamados simplesmente de *i.i.d.*, são aqueles, naturalmente, 
 
 Como vimos, o processo de Bernoulli é independente e identicamente distribuído.
 
-Um processo pode ser independente sem ser identicamente distribuído. De fato, pense em um processo de Bernoulli em que a cada passo temos um teste de Bernoulli com probabilidades diferentes, digamos $X_n \sim \mathrm{Bernoulli}(p_n)$, com $p_n$ distintos. Por exemplo, jogamos, alternadamente, um dado viciado e um dado não viciado.
+Um processo pode ser independente sem ser identicamente distribuído. De fato, pense em um processo de Bernoulli em que a cada passo temos um teste de Bernoulli com probabilidades diferentes, digamos $X_n \sim \mathrm{Bernoulli}(p_n),$ com $p_n$ distintos. Por exemplo, jogamos, alternadamente, um dado viciado e um dado não viciado.
 
 Um processo também pode ser identicamente distribuído sem ser independente. Por exemplo, digamos que, a cada mês, eu faça um sorteio, sempre do mesmo modo, para escolher uma certa quantidade de números para jogar na loteria e eu que eu repita os números em todas as semanas daquele mês. A probabilidade de um dos números ser igual a três é a mesma independente da semana. E as chances de eu jogar o número três na primeira semana de julho são as mesmas tendo eu jogado três na terceira semana de março ou não. Mas se um dos números jogados na primeira semana de julho for três, então certamente o três será jogado novamente na terceira semana de julho. Os números jogados em um mesmo mês não são independentes entre si.
 
@@ -97,7 +97,7 @@ Um exemplo contínuo é o processo
 $$
 X_t = \cos(t + U), \quad t\in \mathbb{R},
 $$
-onde $U$ é a variável aleatória $U \sim \mathrm{Unif}([0, 2\pi])$, i.e. com lei uniforme no intervalo $[0, 2\pi)$. Como o cosseno é periódico com período $2\pi$, essa lei é a mesma em todos os instantes $t\in \mathbb{R}$, ou seja, são identicamente distribuídos. Mas não são independentes.
+onde $U$ é a variável aleatória $U \sim \mathrm{Unif}([0, 2\pi]),$ i.e. com lei uniforme no intervalo $[0, 2\pi).$ Como o cosseno é periódico com período $2\pi,$ essa lei é a mesma em todos os instantes $t\in \mathbb{R},$ ou seja, são identicamente distribuídos. Mas não são independentes.
 
 ## Processos com incrementos independentes e identicamente distribuídos
 
@@ -105,27 +105,27 @@ O nome já diz, por si só, o que é um processo com **incrementos independentes
 
 Um exemplo é o caminho aleatório. Processos de Wiener, que veremos mais adiante, são exemplos de processos contínuos com incrementos *i.i.d.*.
 
-Vale ressaltar aqui que, para a independência dos incrementos, os incrementos devem ser consecutivos, i.e. $W_{t_j} - W_{t_j}$, para $t_0 < t_1 < \cdots < t_n$ ou, no mínimo, sem interseção nos intervalos de tempo. Já para a distribuição idêntica, os passos devem ser tomados com intervalos iguais, i.e. $X_{t + \tau} - X_t$ e $X_{s + \tau} - X_s$, mas pode haver interseção, ou seja $\tau > 0$ e $t, s$ são arbitrários.
+Vale ressaltar aqui que, para a independência dos incrementos, os incrementos devem ser consecutivos, i.e. $W_{t_j} - W_{t_j},$ para $t_0 < t_1 < \cdots < t_n$ ou, no mínimo, sem interseção nos intervalos de tempo. Já para a distribuição idêntica, os passos devem ser tomados com intervalos iguais, i.e. $X_{t + \tau} - X_t$ e $X_{s + \tau} - X_s,$ mas pode haver interseção, ou seja $\tau > 0$ e $t, s$ são arbitrários.
 
 ## Processos estacionários
 
-Um processo $\{X_t\}_{t\in I}$ é dito **estacionário** quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer $t_1, \ldots, t_n \in I$ e $\tau>0$ tais que $t_1 + \tau, \ldots, t_n + \tau \in I$, as distribuições conjuntas de $X_{t_1}, \ldots, X_{t_n}$ e $X_{t_1 + \tau}, \ldots, X_{t_n + \tau}$ são iguais, o que pode ser expresso por
+Um processo $\{X_t\}_{t\in I}$ é dito **estacionário** quando as suas informações estatísticas não variam com o tempo. Mais precisamente, para quaisquer $t_1, \ldots, t_n \in I$ e $\tau>0$ tais que $t_1 + \tau, \ldots, t_n + \tau \in I,$ as distribuições conjuntas de $X_{t_1}, \ldots, X_{t_n}$ e $X_{t_1 + \tau}, \ldots, X_{t_n + \tau}$ são iguais, o que pode ser expresso por
 $$
 \mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n),
 $$
-para eventos quaisquer $E_1, \ldots, E_n \in \mathcal{E}$.
+para eventos quaisquer $E_1, \ldots, E_n \in \mathcal{E}.$
 
-Em particular, considerando $n = 1$, vemos que as distribuições simples $X_t$ também são idênticas, ou seja, processos estacionários são necessariamente identicamente distribuídos. Mas não precisam ser independentes. De fato, considere o processo de Bernoulli $\{X_n\}_{n\in \mathbb{N}}$ e defina $Y_n = X_n + X_{n + 1}$, ou seja, $Y_n$ soma os resultados de dois lançamentos consecutivos, em uma série de lançamentos. A distribuição de $Y_n$ é sempre a mesma, igual à binomial $B(2, p)$. Mas $Y_{n+1}$ não é independente de $Y_n$.
+Em particular, considerando $n = 1,$ vemos que as distribuições simples $X_t$ também são idênticas, ou seja, processos estacionários são necessariamente identicamente distribuídos. Mas não precisam ser independentes. De fato, considere o processo de Bernoulli $\{X_n\}_{n\in \mathbb{N}}$ e defina $Y_n = X_n + X_{n + 1},$ ou seja, $Y_n$ soma os resultados de dois lançamentos consecutivos, em uma série de lançamentos. A distribuição de $Y_n$ é sempre a mesma, igual à binomial $B(2, p).$ Mas $Y_{n+1}$ não é independente de $Y_n.$
 
 Por outro lado, qualquer processo *i.i.d.* é estacionário. De fato, temos, trivialmente, que, como cada realização é independente,
 $$
 \mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1 + \tau} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n + \tau} \in E_n).
 $$
-Além disso, como são identicamente distribuídos, cada $\mathbb{P}(X_{t_j + \tau} \in E_j) = \mathbb{P}(X_{t_j} \in E_j)$. Usando isso e, novamente, a independência das realizações,
+Além disso, como são identicamente distribuídos, cada $\mathbb{P}(X_{t_j + \tau} \in E_j) = \mathbb{P}(X_{t_j} \in E_j).$ Usando isso e, novamente, a independência das realizações,
 $$
 \mathbb{P}(X_{t_1 + \tau} \in E_1, \ldots, X_{t_n + \tau} \in E_n) = \mathbb{P}(X_{t_1} \in E_1) \times \cdots \times \mathbb{P}(X_{t_n} \in E_n) = \mathbb{P}(X_{t_1} \in E_1, \ldots, X_{t_n} \in E_n).
 $$
-Nesse caso, podemos ir além e deduzir que essa distribuição conjunta é $\mathbb{P}(X_t \in E_1) \times \cdots \times \mathbb{P}(X_t \in E_n) = \mathbb{P}(X_t \in E_1 \cap \cdots \cap E_n)$ e independente de $t$.
+Nesse caso, podemos ir além e deduzir que essa distribuição conjunta é $\mathbb{P}(X_t \in E_1) \times \cdots \times \mathbb{P}(X_t \in E_n) = \mathbb{P}(X_t \in E_1 \cap \cdots \cap E_n)$ e independente de $t.$
 
 ## Processos estacionários no sentido fraco
 
@@ -140,14 +140,14 @@ $$
 
 Observe a condição desses momentos serem finitos. Por conta disso, não podemos dizer, estritamente, que processos estacionários são fracamente estacionário. Mas qualquer processo estacionário com autocorrelação finita é fracamente estacionário.
 
-Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler, i.e. $\mathbb{P}(Y = k) = p_k = {6}/{\pi^2 k^2}$, é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Assim, o processo dado por $X_n = Y$, para todo $n$, é estacionário mas não é fracamente estacionário.
+Vale lembrar que a variável aleatória discreta $Y$ com probabilidades dadas pelos termos da série de Euler, i.e. $\mathbb{P}(Y = k) = p_k = {6}/{\pi^2 k^2},$ é um exemplo de variável aleatória com valor esperado (e autocorrelação) infinita. Assim, o processo dado por $X_n = Y,$ para todo $n,$ é estacionário mas não é fracamente estacionário.
 
 ## Processos de Poisson
 
 Um **processo de Poisson** com taxa, ou intensidade, $\lambda > 0$ é um processo contínuo $\{X_t\}_{t\geq 0}$ com valores inteiros e com seguintes propriedades:
 1. $X_0 = 0$;
-2. Os incrementos são independentes, i.e. para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias independentes;
-3. Para $t\geq 0$ e $\tau > 0$, o incremento $X_{t + \tau} - X_t$ é uma variável aleatória com distribuição de Poisson, i.e.
+2. Os incrementos são independentes, i.e. para quaisquer $0 \leq t_0 < t_1, \ldots, t_n,$ os incrementos $X_{t_1} - X_{t_0},$ $X_{t_2} - X_{t_1},$ ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias independentes;
+3. Para $t\geq 0$ e $\tau > 0,$ o incremento $X_{t + \tau} - X_t$ é uma variável aleatória com distribuição de Poisson, i.e.
 $$
 \mathbb{P}(X_{t + \tau} - X_t = k) = \frac{(\lambda \tau)^k e^{-\lambda \tau}}{k!}.
 $$
@@ -156,9 +156,9 @@ Os processos de Poisson são uma versão contínua do processo de contagem. Por 
 
 ## Processos Gaussianos
 
-Um **processo Gaussiano** é um processo contínuo $\{X_t\}_{t\in I}$, em um intervalo $I\subset \mathbb{R}$, tal que as distribuições conjuntas $X_{t_1}, \ldots, X_{t_n}$ são normais (multivariadas).
+Um **processo Gaussiano** é um processo contínuo $\{X_t\}_{t\in I},$ em um intervalo $I\subset \mathbb{R},$ tal que as distribuições conjuntas $X_{t_1}, \ldots, X_{t_n}$ são normais (multivariadas).
 
-Um exemplo é dado pela Gaussiana senoidal $X_t = \cos(at)Y_1 + \sin(at)Y_2$, onde $a > 0$ e $Y_i = \mathcal{N}(\mu_i, \sigma_i^2)$ são normais independentes, $i = 1, 2$.
+Um exemplo é dado pela Gaussiana senoidal $X_t = \cos(at)Y_1 + \sin(at)Y_2,$ onde $a > 0$ e $Y_i = \mathcal{N}(\mu_i, \sigma_i^2)$ são normais independentes, $i = 1, 2.$
 
 Processos de Wiener também são processos Gaussianos.
 
@@ -168,7 +168,7 @@ Processos de Wiener também são processos Gaussianos.
 
 É comum distinguir entre processos discretos e contínuos, denominando os primeiros como **cadeias de Markov** e os últimos como **processos de Markov**, mas nem todos os autores fazem essa distinção; em muitos contextos, a denominação *cadeia de Markov* se refere a processos que podem ser discretos ou contínuos.
 
-No caso discreto, se $\{X_t\}_{t\in I}$ é um processo aleatório em um conjunto discredo $I$, $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencem a $I$, e $E, E_1, \ldots, E_n$ são possíveis eventos, então, dados $X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n$, temos que a probabilidade de $X_{t_{n+1}} \in E$ só depende da informação dada no instante mais recente $t_n$, ou seja
+No caso discreto, se $\{X_t\}_{t\in I}$ é um processo aleatório em um conjunto discredo $I,$ $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencem a $I,$ e $E, E_1, \ldots, E_n$ são possíveis eventos, então, dados $X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n,$ temos que a probabilidade de $X_{t_{n+1}} \in E$ só depende da informação dada no instante mais recente $t_n,$ ou seja
 $$
 \mathbb{P}(X_{t_{n+1}} \in E | X_{t_1} \in E_1, X_{t_2} \in E_2, \ldots, X_{t_n} \in E_n) = \mathbb{P}(X_{t_{n+1}} \in E | X_{t_n} \in E_n).
 $$
@@ -177,7 +177,7 @@ $$
 \mathbb{P}(X_{t_{n+1}} = x | X_{t_1} = x_1, X_{t_2} = x_2, \ldots, X_{t_n} = x_n) = \mathbb{P}(X_{t_{n+1}} = x | X_{t_n} = x_n).
 $$
 
-A definição formal no caso em que o processo estocástico é contínuo é um pouco delicada, pois a condição requer envolver não apenas um número finito de instantes anteriores mas, sim, um contínuo de instantes $s \leq t$. Para isso, é necessário o conceito de *filtração*. Veremos isso em outro momento.
+A definição formal no caso em que o processo estocástico é contínuo é um pouco delicada, pois a condição requer envolver não apenas um número finito de instantes anteriores mas, sim, um contínuo de instantes $s \leq t.$ Para isso, é necessário o conceito de *filtração*. Veremos isso em outro momento.
 
 O processo de Bernoulli é um exemplo trivial de uma cadeia de Markov discreta. O passeio aleatório é outro exemplo. Um processo de Wiener, modelando o movimento Browniano, por sua vez, é um exemplo de um processo de Markov contínuo. Já o modelo da urna sem recomposição, como tratado anteriormente, não é uma cadeia de Markov, já que cada passo depende do estado do sistema em todos os incrementos anteriores. Mas este pode ser reformulado como um processo de Markov. Veremos isso posteriormente, junto com o estudo de propriedades específicas de processos de Markov.
 
@@ -187,7 +187,7 @@ Processos do tipo Martingale são processos em que o valor esperado em um instan
 $$
 \mathbb{E}\left[|X_t|\right] < \infty, \quad \forall t\in I,
 $$
-e se, dados instantes $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencentes a $I$ e dados eventos $E_1, \ldots, E_n$, vale
+e se, dados instantes $t_1 < t_2 < \ldots < t_n < t_{n+1}$ pertencentes a $I$ e dados eventos $E_1, \ldots, E_n,$ vale
 $$
 \mathbb{E}\left[X_{t_{n+1}} | X_{t_1}\in E_1, \ldots, X_{t_n}\in E_n\right] = X_{t_n}.
 $$
@@ -200,26 +200,26 @@ Formalmente, a condicional $\{X_s; s\in I, \;s\geq t\}$ deve ser escrita na form
 $$
 \mathbb{E}\left[X_{t + \tau} | X \in E_t\right] = X_t, \quad \forall \tau \geq 0,
 $$
-para qualquer $\{X \in E_t\}$ em uma $\sigma$-algebra $\mathcal{F}_t$ associada a uma filtração, como a **filtração natural** dada pela $\sigma$-algebra gerada por (i.e. a menor $\sigma$-algebra contendo) $\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}$.
+para qualquer $\{X \in E_t\}$ em uma $\sigma$-algebra $\mathcal{F}_t$ associada a uma filtração, como a **filtração natural** dada pela $\sigma$-algebra gerada por (i.e. a menor $\sigma$-algebra contendo) $\{X_s^{-1}(E); s\in I, \; s \leq t, \; E\in \mathcal{E}\}.$
 
-O exemplo clássico de Martingale é o passeio aleatório. Se $\{X_n\}_{n\in \mathbb{Z}^*}$ denota o passeio aleatório, então, dado $X_n$, podemos ter $X_{n+1} = X_n + 1$ ou $X_n - 1$ com iguais probabilidades, de modo que
+O exemplo clássico de Martingale é o passeio aleatório. Se $\{X_n\}_{n\in \mathbb{Z}^*}$ denota o passeio aleatório, então, dado $X_n,$ podemos ter $X_{n+1} = X_n + 1$ ou $X_n - 1$ com iguais probabilidades, de modo que
 $$
 \mathbb{E}[X_{n+1}|X_n] = X_n, \qquad \forall n.
 $$
-Além disso, o conhecimento de posições anteriores $X_j$, $j = 0, \ldots, n - 1$ não modifica esse valor esperado. Ou seja,
+Além disso, o conhecimento de posições anteriores $X_j,$ $j = 0, \ldots, n - 1$ não modifica esse valor esperado. Ou seja,
 $$
 \mathbb{E}[X_{n+1}|A_n] = X_n, \qquad \forall n,
 $$
-para qualquer $A_n$ na filtração natural até $n$.
+para qualquer $A_n$ na filtração natural até $n.$
 
 Um processo Martingale não depende de valores anteriores. Mas ele não é necessariamente um processo de Markov, pois outras informações estatísticas diferentes do valor esperado podem depender de informações anteriores. E processos de Markov não são necessariamente Martingales, pois o valor esperado só depende da informação atual mas pode ser diferente do estado atual do processo.
 
 ## Processos de Wiener
 
-Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x_0\in \mathbb{R}$,
+Um **processo de Wiener**, ou **processo Browniano**, é um processo estocástico real $\{W_t\}_{t \geq 0}$ tal que, para algum $x_0\in \mathbb{R},$
 1. $W_0 = x_0$;
-2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0$, onde $j = 1, \ldots, J$, $J\in\mathbb{N}$, temos que as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j}$, $j = 1, \ldots, J$, são independentes.
-3. Para qualquer $\tau > 0$, os incrementos $W_{t + \tau} - W_t$ são identicamente distribuídos, com distribuição normal com média zero e desvio padrão $\tau$, i.e.
+2. $\{W_t\}_{t\geq 0}$ possui incrementos independentes, i.e. para $t_j \geq 0$ e $\tau_j > 0,$ onde $j = 1, \ldots, J,$ $J\in\mathbb{N},$ temos que as variáveis aleatórias $\Delta W_j = W_{t_j + \tau_j} - W_{t_j},$ $j = 1, \ldots, J,$ são independentes.
+3. Para qualquer $\tau > 0,$ os incrementos $W_{t + \tau} - W_t$ são identicamente distribuídos, com distribuição normal com média zero e desvio padrão $\tau,$ i.e.
 $$
 W_{t + \tau} - W_t \sim \mathcal{N}(0, \tau), \quad \forall t \geq 0, \; \forall \tau > 0.
 $$
@@ -228,21 +228,21 @@ $$
 \mathbb{P}(\{\omega \in \Omega; \; t \rightarrow W_t(\omega) \text{ é contínuo}\}) = 1.
 $$
 
-Quando $x_0 = 0$, ou seja,
+Quando $x_0 = 0,$ ou seja,
 $$
 W_0 = 0,
 $$
-o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**. Dado um processo de Wiener padrão $\{W_t\}_{t\geq 0}$, o processo $\tilde W_t = x_0 + W_t$ é um processo de Wiener com $W_0 = x_0$.
+o processo $\{W_t\}_{t \geq 0}$ é chamado de **processo de Wiener padrão**, ou **processo Browniano padrão**. Dado um processo de Wiener padrão $\{W_t\}_{t\geq 0},$ o processo $\tilde W_t = x_0 + W_t$ é um processo de Wiener com $W_0 = x_0.$
 
-Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. O processo de Wiener é um dos temas centrais em equações diferenciais estocásticos. O estudaremos em detalhes em capítulos subsequentes. Em particular, veremos que o processo de Wiener é um exemplo de processo Gaussiano. Reciprocamente, se pode mostrar que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com caminhos contínuous quase certamente e satisfazendo $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\}$, para todo $t, s \geq 0$, é um processo de Wiener.
+Esse tipo de processo estocástico, como modelo para o movimento Browniano, foi introduzido por N. Wiener, nos anos 1920, junto com a demonstração de existência de tal processo. O processo de Wiener é um dos temas centrais em equações diferenciais estocásticos. O estudaremos em detalhes em capítulos subsequentes. Em particular, veremos que o processo de Wiener é um exemplo de processo Gaussiano. Reciprocamente, se pode mostrar que um processo Gaussiano $\{X_t\}_{t\geq 0}$ com caminhos contínuous quase certamente e satisfazendo $\mathbb{E}[X_t] = 0$ e $\mathbb{E}[X_t X_s] = \min\{t, s\},$ para todo $t, s \geq 0,$ é um processo de Wiener.
 
 ## Processos de Lévy
 
 Um **processo de Lévy** é um processo estocástico contínuo $\{X_t\}_{t\geq 0}$ tal que
 1. $X_0 = 0$;
-2. Os incrementos são independentes, i.e. para quaisquer $0 \leq t_0 < t_1, \ldots, t_n$, os incrementos $X_{t_1} - X_{t_0}$, $X_{t_2} - X_{t_1}$, ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias independentes;
-3. Os incrementos são estacionários, i.e. para quaisquer $0 \leq t_1, \ldots, t_n$ e $\tau > 0$, os incrementos $X_{t_1 + \tau} - X_{t_1}$, ..., $X_{t_n + \tau} - X_{t_n}$ tem distribuição conjunta de probabilidades independente de $\tau$;
-4. $\{X_t\}_{t\geq 0}$ é contínuo em probabilidade, i.e. $\mathbb{P}(|X_{t + \tau} - X_t| > \varepsilon) \rightarrow 0$, quando $\tau \rightarrow 0$.
+2. Os incrementos são independentes, i.e. para quaisquer $0 \leq t_0 < t_1, \ldots, t_n,$ os incrementos $X_{t_1} - X_{t_0},$ $X_{t_2} - X_{t_1},$ ..., $X_{t_n} - X_{t_{n-1}}$ são variáveis aleatórias independentes;
+3. Os incrementos são estacionários, i.e. para quaisquer $0 \leq t_1, \ldots, t_n$ e $\tau > 0,$ os incrementos $X_{t_1 + \tau} - X_{t_1},$ ..., $X_{t_n + \tau} - X_{t_n}$ tem distribuição conjunta de probabilidades independente de $\tau$;
+4. $\{X_t\}_{t\geq 0}$ é contínuo em probabilidade, i.e. $\mathbb{P}(|X_{t + \tau} - X_t| > \varepsilon) \rightarrow 0,$ quando $\tau \rightarrow 0.$
 
 Processos de Wiener são processos de Lévy, com incrementos normais com média zero e variância proporcional ao intervalo de tempo.
 
@@ -252,15 +252,15 @@ Processos de Lévy podem ser caracterizados através de uma representação cham
 
 ## Ruído branco
 
-O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que pode ser obtida pela mistura uniforme de fontes lumiosas de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t$, com variável *temporal* $t$ contínua, digamos $t \geq 0$. O espectro é obtido através das suas correlações, ou por suas covariâncias, como faremos a seguir. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0$, para todo $t \geq 0$. Assim, as suas covariâncias são dadas por
+O conceito de processo do tipo **ruído branco** é delicado. A ideia está associada à cor branca, que pode ser obtida pela mistura uniforme de fontes lumiosas de todas as cores visíveis, i.e. combinando-se, igualmente, todos os comprimentos de onda do espectro visível. No caso de um "ruído", pensamos em um processo $\{X_t\}_t,$ com variável *temporal* $t$ contínua, digamos $t \geq 0.$ O espectro é obtido através das suas correlações, ou por suas covariâncias, como faremos a seguir. Pede-se, de início, que o processo tenha valor esperado nulo, $\mathbb{E}[X_t] = 0,$ para todo $t \geq 0.$ Assim, as suas covariâncias são dadas por
 $$
 \mathrm{Cov}(X_t, X_s) = \mathbb{E}(X_tX_s), \qquad t, s \geq 0.
 $$
-Pede-se, ainda, que seja um processo estacionário, de modo que as covariâncias só dependam do intervalo de tempo $t - s$, podendo ser escritas na forma
+Pede-se, ainda, que seja um processo estacionário, de modo que as covariâncias só dependam do intervalo de tempo $t - s,$ podendo ser escritas na forma
 $$
 \mathrm{Cov}(X_t, X_s) = c(t - s),
 $$
-para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}$. Observe que $\mathrm{Cov}(X_t, X_s) = \mathrm{Cov}(X_s, X_t)$, de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
+para alguma função $c:\mathbb{R} \rightarrow \mathbb{R}.$ Observe que $\mathrm{Cov}(X_t, X_s) = \mathrm{Cov}(X_s, X_t),$ de modo que $t, s \geq 0$ podem ser arbitrários e $t-s$ pode, de fato, assumir qualquer valor real.
 
 Caso não haja nenhuma correlação entre os sinais em instantes diferentes, teremos
 $$
@@ -271,7 +271,7 @@ $$
 \sigma_0^2 \stackrel{\mathrm{def}}{=} c(0) = \mathrm{Cov}(X_t, X_t) = \mathbb{E}(X_t^2) = \mathrm{Var}(X_t) > 0 \text{ é constante.}
 $$
 
-Um exemplo de processo que satisfaz essas condições é o processo $X_t = \sin(Ut)$, onde $U \sim \mathrm{Unif}([0, 2\pi))$. Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos
+Um exemplo de processo que satisfaz essas condições é o processo $X_t = \sin(Ut),$ onde $U \sim \mathrm{Unif}([0, 2\pi)).$ Apesar dos caminhos amostrais serem simples senoidais, este é um exemplo de ruído branco no sentido acima. De fato, temos
 $$
 \mathbb{E}[X_t] = \int_\mathbb{R} x \;\mathbb{P}_{X_t}(\mathrm{d}x) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut) \;\mathrm{d}u = 0;
 $$
@@ -283,13 +283,13 @@ $$
 \mathrm{Cov}(X_t, X_s) = \frac{1}{2\pi}\int_0^{2\pi} \sin(ut)\sin(us) \;\mathrm{d}u = 0; \quad t \neq s.
 $$
 
-No entanto, não podemos dizer que uma função $c(\cdot)$ satisfazendo $c(\tau) = 0$, quando $\tau \neq 0$, e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão, na verdade, um ruído branco em um sentido mais fraco.
+No entanto, não podemos dizer que uma função $c(\cdot)$ satisfazendo $c(\tau) = 0,$ quando $\tau \neq 0,$ e $c(0) = 1/2$ tenha um espectro contínuo. As condições acima dão, na verdade, um ruído branco em um sentido mais fraco.
 
 Para que seja um ruído branco "genuíno", a função de covariância $c(\cdot)$ não está definida no sentido clássico. É necessário que seja uma *distribuição*, com
 $$
 c(\tau) = \sigma_0^2\delta_0,
 $$
-para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega$, aqui, para denotar a frequência, como de costume nesse contexto, ao invés de denotar um elemento do espaço amostral):
+para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega,$ aqui, para denotar a frequência, como de costume nesse contexto, ao invés de denotar um elemento do espaço amostral):
 $$
 \hat c(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
 $$
@@ -300,4 +300,4 @@ Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de
 
 ## Exercícios
 
-1. Mostre que, se $\{X_n\}_n$ é um processo *i.i.d.* e $k \in \mathbb{N}$, o processo $Y_n = X_n + \cdots + X_{n + k}$ é estacionário mas não é *i.i.d.*.
+1. Mostre que, se $\{X_n\}_n$ é um processo *i.i.d.* e $k \in \mathbb{N},$ o processo $Y_n = X_n + \cdots + X_{n + k}$ é estacionário mas não é *i.i.d.*.

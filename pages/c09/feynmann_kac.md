@@ -16,7 +16,7 @@ u(T, X_T) & = u(\tau, X_\tau) + \int_\tau^T \left(u_t(t, X_t) + u_x(t, X_t)f(X_t
 \end{align*}
 $$
 
-Ao tomarmos o valor esperado, condicionada a $X_\tau = \xi$, e considerando que a integral estocástica tem esperança zero, obtemos
+Ao tomarmos o valor esperado, condicionada a $X_\tau = \xi,$ e considerando que a integral estocástica tem esperança zero, obtemos
 $$
 \mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi) + \int_\tau^T \mathbb{E}\left[ u_t(t, X_t) + u_x(t, X_t)f(X_t) + \frac{1}{2}u_{xx}(t, X_t)g(X_t)^2; X_\tau = \xi\right]\;\mathrm{d}t.
 $$
@@ -36,7 +36,7 @@ Bom, mas o que isso significa no nosso caso? A ideia é que podemos impor uma *c
 $$
 u(T, x) = \Phi(x),
 $$
-para o momento desejado $\Phi$, em seguida resolver "para trás no tempo" para obter $u(\tau, \xi)$ e encontrar o desejado valor esperado
+para o momento desejado $\Phi,$ em seguida resolver "para trás no tempo" para obter $u(\tau, \xi)$ e encontrar o desejado valor esperado
 $$
 \mathbb{E}[\Phi(X_T); X_\tau = \xi] = \mathbb{E}[u(T, X_T); X_\tau = \xi] = u(\tau, \xi).
 $$
@@ -49,15 +49,15 @@ com condição inicial
 $$
 X_\tau = \xi
 $$
-dada em um instante $\tau\in\mathbb{R}$, podemos encontrar o momento
+dada em um instante $\tau\in\mathbb{R},$ podemos encontrar o momento
 $$
 \mathbb{E}[\Phi(X_T); X_\tau = \xi]
 $$
-em um instante futuro $T > \tau$, para alguma $\Phi$ dada, resolvendo a EDP
+em um instante futuro $T > \tau,$ para alguma $\Phi$ dada, resolvendo a EDP
 $$
 u_t(t, x) + u_x(t, x)f(x) = - \frac{1}{2}u_{xx}(t, x)g(x)^2,
 $$
-no intervalo $\tau \leq t \leq T$, em $x\in \mathbb{R}$, dada a condição *final*
+no intervalo $\tau \leq t \leq T,$ em $x\in \mathbb{R},$ dada a condição *final*
 $$
 u(T, x) = \Phi(x),
 $$
@@ -100,4 +100,4 @@ Pela EDP, vemos que
 $$
 v(t, x) = u(T - t, x).
 $$
-Ou seja, $v=v(t, x),$ em si, evolui para frente no tempo, mas representa uma evolução retrógrada. (Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para $u$, mas a maioria a considera como sendo a equação para $v$.) Ou seja, é apenas uma outra maneira de ver a equação de Feynman-Kac.
+Ou seja, $v=v(t, x),$ em si, evolui para frente no tempo, mas representa uma evolução retrógrada. (Vale ressaltar que, em alguns textos, a equação denominada de equação retrógrada de Kolmogorov é aquela para $u,$ mas a maioria a considera como sendo a equação para $v.$) Ou seja, é apenas uma outra maneira de ver a equação de Feynman-Kac.

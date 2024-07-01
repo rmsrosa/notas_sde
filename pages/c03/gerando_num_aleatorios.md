@@ -12,7 +12,7 @@ O estudo desses algoritmos de PRNG formam uma linha de pesquisa importante. E h�
 
 ## Geradores Congruentes Lineares
 
-Uma família de métodos simples, que podemos mencionar para efeito de ilustração, é a dos *geradores congruentes lineares*. É uma família de métodos parametrizada por três parâmetros, $a$, $b$ e $m$. A sequência de números pseudo-aleatórios é iniciada a partir de uma **semente** $X_0$ e é definida, recursivamente, por
+Uma família de métodos simples, que podemos mencionar para efeito de ilustração, é a dos *geradores congruentes lineares*. É uma família de métodos parametrizada por três parâmetros, $a,$ $b$ e $m.$ A sequência de números pseudo-aleatórios é iniciada a partir de uma **semente** $X_0$ e é definida, recursivamente, por
 $$
 X_{n+1} = (a X_n + b) \operatorname{mod} m.
 $$

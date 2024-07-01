@@ -4,7 +4,7 @@
 
 Podemos ilustrar e conferir a order de convergência do método de Euler-Maruyama considerando equações diferenciais estocásticas para as quais conhemos explicitamente a solução exata.
 
-Vamos considerar duas equações, uma com ruído multiplicativo, que teoricamente nos dá uma convergência forte de ordem $1/2$, e outra com ruído aditivo, que teoricamente nos dá uma convergência forte de ordem $1$. Em ambas temos, também, convergência fraca de ordem $1$.
+Vamos considerar duas equações, uma com ruído multiplicativo, que teoricamente nos dá uma convergência forte de ordem $1/2,$ e outra com ruído aditivo, que teoricamente nos dá uma convergência forte de ordem $1.$ Em ambas temos, também, convergência fraca de ordem $1.$
 
 O caso com ruído multiplicativo é ilustrado com o movimento Browniano geométrico, enquanto que o caso com ruído aditivo é ilustrado com o processo de Orstein-Uhlenbeck.
 
@@ -19,7 +19,7 @@ $$
 X_t = X_0 e^{(\mu + \sigma^2/2)t + \sigma W_t}.
 $$
 
-Aproximamos a solução pelo método de Euler-Maruyama, em um intervalo de tempo $[0, T]$, dado por
+Aproximamos a solução pelo método de Euler-Maruyama, em um intervalo de tempo $[0, T],$ dado por
 $$
 X_j^n = X_{j-1}^n + \mu X_{j-1}^n\Delta t + \sigma X_{j-1}^n \Delta W_j, \quad j = 1, \ldots, n,
 $$
@@ -33,9 +33,9 @@ $$
 W_0^n = 0, \quad W_j^n = W_{j-1}^n + \Delta W_j.
 $$
 
-Para cada $n$ fixo, podemos interpretar $\{W_j^n\}_j$ como, de fato, uma amostra exata de um processo de Wiener $\{W_t\}_{t \geq 0}$, com $W_j^n = W_{t_j}$.
+Para cada $n$ fixo, podemos interpretar $\{W_j^n\}_j$ como, de fato, uma amostra exata de um processo de Wiener $\{W_t\}_{t \geq 0},$ com $W_j^n = W_{t_j}.$
 
-De posse de $\{W_j^n\}_j$, podemos considerar uma amostra da solução exata
+De posse de $\{W_j^n\}_j,$ podemos considerar uma amostra da solução exata
 $$
 X_{t_j}^n = X_0 e^{(\mu + \sigma^2/2)t_j + \sigma W_j^n}.
 $$
@@ -46,11 +46,11 @@ Ao final, podemos estimar o erro forte via
 $$
 e_n^{\mathrm{forte}} = \max_{j = 0, \ldots, n} \mathbb{E}_m\left[ \left| X_j^n - X_{t_j}^n\right|\right] = \max_{j=0, \ldots, n}\frac{1}{M}\sum_{m=1}^M \left| X_j^n(\omega_m) - X_{t_j}^n(\omega_m)\right|,
 $$
-onde o valor esperado é tomado em relação às amostras $\omega_1, \ldots, \omega_M$.
+onde o valor esperado é tomado em relação às amostras $\omega_1, \ldots, \omega_M.$
 
-Observe que devemos considerar o erro em relação ao passo $\Delta t$, mas também temos o erro em relação à amostragem, que pode ser significativo se $M$ não for suficientemente grande.
+Observe que devemos considerar o erro em relação ao passo $\Delta t,$ mas também temos o erro em relação à amostragem, que pode ser significativo se $M$ não for suficientemente grande.
 
-Nas simulações abaixo, tomamos alguns valores de $\mu$, $\sigma$, $T$, $M$ e $n$ para ilustrar os efeitos desse parâmetros. Fazemos uma regressão linear de mínimos quadrados nos $(\Delta t^n, e_n^{\mathrm{forte}})$ para encontrar $\ln(C)$ e a ordem de convergência $p$ tais que
+Nas simulações abaixo, tomamos alguns valores de $\mu,$ $\sigma,$ $T,$ $M$ e $n$ para ilustrar os efeitos desse parâmetros. Fazemos uma regressão linear de mínimos quadrados nos $(\Delta t^n, e_n^{\mathrm{forte}})$ para encontrar $\ln(C)$ e a ordem de convergência $p$ tais que
 $$
 \ln(e_n^{\mathrm{forte}}) \approx \ln(C) + p \ln(\Delta t_n),
 $$
@@ -58,7 +58,7 @@ de modo que
 $$
 e_n^{\mathrm{forte}} \approx C\Delta t_n^p,
 $$
-correspondendo a uma taxa de convergência da ordem de $\Delta t^p$.
+correspondendo a uma taxa de convergência da ordem de $\Delta t^p.$
 
 As amostras do processo de Wiener são calculadas na malha mais fina. Os passos correspondentes são dados a partir dessas amostras, seja na malha mais fina ou nas mais grossas.
 
@@ -153,7 +153,7 @@ Se por outro lado, diminuirmos a amostragem, enxergamos uma ordem forte diferent
 
 ## Convergência fraca de ordem 1 no movimento Browniano geométrico
 
-A ordem da convergência fraca também sofre influências do número de amostras e da intensidade de ruído. Mas não vamos ilustrar isso aqui. Exibimos apenas uma simulação, com uma ordem de convergência próxima de $1$. Observe, também, que, além da ordem mais alta de convergência, o erro em si tem uma magnitude bem menor.
+A ordem da convergência fraca também sofre influências do número de amostras e da intensidade de ruído. Mas não vamos ilustrar isso aqui. Exibimos apenas uma simulação, com uma ordem de convergência próxima de $1.$ Observe, também, que, além da ordem mais alta de convergência, o erro em si tem uma magnitude bem menor.
 
 ```julia:geometric_brownian_EMconv
 #hideall
@@ -225,4 +225,4 @@ $$
 O_t = e^{-\nu t} O_0 + \int_0^t e^{-\nu (t - s)} \;\mathrm{d}W_s.
 $$
 
-Como o ruído é aditivo, esperamos recuperar a convergência forte de ordem $1$.
+Como o ruído é aditivo, esperamos recuperar a convergência forte de ordem $1.$
