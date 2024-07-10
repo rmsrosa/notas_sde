@@ -590,6 +590,8 @@ $$
 \mathbb{P}(\{\omega; \;t \mapsto W_t(\omega) \textrm{ é contínuo}\}) = 1.
 $$
 
+Das outras hipóteses da definição de um processo de Wiener, em particular das hipóteses do processo ser Gaussiano e dos incrementos serem normais com média zero e variância igual ao tamanho do passo temporal, segue do *Teorema de Continuidade de Kolmogorov* que uma modificação quase sempre do processo tem caminhos que são Hölder contínuos com expoente arbitrariamente próximo de $1/2.$ Portanto, é possível obter um processo de Wiener modificando um processo Gaussiano que satisfaça as outras hipóteses. A demonstração acima nos dá isso mais diretamente. 
+
 ### Independência dos incrementos
 
 Sejam $0 \leq t_0 < t_1 < \ldots < t_n \leq 1,$ onde $n\in \mathbb{N},$ $n \geq 2.$ Dados eventos $E_1, \ldots, E_n\in \mathbb{A},$ vamos considerar a probabilidade conjunta dos incrementos $W_{t_j} - W_{t_{j-1}},$ $j = 1, \ldots, n.$
