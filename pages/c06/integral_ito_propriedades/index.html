@@ -523,6 +523,59 @@ S_t = \int_0^t H_s \;\mathrm{d}W_s,
 \]
 <p>que não é positiva.</p>
 <p>Para que a positividade valha na integral de Riemann-Stieltjes, é necessário impor condições extras, como \(g\) ser não decrescente ou então \(g\) ser positiva e \(f\) ser estritamente uniformemente positiva.</p>
+<h2 id="movimento_browniano_com_mudança_temporal"><a href="#movimento_browniano_com_mudança_temporal" class="header-anchor">Movimento Browniano com mudança temporal</a></h2>
+<p>A integral de uma função determinística \(g=g(t)\) em relação a um processo de Wiener nos dá um novo processo estocástico</p>
+\[
+    X_t = \int_0^t g(s)\;\mathrm{d}W_s.
+\]
+<p>Sendo um limite de combinações lineares de processos Gaussianos, o processo \(\{X_t\}_{t\geq 0}\) também é um processo Gaussiano. O interessante é que esse processo é como um movimento Browniano com tempo modificado, i.e. \(X_t = {\tilde W}_{\theta(t)},\) para uma certa função \(\theta=\theta(t)\) e para um processo de Wiener \(\{\tilde W_t\}_{t \geq 0}\) possivelmente diferente &#40;Mais significativo ainda é que toda martingale local contínua com \(X_0=0\) é um movimento Browniano com tempo modificado.&#41;</p>
+<p>Dada a caracterização do processo de Wiener através das suas correlações e de ser um processo Gaussiano, basta verificarmos que</p>
+\[
+    \mathbb{E}[X_tX_s] = \mathbb{E}[{\tilde W}_{\theta(t)}{\tilde W}_{\theta(s)}] = \min\{\theta(t), \theta(s)\}, \quad \forall t, s \geq 0,
+\]
+<p>para uma função \(\theta=\theta(t)\) apropriada. No caso, veremos que</p>
+\[
+    \theta(t) = \int_0^t g(s)^2 \;\mathrm{d}s,
+\]
+<p>e, para isso, devemos ter \(g\) localmente de quadrado integrável.</p>
+<p>Observe que</p>
+\[
+    \mathbb{E}[X_t] = 0,
+\]
+<p>e, pela isometria de Itô,</p>
+\[
+    \mathbb{E}[X_t^2] = \mathbb{E}\left[\left(\int_0^t g(s)\;\mathrm{d}W_s\right)^2\right] = \int_0^t \mathbb{E}[g(s)^2]\;\mathrm{d}s = \int_0^t g(s)^2\;\mathrm{d}s = \theta(t),
+\]
+<p>para todo \(t \geq 0.\) Além disso, para \(t, s \geq 0,\)</p>
+\[
+    \begin{align*}
+        \mathbb{E}[X_tX_s] & = \mathbb{E}\left[\left(\int_0^t g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^s g(\xi)\;\mathrm{d}W_\xi\right)\right] \\
+        & = \mathbb{E}\left[\left(\int_0^{\min\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^{\min\{t, s\}} g(\xi)\;\mathrm{d}W_\xi\right)\right] + \mathbb{E}\left[\left(\int_{\min\{t,s\}}^{\max\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^{\min\{t, s\}} g(\xi)\;\mathrm{d}W_\xi\right)\right] \\
+        & = \mathbb{E}\left[\left(\int_0^{\min\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)^2\right] + \mathbb{E}\left[\left(\int_{\min\{t,s\}}^{\max\{t, s\}} g(\tau)\;\mathrm{d}W_\tau\right)\left(\int_0^{\min\{t, s\}} g(\xi)\;\mathrm{d}W_\xi\right)\right]
+    \end{align*}
+\]
+<p>Pela independência de passos disjuntos do processo de Wiener, o segundo termo se anula, enquanto que no primeiro termo usamos a isometria de Itô, obtendo</p>
+\[
+    \mathbb{E}[X_tX_s] = \int_0^{\min\{t, s\}} \mathbb{E}[g(\tau)^2]\;\mathrm{d}\tau = \int_0^{\min\{t, s\}} g(\tau)^2\;\mathrm{d}\tau = \min\{\theta(t), \theta(s)\}.
+\]
+<p>Dessa forma, provamos que</p>
+\[
+    X_t = {\tilde W}_{\theta(t)}, \qquad \forall t \geq 0,
+\]
+<p>ou, mais explicitamente,</p>
+\[
+    \int_0^t g(s)\;\mathrm{d}W_s = {\tilde W}_{\int_0^t g(s)^2\;\mathrm{d}s}, \qquad \forall t \geq 0,
+\]
+<p>para algum processo de Wiener \(\{\tilde W_t\}_{t \geq 0}\) que, em geral, é diferente de \(\{W_t\}_{t\geq 0}.\)</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Mostre que, em geral, a identidade</p>
+</li>
+</ol>
+\[
+    \int_0^t g(s)\;\mathrm{d}W_s = W_{\int_0^t g(s)^2\;\mathrm{d}s}, \qquad \forall t \geq 0,
+\]
+<p>não vale para o mesmo processo de Wiener \(\{W_t\}_{t \geq 0}.\) &#40;Isso é verdade se, e somente se, \(g^2(t) = 1,\) para todo \(t \geq 0.\)&#41;</p>
 
     <div class="navbar">
     <p id="nav">
@@ -546,7 +599,7 @@ S_t = \int_0^t H_s \;\mathrm{d}W_s,
         </div>
     
 
-    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: August 10, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

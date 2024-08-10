@@ -367,7 +367,7 @@
 \[
 V_t^a = \frac{1}{a}W_{a^2t}, \quad t \geq 0.
 \]
-<p>Então \(\{V_t^a\}_{t\geq 0}\) também é um processo de Wiener padrão. Caso \(\{W_t\}_{t\in [0, T]}\) só esteja definido em um intervalor \([0, T],\) \(T > 0,\) então obtemos um processo de Wiener \(\{V_t^a\}_{t\in [0, a^2T]}\) em \([0, a^2T].\)</p>
+<p>Então \(\{V_t^a\}_{t\geq 0}\) também é um processo de Wiener padrão. Caso \(\{W_t\}_{t\in [0, T]}\) só esteja definido em um intervalo \([0, T],\) \(T > 0,\) então obtemos um processo de Wiener \(\{V_t^a\}_{t\in [0, a^2T]}\) em \([0, a^2T].\)</p>
 <p>É imediato verificar que</p>
 <p>&#40;i&#41; \(V_0^a = W_0 = 0\);</p>
 <p>&#40;ii&#41; quase sempre os caminhos amostrais \(t \mapsto V_t^a(\omega) = (1/a)W_{a^2 t}(\omega)\) são contínuos; e</p>
@@ -601,6 +601,8 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
 <ol>
 <li><p>Mostre que a combinação convexa \(W_t = (1-\theta)W_t^{(1)} + \theta W_t^{(2)},\) \(0\leq \theta \leq 1,\) entre dois processos de Wiener independentes \(\{W_t^{(1)}\}_{t\geq 0}\) e \(\{W_t^{(1)}\}_{t\geq 0}\) também é um processo de Wiener.</p>
 </li>
+<li><p>Vimos que \({\tilde W}_t = (1/a)W_{a^2t},\) \(t \geq 0,\) define um novo processo de Wiener. Mostre que, a menos que \(a = \pm 1,\) não é verdade que \({\tilde W}_t = W_t,\) ou seja, as distribuições são as mesmas, mas os caminhos não são. &#40;Dica: isso viola, por exemplo, a independência entre passos disjuntos.&#41;</p>
+</li>
 <li><p>Seja \(\{W_t\}_{t\geq 0}\) um processo de Wiener padrão. Mostre que o limite abaixo vale quase sempre, para qualquer \(p > 1/2.\)</p>
 </li>
 </ol>
@@ -630,7 +632,7 @@ t \mapsto V_t^s(\omega) = W_{s + t}(\omega) - W_s(\omega)
         </div>
     
 
-    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: August 10, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

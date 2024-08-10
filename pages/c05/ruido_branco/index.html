@@ -367,11 +367,11 @@
 <h1 id="get_title"><a href="#get_title" class="header-anchor">5.4. Relação com ruído branco</a></h1>
 <p>Como já vimos, o conceito de processo do tipo ruído branco é delicado. Deve ser um processo estacionário com esperança nula, \(\mathbb{E}[X_t] = 0,\) variância constante \(\mathrm{Var}(X_t) = \mathbb{E}[X_t^2] = \sigma^2\) e cuja covariância \(c(t-s) = \mathrm{Cov}(X_t, X_s)\) é uma delta de Dirac:</p>
 \[
-    c(\tau) = \sigma_0^2\delta_0.
+    c(\tau) = \sigma_0^2\delta_0(\tau).
 \]
 <p>Assim, o seu espectro \(\hat c(\varpi)\) é, de fato, constante &#40;usamos \(\varpi,\) aqui, para denotar a frequência, já que \(\omega\) é usado como elemento do espaço amostral&#41;:</p>
 \[
-\hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{\sqrt{2\pi}}\varpi^2, \quad \forall \varpi \in \mathbb{R}.
+\hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{\sqrt{2\pi}}\sigma_0^2, \quad \forall \varpi \in \mathbb{R}.
 \]
 <p>Formalizar isso necessita de um espaço apropriado de distribuições. Não faremos os detalhes formais por aqui. O objetivo é apenas estabelecer conexões informais de que, em alguma sentido apropriado, a <em>derivada</em> de um processo de Wiener é um ruído branco.</p>
 <h2 id="via_representação"><a href="#via_representação" class="header-anchor">Via representação </a></h2>
@@ -461,7 +461,7 @@ c_h(\cdot, s) \rightarrow \delta_s, \qquad h \rightarrow 0.
         </div>
     
 
-    Last modified: July 01, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: August 10, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
