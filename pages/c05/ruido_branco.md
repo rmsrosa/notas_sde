@@ -4,11 +4,11 @@
 
 Como já vimos, o conceito de processo do tipo ruído branco é delicado. Deve ser um processo estacionário com esperança nula, $\mathbb{E}[X_t] = 0,$ variância constante $\mathrm{Var}(X_t) = \mathbb{E}[X_t^2] = \sigma^2$ e cuja covariância $c(t-s) = \mathrm{Cov}(X_t, X_s)$ é uma delta de Dirac:
 $$
-    c(\tau) = \sigma_0^2\delta_0.
+    c(\tau) = \sigma_0^2\delta_0(\tau).
 $$
 Assim, o seu espectro $\hat c(\varpi)$ é, de fato, constante (usamos $\varpi,$ aqui, para denotar a frequência, já que $\omega$ é usado como elemento do espaço amostral):
 $$
-\hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{\sqrt{2\pi}}\varpi^2, \quad \forall \varpi \in \mathbb{R}.
+\hat c(\varpi) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{\sqrt{2\pi}}\sigma_0^2, \quad \forall \varpi \in \mathbb{R}.
 $$
 
 Formalizar isso necessita de um espaço apropriado de distribuições. Não faremos os detalhes formais por aqui. O objetivo é apenas estabelecer conexões informais de que, em alguma sentido apropriado, a *derivada* de um processo de Wiener é um ruído branco.
