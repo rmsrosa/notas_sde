@@ -113,7 +113,7 @@ $$
 Observe que, usando-se a propriedade $\mathbb{E}(W_tW_s) = \mathrm{Cov}(W_t, W_s) = \min\{t, s\},$
 $$
 \begin{align*}
-\mathbb{E}\left[S_k\right] & = \mathbb{E}\left[W_{t_j}^2 - 2W_{t_j}W_{t_{j-1}} + W_{t_{j-1}}^2\right] \\
+\mathbb{E}\left[\left(W_{t_j} - W_{t_{j-1}}\right)^2\right] & = \mathbb{E}\left[W_{t_j}^2 - 2W_{t_j}W_{t_{j-1}} + W_{t_{j-1}}^2\right] \\
 & = \mathbb{E}\left[W_{t_j}^2\right] -2\mathbb{E}\left[W_{t_j}W_{t_{j-1}}\right] + \mathbb{E}\left[W_{t_{j-1}}^2\right] \\
 & = t_j - 2t_{j-1} + t_{j-1} \\
 & = t_j - t_{j-1}.
@@ -179,7 +179,7 @@ S_k \rightarrow T,
 $$
 quando $k\rightarrow \infty.$ Mais importante é a estimativa que segue da desigualdade de Chebyshev,
 $$
-    \mathbb{P}\left(|S_k - T| \geq \varepsilon \right) \leq \mathbb{E}\left[\frac{(S_k - T)^2}{\varepsilon^2}\right] \leq \frac{T}{\varepsilon^2}\frac{1}{2^{k-1}},
+    \mathbb{P}\left(|S_k - T| \geq \varepsilon \right) \leq \mathbb{E}\left[\frac{(S_k - T)^2}{\varepsilon^2}\right] \leq \frac{1}{\varepsilon^2}\frac{T}{2^{k-1}},
 $$
 para $\varepsilon>0$ arbitrário. Com isso,
 $$
