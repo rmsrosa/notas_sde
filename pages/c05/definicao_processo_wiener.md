@@ -18,3 +18,5 @@ W_0 = 0.
 $$
 
 Essa definição é inspirada no modelo de Einstein para o movimento Browniano. Mas essa inspiração não é suficiente para garantir a existência de um processo com as propriedades listadas acima. A demonstração de tal existência é fundamental e será feita a seguir.
+
+A última condição, dos caminhos amostrais serem quase certamente contínuos, não é, propriamente, redundante. Graças ao Teorema de Continuidade de Kolmogorov, é verdade que as três primeiras hipóteses garantem que existe uma *modificação* do processo que possui caminhos contínuous quase certamente, mas ela não garante que o processo original tenha essa propriedade. Por isso, essa condição é usualmente incluída na definição de processo de Wiener, como feito acima. 
