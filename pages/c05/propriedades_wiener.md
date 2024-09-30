@@ -105,20 +105,20 @@ Vamos concluir afirmando que um processo Gaussiano $\{W_t\}_{t\geq 0}$ com camin
 
 De fato, temos, por definição, $W_0$ normal com
 $$
-\mathbb{E}[W_0] = 0, \qquad \mathbb{E}[W_0^2] = 0,
+\mathbb{E}[W_0] = 0, \qquad \mathbb{E}[W_0^2] = \min\{0, 0\} = 0,
 $$
 de modo que
 $$
     W_0 = 0.
 $$
 
-Para $t, \tau \geq 0,,$ temos o incremento $W_{t+\tau} - W_t$ como sendo uma normal com esperança e variância dadas por
+Para $t, \tau \geq 0,$ temos o incremento $W_{t+\tau} - W_t$ como sendo uma normal com esperança e variância dadas por
 $$
     \mathbb{E}[W_{t+\tau} - W_t] = \mathbb{E}[W_{t+\tau}] - \mathbb{E}[W_t] = 0 - 0 = 0
 $$
 e 
 $$
-    \mathbb{E}[(W_{t+\tau} - W_t)^2] = \mathbb{E}[W_{t+\tau}^2] - 2\mathbb{E}[W_{t+\tau}W_2] + \mathbb{E}[W_t^2] = t + \tau - 2t + t = \tau,
+    \mathbb{E}[(W_{t+\tau} - W_t)^2] = \mathbb{E}[W_{t+\tau}^2] - 2\mathbb{E}[W_{t+\tau}W_t] + \mathbb{E}[W_t^2] = t + \tau - 2t + t = \tau,
 $$
 portanto
 $$
