@@ -437,19 +437,19 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
 <p>Vamos concluir afirmando que um processo Gaussiano \(\{W_t\}_{t\geq 0}\) com caminhos contínuous quase certamente e satisfazendo \(\mathbb{E}[W_t] = 0\) e \(\mathbb{E}[W_t W_s] = \min\{t, s\},\) para todo \(t, s \geq 0,\) é um processo de Wiener.</p>
 <p>De fato, temos, por definição, \(W_0\) normal com</p>
 \[
-\mathbb{E}[W_0] = 0, \qquad \mathbb{E}[W_0^2] = 0,
+\mathbb{E}[W_0] = 0, \qquad \mathbb{E}[W_0^2] = \min\{0, 0\} = 0,
 \]
 <p>de modo que</p>
 \[
     W_0 = 0.
 \]
-<p>Para \(t, \tau \geq 0,,\) temos o incremento \(W_{t+\tau} - W_t\) como sendo uma normal com esperança e variância dadas por</p>
+<p>Para \(t, \tau \geq 0,\) temos o incremento \(W_{t+\tau} - W_t\) como sendo uma normal com esperança e variância dadas por</p>
 \[
     \mathbb{E}[W_{t+\tau} - W_t] = \mathbb{E}[W_{t+\tau}] - \mathbb{E}[W_t] = 0 - 0 = 0
 \]
 <p>e </p>
 \[
-    \mathbb{E}[(W_{t+\tau} - W_t)^2] = \mathbb{E}[W_{t+\tau}^2] - 2\mathbb{E}[W_{t+\tau}W_2] + \mathbb{E}[W_t^2] = t + \tau - 2t + t = \tau,
+    \mathbb{E}[(W_{t+\tau} - W_t)^2] = \mathbb{E}[W_{t+\tau}^2] - 2\mathbb{E}[W_{t+\tau}W_t] + \mathbb{E}[W_t^2] = t + \tau - 2t + t = \tau,
 \]
 <p>portanto</p>
 \[
@@ -487,7 +487,7 @@ W_{t_j} = W_{t_j} - W_{t_{j-1}} + \cdots + W_{t_1} - W_{t_0}.
         </div>
     
 
-    Last modified: August 10, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: September 30, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
