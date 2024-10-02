@@ -1,0 +1,1 @@
+"/home/runner/work/notas_sde/notas_sde/__site/assets/pages/c08/ou_aproxima_ruidobranco/code/output/ou_approx_whitenoise_spectrum.svg"
