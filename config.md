@@ -106,6 +106,7 @@ menu = [
         "pages/c08/geometric_brownian"
         "pages/c08/brownian_bridge"
         "pages/c08/ornstein_uhlenbeck"
+        "pages/c08/ou_aproxima_ruidobranco"
         "pages/c08/asymptotic_stability"
         "pages/c08/relacoes_rode_sde"
     ]
