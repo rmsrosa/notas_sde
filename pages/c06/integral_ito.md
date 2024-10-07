@@ -43,7 +43,7 @@ As condições acima são suficientes para a definição da integral estocástic
 $$
     \int_0^T H_t\;\mathrm{d}t
 $$
-via limites, em média quadrática (i.e. $L^2(\Omega),$) das somas finitas de Riemann-Stieljes
+via limites, em média quadrática (i.e. $L^2(\Omega)$), das somas finitas de Riemann-Stieljes
 $$
 \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 $$
