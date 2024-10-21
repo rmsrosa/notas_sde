@@ -365,11 +365,11 @@
 \[
 x(t) = x(0)e^{\int_0^t b(s)\;\mathrm{d}s}.
 \]
-<p>Mais geralmente, a equação linear não homogênea</p>
+<p>Mais geralmente, usando \(e^{-\int_0^t b(s)\;\mathrm{d}s}\) como fator de integração, vemos que a equação linear não homogênea</p>
 \[
 \frac{\mathrm{d}x}{\mathrm{d}t} = a(t) + b(t)x
 \]
-<p>tem as suas soluções da forma</p>
+<p>tem as suas soluções obtidas pela fórmula de variação de constantes,</p>
 \[
 x(t) = x(0)e^{\int_0^t b(s)\;\mathrm{d}s} + \int_0^t e^{\int_s^t b(\tau) \;\mathrm{d}\tau}a(s)\;\mathrm{d}s.
 \]
@@ -405,57 +405,48 @@ X_t = X_0 + \int_0^t g_0(s) \;\mathrm{d}W_s.
 \[
 X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 \]
-<p>De fato, vamos verificar, primeiro, o caso com condição inicial igual \(1,\)</p>
+<p>Se não houvesse o fator de correção da fórmula de Itô, esperaríamos obter uma solução com termo multiplicativo</p>
 \[
-\left.\hat X_t\right|_{t = 0} = 1.
+    e^{\int_0^t g_1(s)\;\mathrm{d}W_s}.
 \]
-<p>Nesse caso, vamos verificar que a solução tem a forma</p>
+<p>Mas podemos tentar usar esse termo como fator de integração, para achar a soluçõa correta.</p>
+<p>Considere, então, o processo</p>
 \[
-\hat X_t = e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
+    G_t = \int_0^t g_1(s)\;\mathrm{d}W_s,
 \]
-<p>Usamos \(\{\hat X_t\}_{t \geq 0}\) para representar a solução com a condição initial \(\hat X_0 = 1\) e, assim, distinguir do caso mais geral.</p>
-<p>Definindo</p>
+<p>que satisfaz</p>
 \[
-Y_t = -\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s,
+    \mathrm{d}G_t = g_1(t)\;\mathrm{d}W_t,
 \]
-<p>podemos escrever a solução como</p>
+<p>e o fator de integração definido pelo processo</p>
 \[
-\hat X_t = e^{Y_t}.
+    e^{-G_t}.
 \]
-<p>De outra forma, definindo a função \(u(y) = e^y,\) podemos escrever</p>
+<p>Pela fórmula de Itô, com \(e^{-G_t} = f(G_t),\) \(f(x) = e^{-x},\) temos</p>
 \[
-\hat X_t = u(Y_y).
+    \mathrm{d}(e^{-G_t}) = -e^{-G_t}\;\mathrm{d}G_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t = -e^{-G_t}g_1(t)\;\mathrm{d}W_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t .
 \]
-<p>Veja que \(Y_t\) é um processo de Itô, com</p>
+<p>Assim, considerando o processo</p>
 \[
-\mathrm{d}Y_t = - \frac{1}{2}g_1(t)^2\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
+    Z_t = X_t e^{-G_t},
 \]
-<p>Assim, podemos aplicar a fórmula de Itô e obter</p>
+<p>temos</p>
 \[
-\begin{align*}
-\mathrm{d}\hat X_t & = u'(Y_t)\;\mathrm{d}Y_t + \frac{1}{2}u''(Y_t)g_1(t)^2\;\mathrm{d}t \\
-& = e^{Y_t}\;\mathrm{d}Y_t + \frac{1}{2}e^{Y_t}g_1(t)^2\;\mathrm{d}t \\
-& = \hat X_t\;\mathrm{d}Y_t + \frac{1}{2}g_1(t)^2\hat X_t\;\mathrm{d}t.
-\end{align*}
+    \begin{align*}
+        \mathrm{d}Z_t & = e^{-G_t}\;\mathrm{d}X_t + X_t\mathrm{d}e^{-G_t} \\
+        & = e^{-G_t} g_1(t) X_t \;\mathrm{d}W_t + X_t\left( -e^{-G_t}g_1(t)\;\mathrm{d}W_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t\right) \\
+        & = \frac{1}{2}X_te^{-G_t}g_1(t)^2\;\mathrm{d}t \\
+        & = \frac{1}{2}g_1(t)^2 Z_t\;\mathrm{d}t.
+    \end{align*}
 \]
-<p>Cancelando o termo comum, chegamos a</p>
+<p>Esse é uma equações diferencial ordinária &#40;com condição inicial aleatória&#41; para \(Z_t,\) cuja solução é</p>
 \[
-\mathrm{d}\hat X_t = g_1(t)\hat X_t\;\mathrm{d}W_t,
+    Z_t = Z_0 e^{\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s}.
 \]
-<p>mostrando que \(\{\hat X_t\}_{t \geq 0}\) é, de fato, solução.</p>
-<p>Agora, no caso da condição inicial ser uma variável aleatória,</p>
+<p>Como \(Z_0 = X_0\) e \(X_t = Z_t e^{G_t},\) obtemos a solução</p>
 \[
-\left. X_t \right|_{t = 0} = X_0,
+    X_t = X_0 e^{\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 \]
-<p>escrevemos</p>
-\[
-X_t = X_0 \hat X_t, \quad \hat X_t = u(Y_t).
-\]
-<p>Como \(\hat X_0 = 1,\) segue que a condição inicial \(X_t|_{t = 0} = X_0\) é satisfeita. Quanto à equação diferencial, temos</p>
-\[
-\mathrm{d}X_t = X_0 \mathrm{d}\hat X_t = X_0 g_1(t)\hat X_t\;\mathrm{d}W_t = g_1(t) X_t\;\mathrm{d}W_t.
-\]
-<p>Portanto, \(\{X_t\}_{t \geq 0}\) é, de fato, a solução.</p>
 <h2 id="equação_estocástica_linear_com_drift_determinístico_e_com_ruído_aditivo"><a href="#equação_estocástica_linear_com_drift_determinístico_e_com_ruído_aditivo" class="header-anchor">Equação estocástica linear com drift determinístico e com ruído aditivo</a></h2>
 <p>Considere, agora,</p>
 \[
@@ -474,19 +465,38 @@ X_t = X_0 + \int_0^t f_0(s)\;\mathrm{d}s + \int_0^t g_0(s) \;\mathrm{d}W_s.
 \[
 X_t = X_0 e^{\int_0^t \left(f_1(s) - \frac{1}{2} g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 \]
-<p>Podemos chegar nessa fórmula via fator de integração, de maneira análoga a como é feito no caso determinístico. Faremos isso em dois exemplos específicos, abaixo. Aqui, vamos apenas verificar que tal processo é, de fato, a solução. Novamente, escrevemos</p>
+<p>Também podemos chegar nessa fórmula via fator de integração. Aqui, vamos apenas verificar que tal processo é, de fato, a solução. Escrevemos</p>
 \[
-X_t = X_0 \hat X_t, \quad \hat X_t = e^{Y_t},
+X_t = X_0 Y_t, \quad Y_t = e^{G_t},
 \]
 <p>com</p>
 \[
-Y_t =  \int_0^t \left(f_1(s) -\frac{1}{2}g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
+G_t =  \int_0^t \left(f_1(s) -\frac{1}{2}g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
 \]
-<p>Como antes, \(\{Y_t\}_{t \geq 0}\) é um processo de Itô, nesse caso satisfazendo</p>
+<p>Como antes, \(\{G_t\}_{t \geq 0}\) é um processo de Itô, nesse caso satisfazendo</p>
 \[
-\mathrm{d}Y_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
+\mathrm{d}G_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(t)\;\mathrm{d}W_t.
 \]
-<p>Como antes, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes para o leitor.</p>
+<p>Assim,</p>
+\[
+\begin{align*}
+    \mathrm{d}X_t & = X_0\;\mathrm{d}Y_t = X_0e^{G_t}\;\mathrm{d}G_t + \frac{1}{2}g_1(t)^2e^{G_t}\;\mathrm{d}t \\
+    & = X_0e^{G_t}\left(\left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(t)\;\mathrm{d}W_t\right) + \frac{1}{2}g_1(t)^2e^{G_t}\;\mathrm{d}t \\
+    & = X_0 e^{G_t}f_1(t)\;\mathrm{d}t + X_0 e^{G_t}g_1(t)\;\mathrm{d}W_t \\
+    & = f_1(t) X_t\;\mathrm{d}t + g_1(t) X_t\;\mathrm{d}W_t
+\end{align*}
+\]
+<p>mostrando que \(X_t = X_0e^{G_t}\) é a solução.</p>
+<h2 id="caso_geral"><a href="#caso_geral" class="header-anchor">Caso geral </a></h2>
+<p>No caso geral,</p>
+\[
+    \mathrm{d}X_t = (f_0(t) + f_1(t)X_t)\;\mathrm{d}t + (g_0(t) + g_1(t)X_t)\;\mathrm{d}W_t,
+\]
+<p>a ideia é, também, usar um fator de integracão. No caso, usar o fator \(e^{-G_t},\) onde</p>
+\[
+    G_t = \int_0^t f_1(s)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
+\]
+<p>Deixamos os detalhes para o leitor.</p>
 <h2 id="exponencial_estocástica"><a href="#exponencial_estocástica" class="header-anchor">Exponencial estocástica</a></h2>
 <p>Um caso particular do anterior é o processo</p>
 \[
@@ -527,7 +537,7 @@ X_t = X_0 e^{\lambda W_t  - \frac{1}{2}\lambda^2 t},
         </div>
     
 
-    Last modified: October 07, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 21, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
