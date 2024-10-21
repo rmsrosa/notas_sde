@@ -248,7 +248,7 @@ ou, mais explicitamente,
 $$
     \int_0^t g(s)\;\mathrm{d}W_s = {\tilde W}_{\int_0^t g(s)^2\;\mathrm{d}s}, \qquad \forall t \geq 0,
 $$
-para algum processo de Wiener $\{\tilde W_t\}_{t \geq 0}$ que, em geral, é diferente de $\{W_t\}_{t\geq 0}.$
+para algum processo de Wiener $\{\tilde W_t\}_{t \geq 0}$ que, em geral, é diferente de $\{W_t\}_{t\geq 0},$ caso contrário a independência de passos disjuntos seria violada.
 
 ## Exercícios
 

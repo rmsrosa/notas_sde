@@ -10,11 +10,11 @@ tem as suas soluções da forma
 $$
 x(t) = x(0)e^{\int_0^t b(s)\;\mathrm{d}s}.
 $$
-Mais geralmente, a equação linear não homogênea
+Mais geralmente, usando $e^{-\int_0^t b(s)\;\mathrm{d}s}$ como fator de integração, vemos que a equação linear não homogênea
 $$
 \frac{\mathrm{d}x}{\mathrm{d}t} = a(t) + b(t)x
 $$
-tem as suas soluções da forma
+tem as suas soluções obtidas pela fórmula de variação de constantes,
 $$
 x(t) = x(0)e^{\int_0^t b(s)\;\mathrm{d}s} + \int_0^t e^{\int_s^t b(\tau) \;\mathrm{d}\tau}a(s)\;\mathrm{d}s.
 $$
@@ -60,60 +60,50 @@ $$
 X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
 
-De fato, vamos verificar, primeiro, o caso com condição inicial igual $1,$
+Se não houvesse o fator de correção da fórmula de Itô, esperaríamos obter uma solução com termo multiplicativo
 $$
-\left.\hat X_t\right|_{t = 0} = 1.
+    e^{\int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
-Nesse caso, vamos verificar que a solução tem a forma
-$$
-\hat X_t = e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
-$$
-Usamos $\{\hat X_t\}_{t \geq 0}$ para representar a solução com a condição initial $\hat X_0 = 1$ e, assim, distinguir do caso mais geral.
+Mas podemos tentar usar esse termo como fator de integração, para achar a soluçõa correta.
 
-Definindo
+Considere, então, o processo
 $$
-Y_t = -\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s,
+    G_t = \int_0^t g_1(s)\;\mathrm{d}W_s,
 $$
-podemos escrever a solução como
+que satisfaz
 $$
-\hat X_t = e^{Y_t}.
+    \mathrm{d}G_t = g_1(t)\;\mathrm{d}W_t,
 $$
-De outra forma, definindo a função $u(y) = e^y,$ podemos escrever
+e o fator de integração definido pelo processo
 $$
-\hat X_t = u(Y_y).
+    e^{-G_t}.
+$$
+Pela fórmula de Itô, com $e^{-G_t} = f(G_t),$ $f(x) = e^{-x},$ temos
+$$
+    \mathrm{d}(e^{-G_t}) = -e^{-G_t}\;\mathrm{d}G_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t = -e^{-G_t}g_1(t)\;\mathrm{d}W_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t .
 $$
 
-Veja que $Y_t$ é um processo de Itô, com
+Assim, considerando o processo
 $$
-\mathrm{d}Y_t = - \frac{1}{2}g_1(t)^2\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
+    Z_t = X_t e^{-G_t},
 $$
-Assim, podemos aplicar a fórmula de Itô e obter
+temos
 $$
-\begin{align*}
-\mathrm{d}\hat X_t & = u'(Y_t)\;\mathrm{d}Y_t + \frac{1}{2}u''(Y_t)g_1(t)^2\;\mathrm{d}t \\
-& = e^{Y_t}\;\mathrm{d}Y_t + \frac{1}{2}e^{Y_t}g_1(t)^2\;\mathrm{d}t \\
-& = \hat X_t\;\mathrm{d}Y_t + \frac{1}{2}g_1(t)^2\hat X_t\;\mathrm{d}t.
-\end{align*}
+    \begin{align*}
+        \mathrm{d}Z_t & = e^{-G_t}\;\mathrm{d}X_t + X_t\mathrm{d}e^{-G_t} \\
+        & = e^{-G_t} g_1(t) X_t \;\mathrm{d}W_t + X_t\left( -e^{-G_t}g_1(t)\;\mathrm{d}W_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t\right) \\
+        & = \frac{1}{2}X_te^{-G_t}g_1(t)^2\;\mathrm{d}t \\
+        & = \frac{1}{2}g_1(t)^2 Z_t\;\mathrm{d}t.
+    \end{align*}
 $$
-Cancelando o termo comum, chegamos a
+Esse é uma equações diferencial ordinária (com condição inicial aleatória) para $Z_t,$ cuja solução é
 $$
-\mathrm{d}\hat X_t = g_1(t)\hat X_t\;\mathrm{d}W_t,
+    Z_t = Z_0 e^{\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s}.
 $$
-mostrando que $\{\hat X_t\}_{t \geq 0}$ é, de fato, solução.
-
-Agora, no caso da condição inicial ser uma variável aleatória,
+Como $Z_0 = X_0$ e $X_t = Z_t e^{G_t},$ obtemos a solução
 $$
-\left. X_t \right|_{t = 0} = X_0,
+    X_t = X_0 e^{\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
-escrevemos
-$$
-X_t = X_0 \hat X_t, \quad \hat X_t = u(Y_t).
-$$
-Como $\hat X_0 = 1,$ segue que a condição inicial $X_t|_{t = 0} = X_0$ é satisfeita. Quanto à equação diferencial, temos
-$$
-\mathrm{d}X_t = X_0 \mathrm{d}\hat X_t = X_0 g_1(t)\hat X_t\;\mathrm{d}W_t = g_1(t) X_t\;\mathrm{d}W_t.
-$$
-Portanto, $\{X_t\}_{t \geq 0}$ é, de fato, a solução.
 
 ## Equação estocástica linear com drift determinístico e com ruído aditivo
 
@@ -137,21 +127,43 @@ Nesse caso, a solução tem a forma
 $$
 X_t = X_0 e^{\int_0^t \left(f_1(s) - \frac{1}{2} g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
-Podemos chegar nessa fórmula via fator de integração, de maneira análoga a como é feito no caso determinístico. Faremos isso em dois exemplos específicos, abaixo. Aqui, vamos apenas verificar que tal processo é, de fato, a solução. Novamente, escrevemos
+Também podemos chegar nessa fórmula via fator de integração. Aqui, vamos apenas verificar que tal processo é, de fato, a solução. Escrevemos
 $$
-X_t = X_0 \hat X_t, \quad \hat X_t = e^{Y_t},
+X_t = X_0 Y_t, \quad Y_t = e^{G_t},
 $$
 com
 $$
-Y_t =  \int_0^t \left(f_1(s) -\frac{1}{2}g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
+G_t =  \int_0^t \left(f_1(s) -\frac{1}{2}g_1(s)^2\right)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
 $$
 
-Como antes, $\{Y_t\}_{t \geq 0}$ é um processo de Itô, nesse caso satisfazendo
+Como antes, $\{G_t\}_{t \geq 0}$ é um processo de Itô, nesse caso satisfazendo
 $$
-\mathrm{d}Y_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(s)\;\mathrm{d}W_t.
+\mathrm{d}G_t = \left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(t)\;\mathrm{d}W_t.
 $$
 
-Como antes, usando a fórmula de Itô, chegamos ao resultado. Deixamos os detalhes para o leitor.
+Assim,
+$$
+\begin{align*}
+    \mathrm{d}X_t & = X_0\;\mathrm{d}Y_t = X_0e^{G_t}\;\mathrm{d}G_t + \frac{1}{2}g_1(t)^2e^{G_t}\;\mathrm{d}t \\
+    & = X_0e^{G_t}\left(\left(f_1(t) - \frac{1}{2}g_1(t)^2\right)\;\mathrm{d}t + g_1(t)\;\mathrm{d}W_t\right) + \frac{1}{2}g_1(t)^2e^{G_t}\;\mathrm{d}t \\
+    & = X_0 e^{G_t}f_1(t)\;\mathrm{d}t + X_0 e^{G_t}g_1(t)\;\mathrm{d}W_t \\
+    & = f_1(t) X_t\;\mathrm{d}t + g_1(t) X_t\;\mathrm{d}W_t
+\end{align*}
+$$
+mostrando que $X_t = X_0e^{G_t}$ é a solução.
+
+## Caso geral 
+
+No caso geral,
+$$
+    \mathrm{d}X_t = (f_0(t) + f_1(t)X_t)\;\mathrm{d}t + (g_0(t) + g_1(t)X_t)\;\mathrm{d}W_t,
+$$
+a ideia é, também, usar um fator de integracão. No caso, usar o fator $e^{-G_t},$ onde
+$$
+    G_t = \int_0^t f_1(s)\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s.
+$$
+
+Deixamos os detalhes para o leitor.
 
 ## Exponencial estocástica
 
