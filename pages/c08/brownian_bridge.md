@@ -2,7 +2,11 @@
 
 # {{ get_title }}
 
-Uma outra equação clássica é a da **ponte Browniana** *(Brownian Bridge)*
+Uma outra equação clássica é a da **ponte Browniana** *(Brownian Bridge),* que é definida pelo processo de Wiener restrito a um determinado intervalo e com valores condicionados nos extremos do intervalo. A ponte Browniana padrão é definida no intervalo $[0, 1]$ e condicionada a $W_t = 1,$ ou seja, é o processo
+$$
+    B_t = W_t |_{W_1 = 0}, \quad 0 \leq t \leq 1.
+$$
+É possível mostrar que esse processo satisfaz a equação diferencial estocástica (veja os exercícios)
 $$
 \mathrm{d}B_t = - \frac{B_t}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
 $$
@@ -157,6 +161,68 @@ Uma outra representação é
 $$
 W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
 $$
+
+## Conexão com a definição via condicionamento nos extremos do intervalo
+
+Vimos acima que a solução $\{B_t\}_t$ da equação diferencial estocástica acima é um processo Gaussiano caracterizado por ter média zero ao longo do intervalo e covariância dada por
+$$
+\operatorname{Cov}(B_t, B_s) = \mathbb{E}[B_tB_s] = \min\{s, t\} - st, \qquad 0 \leq s, t \leq 1.
+$$
+
+Para mostrar que essa é, de fato, a ponte Browniana definida por
+$$
+    B_t = W_t |_{W_1 = 0}, \quad 0 \leq t \leq 1,
+$$
+basta mostrar que esse último também é um processo Gaussiano com média zero e mesma covariância. Como o processo de Wiener é Gaussiano, então esse processo condicionado também o é. Para analisar a média e a covariância, vamos usar a PDF do vetor aleatório $(W_t, W_s, W_1).$
+
+Na verdade, vamos apenas verificar que $\mathbb{E}[B_t] = 0$ e $\mathbb{E}[B_t^2] = t(1 - t).$ Deixamos a covariância como exercício. Para essas duas propriedades estatísticas, basta analisarmos o vetor aleatório $X = (W_t, W_1).$ A média é zero,
+$$
+    \mathbb{E}[X] = (\mathbb{E}[W_t], \mathbb{E}[W_1]) = (0, 0).
+$$
+A matriz de covariância é dada por
+$$
+    \Sigma = \begin{bmatrix} \mathbb{E}[W_t^2] & \mathbb{E}[W_tW_1] \\
+    \mathbb{E}[W_tW_1] & \mathbb{E}[W_1^2] \end{bmatrix} = \begin{bmatrix} t & t \\ t & 1 \end{bmatrix},
+$$
+onde usamos que $0 \leq t \leq 1.$ Temos
+$$
+    \det(\Sigma) = t(1 - t), \qquad \Sigma^{-1} = \frac{1}{t(1-t)}\begin{bmatrix} 1 & -t \\ -t & t \end{bmatrix}.
+$$
+Assim, a PDF de $X$ é dada por 
+$$
+    p(x) = p(x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_t,  x\end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_t \\ x\end{pmatrix} } = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} (x_t^2 - 2tx_tx_1 + t^2x_1^2) }
+$$
+onde o espaço de eventos é descrito por $x = (x_t, x_1)\in \mathbb{R}^2.$ A marginal correspondendo ao condicionamento $W_1 = 0$ é
+$$
+    p(x_t, 0) = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 }.
+$$
+Com essa marginal, podemos calcular
+$$
+    \mathbb{E}[B_t] = \int_{-\infty}^\infty x_t p(x_t, 0) \;\mathrm{d}x_t = 0,
+$$
+pela simetria da marginal, e
+$$
+    \begin{align*}
+        \mathbb{E}[B_t^2] & = \int_{-\infty}^\infty x_t^2 p(x_t, 0) \;\mathrm{d}x_t \\
+        & = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty x_t^2 e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 } \;\mathrm{d}x_t \\
+        & = \frac{t(1 - t)}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 } \;\mathrm{d}x_t \\
+        & = t(1 - t).
+    \end{align*}
+$$
+
+Para a covariância, precisamos considerar o vetor aleatório $X = (W_s, W_t, W_1).$ Por simetria, podemos assumir $0 \leq s \leq t \leq 1.$ Nesse caso, também temos $\mathbb{E}[X] = (0, 0, 0)$ e a covariância toma a forma
+$$
+    \Sigma = \begin{bmatrix} s & s & s \\ s & t & t \\ s & t & 1 \end{bmatrix}.
+$$
+A inversa (e o determinante) pode ser calculado via escalonamento da matriz
+$$
+    \left[ \begin{matrix} s & s & s \\ s & t & t \\ s & t & 1 \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \right] \mapsto  \left[ \begin{matrix} s & 0 & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} ? & ? & ? \\ ? & ? & ? \\ ? & ? & ? \end{matrix} \right].
+$$
+Portanto,
+$$
+    \det\Sigma = s(t-s)(1-t), \quad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} ? & ? & ? \\ ? & ? & ? \\ ? & ? & ? \end{bmatrix}
+$$
+
 
 ## Exercícios
 
