@@ -216,13 +216,35 @@ $$
 $$
 A inversa (e o determinante) pode ser calculado via escalonamento da matriz
 $$
-    \left[ \begin{matrix} s & s & s \\ s & t & t \\ s & t & 1 \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \right] \mapsto  \left[ \begin{matrix} s & 0 & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} ? & ? & ? \\ ? & ? & ? \\ ? & ? & ? \end{matrix} \right].
+    \begin{align*}
+        \left[ \begin{matrix} s & s & s \\ s & t & t \\ s & t & 1 \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \right] & \mapsto  \left[ \begin{matrix} s & 0 & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{t-s} & -\frac{s}{t-s} & 0 \\ -1 & \frac{1-s}{1-t} & -\frac{t-s}{1-t} \\ 0 & -1 & 1 \end{matrix} \right] \\
+        & \mapsto  \left[ \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{s(t-s)} & -\frac{1}{t-s} & 0 \\ -\frac{1}{t-s} & \frac{1-s}{(t-s)(1-t)} & -\frac{1}{1-t} \\ 0 & -\frac{1}{1-t} & \frac{1}{1-t} \end{matrix} \right].
+    \end{align*}
 $$
 Portanto,
 $$
-    \det\Sigma = s(t-s)(1-t), \quad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} ? & ? & ? \\ ? & ? & ? \\ ? & ? & ? \end{bmatrix}
+    \det\Sigma = s(t-s)(1-t), \qquad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} t(1-t) & s(1-t) & 0 \\ -s(1-t) & s(1-s) & -s(t-s) \\ 0 & -s(t-s) & s(t-s) \end{bmatrix}
 $$
 
+Assim, a PDF de $X=(W_s, W_t, W_1)$ é dada por 
+$$
+    p(x) = p(x_s, x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_s, x_t,  x \end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_s \\ x_t \\ x\end{pmatrix} }.
+$$
+onde o espaço de eventos é descrito por $x = (x_s, x_t, x_1)\in \mathbb{R}^3.$ Não precisamos explicitar toda a PDF pois estamos interessados apenas na marginal correspondendo ao condicionamento $W_1 = 0,$ que é
+$$
+    p(x_s, x_t, 0) = \frac{1}{2\pi s^{1/2}(t-s)^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{s(t-s)(1-t)} \left( t(1-t)x_s^2 - 2s(1-t)x_tx_s + s(1-s)x_t^2\right) }.
+$$
+
+A covariância, ainda com $1 < s < t < 1,$ pode ser calculada, agora, via
+$$
+    \mathbb{E}[B_sB_t] = \int_{-\infty}^\infty \int_{-\infty}^\infty x_sx_t p(x_s, x_t, 0) \;\mathrm{d}x_t\;\mathrm{d}x_s.
+$$
+Deixamos como exercício a verificação de que $\mathbb{E}[B_sB_t] = s - st.$
+Por simetria, para $1 < t < s < 1,$ obtemos $\mathbb{E}[B_sB_t] = t - st.$ Com isso, e juntando com os cálculos anteriores, obtemos, para $0 \leq t \leq s \leq 1,$
+$$
+    \mathbb{E}[B_sB_t] = \min\{s, t\} - st.
+$$
+Isso conclui a demonstração de que $B_t = W_t |_{W_1 = 0}$ é o mesmo processo que é solução da equação diferencial estocástica inicial.
 
 ## Exercícios
 
