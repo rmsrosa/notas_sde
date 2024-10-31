@@ -368,7 +368,11 @@
       
     
 <h1 id="get_title"><a href="#get_title" class="header-anchor">8.8. Ponte Browniana</a></h1>
-<p>Uma outra equação clássica é a da <strong>ponte Browniana</strong> <em>&#40;Brownian Bridge&#41;</em></p>
+<p>Uma outra equação clássica é a da <strong>ponte Browniana</strong> <em>&#40;Brownian Bridge&#41;,</em> que é definida pelo processo de Wiener restrito a um determinado intervalo e com valores condicionados nos extremos do intervalo. A ponte Browniana padrão é definida no intervalo \([0, 1]\) e condicionada a \(W_t = 1,\) ou seja, é o processo</p>
+\[
+    B_t = W_t |_{W_1 = 0}, \quad 0 \leq t \leq 1.
+\]
+<p>É possível mostrar que esse processo satisfaz a equação diferencial estocástica &#40;veja os exercícios&#41;</p>
 \[
 \mathrm{d}B_t = - \frac{B_t}{1-t}\;\mathrm{d}t + \;\mathrm{d}W_t,
 \]
@@ -480,6 +484,82 @@ W_t = B_t + t N, \quad 0\leq t < 1,
 \[
 W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
 \]
+<h2 id="conexão_com_a_definição_via_condicionamento_nos_extremos_do_intervalo"><a href="#conexão_com_a_definição_via_condicionamento_nos_extremos_do_intervalo" class="header-anchor">Conexão com a definição via condicionamento nos extremos do intervalo</a></h2>
+<p>Vimos acima que a solução \(\{B_t\}_t\) da equação diferencial estocástica acima é um processo Gaussiano caracterizado por ter média zero ao longo do intervalo e covariância dada por</p>
+\[
+\operatorname{Cov}(B_t, B_s) = \mathbb{E}[B_tB_s] = \min\{s, t\} - st, \qquad 0 \leq s, t \leq 1.
+\]
+<p>Para mostrar que essa é, de fato, a ponte Browniana definida por</p>
+\[
+    B_t = W_t |_{W_1 = 0}, \quad 0 \leq t \leq 1,
+\]
+<p>basta mostrar que esse último também é um processo Gaussiano com média zero e mesma covariância. Como o processo de Wiener é Gaussiano, então esse processo condicionado também o é. Para analisar a média e a covariância, vamos usar a PDF do vetor aleatório \((W_t, W_s, W_1).\)</p>
+<p>Na verdade, vamos apenas verificar que \(\mathbb{E}[B_t] = 0\) e \(\mathbb{E}[B_t^2] = t(1 - t).\) Deixamos a covariância como exercício. Para essas duas propriedades estatísticas, basta analisarmos o vetor aleatório \(X = (W_t, W_1).\) A média é zero,</p>
+\[
+    \mathbb{E}[X] = (\mathbb{E}[W_t], \mathbb{E}[W_1]) = (0, 0).
+\]
+<p>A matriz de covariância é dada por</p>
+\[
+    \Sigma = \begin{bmatrix} \mathbb{E}[W_t^2] & \mathbb{E}[W_tW_1] \\
+    \mathbb{E}[W_tW_1] & \mathbb{E}[W_1^2] \end{bmatrix} = \begin{bmatrix} t & t \\ t & 1 \end{bmatrix},
+\]
+<p>onde usamos que \(0 \leq t \leq 1.\) Temos</p>
+\[
+    \det(\Sigma) = t(1 - t), \qquad \Sigma^{-1} = \frac{1}{t(1-t)}\begin{bmatrix} 1 & -t \\ -t & t \end{bmatrix}.
+\]
+<p>Assim, a PDF de \(X\) é dada por </p>
+\[
+    p(x) = p(x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_t,  x\end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_t \\ x\end{pmatrix} } = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} (x_t^2 - 2tx_tx_1 + t^2x_1^2) }
+\]
+<p>onde o espaço de eventos é descrito por \(x = (x_t, x_1)\in \mathbb{R}^2.\) A marginal correspondendo ao condicionamento \(W_1 = 0\) é</p>
+\[
+    p(x_t, 0) = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 }.
+\]
+<p>Com essa marginal, podemos calcular</p>
+\[
+    \mathbb{E}[B_t] = \int_{-\infty}^\infty x_t p(x_t, 0) \;\mathrm{d}x_t = 0,
+\]
+<p>pela simetria da marginal, e</p>
+\[
+    \begin{align*}
+        \mathbb{E}[B_t^2] & = \int_{-\infty}^\infty x_t^2 p(x_t, 0) \;\mathrm{d}x_t \\
+        & = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty x_t^2 e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 } \;\mathrm{d}x_t \\
+        & = \frac{t(1 - t)}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 } \;\mathrm{d}x_t \\
+        & = t(1 - t).
+    \end{align*}
+\]
+<p>Para a covariância, precisamos considerar o vetor aleatório \(X = (W_s, W_t, W_1).\) Por simetria, podemos assumir \(0 \leq s \leq t \leq 1.\) Nesse caso, também temos \(\mathbb{E}[X] = (0, 0, 0)\) e a covariância toma a forma</p>
+\[
+    \Sigma = \begin{bmatrix} s & s & s \\ s & t & t \\ s & t & 1 \end{bmatrix}.
+\]
+<p>A inversa &#40;e o determinante&#41; pode ser calculado via escalonamento da matriz</p>
+\[
+    \begin{align*}
+        \left[ \begin{matrix} s & s & s \\ s & t & t \\ s & t & 1 \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \right] & \mapsto  \left[ \begin{matrix} s & 0 & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{t-s} & -\frac{s}{t-s} & 0 \\ -1 & \frac{1-s}{1-t} & -\frac{t-s}{1-t} \\ 0 & -1 & 1 \end{matrix} \right] \\
+        & \mapsto  \left[ \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{s(t-s)} & -\frac{1}{t-s} & 0 \\ -\frac{1}{t-s} & \frac{1-s}{(t-s)(1-t)} & -\frac{1}{1-t} \\ 0 & -\frac{1}{1-t} & \frac{1}{1-t} \end{matrix} \right].
+    \end{align*}
+\]
+<p>Portanto,</p>
+\[
+    \det\Sigma = s(t-s)(1-t), \qquad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} t(1-t) & s(1-t) & 0 \\ -s(1-t) & s(1-s) & -s(t-s) \\ 0 & -s(t-s) & s(t-s) \end{bmatrix}
+\]
+<p>Assim, a PDF de \(X=(W_s, W_t, W_1)\) é dada por </p>
+\[
+    p(x) = p(x_s, x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_s, x_t,  x \end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_s \\ x_t \\ x\end{pmatrix} }.
+\]
+<p>onde o espaço de eventos é descrito por \(x = (x_s, x_t, x_1)\in \mathbb{R}^3.\) Não precisamos explicitar toda a PDF pois estamos interessados apenas na marginal correspondendo ao condicionamento \(W_1 = 0,\) que é</p>
+\[
+    p(x_s, x_t, 0) = \frac{1}{2\pi s^{1/2}(t-s)^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{s(t-s)(1-t)} \left( t(1-t)x_s^2 - 2s(1-t)x_tx_s + s(1-s)x_t^2\right) }.
+\]
+<p>A covariância, ainda com \(1 < s < t < 1,\) pode ser calculada, agora, via</p>
+\[
+    \mathbb{E}[B_sB_t] = \int_{-\infty}^\infty \int_{-\infty}^\infty x_sx_t p(x_s, x_t, 0) \;\mathrm{d}x_t\;\mathrm{d}x_s.
+\]
+<p>Deixamos como exercício a verificação de que \(\mathbb{E}[B_sB_t] = s - st.\) Por simetria, para \(1 < t < s < 1,\) obtemos \(\mathbb{E}[B_sB_t] = t - st.\) Com isso, e juntando com os cálculos anteriores, obtemos, para \(0 \leq t \leq s \leq 1,\)</p>
+\[
+    \mathbb{E}[B_sB_t] = \min\{s, t\} - st.
+\]
+<p>Isso conclui a demonstração de que \(B_t = W_t |_{W_1 = 0}\) é o mesmo processo que é solução da equação diferencial estocástica inicial.</p>
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <ol>
 <li><p>Uma ponte Browniana, sendo um processo gaussiano, também pode ser definido através da sua covariância, ou seja, como sendo um processo Gaussiano \(\{B_t\}_{0 \leq t \leq 1}\) com caminhos contínuous quase certamente;  satisfazendo \(B_0 = B_1 = 0\) quase certamente; \(\mathbb{E}[B_t] = 0,\) para todo \(0 \leq t \leq 1;\) e \(\operatorname{Cov}(B_t, B_s) = \min\{s, t\} - st,\) para \(0 \leq s, t \leq 1.\) &#40;i&#41; Usando essa caracterização, mostre que, se \(\{W_t\}_{t\geq 0}\) é um processo de Wiener, então \(B_t = W_t - tW_1,\) \(0\leq t \leq 1,\) é uma ponte Browniana. &#40;ii&#41; Por sua vez, mostre que se \(\{B_t\}_{0\leq t \leq 1}\) é uma ponte Browniana segundo essa definição via caracterização da covariância e \(N\sim \mathcal{N}(0, 1)\) é independente dessa ponte, então \(W_t = B_t + tZ,\) \(0\leq t \leq 1,\) é um processo de Wiener no intervalo \([0, 1].\) &#40;iii&#41; Por último, assumindo, novamente, que \(\{B_t\}_{0\leq t \leq 1}\) é uma ponte Browniana segundo essa definição via caracterização da covariância, considere o processo \(V_t = \int_0^t B_s / (1 - s) \;\mathrm{d}s\) e mostre que \(W_t = B_t + V_t\) é um processo de Wiener, concluindo que \(B_t\) satisfaz a equação diferencial estocástica \(\mathrm{d}B_t = - B_t / (1 - t) \;\mathrm{d}t + \mathrm{d}W_t.\)</p>
@@ -518,7 +598,7 @@ W_t = (1 + t)B_{t/(1 + t)}, \quad t \geq 0.
         </div>
     
 
-    Last modified: October 21, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: October 31, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
