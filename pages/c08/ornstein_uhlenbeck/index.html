@@ -536,47 +536,6 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
 \mathbb{d} O_t = -\nu O_t \;\mathrm{d}t + \sigma \mathrm{d}W_t.
 \]
 <p>Como \(\mathbb{E}[O_t] \rightarrow 0,\) quando \(t \rightarrow 0,\) então \(\mathbb{E}[\hat O_t] = \mathbb{E}[O_t] + \mu \rightarrow \mu,\) ou seja, a esperança de \(\{\hat O_t\}_{t \geq 0}\) converge para a média \(\mu.\) Assim, o processo de Orstein-Uhlenbeck é um exemplo de <em>mean-reverting process,</em> ou &quot;processo que reverte à média&quot;.</p>
-<h2 id="ornstein-uhlenbeck_como_aproximação_de_ruído_branco"><a href="#ornstein-uhlenbeck_como_aproximação_de_ruído_branco" class="header-anchor">Ornstein-Uhlenbeck como aproximação de ruído branco</a></h2>
-<p>O &quot;ruído branco&quot;, como modelado pela &quot;derivada&quot; de um processo de Wiener, em um sentido apropriado de distribuições, é um processo comumente encontrado em diversos modelos. Em várias situações, no entanto, o ruído é &quot;colorido&quot;, com algum decaimento característico do espectro de amplitudes.</p>
-<p>Aqui, exploramos o processo de Ornstein-Uhlenbeck &#40;OU&#41; como aproximação de um ruído branco. Isso é obtido controlando-se uma <em>escala temporal</em> \(\tau.\) Mais precisamente, consideramos um processo \(\{O_t\}_t\) satisfazendo a equação diferencial estocástica</p>
-\[
-    \tau \mathrm{d}O_t = - \mathrm{d}t + \zeta \mathrm{d}W_t,
-\]
-<p>onde \(\{W_t\}_t.\) Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva \(\nu = 1/\tau\) e difusão \(\sigma = \zeta/\tau.\) Esse processo tem média e covariância dadas por</p>
-\[
-\mathbb{E}[O_t] = 
-\mathbb{E}[O_0] e^{-t/\tau}, \quad
-\mathrm{Cov}(O_{t}, O_{t+s}) = e^{-(2t + s)/\tau}\mathrm{Var}(O_0) + \frac{\zeta^2}{2\tau}e^{- s/\tau}\left( 1 - e^{-2\nu t}\right)
-\]
-<p>Assintoticamente em \(t\rightarrow \infty,\) temos</p>
-\[
-\mathbb{E}[O_t] \rightarrow 0  \quad
-\mathrm{Cov}(O_{t}, O_{t+s}) \rightarrow \frac{\zeta^2}{2\tau}e^{- s/\tau}.
-\]
-<p>Pensando como uma família de processo \(O_t = O_t^{\tau, \zeta},\) temos, no limite</p>
-\[
-\tau \rightarrow 0, \quad \textrm{com} \quad \frac{\zeta^2}{2\tau} \rightarrow 1,
-\]
-<p>que esses processos se aproximam de um ruído branco. Isso é equivalente a</p>
-\[
-\nu \rightarrow \infty, \quad \frac{\sigma^2}{2\nu} \rightarrow 1,
-\]
-<p>em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck.</p>
-
-<img src="/notas_sde/assets/pages/c08/ornstein_uhlenbeck/code/output/ornstein_uhlenbeck_approx_white_noise.svg" alt="">
-<h2 id="cor_do_processo_de_ornstein-uhlenbeck"><a href="#cor_do_processo_de_ornstein-uhlenbeck" class="header-anchor">Cor do processo de Ornstein-Uhlenbeck</a></h2>
-<p>Considerando a correlação &#40;assintótica&#41;</p>
-\[
-\mathrm{Cov}(O_{t}, O_{t+s}) \rightarrow f(s) = \frac{\sigma^2}{2\nu}e^{-\nu |s|},
-\]
-<p>vemos que</p>
-\[
-\hat f(\omega) = \frac{1}{2\pi}\int_{-\infty}^\infty f(s) e^{-i\omega s} \;\mathrm{d}s = \frac{\sigma^2}{2\nu}\frac{1}{2\pi}\int_{-\infty}^\infty e^{-\nu |s|} e^{-i\omega s} \;\mathrm{d}s = \frac{\sigma^2}{2\nu}\frac{1}{2\pi}\left( \frac{1}{\nu - i\omega} - \frac{1}{\nu + i\omega}\right) = \frac{\sigma^2}{2\nu}\frac{1}{\pi}\frac{\nu}{\nu^2 + \omega^2}.
-\]
-<p>Portanto, </p>
-\[
-\hat f(\omega) \sim \frac{1}{\omega^2}, \quad \omega \rightarrow \pm \infty.
-\]
 <h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
 <p>Nos exercícios abaixo, considere o sistema</p>
 \[
@@ -628,7 +587,7 @@ X_t = X_0 + \int_0^t Y_s \;\mathrm{d}s.
         </div>
     
 
-    Last modified: October 31, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: November 04, 2024. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
