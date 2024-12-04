@@ -77,6 +77,8 @@ Essa é a **fórmula de Feynman-Kac.**
 
 ## Erro fraco
 
+
+
 O que a fórmula de Feynman-Kac tem a ver com o erro fraco? No erro fraco, queremos estimar
 $$
 \max_{j=1, \ldots, n} |\mathbb{E}[\Phi(X_{t_j})] - \mathbb{E}[\Phi(X_j^n)]|.
@@ -86,9 +88,9 @@ $$
 |\mathbb{E}[\Phi(X_T)] - \mathbb{E}[\Phi(X_n^n)]|.
 $$
 
-A ideia é aplicar a fórmula de Itô à interpolação linear da aproximação definida por
+O primeiro termo pode ser visto através da fórmula de Feynman-Kac. Para o segundo, a ideia é aplicar a fórmula de Itô à seguinte interpolação da aproximação de Euler-Maruyama:
 $$
-\hat X_t = X_0 + \int_0^t f(X_{\tau^n(s)}) \;\mathrm{d}s + \int_0^t g(X_{\tau^n(s)})\;\mathrm{d}W_s, \quad t \geq 0,
+{\hat X}_t^n = X_0 + \int_0^t f(X_{\tau^n(s)}^n) \;\mathrm{d}s + \int_0^t g(X_{\tau^n(s)}^n)\;\mathrm{d}W_s, \quad t \geq 0,
 $$
 onde $\tau^n$ é a função de malha
 $$
@@ -96,45 +98,45 @@ $$
 $$
 definida para $s\geq 0.$ Para facilitar a notação, vamos considerar, também, a interpolação constante por partes
 $$
-\bar X_t = X_{\tau^n(t)}, \quad t \geq 0.
+{\bar X}_t^n = X_{\tau^n(t)}^n, \quad t \geq 0.
 $$
 Assim, podemos escrever
 $$
-\hat X_t = X_0 + \int_0^t f(\bar X_s) \;\mathrm{d}s + \int_0^t g(\bar X_s)\;\mathrm{d}W_s.
+{\hat X}_t^n = X_0 + \int_0^t f({\bar X}_s^n) \;\mathrm{d}s + \int_0^t g({\bar X}_s^n)\;\mathrm{d}W_s.
 $$
 
 Pela fórmula de Itô,
 $$
 \begin{align*}
-u(T, \hat X_T) & = u(0, \hat X_0) + \int_0^T \left(u_t(t, \hat X_t) + u_x(t, \hat X_t)f(\bar X_t) + \frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2\right)\;\mathrm{d}t \\
-& \qquad + \int_0^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
+u(T, {\hat X}_T^n) & = u(0, {\hat X}_0^n) + \int_0^T \left(u_t(t, {\hat X}_t^n) + u_x(t, {\hat X}_t^n)f({\bar X}_t^n) + \frac{1}{2}u_{xx}(t, {\hat X}_t^n)g({\bar X}_t^n)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T u_x(t, {\hat X}_t^n)g({\bar X}_t^n)\;\mathrm{d}W_t.
 \end{align*}
 $$
 
 De acordo com a EDP,
 $$
-u_t(t, \hat X_t) = - u_x(t, \hat X_t)f(\hat X_t) - \frac{1}{2}u_{xx}(t, \hat X_t)g(\hat X_t)^2.
+u_t(t, {\hat X}_t^n) = - u_x(t, {\hat X}_t^n)f({\hat X}_t^n) - \frac{1}{2}u_{xx}(t, {\hat X}_t^n)g({\hat X}_t^n)^2.
 $$
 Substituindo o primeiro termo do integrando por essa expressão do lado direito, obtemos
 $$
 \begin{align*}
-u(T, \hat X_T) & = u(0, \hat X_0) + \int_0^T \left(u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right)\;\mathrm{d}t \\
-& \qquad + \int_0^T \left(\frac{1}{2}u_{xx}(t, \hat X_t)g(\bar X_t)^2 - \frac{1}{2}u_{xx}(t, \hat X_t)g(\hat X_t)^2\right)\;\mathrm{d}t \\
-& \qquad + \int_0^T u_x(t, \hat X_t)g(\bar X_t)\;\mathrm{d}W_t.
+u(T, {\hat X}_T^n) & = u(0, {\hat X}_0^n) + \int_0^T \left(u_x(t, {\hat X}_t^n)f({\bar X}_t^n) - u_x(t, {\hat X}_t^n)f({\hat X}_t^n)\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T \left(\frac{1}{2}u_{xx}(t, {\hat X}_t^n)g({\bar X}_t^n)^2 - \frac{1}{2}u_{xx}(t, {\hat X}_t^n)g({\hat X}_t^n)^2\right)\;\mathrm{d}t \\
+& \qquad + \int_0^T u_x(t, {\hat X}_t^n)g({\bar X}_t^n)\;\mathrm{d}W_t.
 \end{align*}
 $$
 
 Tomando a valor esperado,
 $$
 \begin{align*}
-\mathbb{E}[u(T, \hat X_T)] & = \mathbb{E}[u(0, \hat X_0)] + \int_0^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
-& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t
+\mathbb{E}[u(T, {\hat X}_T^n)] & = \mathbb{E}[u(0, {\hat X}_0^n)] + \int_0^T \mathbb{E}\left[u_x(t, {\hat X}_t^n)f({\bar X}_t^n) - u_x(t, {\hat X}_t^n)f({\hat X}_t^n)\right]\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, {\hat X}_t^n)g({\bar X}_t^n)^2 - u_{xx}(t, {\hat X}_t^n)g({\hat X}_t^n)^2\right]\;\mathrm{d}t
 \end{align*}
 $$
 
 Por construção,
 $$
-u(T, \hat X_T) = \Phi(\hat X_T).
+u(T, {\hat X}_T^n) = \Phi({\hat X}_T^n).
 $$
 Além disso, pela fórmula de Feynman-Kac, como a condição inicial é em $\tau = 0,$ temos
 $$
@@ -144,49 +146,105 @@ $$
 Assim,
 $$
 \begin{align*}
-\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)] & = \int_0^T \mathbb{E}\left[u_x(t, \hat X_t)f(\bar X_t) - u_x(t, \hat X_t)f(\hat X_t)\right]\;\mathrm{d}t \\
-& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, \hat X_t)g(\bar X_t)^2 - u_{xx}(t, \hat X_t)g(\hat X_t)^2\right]\;\mathrm{d}t.
+\mathbb{E}[\Phi({\hat X}_T^m)] - \mathbb{E}[\Phi(X_T)] & = \int_0^T \mathbb{E}\left[u_x(t, {\hat X}_t^n)(f({\bar X}_t^n) - f({\hat X}_t^n))\right]\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \mathbb{E}\left[u_{xx}(t, {\hat X}_t^n)(g({\bar X}_t^n)^2 - g({\hat X}_t^n)^2)\right]\;\mathrm{d}t.
 \end{align*}
 $$
 
 Agora precisamos estimar os erros do lado direito.
 
-A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}[|\hat X_t - \bar X_t|^2].$ Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
+A estimativa aparentemente mais natural é usar, novamente, a hipótese de continuidade Lipschitz global de $f$ e $g$ e estimar esses termos em função de $\mathbb{E}[|{\hat X}_t^n - {\bar X}_t^n|^2].$ Mas, novamente, isso nos levará a mesma ordem da convergência forte, que no caso de Euler-Maruyama é 1/2. Queremos uma estimativa mais esperta, para obter uma estimativa mais precisa da ordem.
 
-Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos integrandos
+Isso é obtido aplicando-se novamente a fórmula de Itô, nesse caso aos termos
 $$
-u_x(t, \hat X_t)(f(\hat X_t) - f(\bar X_t)), \qquad u_{xx}(t, \hat X_t)(g(\hat X_t)^2 - g(\bar X_t)^2).
+f({\hat X}_t^n) - f({\bar X}_t^n), \qquad g({\hat X}_t^n)^2 - g({\bar X}_t^n)^2.
 $$
-Em cada subintervalo $[t_{j-1}, t_j],$ temos $\bar X_t = \bar X_{t_{j-1}} = X_{j-1}^n$ constante, de modo que podemos olhar para
+
+Em cada subintervalo $[t_{j-1}, t_j],$ temos ${\bar X}_t^n = {\bar X}_{t_{j-1}}^n = X_{j-1}^n = {\hat X}_{\tau^n(t)}^n$ constante, de modo que podemos olhar para
+$$
+f({\hat X}_t^n) - f({\hat X}_{\tau^n(t)}^n), \qquad g({\hat X}_t^n)^2 - g({\hat X}_{\tau^n(t)}^n)^2.
+$$
+
+Aplicando a fórmula de Itô a $f({\hat X}_t^n)$ e a $g({\hat X}_t^n)^2$ de $\tau^n(t)$ a $t,$ obtemos
+$$
+\begin{align*}
+f({\hat X}_t^n) - f({\hat X}_{\tau^n(t)}^n) & = \int_{\tau^n(t)}^t \left( f'({\hat X}_s^n)f({\hat X}_s^n) + \frac{1}{2}f''({\hat X}_s^n)g({\hat X}_s^n)^2 \right)\;\mathrm{d}s \\
+& \qquad \qquad + \int_{\tau^n(t)}^t f'({\hat X}_s^n)g({\hat X}_s^n) \;\mathrm{d}W_s
+\end{align*}
+$$
+e
+$$
+\begin{align*}
+g({\hat X}_t^n)^2 - g({\hat X}_{\tau^n(t)}^n)^2 & = \int_{\tau^n(t)}^t \left( 2g'({\hat X}_s^n)g({\hat X}_s^n)f({\hat X}_s^n) + g'({\hat X}_s^n)^2g({\hat X}_s^n)^2 + g''({\hat X}_s^n)g({\hat X}_s^n)^3 \right)\;\mathrm{d}s \\
+& \qquad \qquad + \int_{\tau^n(t)}^t 2g'({\hat X}_s^n)g({\hat X}_s^n)^2 \;\mathrm{d}W_s.
+\end{align*}
+$$
+
+Substituindo isso na fórmula acima, a esperança da integral estocástica se anula e sobra
+$$
+\begin{align*}
+\mathbb{E}[\Phi({\hat X}_T^m)] - \mathbb{E}[\Phi(X_T)] & = \int_0^T \int_{\tau^n(t)}^t \mathbb{E}\left[u_x(t, {\hat X}_t^n)A_s\right]\;\mathrm{d}s\;\mathrm{d}t \\
+& \qquad + \frac{1}{2}\int_0^T \int_{\tau^n(t)}^t \mathbb{E}\left[u_{xx}(t, {\hat X}_t^n)B_s\right]\;\mathrm{d}s\;\mathrm{d}t,
+\end{align*}
+$$
+para
+$$
+A_s = f'({\hat X}_s^n)f({\hat X}_s^n) + \frac{1}{2}f''({\hat X}_s^n)g({\hat X}_s^n)^2, \quad B_s = 2g'({\hat X}_s^n)g({\hat X}_s^n)f({\hat X}_s^n) + g'({\hat X}_s^n)^2g({\hat X}_s^n)^2 + g''({\hat X}_s^n)g({\hat X}_s^n)^3.
+$$
+
+Assumindo que podemos limitar
+$$
+\left|\mathbb{E}\left[u_x(t, {\hat X}_t^n)A_s\right]\right| \leq C_1
+$$
+e
+$$
+\left|\mathbb{E}\left[u_{xx}(t, {\hat X}_t^n)B_s\right]\right| \leq C_2,
+$$
+uniformemente em $t$ e $s,$ obtemos
+$$
+\left|\mathbb{E}[\Phi({\hat X}_T^m)] - \mathbb{E}[\Phi(X_T)]\right| \leq \int_0^T \int_{\tau^n(t)}^t (C_1 + C_2)\;\mathrm{d}s\;\mathrm{d}t \leq (C_1 + C_2)T\Delta t,
+$$
+nos dando a convergência frace de ordem $1.$
+
+
+### Outra estimativa
+
+Uma outra maneira, feita em Higham & Kloeden (2021), é aplicar a fórmula de Itô a
+$$
+u_x(t, {\hat X}_t^n)(f({\hat X}_t^n) - f({\bar X}_t^n)), \qquad u_{xx}(t, {\hat X}_t^n)(g({\hat X}_t^n)^2 - g({\bar X}_t^n)^2).
+$$
+Em cada subintervalo $[t_{j-1}, t_j],$ temos ${\bar X}_t^n = {\bar X}_{t_{j-1}}^n = X_{j-1}^n$ constante, de modo que podemos olhar para
 $$
 e_{j-1}(t, x) = u_x(t, x)(f(x) - f(X_{j-1}^n))
 $$
 e analogamente para o termo envolvendo $g.$ Observe que
 $$
-e_{j-1}(t_{j-1}, \hat X_{t_{j-1}}) = u_x(t_{j-1}, \hat X_{t_{j-1}})(f(\hat X_{t_{j-1}}) - f(\bar X_{t_{j-1}})) = 0,
+e_{j-1}(t_{j-1}, {\hat X}_{t_{j-1}}^n) = u_x(t_{j-1}, {\hat X}_{t_{j-1}}^n)(f({\hat X}_{t_{j-1}}^n) - f({\bar X}_{t_{j-1}}^n)) = 0,
 $$
-já que $\hat X_{t_{j-1}} = \bar X_{t_{j-1}} = X_{j-1}^n$ coincidem. Assim, pela fórmula de Itô,
+já que ${\hat X}_{t_{j-1}}^n = {\bar X}_{t_{j-1}}^n = X_{j-1}^n$ coincidem. Assim, pela fórmula de Itô,
 $$
-e_{j-1}(t, \hat X_t) = \int_0^t L_0(s) e_{j-1}(s, \hat X_s) \;\mathrm{d}s + \int_0^t L_1(s) e_{j-1}(s, \hat X_s)\;\mathrm{d}W_s,
+e_{j-1}(t, {\hat X}_t^n) = \int_0^t L_0(s) e_{j-1}(s, {\hat X}_s^n) \;\mathrm{d}s + \int_0^t L_1(s) e_{j-1}(s, {\hat X}_s^n)\;\mathrm{d}W_s,
 $$
 onde $L_0(t)$ e $L_1(t)$ são operadores diferenciais definidos por
 $$
-L_0(t) = \partial_t + f(\hat X_t)\partial_x + \frac{1}{2}g(\hat X_t)^2 \partial_{xx}, \qquad L_1(t) = g(\hat X_t)^2\partial_x.
+L_0(t) = \partial_t + f({\hat X}_t^n)\partial_x + \frac{1}{2}g({\hat X}_t^n)^2 \partial_{xx}, \qquad L_1(t) = g({\hat X}_t^n)^2\partial_x.
 $$
 
 Ao tomarmos o valor esperado, a integral de Itô, que é o termo problemático de ordem $\Delta t^{1/2},$ desaparece e ficamos apenas com
 $$
-\mathbb{E}[e_{j-1}(t, \hat X_t)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, \hat X_s)\right] \;\mathrm{d}s.
+\mathbb{E}[e_{j-1}(t, {\hat X}_t^n)] = \int_{t_{j-1}}^t \mathbb{E}\left[ L_0(s) e_{j-1}(s, {\hat X}_s^n)\right] \;\mathrm{d}s.
 $$
 
 Assumindo-se que o integrando seja limitado no intervalo $[0, T]$ por uma constante $K_{\Phi, T},$ obtemos a estimativa de ordem 1
 $$
-\left| \mathbb{E}[e_{j-1}(t, \hat X_t)] \right| \leq K_{\Phi, T} \Delta t.
+\left| \mathbb{E}[e_{j-1}(t, {\hat X}_t^n)] \right| \leq K_{\Phi, T} \Delta t.
 $$
 Idem para o termo em $g,$ para o qual assumimos uma limitação com a mesma constante, para simplificar a notação. Isso nos dá, após a integração entre $0$ e $t,$ que
 $$
-\left|\mathbb{E}[\Phi(\hat X_T)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
+\left|\mathbb{E}[\Phi({\hat X}_T^n)] - \mathbb{E}[\Phi(X_T)]\right| \leq 2K_{\Phi, T} \Delta t.
 $$
-Isso nos dá a convergência fraca do método de Euler-Maruyama.
+Isso nos dá a convergência fraca de ordem 1, do método de Euler-Maruyama.
 
-A limitação uniforme passa por (i) mostrarmos que as normas $L^p$ solução da equação parabólica são controladas pela norma $L^p$ da "condição final" $\Phi$; (ii) por assumirmos que $\Phi$ tem um crescimento polinomial (apropriado para qualquer momento que queiramos estimar); (iii) por mostrarmos que, sob a hipótese de continuidade Lipschitz global de $f$ e $g,$ os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial $X_0$; e, por fim, (iv) por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.
+### Condições
+
+As limitações uniformes exigidas acima passam por (i) mostrarmos que as normas $L^p$ da solução da equação parabólica são controladas pela norma $L^p$ da "condição final" $\Phi$; (ii) por assumirmos que $\Phi$ tem um crescimento polinomial (apropriado para qualquer momento que queiramos estimar); (iii) por mostrarmos que, sob a hipótese de continuidade Lipschitz global de $f$ e $g,$ os momentos tanto da solução da equação estocástica quando das aproximações numéricas são controlados pelo momento da condição inicial $X_0$; e, por fim, (iv) por assumirmos que os momentos da condição inicial são finitos. Não entraremos em detalhes nesses itens.
