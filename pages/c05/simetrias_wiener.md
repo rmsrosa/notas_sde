@@ -143,7 +143,7 @@ $$
 $$
 Os passos $X_j = W_{t_j} - W_{t_{j-1}}$ são independentes e com valor esperado nulo. Estamos, portanto, no contexto da desigualdade maximal de Kolmogorov, que nos dá
 $$
-    \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r\right) \leq \frac{1}{r^2}\mathbb{E}\left[W_t^2\right].
+    \mathbb{P}\left(\sup_{t \in D_k} W_t \geq r\right) \leq \frac{1}{r^2}\mathbb{E}\left[W_T^2\right].
 $$
 No entanto, essa potência quadrática não é suficiente. Observamos, então, que $X_j$ e $-X_j$ têm a mesma distribuição $\mathcal{N}(0, t_j - t_{j-1})$ e todos os $X_j$ têm momentos finitos. Assim, vale
 $$

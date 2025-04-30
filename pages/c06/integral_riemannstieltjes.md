@@ -34,7 +34,7 @@ X_TY_T - X_0Y_0 = \sum_{j=1}^n \left(X_{t_j}Y_{t_j} - X_{t_{j-1}}Y_{t_{j-1}}\rig
 $$
 Observe que, ao refinarmos a malha, obtemos, no lado direito, duas integrais de Riemann-Stieltjes:
 $$
-X_TY_T - X_0Y_0 = \int_0^T Y_t \;\mathrm{d}X_t + \int_0^T X_t \;\mathrm{d}X_t.
+X_TY_T - X_0Y_0 = \int_0^T Y_t \;\mathrm{d}X_t + \int_0^T X_t \;\mathrm{d}Y_t.
 $$
 
 Esta é a fórmula de integração por partes para a integral de Riemann-Stieltjes, aqui aplicada à integração envolvendo processos com caminhos de variação limitada, quase certamente.
