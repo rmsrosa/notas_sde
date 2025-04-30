@@ -276,7 +276,7 @@ onde $\mathbf{x} = (x, y, z),$ $|\mathbf{x}| = \sqrt{x^2 + y^2 + z^2}$ e $a$ é 
 $$
 (X_n, Y_n) = \ell \sum_{i = 1, \ldots, n} (\cos\theta_i, \sin\theta_i).
 $$
-onde $\theta_i$ são $n$ realizações da variável ângulo. Como $\theta$ segue uma distribuição uniforme, temos $\mathbb{E}(\cos\theta) = \mathbb{E}(\sin\theta) = 0.$ Com isso, mostre que
+onde $\theta_i$ são $n$ realizações da variável ângulo. Usando que $\theta$ segue uma distribuição uniforme, mostre que
 $$
 \mathbb{E}((X_n, Y_n)) = (0, 0).
 $$
