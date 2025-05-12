@@ -36,7 +36,7 @@ Mais precisamente, vamos ver que, fixando $0 \leq \lambda \leq 1$ e escolhendo $
 $$
 \theta_j^\lambda = (1 - \lambda) t_{j-1} + \lambda t_j,
 $$
-o limite acima existe e depende de $\lambda.$
+o limite acima existe, sim, mas depende de $\lambda.$
 
 Para vermos isso, dada uma partição $M = \{t_j\}_{j=0}^n$ como acima e dado $\lambda$ satisfazendo $0 \leq \lambda \leq 1,$ definimos
 $$
@@ -56,25 +56,22 @@ $$
 R_M(0) = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}).
 $$
 
-Para cada $j,$ escrevemos
+Se o processo de Wiener fosse de variação limitada, teríamos $R_M(0)$ convergindo para $W_T^2/2.$ Pensando nisso, vamos analisar a discrepância entre $R_M(0)$ e $W_T^2/2,$ dada por
+$$
+    D_M = R_M(0) - \frac{W_T^2}{2}.
+$$
+Reescrevendo $W_T^2$ como soma telescópica, temos
 $$
 \begin{align*}
-W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) & = W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) \pm \frac{1}{2}W_{t_j} (W_{t_j} - W_{t_{j-1}}) \\
-& = \frac{1}{2}(W_{t_j} + W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) - \frac{1}{2}(W_{t_j} - W_{t_{j-1}})(W_{t_j }- W_{t_{j-1}}) \\
-& = \frac{1}{2}(W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2}(W_{t_j} - W_{t_{j-1}})^2.
+    D_M & = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j}^2 - W_{t_{j-1}}^2) \\
+    & = \sum_{j=1}^{n} W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) - \frac{1}{2}\sum_{j=1}^{n} (W_{t_j} + W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) \\
+    & = \sum_{j=1}^{n} \left(W_{t_{j-1}} - \frac{1}{2}W_{t_j} - \frac{1}{2}W_{t_{j-1}}\right)(W_{t_j} - W_{t_{j-1}}) \\
+    & = \sum_{j=1}^{n} \left(\frac{1}{2}W_{t_{j-1}} - \frac{1}{2}W_{t_j}\right)(W_{t_j} - W_{t_{j-1}}) \\
+    & = -\frac{1}{2}\sum_{j=1}^{n} (W_{t_j} - W_{t_{j-1}})^2 \\
 \end{align*}
 $$
-Assim,
-$$
-R_M(0) = \frac{1}{2}\sum_{j=1}^{n}(W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2}\sum_{j=1}^{n}(W_{t_j} - W_{t_{j-1}})^2.
-$$
 
-O primeiro somatório é uma soma telescópica, que nos dá
-$$
-\frac{1}{2}\sum_{j=1}^{n}(W_{t_j}^2 - W_{t_{j-1}}^2) = \frac{1}{2}(W_T^2 - W_0^2) = \frac{1}{2}W_T^2.
-$$
-
-O segundo somatório foi considerado na seção {{link_section pages/c05/variacao_ilimitada_wiener}}, onde mostramos, para uma malha qualquer, que o valor esperado satisfaz
+Esse somatório foi considerado na seção {{link_section pages/c05/variacao_ilimitada_wiener}}, onde mostramos, para uma malha qualquer, que o valor esperado satisfaz
 $$
 \mathbb{E}\left[\sum_{j=1}^n \left(W_{t_j} - W_{t_{j-1}}\right)^2\right] = \sum_{j=1}^n (t_j - t_{j-1}) = t_n - t_0 = T,
 $$
@@ -123,6 +120,16 @@ $$
 & = 0.
 \end{align*}
 $$
+
+Um caminho alternativo a considerar a discrepância $D_M = R_M(0) - W_T^2/2$ é trabalhar diretamente com $R_M(0)$ e escrever, para cada $j$ do somatório,
+$$
+\begin{align*}
+W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) & = W_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}) \pm \frac{1}{2}W_{t_j} (W_{t_j} - W_{t_{j-1}}) \\
+& = \frac{1}{2}(W_{t_j} + W_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}) - \frac{1}{2}(W_{t_j} - W_{t_{j-1}})(W_{t_j }- W_{t_{j-1}}) \\
+& = \frac{1}{2}(W_{t_j}^2 - W_{t_{j-1}}^2) - \frac{1}{2}(W_{t_j} - W_{t_{j-1}})^2,
+\end{align*}
+$$
+e mostrar que o somatório dos termos do lado direito converge para $W_T^2/2 - T/2,$ mas o caminho acima parece um pouco mais natural.
 
 ### Caso $\lambda = 1$
 
