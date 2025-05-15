@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Bom, já vimos como integrar processos em relação a variações no tempo (Seção {{link_section pages/c06/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c06/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c06/integral_dualidade}}). Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo (Seção {{link_section pages/c06/riemann_wiener}}). Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.
+Bom, já vimos como integrar processos em relação à variável independente (Seção {{link_section pages/c06/integral_riemann}}), em relação a processos de variação limitada (Seção {{link_section pages/c06/integral_riemannstieltjes}}) e como integrar certas classes de funções em relação a processos que não são de variação limitada (Seção {{link_section pages/c06/integral_dualidade}}). Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo (Seção {{link_section pages/c06/riemann_wiener}}). Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.
 
 No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico $\{H_t\}_{t\geq 0}$ e a integral é em relação a um processo de Wiener $\{W_t\}_{t\geq 0}$:
 $$
@@ -25,7 +25,7 @@ Independente da *evolução futura* significa que, para cada $t\geq 0,$ $H_t$ é
 
 Lembramos que uma **filtração** é uma família $\{\mathcal{F}_t\}_{t\geq 0}$ de sub $\sigma$-álgebras com a propriedade de que $\mathcal{F}_s \subset \mathcal{F}_t,$ para $0 \leq s \leq t.$ A **filtração natural** é a menor filtração possível que torna cada $W_t$ mensurável em relação a $\mathcal{F}_s,$ para todo $s \geq t.$ Uma filtração é dita **não antecipativa** ou **adaptada** em relação a um processo $\{W_t\}_{t\geq 0}$ quando $W_t$ é mensurável em relação a $\mathcal{F}_s,$ para todo $s \geq t.$ Dizemos, então, que $\{H_t\}_{t\geq 0}$ é **não antecipativa** ou **adaptada** ao processo $\{W_t\}_{t\geq 0}$ quando, para cada $t\geq 0,$ $H_t$ é mensurável em relação à filtração natural de $\{W_t\}_{t\geq 0}.$
 
-Em relação à mensurabilidade, pedimos, também, que $\{H_t\}_{t\geq 0}$ seja **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t,$ ou seja, que para cada $\bar t \geq 0,$ a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, \bar t] \times \Omega$ seja mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t},$ onde $\mathcal{B}(0, \bar t)$ é a $\sigma$-álgebra de Borel do intervalo $[0, \bar t].$
+Em relação à mensurabilidade, pedimos, também, que $\{H_t\}_{t\geq 0}$ seja **progressivamente mensurável** em relação a uma filtração $\mathcal{F}_t,$ ou seja, que para cada $T > 0,$ a função $(t, \omega) \mapsto H_t(\omega)$ definida em $[0, T] \times \Omega$ seja mensurável em relação à $\sigma$-álgebra produto $\mathcal{B}(0, T) \times \mathcal{F}_{T},$ onde $\mathcal{B}(0, T)$ é a $\sigma$-álgebra de Borel do intervalo $[0, T].$
 
 Em relação à integrabilidade, pedimos, ainda, que $\{H_t\}_{t\geq 0}$ seja de **quadrado integrável,** i.e.
 $$
@@ -51,9 +51,9 @@ onde $M = \{t_j\}_{j=1}^n$ é uma malha formada por $0 = t_0 < t_1 < \ldots < t_
 
 ## Caso particular de integrandos permitidos
 
-Inicialmente vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes.
+Inicialmente vamos assumir uma condição de continuidade no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes, com uma demonstração análoga à comumente feita para as integrais de Riemann e de Riemann-Stieltjes. Em seguida, vamos mostrar que todo processo estocástico de quadrado integrável satisfaz essa condição de continuidade.
 
-Mais precisamente, vamos pedir que $\{H_t\}_{t\geq 0},$ além de ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
+Mais precisamente, vamos supor que $\{H_t\}_{t\geq 0},$ que é de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
 $$
     \mathbb{E}\left[ |H_{t +\tau} - H_t|^2 \right] < \eta, \qquad \forall 0 < \tau < \delta, \; 0 \leq t \leq t + \tau \leq T.
 $$
@@ -76,7 +76,7 @@ de modo que a condição de continuidade uniforme em média quadrática também 
 
 Observe que esses exemplos mostram a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência $\tau^{1 + \varepsilon}$ no lado direito da condição, com $\varepsilon$ estritamente positivo. Nos exemplos acima, temos a estimativa com $\varepsilon = 0$ e os caminhos não são nem contínuos.
 
-Como dito acima, consideramos esse caso particular a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. 
+Como dito acima, usamos essa condição a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, veremos que todo processo de quadrado integrável de fato satisfaz essa condição. Vamos também comentar sobre uma outra construção, mais clássica, através da aproximação por processos escada, que, essencialmente, tem caminhos constantes por parte.
 
 ## Somas finitas de Riemann-Stieltjes
 
@@ -274,6 +274,28 @@ $$
     \end{align*}
 $$
 onde usamos que $W_T$ é uma normal e, portanto, $\mathbb{E}[W_T^4] = 3\mathbb{E}[W_T^2]^2.$
+
+## O caso geral de quadrado integrável
+
+Vamos agora ver que todo processo de quadrado integrável é localmente uniformemente contínuo em média quadrática.
+
+Por ser de quadrado integrável, temos
+$$
+\int_\Omega \int_0^T H_t(\omega)^2 \;\mathrm{d}t \;\mathrm{d}\mathbb{P}(\omega) < \infty.
+$$
+Pelo Teorema de Fubini, isso significa que
+$$
+\int_0^T H_t(\omega)^2 \;\mathrm{d}t < \infty
+$$
+para quase todo $\omega\in\Omega,$ ou seja $t\mapsto H_t \in L^2(0, T),$ quase certamente. É sabido que, toda função $f=f(t)$ de quadrado integrável é contínua em $L^2,$ i.e.
+$$
+    \int_0^T |f(t+\tau) - f(t)|^2\;\mathrm{d}t \rightarrow 0, \quad \text{ as } \tau \rightarrow 0.
+$$
+Aplicando isso aos caminhos de $H_t,$ temos
+$$
+    \int_0^T |H_{t+\tau}(\omega) - H_t(\omega)|^2 \;\mathrm{d}t \rightarrow 0,
+$$
+quando $\tau \rightarrow 0,$ para quase todo $\omega\in \Omega.$ Além disso, ... falta truncar $H_t$ para ser limitado...
 
 ## Exercícios
 
