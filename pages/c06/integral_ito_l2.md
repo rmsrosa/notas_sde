@@ -185,7 +185,37 @@ $$
 $$
 em $L^2((0, T)\times \Omega),$ ou seja, $\{H_t^n\}_{0 \leq t \leq T}$ é uma aproximação, em média quadrática, por processos do tipo escada, do processo $\{H_t\}_{0 \leq t \leq T}.$ 
 
-### Aproximação no caso de processos com caminhos contínuos
+### Convergência da aproximação por processos do tipo escada
+
+Um outro passo fundamental é mostrar que, de fato, $\{H_t^m\}_{t\geq 0}$ converge para $\{H_t\}_{t\geq 0},$ em média quadrática. Isso é feito da seguinte forma. Primeiro, escrevemos
+$$
+\begin{align*}
+H_t - H_t^m & = H_t - \int_0^\infty m e^{-m s} H_{t - s}\;\mathrm{d}s \\
+  & = H_t \int_0^\infty m e^{-m s} \;\mathrm{d}s - \int_0^\infty m e^{-m s} H_{t - s}\;\mathrm{d}s \\
+  & = \int_0^\infty m e^{-m s} (H_t - H_{t - s})\;\mathrm{d}s.
+\end{align*}
+$$
+Com isso, usando a desigualdade de Cauchy-Schwarz, quebrando o termo da exponencial em $e^{-m s} = e^{-m s/2}e^{-m s/2},$
+$$
+\begin{align*}
+|H_t - H_t^m|^2 & = \left(\int_0^\infty m e^{-m s} (H_t - H_{t - s})\;\mathrm{d}s\right)^2 \\
+  & \leq \left(\int_0^\infty m e^{-m s} (H_t - H_{t - s})^2\;\mathrm{d}s\right)\left(\int_0^\infty m e^{-m s} \;\mathrm{d}s\right) \\
+  & = \int_0^\infty m e^{-m s} (H_t - H_{t - s})^2\;\mathrm{d}s.
+\end{align*}
+$$
+Fazendo uma mudança de variáveis, obtemos
+$$
+|H_t - H_t^m|^2 \leq \int_0^\infty e^{-s} (H_t - H_{t - s/m})^2\;\mathrm{d}s.
+$$
+Assim,
+$$
+\begin{align*}
+    \int_0^T \mathbb{E}\left[\left|H_t - H_t^m\right|^2\right] \;\mathrm{d}t \leq \int_0^T \int_0^\infty e^{-s} \mathbb{E}\left[(H_t - H_{t - s/m})^2\right]\;\mathrm{d}s\;\mathrm{d}t
+\end{align*}
+$$
+Trocando a ordem de integração e usando a continuidade em média quadrática de processos com média quadrática, vista anteriormente, obtemos a convergência.
+
+### Convergência da integral de Itô no caso de processos com caminhos contínuos
 
 Obtivemos, acima, a convergência das integrais de Itô das aproximações $\{H_t^n\}_t$ de uma função progressivamente mensurável de quadrado integrável. Mas se os caminhos não forem contínuous, não podemos garantir que $H_t^n = H_{t_j^n}^n$ em pontos arbitrários $t_j^n$ das malhas das aproximações-escada do processo. Então, em geral, não podemos dizer que a integral de Itô de $\{H_t\}_t$ é o limite de somatórios
 $$
