@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Integral de Itô de processos uniformemente contínuos em média quadrática</title>  
+   <title>Integral de Itô de processos não-antecipativos de quadrado integrável</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -182,10 +182,10 @@
     <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos não-antecipativos de quadrado integrável</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô via processos escada</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
@@ -345,7 +345,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_l2"><kbd>→</kbd> 6.6. Integral de Itô de processos L²</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_l2"><kbd>→</kbd> 6.6. Integral de Itô via processos escada</a>
 </span>
     </p>
 </div>
@@ -356,8 +356,8 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></h1>
-<p>Bom, já vimos como integrar processos em relação a variações no tempo &#40;Seção <a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a>&#41;, em relação a processos de variação limitada &#40;Seção <a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a>&#41; e como integrar certas classes de funções em relação a processos que não são de variação limitada &#40;Seção <a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a>&#41;. Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo &#40;Seção <a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a>&#41;. Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.</p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.5. Integral de Itô de processos não-antecipativos de quadrado integrável</a></h1>
+<p>Bom, já vimos como integrar processos em relação à variável independente &#40;Seção <a href="/notas_sde/pages/c06/integral_riemann">6.1. Integrais de Riemann</a>&#41;, em relação a processos de variação limitada &#40;Seção <a href="/notas_sde/pages/c06/integral_riemannstieltjes">6.2. Integrais de Riemann-Stieltjes</a>&#41; e como integrar certas classes de funções em relação a processos que não são de variação limitada &#40;Seção <a href="/notas_sde/pages/c06/integral_dualidade">6.3. Integrais via dualidade</a>&#41;. Também vimos como as somas parciais de Riemann-Stieltjes não convergem quando tentamos integrar um processo de Wiener em relação a si mesmo &#40;Seção <a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a>&#41;. Vamos agora ver como podemos especificar as somas parciais de forma a obter uma noção de integral que esteja bem definida nesse último caso.</p>
 <p>No que se segue, vamos buscar definir uma integral cujo integrando é um processo estocástico \(\{H_t\}_{t\geq 0}\) e a integral é em relação a um processo de Wiener \(\{W_t\}_{t\geq 0}\):</p>
 \[
 \int_0^T H_t \;\mathrm{d}W_t.
@@ -374,7 +374,7 @@
 </blockquote>
 <p>Independente da <em>evolução futura</em> significa que, para cada \(t\geq 0,\) \(H_t\) é independente de \(W_{t + \tau} - W_t,\) para todo \(\tau > 0.\) Chamamos essa condição de <em>não antecipativa</em> <em>&#40;&quot;non-antecipating&quot;&#41;</em> ou <em>adaptada</em> ao processo \(\{W_t\}_t.\) Uma definição mais formal envolve o conceito de <em>filtração:</em></p>
 <p>Lembramos que uma <strong>filtração</strong> é uma família \(\{\mathcal{F}_t\}_{t\geq 0}\) de sub \(\sigma\)-álgebras com a propriedade de que \(\mathcal{F}_s \subset \mathcal{F}_t,\) para \(0 \leq s \leq t.\) A <strong>filtração natural</strong> é a menor filtração possível que torna cada \(W_t\) mensurável em relação a \(\mathcal{F}_s,\) para todo \(s \geq t.\) Uma filtração é dita <strong>não antecipativa</strong> ou <strong>adaptada</strong> em relação a um processo \(\{W_t\}_{t\geq 0}\) quando \(W_t\) é mensurável em relação a \(\mathcal{F}_s,\) para todo \(s \geq t.\) Dizemos, então, que \(\{H_t\}_{t\geq 0}\) é <strong>não antecipativa</strong> ou <strong>adaptada</strong> ao processo \(\{W_t\}_{t\geq 0}\) quando, para cada \(t\geq 0,\) \(H_t\) é mensurável em relação à filtração natural de \(\{W_t\}_{t\geq 0}.\)</p>
-<p>Em relação à mensurabilidade, pedimos, também, que \(\{H_t\}_{t\geq 0}\) seja <strong>progressivamente mensurável</strong> em relação a uma filtração \(\mathcal{F}_t,\) ou seja, que para cada \(\bar t \geq 0,\) a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, \bar t] \times \Omega\) seja mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, \bar t) \times \mathcal{F}_{\bar t},\) onde \(\mathcal{B}(0, \bar t)\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, \bar t].\)</p>
+<p>Em relação à mensurabilidade, pedimos, também, que \(\{H_t\}_{t\geq 0}\) seja <strong>progressivamente mensurável</strong> em relação a uma filtração \(\mathcal{F}_t,\) ou seja, que para cada \(T > 0,\) a função \((t, \omega) \mapsto H_t(\omega)\) definida em \([0, T] \times \Omega\) seja mensurável em relação à \(\sigma\)-álgebra produto \(\mathcal{B}(0, T) \times \mathcal{F}_{T},\) onde \(\mathcal{B}(0, T)\) é a \(\sigma\)-álgebra de Borel do intervalo \([0, T].\)</p>
 <p>Em relação à integrabilidade, pedimos, ainda, que \(\{H_t\}_{t\geq 0}\) seja de <strong>quadrado integrável,</strong> i.e.</p>
 \[
 \int_0^T  \mathbb{E}\left[H_t^2\right] \;\mathrm{d}t  < \infty.
@@ -394,12 +394,28 @@
 \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 \]
 <p>onde \(M = \{t_j\}_{j=1}^n\) é uma malha formada por \(0 = t_0 < t_1 < \ldots < t_n = T,\) com \(n\in \mathbb{N}\) arbitrário. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.</p>
-<h2 id="caso_particular_de_integrandos_permitidos"><a href="#caso_particular_de_integrandos_permitidos" class="header-anchor">Caso particular de integrandos permitidos</a></h2>
-<p>Inicialmente vamos assumir uma condição extra de continuidade uniforme no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes.</p>
-<p>Mais precisamente, vamos pedir que \(\{H_t\}_{t\geq 0},\) além de ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente &#40;no tempo&#41; uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer \(T > 0\) e \(\eta > 0,\) existe \(\delta > 0\) tal que</p>
+<h2 id="definição_da_integral_de_itô"><a href="#definição_da_integral_de_itô" class="header-anchor">Definição da integral de Itô</a></h2>
+<p>A ideia é definir a integral de Itô como limite das somas de Riemann-Stieltjes, i.e. através de</p>
+\[
+    \int_0^T H_t \;\mathrm{d}W_t = \lim_{\|M\| \rightarrow 0} \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}),
+\]
+<p>onde \(M\) são malhas temporais particionando o intervalo \([0, T],\)</p>
+\[
+    M = \{0 = t_0 < t_1 < \ldots < t_n = T; \;n\in\mathbb{N}\},
+\]
+<p>e</p>
+\[
+    \|M\| = \max_{j=1, \ldots, n} |t_j - t_{j-1}|.
+\]
+<p>Vamos ver que, para integrandos \(\{H_t\}_{t\geq 0}\) que são não-antecipativos e de quadrado integrável, esse limite existe em média quadrática.</p>
+<h2 id="convergência_para_integrandos_localmente_uniformemente_contínuous_em_média_quadrática"><a href="#convergência_para_integrandos_localmente_uniformemente_contínuous_em_média_quadrática" class="header-anchor">Convergência para integrandos localmente uniformemente contínuous em média quadrática</a></h2>
+<p>Inicialmente vamos assumir uma condição de continuidade no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes, com uma demonstração análoga à comumente feita para as integrais de Riemann e de Riemann-Stieltjes. Em seguida, vamos mostrar que, na verdade, todo processo estocástico de quadrado integrável satisfaz essa condição de continuidade.</p>
+<h3 id="processos_localmente_uniformemente_contínuos_em_média_quadrática"><a href="#processos_localmente_uniformemente_contínuos_em_média_quadrática" class="header-anchor">Processos localmente uniformemente contínuos em média quadrática</a></h3>
+<p>Mais precisamente, vamos supor que \(\{H_t\}_{t\geq 0},\) que é de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente &#40;no tempo&#41; uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer \(T > 0\) e \(\eta > 0,\) existe \(\delta > 0\) tal que</p>
 \[
     \mathbb{E}\left[ |H_{t +\tau} - H_t|^2 \right] < \eta, \qquad \forall 0 < \tau < \delta, \; 0 \leq t \leq t + \tau \leq T.
 \]
+<p>O termo &quot;uniforme&quot; se refere à estimativa ser uniforme em \(t\in [0, T],\) enquanto que &quot;local&quot; se refere a \(T\) ser finito.</p>
 <p>Observe que o processo de Wiener tem a propriedade de que \(W_{t+\tau} - W_t \sim \mathcal{N}(0, \tau),\) de forma que</p>
 \[
     \mathbb{E}\left[ |W_{t+\tau} - W_t|^2 \right] = \tau,
@@ -413,41 +429,40 @@
 \]
 <p>de modo que a condição de continuidade uniforme em média quadrática também é válida.</p>
 <p>Observe que esses exemplos mostram a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência \(\tau^{1 + \varepsilon}\) no lado direito da condição, com \(\varepsilon\) estritamente positivo. Nos exemplos acima, temos a estimativa com \(\varepsilon = 0\) e os caminhos não são nem contínuos.</p>
-<p>Como dito acima, consideramos esse caso particular a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. </p>
-<h2 id="somas_finitas_de_riemann-stieltjes"><a href="#somas_finitas_de_riemann-stieltjes" class="header-anchor">Somas finitas de Riemann-Stieltjes</a></h2>
+<p>Como dito acima, usamos essa condição a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, veremos que todo processo de quadrado integrável de fato satisfaz essa condição. Vamos também comentar sobre uma outra construção, mais clássica, através da aproximação por processos escada, que, essencialmente, tem caminhos constantes por parte.</p>
+<h3 id="somas_finitas_de_riemann-stieltjes"><a href="#somas_finitas_de_riemann-stieltjes" class="header-anchor">Somas finitas de Riemann-Stieltjes</a></h3>
 <p>Consideremos, então, as somas finitas de Riemann-Stieltjes</p>
 \[
-    R_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
+    S_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 \]
-<p>onde \(M = \{t_j\}_{j=1}^n\) é uma malha formada por \(0 = t_0 < t_1 < \ldots < t_n = T,\) com \(n\in \mathbb{N}\) arbitrário. Vamos mostrar que \(\{R_M\}_{M}\) é &#40;uma rede&#41; de Cauchy, em \(L^2(\Omega).\)</p>
+<p>onde \(M = \{t_j\}_{j=1}^n\) é uma malha formada por \(0 = t_0 < t_1 < \ldots < t_n = T,\) com \(n\in \mathbb{N}\) arbitrário, como definido acima. Vamos mostrar que \(\{S_M\}_{M}\) é &#40;uma rede&#41; de Cauchy, em \(L^2(\Omega).\)</p>
 \[
-    \lim_{\|M_1\|, \|M_2\| \rightarrow 0} \mathbb{P}(|R_{M_1} - R_{M_2}| \geq \varepsilon) = 0,
+    \lim_{\|M_1\|, \|M_2\| \rightarrow 0} \mathbb{P}(|S_{M_1} - S_{M_2}| \geq \varepsilon) = 0,
 \]
 <p>lembrando que, para uma malha \(M,\)</p>
 \[
     \|M\| = \max_{j=1, \ldots, n} |t_j - t_{j-1}|.
 \]
-<p>Uma vez feito isso, obtemos que existe uma variável aleatória limite \(R,\) tal que \(R_M \rightarrow R\) em em média quadrática, i.e.</p>
+<p>Uma vez feito isso, obtemos que existe uma variável aleatória limite \(S,\) tal que \(S_M \rightarrow S\) em em média quadrática, i.e.</p>
 \[
-    \lim_{\|M\|\rightarrow 0} \mathbb{E}(|R_M - R|^2) = 0.
+    \lim_{\|M\|\rightarrow 0} \mathbb{E}(|S_M - S|^2) = 0.
 \]
-<p>Com isso, \(R_M\) converge, em média quadrática, para um limite \(R,\) que definimos como sendo a integral de \(\{H_t\}_{t\geq 0}\) em relação a \(\{W_t\}_{t\geq 0},\) no intervalo \([0, T]:\)</p>
+<p>Com isso, \(S_M\) converge, em média quadrática, para um limite \(S,\) que definimos como sendo a integral de \(\{H_t\}_{t\geq 0}\) em relação a \(\{W_t\}_{t\geq 0},\) no intervalo \([0, T]:\)</p>
 \[
-    \int_0^T H_t\;\mathrm{d}t = R = \lim_{\|M\|\rightarrow 0} R_M = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}).
+    \int_0^T H_t\;\mathrm{d}t = S = \lim_{\|M\|\rightarrow 0} S_M = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}).
 \]
-<p>No caso de \(\{H_t\}_{t\geq 0}\) ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos, antes, tratar primeiro de processos localmente uniformemente contínuos em média quadrática.</p>
-<h3 id="média_quadrática"><a href="#média_quadrática" class="header-anchor">Média quadrática</a></h3>
+<h3 id="média_quadrática_entre_duas_malhas"><a href="#média_quadrática_entre_duas_malhas" class="header-anchor">Média quadrática entre duas malhas</a></h3>
 <p>Dadas duas malhas \(M_1\) e \(M_2,\) podemos fazer uma triangulação com o refinamento das duas malhas, \(M = M_1 \cup M_2.\) Naturalmente,</p>
 \[
     \|M\| \leq \min\{M_1, M_2\}.
 \]
 <p>Vamos comparar \(M_1\) e \(M_2\) com \(M.\) Denotando os pontos da malha mais grossa \(M_1\) por \(t_i',\) \(i = 1, \ldots, n_1,\) e os pontos da malha mais fina \(M\) por \(t_j,\) \(j=1, \ldots, n,\) com \(M\subset M_1\) e \(n \geq n_1,\) podemos escrever</p>
 \[
-    R_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
+    S_M = \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})
 \]
 <p>e</p>
 \[
-    R_{M_1} = \sum_{i=1}^{n_1} H_{t_{i-1}'}(W_{t_i'} - W_{t_{i-1}'}),
+    S_{M_1} = \sum_{i=1}^{n_1} H_{t_{i-1}'}(W_{t_i'} - W_{t_{i-1}'}),
 \]
 <p>onde, para cada \(j=0, \ldots, n,\) existe um único \(i_j\) tal que</p>
 \[
@@ -455,22 +470,22 @@
 \]
 <p>Assim, somando e subtraindo os passos intermediários se necessário, podemos escrever</p>
 \[
-    R_{M_1} = \sum_{j=1}^{n} H_{t_{i_{j-1}}}(W_{t_j} - W_{t_{j-1}}).
+    S_{M_1} = \sum_{j=1}^{n} H_{t_{i_{j-1}}}(W_{t_j} - W_{t_{j-1}}).
 \]
 <p>Com isso,</p>
 \[
-    R_{M_1} - R_M = \sum_{j=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}).
+    S_{M_1} - S_M = \sum_{j=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}}).
 \]
 <p>Elevando ao quadrado,</p>
 \[
     \begin{align*}
-        (R_{M_1} - R_M)^2 & = \left(\sum_{j=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})\right)^2 \\
+        (S_{M_1} - S_M)^2 & = \left(\sum_{j=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})\right)^2 \\
         & = \sum_{j=1}^{n} \sum_{k=1}^{n} (H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}}).
     \end{align*}
 \]
 <p>Logo,</p>
 \[
-    \mathbb{E}[|R_{M_1} - R_M|^2] = \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}})\right]
+    \mathbb{E}[|S_{M_1} - S_M|^2] = \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})(W_{t_j} - W_{t_{j-1}})(H_{t_{i_{j-1}}} - H_{t_{k-1}})(W_{t_k} - W_{t_{k-1}})\right]
 \]
 <p>Para \(j < k,\) temos \(W_{t_k} - W_{t_{k-1}},\) que tem esperança nula, independente dos outros termos, de modo que</p>
 \[
@@ -490,11 +505,11 @@
 \]
 <p>Sobram, então, apenas os termos com \(k=j,\) i.e.</p>
 \[
-    \mathbb{E}[|R_{M_1} - R_M|^2] = \sum_{j=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right].
+    \mathbb{E}[|S_{M_1} - S_M|^2] = \sum_{j=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})^2(W_{t_j} - W_{t_{j-1}})^2\right].
 \]
 <p>Como \(\{H_t\}_{t\geq 0}\) é não antecipativo, cada termo \(H_{t_{i_{j-1}}} - H_{t_{j-1}}\) é independente de \(W_{t_j} - W_{t_{j-1}},\) de modo que</p>
 \[
-    \mathbb{E}[|R_{M_1} - R_M|^2] = \sum_{j=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})^2\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right].
+    \mathbb{E}[|S_{M_1} - S_M|^2] = \sum_{j=1}^{n} \mathbb{E}\left[(H_{t_{i_{j-1}}} - H_{t_{j-1}})^2\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right].
 \]
 <p>Dado \(\eta > 0,\) existe \(\delta > 0\) tal que, para \(\|M_1\|, \|M_2\| < \delta,\) cada \(t_{j-1} - t_{i_{j-1}}\) está limitado pela malha mais grossa \(M_1,\) de modo que \(0 \leq t_{j-1} - t_{i_{j-1}} < \delta\) e, com isso,</p>
 \[
@@ -502,64 +517,125 @@
 \]
 <p>Usando, ainda, que \(\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] = t_j - t_{j-1},\) obtemos</p>
 \[
-\mathbb{E}[|R_{M_1} - R_M|^2] \leq \sum_{j=1}^{n} \eta (t_j - t_{j-1}) = \eta T.
+\mathbb{E}[|S_{M_1} - S_M|^2] \leq \sum_{j=1}^{n} \eta (t_j - t_{j-1}) = \eta T.
 \]
 <p>Idem para \(M_2.\) Logo,</p>
 \[
-\mathbb{E}[|R_{M_1} - R_{M_2}|^2] \leq 2\eta T.
+\mathbb{E}[|S_{M_1} - S_{M_2}|^2] \leq 2\eta T.
 \]
 <p>Como podemos tomar \(\eta > 0\) arbitrariamente pequeno, bastando refinar cada vez mais a malha, obtemos que</p>
 \[
-    \lim_{\|M_1\|, \|M_2\| \rightarrow 0} \mathbb{E}(|R_{M_1} - R_{M_2}|^2) = 0.
+    \lim_{\|M_1\|, \|M_2\| \rightarrow 0} \mathbb{E}(|S_{M_1} - S_{M_2}|^2) = 0.
 \]
 <p>Logo, existe uma variável aleatória \(R=R(\omega)\) de quadrado integrável tal que</p>
 \[
-    \lim_{\|M\|\rightarrow 0} \mathbb{E}(|R_M - R|^2) = 0,
+    \lim_{\|M\|\rightarrow 0} \mathbb{E}(|S_M - R|^2) = 0,
 \]
 <p>ou seja, existe o limite</p>
 \[
-    R = \lim_{\|M\|\rightarrow 0} R_M
+    R = \lim_{\|M\|\rightarrow 0} S_M
 \]
 <p>e podemos definir a integral de \(\{H_t\}_{t\geq 0}\) em relação a \(\{W_t\}_{t\geq 0},\) no intervalo \([0, T],\) por</p>
 \[
-    \int_0^T H_t\;\mathrm{d}W_t = R = \lim_{\|M\|\rightarrow 0} R_M = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}).
+    \int_0^T H_t\;\mathrm{d}W_t = R = \lim_{\|M\|\rightarrow 0} S_M = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}).
 \]
 <p>Essa definição nos dá a <strong>integral de Itô,</strong> em relação a um processo de Wiener \(\{W_t\}_{t\geq 0},\) de um processo estocástico \(\{H_t\}_{t\geq 0}\) com as propriedades de ser progressivamente mensurável em relação à filtração natural do processo de Wiener, ter quadrado integrável em \([0, T]\times \Omega\) e ser localmente uniformemente contínuo em média quadrática.</p>
-<h3 id="valor_esperado_da_integral_estocástica"><a href="#valor_esperado_da_integral_estocástica" class="header-anchor">Valor esperado da integral estocástica</a></h3>
+<h2 id="o_caso_geral_de_quadrado_integrável"><a href="#o_caso_geral_de_quadrado_integrável" class="header-anchor">O caso geral de quadrado integrável</a></h2>
+<p>Vamos agora ver que todo processo de quadrado integrável é localmente uniformemente contínuo em média quadrática.</p>
+<p>Por ser de quadrado integrável, temos</p>
+\[
+\int_\Omega \int_0^T H_t(\omega)^2 \;\mathrm{d}t \;\mathrm{d}\mathbb{P}(\omega) < \infty.
+\]
+<p>Pelo Teorema de Fubini, isso significa que</p>
+\[
+\int_0^T H_t(\omega)^2 \;\mathrm{d}t < \infty
+\]
+<p>para quase todo \(\omega\in\Omega,\) ou seja \(t\mapsto H_t \in L^2(0, T),\) quase certamente. É sabido que, toda função \(f=f(t)\) de quadrado integrável é contínua em \(L^2,\) i.e.</p>
+\[
+    \int_0^T |f(t+\tau) - f(t)|^2\;\mathrm{d}t \rightarrow 0, \quad \text{ as } \tau \rightarrow 0.
+\]
+<p>Aplicando isso aos caminhos de \(H_t,\) temos</p>
+\[
+    d_\tau(\omega) = \int_0^T |H_{t+\tau}(\omega) - H_t(\omega)|^2 \;\mathrm{d}t \rightarrow 0,
+\]
+<p>quando \(\tau \rightarrow 0,\) para quase todo \(\omega\in \Omega.\) </p>
+<h3 id="caso_de_processos_limitados"><a href="#caso_de_processos_limitados" class="header-anchor">Caso de processos limitados</a></h3>
+<p>Vamos assumir que o processo seja uniformemente limitado, i.e.</p>
+\[
+    |H_t(\omega)| \leq M, \qquad \forall t \geq 0, \;\forall \omega\in \Omega.
+\]
+<p>Nesse caso,</p>
+\[
+    0 \leq d_\tau(\omega) \leq 4 M^2 T,
+\]
+<p>ou \(d_\tau\) é limitado por uma função &#40;constante&#41; integrável. Assim, pelo Teorema da Convergência Dominada, segue que</p>
+\[
+    \int_0^T \mathbb{E}\left[(H_{t+\tau} - H_t)^2\right] = \int_\Omega \int_0^T |H_{t+\tau}(\omega) - H_t(\omega)|^2\;\mathrm{d}t\;\mathrm{d}\mathbb{P}(\omega) = \int_\Omega d_\tau\;\mathrm{d}\mathbb{P}(\omega) \rightarrow 0,
+\]
+<p>quando \(\tau \rightarrow 0,\) provando a continuidade em média quadrática de \(\{H_t\}_{t\geq 0}.\)</p>
+<h3 id="caso_geral"><a href="#caso_geral" class="header-anchor">Caso geral</a></h3>
+<p>No caso geral de \(\{H_t\}_{t\geq 0}\) ser simplesmente de quadrado integrável &#40;além de não-antecipativo&#41;, aproximamos o processo por processos limitados, considerando, por exemplo,</p>
+\[
+    H_t^m = \max\{-m, \min\{m, H_t\}\} = \begin{cases}
+    -m, & H_t < -m, \\ 
+    H_t, & -m \leq H_t \leq m, \\
+    m, & H_t > m,
+    \end{cases}
+\]
+<p>Como \(|H_t^m| \leq |H_t|,\) que é de quadrado integrável, e \(H_t^m(\omega) \rightarrow H_t(\omega)\) quase certamente, então, segue do Teorema da Convergência Dominada, que \(H_t^m \rightarrow H_t\) em \(L^2,\) i.e.</p>
+\[
+    \int_0^T \mathbb{E}\left[|H_t - H_t^m|^2\right]\;\mathrm{d}t = \int_\Omega\int_0^T |H_t(\omega) - H_t^m(\omega)|^2\;\mathrm{d}t\;\mathrm{d}\mathbb{P}(\omega) \rightarrow 0, \quad m\rightarrow \infty.
+\]
+<p>Agora basta fazer uma triangulação. Dado \(\varepsilon > 0,\) encontramos \(m\) tal que</p>
+\[
+    \int_0^T \mathbb{E}\left[|H_t - H_t^m|^2\right]\;\mathrm{d}t < \frac{\varepsilon}{9},
+\]
+<p>depois, usando que \(H_t^m\) é limitado, encontramos \(\eta > 0\) tal que</p>
+\[
+\int_0^T \mathbb{E}\left[|H_{t+\tau}^m - H_t^m|^2\right]\;\mathrm{d}t < \frac{\varepsilon}{9},
+\]
+<p>para \(0 < \tau < \eta,\) e deduzimos que</p>
+\[
+\begin{align*}
+\int_0^T \mathbb{E}\left[|H_{t+\tau} - H_t|^2\right]\;\mathrm{d}t & \leq 3\int_0^T \mathbb{E}\left[|H_{t+\tau} - H_{t+\tau}^m|^2\right]\;\mathrm{d}t + 3\int_0^T \mathbb{E}\left[|H_{t+\tau}^m - H_t^m|^2\right]\;\mathrm{d}t + 3\int_0^T \mathbb{E}\left[|H_t^m - H_t|^2\right]\;\mathrm{d}t \\ & < \frac{3}{9}\varepsilon + \frac{3}{9}\varepsilon + \frac{3}{9}\varepsilon = \varepsilon.
+\end{align*}
+\]
+<p>Isso mostra a continuidade em média quadrática de \(\{H_t\}_{t\geq 0}\) e, portanto, que a convergência das somas de Riemann-Stieltjes vale também para qualquer processo não-antecipativo de quadrado integrável. </p>
+<h2 id="valor_esperado_da_integral_estocástica"><a href="#valor_esperado_da_integral_estocástica" class="header-anchor">Valor esperado da integral estocástica</a></h2>
 <p>Temos</p>
 \[
-    \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
+    \mathbb{E}\left[ S_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
 \]
 <p>Como \(\{H_t\}_{t\geq 0}\) é não antecipativo, temos que cada \(H_{t_{j-1}}\) é independente de \(W_{t_j} - W_{t_{j-1}}.\) Logo,</p>
 \[
-    \mathbb{E}\left[ R_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[W_{t_j} - W_{t_{j-1}}\right] = 0,
+    \mathbb{E}\left[ S_M \right] = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}\right]\mathbb{E}\left[W_{t_j} - W_{t_{j-1}}\right] = 0,
 \]
 <p>visto que cada passo \(W_{t_j} - W_{t_{j-1}}\) tem valor esperado nulo. Portanto,</p>
 \[
-    \mathbb{E}[R_M] = 0,
+    \mathbb{E}[S_M] = 0,
 \]
-<p>para qualquer malha \(M.\) No limite, como \(R_M \rightarrow R\) em média quadrática, segue que</p>
+<p>para qualquer malha \(M.\) No limite, como \(S_M \rightarrow R\) em média quadrática, segue que</p>
 \[
-    \mathbb{E}\left[\int_0^T H_t\;\mathrm{d}t\right] = \mathbb{E}[R] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[R_M] = 0.
+    \mathbb{E}\left[\int_0^T H_t\;\mathrm{d}t\right] = \mathbb{E}[R] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[S_M] = 0.
 \]
 <h2 id="isometria_de_itô"><a href="#isometria_de_itô" class="header-anchor">Isometria de Itô</a></h2>
-<p>Sabendo que \(R_M\) converge para \(R\) em média quadrádica, segue que </p>
+<p>Sabendo que \(S_M\) converge para \(R\) em média quadrádica, segue que </p>
 \[
-    \mathbb{E}[R_M^2] \rightarrow \mathbb{E}[R^2],
+    \mathbb{E}[S_M^2] \rightarrow \mathbb{E}[R^2],
 \]
-<p>quando a malha é refinada ao limite \(\|M\| \rightarrow 0.\) Vamos calcular o limite de \(\mathbb{E}[R_M^2]\) e ver que isso nos dá uma importante identidade conhecida como <em>isometria de Itô.</em></p>
+<p>quando a malha é refinada ao limite \(\|M\| \rightarrow 0.\) Vamos calcular o limite de \(\mathbb{E}[S_M^2]\) e ver que isso nos dá uma importante identidade conhecida como <em>isometria de Itô.</em></p>
 <p>Primeiramente, temos</p>
 \[
     \begin{align*}
-        \mathbb{E}[R_M^2] & = \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right)^2\right] \\
+        \mathbb{E}[S_M^2] & = \mathbb{E}\left[\left(\sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right)^2\right] \\
         & = \mathbb{E}\left[\sum_{i=1}^n \sum_{j=1}^n H_{t_{i-1}}(W_{t_i} - W_{t_{i-1}})H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right] \\
         & = \sum_{i=1}^n \sum_{j=1}^n \mathbb{E}\left[H_{t_{i-1}}(W_{t_i} - W_{t_{i-1}})H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right].
     \end{align*}
 \]
-<p>De maneira análoga à feita acima para o cálculo de \(\mathbb{E}[|R_{M_1} - R_{M_2}|^2],\) os termos com \(i\neq j\) se anulam, restando</p>
+<p>De maneira análoga à feita acima para o cálculo de \(\mathbb{E}[|S_{M_1} - S_{M_2}|^2],\) os termos com \(i\neq j\) se anulam, restando</p>
 \[
     \begin{align*}
-        \mathbb{E}[R_M^2] & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2\right] \\
+        \mathbb{E}[S_M^2] & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2(W_{t_j} - W_{t_{j-1}})^2\right] \\
         & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2\right]\mathbb{E}\left[(W_{t_j} - W_{t_{j-1}})^2\right] \\
         & = \sum_{j=1}^n \mathbb{E}\left[H_{t_{j-1}}^2\right](t_j t_{j-1})
     \end{align*}
@@ -570,7 +646,7 @@
 \]
 <p>é uma função contínua, de modo que o soma de Riemann converge para a integral de Riemann</p>
 \[
-    \mathbb{E}[R^2] = \lim_{\|M\|\rightarrow 0} \mathbb{E}[R_M] = \int_0^T \mathbb{E}[H_t^2]\;\mathrm{d}t.
+    \mathbb{E}[R^2] = \lim_{\|M\|\rightarrow 0} \mathbb{E}[S_M] = \int_0^T \mathbb{E}[H_t^2]\;\mathrm{d}t.
 \]
 <p>De outra forma, escrevemos</p>
 \[
@@ -621,7 +697,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_l2"><kbd>→</kbd> 6.6. Integral de Itô de processos L²</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_l2"><kbd>→</kbd> 6.6. Integral de Itô via processos escada</a>
 </span>
     </p>
 </div>
@@ -637,7 +713,7 @@
         </div>
     
 
-    Last modified: May 12, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

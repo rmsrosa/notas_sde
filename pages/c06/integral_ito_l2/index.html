@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Integral de Itô de processos L²</title>  
+   <title>Integral de Itô via processos escada</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -193,10 +193,10 @@
     <li><a href="/notas_sde/pages/c06/riemann_wiener">6.4. Limites de somatórios à la Riemann-Stieltjes</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos não-antecipativos de quadrado integrável</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô de processos L²</a></li>
+    <li><a href="/notas_sde/pages/c06/integral_ito_l2">6.6. Integral de Itô via processos escada</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c06/integral_ito_propriedades">6.7. Propriedades da integral de Itô</a></li>
@@ -353,7 +353,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos não-antecipativos de quadrado integrável <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_propriedades"><kbd>→</kbd> 6.7. Propriedades da integral de Itô</a>
@@ -367,19 +367,15 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">6.6. Integral de Itô de processos L²</a></h1>
-<p>Vamos, agora, estender a integral estocástica</p>
-\[
-\int_0^T H_t \;\mathrm{d}W_t
-\]
-<p>a processos \(\{H_t\}_{t\geq 0}\) adaptados a \(\{W_t\}_{t\geq 0}\) que sejam progressivamente mensuráveis e de quadrado integrável, mas não necessariamente com caminhos contínuos.</p>
-<p>Essa construção ainda pode ser estendida a integrais em relação a processos \(\{Z_t\}_{t\geq 0}\) que sejam <em>martingales,</em> ou, mais geralmente ainda, <em>semi-martingales,</em> i.e. sendo \(\{H_t\}_{t \geq 0}\) progressivamente mensurável em relação a uma semimartingale \(\{Z_t\}_{t\geq 0}\) e de quadrado integrável em \((0, T),\) então a <em>integral de Itô</em></p>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">6.6. Integral de Itô via processos escada</a></h1>
+<p>Vamos, agora, ver a integral de Itô de processos progressivamente mensuráveis de quadrado integrável da maneira clássica, via aproximação por processos escada.</p>
+<p>Essa construção pode ser estendida a integrais em relação a processos \(\{Z_t\}_{t\geq 0}\) que sejam <em>martingales,</em> ou, mais geralmente ainda, <em>semi-martingales,</em> i.e. sendo \(\{H_t\}_{t \geq 0}\) progressivamente mensurável em relação a uma semimartingale \(\{Z_t\}_{t\geq 0}\) e de quadrado integrável em \((0, T),\) então a <em>integral de Itô</em></p>
 \[
 \int_0^T H_t \;\mathrm{d}Z_t
 \]
 <p>está bem definida no sentido de média quadrática. Mas vamos fazer isso apenas no caso da integral de Itô com relação a \(\{W_t\}_t.\)</p>
 <h2 id="construção"><a href="#construção" class="header-anchor">Construção</a></h2>
-<p>No caso de \(\{H_t\}_{t\geq 0}\) ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar o processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos tratar primeiro de processos do tipo escada.</p>
+<p>No caso de \(\{H_t\}_{t\geq 0}\) ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar esse processo por processos \(\{H_t^m\}_{t \geq 0}\) adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos tratar primeiro de processos do tipo escada.</p>
 <h3 id="processo_escada_e_integral_de_itô"><a href="#processo_escada_e_integral_de_itô" class="header-anchor">Processo escada e integral de Itô</a></h3>
 <p>Um processo \(\{H_t\}_{t\geq 0}\) é do tipo escada quando é &quot;constante por partes&quot;, i.e. quando existe uma partição \(0 = t_0 < t_1 < \ldots < t_n = T\) tal que \(H_t\) seja constante, \(H_t = H_{t_{j-1}},\) em cada intervalo \(t_{j-1} \leq t < t_j.\) Para esses processo, define-se, naturalmente, a integral de Itô por</p>
 \[
@@ -576,7 +572,7 @@ H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos uniformemente contínuos em média quadrática <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito">6.5. Integral de Itô de processos não-antecipativos de quadrado integrável <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c06/integral_ito_propriedades"><kbd>→</kbd> 6.7. Propriedades da integral de Itô</a>
@@ -595,7 +591,7 @@ H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
         </div>
     
 
-    Last modified: May 12, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: May 16, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
