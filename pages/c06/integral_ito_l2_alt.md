@@ -1,4 +1,4 @@
-@def title = "Integral de Itô de processos L² alternativa"
+@def title = "Aproximação de processos de quadrado integrável por processos contínuos quase certamente"
 
 # {{ get_title }}
 

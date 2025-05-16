@@ -1,14 +1,10 @@
-@def title = "Integral de Itô de processos L²"
+@def title = "Integral de Itô via processos escada"
 
 # {{ get_title }}
 
-Vamos, agora, estender a integral estocástica
-$$
-\int_0^T H_t \;\mathrm{d}W_t
-$$
-a processos $\{H_t\}_{t\geq 0}$ adaptados a $\{W_t\}_{t\geq 0}$ que sejam progressivamente mensuráveis e de quadrado integrável, mas não necessariamente com caminhos contínuos.
+Vamos, agora, ver a integral de Itô de processos progressivamente mensuráveis de quadrado integrável da maneira clássica, via aproximação por processos escada.
 
-Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T),$ então a *integral de Itô*
+Essa construção pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T),$ então a *integral de Itô*
 $$
 \int_0^T H_t \;\mathrm{d}Z_t
 $$
@@ -16,7 +12,7 @@ está bem definida no sentido de média quadrática. Mas vamos fazer isso apenas
 
 ## Construção
 
-No caso de $\{H_t\}_{t\geq 0}$ ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar o processo por processos $\{H_t^m\}_{t \geq 0}$ adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos tratar primeiro de processos do tipo escada.
+No caso de $\{H_t\}_{t\geq 0}$ ser progressivamente mensurável e de quadrado integrável, a ideia é aproximar esse processo por processos $\{H_t^m\}_{t \geq 0}$ adaptados e do tipo escada. Essa aproximação passa antes por aproximá-lo por processos com caminhos contínuous. Mas vamos tratar primeiro de processos do tipo escada.
 
 ### Processo escada e integral de Itô
 
