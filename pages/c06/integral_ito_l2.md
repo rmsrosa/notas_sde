@@ -1,10 +1,10 @@
-@def title = "Integral de Itô via processos escada"
+@def title = "Integral de Itô de processos de quadrado integrável"
 
 # {{ get_title }}
 
-Vamos, agora, ver a integral de Itô de processos progressivamente mensuráveis de quadrado integrável da maneira clássica, via aproximação por processos escada.
+Vamos, agora, ver a integral de Itô da maneira clássica, via aproximação por processos escada, válida em geral, para quaisquer processos progressivamente mensuráveis de quadrado integrável.
 
-Essa construção pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T),$ então a *integral de Itô*
+Essa construção ainda pode ser estendida a integrais em relação a processos $\{Z_t\}_{t\geq 0}$ que sejam *martingales,* ou, mais geralmente ainda, *semi-martingales,* i.e. sendo $\{H_t\}_{t \geq 0}$ progressivamente mensurável em relação a uma semimartingale $\{Z_t\}_{t\geq 0}$ e de quadrado integrável em $(0, T),$ então a *integral de Itô*
 $$
 \int_0^T H_t \;\mathrm{d}Z_t
 $$

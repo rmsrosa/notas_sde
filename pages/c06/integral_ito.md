@@ -1,4 +1,4 @@
-@def title = "Integral de Itô de processos não-antecipativos de quadrado integrável"
+@def title = "Integral de Itô de processos uniformemente contínuos em média quadrática"
 
 # {{ get_title }}
 
@@ -14,6 +14,23 @@ $$
 \int_0^T g(t, X_t)\;\mathrm{d}W_t
 $$
 simplesmente definindo $H_t = g(t, X_t).$ Ou seja, basta considerarmos integrais de um processo $\{H_t\}_t.$
+
+## Definição da integral de Itô
+
+A ideia é definir a integral de Itô como limite de somas de Riemann-Stieltjes calculadas com o ponto mais à esquerda de cada intervalo da malha, i.e. através de
+$$
+    \int_0^T H_t \;\mathrm{d}W_t = \lim_{\|M\| \rightarrow 0} \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}),
+$$
+onde $M$ são malhas temporais particionando o intervalo $[0, T],$
+$$
+    M = \{0 = t_0 < t_1 < \ldots < t_n = T; \;n\in\mathbb{N}\},
+$$
+e
+$$
+    \|M\| = \max_{j=1, \ldots, n} |t_j - t_{j-1}|.
+$$
+
+Vamos ver condições em $\{H_t\}_{t\geq 0}$ para que esse limite exista em média quadrática.
 
 ## Integrandos permitidos
 
@@ -39,40 +56,15 @@ onde $\lambda \times \mathbb{P}$ denota a medida produto entre a medida de Lebes
 
 Vale ressaltar que se $\{H_t\}_{t\geq 0}$ é adaptada a $\{W_t\}_{t\geq 0}$ e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.
 
-As condições acima são suficientes para a definição da integral estocástica
-$$
-    \int_0^T H_t\;\mathrm{d}t
-$$
-via limites, em média quadrática (i.e. $L^2(\Omega)$), das somas finitas de Riemann-Stieljes
-$$
-\sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
-$$
-onde $M = \{t_j\}_{j=1}^n$ é uma malha formada por $0 = t_0 < t_1 < \ldots < t_n = T,$ com $n\in \mathbb{N}$ arbitrário. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.
-
-## Definição da integral de Itô
-
-A ideia é definir a integral de Itô como limite das somas de Riemann-Stieltjes, i.e. através de
-$$
-    \int_0^T H_t \;\mathrm{d}W_t = \lim_{\|M\| \rightarrow 0} \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}),
-$$
-onde $M$ são malhas temporais particionando o intervalo $[0, T],$
-$$
-    M = \{0 = t_0 < t_1 < \ldots < t_n = T; \;n\in\mathbb{N}\},
-$$
-e
-$$
-    \|M\| = \max_{j=1, \ldots, n} |t_j - t_{j-1}|.
-$$
-
-Vamos ver que, para integrandos $\{H_t\}_{t\geq 0}$ que são não-antecipativos e de quadrado integrável, esse limite existe em média quadrática.
+As condições acima de $\{H_t\}_{t\geq 0}$ ser não-antecipativo e de quadrado integrável são suficientes para a definição da integral estocástica via limites, em média quadrática (i.e. $L^2(\Omega)$), das somas finitas de Riemann-Stieljes. Mas a demonstração é um tanto envolvida. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.
 
 ## Convergência para integrandos localmente uniformemente contínuous em média quadrática
 
-Inicialmente vamos assumir uma condição de continuidade no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes, com uma demonstração análoga à comumente feita para as integrais de Riemann e de Riemann-Stieltjes. Em seguida, vamos mostrar que, na verdade, todo processo estocástico de quadrado integrável satisfaz essa condição de continuidade.
+Inicialmente vamos assumir uma condição de continuidade no sentido de média quadrática, para ilustrar os pontos principais que garantem a convergência, em média quadrática, das somas de Riemann-Stieltjes, com uma demonstração análoga à comumente feita para as integrais de Riemann e de Riemann-Stieltjes. Como dito acima, consideramos esse caso particular a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, faremos uma outra construção, mais elaborada, para processos que não sejam necessariamente uniformemente contínuos no sentido acima. 
 
 ### Processos localmente uniformemente contínuos em média quadrática
 
-Mais precisamente, vamos supor que $\{H_t\}_{t\geq 0},$ que é de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente (no tempo) uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
+Mais precisamente, vamos supor que, além de $\{H_t\}_{t\geq 0}$ ser de quadrado integrável e progressivamente mensurável em relação ao processo de Wiener, também seja localmente uniformemente contínua no sentido de média quadrática, i.e. dados quaisquer $T > 0$ e $\eta > 0,$ existe $\delta > 0$ tal que
 $$
     \mathbb{E}\left[ |H_{t +\tau} - H_t|^2 \right] < \eta, \qquad \forall 0 < \tau < \delta, \; 0 \leq t \leq t + \tau \leq T.
 $$
@@ -84,11 +76,9 @@ $$
 $$
 que implica trivialmente na condição acima. Qualquer potência do processo de Wiener também pode ser adequadamente estimada de acordo com a condição acima.
 
-Observe, ainda, que a condição acima não garante que os caminhos sejam, quase certamente, contínuos. De fato, basta considerar $\Omega = [0, 1]$ com probabilidade uniforme e definir $H_t(\omega) = \chi_{[\omega, 1]}(t),$ de modo que $H_{t + \tau} - H_t = 1,$ para $t < \omega \leq t + \tau,$ se anulando fora desse intervalo. Com isso, os caminhos são, quase certamente, descontínuos em algum ponto. No entanto, $\mathbb{E}[|H_{t+\tau} - H_t|^2] = \mathbb{P}(|H_{t+\tau} - H_t| > \eta) = \tau,$ para todo $0< \eta < 1,$ mostrando que a condição de continuidade uniforme em média quadrática é valida.
+Observe, ainda, que a condição acima não exige que os caminhos sejam, quase certamente, contínuos. De fato, basta considerar $\Omega = [0, 1]$ com probabilidade uniforme e definir $H_t(\omega) = \chi_{[\omega, 1]}(t),$ que é descontínuo em $t = \omega.$ Com isso, os caminhos são, todos, descontínuos em algum ponto. No entanto, $\mathbb{E}[|H_{t+\tau} - H_t|^2] = \mathbb{P}(|H_{t+\tau} - H_t| > \eta) = \tau,$ para todo $0< \eta < 1,$ mostrando que a condição de continuidade uniforme em média quadrática é valida.
 
-O mesmo vale para $H_t(\omega) = (1/2)\chi_{\omega}(t) + \chi_{(\omega, 1]}(t),$ cujos caminhos amostrais não são contínuous nem à esquerda, nem à direita.
-
-Outro exemplo de caminhos descontínuos, em um conjunto enumerável de pontos, é o de um processo de Poisson composto, $H_t = \sum_{i=1}^{N_t} D_i,$ onde $\{N_t\}_{t\geq 0}$ é um processo de contagem de Poisson em taxa $\lambda > 0$ e $\{D_i\}_{i\in\mathbb{N}}$ é um processo independente e identicamente distribuído com distribuições $D$ com $\mathbb{E}[D^2] < \infty.$ Nesse caso, é possível mostrar que
+Um exemplo clássico de caminhos descontínuos em um conjunto enumerável de pontos é o de um processo de Poisson composto, $H_t = \sum_{i=1}^{N_t} D_i,$ onde $\{N_t\}_{t\geq 0}$ é um processo de contagem de Poisson em taxa $\lambda > 0$ e $\{D_i\}_{i\in\mathbb{N}}$ é um processo independente e identicamente distribuído com distribuições $D$ com $\mathbb{E}[D^2] < \infty.$ Nesse caso, é possível mostrar que
 $$
     \mathbb{E}[|H_{t + \tau} - H_t|^2] = \mathbb{E}[H_{t + \tau} - H_t]^2 + \operatorname{Var}(H_{t+\tau} - H_t) = \lambda^2 t^2\mathbb{E}[D]^2 + \lambda t \mathbb{E}[D^2],
 $$
@@ -96,7 +86,7 @@ de modo que a condição de continuidade uniforme em média quadrática também 
 
 Observe que esses exemplos mostram a importância da hipótese do Teorema da Continuidade de Kolmogorov ter uma potência $\tau^{1 + \varepsilon}$ no lado direito da condição, com $\varepsilon$ estritamente positivo. Nos exemplos acima, temos a estimativa com $\varepsilon = 0$ e os caminhos não são nem contínuos.
 
-Como dito acima, usamos essa condição a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô. Em seguida, veremos que todo processo de quadrado integrável de fato satisfaz essa condição. Vamos também comentar sobre uma outra construção, mais clássica, através da aproximação por processos escada, que, essencialmente, tem caminhos constantes por parte.
+Como dito acima, usamos essa condição a título de uma demonstração mais simples e direta da convergência das somas de Riemann-Stieljes para se definir a integral de Itô.
 
 ### Somas finitas de Riemann-Stieltjes
 
@@ -213,74 +203,6 @@ $$
 $$
 
 Essa definição nos dá a **integral de Itô,** em relação a um processo de Wiener $\{W_t\}_{t\geq 0},$ de um processo estocástico $\{H_t\}_{t\geq 0}$ com as propriedades de ser progressivamente mensurável em relação à filtração natural do processo de Wiener, ter quadrado integrável em $[0, T]\times \Omega$ e ser localmente uniformemente contínuo em média quadrática.
-
-## O caso geral de quadrado integrável
-
-Vamos agora ver que todo processo de quadrado integrável é localmente uniformemente contínuo em média quadrática.
-
-Por ser de quadrado integrável, temos
-$$
-\int_\Omega \int_0^T H_t(\omega)^2 \;\mathrm{d}t \;\mathrm{d}\mathbb{P}(\omega) < \infty.
-$$
-Pelo Teorema de Fubini, isso significa que
-$$
-\int_0^T H_t(\omega)^2 \;\mathrm{d}t < \infty
-$$
-para quase todo $\omega\in\Omega,$ ou seja $t\mapsto H_t \in L^2(0, T),$ quase certamente. É sabido que, toda função $f=f(t)$ de quadrado integrável é contínua em $L^2,$ i.e.
-$$
-    \int_0^T |f(t+\tau) - f(t)|^2\;\mathrm{d}t \rightarrow 0, \quad \text{ as } \tau \rightarrow 0.
-$$
-Aplicando isso aos caminhos de $H_t,$ temos
-$$
-    d_\tau(\omega) = \int_0^T |H_{t+\tau}(\omega) - H_t(\omega)|^2 \;\mathrm{d}t \rightarrow 0,
-$$
-quando $\tau \rightarrow 0,$ para quase todo $\omega\in \Omega.$ 
-
-### Caso de processos limitados
-
-Vamos assumir que o processo seja uniformemente limitado, i.e.
-$$
-    |H_t(\omega)| \leq M, \qquad \forall t \geq 0, \;\forall \omega\in \Omega.
-$$
-Nesse caso,
-$$
-    0 \leq d_\tau(\omega) \leq 4 M^2 T,
-$$
-ou $d_\tau$ é limitado por uma função (constante) integrável. Assim, pelo Teorema da Convergência Dominada, segue que
-$$
-    \int_0^T \mathbb{E}\left[(H_{t+\tau} - H_t)^2\right] = \int_\Omega \int_0^T |H_{t+\tau}(\omega) - H_t(\omega)|^2\;\mathrm{d}t\;\mathrm{d}\mathbb{P}(\omega) = \int_\Omega d_\tau\;\mathrm{d}\mathbb{P}(\omega) \rightarrow 0,
-$$
-quando $\tau \rightarrow 0,$ provando a continuidade em média quadrática de $\{H_t\}_{t\geq 0}.$
-
-### Caso geral
-
-No caso geral de $\{H_t\}_{t\geq 0}$ ser simplesmente de quadrado integrável (além de não-antecipativo), aproximamos o processo por processos limitados, considerando, por exemplo,
-$$
-    H_t^m = \max\{-m, \min\{m, H_t\}\} = \begin{cases}
-    -m, & H_t < -m, \\ 
-    H_t, & -m \leq H_t \leq m, \\
-    m, & H_t > m,
-    \end{cases}
-$$
-Como $|H_t^m| \leq |H_t|,$ que é de quadrado integrável, e $H_t^m(\omega) \rightarrow H_t(\omega)$ quase certamente, então, segue do Teorema da Convergência Dominada, que $H_t^m \rightarrow H_t$ em $L^2,$ i.e.
-$$
-    \int_0^T \mathbb{E}\left[|H_t - H_t^m|^2\right]\;\mathrm{d}t = \int_\Omega\int_0^T |H_t(\omega) - H_t^m(\omega)|^2\;\mathrm{d}t\;\mathrm{d}\mathbb{P}(\omega) \rightarrow 0, \quad m\rightarrow \infty.
-$$
-Agora basta fazer uma triangulação. Dado $\varepsilon > 0,$ encontramos $m$ tal que
-$$
-    \int_0^T \mathbb{E}\left[|H_t - H_t^m|^2\right]\;\mathrm{d}t < \frac{\varepsilon}{9},
-$$
-depois, usando que $H_t^m$ é limitado, encontramos $\eta > 0$ tal que
-$$
-\int_0^T \mathbb{E}\left[|H_{t+\tau}^m - H_t^m|^2\right]\;\mathrm{d}t < \frac{\varepsilon}{9},
-$$
-para $0 < \tau < \eta,$ e deduzimos que
-$$
-\begin{align*}
-\int_0^T \mathbb{E}\left[|H_{t+\tau} - H_t|^2\right]\;\mathrm{d}t & \leq 3\int_0^T \mathbb{E}\left[|H_{t+\tau} - H_{t+\tau}^m|^2\right]\;\mathrm{d}t + 3\int_0^T \mathbb{E}\left[|H_{t+\tau}^m - H_t^m|^2\right]\;\mathrm{d}t + 3\int_0^T \mathbb{E}\left[|H_t^m - H_t|^2\right]\;\mathrm{d}t \\ & < \frac{3}{9}\varepsilon + \frac{3}{9}\varepsilon + \frac{3}{9}\varepsilon = \varepsilon.
-\end{align*}
-$$
-Isso mostra a continuidade em média quadrática de $\{H_t\}_{t\geq 0}$ e, portanto, que a convergência das somas de Riemann-Stieltjes vale também para qualquer processo não-antecipativo de quadrado integrável. 
 
 ## Valor esperado da integral estocástica
 
