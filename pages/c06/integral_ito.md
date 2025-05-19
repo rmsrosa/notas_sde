@@ -1,4 +1,4 @@
-@def title = "Integral de Itô de processos uniformemente contínuos em média quadrática"
+@def title = "Integral de Itô via processos uniformemente contínuos em média quadrática"
 
 # {{ get_title }}
 
@@ -17,7 +17,7 @@ simplesmente definindo $H_t = g(t, X_t).$ Ou seja, basta considerarmos integrais
 
 ## Definição da integral de Itô
 
-A ideia é definir a integral de Itô como limite de somas de Riemann-Stieltjes calculadas com o ponto mais à esquerda de cada intervalo da malha, i.e. através de
+A ideia inicial é definir a integral de Itô como limite de somas de Riemann-Stieltjes calculadas com o ponto mais à esquerda de cada intervalo da malha, i.e. através de
 $$
     \int_0^T H_t \;\mathrm{d}W_t = \lim_{\|M\| \rightarrow 0} \sum_{j=1}^n H_{t_{j-1}} (W_{t_j} - W_{t_{j-1}}),
 $$
@@ -30,7 +30,7 @@ $$
     \|M\| = \max_{j=1, \ldots, n} |t_j - t_{j-1}|.
 $$
 
-Vamos ver condições em $\{H_t\}_{t\geq 0}$ para que esse limite exista em média quadrática.
+Vamos ver condições em $\{H_t\}_{t\geq 0}$ para que esse limite exista em média quadrática e como modificar essa definição no caso geral em que esse limite não esteja propriamente definido.
 
 ## Integrandos permitidos
 
@@ -56,7 +56,7 @@ onde $\lambda \times \mathbb{P}$ denota a medida produto entre a medida de Lebes
 
 Vale ressaltar que se $\{H_t\}_{t\geq 0}$ é adaptada a $\{W_t\}_{t\geq 0}$ e com caminhos amostrais quase certamente contínuous, então ele é progressivamente mensurável.
 
-As condições acima de $\{H_t\}_{t\geq 0}$ ser não-antecipativo e de quadrado integrável são suficientes para a definição da integral estocástica via limites, em média quadrática (i.e. $L^2(\Omega)$), das somas finitas de Riemann-Stieljes. Mas a demonstração é um tanto envolvida. Nesse primeiro momento, no entanto, vamos assumir uma hipótese um pouco mais restritiva.
+As condições acima de $\{H_t\}_{t\geq 0}$ ser não-antecipativo e de quadrado integrável são suficientes para a definição da integral estocástica, mas a construção é um pouco elaborada e a definição via limites das somas finitas de Riemann-Stieljes requer hipóteses adicionais. Assim, em um primeiro momento, vamos assumir uma hipótese um pouco mais restritiva.
 
 ## Convergência para integrandos localmente uniformemente contínuous em média quadrática
 
@@ -218,16 +218,16 @@ visto que cada passo $W_{t_j} - W_{t_{j-1}}$ tem valor esperado nulo. Portanto,
 $$
     \mathbb{E}[S_M] = 0,
 $$
-para qualquer malha $M.$ No limite, como $S_M \rightarrow R$ em média quadrática, segue que
+para qualquer malha $M.$ No limite, como $S_M \rightarrow S$ em média quadrática, segue que
 $$
-    \mathbb{E}\left[\int_0^T H_t\;\mathrm{d}t\right] = \mathbb{E}[R] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[S_M] = 0.
+    \mathbb{E}\left[\int_0^T H_t\;\mathrm{d}t\right] = \mathbb{E}[S] = \lim_{\|M\|\rightarrow 0}\mathbb{E}[S_M] = 0.
 $$
 
 ## Isometria de Itô
 
 Sabendo que $S_M$ converge para $R$ em média quadrádica, segue que 
 $$
-    \mathbb{E}[S_M^2] \rightarrow \mathbb{E}[R^2],
+    \mathbb{E}[S_M^2] \rightarrow \mathbb{E}[S^2],
 $$
 quando a malha é refinada ao limite $\|M\| \rightarrow 0.$ Vamos calcular o limite de $\mathbb{E}[S_M^2]$ e ver que isso nos dá uma importante identidade conhecida como *isometria de Itô.*
 
@@ -253,7 +253,7 @@ $$
 $$
 é uma função contínua, de modo que o soma de Riemann converge para a integral de Riemann
 $$
-    \mathbb{E}[R^2] = \lim_{\|M\|\rightarrow 0} \mathbb{E}[S_M] = \int_0^T \mathbb{E}[H_t^2]\;\mathrm{d}t.
+    \mathbb{E}[S^2] = \lim_{\|M\|\rightarrow 0} \mathbb{E}[S_M] = \int_0^T \mathbb{E}[H_t^2]\;\mathrm{d}t.
 $$
 
 De outra forma, escrevemos
@@ -282,6 +282,135 @@ $$
     \end{align*}
 $$
 onde usamos que $W_T$ é uma normal e, portanto, $\mathbb{E}[W_T^4] = 3\mathbb{E}[W_T^2]^2.$
+
+## Extensão para processos não-antecipativos de quadrado integrável
+
+Para definir a integral de Itô de maneira mais geral, o caminho clássico é definir a integral para processos não-antecipativos do tipo escada e estender essa definição aproximando um processo não-antecipativo de quadrado integrável por processos não-antecipativos do tipo escada. Como já definimos a integral de Itô para processos não-antecipativos que são localmente uniformemente contínuos em média quadrática, podemos usar esse tipo de processos para fazer essa extensão. Ou seja, basta aproximarmos um processo não-antecipativo de quadrado integrável por processos não-antecipativos que sejam localmente uniformemente contínuos em média quadrática.
+
+### Aproximação por processos contínuos
+
+Dada uma função de quadrado integrável $f:\mathbb{R} \rightarrow \mathbb{R},$ uma maneira clássica de aproximá-la por funções contínuas é através da convolução $t \mapsto \int_\mathbb{R} f(s) \varphi_\varepsilon(t-s) \;\mathrm{d}t$ com aproximações da identidade $\varphi_\varepsilon.$ Essa convolução, no entanto, envolve, tipicamente, olhar para o "passado" e para o "futuro" da função. O mesmo acontece com processos estocásticos. No entanto, para a integral de Itô, queremos preservar a propriedade de não antecipação do processo. Para isso, usamos aproximações da identidade que considerem apenas o passado da função, por exemplo,
+$$
+\varphi_\varepsilon(t) = \begin{cases}
+\displaystyle \frac{1}{\varepsilon} e^{-t/\varepsilon}, & t \geq 0, \\
+0, & t < 0.
+\end{cases}
+$$
+
+```julia:aprox_id_exp
+#hideall
+using Plots
+theme(:ggplot2)
+N = 3
+tt = -4:0.01:4
+xx = [
+    m * ifelse.(tt .≥  0, exp.( -m * tt), 0) for m in 1:N
+]
+plot(tt, xx, title = "aproximações da identidade \$t \\rightarrow m e^{m t}\$", titlefont = 10, xaxis = "\$t\$", yaxis = "\$x\$", label=reshape("m = " .* string.(1:N), 1, :))
+savefig(joinpath(@OUTPUT, "aprox_id_exp.svg"))
+```
+\fig{aprox_id_exp}
+
+Mais especificamente, dado um processo $\{H_t\}_{t \geq 0}$ de quadrado integrável e progressivamente mensurável em relação a $\{W_t\}_{t \geq 0},$ estendemos $H_t = 0,$ para $t \leq 0$ e definimos
+$$
+H_t^m = \varphi_{1/m} \star H_t = \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s.
+$$
+Como $H_t^m$ só envolve $H_s,$ para $0\leq s \leq t,$ então $H_t^m$ continua sendo não antecipativo. Além disso, para $t \geq 0$ e $\tau > 0,$
+$$
+\begin{align*}
+H_{t+\tau}^m - H_t^m & = \int_0^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s - \int_0^t m e^{-m(t - s)} H_s \;\mathrm{d}s \\
+& = \int_t^{t+\tau} m e^{-m(t + \tau - s)} H_s \;\mathrm{d}s + \int_0^t m \left(e^{-m(t + \tau - s)} - e^{-m(t - s)}\right) H_s \;\mathrm{d}s
+\end{align*}
+$$
+
+Usando que $e^{-m(t + \tau - s)} \leq 1$ e
+$$
+\left|e^{-m(t + \tau - s)} - e^{-m(t - s)}\right| = \int_{t - s}^{t + \tau - s} m e^{-m\eta}\;\mathrm{d}\eta \leq m \tau,
+$$
+obtemos
+$$
+\begin{align*}
+\left|H_{t+\tau}^m - H_t^m \right| & \leq \int_t^{t+\tau} m |H_s| \;\mathrm{d}s - \int_0^t m^2 \tau |H_s| \;\mathrm{d}s \\
+& = (m + m^2\tau)\int_0^{t+\tau} |H_s|\;\mathrm{d}s \\
+& \leq (m + m^2\tau)\sqrt{\tau}\left(\int_0^{t+\tau} |H_s|^2\;\mathrm{d}s\right)^{1/2}.
+\end{align*}
+$$
+
+Como $\{H_t\}_{t\geq 0}$ é de quadrado integrável em intervalos finitos, segue que, para quase todo caminho amostral,
+$$
+\int_0^t H_s(\omega)^2 \;\mathrm{d}s < \infty,
+$$
+de modo que
+$$
+H_{t + \tau}^m(\omega) \rightarrow H_t^m(\omega), \quad \tau \rightarrow 0,
+$$
+mostrando a continuidade quase certamente das aproximações $\{H_t^m\}_{t \geq 0}.$
+
+Para a continuidade uniforme em média quadrática, podemos estimar diretamente
+$$
+\mathbb{E}[(H_{t+\tau}^m - H_t^m)^2] \leq (m + m^2\tau)^2\tau\left(\int_0^{t+\tau} |H_s|^2\;\mathrm{d}s\right) \rightarrow 0,
+$$
+quando $\tau \rightarrow 0,$ uniformemente em $0 \leq t \leq T,$ para $T>0$ qualquer.
+
+### Convergência das aproximações contínuas
+
+Um outro passo fundamental é mostrar que, de fato, $\{H_t^m\}_{t\geq 0}$ converge para $\{H_t\}_{t\geq 0},$ em média quadrática. Isso é feito da seguinte forma. Primeiro, escrevemos
+$$
+\begin{align*}
+H_t - H_t^m & = H_t - \int_0^\infty m e^{-m s} H_{t - s}\;\mathrm{d}s \\
+  & = H_t \int_0^\infty m e^{-m s} \;\mathrm{d}s - \int_0^\infty m e^{-m s} H_{t - s}\;\mathrm{d}s \\
+  & = \int_0^\infty m e^{-m s} (H_t - H_{t - s})\;\mathrm{d}s.
+\end{align*}
+$$
+Com isso, usando a desigualdade de Cauchy-Schwarz, quebrando o termo da exponencial em $e^{-m s} = e^{-m s/2}e^{-m s/2},$
+$$
+\begin{align*}
+|H_t - H_t^m|^2 & = \left(\int_0^\infty m e^{-m s} (H_t - H_{t - s})\;\mathrm{d}s\right)^2 \\
+  & \leq \left(\int_0^\infty m e^{-m s} (H_t - H_{t - s})^2\;\mathrm{d}s\right)\left(\int_0^\infty m e^{-m s} \;\mathrm{d}s\right) \\
+  & = \int_0^\infty m e^{-m s} (H_t - H_{t - s})^2\;\mathrm{d}s.
+\end{align*}
+$$
+Fazendo uma mudança de variáveis, obtemos
+$$
+|H_t - H_t^m|^2 \leq \int_0^\infty e^{-s} (H_t - H_{t - s/m})^2\;\mathrm{d}s.
+$$
+Assim,
+$$
+\begin{align*}
+    \int_0^T \mathbb{E}\left[\left|H_t - H_t^m\right|^2\right] \;\mathrm{d}t \leq \int_0^T \int_0^\infty e^{-s} \mathbb{E}\left[(H_t - H_{t - s/m})^2\right]\;\mathrm{d}s\;\mathrm{d}t
+\end{align*}
+$$
+Trocando a ordem de integração e usando a continuidade em média quadrática de processos com média quadrática finita, obtemos a convergência desejada.
+
+### Extensão da definição de integral de Itô
+
+Vimos acima como definir a integral de Itô, em relação a um processo de Wiener, de um processo não-antecipativo localmente uniformemente contínuo em média quadrática. Também vimos como aproximar um processo não-antecipativo com média quadrática finita por processos não-antecipativos que sejam localmente uniformemente contínuos em média quadrática. Usando, agora, a linearidade da integral de Itô e a isometria de Itô para estes tipos de processos, podemos estender essa definição para processos não-antecipativos com média quadrática finita.
+
+Mais precisamente, seja $\{H_t\}_{t\geq 0}$ um processo não-antecipativo com média quadrática finita. Como visto acima, podemos aproximar um tal processo por processos $\{H_t^m\}_{t\geq 0}$ que sejam não-antecipativos e localmente uniformemente contínuos em média quadrática,
+$$
+\int_0^T \mathbb{E}[|H_t - H_t^m|^2] \;\mathrm{d}t \rightarrow 0, \quad m \rightarrow \infty.
+$$
+Também vimos como definir a integral de Itô de tais processos,
+$$
+\int_0^T H_t^m\;\mathrm{d}W_t.
+$$
+Agora, usando a isometria de Itô válida para tais processos, temos
+$$
+\mathbb{E}\left[ \left|\int_0^T H_t^{m_1}\;\mathrm{d}W_t - \int_0^T H_t^{m_2}\;\mathrm{d}W_t \right|^2\right] = \int_0^T \mathbb{E}\left[ |H_t^{m_1} - H_t^{m_2}|^2\right] \;\mathrm{d}t \rightarrow 0, \quad m_1, m_2 \rightarrow \infty.
+$$
+Logo, o limite das integrais de Itô dos processos aproximadas existe. Definimos a integral de Itô de $\{H_t\}_{t\geq 0}$ por esse limite,
+$$
+\int_0^T H_t\;\mathrm{d}W_t = \lim_{m\rightarrow \infty} \int_0^T H_t^m;\mathrm{d}W_t.
+$$
+Na construção acima, usamos a molificação com $\varphi_{1/m}$ para definir $\{H_t^m\}_{t\geq 0}$ mas isso pode ser feito com qualquer outra aproximação. Ou seja, usando, do mesmo jeito, a isometria de Itô, o limite independende da escolha das aproximações de $\{H_t\}_{t \geq 0}.$ Mais precisamente, se $\{G_t^m\}_{t \geq 0}$ é uma outra aproximação de $\{H_t\}_{t \geq 0}$, no sentido de média quadrática, por processos não-antecipativos e localmente uniformemente contínuos em média quadrática, então necessariamente
+$$
+    \int_0^T \mathbb{E}[|G_t^m - H_t^m|^2]\;\mathrm{d}t \rightarrow 0, \quad m\rightarrow \infty
+$$
+e
+$$
+\mathbb{E}\left[ \left|\int_0^T G_t^m\;\mathrm{d}W_t - \int_0^T H_t^m\;\mathrm{d}W_t \right|^2\right] = \int_0^T \mathbb{E}\left[ |G_t^m - H_t^m|^2\right] \;\mathrm{d}t \rightarrow 0, \quad m \rightarrow \infty,
+$$
+provando a independência do limite tem termos da sequência aproximante.
 
 ## Exercícios
 
