@@ -269,9 +269,8 @@ $$
 No segundo termo, em média quadrática, temos, como na isometria de Itô,
 $$
 \begin{align*}
-\mathbb{E}\left[\left|\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) 2A_{t_{j-1}}B_{t_{j-1}}(t_j - t_{j-1})(W_{t_j} - W_{t_{j-1}})\right|^2 \right] & \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 2A_{t_{j-1}}B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right|^2 \right] \\
-& \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 4A_{t_{j-1}}^2B_{t_{j-1}}^2(t_j - t_{j-1})\right|^2 \right] \\
-& \rightarrow 0 \times \int_0^T 4A_t^2 B_t^2 \;\mathrm{d}t = 0.
+\mathbb{E}\left[\left|\frac{1}{2}\sum_{j=1}^n u''(X_{t_{j-1}}) 2A_{t_{j-1}}B_{t_{j-1}}(t_j - t_{j-1})(W_{t_j} - W_{t_{j-1}})\right|^2 \right] & \leq \frac{1}{2}\max |u''| \max_j|t_j - t_{j-1}| \mathbb{E}\left[\left| 2\sum_{j=1}^n A_{t_{j-1}}B_{t_{j-1}}(W_{t_j} - W_{t_{j-1}})\right|^2 \right] \\
+& \rightarrow 2\max |u''| \times 0 \times \int_0^T \mathbb{E}[A_t^2 B_t^2] \;\mathrm{d}t = 0.
 \end{align*}
 $$
 No último termo, usando que $\mathbb{E}[(W_{t_j} - W_{t_{j-1}})^2] = (t_j - t_{j-1}),$ obtemos
