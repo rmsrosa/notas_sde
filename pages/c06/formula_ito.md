@@ -354,3 +354,8 @@ $$
 $$
 \mathrm{d}(f(t)X_t) = f'(t)X_t\;\mathrm{d}t + f(t)\;\mathrm{d}X_t.
 $$
+
+4. Considere dois processos de Wiener independentes $\{W_t^1\}_{t\geq 0}$ e $\{W_t^2\}_{t\geq 0}$ e considere uma função suave $g=g(x_1, x_2),$ de $\mathbb{R}^2$ em $\mathbb{R}.$ Obtenha a fórmula de Itô para o processo $X_t = g(W_t^1, W_t^2),$ ou seja, mostre que
+$$ \mathrm{d}X_t = A_t\;\mathrm{d}W_t^1 + B_t\;\mathrm{d}W_t^1 + C_t\;\mathrm{d}t
+$$
+para processos apropriados $\{A_t\}_{t\geq 0},$ $\{B_t\}_{t\geq 0}$ e $\{C_t\}_{t\geq 0}.$
