@@ -151,3 +151,12 @@ and we see that this is the tail of a convergent series, so that
 $$
   \mathbb{E}[|X_t^n - X_t^k|^2]^{1/2} \leq \frac{M^{1/2}K^{1/2}}{(2\pi)^{1/4}}\sum_{m=k}^{n-1} \left(\frac{1}{2}\right)^m \rightarrow 0.
 $$
+
+Portanto, $X_t^m \rightarrow X_t$ em média quadrática, uniformemente em $t\in [0, T].$ No limite, temos 
+$$
+\int_0^t f(s, X_s^{m-1})\;\mathrm{d}s \rightarrow \int_0^t f(s, X_s)\;\mathrm{d}s, \qquad \int_0^t g(s, X_s^{m-1}) \;\mathrm{d}W_t \rightarrow \int_0^t g(s, X_s) \;\mathrm{d}W_t,
+$$
+de modo que
+$$
+X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s) \;\mathrm{d}W_t, \quad m\in \mathbb{N}.
+$$
