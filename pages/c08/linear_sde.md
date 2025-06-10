@@ -57,8 +57,9 @@ $$
 
 Nesse caso, a solução é dada por
 $$
-X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
+X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s},
 $$
+o que pode ser verificado com a fórmula de Itô.
 
 Se não houvesse o fator de correção da fórmula de Itô, esperaríamos obter uma solução com termo multiplicativo
 $$
@@ -76,33 +77,33 @@ $$
 $$
 e o fator de integração definido pelo processo
 $$
-    e^{-G_t}.
+    I_t = e^{-G_t}.
 $$
-Pela fórmula de Itô, com $e^{-G_t} = f(G_t),$ $f(x) = e^{-x},$ temos
+Pela fórmula de Itô, com $I_t = e^{-G_t} = f(G_t),$ onde $f(x) = e^{-x},$ temos
 $$
-    \mathrm{d}(e^{-G_t}) = -e^{-G_t}\;\mathrm{d}G_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t = -e^{-G_t}g_1(t)\;\mathrm{d}W_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t .
+    \mathrm{d}I_t = -e^{-G_t}\;\mathrm{d}G_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t = \frac{1}{2}g_1(t)^2I_t\;\mathrm{d}t - g_1(t)I_t \;\mathrm{d}W_t.
 $$
 
 Assim, considerando o processo
 $$
-    Z_t = X_t e^{-G_t},
+    Z_t = X_t I_t,
 $$
-temos
+e usando a regra do produto de Itô,
 $$
     \begin{align*}
-        \mathrm{d}Z_t & = e^{-G_t}\;\mathrm{d}X_t + X_t\mathrm{d}e^{-G_t} \\
-        & = e^{-G_t} g_1(t) X_t \;\mathrm{d}W_t + X_t\left( -e^{-G_t}g_1(t)\;\mathrm{d}W_t + \frac{1}{2}e^{-G_t}g_1(t)^2\;\mathrm{d}t\right) \\
-        & = \frac{1}{2}X_te^{-G_t}g_1(t)^2\;\mathrm{d}t \\
-        & = \frac{1}{2}g_1(t)^2 Z_t\;\mathrm{d}t.
+        \mathrm{d}Z_t & = I_t\;\mathrm{d}X_t + X_t\mathrm{d}I_t - g_1(t)^2 X_t I_t \;\mathrm{d}t \\
+        & = I_t g_1(t) X_t\;\mathrm{d}W_t + X_t\left( \frac{1}{2}g_1(t)^2I_t\;\mathrm{d}t - g_1(t)I_t \;\mathrm{d}W_t \right) - g_1(t)^2 X_t I_t \;\mathrm{d}t \\
+        & = -\frac{1}{2}X_t I_t g_1(t)^2\;\mathrm{d}t \\
+        & = -\frac{1}{2}g_1(t)^2 Z_t\;\mathrm{d}t.
     \end{align*}
 $$
-Esse é uma equações diferencial ordinária (com condição inicial aleatória) para $Z_t,$ cuja solução é
+Esse é uma equação diferencial ordinária (com condição inicial aleatória) para $Z_t,$ cuja solução é
 $$
-    Z_t = Z_0 e^{\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s}.
+    Z_t = Z_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s}.
 $$
-Como $Z_0 = X_0$ e $X_t = Z_t e^{G_t},$ obtemos a solução
+Sendo $I_0 = 1,$ temos $Z_0 = X_0.$ E como $X_t = Z_t e^{G_t},$ obtemos a solução
 $$
-    X_t = X_0 e^{\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
+    X_t = X_0 e^{-\frac{1}{2}\int_0^t g_1(s)^2\;\mathrm{d}s + \int_0^t g_1(s)\;\mathrm{d}W_s}.
 $$
 
 ## Equação estocástica linear com drift determinístico e com ruído aditivo
