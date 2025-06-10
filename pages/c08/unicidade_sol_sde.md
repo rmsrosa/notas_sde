@@ -69,7 +69,7 @@ $$
 
 O último termo pode ser estimado via isometria de Itô:
 $$
-\mathbb{E}\left[\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s\right)^2\right] \leq 
+\mathbb{E}\left[\left(\int_0^t \left| X_s - \tilde X_s \right| \;\mathrm{d}W_s\right)^2\right] = 
 \int_0^t \mathbb{E}\left[\left| X_s - \tilde X_s \right|^2\right] \;\mathrm{d}s.
 $$
 
