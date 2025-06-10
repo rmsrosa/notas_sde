@@ -359,3 +359,12 @@ $$
 $$ \mathrm{d}X_t = A_t\;\mathrm{d}W_t^1 + B_t\;\mathrm{d}W_t^1 + C_t\;\mathrm{d}t
 $$
 para processos apropriados $\{A_t\}_{t\geq 0},$ $\{B_t\}_{t\geq 0}$ e $\{C_t\}_{t\geq 0}.$
+
+5. (Regra de Itô para o produto) Considere dois processos de Itô $\{X_t\}_{t\geq 0}$ e $\{Y_t\}_{t\geq 0}$ satisfazendo
+$$
+  \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t\;\mathrm{d}W_t \quad \textrm{e} \quad \mathrm{d}Y_t = C_t \;\mathrm{d}t + D_t\;\mathrm{d}W_t,
+$$
+respectivamente, em relação a um mesmo processo de Wiener $\{W_t\}_{t\geq 0}.$ Argumente que
+$$
+  \mathrm{d}(X_tY_t) = Y_t\;\mathrm{d}X_t + X_t\;\mathrm{d}Y_t + B_t D_t\;\mathrm{d}t.
+$$
