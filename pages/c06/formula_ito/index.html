@@ -680,6 +680,17 @@ Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \
 \[ \mathrm{d}X_t = A_t\;\mathrm{d}W_t^1 + B_t\;\mathrm{d}W_t^1 + C_t\;\mathrm{d}t
 \]
 <p>para processos apropriados \(\{A_t\}_{t\geq 0},\) \(\{B_t\}_{t\geq 0}\) e \(\{C_t\}_{t\geq 0}.\)</p>
+<ol start="5">
+<li><p>&#40;Regra de Itô para o produto&#41; Considere dois processos de Itô \(\{X_t\}_{t\geq 0}\) e \(\{Y_t\}_{t\geq 0}\) satisfazendo</p>
+</li>
+</ol>
+\[
+  \mathrm{d}X_t = A_t \;\mathrm{d}t + B_t\;\mathrm{d}W_t \quad \textrm{e} \quad \mathrm{d}Y_t = C_t \;\mathrm{d}t + D_t\;\mathrm{d}W_t,
+\]
+<p>respectivamente, em relação a um mesmo processo de Wiener \(\{W_t\}_{t\geq 0}.\) Argumente que</p>
+\[
+  \mathrm{d}(X_tY_t) = Y_t\;\mathrm{d}X_t + X_t\;\mathrm{d}Y_t + B_t D_t\;\mathrm{d}t.
+\]
 
     <div class="navbar">
     <p id="nav">
@@ -703,7 +714,7 @@ Y_T = Y_0 + \int_0^T u'(X_t)\;\mathrm{d}X_t + \frac{1}{2}\int_0^T u''(X_t) B_t \
         </div>
     
 
-    Last modified: June 02, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 10, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
