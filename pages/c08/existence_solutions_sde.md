@@ -37,7 +37,7 @@ $$
 \mathbb{E}[X_0^2] < \infty.
 $$
 
-Essa condição global é fundamental, aqui. Por conta da perturbação causada pelo ruído proveniente de um processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo um processo, também impede a localização espacial das propriedades dos coeficientes. 
+Essa condição global é fundamental, aqui. Por conta da perturbação causada pelo ruído proveniente de um processo de Wiener, os caminhos amostrais podem se afastar rapidamente da condição inicial e perdemos esse controle local. A condição inicial, sendo uma variável aleatória, também impede a localização espacial das propriedades dos coeficientes. 
 
 Essa condição global pode ser relaxada desde que se possa explorar alguma outra propriedade mais estrutural da equação. Em geral, no entanto, conseguimos a existência apenas sob essa condição global.
 
@@ -135,19 +135,23 @@ $$
     & \leq M^{1/2}K^{1/2}\sum_{m=k}^{n-1} \left(\frac{K^{m}t^m}{m!}\right)^{1/2}
 \end{align*}
 $$
-Usando a fórmula de Stirling
+Pela fórmula de Stirling,
 $$
-m! \sim \sqrt{2\pi m}\left(\frac{m}{e}\right)^{m},
+m! \sim \sqrt{2\pi m}\left(\frac{m}{e}\right)^{m}.
 $$
-obtemos
+Mais precisamente, a razão entre essas duas expressões converge para $1,$ conforme $m\rightarrow \infty.$ Com isso, para $m$ suficientemente grande, podemos escrever
 $$
-  \mathbb{E}[|X_t^n - X_t^k|^2]^{1/2} \leq M^{1/2}K^{1/2}\sum_{m=k}^{n-1} \frac{(K^{1/2} t^{1/2})^m}{(2\pi m)^{1/4}(\frac{m}{e})^{m}} = M^{1/2}K^{1/2}\sum_{m=k}^{n-1} \frac{1}{(2\pi m)^{1/4}}\left(\frac{K^{1/2} t^{1/2} e}{m}\right)^m = \frac{M^{1/2}K^{1/2}}{(2\pi)^{1/4}}\sum_{m=k}^{n-1} \left(\frac{K^{1/2} t^{1/2} e}{m^{1/4m} m}\right)^m
+m! \geq \sqrt{\pi m}\left(\frac{m}{e}\right)^{m} \geq \left(\frac{m}{e}\right)^{m},
 $$
-For $m$ sufficiently large,
+de modo que
 $$
-\frac{K^{1/2} t^{1/2} e}{m^{1/4m} m} \leq \frac{1}{2},
+  \mathbb{E}[|X_t^n - X_t^k|^2]^{1/2} \leq M^{1/2}K^{1/2}\sum_{m=k}^{n-1} \frac{(K^{1/2} t^{1/2})^m}{(\frac{m}{e})^{m}} = M^{1/2}K^{1/2}\sum_{m=k}^{n-1} \left(\frac{K^{1/2} t^{1/2} e}{m}\right)^m = M^{1/2}K^{1/2}\sum_{m=k}^{n-1} \left(\frac{K^{1/2} T^{1/2} e}{m}\right)^m
 $$
-and we see that this is the tail of a convergent series, so that
+Considerando $m$ ainda maior, caso necessário, podemos assumir que
+$$
+\frac{K^{1/2} T^{1/2} e}{m} \leq \frac{1}{2},
+$$
+de modo que temos o rabo de uma série convergence, o que implica em
 $$
   \mathbb{E}[|X_t^n - X_t^k|^2]^{1/2} \leq \frac{M^{1/2}K^{1/2}}{(2\pi)^{1/4}}\sum_{m=k}^{n-1} \left(\frac{1}{2}\right)^m \rightarrow 0.
 $$
@@ -160,3 +164,19 @@ de modo que
 $$
 X_t = X_0 + \int_0^t f(s, X_s)\;\mathrm{d}s + \int_0^t g(s, X_s) \;\mathrm{d}W_t, \quad m\in \mathbb{N}.
 $$
+
+Essa é uma identidade entre funções em $L^2(\Omega),$ o que significa que, a cada $t,$ a identidade vale para $\omega$ em $\Omega,$ a menos de um conjunto de medida nula $N_t,$ que depende, portanto de $t.$ Podemos, também, considerar essa identidade em $L^\infty(0, T; L^2(\Omega)).$ De qualquer forma, isso não garante que, para quase todo $\omega\in\Omega,$ a identidade valha para todo $t\geq 0.$ Para isso, podemos mostrar que a solução obtida é, de fato, contínua.
+
+Temos
+$$
+  \mathbb{P}\left( \max_{0\leq t \leq T} |X_t^{m+1} - X_t^m| > \frac{1}{2^m} \right) \leq 2^{2m}\mathbb{E}\left[|X_t^{m+1} - X_t^m|^2\right] \leq 2^{2m}\frac{MT^m}{m!}.
+$$
+Como $2^{2m}MT^m/m!$ são, também, termos de uma série convergence, segue do Lema de Borel-Cantelli que
+$$
+\mathbb{P}\left(\max_{0\leq t \leq T} |X_t^{m+1} - X_t^m| > \frac{1}{2^m} \textrm{ infinitas vezes} \right) = 0.
+$$
+Portanto, para quase todo $\omega$ e para todo $0\leq t \leq T,$
+$$
+|X_t^{m+1}(\omega) - X_t^m(\omega)| \leq \frac{1}{2^m}.
+$$
+Assim, para quase todo $\omega,$ a sequência $\{t \mapsto X_t^m(\omega)\}_m$ é uma sequência de Cauchy em $\Ccal([0, T], \mathbb{R}).$ Portanto, converge uniformemente. Podemos tomar $\{X_t\}_t$ como sendo, esse limite uniforme, de modo que, quase certamente, a solução $\{X_t\}_{0\leq t\leq T}$ da equação diferencial é contínua em $t.$
