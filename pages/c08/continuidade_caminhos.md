@@ -2,7 +2,7 @@
 
 # {{ get_title }}
 
-Acabamos de ver condições que garantem a existência e a unicade de solução de uma equação diferencial estocástica
+Acabamos de ver condições que garantem a existência e a unicidade de soluções de uma equação diferencial estocástica
 $$
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t, \qquad t \geq 0,
 $$
