@@ -7,7 +7,7 @@ O "ruído branco", como modelado pela "derivada" de um processo de Wiener, em um
 
 Aqui, exploramos o processo de Ornstein-Uhlenbeck (OU) como aproximação de um ruído branco. Isso é obtido controlando-se uma *escala temporal* $\tau.$ Mais precisamente, consideramos um processo $\{O_t\}_t$ satisfazendo a equação diferencial estocástica
 $$
-    \tau \mathrm{d}O_t = - \mathrm{d}t + \varsigma \mathrm{d}W_t,
+    \tau \mathrm{d}O_t = - O_t\mathrm{d}t + \varsigma \mathrm{d}W_t,
 $$
 onde $\{W_t\}_t.$ Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva $\nu = 1/\tau$ e difusão $\sigma = \varsigma/\tau.$ Esse processo tem média e covariância dadas por
 $$
