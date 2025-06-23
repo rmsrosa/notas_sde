@@ -371,7 +371,7 @@
 <p>O &quot;ruído branco&quot;, como modelado pela &quot;derivada&quot; de um processo de Wiener, em um sentido apropriado de distribuições, é um processo comumente encontrado em diversos modelos. Em várias situações, no entanto, o ruído é &quot;colorido&quot;, com algum decaimento característico do espectro de amplitudes.</p>
 <p>Aqui, exploramos o processo de Ornstein-Uhlenbeck &#40;OU&#41; como aproximação de um ruído branco. Isso é obtido controlando-se uma <em>escala temporal</em> \(\tau.\) Mais precisamente, consideramos um processo \(\{O_t\}_t\) satisfazendo a equação diferencial estocástica</p>
 \[
-    \tau \mathrm{d}O_t = - \mathrm{d}t + \varsigma \mathrm{d}W_t,
+    \tau \mathrm{d}O_t = - O_t\mathrm{d}t + \varsigma \mathrm{d}W_t,
 \]
 <p>onde \(\{W_t\}_t.\) Isso nos dá um processo de Ornstein-Uhlenbeck com termo de deriva \(\nu = 1/\tau\) e difusão \(\sigma = \varsigma/\tau.\) Esse processo tem média e covariância dadas por</p>
 \[
@@ -451,7 +451,7 @@
         </div>
     
 
-    Last modified: June 11, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 23, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
