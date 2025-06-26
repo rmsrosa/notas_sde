@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Equação do transporte no caso de equações diferenciais ordinárias</title>  
+   <title>Equação do transporte para equações diferenciais ordinárias</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -251,10 +251,10 @@
     <li>9. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
+    <li><a href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte para equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/stochastic">9.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
+    <li><a href="/notas_sde/pages/c09/stochastic">9.2. Equação de Fokker-Planck para equações diferenciais estocásticas</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/stationaryOU">9.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
@@ -345,7 +345,7 @@
 <a class="menu-level-1" href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c09/stochastic"><kbd>→</kbd> 9.2. Equação de Fokker-Planck no caso de equações estocásticas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c09/stochastic"><kbd>→</kbd> 9.2. Equação de Fokker-Planck para equações diferenciais estocásticas</a>
 </span>
     </p>
 </div>
@@ -356,7 +356,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">9.1. Equação do transporte no caso de equações diferenciais ordinárias</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.1. Equação do transporte para equações diferenciais ordinárias</a></h1>
 <p>Considere uma equação diferencial determinística</p>
 \[
 \frac{\mathrm{d}x}{\mathrm{d}t} = f(t, x).
@@ -462,6 +462,18 @@ p(t, x) = e^{t}p_0(e^{t}x).
 \[
 p(t, x) \stackrel{w}{\rightharpoonup} \delta_0.
 \]
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Verifique que, no caso multi-dimensional, em que \(\mathbf{x}\in\mathbb{R}^d\) e \(f:\mathbb{R}^d \rightarrow \mathbb{R}^d,\) com \(d\in\mathbb{N}\) arbitrário, a equação de transporte para a densidade \(p=p(t,\mathbf{x})\) da solução de \(\mathrm{d}\mathbf{X}_t/\mathrm{d}t = f(t, \mathbf{X}_t),\) com uma variável aleatória inicial \(\mathbf{X}_0,\) tem a forma</p>
+</li>
+</ol>
+\[ \frac{\partial p}{\partial t}(t, \mathbf{x}) + \nabla \cdot (f(t, \mathbf{x})p(t, \mathbf{x})) = 0.
+\]
+<ol start="2">
+<li><p>Usando a fórmula acima, encontre \(a=a(t)\) e \(b=b(t)\) tais que \(p(t, \mathbf{x}) = a(t) q(b(t) \mathbf{x})\) seja uma solução &#40;dita auto-semelhante&#41; da equação de Fokker-Planck acima, para uma dada função densidade de probabilidade \(q=q(\mathbf{x}).\)</p>
+</li>
+</ol>
+<p></p>
 
     <div class="navbar">
     <p id="nav">
@@ -469,7 +481,7 @@ p(t, x) \stackrel{w}{\rightharpoonup} \delta_0.
 <a class="menu-level-1" href="/notas_sde/pages/c08/relacoes_rode_sde">8.12. Relações entre equações estocásticas e equações aleatórias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
-    <a class="menu-level-1" href="/notas_sde/pages/c09/stochastic"><kbd>→</kbd> 9.2. Equação de Fokker-Planck no caso de equações estocásticas</a>
+    <a class="menu-level-1" href="/notas_sde/pages/c09/stochastic"><kbd>→</kbd> 9.2. Equação de Fokker-Planck para equações diferenciais estocásticas</a>
 </span>
     </p>
 </div>
@@ -485,7 +497,7 @@ p(t, x) \stackrel{w}{\rightharpoonup} \delta_0.
         </div>
     
 
-    Last modified: June 23, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 26, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->

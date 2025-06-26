@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="" />
   <meta name="author" content="and contributors" />
-   <title>Equação de Fokker-Planck no caso de equações estocásticas</title>  
+   <title>Equação de Fokker-Planck para equações diferenciais estocásticas</title>  
   <link rel="shortcut icon" type="image/png" href="/notas_sde/assets/images/favicon_randgon.png"/>
   <link rel="stylesheet" href="/notas_sde/css/base.css"/>
   
@@ -251,10 +251,10 @@
     <li>9. Evolução da função densidade de probabilidade</li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte no caso de equações diferenciais ordinárias</a></li>
+    <li><a href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte para equações diferenciais ordinárias</a></li>
     </div>
     <div class="menu-level-2">
-    <li><a href="/notas_sde/pages/c09/stochastic">9.2. Equação de Fokker-Planck no caso de equações estocásticas</a></li>
+    <li><a href="/notas_sde/pages/c09/stochastic">9.2. Equação de Fokker-Planck para equações diferenciais estocásticas</a></li>
     </div>
     <div class="menu-level-2">
     <li><a href="/notas_sde/pages/c09/stationaryOU">9.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a></li>
@@ -342,7 +342,7 @@
       <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte no caso de equações diferenciais ordinárias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte para equações diferenciais ordinárias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c09/stationaryOU"><kbd>→</kbd> 9.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a>
@@ -356,7 +356,7 @@
     
       
     
-<h1 id="get_title"><a href="#get_title" class="header-anchor">9.2. Equação de Fokker-Planck no caso de equações estocásticas</a></h1>
+<h1 id="get_title"><a href="#get_title" class="header-anchor">9.2. Equação de Fokker-Planck para equações diferenciais estocásticas</a></h1>
 <p>Considere, agora, uma equação diferencial estocástica</p>
 \[
 \mathrm{d}X_t = f(t, X_t)\;\mathrm{d}t + g(t, X_t)\;\mathrm{d}W_t,
@@ -410,11 +410,20 @@
 \frac{\partial p}{\partial t}(t, x) + \frac{\partial}{\partial x}(f(t, x)p(t, x)) - \frac{1}{2}\frac{\partial^2}{\partial x^2}(g(t, x)^2 p(t, x)) = 0.
 \]
 <p>Essa também é conhecida como <strong>equações progressivas de Kolmogorov para equações diferenciais estocásticas,</strong> ou <strong>forward Kolmogorov diffusion equation.</strong> As equações de Kolmogorov &#40;progressivas ou regressivas - <em>forward</em> or <em>backward</em>&#41; são definidas em contextos mais gerais de processos de Markov com tempo contínuo e espaço discreto ou contínuo.</p>
+<h2 id="exercícios"><a href="#exercícios" class="header-anchor">Exercícios</a></h2>
+<ol>
+<li><p>Deduza a equação de Fokker-Planck no caso multi-dimensional</p>
+</li>
+</ol>
+\[
+\mathrm{d}\mathbf{X}_t = f(t, \mathbf{X}_t)\;\mathrm{d}t + G(t, \mathbf{X}_t)\;\mathrm{d}\mathbf{W}_t,
+\]
+<p>em que \(\mathbf{X}_t\) é um processo com valores em \(\mathbb{R}^d,\) \(f:\mathbb{R} \times \mathbb{R}^d \rightarrow \mathbb{R}^d,\) \(G:\mathbb{R} \times \mathbb{R}^d \rightarrow \mathbb{R}^{d\times k},\) e \(\{\mathbf{W}_t\}_{t\geq 0}\) é um processo com valores em \(\mathbb{R}^k\) composto de \(k\) processos de Wiener independentes, com \(d, k \in\mathbb{N}\) arbitrários.</p>
 
     <div class="navbar">
     <p id="nav">
 <span id="nav-prev" style="float: left;">
-<a class="menu-level-1" href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte no caso de equações diferenciais ordinárias <kbd>←</kbd></a>
+<a class="menu-level-1" href="/notas_sde/pages/c09/deterministic">9.1. Equação do transporte para equações diferenciais ordinárias <kbd>←</kbd></a>
 </span>
 <span id="nav-next" style="float: right;">
     <a class="menu-level-1" href="/notas_sde/pages/c09/stationaryOU"><kbd>→</kbd> 9.3. Distribuição assintótica estacionária dos processos de Ornstein-Uhlenbeck</a>
@@ -433,7 +442,7 @@
         </div>
     
 
-    Last modified: June 23, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
+    Last modified: June 26, 2025. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>.
 </div><!-- CONTENT ENDS HERE -->
 
       </div> <!-- .books-content -->
