@@ -64,3 +64,20 @@ $$
 p(x) = \frac{\sqrt{\nu}}{\sqrt{\pi \sigma^2}} e^{- \nu x^2/\sigma^2},
 $$
 que é, de fato, a função densidade de probabilidade de uma distribuição $\mathcal{N}\left(0, \frac{\sigma^2}{2\nu}\right).$
+
+## Exercícios
+
+1. Encontre a equação de Fokker-Plank para $\nu\;\mathrm{d}X_t = - U'(x)\;\mathrm{d}t + \sigma\;\mathrm{d}W_t$ e mostre que $e^{-2\nu U(x)/\sigma^2}$ é uma solução estacionária da equação (correspondendo a uma solução estacionária da equação diferencial estocástica com função densidade de probabilidade com constante de normalização $\sqrt{2\pi \sigma^2}/2\nu$).
+2. Deduza a equação de Fokker-Plank para a densidade $p=p(t, x, y)$ associada ao sistema
+$$
+\begin{cases}
+  \mathrm{d}X_t = Y_t, \\
+  \mathrm{d}Y_t = - \nu Y_t \;\mathrm{d}t - U'(X_t) \;\mathrm{d}t + \sigma \;\mathrm{d}W_t
+\end{cases}
+$$
+e mostre que $e^{-(2\nu/\sigma^2)\left(y^2/2 + U(x)\right)}$ é uma solução estacionária da equação.
+3. Dada uma densidade de distribuição $q(x) = f(x)/Z$ onde $f > 0$ é uma função integrável e $Z = \int_{-\infty}^\infty f(x)\;\mathrm{d}x$ é uma constante de normalização, podemos escrever essa densidade na forma $q(z) = e^{-U(x)}/Z,$ onde $U(x) = - \ln f(x).$ Assim, vemos que $q(x) = e^{-U(x)}/Z$ é uma solução estacionária da equação diferencial estocástica
+$$
+\mathrm{d}X_t = \nabla\ln f(x)\;\mathrm{d}t + \sqrt{2}\;\mathrm{d}W_t,
+$$
+onde $\nabla\ln f(x)$ é chamada de função *score* de Stein e que, nesse caso unidimensional, é simplesmente $\nabla\ln f(x) = \mathrm{d}(\ln f(x))/\mathrm{d}x.$ Com isso em mente, simule numericamente essa equação de Fokker-Planck com condição inicial $X_0 \sim \mathcal{N}(0, 1)$ até um instante $t=T$ suficientemente grande, para gerar amostras aleatórias de uma mistura $(1 - \theta)\mathcal{N}(\mu_1, \sigma_1^2) + \theta\mathcal{N}(\mu_2, \sigma_2^2)$ de Gaussianas, com, por exemplo, $\theta = 1/3$, $ \mu_1 = 3,$ $\sigma = 1,$ $\mu_2 = 7,$ $\sigma_2 = 0.5.$ Faça um histograma normalizado das amostras obtidas para $X_T,$ junto com a PDF da mistura.

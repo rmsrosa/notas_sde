@@ -1,4 +1,4 @@
-@def title = "Equação de Fokker-Planck no caso de equações estocásticas"
+@def title = "Equação de Fokker-Planck para equações diferenciais estocásticas"
 
 # {{ get_title }}
 
@@ -63,3 +63,11 @@ $$
 $$
 
 Essa também é conhecida como **equações progressivas de Kolmogorov para equações diferenciais estocásticas,** ou **forward Kolmogorov diffusion equation.** As equações de Kolmogorov (progressivas ou regressivas - *forward* or *backward*) são definidas em contextos mais gerais de processos de Markov com tempo contínuo e espaço discreto ou contínuo.
+
+## Exercícios
+
+1. Deduza a equação de Fokker-Planck no caso multi-dimensional
+$$
+\mathrm{d}\mathbf{X}_t = f(t, \mathbf{X}_t)\;\mathrm{d}t + G(t, \mathbf{X}_t)\;\mathrm{d}\mathbf{W}_t,
+$$
+em que $\mathbf{X}_t$ é um processo com valores em $\mathbb{R}^d,$ $f:\mathbb{R} \times \mathbb{R}^d \rightarrow \mathbb{R}^d,$ $G:\mathbb{R} \times \mathbb{R}^d \rightarrow \mathbb{R}^{d\times k},$ e $\{\mathbf{W}_t\}_{t\geq 0}$ é um processo com valores em $\mathbb{R}^k$ composto de $k$ processos de Wiener independentes, com $d, k \in\mathbb{N}$ arbitrários.
