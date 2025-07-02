@@ -122,5 +122,5 @@ $$
 1. Verifique que, no caso multi-dimensional, em que $\mathbf{x}\in\mathbb{R}^d$ e $f:\mathbb{R}^d \rightarrow \mathbb{R}^d,$ com $d\in\mathbb{N}$ arbitrário, a equação de transporte para a densidade $p=p(t,\mathbf{x})$ da solução de $\mathrm{d}\mathbf{X}_t/\mathrm{d}t = f(t, \mathbf{X}_t),$ com uma variável aleatória inicial $\mathbf{X}_0,$ tem a forma
 $$ \frac{\partial p}{\partial t}(t, \mathbf{x}) + \nabla \cdot (f(t, \mathbf{x})p(t, \mathbf{x})) = 0.
 $$
-2. Usando a fórmula acima, encontre $a=a(t)$ e $b=b(t)$ tais que $p(t, \mathbf{x}) = a(t) q(b(t) \mathbf{x})$ seja uma solução (dita auto-semelhante) da equação de Fokker-Planck acima, para uma dada função densidade de probabilidade $q=q(\mathbf{x}).$
+2. Usando a fórmula acima, encontre $a=a(t)$ e $b=b(t)$ tais que $p(t, \mathbf{x}) = a(t) q(b(t) \mathbf{x})$ seja uma solução (dita auto-semelhante) da equação de Fokker-Planck acima, no caso da equação linear $\mathrm{d}\mathbf{X}_t/\mathrm{d}t = -\mathbf{X}_t$ em várias variáveis $\mathbf{x}\in\mathbb{R}^d,$ com $d\in\mathbb{N},$ com uma condição inicial $X_0$ com densidade de probabilidade $q=q(\mathbf{x}).$
  
