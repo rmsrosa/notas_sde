@@ -175,44 +175,44 @@ $$
 $$
 basta mostrar que esse último também é um processo Gaussiano com média zero e mesma covariância. Como o processo de Wiener é Gaussiano, então esse processo condicionado também o é. Para analisar a média e a covariância, vamos usar a PDF do vetor aleatório $(W_t, W_s, W_1).$
 
-Na verdade, vamos apenas verificar que $\mathbb{E}[B_t] = 0$ e $\mathbb{E}[B_t^2] = t(1 - t).$ Deixamos a covariância como exercício. Para essas duas propriedades estatísticas, basta analisarmos o vetor aleatório $X = (W_t, W_1).$ A média é zero,
+Na verdade, vamos apenas verificar que $\mathbb{E}[B_t] = 0$ e $\mathbb{E}[B_t^2] = t(1 - t).$ Deixamos a covariância como exercício. Para essas duas propriedades estatísticas, basta analisarmos o processo multivariado $V_t = (W_t, W_1).$ A média é zero,
 $$
-    \mathbb{E}[X] = (\mathbb{E}[W_t], \mathbb{E}[W_1]) = (0, 0).
+    \mathbb{E}[V_t] = (\mathbb{E}[W_t], \mathbb{E}[W_1]) = (0, 0).
 $$
 A matriz de covariância é dada por
 $$
-    \Sigma = \begin{bmatrix} \mathbb{E}[W_t^2] & \mathbb{E}[W_tW_1] \\
+    \Sigma(t) = \begin{bmatrix} \mathbb{E}[W_t^2] & \mathbb{E}[W_tW_1] \\
     \mathbb{E}[W_tW_1] & \mathbb{E}[W_1^2] \end{bmatrix} = \begin{bmatrix} t & t \\ t & 1 \end{bmatrix},
 $$
 onde usamos que $0 \leq t \leq 1.$ Temos
 $$
-    \det(\Sigma) = t(1 - t), \qquad \Sigma^{-1} = \frac{1}{t(1-t)}\begin{bmatrix} 1 & -t \\ -t & t \end{bmatrix}.
+    \det(\Sigma(t)) = t(1 - t), \qquad \Sigma^{-1} = \frac{1}{t(1-t)}\begin{bmatrix} 1 & -t \\ -t & t \end{bmatrix}.
 $$
-Assim, a PDF de $X$ é dada por 
+Assim, a PDF $p(t, x, y)$ de $V_t=(W_t, W_1)$ é dada por 
 $$
-    p(x) = p(x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_t,  x\end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_t \\ x\end{pmatrix} } = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} (x_t^2 - 2tx_tx_1 + t^2x_1^2) }
+    p(t, x, y) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x,  y\end{pmatrix} \Sigma^{-1}\begin{pmatrix} x \\ y\end{pmatrix} } = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} (x^2 - 2txy + t^2y^2) }
 $$
-onde o espaço de eventos é descrito por $x = (x_t, x_1)\in \mathbb{R}^2.$ A marginal correspondendo ao condicionamento $W_1 = 0$ é
+onde o espaço de eventos é descrito por $(x, y)\in \mathbb{R}^2.$ A marginal correspondendo ao condicionamento $W_1 = 0$ é
 $$
-    p(x_t, 0) = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 }.
+    p(t, x, 0) = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 }.
 $$
 Com essa marginal, podemos calcular
 $$
-    \mathbb{E}[B_t] = \int_{-\infty}^\infty x_t p(x_t, 0) \;\mathrm{d}x_t = 0,
+    \mathbb{E}[B_t] = \int_{-\infty}^\infty x p(t, x, 0) \;\mathrm{d}x = 0,
 $$
 pela simetria da marginal, e
 $$
     \begin{align*}
-        \mathbb{E}[B_t^2] & = \int_{-\infty}^\infty x_t^2 p(x_t, 0) \;\mathrm{d}x_t \\
-        & = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty x_t^2 e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 } \;\mathrm{d}x_t \\
-        & = \frac{t(1 - t)}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x_t^2 } \;\mathrm{d}x_t \\
+        \mathbb{E}[B_t^2] & = \int_{-\infty}^\infty x^2 p(t, x, 0) \;\mathrm{d}x \\
+        & = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty x^2 e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
+        & = \frac{t(1 - t)}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
         & = t(1 - t).
     \end{align*}
 $$
 
-Para a covariância, precisamos considerar o vetor aleatório $X = (W_s, W_t, W_1).$ Por simetria, podemos assumir $0 \leq s \leq t \leq 1.$ Nesse caso, também temos $\mathbb{E}[X] = (0, 0, 0)$ e a covariância toma a forma
+Para a covariância entre instantes $s$ e $t,$ podemos considerar $V_{s,t} = (W_s, W_t, W_1).$ Por simetria, podemos assumir $0 \leq s \leq t \leq 1.$ Nesse caso, também temos $\mathbb{E}[V_{s, t}] = (0, 0, 0)$ e a covariância toma a forma
 $$
-    \Sigma = \begin{bmatrix} s & s & s \\ s & t & t \\ s & t & 1 \end{bmatrix}.
+    \Sigma(s, t) = \begin{bmatrix} s & s & s \\ s & t & t \\ s & t & 1 \end{bmatrix}.
 $$
 A inversa (e o determinante) pode ser calculado via escalonamento da matriz
 $$
@@ -223,12 +223,12 @@ $$
 $$
 Portanto,
 $$
-    \det\Sigma = s(t-s)(1-t), \qquad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} t(1-t) & s(1-t) & 0 \\ -s(1-t) & s(1-s) & -s(t-s) \\ 0 & -s(t-s) & s(t-s) \end{bmatrix}
+    \det\Sigma(s, t) = s(t-s)(1-t), \qquad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} t(1-t) & s(1-t) & 0 \\ -s(1-t) & s(1-s) & -s(t-s) \\ 0 & -s(t-s) & s(t-s) \end{bmatrix}
 $$
 
-Assim, a PDF de $X=(W_s, W_t, W_1)$ é dada por 
+Assim, a PDF de $V_{s,t}=(W_s, W_t, W_1)$ é dada por 
 $$
-    p(x) = p(x_s, x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_s, x_t,  x \end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_s \\ x_t \\ x\end{pmatrix} }.
+    p(x_s, x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_s, x_t,  x_1 \end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_s \\ x_t \\ x\end{pmatrix} }.
 $$
 onde o espaço de eventos é descrito por $x = (x_s, x_t, x_1)\in \mathbb{R}^3.$ Não precisamos explicitar toda a PDF pois estamos interessados apenas na marginal correspondendo ao condicionamento $W_1 = 0,$ que é
 $$
@@ -249,7 +249,8 @@ Isso conclui a demonstração de que $B_t = W_t |_{W_1 = 0}$ é o mesmo processo
 ## Exercícios
 
 1. Uma ponte Browniana, sendo um processo gaussiano, também pode ser definido através da sua covariância, ou seja, como sendo um processo Gaussiano $\{B_t\}_{0 \leq t \leq 1}$ com caminhos contínuous quase certamente;  satisfazendo $B_0 = B_1 = 0$ quase certamente; $\mathbb{E}[B_t] = 0,$ para todo $0 \leq t \leq 1;$ e $\operatorname{Cov}(B_t, B_s) = \min\{s, t\} - st,$ para $0 \leq s, t \leq 1.$ (i) Usando essa caracterização, mostre que, se $\{W_t\}_{t\geq 0}$ é um processo de Wiener, então $B_t = W_t - tW_1,$ $0\leq t \leq 1,$ é uma ponte Browniana. (ii) Por sua vez, mostre que se $\{B_t\}_{0\leq t \leq 1}$ é uma ponte Browniana segundo essa definição via caracterização da covariância e $N\sim \mathcal{N}(0, 1)$ é independente dessa ponte, então $W_t = B_t + tZ,$ $0\leq t \leq 1,$ é um processo de Wiener no intervalo $[0, 1].$ (iii) Por último, assumindo, novamente, que $\{B_t\}_{0\leq t \leq 1}$ é uma ponte Browniana segundo essa definição via caracterização da covariância, considere o processo $V_t = \int_0^t B_s / (1 - s) \;\mathrm{d}s$ e mostre que $W_t = B_t + V_t$ é um processo de Wiener, concluindo que $B_t$ satisfaz a equação diferencial estocástica $\mathrm{d}B_t = - B_t / (1 - t) \;\mathrm{d}t + \mathrm{d}W_t.$
-2. Uma ponte browniana também pode ser considerada em um intervalo $[0, T],$ cuja equação toma a forma $$ \mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t, $$ com condições inicial e final $B_0 = B_T = 0.$ Ache uma fórmula explícita para $B_t$ como uma integral de Itô ao longo de $0 \leq t \leq T$ e encontre a variância e a covariância desse processo.
-3. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener e considere o processo $\{B_t\}_{0\leq t \leq T}$ definido por $B_t = W_t - t W_T / T,$ para $0 \leq t \leq T.$ Mostre que $\{B_t\}_{0\leq t \leq T}$ é independente de $\{W_t\}_{t \geq T}.$
-4. Mais geralmente, uma ponte Browniana pode ser definida ligando valores distintos e não necessariamente nulos, e.g. $B_{t_0} = a$ e $B_{t_1} = b,$ com $t_0 < t_1$ e $a, b\in\mathbb{R}$ arbitrários. Nesse caso, o processo $\tilde B_t = B_t - a(t_1 - t) / (t_1 - t_0) - b(t - t_0)/(t_1 - t_0)$ é uma ponte Browniana ligando $\tilde B_{t_0} = 0$ a $\tilde B_{t_1} = 1.$ Faça uma implementação numérica da ponte Browniana $\{B_t\}_{t_0 \leq t \leq t_1},$ exibindo uma variedade de caminhos aleatórios, junto com o valor esperado $\mathbb{E}[B_t]$ e o desvio padrão $\sigma(B_t),$ ao longo de $t_0 \leq t \leq t_1,$ escolhendo valores quaisquer não nulos e distintos $a$ e $b$ e instantes $t_0 < t_1.$
+2. Uma ponte browniana também pode ser considerada em um intervalo $[0, T],$ cuja equação toma a forma $\mathrm{d}B_t = - \frac{B_t}{T-t}\;\mathrm{d}t + \;\mathrm{d}W_t,$ com condições inicial e final $B_0 = B_T = 0.$ Ache uma fórmula explícita para $B_t$ como uma integral de Itô ao longo de $0 \leq t \leq T$ e, usando essa fórmula, encontre a variância e a covariância desse processo.
+3. Seja $\{W_t\}_{t\geq 0}$ um processo de Wiener e considere o processo $\{B_t\}_{0\leq t \leq T}$ definido por $B_t = W_t - t W_T / T,$ para $0 \leq t \leq T.$ Mostre que $\{B_t\}_{0\leq t \leq T}$ é independente de $\{W_t\}_{t \geq T}$ e calcule a variância e a covariância desse processo.
+4. Considere, agora, a ponte Browniana no intervalo $[0, T]$ definida através de $B_t = W_t |_{W_T = 0},$ $0 \leq t \leq T.$ Usando a PDF $p(t, x, y)$ do processo $\{(W_t, W_T)\}_{0\leq t \leq T},$ calcule a variância $\mathrm{Var}(B_t)$ desse processo, conforme feito acima no caso $T=1.$
+5. Mais geralmente, uma ponte Browniana pode ser definida ligando valores distintos e não necessariamente nulos, e.g. $B_{t_0} = a$ e $B_{t_1} = b,$ com $t_0 < t_1$ e $a, b\in\mathbb{R}$ arbitrários. Nesse caso, o processo $\tilde B_t = B_t - a(t_1 - t) / (t_1 - t_0) - b(t - t_0)/(t_1 - t_0)$ é uma ponte Browniana ligando $\tilde B_{t_0} = 0$ a $\tilde B_{t_1} = 0.$ Calcule a média $\mathbb{E}[B_t]$ e a variância $\mathrm{Var}(B_t)$ de $\{B_t\}_{t_0\leq t\leq t_1}$ e faça uma implementação numérica dessa ponte Browniana, exibindo uma variedade de caminhos aleatórios, junto com o valor esperado e o desvio padrão teóricos, ao longo de $t_0 \leq t \leq t_1,$ escolhendo valores quaisquer não nulos e distintos $a$ e $b$ e instantes $t_0 < t_1.$
 
