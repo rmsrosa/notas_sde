@@ -24,18 +24,16 @@ Pensando como uma família de processo $O_t = O_t^{\tau, \varsigma},$ temos, no 
 $$
 \tau \rightarrow 0, \quad \textrm{com} \quad \varsigma \rightarrow 1,
 $$
-que esses processos se aproximam de um ruído branco, que é uma distribuição delta de Dirac, com espectro constante (veja Seção {{link_section pages/c05/ruido_branco}}). 
-
-Em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck, as condições acima são equivalentes a
+que esses processos se aproximam de um ruído branco, que é uma distribuição delta de Dirac, com espectro constante (veja Seção {{link_section pages/c05/ruido_branco}}). Em termos dos parâmetros usuais de deriva e de difusão do processo de Ornstein-Uhlenbeck, as condições acima são equivalentes a
 $$
-\nu \rightarrow \infty, \quad \frac{\sigma}{\nu} \rightarrow 1,
+\nu \rightarrow \infty, \quad \sigma \rightarrow \infty, \quad \frac{\sigma}{\nu} \rightarrow 1,
 $$
 
-De fato, considerando a função de correlação
+Para vermos que, de fato, esses processos de $OU$ se aproximam de um ruído branco, podemos considerar a função de correlação
 $$
     g(s) = \mathrm{Cov}(O_{t+s},O_t) = \frac{\varsigma^2}{2\tau} e^{-\frac{\displaystyle |s|}{\displaystyle \tau}},
 $$
-temos, para uma função teste $\varphi$ suave e de suporte compacto na reta,
+e mostrar que, para uma função teste $\varphi$ suave e de suporte compacto na reta,
 $$
     \int_{-\infty}^\infty g(s)\varphi(s)\;\mathrm{d}s = \frac{\varsigma^2}{2\tau} \int_{-\infty}^\infty g(s) e^{-\frac{\displaystyle |s|}{\displaystyle \tau}} \;\mathrm{d}s \rightarrow g(0),
 $$
@@ -43,7 +41,7 @@ visto que a função
 $$
     \frac{g(s)}{\varsigma^2} = \frac{1}{2\tau}e^{-\frac{\displaystyle |s|}{\displaystyle \tau}}
 $$
-é uma aproximação da distribuição delta de Dirac (verifique isso provando o limite acima!).
+é uma aproximação da distribuição delta de Dirac (verifique isso provando que $\int_{-\infty}^\infty g(s)/\varsigma^2 \;\mathrm{d}s = 1$, independentemente de $\tau, \varsigma > 0$, e, em seguida, provando o limite acima!).
 
 Ilustramos alguns caminhos amostrais variando os parâmetros.
 
