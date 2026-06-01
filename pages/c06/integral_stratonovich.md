@@ -6,7 +6,16 @@ A integral de Itô de um processo $\{H_t\}_{t\geq 0}$ é baseada no limite dos s
 $$
 \sum_{j=1}^n H_{t_{j-1}}(W_{t_j} - W_{t_{j-1}}),
 $$
-ou seja, onde em cada termo o processo é tomado no instante $t_{j-1}$ à esquerda de cada subintervalo $[t_{j-1}, t_j]$ da malha. Conforme vimos na Seção {{link_section pages/c06/riemann_wiener}}, podemos ter limites diferentes se tomarmos outros pontos do subintervalo. E comentamos, também, que a escolha do ponto médio de cada subintervalo nos leva à *integral de Stratonovich.*
+ou seja, onde em cada termo o processo é tomado no instante $t_{j-1}$ à esquerda de cada subintervalo $[t_{j-1}, t_j]$ da malha. 
+
+Conforme vimos na Seção {{link_section pages/c06/riemann_wiener}}, podemos ter limites diferentes se tomarmos outros pontos do subintervalo. E comentamos, também, que a escolha do ponto médio de cada subintervalo nos leva à *integral de Stratonovich,* aproximada por
+$$
+\sum_{j=1}^n H_{(t_{j-1} + t_j)/2}(W_{t_j} - W_{t_{j-1}}).
+$$
+Uma outra fórmula alternativa é a de tomar a média do próprio processo
+$$
+\sum_{j=1}^n (1/2)(H_{t_{j-1}} + H_{t_j})(W_{t_j} - W_{t_{j-1}}).
+$$
 
 No que se segue, vamos formalizar essa definição e ver a relação dela com a integral de Itô.
 
@@ -30,6 +39,16 @@ $$
 para malhas $0 = t_0 < t_1 < \ldots < t_n = T,$ com $\|M\|=\max_{j=1, \ldots, n}|t_j - t_{j-1}|.$
 
 Observe a notação da integral de Stratonovich com o símbolo $\circ\mathrm{d}W_t,$ para distinguir da integral de Itô.
+
+Uma forma alternativa, que é, em geral, equivalente à fórmula acima é obtida tomando-se a média do próprio processo, ou seja
+$$
+    \int_0^T H_t\circ\mathrm{d}W_t = \lim_{\|M\|\rightarrow 0} \sum_{j=1}^n (1/2)(H_{t_{j-1}} + H_{t_j})(W_{t_j} - W_{t_{j-1}}).
+$$
+A diferença entre as duas desaparece no limite de refinamento da malha, ou seja,
+$$
+    \sum_{j=1}^n \left( H_{(t_{j-1} + t_j)/2} - (1/2)(H_{t_{j-1}} + H_{t_j}) \right) (W_{t_j} - W_{t_{j-1}}) \rightarrow 0,
+$$
+quando $\|M\|\rightarrow 0.$
 
 ## Existência 
 
