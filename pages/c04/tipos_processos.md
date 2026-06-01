@@ -289,14 +289,14 @@ Para que seja um ruído branco "genuíno", a função de covariância $c(\cdot)$
 $$
 c(\tau) = \sigma_0^2\delta_0,
 $$
-para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\omega)$ é, de fato, constante (usamos $\omega,$ aqui, para denotar a frequência, como de costume nesse contexto, ao invés de denotar um elemento do espaço amostral):
+para alguma $\sigma_0 > 0$ e onde $\delta_0$ é a delta de Dirac. Assim, o seu espectro $\hat c(\varpi)$ é, de fato, constante (usamos $\varpi,$ aqui, para denotar a frequência, ao invés da notação tradicional $\omega,$ que aqui é reservada para elementos do espaço amostral $\Omega$):
 $$
-\hat c(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty c(\tau) e^{-i\omega \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \omega \in \mathbb{R}.
+\hat c(\varpi) = \frac{1}{2\pi} \int_{-\infty}^\infty c(\tau) e^{-i\varpi \tau} \;\mathrm{d}\tau = \frac{1}{2\pi}\sigma_0^2, \quad \forall \varpi \in \mathbb{R}.
 $$
 
 Algumas definições pedem, ainda, que os eventos, em instantes diferentes, sejam independentes entre si.
 
-Não vamos nos aprofundar nesse assunto tão delicado, mas veremos argumentos de que a "derivada" de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte.
+Não vamos nos aprofundar nesse assunto delicado, mas veremos argumentos de que a "derivada" de um processo de Wiener pode ser considerada um ruído branco nesse sentido mais forte.
 
 ## Exercícios
 

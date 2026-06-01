@@ -30,7 +30,7 @@ onde $\mu > 0$ é a taxa de crescimento específico da espécie, que também dep
 $$
 \mu_t = \mu + \sigma_0\xi_t,
 $$
-Interpretando $\xi_t$ como a "derivada" de um processo de Wiener , podemos escrever
+Interpretando $\xi_t$ como a "derivada" de um processo de Wiener, podemos escrever
 $$
 \mu_t \;\mathrm{d}t = \mu \;\mathrm{d}t + \sigma_0 \;\mathrm{d}W_t.
 $$
