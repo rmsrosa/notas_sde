@@ -284,4 +284,4 @@ Mostre, ainda, usando também as relações $\cos^2\theta = (1 + \cos(2\theta))/
 $$
 \mathbb{E}(X_n^2 + Y_n^2) = n \ell^2 = \frac{\ell^2}{2\tau} 2n\tau = 2 a t_n,
 $$
-onde $t_n = n\tau$ e, como antes, $a=\ell^2/2\tau$. Ou seja, a distância média quadrática $\sqrt{\mathbb{E}[X_n^2 + Y_n^2]} = \sqrt{2 a t_n} cresce de maneira proporcional à raiz quadrada do tempo decorrido.
+onde $t_n = n\tau$ e, como antes, $a=\ell^2/2\tau$. Ou seja, a distância média quadrática $\sqrt{\mathbb{E}[X_n^2 + Y_n^2]} = \sqrt{2 a t_n}$ cresce de maneira proporcional à raiz quadrada do tempo decorrido.
