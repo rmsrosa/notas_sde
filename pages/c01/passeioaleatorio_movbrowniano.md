@@ -282,6 +282,6 @@ $$
 $$
 Mostre, ainda, usando também as relações $\cos^2\theta = (1 + \cos(2\theta))/2$ e  $\sin^2\theta = (1 - \cos(2\theta))/2,$ que
 $$
-\mathbb{E}(X_n^2 + Y_n^2) = n \frac{\ell^2}{2}.
+\mathbb{E}(X_n^2 + Y_n^2) = n \ell^2 = \frac{\ell^2}{2\tau} 2n\tau = 2 a t_n,
 $$
-Ou seja, a média quadrática da distância cresce linearmente com o número de passos.
+onde $t_n = n\tau$ e, como antes, $a=\ell^2/2\tau$. Ou seja, a distância média quadrática $\sqrt{\mathbb{E}[X_n^2 + Y_n^2]} = \sqrt{2 a t_n} cresce de maneira proporcional à raiz quadrada do tempo decorrido.
