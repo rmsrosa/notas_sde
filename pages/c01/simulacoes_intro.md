@@ -156,7 +156,7 @@ for m in 1:M
     x[1, m] = x₀
     wt = 0.0
     for n in 2:N+1
-        global wt += randn(rng) * √Δt
+        wt += randn(rng) * √Δt
         μt = μ̄ + σ * sin(wt)
         x[n, m] = (1.0 + μt * Δt) .* x[n-1, m]
     end
