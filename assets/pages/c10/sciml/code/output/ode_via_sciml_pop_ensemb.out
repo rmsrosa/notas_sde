@@ -1,0 +1,30 @@
+UndefVarError: `EnsembleProblem` not defined in `Main.FD_SANDBOX_3637103081925323742`
+Suggestion: check for spelling errors or missing imports.
+Hint: a global variable of this name also exists in SciMLBase.
+    - Also exported by BracketingNonlinearSolve (loaded but not imported in Main).
+    - Also exported by DiffEqBase (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqCore (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqTsit5 (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqVerner (loaded but not imported in Main).
+    - Also exported by LinearSolve (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqRosenbrock (loaded but not imported in Main).
+    - Also exported by SimpleNonlinearSolve (loaded but not imported in Main).
+    - Also exported by NonlinearSolveFirstOrder (loaded but not imported in Main).
+    - Also exported by NonlinearSolveQuasiNewton (loaded but not imported in Main).
+    - Also exported by NonlinearSolveSpectralMethods (loaded but not imported in Main).
+    - Also exported by NonlinearSolve (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqSDIRK (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqBDF (loaded but not imported in Main).
+    - Also exported by OrdinaryDiffEqDefault (loaded but not imported in Main).
+    - Also exported by JumpProcesses (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqCore (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqLowOrder (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqRODE (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqHighOrder (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqMilstein (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqROCK (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqImplicit (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqWeak (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqIIF (loaded but not imported in Main).
+    - Also exported by StochasticDiffEqLeaping (loaded but not imported in Main).
+    - Also exported by StochasticDiffEq (loaded but not imported in Main).

@@ -1,2 +1,3 @@
 Benchmark fsir
-UndefVarError: fsir not defined
+UndefVarError: `fsir` not defined in `Main.FD_SANDBOX_3637103081925323742`
+Suggestion: check for spelling errors or missing imports.

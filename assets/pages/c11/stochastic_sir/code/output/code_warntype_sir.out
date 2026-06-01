@@ -1,6 +1,6 @@
 @code_warntype for SIR!
 MethodInstance for Main.FD_SANDBOX_9898039245808358067.SIR!(::Vector{Float64}, ::Vector{Int64}, ::Tuple{Float64, Float64, Float64, Float64, Rational{Int64}}, ::Float64)
-  from SIR!(du, u, p, t) in Main.FD_SANDBOX_9898039245808358067 at none:1
+  from SIR!(du, u, p, t) @ Main.FD_SANDBOX_9898039245808358067 none:1
 Arguments
   #self#::Core.Const(Main.FD_SANDBOX_9898039245808358067.SIR!)
   du::Vector{Float64}
@@ -19,33 +19,52 @@ Body::Float64
 1 ─ %1  = Base.indexed_iterate(u, 1)::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(2)])
 │         (S = Core.getfield(%1, 1))
 │         (@_7 = Core.getfield(%1, 2))
-│   %4  = Base.indexed_iterate(u, 2, @_7::Core.Const(2))::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(3)])
-│         (I = Core.getfield(%4, 1))
-│   %6  = Base.indexed_iterate(p, 1)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(2)])
-│         (N = Core.getfield(%6, 1))
-│         (@_6 = Core.getfield(%6, 2))
-│   %9  = Base.indexed_iterate(p, 2, @_6::Core.Const(2))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(3)])
-│         (beta = Core.getfield(%9, 1))
-│         (@_6 = Core.getfield(%9, 2))
-│   %12 = Base.indexed_iterate(p, 3, @_6::Core.Const(3))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(4)])
-│         (gamma = Core.getfield(%12, 1))
-│   %14 = -beta::Float64
-│   %15 = S::Int64
-│   %16 = (%14 * %15 * I)::Float64
-│   %17 = (%16 / N)::Float64
-│         Base.setindex!(du, %17, 1)
-│   %19 = (beta * S * I)::Float64
-│   %20 = (%19 / N)::Float64
-│   %21 = (gamma * I)::Float64
-│   %22 = (%20 - %21)::Float64
-│         Base.setindex!(du, %22, 2)
-└──       return %22
+│   %4  = @_7::Core.Const(2)
+│   %5  = Base.indexed_iterate(u, 2, %4)::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(3)])
+│         (I = Core.getfield(%5, 1))
+│   %7  = Base.indexed_iterate(p, 1)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(2)])
+│         (N = Core.getfield(%7, 1))
+│         (@_6 = Core.getfield(%7, 2))
+│   %10 = @_6::Core.Const(2)
+│   %11 = Base.indexed_iterate(p, 2, %10)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(3)])
+│         (beta = Core.getfield(%11, 1))
+│         (@_6 = Core.getfield(%11, 2))
+│   %14 = @_6::Core.Const(3)
+│   %15 = Base.indexed_iterate(p, 3, %14)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(4)])
+│         (gamma = Core.getfield(%15, 1))
+│   %17 = Main.FD_SANDBOX_9898039245808358067.:/::Core.Const(/)
+│   %18 = Main.FD_SANDBOX_9898039245808358067.:*::Core.Const(*)
+│   %19 = Main.FD_SANDBOX_9898039245808358067.:-::Core.Const(-)
+│   %20 = beta::Float64
+│   %21 = (%19)(%20)::Float64
+│   %22 = S::Int64
+│   %23 = I::Int64
+│   %24 = (%18)(%21, %22, %23)::Float64
+│   %25 = N::Float64
+│   %26 = (%17)(%24, %25)::Float64
+│         Base.setindex!(du, %26, 1)
+│   %28 = Main.FD_SANDBOX_9898039245808358067.:-::Core.Const(-)
+│   %29 = Main.FD_SANDBOX_9898039245808358067.:/::Core.Const(/)
+│   %30 = Main.FD_SANDBOX_9898039245808358067.:*::Core.Const(*)
+│   %31 = beta::Float64
+│   %32 = S::Int64
+│   %33 = I::Int64
+│   %34 = (%30)(%31, %32, %33)::Float64
+│   %35 = N::Float64
+│   %36 = (%29)(%34, %35)::Float64
+│   %37 = Main.FD_SANDBOX_9898039245808358067.:*::Core.Const(*)
+│   %38 = gamma::Float64
+│   %39 = I::Int64
+│   %40 = (%37)(%38, %39)::Float64
+│   %41 = (%28)(%36, %40)::Float64
+│         Base.setindex!(du, %41, 2)
+└──       return %41
 
 nothing
 
 @code_warntype for SIR_noise!
 MethodInstance for Main.FD_SANDBOX_9898039245808358067.SIR_noise!(::Matrix{Float64}, ::Vector{Int64}, ::Tuple{Float64, Float64, Float64, Float64, Rational{Int64}}, ::Float64)
-  from SIR_noise!(du, u, p, t) in Main.FD_SANDBOX_9898039245808358067 at none:1
+  from SIR_noise!(du, u, p, t) @ Main.FD_SANDBOX_9898039245808358067 none:1
 Arguments
   #self#::Core.Const(Main.FD_SANDBOX_9898039245808358067.SIR_noise!)
   du::Matrix{Float64}
@@ -66,31 +85,50 @@ Body::Rational{Int64}
 1 ─ %1  = Base.indexed_iterate(u, 1)::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(2)])
 │         (S = Core.getfield(%1, 1))
 │         (@_7 = Core.getfield(%1, 2))
-│   %4  = Base.indexed_iterate(u, 2, @_7::Core.Const(2))::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(3)])
-│         (I = Core.getfield(%4, 1))
-│   %6  = Base.indexed_iterate(p, 1)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(2)])
-│         (N = Core.getfield(%6, 1))
-│         (@_6 = Core.getfield(%6, 2))
-│   %9  = Base.indexed_iterate(p, 2, @_6::Core.Const(2))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(3)])
-│         Core.getfield(%9, 1)
-│         (@_6 = Core.getfield(%9, 2))
-│   %12 = Base.indexed_iterate(p, 3, @_6::Core.Const(3))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(4)])
-│         Core.getfield(%12, 1)
-│         (@_6 = Core.getfield(%12, 2))
-│   %15 = Base.indexed_iterate(p, 4, @_6::Core.Const(4))::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(5)])
-│         (sigma_beta = Core.getfield(%15, 1))
+│   %4  = @_7::Core.Const(2)
+│   %5  = Base.indexed_iterate(u, 2, %4)::Core.PartialStruct(Tuple{Int64, Int64}, Any[Int64, Core.Const(3)])
+│         (I = Core.getfield(%5, 1))
+│   %7  = Base.indexed_iterate(p, 1)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(2)])
+│         (N = Core.getfield(%7, 1))
+│         (@_6 = Core.getfield(%7, 2))
+│   %10 = @_6::Core.Const(2)
+│   %11 = Base.indexed_iterate(p, 2, %10)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(3)])
+│         Core.getfield(%11, 1)
+│         (@_6 = Core.getfield(%11, 2))
+│   %14 = @_6::Core.Const(3)
+│   %15 = Base.indexed_iterate(p, 3, %14)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(4)])
+│         Core.getfield(%15, 1)
 │         (@_6 = Core.getfield(%15, 2))
-│   %18 = Base.indexed_iterate(p, 5, @_6::Core.Const(5))::Core.PartialStruct(Tuple{Rational{Int64}, Int64}, Any[Rational{Int64}, Core.Const(6)])
-│         (sigma_gamma = Core.getfield(%18, 1))
-│   %20 = (sigma_beta * S * I)::Float64
-│         (bW = %20 / N)
-│         (gW = sigma_gamma * I)
-│   %23 = -bW::Float64
-│         Base.setindex!(du, %23, 1, 1)
+│   %18 = @_6::Core.Const(4)
+│   %19 = Base.indexed_iterate(p, 4, %18)::Core.PartialStruct(Tuple{Float64, Int64}, Any[Float64, Core.Const(5)])
+│         (sigma_beta = Core.getfield(%19, 1))
+│         (@_6 = Core.getfield(%19, 2))
+│   %22 = @_6::Core.Const(5)
+│   %23 = Base.indexed_iterate(p, 5, %22)::Core.PartialStruct(Tuple{Rational{Int64}, Int64}, Any[Rational{Int64}, Core.Const(6)])
+│         (sigma_gamma = Core.getfield(%23, 1))
+│   %25 = Main.FD_SANDBOX_9898039245808358067.:/::Core.Const(/)
+│   %26 = Main.FD_SANDBOX_9898039245808358067.:*::Core.Const(*)
+│   %27 = sigma_beta::Float64
+│   %28 = S::Int64
+│   %29 = I::Int64
+│   %30 = (%26)(%27, %28, %29)::Float64
+│   %31 = N::Float64
+│         (bW = (%25)(%30, %31))
+│   %33 = Main.FD_SANDBOX_9898039245808358067.:*::Core.Const(*)
+│   %34 = sigma_gamma::Rational{Int64}
+│   %35 = I::Int64
+│         (gW = (%33)(%34, %35))
+│   %37 = Main.FD_SANDBOX_9898039245808358067.:-::Core.Const(-)
+│   %38 = bW::Float64
+│   %39 = (%37)(%38)::Float64
+│         Base.setindex!(du, %39, 1, 1)
 │         Base.setindex!(du, 0.0, 1, 2)
-│         Base.setindex!(du, bW, 2, 1)
-│   %27 = -gW::Rational{Int64}
-│         Base.setindex!(du, %27, 2, 2)
-└──       return %27
+│   %42 = bW::Float64
+│         Base.setindex!(du, %42, 2, 1)
+│   %44 = Main.FD_SANDBOX_9898039245808358067.:-::Core.Const(-)
+│   %45 = gW::Rational{Int64}
+│   %46 = (%44)(%45)::Rational{Int64}
+│         Base.setindex!(du, %46, 2, 2)
+└──       return %46
 
 nothing
