@@ -97,11 +97,19 @@ $$
 $$
 de modo que
 $$
-\mathbb{E}[B_tB_s] = (1 - t)(1 - s)\mathbb{E}\left[ \int_0^s \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau \right] = (1 - t)(1 - s) \mathbb{E}\left[ \left(\int_0^s \frac{1}{(1-\tau)}\;\mathrm{d}W_\tau\right)^2\right].
+\begin{align*}
+    \mathbb{E}[B_tB_s] & = (1 - t)(1 - s)\mathbb{E}\left[ \int_0^s \int_0^s \frac{1}{(1-\xi)(1-\tau)}\;\mathrm{d}W_\xi \mathrm{d}W_\tau \right] \\ 
+    & = (1 - t)(1 - s) \mathbb{E}\left[ \left(\int_0^s \frac{1}{(1-\tau)}\;\mathrm{d}W_\tau\right)^2\right].
+\end{align*}
 $$
 Usando a fórmula de Itô para dois processos, temos
 $$
-\mathbb{E}[B_tB_s] = (1 - t)(1 - s)\int_0^s \frac{1}{(1-\tau)^2}\;\mathrm{d}\tau = (1 - t)(1 - s)\left(\frac{1}{1 - \tau}\right)\bigg|_{\tau = 0}^{\tau = s} = (1 - t) - (1 - t)(1 - s) = (1 - t)s.
+\begin{align*}
+    \mathbb{E}[B_tB_s] & = (1 - t)(1 - s)\int_0^s \frac{1}{(1-\tau)^2}\;\mathrm{d}\tau \\
+    & = (1 - t)(1 - s)\left(\frac{1}{1 - \tau}\right)\bigg|_{\tau = 0}^{\tau = s} \\
+    & = (1 - t) - (1 - t)(1 - s) \\
+    & = (1 - t)s.
+\end{align*}
 $$
 Caso $0 \leq t \leq s \leq 1,$ obtemos, por simetria,
 $$
@@ -188,24 +196,35 @@ onde usamos que $0 \leq t \leq 1.$ Temos
 $$
     \det(\Sigma(t)) = t(1 - t), \qquad \Sigma^{-1} = \frac{1}{t(1-t)}\begin{bmatrix} 1 & -t \\ -t & t \end{bmatrix}.
 $$
-Assim, a PDF $p(t, x, y)$ de $V_t=(W_t, W_1)$ é dada por 
+Assim, a PDF conjunta $p(t, x, y)$ de $V_t=(W_t, W_1)$ é dada por 
 $$
-    p(t, x, y) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x,  y\end{pmatrix} \Sigma^{-1}\begin{pmatrix} x \\ y\end{pmatrix} } = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} (x^2 - 2txy + t^2y^2) }
+    p(t, x, y) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x,  y\end{pmatrix} \Sigma^{-1}\begin{pmatrix} x \\ y\end{pmatrix} } = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} (x^2 - 2txy + ty^2) }
 $$
-onde o espaço de eventos é descrito por $(x, y)\in \mathbb{R}^2.$ A marginal correspondendo ao condicionamento $W_1 = 0$ é
-$$
-    p(t, x, 0) = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 }.
-$$
-Com essa marginal, podemos calcular
-$$
-    \mathbb{E}[B_t] = \int_{-\infty}^\infty x p(t, x, 0) \;\mathrm{d}x = 0,
-$$
-pela simetria da marginal, e
+onde o espaço de eventos é descrito por $(x, y)\in \mathbb{R}^2.$ 
+
+A marginal em $W_1$ calculada em $W_1 = 0$ é
 $$
     \begin{align*}
-        \mathbb{E}[B_t^2] & = \int_{-\infty}^\infty x^2 p(t, x, 0) \;\mathrm{d}x \\
-        & = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty x^2 e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
-        & = \frac{t(1 - t)}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
+        \int_{-\infty}^\infty p(t, x, 0) \;\mathrm{d}x & = \int_{-\infty}^\infty \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\ 
+        & = \frac{1}{2\pi t^{1/2}(1 - t)^{1/2}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
+        & = \frac{1}{\sqrt{2\pi} \sqrt{2\pi t(1 - t)}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
+        & = \frac{1}{\sqrt{2\pi}}.
+    \end{align*}
+$$
+Com isso, a distribuição condicionada a $W_1 = 0$ é
+$$
+    p(t, x | W_1 = 0) = \sqrt{2\pi}p(t, x, 0) = \frac{1}{\sqrt{2\pi t(1 - t)}} e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 }.
+$$
+Com essa marginal, podemos calcular a esperança, que se anula pela simetria da marginal:
+$$
+    \mathbb{E}[B_t] = \int_{-\infty}^\infty x p(t, x | W_1 = 0) \;\mathrm{d}x = 0,
+$$
+Para o segundo momento, que no caso é a variância, usamos integração por partes para encontrar
+$$
+    \begin{align*}
+        \mathbb{E}[B_t^2] & = \int_{-\infty}^\infty x^2 p(t, x | W_1 = 0) \;\mathrm{d}x \\
+        & = \frac{1}{\sqrt{2\pi t(1 - t)}} \int_{-\infty}^\infty x^2 e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
+        & = \frac{t(1 - t)}{\sqrt{2\pi t(1 - t)}} \int_{-\infty}^\infty e^{-\frac{1}{2}\frac{1}{t(1-t)} x^2 } \;\mathrm{d}x \\
         & = t(1 - t).
     \end{align*}
 $$
@@ -217,34 +236,37 @@ $$
 A inversa (e o determinante) pode ser calculado via escalonamento da matriz
 $$
     \begin{align*}
-        \left[ \begin{matrix} s & s & s \\ s & t & t \\ s & t & 1 \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \right] & \mapsto  \left[ \begin{matrix} s & 0 & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{t-s} & -\frac{s}{t-s} & 0 \\ -1 & \frac{1-s}{1-t} & -\frac{t-s}{1-t} \\ 0 & -1 & 1 \end{matrix} \right] \\
+        \left[ \begin{matrix} s & s & s \\ s & t & t \\ s & t & 1 \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \right] & \mapsto  \left[ \begin{matrix} s & s & s \\ 0 & t-s & t-s \\ 0 & t-s & 1-s \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ -1 & 0 & 1 \end{matrix} \right] \\
+        & \mapsto  \left[ \begin{matrix} s & s & s \\ 0 & t-s & t-s \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -1 & 1 \end{matrix} \right] \\
+        & \mapsto  \left[ \begin{matrix} s & s & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} 1 & \frac{s}{1-t} & -\frac{s}{1-t} \\ -1 & \frac{1-s}{1-t} & -\frac{t-s}{1-t} \\ 0 & -1 & 1 \end{matrix} \right] \\
+        & \mapsto  \left[ \begin{matrix} s & 0 & 0 \\ 0 & t-s & 0 \\ 0 & 0 & 1-t \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{t-s} & -\frac{s}{t-s} & 0 \\ -1 & \frac{1-s}{1-t} & -\frac{t-s}{1-t} \\ 0 & -1 & 1 \end{matrix} \right] \\
         & \mapsto  \left[ \begin{matrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix} \;\middle\vert\; \begin{matrix} \frac{t}{s(t-s)} & -\frac{1}{t-s} & 0 \\ -\frac{1}{t-s} & \frac{1-s}{(t-s)(1-t)} & -\frac{1}{1-t} \\ 0 & -\frac{1}{1-t} & \frac{1}{1-t} \end{matrix} \right].
     \end{align*}
 $$
 Portanto,
 $$
-    \det\Sigma(s, t) = s(t-s)(1-t), \qquad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} t(1-t) & s(1-t) & 0 \\ -s(1-t) & s(1-s) & -s(t-s) \\ 0 & -s(t-s) & s(t-s) \end{bmatrix}
+    \det\Sigma(s, t) = s(t-s)(1-t), \qquad \Sigma^{-1} = \frac{1}{s(t-s)(1-t)}\begin{bmatrix} t(1-t) & -s(1-t) & 0 \\ -s(1-t) & s(1-s) & -s(t-s) \\ 0 & -s(t-s) & s(t-s) \end{bmatrix}.
 $$
 
-Assim, a PDF de $V_{s,t}=(W_s, W_t, W_1)$ é dada por 
+Assim, a PDF conjunta de $V_{s,t}=(W_s, W_t, W_1)$ é dada por 
 $$
-    p(x_s, x_t, x_1) = \frac{1}{2\pi \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_s, x_t,  x_1 \end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_s \\ x_t \\ x\end{pmatrix} }.
+    p(s, t, x_s, x_t, x_1) = \frac{1}{(2\pi)^{3/2} \det(\Sigma)^{1/2}} e^{-\frac{1}{2}\begin{pmatrix} x_s, x_t,  x_1 \end{pmatrix} \Sigma^{-1}\begin{pmatrix} x_s \\ x_t \\ x_1 \end{pmatrix} }.
 $$
-onde o espaço de eventos é descrito por $x = (x_s, x_t, x_1)\in \mathbb{R}^3.$ Não precisamos explicitar toda a PDF pois estamos interessados apenas na marginal correspondendo ao condicionamento $W_1 = 0,$ que é
+onde o espaço de eventos é descrito por $x = (x_s, x_t, x_1)\in \mathbb{R}^3.$ Não precisamos explicitar toda a PDF pois estamos interessados apenas na distribuição condicionada a $W_1 = 0,$ que é
 $$
-    p(x_s, x_t, 0) = \frac{1}{2\pi s^{1/2}(t-s)^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{s(t-s)(1-t)} \left( t(1-t)x_s^2 - 2s(1-t)x_tx_s + s(1-s)x_t^2\right) }.
+    p(s, t, x_s, x_t | W_1 = 0) = \frac{1}{2\pi s^{1/2}(t-s)^{1/2}(1 - t)^{1/2}} e^{-\frac{1}{2}\frac{1}{s(t-s)(1-t)} \left( t(1-t)x_s^2 - 2s(1-t)x_tx_s + s(1-s)x_t^2\right) }.
 $$
 
-A covariância, ainda com $1 < s < t < 1,$ pode ser calculada, agora, via
+A covariância, ainda com $0 < s < t < 1,$ pode ser calculada, agora, via
 $$
-    \mathbb{E}[B_sB_t] = \int_{-\infty}^\infty \int_{-\infty}^\infty x_sx_t p(x_s, x_t, 0) \;\mathrm{d}x_t\;\mathrm{d}x_s.
+    \mathbb{E}[B_sB_t] = \int_{-\infty}^\infty \int_{-\infty}^\infty x_sx_t p(s, t, x_s, x_t | W_1 = 0) \;\mathrm{d}x_t\;\mathrm{d}x_s.
 $$
 Deixamos como exercício a verificação de que $\mathbb{E}[B_sB_t] = s - st.$
-Por simetria, para $1 < t < s < 1,$ obtemos $\mathbb{E}[B_sB_t] = t - st.$ Com isso, e juntando com os cálculos anteriores, obtemos, para $0 \leq t \leq s \leq 1,$
+Por simetria, para $0 < t < s < 1,$ obtemos $\mathbb{E}[B_sB_t] = t - st.$ Com isso, e juntando com os cálculos anteriores, obtemos, para $0 \leq t \leq s \leq 1,$
 $$
     \mathbb{E}[B_sB_t] = \min\{s, t\} - st.
 $$
-Isso conclui a demonstração de que $B_t = W_t |_{W_1 = 0}$ é o mesmo processo que é solução da equação diferencial estocástica inicial.
+Isso conclui a argumentação de que $B_t = W_t |_{W_1 = 0}$ é o mesmo processo que é solução da equação diferencial estocástica inicial.
 
 ## Exercícios
 
