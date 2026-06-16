@@ -72,11 +72,11 @@ plot!(summ3, labels=[<span class=hljs-string >&quot;&quot;</span> <span class=hl
     println(<span class=hljs-string >&quot;\nBenchmark SIR_noise!&quot;</span>)
     println(<span class=hljs-meta >@btime</span> SIR_noise!($du_noise, $u, $p, $t))
 <span class=hljs-keyword >end</span></code></pre> <pre><code class="plaintext hljs">Benchmark SIR!
-  3.173 ns (0 allocations: 0 bytes)
+  3.707 ns (0 allocations: 0 bytes)
 2.0
 
 Benchmark SIR_noise!
-  4.889 ns (0 allocations: 0 bytes)
+  5.250 ns (0 allocations: 0 bytes)
 -20.0
 </code></pre> <p>Bom, tudo indica que as funções estão em ordem. Mas também podemos usar a macro <code>InteractiveUtils.@code_warntype</code> para verificar se há alguma instabilidade de tipo. Observe que, mesmo usando um vetor de inteiros na variável <code>u</code> e um rational em um dos parâmetros, não há problema de instabilidade de tipo. Isso não quer dizer que isso não afete a performance. Há um certo custo computacional nas conversões entre tipos diferentes, mesmo que para variáveis diferentes, ou seja, sem instabilidade de tipo de uma mesma variável &#40;verifique isso usando <code>@btime</code> com os parâmetros abaixo&#33;&#41;.</p> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> InteractiveUtils
 
@@ -219,4 +219,4 @@ Body::Rational{Int64}
 └──       return %46
 
 nothing
-</code></pre> <div class=navbar > <p id=nav > <span id=nav-prev  style="float: left;"> <a class=menu-level-1  href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares <kbd>←</kbd></a> </span> <span id=nav-next  style="float: right;"> <a class=menu-level-1  href="/notas_sde/pages/c11/stochastic_sir_network"><kbd>→</kbd> 12.3. Modelo SIR estocástico estruturado em rede</a> </span> </p> </div> <div class=page-foot > <div class=license > <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a> Ricardo M. S. Rosa </div> Last modified: June 01, 2026. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>. </div> </div> </div>
+</code></pre> <div class=navbar > <p id=nav > <span id=nav-prev  style="float: left;"> <a class=menu-level-1  href="/notas_sde/pages/c11/nuclear_reactions">12.1. Reações nucleares <kbd>←</kbd></a> </span> <span id=nav-next  style="float: right;"> <a class=menu-level-1  href="/notas_sde/pages/c11/stochastic_sir_network"><kbd>→</kbd> 12.3. Modelo SIR estocástico estruturado em rede</a> </span> </p> </div> <div class=page-foot > <div class=license > <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>(CC BY-NC-ND 4.0) Attribution-NonCommercial-NoDerivatives 4.0 International </a> Ricardo M. S. Rosa </div> Last modified: June 16, 2026. Built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, using the <a href="https://github.com/rmsrosa/booksjl-franklin-template">Book Template</a>. </div> </div> </div>
